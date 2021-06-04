@@ -6,7 +6,7 @@ Official website：[ui.gg](https://ui.gg/)
 
 Author：[mixice.com](http://mixice.com/)
 
- **uigg 2.0**
+ **uigg 1.8**
 
  **ume 1.7**
 
