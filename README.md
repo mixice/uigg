@@ -1,4 +1,4 @@
-# uigg
+# UIGG
 
 uigg is quick CSS scheme, based on LESS and JQuery.
 
