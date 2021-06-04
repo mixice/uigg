@@ -1,0 +1,265 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>thumb</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+
+<link rel="stylesheet" href="../styles/uigg.css">
+<link rel="stylesheet" href="../styles/swiper-bundle.min.css">
+
+<script src="../js/jquery.min.js"></script>
+<script src="../js/swiper-bundle.min.js"></script>
+<script src="../js/uigg.js"></script>
+</head>
+    
+<body>
+
+<style>
+    .swiper-container {height: 170px;margin: 10px 0;background: var(--eee);}
+    .swiper-slide,
+    p {text-align: center;line-height: 200px;}
+    .swiper-slide {background-color: var(--f7);}
+</style>
+
+<!----------------------------------------------------------------------------------------->
+
+<section class="swiper-container swiper-banner">
+    <div class="swiper-wrapper">
+        <div class="swiper-slide">one</div>
+        <div class="swiper-slide">two</div>
+        <div class="swiper-slide">three</div>
+    </div>
+    <div class="swiper-pagination"></div>
+    <div class="swiper-button-next ico"></div>
+    <div class="swiper-button-prev ico"></div>
+    <script>
+        var swiper = new Swiper('.swiper-banner', {
+            spaceBetween: 10,
+            centeredSlides: true,
+            loop: true,
+            keyboard: {
+                enabled: true,
+            },
+            autoplay: {
+                delay: 5000,
+                disableOnInteraction: false,
+            },
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+                dynamicBullets: true,
+            },
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+        });
+    </script>
+</section>
+
+<!----------------------------------------------------------------------------------------->
+
+<section class="swiper-container swiper-list">
+    <div class="swiper-wrapper">
+        <div class="swiper-slide">one</div>
+        <div class="swiper-slide">two</div>
+        <div class="swiper-slide">three</div>
+        <div class="swiper-slide">four</div>
+        <div class="swiper-slide">five</div>
+        <div class="swiper-slide">six</div>
+        <div class="swiper-slide">seven</div>
+        <div class="swiper-slide">eight</div>
+    </div>
+    <div class="swiper-pagination"></div>
+    <div class="swiper-button-next ico"></div>
+    <div class="swiper-button-prev ico"></div>
+    <script>
+        var swiper = new Swiper('.swiper-list', {
+            slidesPerView: 4,
+            slidesPerGroup: 4, //Scroll by group
+            loop: true,
+            loopFillGroupWithBlank: true,
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+            breakpoints: { 
+                320: {
+                  slidesPerView: 2,
+                  spaceBetween: 15
+                },
+                720: {
+                  slidesPerView: 3,
+                  spaceBetween: 20
+                },
+                960: {
+                  slidesPerView: 4,
+                  spaceBetween: 30
+                },
+            },
+        });
+    </script>
+</section>
+
+<!----------------------------------------------------------------------------------------->
+
+<section class="swiper-container swiper-vertical">
+    <div class="swiper-wrapper">
+        <div class="swiper-slide">one</div>
+        <div class="swiper-slide">two</div>
+        <div class="swiper-slide">three</div>
+    </div>
+    <div class="swiper-pagination"></div>
+    <script>
+        var swiper = new Swiper('.swiper-vertical', {
+            direction: 'vertical',
+            slidesPerView: 1,
+            spaceBetween: 10,
+            mousewheel: true,
+            keyboard: {
+                enabled: true,
+            },
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+        });
+    </script>
+</section>
+
+<!----------------------------------------------------------------------------------------->
+
+<section>
+    <div class="swiper-container gallery-top">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide" style="background-image: url(https://ui.gg/lib/img?1)"></div>
+            <div class="swiper-slide" style="background-image: url(https://ui.gg/lib/img?2)"></div>
+            <div class="swiper-slide" style="background-image: url(https://ui.gg/lib/img?3)"></div>
+            <div class="swiper-slide" style="background-image: url(https://ui.gg/lib/img?4)"></div>
+            <div class="swiper-slide" style="background-image: url(https://ui.gg/lib/img?5)"></div>
+            <div class="swiper-slide" style="background-image: url(https://ui.gg/lib/img?6)"></div>
+        </div>
+        <div class="swiper-button-next ico"></div>
+        <div class="swiper-button-prev ico"></div>
+    </div>
+    <div class="swiper-container gallery-thumbs">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide" style="background-image: url(https://ui.gg/lib/img?1)"></div>
+            <div class="swiper-slide" style="background-image: url(https://ui.gg/lib/img?2)"></div>
+            <div class="swiper-slide" style="background-image: url(https://ui.gg/lib/img?3)"></div>
+            <div class="swiper-slide" style="background-image: url(https://ui.gg/lib/img?4)"></div>
+            <div class="swiper-slide" style="background-image: url(https://ui.gg/lib/img?5)"></div>
+            <div class="swiper-slide" style="background-image: url(https://ui.gg/lib/img?6)"></div>
+        </div>
+    </div>
+    <script>
+        var galleryThumbs = new Swiper('.gallery-thumbs', {
+            spaceBetween: 10,
+            slidesPerView: 4,
+            freeMode: true,
+            loop: true,
+            loopedSlides: 5, //looped slides should be the same
+            watchSlidesVisibility: true,
+            watchSlidesProgress: true,
+        });
+        var galleryTop = new Swiper('.gallery-top', {
+            spaceBetween: 10,
+            loop:true,
+            loopedSlides: 5, //looped slides should be the same
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+            thumbs: {
+                swiper: galleryThumbs,
+            },
+        });
+    </script>
+</section>
+
+<!----------------------------------------------------------------------------------------->
+
+<section class="swiper-container swiper-animate">
+    <div class="swiper-wrapper">
+        <div class="swiper-slide"><p class="ani" swiper-animate-effect="anime-fade-in-up" swiper-animate-duration=".6s" swiper-animate-delay=".3s">swiper</p></div>
+        <div class="swiper-slide"><p class="ani" swiper-animate-effect="anime-fade-in-right" swiper-animate-duration=".6s" swiper-animate-delay=".3s">swiper</p></div>
+        <div class="swiper-slide"><p class="ani" swiper-animate-effect="anime-zoom-in" swiper-animate-duration=".6s" swiper-animate-delay=".3s">swiper</p></div>
+    </div>
+    <div class="swiper-pagination"></div>
+    <div class="swiper-button-next ico"></div>
+    <div class="swiper-button-prev ico"></div>
+    <script>
+        var mySwiper = new Swiper('.swiper-animate', {
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+            on:{
+                init: function(){
+                    swiperAnimateCache(this);
+                    this.emit('slideChangeTransitionEnd');
+                }, 
+                slideChangeTransitionEnd: function(){ 
+                    swiperAnimate(this);
+                    //this.slides.eq(this.activeIndex).find('.ani').removeClass('ani'); //Run only once
+                },
+            },
+        });
+    </script>
+</section>
+
+<!----------------------------------------------------------------------------------------->
+
+<section>
+    <div class="swiper-tab-btn">
+        <a class="default" id="swiper-btn-1">1</a>
+        <a id="swiper-btn-2">2</a>
+        <a id="swiper-btn-3">3</a>
+        <a id="swiper-btn-4">4</a>
+        <a id="swiper-btn-5">5</a>
+    </div>
+    <div class="swiper-container swiper-tab">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">one</div>
+            <div class="swiper-slide">two</div>
+            <div class="swiper-slide">three</div>
+            <div class="swiper-slide">four</div>
+            <div class="swiper-slide">five</div>
+        </div>
+    </div>
+    <script>
+        var mySwiper = new Swiper('.swiper-tab',{
+            loop: true,
+            //effect : 'fade',
+        });
+        $('#swiper-btn-1').click(function(){
+            mySwiper.slideToLoop(0, 1000, false);
+        })
+        $('#swiper-btn-2').click(function(){
+            mySwiper.slideToLoop(1, 1000, false);
+        })
+        $('#swiper-btn-3').click(function(){
+            mySwiper.slideToLoop(2, 1000, false);
+        })
+        $('#swiper-btn-4').click(function(){
+            mySwiper.slideToLoop(3, 1000, false);
+        })
+        $('#swiper-btn-5').click(function(){
+            mySwiper.slideToLoop(4, 1000, false);
+        })
+    </script>
+</section>
+
+<!----------------------------------------------------------------------------------------->
+
+</body>
+</html>

@@ -1,0 +1,864 @@
+/*
+ * uigg 1.8 (build 20210601)
+ * Project: http://ui.gg
+ * Author: http://www.mixice.com
+ * Github: https://github.com/mixice/uigg
+ */
+
+/*basic*/
+html,body,div,span,object,iframe,
+h1,h2,h3,h4,h5,h6,p,blockquote,pre,
+abbr,address,cite,code,
+del,dfn,em,img,ins,kbd,q,samp,
+big,small,strong,sub,sup,var,
+b,i,a,s,u,cite,
+dl,dt,dd,ol,ul,li,
+fieldset,form,label,legend,
+table,caption,tbody,tfoot,thead,tr,th,td,
+article,aside,canvas,details,figcaption,figure,
+footer,header,hgroup,menu,nav,section,summary,
+button,input,select,textarea,
+time,mark,audio,video,
+x,o,
+tab,tab-list,tab-cont,tab-group,
+pop,pop-main,pop-title,pop-cont,pop-solve,pop-choice,pop-sider,
+tip,page,music,name,space {margin: 0;padding: 0;border: 0;outline: 0;vertical-align: baseline;background: transparent center no-repeat;background-size: contain;box-sizing: border-box;color: var(--333);font-family: uigg;border-color: var(--eee);border-style: solid;transition-duration: .3s;}
+html,body {height: 100%;font-size: 14px;transition-duration: 0s;}
+html {-webkit-font-smoothing: antialiased;}
+article,aside,details,figcaption,figure,footer,header,hgroup,main,nav,section,summary,
+tab,tab-list,tab-cont,tab-group,
+pop,pop-main,pop-title,pop-cont,pop-solve,pop-choice,pop-sider,
+tip,page,music,name,space {display: block;}
+a,a:hover,b,i,em,u,cite {text-decoration: none;font-style: normal;}
+p {margin: 0;line-height: 200%;text-align: justify;}
+ul,li {list-style: none;}
+ul {overflow: hidden;}
+a,button {cursor: pointer;}
+div,li,a {-webkit-tap-highlight-color: transparent;}
+::-webkit-scrollbar {background: transparent;width: 10px;}
+::-webkit-scrollbar-thumb {background-color: var(--eee);}
+
+@media(max-width:640px) {
+	html,body {font-size: .18rem;}
+	::-webkit-scrollbar {width: .03rem;}
+    body::-webkit-scrollbar {width: 0;}
+}
+
+/*anime*/
+.anime-pulse,
+.anime-fade-in,.anime-fade-in-down,.anime-fade-in-left,.anime-fade-in-right,.anime-fade-in-up,
+.anime-fade-out,.anime-fade-out-down,.anime-fade-out-left,.anime-fade-out-right,.anime-fade-out-up,
+.anime-flip-in-x,.anime-flip-in-y,.anime-flip-out-x,.anime-flip-out-y,
+.anime-zoom-in,.anime-zoom-out {animation-duration: .6s;animation-fill-mode: both;}
+.anime-flip-in-x,.anime-flip-in-y,.anime-flip-out-x,.anime-flip-out-y {backface-visibility: visible;animation-timing-function: ease-in;}
+
+.anime-pulse {animation-name: anime-pulse;}
+.anime-fade-in {animation-name: anime-fade-in;}
+.anime-fade-in-down {animation-name: anime-fade-in-down;}
+.anime-fade-in-left {animation-name: anime-fade-in-left;}
+.anime-fade-in-right {animation-name: anime-fade-in-right;}
+.anime-fade-in-up {animation-name: anime-fade-in-up;}
+.anime-fade-out {animation-name: anime-fade-out;}
+.anime-fade-out-down {animation-name: anime-fade-out-down;}
+.anime-fade-out-left {animation-name: anime-fade-out-left;}
+.anime-fade-out-right {animation-name: anime-fade-out-right;}
+.anime-fade-out-up {animation-name: anime-fade-out-up;}
+.anime-flip-in-x {animation-name: anime-flip-in-x;}
+.anime-flip-in-y {animation-name: anime-flip-in-y;}
+.anime-flip-out-x {animation-name: anime-flip-out-x;}
+.anime-flip-out-y {animation-name: anime-flip-out-y;}
+.anime-zoom-in {animation-name: anime-zoom-in;}
+.anime-zoom-out {animation-name: anime-zoom-out;}
+
+.infinite {animation-iteration-count: infinite;}
+
+@keyframes anime-pulse {0% {transform: scale(1);}50% {transform: scale(1.05);}100% {transform: scale(1);}}
+@keyframes anime-fade-in {0% {opacity: 0;}100% {opacity: 1;}}
+@keyframes anime-fade-in-down {0% {opacity: 0;transform: translateY(-100%);}100% {opacity: 1;transform: translateY(0);}}
+@keyframes anime-fade-in-left {0% {opacity: 0;transform: translateX(-100%);}100% {opacity: 1;transform: translateX(0);}}
+@keyframes anime-fade-in-right {0% {opacity: 0;transform: translateX(100%);}100% {opacity: 1;transform: translateX(0);}}
+@keyframes anime-fade-in-up {0% {opacity: 0;transform: translateY(100%);}100% {opacity: 1;transform: translateY(0);}}
+@keyframes anime-fade-out {0% {opacity: 1;}100% {opacity: 0;}}
+@keyframes anime-fade-out-down {0% {opacity: 1;}100% {opacity: 0;transform: translateY(100%);}}
+@keyframes anime-fade-out-left {0% {opacity: 1;}100% {opacity: 0;transform: translateX(-100%);}}
+@keyframes anime-fade-out-right {0% {opacity: 1;}100% {opacity: 0;transform: translateX(100%);}}
+@keyframes anime-fade-out-up {0% {opacity: 1;}100% {opacity: 0;transform: translateY(-100%);}}
+@keyframes anime-flip-in-x {0% {transform: perspective(400px) rotate3d(1, 0, 0, 90deg);opacity: 0;}80% {transform: perspective(400px);opacity: 1;}}
+@keyframes anime-flip-in-y {0% {transform: perspective(400px) rotate3d(0, 1, 0, 90deg);opacity: 0;}80% {transform: perspective(400px);opacity: 1;}}
+@keyframes anime-flip-out-x {0% {transform: perspective(400px);opacity: 1;}80% {transform: perspective(400px) rotate3d(1, 0, 0, 90deg);opacity: 0;}}
+@keyframes anime-flip-out-y {0% {transform: perspective(400px);opacity: 1;}80% {transform: perspective(400px) rotate3d(0, 1, 0, 90deg);opacity: 0;}}
+@keyframes anime-zoom-in {0% {opacity: 0;transform: scale(0.3);}100% {opacity: 1;}}
+@keyframes anime-zoom-out {0% {opacity: 1;}100% {opacity: 0;transform: scale(0.3);}}
+
+/*frame*/
+frame,iframe {border: 0;}
+.smooth {cursor: pointer;}
+.return {cursor: pointer;}
+.main,
+.mobile {width: 100%;margin: auto;position: relative;}
+.main {max-width: 1300px;}
+.mobile {max-width: 640px;}
+.block {width: 100%;overflow: hidden;position: relative;}
+.clear {clear: both;}
+.flex {display: flex !important;}
+.flex-column {display: flex;flex-direction: column;}
+.hide {display: none !important;}
+.show {display: block !important;}
+.float-left {float: left !important;}
+.float-right {float: right !important;}
+.full {width: 100% !important;height: 100% !important;}
+.full-device {width: 100vw !important;height: 100vh !important;}
+.fullscreen:after {content: '\e9f7';}
+.fullscreen.active:after {content: '\e9f8';}
+.center {display: -webkit-box;display: -ms-flexbox;display: -webkit-flex;display: flex;
+	-webkit-box-pack: center;-ms-flex-pack: center;
+	-webkit-justify-content: center;justify-content: center;
+	-webkit-box-align: center;-ms-flex-align: center;
+	-webkit-align-items: center;align-items: center;}
+.absolute,.absolute-left,.absolute-right,.absolute-top,.absolute-bottom,.absolute-top-left,.absolute-top-right,.absolute-bottom-left,.absolute-bottom-right {position: absolute;margin: auto;}
+.fixed,.fixed-left,.fixed-right,.fixed-top,.fixed-bottom,.fixed-top-left,.fixed-top-right,.fixed-bottom-left,.fixed-bottom-right {position: fixed;margin: auto;}
+.absolute-left,.absolute-top-left,.absolute-bottom-left,
+.fixed-left,.fixed-top-left,.fixed-bottom-left {left: 0;}
+.absolute-right,.absolute-top-right,.absolute-bottom-right,
+.fixed-right,.fixed-top-right,.fixed-bottom-right {right: 0;}
+.absolute-top,.absolute-top-left,.absolute-top-right,
+.fixed-top,.fixed-top-left,.fixed-top-right {top: 0;}
+.absolute-bottom,.absolute-bottom-left,.absolute-bottom-right,
+.fixed-bottom,.fixed-bottom-left,.fixed-bottom-right {bottom: 0;}
+
+/*color*/
+:root {
+    --fff: #fff;
+    --f7:#f7f7f7;
+    --eee:#eee;
+    --ddd: #ddd;
+    --ccc: #ccc;
+    --bbb: #bbb;
+    --999: #999;
+    --666: #666;
+    --333: #333;
+    --222: #222;
+    --111: #111;
+    --000: #000;
+
+    --brown: #8d1313;
+    --red: #ff3b52;
+    --pink: #ff3ea6;
+    --purple: #d844d8;
+    --sapphire: #4e35ea;
+    --blue: #2e6efd;
+    --cyan: #0df0f0;
+    --green: #47DCA1;
+    --lime: #a2ff00;
+    --yellow: #ffeb00;
+    --orange: #ffba00;
+    --tomato: #f60;
+
+    --fff-1: rgba(255,255,255,.1);
+    --fff-2: rgba(255,255,255,.2);
+    --fff-3: rgba(255,255,255,.3);
+    --fff-4: rgba(255,255,255,.4);
+    --fff-5: rgba(255,255,255,.5);
+    --fff-6: rgba(255,255,255,.6);
+    --fff-7: rgba(255,255,255,.7);
+    --fff-8: rgba(255,255,255,.8);
+    --fff-9: rgba(255,255,255,.9);
+
+    --000-1: rgba(0,0,0,.1);
+    --000-2: rgba(0,0,0,.2);
+    --000-3: rgba(0,0,0,.3);
+    --000-4: rgba(0,0,0,.4);
+    --000-5: rgba(0,0,0,.5);
+    --000-6: rgba(0,0,0,.6);
+    --000-7: rgba(0,0,0,.7);
+    --000-8: rgba(0,0,0,.8);
+    --000-9: rgba(0,0,0,.9);
+}
+
+.co-fff {color: var(--fff) !important;}
+.co-f7 {color: var(--f7) !important;}
+.co-eee {color: var(--eee) !important;}
+.co-ddd {color: var(--ddd) !important;}
+.co-ccc {color: var(--ccc) !important;}
+.co-bbb {color: var(--bbb) !important;}
+.co-999 {color: var(--999) !important;}
+.co-666 {color: var(--666) !important;}
+.co-333 {color: var(--333) !important;}
+.co-222 {color: var(--222) !important;}
+.co-111 {color: var(--111) !important;}
+.co-000 {color: var(--000) !important;}
+.co-brown {color: var(--brown) !important;}
+.co-red {color: var(--red) !important;}
+.co-pink {color: var(--pink) !important;}
+.co-purple {color: var(--purple) !important;}
+.co-sapphire {color: var(--sapphire) !important;}
+.co-blue {color: var(--blue) !important;}
+.co-cyan {color: var(--cyan) !important;}
+.co-green {color: var(--green) !important;}
+.co-lime {color: var(--lime) !important;}
+.co-yellow {color: var(--yellow) !important;}
+.co-orange {color: var(--orange) !important;}
+.co-tomato {color: var(--tomato) !important;}
+
+.bg-fff {background-color: var(--fff) !important;}
+.bg-f7 {background-color: var(--f7) !important;}
+.bg-eee {background-color: var(--eee) !important;}
+.bg-ddd {background-color: var(--ddd) !important;}
+.bg-ccc {background-color: var(--ccc) !important;}
+.bg-bbb {background-color: var(--bbb) !important;}
+.bg-999 {background-color: var(--999) !important;}
+.bg-666 {background-color: var(--666) !important;}
+.bg-333 {background-color: var(--333) !important;}
+.bg-222 {background-color: var(--222) !important;}
+.bg-111 {background-color: var(--111) !important;}
+.bg-000 {background-color: var(--000) !important;}
+.bg-brown {background-color: var(--brown) !important;}
+.bg-red {background-color: var(--red) !important;}
+.bg-pink {background-color: var(--pink) !important;}
+.bg-purple {background-color: var(--purple) !important;}
+.bg-sapphire {background-color: var(--sapphire) !important;}
+.bg-blue {background-color: var(--blue) !important;}
+.bg-cyan {background-color: var(--cyan) !important;}
+.bg-green {background-color: var(--green) !important;}
+.bg-lime {background-color: var(--lime) !important;}
+.bg-yellow {background-color: var(--yellow) !important;}
+.bg-orange {background-color: var(--orange) !important;}
+.bg-tomato {background-color: var(--tomato) !important;}
+
+.mono,.mono-click {
+    -webkit-filter: grayscale(100%);
+    -moz-filter: grayscale(100%);
+    -ms-filter: grayscale(100%);
+    filter: grayscale(100%);
+    filter: gray;}
+.mono-click:hover {-webkit-filter: grayscale(0%);
+    -moz-filter: grayscale(0%);
+    -ms-filter: grayscale(0%);
+    filter: grayscale(0%);
+    filter: none;}
+.mix-abrazine {-webkit-backdrop-filter: blur(10px);backdrop-filter: blur(10px);}
+.mix-hue {-webkit-mix-blend-mode: hue;mix-blend-mode: hue;}
+.mix-multiply {-webkit-mix-blend-mode: multiply;mix-blend-mode: multiply;}
+.mix-screen {-webkit-mix-blend-mode: screen;mix-blend-mode: screen;}
+.mix-luminosity {-webkit-mix-blend-mode: luminosity;mix-blend-mode: luminosity;}
+.mix-difference {-webkit-mix-blend-mode: difference;mix-blend-mode: difference;}
+
+@media(max-width:640px) {
+    .mix-abrazine {-webkit-backdrop-filter: blur(.1rem);backdrop-filter: blur(.1rem);}
+}
+
+/*media*/
+img {vertical-align: middle;max-width: 100%;height: auto;}
+audio,canvas,progress,video {display: inline-block;vertical-align: baseline;}
+audio:not([controls]) {display: none;height: 0;}
+video {object-fit: fill;}
+canvas {-moz-user-select: none;-webkit-user-select: none;-ms-user-select: none;}
+a[title="到百度地图查看此区域"] {display: none;}
+
+@media(max-width:640px) {
+    img {width: 100%;height: auto;}
+}
+
+/*touch*/
+.touch {}
+.touch-up {}
+.touch-down {}
+.touch-left {}
+.touch-right {}
+.touch-all {}
+
+/*scrollreveal*/
+.scrollreveal {}
+.scroll-top {}
+.scroll-bottom {}
+.scroll-left {}
+.scroll-right {}
+.scroll-scale {}
+.scroll-opacity {}
+.scroll-rotate {}
+
+/*calculation*/
+.calc {display: flex;}
+.calc .btn {width: 50px;}
+.calc .btn:hover {transform: translateY(0);}
+.calc-add {}
+.calc-reduce {}
+.calc-answer {text-align: center;flex: 1;}
+
+@media(max-width:640px) {
+	.calc .btn {width: .7rem;}
+}
+
+/*ico*/
+@font-face {font-family: "ico";src: url('uigg.woff2') format('woff2');}
+.ico {font-family: "ico" !important;font-size: 24px;font-style: normal;font-weight: normal;text-decoration: none;text-align: center;vertical-align: middle;justify-content: center;margin: auto;line-height: 1;text-transform: none;display: inline-block;direction: ltr;letter-spacing: normal;word-wrap: normal;white-space: nowrap;}
+
+.ico-arrow-left:before{content:"\e754"}.ico-decoration-stack:before{content:"\e854"}.ico-map:before{content:"\e954"}.ico-square-r:before{content:"\ea54"}.ico-virtualreality:before{content:"\eb54"}.ico-arrow-in:before{content:"\e755"}.ico-decoration-right-top:before{content:"\e855"}.ico-map-location:before{content:"\e955"}.ico-square-reduce:before{content:"\ea55"}.ico-villa:before{content:"\eb55"}.ico-arrow-redo:before{content:"\e756"}.ico-diagonal-double:before{content:"\e856"}.ico-media-eject:before{content:"\e956"}.ico-square-s:before{content:"\ea56"}.ico-virus:before{content:"\eb56"}.ico-arrow-enter:before{content:"\e757"}.ico-decoration-rhombus:before{content:"\e857"}.ico-media-back:before{content:"\e957"}.ico-square-square:before{content:"\ea57"}.ico-virus-breed:before{content:"\eb57"}.ico-apple:before{content:"\e758"}.ico-decoration-frame:before{content:"\e858"}.ico-mask:before{content:"\e958"}.ico-square-t:before{content:"\ea58"}.ico-virus-kill:before{content:"\eb58"}.ico-arrow-out:before{content:"\e759"}.ico-dial:before{content:"\e859"}.ico-medal:before{content:"\e959"}.ico-square-u:before{content:"\ea59"}.ico-visa:before{content:"\eb59"}.ico-angle-narrow:before{content:"\e75a"}.ico-decoration-scattered:before{content:"\e85a"}.ico-mastercard:before{content:"\e95a"}.ico-square-v:before{content:"\ea5a"}.ico-visibility:before{content:"\eb5a"}.ico-arrow-upload:before{content:"\e75b"}.ico-dice-2:before{content:"\e85b"}.ico-media-end:before{content:"\e95b"}.ico-square-w:before{content:"\ea5b"}.ico-volume:before{content:"\eb5b"}.ico-arrow-zoom-left:before{content:"\e75c"}.ico-dice-4:before{content:"\e85c"}.ico-media-forward:before{content:"\e95c"}.ico-square-x:before{content:"\ea5c"}.ico-volleyball:before{content:"\eb5c"}.ico-asic:before{content:"\e75d"}.ico-dice-1:before{content:"\e85d"}.ico-media-pause:before{content:"\e95d"}.ico-square-y:before{content:"\ea5d"}.ico-visibility-disable:before{content:"\eb5d"}.ico-arrow-top:before{content:"\e75e"}.ico-diamond:before{content:"\e85e"}.ico-media-stop:before{content:"\e95e"}.ico-square-z:before{content:"\ea5e"}.ico-volume-empty:before{content:"\eb5e"}.ico-arrow-zoom-right:before{content:"\e75f"}.ico-diagonal:before{content:"\e85f"}.ico-media-play:before{content:"\e95f"}.ico-stacking:before{content:"\ea5f"}.ico-volume-close:before{content:"\eb5f"}.ico-asterism:before{content:"\e760"}.ico-dice-5:before{content:"\e860"}.ico-medkit:before{content:"\e960"}.ico-squash:before{content:"\ea60"}.ico-volume-disable:before{content:"\eb60"}.ico-asterism-empty:before{content:"\e761"}.ico-dice-7:before{content:"\e861"}.ico-menu:before{content:"\e961"}.ico-stair:before{content:"\ea61"}.ico-volume-low:before{content:"\eb61"}.ico-asterisk:before{content:"\e762"}.ico-desk:before{content:"\e862"}.ico-media-return:before{content:"\e962"}.ico-star:before{content:"\ea62"}.ico-vr:before{content:"\eb62"}.ico-asterism-square:before{content:"\e763"}.ico-dice-3:before{content:"\e863"}.ico-menu-center:before{content:"\e963"}.ico-steeringwheel:before{content:"\ea63"}.ico-wallet:before{content:"\eb63"}.ico-atom:before{content:"\e764"}.ico-dice-8:before{content:"\e864"}.ico-message:before{content:"\e964"}.ico-square-zoom:before{content:"\ea64"}.ico-warn:before{content:"\eb64"}.ico-badminton:before{content:"\e765"}.ico-day:before{content:"\e865"}.ico-menu-right:before{content:"\e965"}.ico-star-full:before{content:"\ea65"}.ico-wand:before{content:"\eb65"}.ico-arrow-right:before{content:"\e766"}.ico-decoration:before{content:"\e866"}.ico-menu-left:before{content:"\e966"}.ico-stopwatch:before{content:"\ea66"}.ico-wash:before{content:"\eb66"}.ico-arrow-return:before{content:"\e767"}.ico-diningtable:before{content:"\e867"}.ico-message-add:before{content:"\e967"}.ico-stopwatch-empty:before{content:"\ea67"}.ico-washingmachine:before{content:"\eb67"}.ico-babycarriage:before{content:"\e768"}.ico-dice-9:before{content:"\e868"}.ico-message-control:before{content:"\e968"}.ico-stopwatch-disable:before{content:"\ea68"}.ico-watch:before{content:"\eb68"}.ico-baidupan:before{content:"\e769"}.ico-dice-6:before{content:"\e869"}.ico-message-delete:before{content:"\e969"}.ico-strawberry:before{content:"\ea69"}.ico-water:before{content:"\eb69"}.ico-balloon:before{content:"\e76a"}.ico-debug:before{content:"\e86a"}.ico-message-empty:before{content:"\e96a"}.ico-suffix-3gp:before{content:"\ea6a"}.ico-watermelon:before{content:"\eb6a"}.ico-barn:before{content:"\e76b"}.ico-direction-bottom:before{content:"\e86b"}.ico-message-list1:before{content:"\e96b"}.ico-suffix-abr:before{content:"\ea6b"}.ico-webcam:before{content:"\eb6b"}.ico-bank:before{content:"\e76c"}.ico-direction-left-bottom:before{content:"\e86c"}.ico-message-list2:before{content:"\e96c"}.ico-suffix-acf:before{content:"\ea6c"}.ico-wave:before{content:"\eb6c"}.ico-ballpark:before{content:"\e76d"}.ico-direction-left:before{content:"\e86d"}.ico-message-new:before{content:"\e96d"}.ico-suffix-acm:before{content:"\ea6d"}.ico-waveform:before{content:"\eb6d"}.ico-basketball:before{content:"\e76e"}.ico-direction-right:before{content:"\e86e"}.ico-message-reduce:before{content:"\e96e"}.ico-suffix-aep:before{content:"\ea6e"}.ico-wechatpay:before{content:"\eb6e"}.ico-baidu:before{content:"\e76f"}.ico-direction-top:before{content:"\e86f"}.ico-message-warning:before{content:"\e96f"}.ico-suffix-ai:before{content:"\ea6f"}.ico-wechat:before{content:"\eb6f"}.ico-barrel:before{content:"\e770"}.ico-division:before{content:"\e870"}.ico-message-more:before{content:"\e970"}.ico-star-half:before{content:"\ea70"}.ico-wegame:before{content:"\eb70"}.ico-barcode:before{content:"\e771"}.ico-direction-right-bottom:before{content:"\e871"}.ico-mic-disable:before{content:"\e971"}.ico-suffix-aif:before{content:"\ea71"}.ico-well:before{content:"\eb71"}.ico-battery-horizontal-charge:before{content:"\e772"}.ico-dinnerware:before{content:"\e872"}.ico-mindmap:before{content:"\e972"}.ico-suffix-air:before{content:"\ea72"}.ico-weiyun:before{content:"\eb72"}.ico-battery-horizontal-empty:before{content:"\e773"}.ico-display:before{content:"\e873"}.ico-mirror:before{content:"\e973"}.ico-suffix-aca:before{content:"\ea73"}.ico-wifi:before{content:"\eb73"}.ico-baseball:before{content:"\e774"}.ico-direction-right-top:before{content:"\e874"}.ico-mist:before{content:"\e974"}.ico-suffix-ant:before{content:"\ea74"}.ico-wheelchair:before{content:"\eb74"}.ico-battery-horizontal-full:before{content:"\e775"}.ico-document-add:before{content:"\e875"}.ico-mix:before{content:"\e975"}.ico-suffix-ans:before{content:"\ea75"}.ico-weibo:before{content:"\eb75"}.ico-bamboo:before{content:"\e776"}.ico-direction-left-top:before{content:"\e876"}.ico-mixice:before{content:"\e976"}.ico-suffix-app:before{content:"\ea76"}.ico-wifi-low:before{content:"\eb76"}.ico-battery-horizontal-middle:before{content:"\e777"}.ico-document:before{content:"\e877"}.ico-modem:before{content:"\e977"}.ico-suffix-arc:before{content:"\ea77"}.ico-wifi-middle:before{content:"\eb77"}.ico-battery-horizontal-less:before{content:"\e778"}.ico-doctor:before{content:"\e878"}.ico-monitor:before{content:"\e978"}.ico-suffix-arj:before{content:"\ea78"}.ico-wintersweet:before{content:"\eb78"}.ico-battery-vertical-middle:before{content:"\e779"}.ico-document-empty:before{content:"\e879"}.ico-moon-half:before{content:"\e979"}.ico-suffix-as:before{content:"\ea79"}.ico-wifi-source:before{content:"\eb79"}.ico-battery-vertical-low:before{content:"\e77a"}.ico-division-double:before{content:"\e87a"}.ico-moon-new:before{content:"\e97a"}.ico-suffix-asf:before{content:"\ea7a"}.ico-wrench:before{content:"\eb7a"}.ico-bayside-curve:before{content:"\e77b"}.ico-document-reduce:before{content:"\e87b"}.ico-mic:before{content:"\e97b"}.ico-suffix-asl:before{content:"\ea7b"}.ico-wineglass:before{content:"\eb7b"}.ico-battery-vertical-warn:before{content:"\e77c"}.ico-done:before{content:"\e87c"}.ico-moon-full:before{content:"\e97c"}.ico-suffix-asp:before{content:"\ea7c"}.ico-wind:before{content:"\eb7c"}.ico-battery-vertical-charge:before{content:"\e77d"}.ico-done-all:before{content:"\e87d"}.ico-motorcycle-padal:before{content:"\e97d"}.ico-suffix-au:before{content:"\ea7d"}.ico-xiaomi:before{content:"\eb7d"}.ico-bayside-zoom:before{content:"\e77e"}.ico-douyin:before{content:"\e87e"}.ico-more-horizontal:before{content:"\e97e"}.ico-suffix-avi:before{content:"\ea7e"}.ico-wifi-high:before{content:"\eb7e"}.ico-battery-vertical-empty:before{content:"\e77f"}.ico-download:before{content:"\e87f"}.ico-mountain:before{content:"\e97f"}.ico-suffix-bak:before{content:"\ea7f"}.ico-xunlei:before{content:"\eb7f"}.ico-battery-vertical-full:before{content:"\e780"}
+.ico-drawing:before{content:"\e880"}.ico-mouse-pointer:before{content:"\e980"}.ico-suffix-bas:before{content:"\ea80"}.ico-wifi-limit:before{content:"\eb80"}.ico-bayside-straight:before{content:"\e781"}.ico-drop-down:before{content:"\e881"}.ico-more-vertical:before{content:"\e981"}.ico-suffix-bat:before{content:"\ea81"}.ico-beer:before{content:"\e782"}.ico-drop-horizontal:before{content:"\e882"}.ico-movie:before{content:"\e982"}.ico-suffix-bbs:before{content:"\ea82"}.ico-beachboll:before{content:"\e783"}.ico-dropper:before{content:"\e883"}.ico-multiplication:before{content:"\e983"}.ico-suffix-bin:before{content:"\ea83"}.ico-bayside:before{content:"\e784"}.ico-drum:before{content:"\e884"}.ico-mssay:before{content:"\e984"}.ico-suffix-c:before{content:"\ea84"}.ico-bd:before{content:"\e785"}.ico-doughnut:before{content:"\e885"}.ico-motorcycle:before{content:"\e985"}.ico-suffix-c4d:before{content:"\ea85"}.ico-bell:before{content:"\e786"}.ico-drink:before{content:"\e886"}.ico-mouse:before{content:"\e986"}.ico-suffix-cab:before{content:"\ea86"}.ico-bell-new:before{content:"\e787"}.ico-drop-vertical:before{content:"\e887"}.ico-multiplication-double:before{content:"\e987"}.ico-suffix-bmp:before{content:"\ea87"}.ico-bell-disable:before{content:"\e788"}.ico-drumsticks:before{content:"\e888"}.ico-music:before{content:"\e988"}.ico-suffix-chm:before{content:"\ea88"}.ico-bluetooth-link:before{content:"\e789"}.ico-drop-up:before{content:"\e889"}.ico-music-disable:before{content:"\e989"}.ico-suffix-cdr:before{content:"\ea89"}.ico-book:before{content:"\e78a"}.ico-dyson:before{content:"\e88a"}.ico-music-list:before{content:"\e98a"}.ico-suffix-cmd:before{content:"\ea8a"}.ico-bomb:before{content:"\e78b"}.ico-dumbbell:before{content:"\e88b"}.ico-nav:before{content:"\e98b"}.ico-suffix-cnt:before{content:"\ea8b"}.ico-bicycle:before{content:"\e78c"}.ico-earth:before{content:"\e88c"}.ico-muzak:before{content:"\e98c"}.ico-suffix-col:before{content:"\ea8c"}.ico-billiard:before{content:"\e78d"}.ico-edit:before{content:"\e88d"}.ico-navigation:before{content:"\e98d"}.ico-suffix-com:before{content:"\ea8d"}.ico-blackhole:before{content:"\e78e"}.ico-edge:before{content:"\e88e"}.ico-nest:before{content:"\e98e"}.ico-suffix-con:before{content:"\ea8e"}.ico-bluetooth:before{content:"\e78f"}.ico-electrode:before{content:"\e88f"}.ico-nfc:before{content:"\e98f"}.ico-suffix-cpg:before{content:"\ea8f"}.ico-border-clear:before{content:"\e790"}.ico-edifice:before{content:"\e890"}.ico-muzak-disable:before{content:"\e990"}.ico-suffix-cpl:before{content:"\ea90"}.ico-border-bottom:before{content:"\e791"}.ico-electric:before{content:"\e891"}.ico-naruto:before{content:"\e991"}.ico-suffix-cpp:before{content:"\ea91"}.ico-border-horizontal:before{content:"\e792"}.ico-edit-disable:before{content:"\e892"}.ico-noodle:before{content:"\e992"}.ico-suffix-crt:before{content:"\ea92"}.ico-border-inner:before{content:"\e793"}.ico-edit-text:before{content:"\e893"}.ico-notebook:before{content:"\e993"}.ico-suffix-css:before{content:"\ea93"}.ico-border-right:before{content:"\e794"}.ico-email:before{content:"\e894"}.ico-ohm:before{content:"\e994"}.ico-suffix-cur:before{content:"\ea94"}.ico-border-left:before{content:"\e795"}.ico-emot:before{content:"\e895"}.ico-office:before{content:"\e995"}.ico-suffix-dat:before{content:"\ea95"}.ico-bra:before{content:"\e796"}.ico-emot-children:before{content:"\e896"}.ico-nipple:before{content:"\e996"}.ico-suffix-db:before{content:"\ea96"}.ico-breto:before{content:"\e797"}.ico-electromobile:before{content:"\e897"}.ico-onlydisk:before{content:"\e997"}.ico-suffix-dcl:before{content:"\ea97"}.ico-bowling:before{content:"\e798"}.ico-enlarge:before{content:"\e898"}.ico-packingbag:before{content:"\e998"}.ico-suffix-doc:before{content:"\ea98"}.ico-bread:before{content:"\e799"}.ico-emot-pain:before{content:"\e899"}.ico-pad-android:before{content:"\e999"}.ico-suffix-dll:before{content:"\ea99"}.ico-box-empty:before{content:"\e79a"}.ico-envelop:before{content:"\e89a"}.ico-pad-ios:before{content:"\e99a"}.ico-suffix-dos:before{content:"\ea9a"}.ico-boxing:before{content:"\e79b"}.ico-emot-smile:before{content:"\e89b"}.ico-night:before{content:"\e99b"}.ico-suffix-dot:before{content:"\ea9b"}.ico-box:before{content:"\e79c"}.ico-escalator:before{content:"\e89c"}.ico-pain-men:before{content:"\e99c"}.ico-suffix-dpi:before{content:"\ea9c"}.ico-briefcase:before{content:"\e79d"}.ico-explorer:before{content:"\e89d"}.ico-pan:before{content:"\e99d"}.ico-suffix-dwg:before{content:"\ea9d"}.ico-border-vertical:before{content:"\e79e"}.ico-factory:before{content:"\e89e"}.ico-necklace:before{content:"\e99e"}.ico-suffix-dxb:before{content:"\ea9e"}.ico-bubble:before{content:"\e79f"}.ico-express-pack:before{content:"\e89f"}.ico-pain-woman:before{content:"\e99f"}.ico-suffix-drv:before{content:"\ea9f"}.ico-briefs:before{content:"\e7a0"}.ico-express:before{content:"\e8a0"}.ico-paperplane:before{content:"\e9a0"}.ico-suffix-eps:before{content:"\eaa0"}.ico-brush:before{content:"\e7a1"}.ico-express-transport:before{content:"\e8a1"}.ico-paper:before{content:"\e9a1"}.ico-suffix-dpl:before{content:"\eaa1"}.ico-bubble-delete:before{content:"\e7a2"}.ico-equipment:before{content:"\e8a2"}.ico-necktie:before{content:"\e9a2"}.ico-suffix-exe:before{content:"\eaa2"}.ico-border-top:before{content:"\e7a3"}.ico-express-send:before{content:"\e8a3"}.ico-parasol:before{content:"\e9a3"}.ico-suffix-et:before{content:"\eaa3"}.ico-bubble-add:before{content:"\e7a4"}.ico-file:before{content:"\e8a4"}.ico-pacman:before{content:"\e9a4"}.ico-suffix-fla:before{content:"\eaa4"}.ico-bubble-empty:before{content:"\e7a5"}.ico-file-add:before{content:"\e8a5"}.ico-parameter:before{content:"\e9a5"}.ico-suffix-fon:before{content:"\eaa5"}.ico-bubble-reduce:before{content:"\e7a6"}.ico-file-empty:before{content:"\e8a6"}.ico-phone-android:before{content:"\e9a6"}.ico-suffix-for:before{content:"\eaa6"}.ico-bubble-more:before{content:"\e7a7"}.ico-file-reduce:before{content:"\e8a7"}.ico-phoenixcoronet:before{content:"\e9a7"}.ico-suffix-8bi:before{content:"\eaa7"}.ico-bubble-info:before{content:"\e7a8"}.ico-facebook:before{content:"\e8a8"}.ico-phonecard-disable:before{content:"\e9a8"}.ico-suffix-ftp:before{content:"\eaa8"}.ico-bubble-help:before{content:"\e7a9"}.ico-file-user:before{content:"\e8a9"}.ico-paypal:before{content:"\e9a9"}.ico-suffix-fot:before{content:"\eaa9"}.ico-bubble-menu:before{content:"\e7aa"}.ico-fan:before{content:"\e8aa"}.ico-piano:before{content:"\e9aa"}.ico-suffix-fxp:before{content:"\eaaa"}.ico-bubble-new:before{content:"\e7ab"}.ico-fingerprint:before{content:"\e8ab"}.ico-phonecard:before{content:"\e9ab"}.ico-suffix-gif:before{content:"\eaab"}.ico-bubble-warn:before{content:"\e7ac"}.ico-film:before{content:"\e8ac"}.ico-picturepuzzle:before{content:"\e9ac"}.ico-suffix-git:before{content:"\eaac"}.ico-bubble-heart:before{content:"\e7ad"}.ico-finger:before{content:"\e8ad"}.ico-pig:before{content:"\e9ad"}.ico-suffix-grp:before{content:"\eaad"}.ico-bug:before{content:"\e7ae"}.ico-finger-click:before{content:"\e8ae"}.ico-pizza:before{content:"\e9ae"}.ico-suffix-grd:before{content:"\eaae"}.ico-bud:before{content:"\e7af"}.ico-film-info:before{content:"\e8af"}.ico-place:before{content:"\e9af"}.ico-suffix-gz:before{content:"\eaaf"}.ico-calculator:before{content:"\e7b0"}.ico-filter:before{content:"\e8b0"}.ico-plane:before{content:"\e9b0"}.ico-suffix-hlp:before{content:"\eab0"}.ico-calendar-control:before{content:"\e7b1"}.ico-firefox:before{content:"\e8b1"}.ico-place-location:before{content:"\e9b1"}.ico-suffix-htm:before{content:"\eab1"}.ico-calendar:before{content:"\e7b2"}.ico-firework:before{content:"\e8b2"}.ico-place-disable:before{content:"\e9b2"}.ico-suffix-hqx:before{content:"\eab2"}.ico-calculation:before{content:"\e7b3"}.ico-flag:before{content:"\e8b3"}.ico-plant:before{content:"\e9b3"}.ico-suffix-icm:before{content:"\eab3"}.ico-calendar-add:before{content:"\e7b4"}.ico-file-delete:before{content:"\e8b4"}.ico-phone-ios:before{content:"\e9b4"}.ico-suffix-ico:before{content:"\eab4"}.ico-calendar-done:before{content:"\e7b5"}.ico-finger-dbclick:before{content:"\e8b5"}.ico-plant-flower:before{content:"\e9b5"}.ico-suffix-inf:before{content:"\eab5"}.ico-calendar-empty:before{content:"\e7b6"}.ico-flag-color:before{content:"\e8b6"}.ico-plate:before{content:"\e9b6"}.ico-suffix-img:before{content:"\eab6"}.ico-calendar-less:before{content:"\e7b7"}.ico-fish:before{content:"\e8b7"}.ico-pine:before{content:"\e9b7"}
+.ico-suffix-ini:before{content:"\eab7"}.ico-calendar-delete:before{content:"\e7b8"}.ico-flag-aim:before{content:"\e8b8"}.ico-pile:before{content:"\e9b8"}.ico-suffix-ink:before{content:"\eab8"}.ico-call:before{content:"\e7b9"}.ico-folder:before{content:"\e8b9"}.ico-player:before{content:"\e9b9"}.ico-suffix-jar:before{content:"\eab9"}.ico-call-lock:before{content:"\e7ba"}.ico-flower:before{content:"\e8ba"}.ico-playstation:before{content:"\e9ba"}.ico-suffix-iso:before{content:"\eaba"}.ico-calendar-reduce:before{content:"\e7bb"}.ico-flag-float:before{content:"\e8bb"}.ico-poker:before{content:"\e9bb"}.ico-suffix-jff:before{content:"\eabb"}.ico-calendar-many:before{content:"\e7bc"}.ico-folder-delete:before{content:"\e8bc"}.ico-poker-club:before{content:"\e9bc"}.ico-suffix-jif:before{content:"\eabc"}.ico-call-off:before{content:"\e7bd"}.ico-folder-add:before{content:"\e8bd"}.ico-plum:before{content:"\e9bd"}.ico-suffix-jq:before{content:"\eabd"}.ico-camera:before{content:"\e7be"}.ico-flash:before{content:"\e8be"}.ico-poker-diamond:before{content:"\e9be"}.ico-suffix-jpg:before{content:"\eabe"}.ico-call-on:before{content:"\e7bf"}.ico-fog:before{content:"\e8bf"}.ico-poker-spade:before{content:"\e9bf"}.ico-suffix-js:before{content:"\eabf"}.ico-camera-disable:before{content:"\e7c0"}.ico-folder-image:before{content:"\e8c0"}.ico-poker-heart:before{content:"\e9c0"}.ico-suffix-json:before{content:"\eac0"}.ico-candy:before{content:"\e7c1"}.ico-flashlight:before{content:"\e8c1"}.ico-printer:before{content:"\e9c1"}.ico-suffix-jsp:before{content:"\eac1"}.ico-cameraroll:before{content:"\e7c2"}.ico-folder-empty:before{content:"\e8c2"}.ico-polo:before{content:"\e9c2"}.ico-suffix-mac:before{content:"\eac2"}.ico-card-credit:before{content:"\e7c3"}.ico-folder-reduce:before{content:"\e8c3"}.ico-prize:before{content:"\e9c3"}.ico-suffix-off:before{content:"\eac3"}.ico-card:before{content:"\e7c4"}.ico-folder-video:before{content:"\e8c4"}.ico-qq:before{content:"\e9c4"}.ico-suffix-mpg:before{content:"\eac4"}.ico-card-agreement:before{content:"\e7c5"}.ico-format-align-justify:before{content:"\e8c5"}.ico-radio-done:before{content:"\e9c5"}.ico-suffix-pdf:before{content:"\eac5"}.ico-card-bill:before{content:"\e7c6"}.ico-football:before{content:"\e8c6"}.ico-radio-on:before{content:"\e9c6"}.ico-suffix-ps:before{content:"\eac6"}.ico-call-suspend:before{content:"\e7c7"}.ico-format-align-center:before{content:"\e8c7"}.ico-qrcode:before{content:"\e9c7"}.ico-suffix-ocx:before{content:"\eac7"}.ico-carve:before{content:"\e7c8"}.ico-format-align-right:before{content:"\e8c8"}.ico-rain:before{content:"\e9c8"}.ico-suffix-msi:before{content:"\eac8"}.ico-car:before{content:"\e7c9"}.ico-format-bold:before{content:"\e8c9"}.ico-rain-hard:before{content:"\e9c9"}.ico-suffix-pro:before{content:"\eac9"}.ico-celestialbody:before{content:"\e7ca"}.ico-format-align-left:before{content:"\e8ca"}.ico-radios:before{content:"\e9ca"}.ico-suffix-md:before{content:"\eaca"}.ico-cattle:before{content:"\e7cb"}.ico-Format-brush:before{content:"\e8cb"}.ico-rain-moderate:before{content:"\e9cb"}.ico-suffix-msg:before{content:"\eacb"}.ico-cash:before{content:"\e7cc"}.ico-format-color:before{content:"\e8cc"}.ico-rain-light:before{content:"\e9cc"}.ico-suffix-prj:before{content:"\eacc"}.ico-cd:before{content:"\e7cd"}.ico-format-file:before{content:"\e8cd"}.ico-receipt:before{content:"\e9cd"}.ico-suffix-nls:before{content:"\eacd"}.ico-centigrade:before{content:"\e7ce"}.ico-format-hr:before{content:"\e8ce"}.ico-radio:before{content:"\e9ce"}.ico-suffix-pif:before{content:"\eace"}.ico-chart:before{content:"\e7cf"}.ico-format-image-left:before{content:"\e8cf"}.ico-rain-heavy:before{content:"\e9cf"}.ico-suffix-mdb:before{content:"\eacf"}.ico-cd-rom:before{content:"\e7d0"}.ico-format-image-center:before{content:"\e8d0"}.ico-receiver:before{content:"\e9d0"}.ico-suffix-mp3:before{content:"\ead0"}.ico-cen:before{content:"\e7d1"}.ico-format-app:before{content:"\e8d1"}.ico-recommend:before{content:"\e9d1"}.ico-suffix-mpt:before{content:"\ead1"}.ico-cheese:before{content:"\e7d2"}.ico-format-image-full:before{content:"\e8d2"}.ico-recommend-high:before{content:"\e9d2"}.ico-suffix-mee:before{content:"\ead2"}.ico-call-in:before{content:"\e7d3"}.ico-format-image-right:before{content:"\e8d3"}.ico-recorder:before{content:"\e9d3"}.ico-suffix-pat:before{content:"\ead3"}.ico-chart-pie:before{content:"\e7d4"}.ico-format-indent-increase:before{content:"\e8d4"}.ico-reduce:before{content:"\e9d4"}.ico-suffix-obj:before{content:"\ead4"}.ico-chart-bubble:before{content:"\e7d5"}.ico-format-italic:before{content:"\e8d5"}.ico-reduce-double:before{content:"\e9d5"}.ico-suffix-mid:before{content:"\ead5"}.ico-chopstick:before{content:"\e7d6"}.ico-format-indent-decrease:before{content:"\e8d6"}.ico-referee:before{content:"\e9d6"}.ico-suffix-ppt:before{content:"\ead6"}.ico-checkbox-done:before{content:"\e7d7"}.ico-format-linespacing:before{content:"\e8d7"}.ico-remotecontrol:before{content:"\e9d7"}.ico-suffix-mp4:before{content:"\ead7"}.ico-checkbox-disable:before{content:"\e7d8"}.ico-format-link:before{content:"\e8d8"}.ico-repository:before{content:"\e9d8"}.ico-suffix-mkv:before{content:"\ead8"}.ico-chrome:before{content:"\e7d9"}.ico-format-strikethrough:before{content:"\e8d9"}.ico-return-bottom:before{content:"\e9d9"}.ico-suffix-php:before{content:"\ead9"}.ico-checkbox:before{content:"\e7da"}.ico-format-subscript:before{content:"\e8da"}.ico-response:before{content:"\e9da"}.ico-suffix-png:before{content:"\eada"}.ico-circular-aim:before{content:"\e7db"}.ico-format-paint:before{content:"\e8db"}.ico-return-left:before{content:"\e9db"}.ico-suffix-mov:before{content:"\eadb"}.ico-checkbox-on:before{content:"\e7dc"}.ico-format-size:before{content:"\e8dc"}.ico-return-right:before{content:"\e9dc"}.ico-suffix-rar:before{content:"\eadc"}.ico-chessboard:before{content:"\e7dd"}.ico-format-post:before{content:"\e8dd"}.ico-rhombus:before{content:"\e9dd"}.ico-suffix-psd:before{content:"\eadd"}.ico-church:before{content:"\e7de"}.ico-format-superscript:before{content:"\e8de"}.ico-return-top:before{content:"\e9de"}.ico-suffix-rec:before{content:"\eade"}.ico-circular-arrow-down:before{content:"\e7df"}.ico-format-underlined:before{content:"\e8df"}.ico-ring:before{content:"\e9df"}.ico-suffix-rmvb:before{content:"\eadf"}.ico-chip:before{content:"\e7e0"}.ico-format-quote:before{content:"\e8e0"}.ico-roadblock:before{content:"\e9e0"}.ico-suffix-rss:before{content:"\eae0"}.ico-circular-bias:before{content:"\e7e1"}.ico-frenchfries:before{content:"\e8e1"}.ico-rocker:before{content:"\e9e1"}.ico-suffix-rdp:before{content:"\eae1"}.ico-circular-arrow-right:before{content:"\e7e2"}.ico-format-textborder:before{content:"\e8e2"}.ico-road:before{content:"\e9e2"}.ico-suffix-reg:before{content:"\eae2"}.ico-circular-arrow-left:before{content:"\e7e3"}.ico-functions:before{content:"\e8e3"}.ico-rope:before{content:"\e9e3"}.ico-suffix-py:before{content:"\eae3"}.ico-circular-ball:before{content:"\e7e4"}.ico-game-direction:before{content:"\e8e4"}.ico-router:before{content:"\e9e4"}.ico-suffix-rm:before{content:"\eae4"}.ico-circular-calculation-add:before{content:"\e7e5"}.ico-game:before{content:"\e8e5"}.ico-rowboat:before{content:"\e9e5"}.ico-suffix-ske:before{content:"\eae5"}.ico-circular-arrow-up:before{content:"\e7e6"}.ico-game-key:before{content:"\e8e6"}.ico-rudder:before{content:"\e9e6"}.ico-suffix-src:before{content:"\eae6"}.ico-circular-calculation-equal:before{content:"\e7e7"}.ico-fruits:before{content:"\e8e7"}.ico-rugby:before{content:"\e9e7"}.ico-suffix-sav:before{content:"\eae7"}.ico-circular-calculation-multiplication:before{content:"\e7e8"}.ico-game-point:before{content:"\e8e8"}.ico-safety:before{content:"\e9e8"}.ico-suffix-sql:before{content:"\eae8"}.ico-circular-buoy:before{content:"\e7e9"}.ico-garage:before{content:"\e8e9"}.ico-rune:before{content:"\e9e9"}.ico-suffix-sh:before{content:"\eae9"}.ico-circular-calculation-division:before{content:"\e7ea"}.ico-gas:before{content:"\e8ea"}.ico-safety-add:before{content:"\e9ea"}.ico-suffix-rtf:before{content:"\eaea"}.ico-circular-button:before{content:"\e7eb"}.ico-gasoline:before{content:"\e8eb"}.ico-safety-high:before{content:"\e9eb"}.ico-suffix-srt:before{content:"\eaeb"}.ico-circular-calculation-reduce:before{content:"\e7ec"}.ico-gasstation:before{content:"\e8ec"}.ico-Safari:before{content:"\e9ec"}.ico-suffix-svg:before{content:"\eaec"}.ico-circular-calculation-notequal:before{content:"\e7ed"}.ico-game-rocker:before{content:"\e8ed"}.ico-rule-horizontal:before{content:"\e9ed"}.ico-suffix-tar:before{content:"\eaed"}
+.ico-circular-deviation-down:before{content:"\e7ee"}.ico-gem-rhombus:before{content:"\e8ee"}.ico-save:before{content:"\e9ee"}.ico-suffix-tif:before{content:"\eaee"}.ico-circular-delete:before{content:"\e7ef"}.ico-gender-female:before{content:"\e8ef"}.ico-safety-work:before{content:"\e9ef"}.ico-suffix-txt:before{content:"\eaef"}.ico-3g:before{content:"\e6f0"}.ico-circular-deviation-right:before{content:"\e7f0"}.ico-gem:before{content:"\e8f0"}.ico-safety-done:before{content:"\e9f0"}.ico-suffix-tpl:before{content:"\eaf0"}.ico-6g:before{content:"\e6f1"}.ico-beaker:before{content:"\e7f1"}.ico-ghost:before{content:"\e8f1"}.ico-scan-face:before{content:"\e9f1"}.ico-suffix-url:before{content:"\eaf1"}.ico-abstain:before{content:"\e6f2"}.ico-circular-deviation-left:before{content:"\e7f2"}.ico-gender:before{content:"\e8f2"}.ico-scan:before{content:"\e9f2"}.ico-suffix-ts:before{content:"\eaf2"}.ico-add:before{content:"\e6f3"}.ico-border:before{content:"\e7f3"}.ico-gender-male:before{content:"\e8f3"}.ico-scansion:before{content:"\e9f3"}.ico-suffix-tmp:before{content:"\eaf3"}.ico-5g:before{content:"\e6f4"}.ico-circular-done:before{content:"\e7f4"}.ico-glasses:before{content:"\e8f4"}.ico-scooter:before{content:"\e9f4"}.ico-suffix-vcd:before{content:"\eaf4"}.ico-add-double:before{content:"\e6f5"}.ico-circular-disable:before{content:"\e7f5"}.ico-goldmedal:before{content:"\e8f5"}.ico-science:before{content:"\e9f5"}.ico-suffix-ttf:before{content:"\eaf5"}.ico-addressbook:before{content:"\e6f6"}.ico-circular-direction-left:before{content:"\e7f6"}.ico-globe:before{content:"\e8f6"}.ico-scissors:before{content:"\e9f6"}.ico-suffix-ses:before{content:"\eaf6"}.ico-4k:before{content:"\e6f7"}.ico-circular-direction-up:before{content:"\e7f7"}.ico-google:before{content:"\e8f7"}.ico-screen-full:before{content:"\e9f7"}.ico-suffix-ver:before{content:"\eaf7"}.ico-8k:before{content:"\e6f8"}.ico-circular-help:before{content:"\e7f8"}.ico-goblet:before{content:"\e8f8"}.ico-screen-narrow:before{content:"\e9f8"}.ico-suffix-voc:before{content:"\eaf8"}.ico-align-horizontal-center:before{content:"\e6f9"}.ico-circular-fillet:before{content:"\e7f9"}.ico-gothic:before{content:"\e8f9"}.ico-screwdriver:before{content:"\e9f9"}.ico-suffix-vxd:before{content:"\eaf9"}.ico-aids:before{content:"\e6fa"}.ico-circular-grid:before{content:"\e7fa"}.ico-golf:before{content:"\e8fa"}.ico-screw:before{content:"\e9fa"}.ico-suffix-sys:before{content:"\eafa"}.ico-alcohol:before{content:"\e6fb"}.ico-circular-horizontal:before{content:"\e7fb"}.ico-gourd:before{content:"\e8fb"}.ico-sd:before{content:"\e9fb"}.ico-suffix-wmf:before{content:"\eafb"}.ico-4g:before{content:"\e6fc"}.ico-circular-intersect:before{content:"\e7fc"}.ico-grape:before{content:"\e8fc"}.ico-search:before{content:"\e9fc"}.ico-suffix-wav:before{content:"\eafc"}.ico-align-vertical-bottom:before{content:"\e6fd"}.ico-circular-media-pause:before{content:"\e7fd"}.ico-gpu:before{content:"\e8fd"}.ico-search-add:before{content:"\e9fd"}.ico-suffix-xls:before{content:"\eafd"}.ico-align-horizontal-right:before{content:"\e6fe"}.ico-circular-media-paly:before{content:"\e7fe"}.ico-graduate:before{content:"\e8fe"}.ico-semaphore:before{content:"\e9fe"}.ico-suffix-xd:before{content:"\eafe"}.ico-align-horizontal-left:before{content:"\e6ff"}.ico-circular-focus:before{content:"\e7ff"}.ico-graphic:before{content:"\e8ff"}.ico-seed:before{content:"\e9ff"}.ico-suffix-wpg:before{content:"\eaff"}.ico-align-vertical-top:before{content:"\e700"}.ico-circular-media-eject:before{content:"\e800"}.ico-gyroscope:before{content:"\e900"}.ico-separate:before{content:"\ea00"}.ico-suffix-yml:before{content:"\eb00"}.ico-2k:before{content:"\e701"}.ico-circular-media-record:before{content:"\e801"}.ico-guidepost:before{content:"\e901"}.ico-semaphore-disable:before{content:"\ea01"}.ico-suitcase-disable:before{content:"\eb01"}.ico-airship:before{content:"\e702"}.ico-circular-pie-2:before{content:"\e802"}.ico-guitar:before{content:"\e902"}.ico-Separator-horizontal:before{content:"\ea02"}.ico-sun:before{content:"\eb02"}.ico-2g:before{content:"\e703"}.ico-circular-pie-0:before{content:"\e803"}.ico-hand:before{content:"\e903"}.ico-set:before{content:"\ea03"}.ico-suffix-zip:before{content:"\eb03"}.ico-allout:before{content:"\e704"}.ico-circular-menu:before{content:"\e804"}.ico-handbag:before{content:"\e904"}.ico-server:before{content:"\ea04"}.ico-suffix-xml:before{content:"\eb04"}.ico-alipay:before{content:"\e705"}.ico-circular-pie-4:before{content:"\e805"}.ico-hamburger:before{content:"\e905"}.ico-shackles:before{content:"\ea05"}.ico-sunrise:before{content:"\eb05"}.ico-alipan:before{content:"\e706"}.ico-circular-media-stop:before{content:"\e806"}.ico-grass:before{content:"\e906"}.ico-set-standard:before{content:"\ea06"}.ico-suffix-wps:before{content:"\eb06"}.ico-aim-disable:before{content:"\e707"}.ico-circular-direction-down:before{content:"\e807"}.ico-handball:before{content:"\e907"}.ico-set-empty:before{content:"\ea07"}.ico-suitcase:before{content:"\eb07"}.ico-aliyun:before{content:"\e708"}.ico-circular-direction-right:before{content:"\e808"}.ico-hd:before{content:"\e908"}.ico-Separator-vertical:before{content:"\ea08"}.ico-sunflower:before{content:"\eb08"}.ico-align-vertical-center:before{content:"\e709"}.ico-circular-deviation-up:before{content:"\e809"}.ico-hanger:before{content:"\e909"}.ico-search-reduce:before{content:"\ea09"}.ico-sunshade:before{content:"\eb09"}.ico-alone-bottom:before{content:"\e70a"}.ico-circular-pie-3:before{content:"\e80a"}.ico-headset:before{content:"\e90a"}.ico-share:before{content:"\ea0a"}.ico-suv:before{content:"\eb0a"}.ico-alone-disperse-horizontal:before{content:"\e70b"}.ico-circular-pie-5:before{content:"\e80b"}.ico-heart-full:before{content:"\e90b"}.ico-shoes:before{content:"\ea0b"}.ico-sunset:before{content:"\eb0b"}.ico-afs:before{content:"\e70c"}.ico-circular-pie-6:before{content:"\e80c"}.ico-headset-mic:before{content:"\e90c"}.ico-shop:before{content:"\ea0c"}.ico-tabletennis:before{content:"\eb0c"}.ico-alone-disperse-vertical:before{content:"\e70d"}.ico-circular-pie-1:before{content:"\e80d"}.ico-heart-disable:before{content:"\e90d"}.ico-shoppingbag:before{content:"\ea0d"}.ico-syringe:before{content:"\eb0d"}.ico-alone-code:before{content:"\e70e"}.ico-circular-pie-8:before{content:"\e80e"}.ico-handcart:before{content:"\e90e"}.ico-shoppingbasket:before{content:"\ea0e"}.ico-swastika:before{content:"\eb0e"}.ico-aim:before{content:"\e70f"}.ico-circular-pie-7:before{content:"\e80f"}.ico-hexagonal:before{content:"\e90f"}.ico-shoppingcart:before{content:"\ea0f"}.ico-tableware:before{content:"\eb0f"}.ico-alone-left:before{content:"\e710"}.ico-circular-search:before{content:"\e810"}.ico-helmet:before{content:"\e910"}.ico-shoppingcart-simple:before{content:"\ea10"}.ico-table:before{content:"\eb10"}.ico-alone-gather-horizontal:before{content:"\e711"}.ico-circular-spin:before{content:"\e811"}.ico-hive:before{content:"\e911"}.ico-shut:before{content:"\ea11"}.ico-talk:before{content:"\eb11"}.ico-alone-margin-bottom:before{content:"\e712"}.ico-circular-vertical:before{content:"\e812"}.ico-home-empty:before{content:"\e912"}.ico-shovel:before{content:"\ea12"}.ico-taiji:before{content:"\eb12"}.ico-alone-margin-left:before{content:"\e713"}.ico-circular-stack:before{content:"\e813"}.ico-home-stilted:before{content:"\e913"}.ico-signal:before{content:"\ea13"}.ico-talk-add:before{content:"\eb13"}.ico-alone-side-right:before{content:"\e714"}.ico-circular-warn:before{content:"\e814"}.ico-home-full:before{content:"\e914"}.ico-signal-low:before{content:"\ea14"}.ico-tag:before{content:"\eb14"}.ico-alone-side-bottom:before{content:"\e715"}.ico-clamp:before{content:"\e815"}.ico-hotel:before{content:"\e915"}.ico-signal-high:before{content:"\ea15"}.ico-talk-control:before{content:"\eb15"}.ico-alone-margin-right:before{content:"\e716"}.ico-clock:before{content:"\e816"}.ico-home-attic:before{content:"\e916"}.ico-signal-middle:before{content:"\ea16"}.ico-talk-delete:before{content:"\eb16"}.ico-alone-gather-vertical:before{content:"\e717"}.ico-circular-star:before{content:"\e817"}.ico-heart:before{content:"\e917"}.ico-signaltower-send:before{content:"\ea17"}.ico-talk-empty:before{content:"\eb17"}.ico-alone-right:before{content:"\e718"}.ico-circular-user:before{content:"\e818"}.ico-hourglass-start:before{content:"\e918"}.ico-signpost:before{content:"\ea18"}.ico-talk-info:before{content:"\eb18"}.ico-amazon:before{content:"\e719"}.ico-clock-add:before{content:"\e819"}.ico-honor:before{content:"\e919"}.ico-signs-noentry:before{content:"\ea19"}
+.ico-talk-list:before{content:"\eb19"}.ico-alone-verification:before{content:"\e71a"}.ico-class:before{content:"\e81a"}.ico-hourglass-end:before{content:"\e91a"}.ico-signal-source:before{content:"\ea1a"}.ico-talk-warning:before{content:"\eb1a"}.ico-alone-margin-top:before{content:"\e71b"}.ico-clock-alarm:before{content:"\e81b"}.ico-hourglass:before{content:"\e91b"}.ico-signs-warning:before{content:"\ea1b"}.ico-talk-reduce:before{content:"\eb1b"}.ico-alone-top:before{content:"\e71c"}.ico-clock-punctually:before{content:"\e81c"}.ico-hotel-tag:before{content:"\e91c"}.ico-signs-noparking:before{content:"\ea1c"}.ico-talk-more:before{content:"\eb1c"}.ico-anchor:before{content:"\e71d"}.ico-clip:before{content:"\e81d"}.ico-home:before{content:"\e91d"}.ico-skating:before{content:"\ea1d"}.ico-talk-new:before{content:"\eb1d"}.ico-alone-side-left:before{content:"\e71e"}.ico-clothes:before{content:"\e81e"}.ico-image:before{content:"\e91e"}.ico-skirt:before{content:"\ea1e"}.ico-taobao:before{content:"\eb1e"}.ico-alone-side-top:before{content:"\e71f"}.ico-clock-disable:before{content:"\e81f"}.ico-icehockey:before{content:"\e91f"}.ico-skype:before{content:"\ea1f"}.ico-talk-dialogue:before{content:"\eb1f"}.ico-angle-clash-horizontal:before{content:"\e720"}.ico-cloud-add:before{content:"\e820"}.ico-ie:before{content:"\e920"}.ico-slide:before{content:"\ea20"}.ico-telecamera:before{content:"\eb20"}.ico-Anchoring:before{content:"\e721"}.ico-cloudy:before{content:"\e821"}.ico-hockey:before{content:"\e921"}.ico-smoke-disable:before{content:"\ea21"}.ico-tape:before{content:"\eb21"}.ico-angle-clash-vertical:before{content:"\e722"}.ico-cloud:before{content:"\e822"}.ico-indicator:before{content:"\e922"}.ico-snack:before{content:"\ea22"}.ico-tea:before{content:"\eb22"}.ico-angle-back:before{content:"\e723"}.ico-clock-empty:before{content:"\e823"}.ico-infinite-cycle:before{content:"\e923"}.ico-smoke:before{content:"\ea23"}.ico-telecamera-disable:before{content:"\eb23"}.ico-angle-compromise:before{content:"\e724"}.ico-cloud-delete:before{content:"\e824"}.ico-Industry:before{content:"\e924"}.ico-snooker:before{content:"\ea24"}.ico-temperature:before{content:"\eb24"}.ico-angle-disperse:before{content:"\e725"}.ico-cloud-up:before{content:"\e825"}.ico-instagram:before{content:"\e925"}.ico-snow-ice:before{content:"\ea25"}.ico-tencentcloud:before{content:"\eb25"}.ico-android:before{content:"\e726"}.ico-close:before{content:"\e826"}.ico-ios:before{content:"\e926"}.ico-snow-heavy:before{content:"\ea26"}.ico-telescope:before{content:"\eb26"}.ico-angle-free-horizontal:before{content:"\e727"}.ico-cloudy-night:before{content:"\e827"}.ico-imagelist:before{content:"\e927"}.ico-snow:before{content:"\ea27"}.ico-Tennis:before{content:"\eb27"}.ico-angle-free-vertical:before{content:"\e728"}.ico-coil:before{content:"\e828"}.ico-ip:before{content:"\e928"}.ico-socket:before{content:"\ea28"}.ico-thumb-down:before{content:"\eb28"}.ico-angle-downstream:before{content:"\e729"}.ico-cloudy-overcast:before{content:"\e829"}.ico-icecream:before{content:"\e929"}.ico-soccer:before{content:"\ea29"}.ico-textbook:before{content:"\eb29"}.ico-angle-loop:before{content:"\e72a"}.ico-cloud-reduce:before{content:"\e82a"}.ico-kabaw:before{content:"\e92a"}.ico-spanner:before{content:"\ea2a"}.ico-textbook-empty:before{content:"\eb2a"}.ico-angle-infinite:before{content:"\e72b"}.ico-circular-wave:before{content:"\e82b"}.ico-jellyfish:before{content:"\e92b"}.ico-spellcheck:before{content:"\ea2b"}.ico-thunderstorm:before{content:"\eb2b"}.ico-angle-bottom:before{content:"\e72c"}.ico-cone-tilt:before{content:"\e82c"}.ico-key:before{content:"\e92c"}.ico-square:before{content:"\ea2c"}.ico-telescope-focus:before{content:"\eb2c"}.ico-angle-intersect:before{content:"\e72d"}.ico-cloudy-day:before{content:"\e82d"}.ico-keyboard:before{content:"\e92d"}.ico-square-0:before{content:"\ea2d"}.ico-thumb-up:before{content:"\eb2d"}.ico-angle-gather:before{content:"\e72e"}.ico-cpu:before{content:"\e82e"}.ico-jd:before{content:"\e92e"}.ico-square-1:before{content:"\ea2e"}.ico-tim:before{content:"\eb2e"}.ico-angle-enlarge:before{content:"\e72f"}.ico-compass:before{content:"\e82f"}.ico-knife-kitchen:before{content:"\e92f"}.ico-square-2:before{content:"\ea2f"}.ico-thumbtack:before{content:"\eb2f"}.ico-angle-loop-only:before{content:"\e730"}.ico-cook:before{content:"\e830"}.ico-knob:before{content:"\e930"}.ico-square-3:before{content:"\ea30"}.ico-tmall:before{content:"\eb30"}.ico-angle-devicerotate-disable:before{content:"\e731"}.ico-cloud-down:before{content:"\e831"}.ico-infinite:before{content:"\e931"}.ico-square-4:before{content:"\ea31"}.ico-tin:before{content:"\eb31"}.ico-angle-in:before{content:"\e732"}.ico-cream-empty:before{content:"\e832"}.ico-knot:before{content:"\e932"}.ico-space:before{content:"\ea32"}.ico-time:before{content:"\eb32"}.ico-angle-devicerotate:before{content:"\e733"}.ico-cone:before{content:"\e833"}.ico-key-secret:before{content:"\e933"}.ico-sound:before{content:"\ea33"}.ico-toilet-men:before{content:"\eb33"}.ico-angle-loop-vertical:before{content:"\e734"}.ico-controller:before{content:"\e834"}.ico-ladder:before{content:"\e934"}.ico-square-6:before{content:"\ea34"}.ico-toggle-off:before{content:"\eb34"}.ico-angle-left:before{content:"\e735"}.ico-coupon:before{content:"\e835"}.ico-kuaishou:before{content:"\e935"}.ico-square-5:before{content:"\ea35"}.ico-toggle-on:before{content:"\eb35"}.ico-angle-loop-reversal:before{content:"\e736"}.ico-cream:before{content:"\e836"}.ico-lamp:before{content:"\e936"}.ico-square-7:before{content:"\ea36"}.ico-train:before{content:"\eb36"}.ico-angle-merge:before{content:"\e737"}.ico-comb:before{content:"\e837"}.ico-knowledge:before{content:"\e937"}.ico-square-8:before{content:"\ea37"}.ico-toilet-woman:before{content:"\eb37"}.ico-angle-out:before{content:"\e738"}.ico-command:before{content:"\e838"}.ico-light:before{content:"\e938"}.ico-square-9:before{content:"\ea38"}.ico-truck:before{content:"\eb38"}.ico-angle-loop-triangle:before{content:"\e739"}.ico-controller-hold:before{content:"\e839"}.ico-layer:before{content:"\e939"}.ico-square-a:before{content:"\ea39"}.ico-trophy:before{content:"\eb39"}.ico-angle-loop-place:before{content:"\e73a"}.ico-compatible:before{content:"\e83a"}.ico-light-disable:before{content:"\e93a"}.ico-square-add:before{content:"\ea3a"}.ico-trafficlight:before{content:"\eb3a"}.ico-angle-side-left:before{content:"\e73b"}.ico-cricket:before{content:"\e83b"}.ico-lemon:before{content:"\e93b"}.ico-square-c:before{content:"\ea3b"}.ico-trousers:before{content:"\eb3b"}.ico-angle-side-bottom:before{content:"\e73c"}.ico-crossplatform:before{content:"\e83c"}.ico-lipstick:before{content:"\e93c"}.ico-square-b:before{content:"\ea3c"}.ico-tunnel:before{content:"\eb3c"}.ico-angle-loop-horizontal:before{content:"\e73d"}.ico-currency-pound:before{content:"\e83d"}.ico-liquidsoap:before{content:"\e93d"}.ico-square-circular:before{content:"\ea3d"}.ico-turbine:before{content:"\eb3d"}.ico-angle-right:before{content:"\e73e"}.ico-currency:before{content:"\e83e"}.ico-link:before{content:"\e93e"}.ico-square-code:before{content:"\ea3e"}.ico-twitter:before{content:"\eb3e"}.ico-angle-side-right:before{content:"\e73f"}.ico-cut:before{content:"\e83f"}.ico-list-left:before{content:"\e93f"}.ico-square-d:before{content:"\ea3f"}.ico-uigg:before{content:"\eb3f"}.ico-angle-side-top:before{content:"\e740"}.ico-crown:before{content:"\e840"}.ico-list-right:before{content:"\e940"}.ico-square-e:before{content:"\ea40"}.ico-usb:before{content:"\eb40"}.ico-angle-stagger-horizontal:before{content:"\e741"}.ico-currency-dollar:before{content:"\e841"}.ico-lock:before{content:"\e941"}.ico-square-f:before{content:"\ea41"}.ico-umbrella-open:before{content:"\eb41"}.ico-angle-top:before{content:"\e742"}.ico-currency-euro:before{content:"\e842"}.ico-load:before{content:"\e942"}.ico-square-data:before{content:"\ea42"}.ico-user:before{content:"\eb42"}.ico-angle-random:before{content:"\e743"}.ico-cyclone:before{content:"\e843"}.ico-list:before{content:"\e943"}.ico-squareflower-empty:before{content:"\ea43"}.ico-user-add:before{content:"\eb43"}.ico-angle-synchronization-left:before{content:"\e744"}.ico-currency-rmb:before{content:"\e844"}.ico-lock-on:before{content:"\e944"}.ico-square-disable:before{content:"\ea44"}.ico-umbrella:before{content:"\eb44"}.ico-angle-synchronization-right:before{content:"\e745"}.ico-cyclone-spread:before{content:"\e845"}.ico-lock-add:before{content:"\e945"}
+.ico-squareflower:before{content:"\ea45"}.ico-unionpay:before{content:"\eb45"}.ico-angle-stagger-vertical:before{content:"\e746"}.ico-creativecloud:before{content:"\e846"}.ico-lock-reduce:before{content:"\e946"}.ico-square-g:before{content:"\ea46"}.ico-user-agent:before{content:"\eb46"}.ico-angle-upstream:before{content:"\e747"}.ico-currency-ce:before{content:"\e847"}.ico-location:before{content:"\e947"}.ico-square-fillet:before{content:"\ea47"}.ico-trampoline:before{content:"\eb47"}.ico-aperture:before{content:"\e748"}.ico-currency-ghc:before{content:"\e848"}.ico-lollipop:before{content:"\e948"}.ico-square-delete:before{content:"\ea48"}.ico-tree:before{content:"\eb48"}.ico-archive:before{content:"\e749"}.ico-dart:before{content:"\e849"}.ico-lottery:before{content:"\e949"}.ico-square-dotted:before{content:"\ea49"}.ico-user-full:before{content:"\eb49"}.ico-app:before{content:"\e74a"}.ico-currency-thb:before{content:"\e84a"}.ico-lottery-fail:before{content:"\e94a"}.ico-square-h:before{content:"\ea4a"}.ico-user-expert:before{content:"\eb4a"}.ico-archive-add:before{content:"\e74b"}.ico-decoration-left-top:before{content:"\e84b"}.ico-lottery-less:before{content:"\e94b"}.ico-square-i:before{content:"\ea4b"}.ico-user-delete:before{content:"\eb4b"}.ico-archery:before{content:"\e74c"}.ico-decoration-flower:before{content:"\e84c"}.ico-lottery-many:before{content:"\e94c"}.ico-square-j:before{content:"\ea4c"}.ico-vertex-left-buttom:before{content:"\eb4c"}.ico-archive-empty:before{content:"\e74d"}.ico-decoration-right-bottom:before{content:"\e84d"}.ico-lottery-win:before{content:"\e94d"}.ico-square-k:before{content:"\ea4d"}.ico-user-group:before{content:"\eb4d"}.ico-arrow-download:before{content:"\e74e"}.ico-Curling:before{content:"\e84e"}.ico-magnet:before{content:"\e94e"}.ico-square-l:before{content:"\ea4e"}.ico-user-voice:before{content:"\eb4e"}.ico-angle-separate:before{content:"\e74f"}.ico-crop:before{content:"\e84f"}.ico-mail:before{content:"\e94f"}.ico-square-m:before{content:"\ea4f"}.ico-vertex-right-bottom:before{content:"\eb4f"}.ico-arrow-forward-left:before{content:"\e750"}.ico-decoration-left-bottom:before{content:"\e850"}.ico-mail-lock:before{content:"\e950"}.ico-square-n:before{content:"\ea50"}.ico-vertex-left-top:before{content:"\eb50"}.ico-archive-reduce:before{content:"\e751"}.ico-decoration-ring:before{content:"\e851"}.ico-mail-new:before{content:"\e951"}.ico-square-o:before{content:"\ea51"}.ico-vertex-right-top:before{content:"\eb51"}.ico-arrow-forward-right:before{content:"\e752"}.ico-data:before{content:"\e852"}.ico-mail-open:before{content:"\e952"}.ico-square-p:before{content:"\ea52"}.ico-videolist:before{content:"\eb52"}.ico-arrow-bottom:before{content:"\e753"}.ico-delete:before{content:"\e853"}.ico-map-empty:before{content:"\e953"}.ico-square-q:before{content:"\ea53"}.ico-videotape:before{content:"\eb53"}
+
+.ico-lang-ar {background-image: url(../images/ico/language/ar.svg);}
+.ico-lang-br {background-image: url(../images/ico/language/br.svg);}
+.ico-lang-de {background-image: url(../images/ico/language/de.svg);}
+.ico-lang-en {background-image: url(../images/ico/language/en.svg);}
+.ico-lang-es {background-image: url(../images/ico/language/es.svg);}
+.ico-lang-fr {background-image: url(../images/ico/language/fr.svg);}
+.ico-lang-hk {background-image: url(../images/ico/language/hk.svg);}
+.ico-lang-id {background-image: url(../images/ico/language/id.svg);}
+.ico-lang-idn {background-image: url(../images/ico/language/idn.svg);}
+.ico-lang-jp {background-image: url(../images/ico/language/jp.svg);}
+.ico-lang-kh {background-image: url(../images/ico/language/kh.svg);}
+.ico-lang-ko {background-image: url(../images/ico/language/ko.svg);}
+.ico-lang-pt {background-image: url(../images/ico/language/pt.svg);}
+.ico-lang-ru {background-image: url(../images/ico/language/ru.svg);}
+.ico-lang-th {background-image: url(../images/ico/language/th.svg);}
+.ico-lang-vn {background-image: url(../images/ico/language/vn.svg);}
+.ico-lang-zh {background-image: url(../images/ico/language/zh.svg);}
+
+.ico-organ-android {background-image: url(../images/ico/organization/android.svg);}
+.ico-organ-apple {background-image: url(../images/ico/organization/apple.svg);}
+.ico-organ-government {background-image: url(../images/ico/organization/government.svg);}
+.ico-organ-institutions {background-image: url(../images/ico/organization/institutions.svg);}
+.ico-organ-qq {background-image: url(../images/ico/organization/qq.svg);}
+.ico-organ-taobao {background-image: url(../images/ico/organization/taobao.svg);}
+.ico-organ-wechat {background-image: url(../images/ico/organization/wechat.svg);}
+.ico-organ-weibo {background-image: url(../images/ico/organization/weibo.svg);}
+.ico-organ-windows {background-image: url(../images/ico/organization/windows.svg);}
+
+.ico-pay-alipay {background-image: url(../images/ico/pay/alipay.svg);}
+.ico-pay-mastercard {background-image: url(../images/ico/pay/mastercard.svg);}
+.ico-pay-paypal {background-image: url(../images/ico/pay/paypal.svg);}
+.ico-pay-unionpay {background-image: url(../images/ico/pay/unionpay.svg);}
+.ico-pay-visa {background-image: url(../images/ico/pay/visa.svg);}
+.ico-pay-wechatpay {background-image: url(../images/ico/pay/wechatpay.svg);}
+
+@media(max-width:640px) {
+    .ico {font-size: .32rem;}
+}
+
+/*typeface*/
+@font-face {font-family: uigg;src: local('PingFang SC'),local("Microsoft Yahei");}
+@font-face {font-family: yahei;src: local("Microsoft Yahei");}
+@font-face {font-family: jhenghei;src: local("Microsoft JhengHei");}
+
+.font-uigg {font-family: uigg;}
+.font-yahei {font-family: yahei;}
+.font-jhenghei {font-family: jhenghei;}
+.font-nsimsun {font-family: nsimsun;}
+.font-kaiti {font-family: kaiti;}
+.font-lisu {font-family: lisu;}
+.font-youyuan {font-family: youyuan;}
+.font-fangsong {font-family: fangsong;}
+.font-xingkai {font-family: STXingkai;}
+.font-Xinwei {font-family: STXinwei;}
+.font-arial {font-family: arial;}
+.font-helvetica {font-family: helvetica;}
+.font-tahoma {font-family: tahoma;}
+
+h1,h2,h3,h4,h5,h6 {font-weight: bold;text-transform: capitalize;}
+h1 {font-size: 24px;}
+h2 {font-size: 22px;}
+h3 {font-size: 20px;}
+h4 {font-size: 18px;}
+h5 {font-size: 16px;}
+h6 {font-size: 14px;}
+
+@media(max-width:640px) {
+	h1 {font-size: .28rem;}
+	h2 {font-size: .26rem;}
+	h3 {font-size: .24rem;}
+	h4 {font-size: .22rem;}
+	h5 {font-size: .2rem;}
+	h6 {font-size: .18rem;}
+}
+
+/*special*/
+.triangle {width: 0;height: 0;border-width: 0 0 0 0;border-color: transparent transparent transparent transparent;position: absolute;margin: auto;}
+.shadow {width: 90%;height: 20px;border-radius: 10px;position: absolute;left: 0;right: 0;bottom: 0;margin: auto;z-index: -1;opacity: .7;}
+
+@media(max-width:640px) {
+	.shadow {height: .2rem;border-radius: .1rem;}
+}
+
+/*pop*/
+pop,
+pop x {width: 100%;height: 100%;left: 0;top: 0;}
+pop {position: fixed;background-color: var(--000-8);z-index: 3;display: none;}
+pop x {position: absolute;}
+pop-main {width: 90%;max-width: 720px;overflow: hidden;}
+pop-title {background-color: white;border-bottom-width: 1px;overflow: hidden;display: flex;}
+pop-title h3 {width: 100%;line-height: 60px;padding: 0 20px;flex: 1;}
+pop-title h3:nth-child(2) {padding: 0;}
+pop-title .ico {line-height: 60px;width: 60px;height: 60px;}
+pop-title .close:after {content: '\e826';}
+pop-cont {background-color: white;display: block;}
+pop-solve {display: flex;}
+pop-solve .btn {width: 100%;border-radius: 0;box-shadow: none;}
+pop-solve .btn:hover {transform: translate(0);}
+
+pop-choice,
+pop-sider {animation-delay: .3s;position: absolute;}
+pop-choice {bottom: 0;width: 100%;}
+pop-sider {top: 0;left: 0;width: 300px;height: 100%;background-color: white;}
+
+@media(max-width:640px) {
+	pop-title h3 {line-height: .8rem;padding: 0 .2rem;}
+	pop-title .ico {line-height: .8rem;width: .8rem;height: .8rem;}
+    pop-sider {width: 5rem;}
+}
+
+/*tip*/
+tip {position: absolute;top: 50%;left: 50%;z-index: 999;padding: 20px;background-color: white;display:flex;text-align: center;justify-content: center;align-items: center;transition-duration: 0s;line-height: 24px;border-width: 1px;display: none;}
+tip.zoomIn {animation-duration: .5s;}
+tip .ico {margin: 0 5px;width: 24px;overflow: hidden;color: inherit;}
+
+@media(max-width:640px) {
+	tip {line-height: .32rem;}
+    tip .ico {margin: 0 .05rem;width: .32rem;}
+}
+
+/*btn*/
+.btn {width: 100%;text-align: center;display: block;height: 50px;line-height: 50px;position: relative;z-index: 1;cursor: pointer;background-color: var(--333);color: white;}
+.btn:hover {transform: translateY(5px);}
+.btn-flex {display: flex;justify-content: center;}
+.btn-flex .btn {flex: 1;}
+.btn-empty {background-color: transparent;border: 1px solid;color: var(--333);}
+
+@media(max-width:640px) {
+	.btn {height: .7rem;line-height: .7rem;}
+	.btn:hover {transform: translateY(0);}
+}
+
+/*nav*/
+nav {width: 100%;display: flex;border-top-width: 1px;position: fixed;left: 0;bottom: 0;z-index: 3;padding: 5px;background-color: white;}
+nav li {width: 100%;}
+nav li a {display: block;padding: 10px 0;}
+nav li .ico {display: block;margin: 0 auto 5px;}
+nav li span {display: block;text-align: center;line-height: 100%;text-transform: capitalize;}
+nav li .shadow {width: 70%;}
+
+@media(max-width:640px) {
+    space {height: 1.4rem;}
+	nav {height: .9rem;padding: .1rem;}
+    nav li a {padding: .08rem 0;}
+    nav li i {margin: 0 auto .05rem;}
+    nav li span {font-size: .18rem;}
+}
+
+/*menu*/
+.menu {text-transform: capitalize;}
+.menu-switch {display: none;cursor: pointer;float: right;}
+.menu-switch:after {content: '\e961';}
+.menu-cont {text-align: center;}
+.menu-cont li {cursor: pointer;position: relative;display: inline-block;}
+.menu-cont li:hover .menu-group {display: block;}
+.menu-cont li a {display: block;line-height: 50px;}
+.menu-group {position: absolute;left: 0;display: none;width: 100%;}
+.menu-list h6 {line-height: 50px;}
+
+@media(max-width:640px) {
+    .menu-switch {display: block;width: .8rem;height: .8rem;line-height: .8rem;font-size: .48rem;}
+    .menu-cont {position: absolute;left:0;top: .8rem;background-color: var(--000-9);width: 100vw;display: none;}
+    .menu-cont li {width: 100%;height: auto;border-bottom: 1px var(--333) solid;}
+    .menu-cont li:last-child {border: 0;}
+    .menu-cont li,
+    .menu-cont li a {color: white;}
+    .menu-cont li a {line-height: .8rem;text-align: center;}
+    .menu-cont li:hover .menu-group {display: none;}
+    .menu-group {width: 100%;background-color: var(--333);padding: .1rem .2rem;position: static;overflow: hidden;}
+    .menu-group a {color: white;}
+    .menu-list h6 {color: white;line-height: .8rem;}
+}
+
+/*title*/
+.title {text-align: center;}
+.title h3,
+.title em {display: inline-block;vertical-align: middle;}
+.title span {text-transform: capitalize;display: block;}
+
+@media(max-width:640px) {}
+
+/*switch*/
+o {font-family: "ico" !important;font-size: 24px;font-style: normal;font-weight: normal;text-decoration: none;text-align: center;vertical-align: middle;justify-content: center;margin: auto;line-height: 1;text-transform: none;display: inline-block;direction: ltr;letter-spacing: normal;word-wrap: normal;white-space: nowrap;}
+
+o.radio:after {content: '\e9ce';}
+o.radio.active:after {content: '\e9c6';}
+o.radio-done:after {content: '\e9ce';}
+o.radio-done.active:after {content: '\e9c5';}
+o.checkbox:after {content: '\e7da';}
+o.checkbox.active:after {content: '\e7dc';}
+o.checkbox-done:after {content: '\e7da';}
+o.checkbox-done.active:after {content: '\e7d7';}
+o.checkbox-cancel:after {content: '\e7da';}
+o.checkbox-cancel.active:after {content: '\e7d8';}
+o.checkbox-all {}
+o.favorite:after {content: '\e917';}
+o.favorite.active:after {content: '\e90b';}
+o.star:after {content: '\ea62';}
+o.star.active:after {content: '\ea65';}
+o.visibility:after {content: '\eb5a';}
+o.visibility.active:after {content: '\eb5d';}
+o.mic:after {content: '\e97b';}
+o.mic.active:after {content: '\e971';}
+o.volume:after {content: '\eb5b';}
+o.volume.active:after {content: '\eb60';}
+o.muzak:after {content: '\e98c';}
+o.muzak.active:after {content: '\e990';}
+o.phonecard:after {content: '\e9ab';}
+o.phonecard.active:after {content: '\e9a8';}
+o.telecamera:after {content: '\eb20';}
+o.telecamera.active:after {content: '\eb23';}
+o.camera:after {content: '\e7be';}
+o.camera.active:after {content: '\e7c0';}
+o.aim:after {content: '\e70f';}
+o.aim.active:after {content: '\e707';}
+o.semaphore:after {content: '\e9fe';}
+o.semaphore.active:after {content: '\ea01';}
+o.suitcase:after {content: '\eb07';}
+o.suitcase.active:after {content: '\eb01';}
+o.toggle:after {content: '\eb34';}
+o.toggle.active:after {content: '\eb35';}
+
+@media(max-width:640px) {
+    o {font-size: .32rem;margin: 0;}
+}
+
+/*form*/
+button,input,optgroup,select,textarea {margin: 0;padding: 0;font: inherit;color: inherit;outline: none;border-radius: 0;border-width: 0;}
+textarea {resize: none;}
+input[type="button"],
+input[type="submit"],
+input[type="reset"],
+select,textarea { -webkit-appearance: none;}
+::selection {background-color: var(--333);color: var(--ccc);text-shadow: none;}
+::-webkit-input-placeholder {color: var(--ccc);}
+::-moz-placeholder {color: var(--ccc);}
+::-ms-input-placeholder {color: var(--ccc);}
+button,
+.select,
+.select i,
+select,
+.input,
+.input i,
+input {width: 100%;height: 50px;position: relative;}
+button {line-height: 50px;}
+.select i,
+.input i {width: 50px;line-height: 50px;position: absolute;top: 0;right: 0;}
+textarea {width: 100%;height: 120px;padding: 10px;line-height: 160%;}
+input {padding: 0 10px;}
+select {padding: 0 50px 0 10px;}
+
+.form .select,
+.form select,
+.form .input,
+.form input,
+.form textarea {background-color: var(--f7);}
+.form .select select,
+.form .input input {background-color: transparent;}
+.form .input,
+.form input,
+.form .select,
+.form select,
+.form span,
+.form a,
+.form button,
+.form o,
+.form cite,
+.form .code {margin-right: 10px;float: left;display: block;}
+.form li .input input,
+.form .select select {margin: 0;}
+
+.form {padding: 20px;overflow: hidden;}
+.form span,
+.form cite,
+.form li,
+.form li .code,
+.form o {line-height: 50px;}
+.form li {padding: 5px 0;display: block;width: 100%;float: left;}
+.form li.resolve {padding-left: 110px;}
+.form li .code {text-align: center;width: 140px;}
+.form li em.code {background-color: var(--222);}
+.form span {text-transform: capitalize;}
+.form li span:first-child {width: 100px;}
+.form button {width: 200px;}
+.form .min {width: 10%;}
+.form .sml {width: 20%;}
+.form .med {width: 33%;}
+.form .lag {width: 50%;}
+.form .big {width: 60%;}
+.form .max {width: 80%;}
+
+.upload {float: left;}
+.upload-group,
+.upload-add {width: 100px;height: 100px;float: left;margin: 0 10px 10px 0;background-color: var(--f7);line-height: 100px;font-size: 48px;color: var(--000-2);}
+.upload-group {position: relative;background-size: cover;}
+.upload-group input[type="file"] {width: 100%;height: 100%;position: absolute;top: 0;left: 0;opacity: 0;}
+.upload x {position: absolute;top: 0;right: 0;background-color: var(--red);color: white;border-radius: 0 0 0 36px;width: 36px;height: 36px;line-height: 30px;font-size: 24px;margin: 0;padding: 0 0 10px 10px;}
+.upload-group:after {content: '\e75b';}
+.upload x:after {content: '\e826';}
+.upload-add:after {content: '\e6f3';}
+
+@media(max-width:640px) {
+    button,
+    .select,
+    .select i,
+    select,
+    .input,
+    .input i,
+    input {height: .7rem;}
+    button {line-height: .7rem;}
+    .select i,
+    .input i {width: .7rem;line-height: .7rem;}
+    textarea {padding: .1rem;height: 2rem;}
+    input {padding: 0 .1rem;}
+    select {padding: 0 .7rem 0 .1rem;}
+
+    .form .select,
+    .form select,
+    .form .input,
+    .form input,
+    .form textarea {background-color: transparent;}
+    .form .input,
+    .form input,
+    .form .select,
+    .form select,
+    .form span,
+    .form a,
+    .form button,
+    .form o,
+    .form cite,
+    .form .code {margin: 0;}
+
+    .form {padding: .1rem;}
+    .form span,
+    .form cite,
+    .form li,
+    .form li .code,
+    .form o {line-height: .7rem;}
+    .form li {padding: .1rem 0;border-bottom-width: 1px;display: flex;}
+    .form li.resolve {padding: .1rem 0;border: 0;}
+    .form li .code {width: 2rem;}
+    .form li span:first-child {width: 1.2rem;}
+    .form button {width: 100%;}
+    .form cite {display: none;}
+    .form .min,
+    .form .sml,
+    .form .med,
+    .form .lag,
+    .form .big,
+    .form .max {width: auto;flex: 1;}
+
+    .upload {padding-top: .1rem;flex: 1;}
+    .upload-group,
+    .upload-add {width: 1.1rem;height: 1.1rem;margin: 0 .1rem .1rem 0;line-height: 1.1rem;font-size: .5rem;}
+    .upload x {border-radius: 0 0 0 .5rem;width: .5rem;height: .5rem;line-height: .4rem;font-size: .32rem;padding: 0 0 .1rem .1rem;}
+}
+
+/*page*/
+page {text-align: center;}
+page a,
+page button,
+page span,
+page input {height: 50px;display: inline-block;text-align: center;vertical-align: middle;float: none;font-size: 16px;}
+page a,
+page .ico,
+page button,
+page span {line-height: 50px;}
+page a,
+page button {background-color: var(--f7);width: 50px;}
+page .ico {font-size: 24px;}
+page span {min-width: 50px;}
+page input {border-width: 1px;width: 80px;}
+page a:hover,
+page a.active,
+page button:hover,
+page button.active {background-color: var(--333);color: white;}
+
+@media(max-width:640px) {
+    page a,
+    page button,
+    page span,
+    page input {height: .7rem;font-size: .2rem;}
+    page a,
+    page .ico,
+    page button,
+    page span {line-height: .7rem;}
+    page a,
+    page button {width: .7rem;display: none;}
+    page .ico,
+    page a.ico,
+    page button.ico {display: inline-block;font-size: .32rem;}
+    page span {min-width: .7rem;}
+    page input {width: .7rem;}
+}
+
+/*tab*/
+tab {}
+tab-list {display: flex;}
+tab-list li {width: 100%;display: block;text-align: center;}
+tab-list li a {display: block;font-weight: bold;}
+tab-cont {}
+tab-group {display: none;}
+tab-group.active {display: block;}
+
+@media(max-width:640px) {}
+
+/*table*/
+.table {}
+.table table {width: 100%;border-collapse: separate;border-spacing:0;}
+.table table th,
+.table table td {vertical-align: middle;text-align: center;height: 50px;}
+.table table th {background-color: var(--000-1);text-transform: capitalize;}
+.table table thead th,
+.table table thead td {font-weight: bold;color: white;text-transform: capitalize;}
+.table table thead tr {background-color: var(--333);}
+.table table tbody tr:nth-child(2n) {background-color: var(--f7);}
+.table table tbody tr:hover {background-color: var(--eee);}
+.table table tfoot tr {background-color: var(--eee);}
+.table table tfoot tr:first-child td,
+.table table tfoot tr:first-child th {border-top: 1px var(--666) solid;}
+
+@media(max-width:640px) {
+    .table table th,
+    .table table td {height: .7rem;}
+}
+
+/*swiper*/
+.swiper {}
+.swiper-container {width: 100%;height: 100%;}
+.swiper-slide {width: 100%;height: 100%;background-size: cover;}
+.swiper-tab-btn {margin: auto;text-align: center;}
+.swiper-tab-btn a {display: inline-block;}
+.swiper-button-prev.ico:after {content: '\e710';font-family: 'ico';}
+.swiper-button-next.ico:after {content: '\e718';font-family: 'ico';}
+.swiper-button-next.ico,.swiper-button-prev.ico {width: 50px;height: 50px;font-size: 48px;}
+:root {--swiper-navigation-size: 40px !important;}
+.swiper-button-next.ico {right: 0;}
+.swiper-button-prev.ico {left: 0;}
+
+@media(max-width:640px) {
+    :root {--swiper-navigation-size: .5rem !important;}
+    .swiper-button-next.ico,.swiper-button-prev.ico {width: .5rem;height: .5rem;font-size: .48rem;}
+}
+
+/*name*/
+name {display: flex;background-color: var(--f7);height: 80px;}
+name h2 {width: 100%;text-align: center;flex: 1;line-height: 80px;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;}
+name .ico {font-size: 36px;width: 80px;line-height: 80px;}
+
+@media(max-width:640px) {
+    name {height: .8rem;}
+    name h2 {line-height: .8rem;}
+    name .ico {font-size: .42rem;width: .8rem;height: .8rem;line-height: .8rem;}
+}
+
+/*load*/
+load {width: 100vw;height: 100vh;position: fixed;top: 0;left: 0;z-index: 999;display: flex;justify-content: center;align-items: center;background: white url(../images/load.svg) center no-repeat;background-size: 100px 100px;}
+load.disable {font-size: 50px;font-weight: lighter;text-transform: uppercase;text-align: center;color: whitesmoke;display: flex !important;background: white;}
+load.disable:after {content: 'Please use another browser';}
+
+@media(max-width:640px) {
+    load.disable {font-size: .3rem;}
+}
+
+/*anew*/
+.anew {}
+.anew-btn {position: fixed;right: 30px;width: 50px;height: 50px;line-height: 50px;color: white;background-color: var(--333);}
+.anew-btn:hover {transform: translateY(-5px);}
+.anew-btn:after {content: '\e9de';}
+
+@media(max-width:640px) {
+    .anew-btn {right: .2rem;width: .7rem;height: .7rem;line-height: .7rem;}
+    .anew-btn:hover {transform: translateY(0);}
+}
+
+/*list*/
+.list {overflow: hidden;}
+.list li {border-bottom-width: 1px;}
+.list li:last-child {border-bottom-width: 0;}
+
+@media(max-width:640px) {}
+
+/*calendar*/
+.calendar {}
+.calendar-single {z-index: 9;display: block;position: relative;width: 300px;padding: 10px;background-color: white;}
+.calendar-single.is-hidden {display: none;}
+.calendar-single.is-bound {position: absolute;box-shadow: 0 5px 15px -5px var(--000-2);}
+.calendar-single table {border-collapse: separate;border-spacing:0px;}
+.calendar-title {position: relative;text-align: center;}
+.calendar-label {display: inline-block;position: relative;z-index: 9;overflow: hidden;padding: 0 5px;font-weight: bold;line-height: 30px;}
+.calendar-title select {cursor: pointer;position: absolute;z-index: 8;left: 0;top: 0;opacity: 0;}
+.calendar-prev,
+.calendar-next {display: block;cursor: pointer;position: relative;width: 30px;height: 30px;}
+.calendar-prev:hover,
+.calendar-next:hover {background-color: var(--f7);}
+
+.calendar-prev,
+.is-rtl .calendar-next {float: left;}
+.calendar-next,
+.is-rtl .calendar-prev {float: right;}
+.calendar-select {display: inline-block;}
+.calendar-title select {height: 35px;}
+.calendar-table {width: 100%;}
+.calendar-table th,
+.calendar-table td {width: 14.28%;}
+.calendar-table td button {height: 40px;line-height: 40px;}
+.calendar-table th {text-align: center;background-color: var(--333);font-weight: normal;}
+.calendar-table th span {color: white;line-height: 40px;}
+.calendar-button {cursor: pointer;display: block;width: 100%;text-align: center;background-color: var(--f7);}
+
+.is-today .calendar-button {color: white;background-color: var(--blue);}
+.is-selected .calendar-button {color: white;background-color: var(--orange);}
+.is-disabled .calendar-button {pointer-events: none;cursor: default;color: var(--999);opacity: .3;}
+.calendar-button:hover {color: white;background-color: var(--orange);}
+
+@media(max-width:640px) {
+    .calendar-single {width: 100%;padding: .1rem;}
+    .calendar-single.is-bound {box-shadow: 0 .1rem .2rem -.1rem var(--000-2);position: fixed !important;left: 0 !important;bottom: 0 !important;top: auto !important;}
+    .calendar-label {padding: 0 .1rem;line-height: .5rem;}
+    .calendar-prev,
+    .calendar-next {width: .5rem;height: .5rem;}
+    .calendar-title select {height: .55rem;}
+    .calendar-table td button {height: .5rem;line-height: .5rem;}
+    .calendar-table th span {line-height: .5rem;}
+}
+
+/*music*/
+music {color: white;animation: muzak 10s infinite linear;-webkit-tap-highlight-color: transparent;background-color: var(--000-4);border-radius: 100%;z-index: 1;width: 50px;height: 50px;}
+music.ico {line-height: 50px;}
+music.pause {animation: none;}
+music:after {content: '\e98c';}
+music.pause:after {content: '\e990';}
+@keyframes muzak {
+    0% {transform: rotate(0);}
+    100% {transform: rotate(360deg);}
+}
+
+@media(max-width:640px) {
+    music {width: .8rem;height: .8rem;margin: .3rem;}
+    music.ico {line-height: .8rem;font-size: .48rem;}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

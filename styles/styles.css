@@ -1,0 +1,165 @@
+/*basic*/
+body {background-image: ;}
+.shadow {background-color: var(--);box-shadow: 0 0 0 var(--);}
+
+.anime {transition-duration: 0s;}
+
+/*frame*/
+.group {}
+.contant {}
+.sider {}
+.item {}
+.subject {}
+.clause {}
+
+/*color*/
+:root {
+    --color: color;
+}
+
+/*ico*/
+.ico- {background-image: url(../images/ico/)}
+
+/*pop*/
+pop {}
+pop-main {}
+pop-title {}
+pop-title h3 {}
+pop-title a {}
+pop-cont {}
+pop-solve {}
+
+/*btn*/
+.btn {}
+
+/*head*/
+.head {}
+.head-cont {}
+.logo {}
+
+/*menu*/
+.menu {}
+.menu cite {}
+.menu-cont {}
+.menu-cont li a {}
+.menu-group {}
+.menu-group a {}
+.menu-list {}
+
+/*title*/
+.title {}
+.title h3 {}
+.title em {}
+.title span {}
+
+/*form*/
+.form {}
+.form li {}
+.form li input {}
+.form li .select {}
+.form li .select select {}
+.form li .code {}
+.form li button {}
+
+/*page*/
+page {}
+page a {}
+
+/*notice*/
+.notice {}
+.notice i {}
+
+/*foot*/
+.foot {}
+.foot-cont {}
+.foot-copy {}
+
+/*tab*/
+tab {}
+tab-list {}
+tab-list li {}
+tab-list li a {}
+tab-list li.active {}
+tab-list li.active a {}
+tab-cont {}
+tab-group {}
+
+/*table*/
+.table {}
+.table table {}
+.table table td {}
+.table table tr {}
+.table table thead td {}
+.table table tbody td {}
+
+/*list*/
+.list {}
+.list li {}
+.list li a {}
+.list li i {}
+
+/*crumb*/
+.crumb {}
+
+/*------------------------------------------------------------------------------------------*/
+
+/*nav*/
+nav {}
+nav li {}
+nav li a {}
+nav li a i {}
+nav li a span {}
+
+/*name*/
+name {}
+name h2 {}
+name a {}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@media(max-width:640px) {}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

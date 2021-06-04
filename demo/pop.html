@@ -1,0 +1,76 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>thumb</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+
+<link rel="stylesheet" href="../styles/uigg.css">
+
+<script src="../js/jquery.min.js"></script>
+<script src="../js/uigg.js"></script>
+</head>
+    
+<body class="center">
+
+<style>
+    pop-solve a:nth-child(1) {background-color: var(--red);}
+    pop-solve a:nth-child(2) {background-color: var(--orange);}
+    pop-solve button.btn {background-color: var(--green);}
+    pop-solve a:nth-child(4) {background-color: var(--blue);}
+</style>
+
+<!----------------------------------------------------------------------------------------->
+
+<a class="btn bg-red" onclick="$(this).next().show()">pop</a>
+
+<pop class="anime-fade-in">
+    <x></x>
+    <div class="full center">
+        <pop-main class="anime-zoom-in">
+            <pop-title><h3>title</h3><a class="ico close"></a></pop-title>
+            <pop-cont>article</pop-cont>
+            <pop-solve>
+                <a href="" class="btn">previous</a>
+                <a href="" class="btn">cancel</a>
+                <button class="btn">submit</button>
+                <a href="" class="btn">confirm</a>
+            </pop-solve>
+        </pop-main>
+    </div>
+</pop>
+
+<!----------------------------------------------------------------------------------------->
+
+<a class="btn bg-green" onclick="$(this).next().show()">choice</a>
+
+<pop class="anime-fade-in">
+    <x></x>
+    <pop-choice class="anime-fade-in-up">
+        <pop-title><h3>title</h3><a class="ico close"></a></pop-title>
+        <pop-cont>article</pop-cont>
+        <pop-solve>
+            <a href="" class="btn">previous</a>
+            <a href="" class="btn">cancel</a>
+            <button class="btn">submit</button>
+            <a href="" class="btn">confirm</a>
+        </pop-solve>
+    </pop-choice>
+</pop>
+
+<!----------------------------------------------------------------------------------------->
+
+<a class="btn bg-blue" onclick="$(this).next().show()">sider</a>
+
+<pop class="anime-fade-in">
+    <x></x>
+    <pop-sider class="anime-fade-in-left">
+        <pop-title><h3>title</h3><a class="ico close"></a></pop-title>
+        <pop-cont>article</pop-cont>
+    </pop-sider>
+</pop>
+
+<!----------------------------------------------------------------------------------------->
+
+</body>
+</html>

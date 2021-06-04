@@ -1,0 +1,996 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>UIGG DOME</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+
+<link rel="stylesheet" href="../styles/uigg.css">
+
+<script src="../js/jquery.min.js"></script>
+<script src="../js/uigg.js"></script>
+</head>
+
+<body>
+
+<style>
+    .sider {width: 280px;background: var(--222);position: fixed;left: 0;top: 0;height: 100%;}
+    .sider::-webkit-scrollbar-thumb {background: var(--333);}
+    .sider u {position: absolute;top: 0;display: none;cursor: pointer;}
+    .sider em {display: block;width: 30%;margin: 20px auto;}
+    .sider-list {padding: 10px;height: calc(100% - 200px);overflow: auto;}
+    .sider-list::-webkit-scrollbar-thumb {background: var(--333);}
+    .sider-list h6 {color: var(--666);padding: 10px 0;}
+    .sider-list h6 i {color: var(--666);margin-right: 10px;}
+    .sider-list a {color: white;text-transform: capitalize;padding: 0 10px;height: 35px;line-height: 35px;display: block;border-bottom: 1px var(--333) solid;}
+    .sider-list a:hover {background: var(--blue);}
+
+    .contant {padding: 20px 20px 100px 300px;overflow: hidden;}
+    .contant h2 {padding: 20px 0;font-size: 40px;font-weight: 300;}
+    .contant h2 i {font-size: 40px;float: left;margin: 5px;}
+    .cont {padding: 0 0 50px;}
+    .cont hr {opacity: .2;}
+    .cont iframe {width: 100%;border: 1px var(--eee) solid;margin: 5px 0;border-radius: 10px;}
+    .cont xmp {background: var(--f7);padding: 0 20px 20px;margin: 5px 0;color: var(--red);border-radius: 10px;white-space: pre-wrap;}
+    .cont h3 {color: var(--blue);padding: 10px 0;}
+    .cont h5,
+    .cont p {padding: 5px 0;}
+    .cont p span {color: var(--red);}
+    .cont .view {width: 200px;border-radius: 3px;background: var(--blue);margin: 10px 0;font-weight: bold;}
+
+    @media(max-width:640px) {
+        .sider {width: 80%;z-index: 3;transform: translateX(-100%);}
+        .sider em {width: 30%;margin: .4rem auto;}
+        .sider u {right: -.6rem;width: .6rem;height: .6rem;line-height: .6rem;background: var(--222);display: block;color: var(--fff);}
+        .sider.active {transform: translateX(0);}
+        .sider-list {height: calc(100% - 3rem);overflow: auto;}
+        .sider-list {padding: .1rem;}
+        .sider-list h6 {padding: .1rem 0;}
+        .sider-list h6 i {margin-right: .1rem;}
+        .sider-list a {padding: 0 .1rem;height: .5rem;line-height: .5rem;font-size: .2rem;}
+        .contant {padding: .2rem;font-size: .2rem;}
+        .contant h2 {padding: .2rem 0;font-size: .5rem;}
+        .contant h2 i {font-size: .5rem;margin: .1rem;}
+        .cont {padding: 0 0 .5rem;}
+        .cont iframe {margin: .1rem 0;border-radius: .1rem;}
+        .cont xmp {padding: 0 .2rem .25rem;margin: .1rem 0;border-radius: .1rem;}
+        .cont h3 {padding: .1rem 0;}
+        .cont h5,
+        .cont p {padding: .1rem 0;}
+        .cont .view {width:2.5rem;border-radius: .05rem;margin: .1rem 0;}
+    }
+</style>
+
+<section class="subject">
+    <section class="sider">
+        <u class="ico ico-menu"></u>
+        <em><img src="../images/logo.svg"></em>
+        <div class="sider-list">
+            <h6><i class="ico ico-uigg"></i>Using uigg</h6>
+            <li><a class="smooth" href="#get">get uigg</a></li>
+            <h6><i class="ico ico-graphic"></i>Preset function</h6>
+            <li><a class="smooth" href="#anew">anew</a></li>
+            <li><a class="smooth" href="#anime">anime</a></li>
+            <li><a class="smooth" href="#browser">browser title</a></li>
+            <li><a class="smooth" href="#calculation">calculation</a></li>
+            <li><a class="smooth" href="#disable">disable</a></li>
+            <li><a class="smooth" href="#font">font</a></li>
+            <li><a class="smooth" href="#form">form</a></li>
+            <li><a class="smooth" href="#fullscreen">fullscreen</a></li>
+            <li><a class="smooth" href="#load">load</a></li>
+            <li><a class="smooth" href="#menu">menu</a></li>
+            <li><a class="smooth" href="#mix">mix</a></li>
+            <li><a class="smooth" href="#page">page</a></li>
+            <li><a class="smooth" href="#random">random</a></li>
+            <li><a class="smooth" href="#return">return</a></li>
+            <li><a class="smooth" href="#smooth">smooth</a></li>
+            <li><a class="smooth" href="#switch">switch</a></li>
+            <li><a class="smooth" href="#tab">tab</a></li>
+            <li><a class="smooth" href="#table">table</a></li>
+            <li><a class="smooth" href="#tip">tip</a></li>
+            <li><a class="smooth" href="#title">title</a></li>
+            <h6><i class="ico ico-phone-ios"></i>Mobile terminal</h6>
+            <li><a class="smooth" href="#name">name</a></li>
+            <li><a class="smooth" href="#nav">nav</a></li>
+            <li><a class="smooth" href="#music">music</a></li>
+            <li><a class="smooth" href="#play">play</a></li>
+            <li><a class="smooth" href="#touch">touch</a></li>
+            <h6><i class="ico ico-usb"></i>Internal components</h6>
+            <li><a class="smooth" href="#calendar">calendar</a></li>
+            <li><a class="smooth" href="#pop">pop</a></li>
+            <h6><i class="ico ico-response"></i>External components</h6>
+            <li><a class="smooth" href="#swiper">swiper</a></li>
+            <h6><i class="ico ico-app"></i>General library</h6>
+            <li><a class="smooth" href="#color">color</a></li>
+            <li><a class="smooth" href="#ico">ico</a></li>
+        </div>
+    </section>
+    <section class="contant">
+        <h2><i class="ico ico-uigg"></i>Using uigg</h2>
+        <div class="cont" id="get">
+            <h3>get uigg</h3><hr>
+            <h5>download zip</h5>
+            <p>You can download uigg from the official website</p>
+            <a class="btn view" href="https://ui.gg/" target="_blank">uigg</a>
+            <a class="btn view" href="https://ui.gg/master/master.zip" target="_blank">download</a>
+            <h5>download design template</h5>
+            <p>We have prepared the design specification of rapid prototyping for designers</p>
+            <a class="btn view" href="https://ui.gg/master/uigg.xd" target="_blank">Adobe XD</a>
+            <h5>get gitHub</h5>
+            <p>You can also get uigg from gitHub</p>
+            <a class="btn view" href="https://github.com/mixice/uigg" target="_blank">gitHub</a>
+            <h5>quote</h5>
+            <p>You also refer to files directly from the web</p>
+<xmp>
+<link rel="stylesheet" href="https://ui.gg/master/styles/uigg.css">
+<link rel="stylesheet" href="https://ui.gg/master/styles/swiper-bundle.min.css">
+
+<script src="https://ui.gg/master/js/jquery.min.js"></script>
+<script src="https://ui.gg/master/js/less.min.js"></script>
+<script src="https://ui.gg/master/js/swiper-bundle.min.js"></script>
+<script src="https://ui.gg/master/js/uigg.js"></script>
+</xmp>
+        </div>
+        <h2><i class="ico ico-graphic"></i>Preset function</h2>
+        <div class="cont" id="anew">
+            <h3>anew</h3><hr>
+            <h5>code</h5>
+            <p>Add the class to the DOM</p>
+<xmp>
+class="anew"
+</xmp>
+            <p>If you need a separate button</p>
+<xmp>
+class="anew anew-btn ico"
+</xmp>
+            <h5>effect display</h5>
+            <iframe src="anew.html"></iframe>
+            <a class="btn view" href="anew.html" target="_blank">view</a>
+        </div>
+        <div class="cont" id="anime">
+            <h3>anime</h3><hr>
+            <h5>code</h5>
+            <p>Add the class to the DOM</p>
+<xmp>
+class="anime-pulse"
+class="anime-fade-in"
+class="anime-fade-in-down"
+class="anime-fade-in-left"
+class="anime-fade-in-right"
+class="anime-fade-in-up"
+class="anime-fade-out"
+class="anime-fade-out-down"
+class="anime-fade-out-left"
+class="anime-fade-out-right"
+class="anime-fade-out-up"
+class="anime-flip-in-x"
+class="anime-flip-in-y"
+class="anime-flip-out-x"
+class="anime-flip-out-y"
+class="anime-zoom-in"
+class="anime-zoom-out"
+</xmp>
+            <h5>effect display</h5>
+            <iframe src="anime.html" height="1000"></iframe>
+            <a class="btn view" href="anime.html" target="_blank">view</a>
+        </div>
+        <div class="cont" id="browser">
+            <h3>browser</h3><hr>
+            <h5>code</h5>
+            <p>Add the javascript to the page, you can customize the title in <span>browsertitle()</span></p>
+<xmp>
+<script>
+    browserTitle();
+</script>
+</xmp>
+        <a class="btn view" href="browser.html" target="_blank">view</a>
+        </div>
+        <div class="cont" id="calculation">
+            <h3>calculation</h3><hr>
+            <h5>code</h5>
+            <p>Add the code to the DOM</p>
+<xmp>
+<section class="calc">
+    <a class="btn ico ico-reduce"></a>
+    <input class="calc-answer" type="text" value="1">
+    <a class="btn ico ico-add"></a>
+</section>
+</xmp>
+            <h5>effect display</h5>
+            <iframe src="calculation.html"></iframe>
+            <a class="btn view" href="calculation.html" target="_blank">view</a>
+        </div>
+        <div class="cont" id="disable">
+            <h3>disable</h3><hr>
+            <h5>code</h5>
+            <p>Add the function to the DOM</p>
+<xmp>
+<script>
+    disable();
+</script>
+</xmp>
+            <a class="btn view" href="disable.html" target="_blank">view</a>
+        </div>
+        <div class="cont" id="font">
+            <h3>font</h3><hr>
+            <h5>code</h5>
+            <p>Add the class to the DOM</p>
+<xmp>
+class="font-uigg"
+class="font-yahei"
+class="font-jhenghei"
+class="font-nsimsun"
+class="font-kaiti"
+class="font-lisu"
+class="font-youyuan"
+class="font-fangsong"
+class="font-xingkai"
+class="font-Xinwei"
+class="font-arial"
+class="font-helvetica"
+class="font-tahoma"
+</xmp>
+            <iframe src="font.html" height="1200"></iframe>
+            <a class="btn view" href="font.html" target="_blank">view</a>
+        </div>
+        <div class="cont" id="form">
+            <h3>form</h3><hr>
+            <h5>code</h5>
+            <p>Add the code to the DOM</p>
+<xmp>
+<section class="form">
+    <form>
+        <li><span>account</span>
+            <input class="med" type="text">
+            <cite>Lorem ipsum dolor sit amet</cite>
+        </li>
+        <li><span>password</span>
+            <input class="sml" type="password">
+            <cite class="co-red">Password error</cite>
+        </li>
+        <li><span>time</span>
+            <div class="input sml"><i class="ico ico-calendar"></i><input type="text" class="calendar"></div>
+            <span>to</span>
+            <div class="input sml"><i class="ico ico-calendar"></i><input type="text" class="calendar"></div>
+            <cite>Lorem ipsum dolor sit amet</cite>
+        </li>
+        <li><span>checkbox</span>
+            <o class="radio"></o><span>radio</span>
+            <o class="radio"></o><span>radio</span>
+            <o class="checkbox"></o><span>checkbox</span>
+            <cite>Lorem ipsum dolor sit amet</cite>
+        </li>
+        <li><span>select</span>
+            <div class="select sml">
+                <i class="ico ico-alone-bottom"></i>
+                <select><option>select</option><option>select</option></select>
+            </div>
+            <div class="select sml">
+                <i class="ico ico-alone-bottom"></i>
+                <select><option>select</option><option>select</option></select>
+            </div>
+            <cite>Lorem ipsum dolor sit amet</cite>
+        </li>
+        <li><span>robot</span>
+            <input class="min" type="text">
+            <em class="code center">OOOO</em>
+            <cite>Lorem ipsum dolor sit amet</cite>
+        </li>
+        <li><span>code</span>
+            <input class="min" type="text">
+            <a href="" class="btn code">get code</a>
+            <cite>Lorem ipsum dolor sit amet</cite>
+        </li>
+        <li><span>message</span>
+            <textarea class="big"></textarea>
+        </li>
+        <li><span>upload</span>
+            <div class="upload max">
+                <div class="ico upload-group"><input type="file"><x class="ico"></x></div>
+                <div class="ico upload-add"></div>
+            </div>
+        </li>
+        <li class="resolve"><o class="checkbox"></o><span>I've read and agreed</span><a>"User agreement"</a></li>
+        <li class="resolve"><button class="btn">cancel</button><button class="btn">submit</button></li>
+    </form>
+</section>
+</xmp>
+            <h5>effect display</h5>
+            <iframe src="form.html" height="1000"></iframe>
+            <a class="btn view" href="form.html" target="_blank">view</a>
+        </div>
+        <div class="cont" id="fullscreen">
+            <h3>fullscreen</h3><hr>
+            <h5>code</h5>
+            <p>Add the class to the DOM</p>
+<xmp>
+class="fullscreen ico"
+</xmp>
+            <h5>effect display</h5>
+            <iframe src="fullscreen.html"></iframe>
+            <a class="btn view" href="fullscreen.html" target="_blank">view</a>
+        </div>
+        <div class="cont" id="load">
+            <h3>load</h3><hr>
+            <h5>code</h5>
+            <p>If you need to wait for the page to be displayed after loading, Add the code to the DOM</p>
+<xmp>
+<load></load>
+</xmp>
+        </div>
+        <div class="cont" id="menu">
+            <h3>menu</h3><hr>
+            <h5>code</h5>
+            <p>Add the code to the DOM</p>
+<xmp>
+<section class="menu">
+    <div class="menu-switch ico"></div>
+    <div class="menu-cont anime-fade-in">
+        <li><a href="">one</a></li>
+        <li><a>two</a>
+            <div class="menu-group anime-fade-in">
+                <a href="">one</a>
+                <a href="">two</a>
+                <a href="">three</a>
+            </div>
+        </li>
+        <li><a>three</a>
+            <div class="menu-group anime-fade-in">
+                <div class="menu-list">
+                    <h6>group</h6>
+                    <a href="">one</a>
+                    <a href="">two</a>
+                    <a href="">three</a>
+                </div>
+                <div class="menu-list">
+                    <h6>group</h6>
+                    <a href="">one</a>
+                    <a href="">two</a>
+                    <a href="">three</a>
+                </div>
+            </div>
+        </li>
+    </div>
+</section>
+</xmp>
+            <h5>effect display</h5>
+            <iframe src="menu.html" height="500"></iframe>
+            <a class="btn view" href="menu.html" target="_blank">view</a>
+        </div>
+        <div class="cont" id="mix">
+            <h3>mix</h3><hr>
+            <h5>code</h5>
+            <p>Add the class to the DOM</p>
+<xmp>
+class="mix-abrazine"
+class="mix-hue"
+class="mix-multiply"
+class="mix-screen"
+class="mix-luminosity"
+class="mix-difference"
+class="mono"
+class="mono-click"
+</xmp>
+            <h5>effect display</h5>
+            <iframe src="mix.html" height="900"></iframe>
+            <a class="btn view" href="mix.html" target="_blank">view</a>
+        </div>
+        <div class="cont" id="page">
+            <h3>page</h3><hr>
+            <h5>code</h5>
+            <p>Add the code to the DOM</p>
+<xmp>
+<page>
+    <a href="" class="ico ico-alone-side-left"></a>
+    <a href="" class="ico ico-alone-left"></a>
+    <a href="">1</a>
+    <a href="">2</a>
+    <a href="" class="active">3</a>
+    <a href="">4</a>
+    <a href="">5</a>
+    <span>1/12</span>
+    <a href="" class="ico ico-alone-right"></a>
+    <a href="" class="ico ico-alone-side-right"></a>
+    <input type="text">
+    <button class="ico ico-arrow-enter"></button>
+</page>
+</xmp>
+            <h5>effect display</h5>
+            <iframe src="page.html"></iframe>
+            <a class="btn view" href="page.html" target="_blank">view</a>
+        </div>
+        <div class="cont" id="random">
+            <h3>random</h3><hr>
+            <h5>code</h5>
+            <p>Using the tag below, you can get random images to fill your content area. Both img and background can be used</p>
+<xmp>
+uigg-img
+uigg-product
+uigg-bg
+uigg-avatar
+</xmp>
+            <p>In addition to the pictures, we also prepared random titles and paragraphs, just write the DOM in the corresponding position</p>
+<xmp>
+<uigg-title></uigg-title>
+<uigg-txt></uigg-txt>
+</xmp>
+            <h5>effect display</h5>
+            <iframe src="random.html" height="400"></iframe>
+            <a class="btn view" href="random.html" target="_blank">view</a>
+        </div>
+        <div class="cont" id="return">
+            <h3>return</h3><hr>
+            <h5>code</h5>
+            <p>Add the class to the DOM</p>
+<xmp>
+class="return"
+</xmp>
+        </div>
+        <div class="cont" id="smooth">
+            <h3>smooth</h3><hr>
+            <h5>code</h5>
+            <p>Add the code to the DOM</p>
+<xmp>
+<a class="smooth" href="#id"></a>
+</xmp>
+            <h5>effect display</h5>
+            <iframe src="smooth.html" height="300"></iframe>
+            <a class="btn view" href="smooth.html" target="_blank">view</a>
+        </div>
+        <div class="cont" id="switch">
+            <h3>switch</h3><hr>
+            <h5>code</h5>
+            <p>Add the code to the DOM</p>
+<xmp>
+<o class="radio"></o>
+<o class="radio"></o>
+<o class="radio-done"></o>
+<o class="radio-done"></o>
+<o class="checkbox"></o>
+<o class="checkbox-done"></o>
+<o class="checkbox checkbox-all"></o>
+<o class="checkbox-cancel"></o>
+<o class="favorite"></o>
+<o class="star"></o>
+<o class="visibility"></o>
+<o class="mic"></o>
+<o class="volume"></o>
+<o class="muzak"></o>
+<o class="phonecard"></o>
+<o class="telecamera"></o>
+<o class="camera"></o>
+<o class="aim"></o>
+<o class="semaphore"></o>
+<o class="suitcase"></o>
+<o class="toggle"></o>
+</xmp>
+            <h5>effect display</h5>
+            <iframe src="switch.html"></iframe>
+            <a class="btn view" href="switch.html" target="_blank">view</a>
+        </div>
+        <div class="cont" id="tab">
+            <h3>tab</h3><hr>
+            <h5>code</h5>
+            <p>Add the code to the DOM</p>
+<xmp>
+<tab>
+    <tab-list>
+        <li class="active"><a>one</a></li>
+        <li><a>two</a></li>
+        <li><a>three</a></li>
+    </tab-list>
+    <tab-cont>
+        <tab-group class="anime-fade-in active">one</tab-group>
+        <tab-group class="anime-fade-in">two</tab-group>
+        <tab-group class="anime-fade-in">three</tab-group>
+    </tab-cont>
+</tab>
+</xmp>
+            <h5>effect display</h5>
+            <iframe src="tab.html" height="300"></iframe>
+            <a class="btn view" href="tab.html" target="_blank">view</a>
+        </div>
+        <div class="cont" id="table">
+            <h3>table</h3><hr>
+            <h5>code</h5>
+            <p>Add the code to the DOM</p>
+<xmp>
+<section class="table">
+    <table>
+        <thead>
+            <tr>
+                <th>classify</th>
+                <td>classify</td>
+                <td>classify</td>
+                <td>classify</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th>list</th>
+                <td>content</td>
+                <td>content</td>
+                <td>content</td>
+            </tr>
+            <tr>
+                <th>list</th>
+                <td>content</td>
+                <td>content</td>
+                <td>content</td>
+            </tr>
+            <tr>
+                <th>list</th>
+                <td>content</td>
+                <td>content</td>
+                <td>content</td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <th>list</th>
+                <td>content</td>
+                <td>content</td>
+                <td>content</td>
+            </tr>
+        </tfoot>
+    </table>
+</section>
+</xmp>
+            <h5>effect display</h5>
+            <iframe src="table.html" height="310"></iframe>
+            <a class="btn view" href="table.html" target="_blank">view</a>
+        </div>
+        <div class="cont" id="tip">
+            <h3>tip</h3><hr>
+            <h5>code</h5>
+            <p>Add the code to the DOM</p>
+<xmp>
+<tip class="anime-zoom-in">
+    <i class="ico ico-circular-warn"></i>Lorem ipsum dolor
+</tip>
+</xmp>
+            <h5>effect display</h5>
+            <iframe src="tip.html" height="300"></iframe>
+            <a class="btn view" href="tip.html" target="_blank">view</a>
+        </div>
+        <div class="cont" id="title">
+            <h3>title</h3><hr>
+            <h5>code 1</h5>
+            <p>Add the code to the DOM</p>
+<xmp>
+<section class="title">
+    <em>~</em>
+    <h3>title</h3>
+    <em>~</em>
+</section>
+</xmp>
+            <h5>code 2</h5>
+            <p>Add the code to the DOM</p>
+<xmp>
+<section class="title">
+    <h3>title</h3>
+    <span>subtitle</span>
+</section>
+</xmp>
+            <h5>effect display</h5>
+            <iframe src="title.html" height="300"></iframe>
+            <a class="btn view" href="title.html" target="_blank">view</a>
+        </div>
+        <h2><i class="ico ico-phone-ios"></i>Mobile terminal</h2>
+        <div class="cont" id="nav">
+            <h3>nav</h3><hr>
+            <h5>code</h5>
+            <p>Add the code to the DOM</p>
+<xmp>
+<space></space>
+<nav class="anime-fade-in-up">
+    <li><a href=""><i class="ico ico-home"></i><span>home</span></a></li>
+    <li><a href=""><i class="ico ico-app"></i><span>apps</span></a></li>
+    <li><a href=""><i class="ico ico-shoppingcart"></i><span>shop</span></a></li>
+    <li><a href=""><i class="ico ico-user"></i><span>user</span></a></li>
+</nav>
+</xmp>
+            <h5>effect display</h5>
+            <iframe src="nav.html"></iframe>
+            <a class="btn view" href="nav.html" target="_blank">view</a>
+        </div>
+        <div class="cont" id="name">
+            <h3>name</h3><hr>
+            <h5>code</h5>
+            <p>Add the code to the DOM</p>
+<xmp>
+<name class="anime-fade-in-down">
+    <a class="ico ico-return-left"></a>
+    <h2>name</h2>
+    <a href="" class="ico ico-menu"></a>
+</name>
+</xmp>
+            <h5>effect display</h5>
+            <iframe src="name.html"></iframe>
+            <a class="btn view" href="name.html" target="_blank">view</a>
+        </div>
+        <div class="cont" id="music">
+            <h3>muzak</h3><hr>
+            <h5>code</h5>
+            <p>Add the code to the DOM</p>
+<xmp>
+<music class="pause ico">
+    <audio id="music" src="../" autoplay loop></audio>
+</music>
+</xmp>
+            <h5>effect display</h5>
+            <iframe src="music.html" height="150"></iframe>
+            <a class="btn view" href="music.html" target="_blank">view</a>
+        </div>
+        <div class="cont" id="play">
+            <h3>play</h3><hr>
+            <h5>code</h5>
+            <p>Add the code to the DOM</p>
+<xmp>
+
+</xmp>
+            <h5>effect display</h5>
+            <iframe src=""></iframe>
+            <a class="btn view" href="play.html" target="_blank">view</a>
+        </div>
+        <div class="cont" id="touch">
+            <h3>touch</h3><hr>
+            <h5>code</h5>
+            <p>Add the code to the DOM</p>
+<xmp>
+class="touch-left"
+class="touch-right"
+class="touch-up"
+class="touch-down"
+class="touch-all"
+
+<script>
+    $('.touch-up').bindmove('touchup','event');
+    $('.touch-down').bindmove('touchdown','event');
+    $('.touch-left').bindmove('touchleft','event');
+    $('.touch-right').bindmove('touchright','event');
+    $('.touch-all').bindmove('touchall','event');
+</script>
+</xmp>
+            <h5>effect display</h5>
+            <iframe src="touch.html" height="400"></iframe>
+            <a class="btn view" href="touch.html" target="_blank">view</a>
+        </div>
+        <h2><i class="ico ico-usb"></i>Internal components</h2>
+        <div class="cont" id="calendar">
+            <h3>calendar</h3><hr>
+            <h5>code</h5>
+            <p>Add the code to the DOM</p>
+<xmp>
+<input type="text" class="calendar">
+</xmp>
+            <h5>effect display</h5>
+            <iframe src="calendar.html" height="700"></iframe>
+            <a class="btn view" href="calendar.html" target="_blank">view</a>
+        </div>
+        <div class="cont" id="pop">
+            <h3>pop</h3><hr>
+            <h5>pop center code</h5>
+            <p>Add the code to the DOM</p>
+<xmp>
+<pop class="anime-fade-in">
+    <x></x>
+    <div class="full center">
+        <pop-main class="anime-zoom-in">
+            <pop-title><h3>title</h3><a class="ico close"></a></pop-title>
+            <pop-cont>article</pop-cont>
+            <pop-solve>
+                <a href="" class="btn">previous</a>
+                <a href="" class="btn">cancel</a>
+                <button class="btn">submit</button>
+                <a href="" class="btn">confirm</a>
+            </pop-solve>
+        </pop-main>
+    </div>
+</pop>
+</xmp>
+            <h5>pop choice code</h5>
+            <p>Add the code to the DOM</p>
+<xmp>
+<pop class="anime-fade-in">
+    <x></x>
+    <pop-choice class="anime-fade-in-up">
+        <pop-title><h3>title</h3><a class="ico close"></a></pop-title>
+        <pop-cont>article</pop-cont>
+        <pop-solve>
+            <a href="" class="btn">previous</a>
+            <a href="" class="btn">cancel</a>
+            <button class="btn">submit</button>
+            <a href="" class="btn">confirm</a>
+        </pop-solve>
+    </pop-choice>
+</pop>
+</xmp>
+            <h5>pop sider code</h5>
+            <p>Add the code to the DOM</p>
+<xmp>
+<pop class="anime-fade-in">
+    <x></x>
+    <pop-sider class="anime-fade-in-left">
+        <pop-title><h3>title</h3><a class="ico close"></a></pop-title>
+        <pop-cont>article</pop-cont>
+    </pop-sider>
+</pop>
+</xmp>
+            <h5>effect display</h5>
+            <iframe src="pop.html" height="300"></iframe>
+            <a class="btn view" href="pop.html" target="_blank">view</a>
+        </div>
+        <h2><i class="ico ico-response"></i>External components</h2>
+        <div class="cont" id="swiper">
+            <h3>swiper</h3><hr>
+            <p>You can go to swiper to see more parameters. uigg only provides a few common models</p>
+            <a class="btn view" href="https://swiperjs.com/api/" target="_blank">Swiper API</a>
+            <h5>swiper banner code</h5>
+            <p>Add the code to the DOM</p>
+<xmp>
+<section class="swiper-container swiper-banner">
+    <div class="swiper-wrapper">
+        <div class="swiper-slide">one</div>
+        <div class="swiper-slide">two</div>
+        <div class="swiper-slide">three</div>
+    </div>
+    <div class="swiper-pagination"></div>
+    <div class="swiper-button-next ico"></div>
+    <div class="swiper-button-prev ico"></div>
+    <script>
+        var swiper = new Swiper('.swiper-banner', {
+            spaceBetween: 10,
+            centeredSlides: true,
+            loop: true,
+            keyboard: {
+                enabled: true,
+            },
+            autoplay: {
+                delay: 5000,
+                disableOnInteraction: false,
+            },
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+                dynamicBullets: true,
+            },
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+        });
+    </script>
+</section>
+</xmp>
+            <h5>swiper list code</h5>
+            <p>Add the code to the DOM</p>
+<xmp>
+<section class="swiper-container swiper-list">
+    <div class="swiper-wrapper">
+        <div class="swiper-slide">one</div>
+        <div class="swiper-slide">two</div>
+        <div class="swiper-slide">three</div>
+        <div class="swiper-slide">four</div>
+        <div class="swiper-slide">five</div>
+        <div class="swiper-slide">six</div>
+        <div class="swiper-slide">seven</div>
+        <div class="swiper-slide">eight</div>
+    </div>
+    <div class="swiper-pagination"></div>
+    <div class="swiper-button-next ico"></div>
+    <div class="swiper-button-prev ico"></div>
+    <script>
+        var swiper = new Swiper('.swiper-list', {
+            slidesPerView: 4,
+            slidesPerGroup: 4, //Scroll by group
+            loop: true,
+            loopFillGroupWithBlank: true,
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+            breakpoints: { 
+                320: {
+                  slidesPerView: 2,
+                  spaceBetween: 15
+                },
+                720: {
+                  slidesPerView: 3,
+                  spaceBetween: 20
+                },
+                960: {
+                  slidesPerView: 4,
+                  spaceBetween: 30
+                },
+            },
+        });
+    </script>
+</section>
+</xmp>
+            <h5>swiper vertical code</h5>
+            <p>Add the code to the DOM</p>
+<xmp>
+<section class="swiper-container swiper-vertical">
+    <div class="swiper-wrapper">
+        <div class="swiper-slide">one</div>
+        <div class="swiper-slide">two</div>
+        <div class="swiper-slide">three</div>
+    </div>
+    <div class="swiper-pagination"></div>
+    <script>
+        var swiper = new Swiper('.swiper-vertical', {
+            direction: 'vertical',
+            slidesPerView: 1,
+            spaceBetween: 10,
+            mousewheel: true,
+            keyboard: {
+                enabled: true,
+            },
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+        });
+    </script>
+</section>
+</xmp>
+            <h5>swiper gallery code</h5>
+            <p>Add the code to the DOM</p>
+<xmp>
+<section>
+    <div class="swiper-container gallery-top">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide" style="background-image: url(https://ui.gg/lib/img?1)"></div>
+            <div class="swiper-slide" style="background-image: url(https://ui.gg/lib/img?2)"></div>
+            <div class="swiper-slide" style="background-image: url(https://ui.gg/lib/img?3)"></div>
+            <div class="swiper-slide" style="background-image: url(https://ui.gg/lib/img?4)"></div>
+            <div class="swiper-slide" style="background-image: url(https://ui.gg/lib/img?5)"></div>
+            <div class="swiper-slide" style="background-image: url(https://ui.gg/lib/img?6)"></div>
+        </div>
+        <div class="swiper-button-next ico"></div>
+        <div class="swiper-button-prev ico"></div>
+    </div>
+    <div class="swiper-container gallery-thumbs">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide" style="background-image: url(https://ui.gg/lib/img?1)"></div>
+            <div class="swiper-slide" style="background-image: url(https://ui.gg/lib/img?2)"></div>
+            <div class="swiper-slide" style="background-image: url(https://ui.gg/lib/img?3)"></div>
+            <div class="swiper-slide" style="background-image: url(https://ui.gg/lib/img?4)"></div>
+            <div class="swiper-slide" style="background-image: url(https://ui.gg/lib/img?5)"></div>
+            <div class="swiper-slide" style="background-image: url(https://ui.gg/lib/img?6)"></div>
+        </div>
+    </div>
+    <script>
+        var galleryThumbs = new Swiper('.gallery-thumbs', {
+            spaceBetween: 10,
+            slidesPerView: 4,
+            freeMode: true,
+            loop: true,
+            loopedSlides: 5, //looped slides should be the same
+            watchSlidesVisibility: true,
+            watchSlidesProgress: true,
+        });
+        var galleryTop = new Swiper('.gallery-top', {
+            spaceBetween: 10,
+            loop:true,
+            loopedSlides: 5, //looped slides should be the same
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+            thumbs: {
+                swiper: galleryThumbs,
+            },
+        });
+    </script>
+</section>
+</xmp>
+            <h5>swiper animate code</h5>
+            <p>Add the code to the DOM</p>
+<xmp>
+<section class="swiper-container swiper-animate">
+    <div class="swiper-wrapper">
+        <div class="swiper-slide"><p class="ani" swiper-animate-effect="anime-fade-in-up" swiper-animate-duration=".6s" swiper-animate-delay=".3s">swiper</p></div>
+        <div class="swiper-slide"><p class="ani" swiper-animate-effect="anime-fade-in-right" swiper-animate-duration=".6s" swiper-animate-delay=".3s">swiper</p></div>
+        <div class="swiper-slide"><p class="ani" swiper-animate-effect="anime-zoom-in" swiper-animate-duration=".6s" swiper-animate-delay=".3s">swiper</p></div>
+    </div>
+    <div class="swiper-pagination"></div>
+    <div class="swiper-button-next ico"></div>
+    <div class="swiper-button-prev ico"></div>
+    <script>
+        var mySwiper = new Swiper('.swiper-animate', {
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+            on:{
+                init: function(){
+                    swiperAnimateCache(this);
+                    this.emit('slideChangeTransitionEnd');
+                }, 
+                slideChangeTransitionEnd: function(){ 
+                    swiperAnimate(this);
+                    //this.slides.eq(this.activeIndex).find('.ani').removeClass('ani'); //Run only once
+                },
+            },
+        });
+    </script>
+</section>
+</xmp>
+            <h5>swiper tab code</h5>
+            <p>Add the code to the DOM</p>
+<xmp>
+<section>
+    <div class="swiper-tab-btn">
+        <a class="default" id="swiper-btn-1">1</a>
+        <a id="swiper-btn-2">2</a>
+        <a id="swiper-btn-3">3</a>
+        <a id="swiper-btn-4">4</a>
+        <a id="swiper-btn-5">5</a>
+    </div>
+    <div class="swiper-container swiper-tab">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">one</div>
+            <div class="swiper-slide">two</div>
+            <div class="swiper-slide">three</div>
+            <div class="swiper-slide">four</div>
+            <div class="swiper-slide">five</div>
+        </div>
+    </div>
+    <script>
+        var mySwiper = new Swiper('.swiper-tab',{
+            loop: true,
+            //effect : 'fade',
+        });
+        $('#swiper-btn-1').click(function(){
+            mySwiper.slideToLoop(0, 1000, false);
+        })
+        $('#swiper-btn-2').click(function(){
+            mySwiper.slideToLoop(1, 1000, false);
+        })
+        $('#swiper-btn-3').click(function(){
+            mySwiper.slideToLoop(2, 1000, false);
+        })
+        $('#swiper-btn-4').click(function(){
+            mySwiper.slideToLoop(3, 1000, false);
+        })
+        $('#swiper-btn-5').click(function(){
+            mySwiper.slideToLoop(4, 1000, false);
+        })
+    </script>
+</section>
+</xmp>
+            <h5>effect display</h5>
+            <iframe src="swiper.html" height="1300"></iframe>
+            <a class="btn view" href="swiper.html" target="_blank">view</a>
+        </div>
+        <h2><i class="ico ico-app"></i>General library</h2>
+        <div class="cont" id="color">
+            <h3>color</h3><hr>
+            <iframe src="color.html" height="1760"></iframe>
+            <a class="btn view" href="color.html" target="_blank">view</a>
+        </div>
+        <div class="cont" id="ico">
+            <h3>ico</h3><hr>
+            <iframe src="ico.html" height="1200"></iframe>
+            <a class="btn view" href="ico.html" target="_blank">view</a>
+            <a class="btn view" href="/ico/" target="_blank">ico</a>
+        </div>
+    </section>
+</section>
+<script>
+    $('.sider u').click(function(){
+        $('.sider').toggleClass('active');
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>thumb</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+
+<link rel="stylesheet" href="https://unpkg.com/element-plus/lib/theme-chalk/index.css">
+
+<script src="https://unpkg.com/vue@next"></script>
+<script src="https://unpkg.com/element-plus/lib/index.full.js"></script>
+</head>
+
+<body>
+
+<style>
+
+</style>
+
+<!----------------------------------------------------------------------------------------->
+
+<div id="app">
+    <el-button>{{ message }}</el-button>
+</div>
+<script>
+    const App = {
+        data() {
+            return {
+                message: "mix",
+            };
+        },
+    };
+    const app = Vue.createApp(App);
+    app.use(ElementPlus);
+    app.mount("#app");
+</script>
+
+<!----------------------------------------------------------------------------------------->
+
+</body>
+</html>

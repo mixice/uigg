@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 168 168">
+  <g transform="translate(-228.9 -0.7)">
+    <rect width="168" height="168" transform="translate(228.9 0.7)" fill="#fff"/>
+      <g>
+        <rect width="5.6" height="15.5" transform="translate(345.658 42.492) rotate(-33.704)" fill="#434a54"/>
+        <rect width="5.6" height="15.5" transform="matrix(0.832, -0.554, 0.554, 0.832, 355.906, 57.774)" fill="#434a54"/>
+        <rect width="5.6" height="33.8" transform="translate(352.782 37.764) rotate(-33.696)" fill="#434a54"/>
+        <rect width="5.6" height="15.5" transform="matrix(0.832, -0.555, 0.555, 0.832, 359.794, 33.154)" fill="#434a54"/>
+        <rect width="5.6" height="15.5" transform="matrix(0.832, -0.554, 0.554, 0.832, 369.985, 48.352)" fill="#434a54"/>
+        <rect width="5.6" height="33.8" transform="translate(256.597 101.926) rotate(-33.692)" fill="#434a54"/>
+        <rect width="5.6" height="15.5" transform="matrix(0.832, -0.555, 0.555, 0.832, 249.558, 106.588)" fill="#434a54"/>
+        <rect width="5.6" height="15.5" transform="matrix(0.832, -0.555, 0.555, 0.832, 259.793, 121.832)" fill="#434a54"/>
+        <rect width="5.6" height="33.8" transform="translate(242.599 111.286) rotate(-33.692)" fill="#434a54"/>
+        <rect width="33.8" height="5.6" transform="matrix(0.555, -0.832, 0.832, 0.555, 256.632, 67.569)" fill="#434a54"/>
+        <rect width="33.8" height="5.6" transform="matrix(0.555, -0.832, 0.832, 0.555, 249.588, 62.825)" fill="#434a54"/>
+        <rect width="33.8" height="5.6" transform="translate(242.563 58.103) rotate(-56.254)" fill="#434a54"/>
+        <rect width="15.5" height="5.6" transform="matrix(0.555, -0.832, 0.832, 0.555, 345.736, 126.909)" fill="#434a54"/>
+        <rect width="15.5" height="5.6" transform="translate(355.939 111.66) rotate(-56.304)" fill="#434a54"/>
+        <path d="M361.4,118.7l-8.6,12.9,4.6,3.1,8.6-12.9Z" fill="#434a54"/>
+        <rect width="15.5" height="5.6" transform="translate(362.876 116.322) rotate(-56.304)" fill="#434a54"/>
+        <rect width="15.5" height="5.6" transform="translate(359.829 136.275) rotate(-56.304)" fill="#434a54"/>
+        <path d="M369.9,121l4.7,3.2,8.6-12.9-4.7-3.2Z" fill="#434a54"/>
+      </g>
+    <path d="M284.8,65.9a16.877,16.877,0,0,0,28.1,18.7A16.877,16.877,0,0,1,341,103.3a33.754,33.754,0,1,1-56.2-37.4Z" fill="#4758a9"/>
+    <path d="M331.7,56.6A33.752,33.752,0,0,0,284.8,66a16.877,16.877,0,0,0,28.1,18.7A16.877,16.877,0,0,1,341,103.4,33.681,33.681,0,0,0,331.7,56.6Z" fill="#ed5565"/>
+  </g>
+</svg>

@@ -1,0 +1,5 @@
+<svg id="组_1" data-name="组 1" xmlns="http://www.w3.org/2000/svg" width="168" height="168" viewBox="0 0 168 168">
+  <rect id="矩形_1_1_" width="168" height="168" fill="#4758a9"/>
+  <rect id="矩形_2_1_" width="168" height="98" transform="translate(0 35)" fill="#ed5565"/>
+  <path id="路径_1" data-name="路径 1" d="M130.8,96.9V87.2l2.7-2.7V74h-5c0-12.7-7.9-17.6-7.9-17.6s-7.9,4.9-7.9,17.6h-5v2.5H98.6V69.3h-4C94.7,50.7,84,42.1,84,42.1S73.3,50.6,73.3,69.4h-4v7.2H60.2V74h-5c0-12.7-7.9-17.6-7.9-17.6S39.4,61.3,39.4,74h-5V84.5l2.7,2.7v9.7L18.2,115.8v8.1H149.8v-8.1Z" fill="#fff"/>
+</svg>
