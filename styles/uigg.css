@@ -1,5 +1,5 @@
 /*
- * uigg 1.8 (build 20210601)
+ * uigg 2.0 (build 20210601)
  * Project: http://ui.gg
  * Author: http://www.mixice.com
  * Github: https://github.com/mixice/uigg
