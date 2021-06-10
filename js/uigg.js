@@ -77,8 +77,6 @@ $(document).on("click",".fullscreen", function toggleFullScreen() {
           document.documentElement.mozRequestFullScreen();
         } else if (document.documentElement.webkitRequestFullScreen) {
           document.documentElement.webkitRequestFullScreen(Element.ALLOW_KEYBOARD_INPUT);
-        } else if (document.documentElement.msRequestFullscreen) {
-          document.documentElement.msRequestFullscreen();
         }
     } else {
         if (document.cancelFullScreen) {
@@ -87,8 +85,6 @@ $(document).on("click",".fullscreen", function toggleFullScreen() {
           document.mozCancelFullScreen();
         } else if (document.webkitCancelFullScreen) {
           document.webkitCancelFullScreen();
-        } else if (document.msExitFullscreen) {
-          document.msExitFullscreen();
         }
     }
 });
@@ -289,12 +285,21 @@ $(function(){
     $('.anew').click(function(){
 		$('html,body').animate({scrollTop:'0px'},800);
 	});
+    $(document).scroll(function(){
+        var winTop = $(window).scrollTop();
+        var winHeight = $(window).height();
+        if(winTop > winHeight){
+            $('.anew').css('opacity','1');
+        }else{
+            $('.anew').css('opacity','0');
+        };
+    });
 });
 
 //----------------------------------------------------------------------------------tab
 $(function(){
     $('tab-list li').click(function(){
-        tabIndex=$(this).index();
+        tabIndex = $(this).index();
         $(this).addClass('active').siblings().removeClass('active');
         $(this).parent().next().children().eq(tabIndex).addClass('active').siblings().removeClass('active');
     });
@@ -373,7 +378,8 @@ $(function(){
                 return;
             }else{
                 $(this).parent().attr('style','background-image:url('+ imgUrl+');');
-            }
+            };
+            $(this).parent().css('color','transparent');
         });
     };
     uploadImg();
