@@ -14,6 +14,7 @@
 <body class="center">
 
 <style>
+    body > .btn {margin: 20px;width: 200px;text-transform: capitalize;}
     pop-solve a:nth-child(1) {background-color: var(--red);}
     pop-solve a:nth-child(2) {background-color: var(--orange);}
     pop-solve button.btn {background-color: var(--green);}
@@ -22,7 +23,7 @@
 
 <!----------------------------------------------------------------------------------------->
 
-<a class="btn bg-red" onclick="$(this).next().show()">pop</a>
+<a class="btn" onclick="$(this).next().show()">pop</a>
 
 <pop class="anime-fade-in">
     <x></x>
@@ -42,7 +43,7 @@
 
 <!----------------------------------------------------------------------------------------->
 
-<a class="btn bg-green" onclick="$(this).next().show()">choice</a>
+<a class="btn" onclick="$(this).next().show()">choice</a>
 
 <pop class="anime-fade-in">
     <x></x>
@@ -60,7 +61,7 @@
 
 <!----------------------------------------------------------------------------------------->
 
-<a class="btn bg-blue" onclick="$(this).next().show()">sider</a>
+<a class="btn" onclick="$(this).next().show()">sider</a>
 
 <pop class="anime-fade-in">
     <x></x>

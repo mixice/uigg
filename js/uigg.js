@@ -1,6 +1,6 @@
 /*
  * uigg 2.0 (build 20210601)
- * Project: http://ui.gg
+ * Project: https://ui.gg
  * Author: http://www.mixice.com
  * Github: https://github.com/mixice/uigg
  */
@@ -314,15 +314,15 @@ $(function(){
 
 //----------------------------------------------------------------------------------menu
 $(function(){
-    $('.menu-switch').click(function(){
-        $('.menu-cont').toggle();
+    $('menu x').click(function(){
+        $('menu-cont').toggle();
     });
-    $('.menu-cont li').click(function(){
-        var menuGroup = $(this).children('.menu-group');
+    $('menu-cont li').click(function(){
+        var menuGroup = $(this).children('menu-group');
         if(menuGroup.css('display') == 'block'){
             menuGroup.hide();
         }else{
-            $('.menu-group').hide();
+            $('menu-group').hide();
             menuGroup.show();
         };
     });
@@ -348,13 +348,15 @@ $(function(){
 
 //----------------------------------------------------------------------------------calculation
 $(function(){
-    $('.calc-add').click(function(){
-        var eleInput = $(this).siblings('.calc-answer');
-        eleInput.val(parseInt(eleInput.val()) + 1);
+    $('.calc .ico-add').click(function(){
+        var calcInput = $(this).siblings('input');
+        calcInput.val(parseInt(calcInput.val()) + 1);
     });
-    $('.calc-reduce').click(function(){
-        var eleInput = $(this).siblings('.calc-answer');
-        eleInput.val(parseInt(eleInput.val()) - 1);
+    $('.calc .ico-reduce').click(function(){
+        var calcInput = $(this).siblings('input');
+        if(calcInput.val() > 0){
+            calcInput.val(parseInt(calcInput.val()) - 1);
+        }
     });
 });
 

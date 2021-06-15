@@ -38,13 +38,14 @@ pop-solve {}
 .logo {}
 
 /*menu*/
-.menu {}
-.menu cite {}
-.menu-cont {}
-.menu-cont li a {}
-.menu-group {}
-.menu-group a {}
-.menu-list {}
+menu {}
+menu cite {}
+menu-cont {}
+menu-cont li a {}
+menu-cont li > a {}
+menu-group {}
+menu-group a {}
+menu-list {}
 
 /*title*/
 .title {}

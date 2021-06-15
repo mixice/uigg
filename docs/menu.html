@@ -10,45 +10,45 @@
 <script src="../js/jquery.min.js"></script>
 <script src="../js/uigg.js"></script>
 </head>
-    
+
 <body>
 
 <style>
-    .menu {background: var(--f7);}
-    .menu-cont a {padding: 0 20px;}
+    menu {background: var(--f7);}
+    menu-cont li > a {line-height: 50px;}
 </style>
 
 <!----------------------------------------------------------------------------------------->
 
-<section class="menu">
-    <div class="menu-switch ico"></div>
-    <div class="menu-cont anime-fade-in">
+<menu>
+    <x class="ico"></x>
+    <menu-cont class="anime-fade-in">
         <li><a href="">one</a></li>
         <li><a>two</a>
-            <div class="menu-group anime-fade-in">
+            <menu-group class="anime-fade-in">
                 <a href="">one</a>
                 <a href="">two</a>
                 <a href="">three</a>
-            </div>
+            </menu-group>
         </li>
         <li><a>three</a>
-            <div class="menu-group anime-fade-in">
-                <div class="menu-list">
+            <menu-group class="anime-fade-in">
+                <menu-list>
                     <h6>group</h6>
                     <a href="">one</a>
                     <a href="">two</a>
                     <a href="">three</a>
-                </div>
-                <div class="menu-list">
+                </menu-list>
+                <menu-list>
                     <h6>group</h6>
                     <a href="">one</a>
                     <a href="">two</a>
                     <a href="">three</a>
-                </div>
-            </div>
+                </menu-list>
+            </menu-group>
         </li>
-    </div>
-</section>
+    </menu-cont>
+</menu>
 
 <!----------------------------------------------------------------------------------------->
 

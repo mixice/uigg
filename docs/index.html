@@ -2,7 +2,11 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>UIGG DOME</title>
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<meta http-equiv="window-target" content="_top">
+<title>UIGG Document</title>
+<meta name="description" content="Uigg is a front-end bracket for designers">
+<meta name="author" content="mixice.com">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
 
 <link rel="stylesheet" href="../styles/uigg.css">
@@ -14,34 +18,34 @@
 <body>
 
 <style>
-    .sider {width: 280px;background: var(--222);position: fixed;left: 0;top: 0;height: 100%;}
-    .sider::-webkit-scrollbar-thumb {background: var(--333);}
-    .sider u {position: absolute;top: 0;display: none;cursor: pointer;}
+    .sider {width: 280px;background: var(--f7);position: fixed;left: 0;top: 0;height: 100%;}
+    .sider u {position: absolute;top: 0;display: none;cursor: pointer;background: var(--sapphire);color: var(--fff);}
     .sider em {display: block;width: 30%;margin: 20px auto;}
     .sider-list {padding: 10px;height: calc(100% - 200px);overflow: auto;}
-    .sider-list::-webkit-scrollbar-thumb {background: var(--333);}
-    .sider-list h6 {color: var(--666);padding: 10px 0;}
-    .sider-list h6 i {color: var(--666);margin-right: 10px;}
-    .sider-list a {color: white;text-transform: capitalize;padding: 0 10px;height: 35px;line-height: 35px;display: block;border-bottom: 1px var(--333) solid;}
-    .sider-list a:hover {background: var(--blue);}
+    .sider-list::-webkit-scrollbar {width: 5px;}
+    .sider-list::-webkit-scrollbar-thumb {background: var(--eee);}
+    .sider-list h6 {cursor: pointer;line-height: 45px;border-bottom-width: 1px;}
+    .sider-list h6 .ico {line-height: 45px;width: 45px;height: 45px;}
+    .sider-list h6 s {float: right;}
+    .sider-list a {text-transform: capitalize;padding: 0 35px;height: 35px;line-height: 35px;display: block;}
+    .sider-list a:hover {background: var(--eee);}
 
     .contant {padding: 20px 20px 100px 300px;overflow: hidden;}
-    .contant h2 {padding: 20px 0;font-size: 40px;font-weight: 300;}
+    .contant h2 {padding: 20px 0;font-size: 40px;font-weight: normal;}
     .contant h2 i {font-size: 40px;float: left;margin: 5px;}
     .cont {padding: 0 0 50px;}
-    .cont hr {opacity: .2;}
-    .cont iframe {width: 100%;border: 1px var(--eee) solid;margin: 5px 0;border-radius: 10px;}
-    .cont xmp {background: var(--f7);padding: 0 20px 20px;margin: 5px 0;color: var(--red);border-radius: 10px;white-space: pre-wrap;}
-    .cont h3 {color: var(--blue);padding: 10px 0;}
-    .cont h5,
+    .cont iframe {width: 100%;border: 1px var(--eee) solid;margin: 5px 0;}
+    .cont xmp {background: var(--f7);padding: 0 20px 20px;margin: 5px 0;color: var(--tomato);border-radius: 10px;white-space: pre-wrap;}
+    .cont h3 {padding: 20px 0;margin-bottom: 10px;border-bottom-width: 1px;}
+    .cont h5 {padding: 10px 0;}
     .cont p {padding: 5px 0;}
-    .cont p span {color: var(--red);}
-    .cont .view {width: 200px;border-radius: 3px;background: var(--blue);margin: 10px 0;font-weight: bold;}
+    .cont p span {color: var(--sapphire);}
+    .cont .btn {width: 200px;background: var(--sapphire);margin: 10px 0;font-weight: bold;text-transform: capitalize;}
 
     @media(max-width:640px) {
         .sider {width: 80%;z-index: 3;transform: translateX(-100%);}
         .sider em {width: 30%;margin: .4rem auto;}
-        .sider u {right: -.6rem;width: .6rem;height: .6rem;line-height: .6rem;background: var(--222);display: block;color: var(--fff);}
+        .sider u {right: -.6rem;width: .6rem;height: .6rem;line-height: .6rem;display: block;}
         .sider.active {transform: translateX(0);}
         .sider-list {height: calc(100% - 3rem);overflow: auto;}
         .sider-list {padding: .1rem;}
@@ -57,7 +61,7 @@
         .cont h3 {padding: .1rem 0;}
         .cont h5,
         .cont p {padding: .1rem 0;}
-        .cont .view {width:2.5rem;border-radius: .05rem;margin: .1rem 0;}
+        .cont .btn {width:2.5rem;border-radius: .05rem;margin: .1rem 0;}
     }
 </style>
 
@@ -66,59 +70,70 @@
         <u class="ico ico-menu"></u>
         <em><img src="../images/logo.svg"></em>
         <div class="sider-list">
-            <h6><i class="ico ico-uigg"></i>Using uigg</h6>
-            <li><a class="smooth" href="#get">get uigg</a></li>
-            <h6><i class="ico ico-graphic"></i>Preset function</h6>
-            <li><a class="smooth" href="#anew">anew</a></li>
-            <li><a class="smooth" href="#anime">anime</a></li>
-            <li><a class="smooth" href="#browser">browser title</a></li>
-            <li><a class="smooth" href="#calculation">calculation</a></li>
-            <li><a class="smooth" href="#disable">disable</a></li>
-            <li><a class="smooth" href="#font">font</a></li>
-            <li><a class="smooth" href="#form">form</a></li>
-            <li><a class="smooth" href="#fullscreen">fullscreen</a></li>
-            <li><a class="smooth" href="#load">load</a></li>
-            <li><a class="smooth" href="#menu">menu</a></li>
-            <li><a class="smooth" href="#mix">mix</a></li>
-            <li><a class="smooth" href="#page">page</a></li>
-            <li><a class="smooth" href="#random">random</a></li>
-            <li><a class="smooth" href="#return">return</a></li>
-            <li><a class="smooth" href="#smooth">smooth</a></li>
-            <li><a class="smooth" href="#switch">switch</a></li>
-            <li><a class="smooth" href="#tab">tab</a></li>
-            <li><a class="smooth" href="#table">table</a></li>
-            <li><a class="smooth" href="#tip">tip</a></li>
-            <li><a class="smooth" href="#title">title</a></li>
-            <h6><i class="ico ico-phone-ios"></i>Mobile terminal</h6>
-            <li><a class="smooth" href="#name">name</a></li>
-            <li><a class="smooth" href="#nav">nav</a></li>
-            <li><a class="smooth" href="#music">music</a></li>
-            <li><a class="smooth" href="#play">play</a></li>
-            <li><a class="smooth" href="#touch">touch</a></li>
-            <h6><i class="ico ico-usb"></i>Internal components</h6>
-            <li><a class="smooth" href="#calendar">calendar</a></li>
-            <li><a class="smooth" href="#pop">pop</a></li>
-            <h6><i class="ico ico-response"></i>External components</h6>
-            <li><a class="smooth" href="#swiper">swiper</a></li>
-            <h6><i class="ico ico-app"></i>General library</h6>
-            <li><a class="smooth" href="#color">color</a></li>
-            <li><a class="smooth" href="#ico">ico</a></li>
+            <h6><i class="ico ico-uigg"></i>Using uigg<s class="ico ico-alone-bottom"></s></h6>
+            <ul class="anime-fade-in">
+                <li><a class="smooth" href="#get">get uigg</a></li>
+            </ul>
+            <h6><i class="ico ico-graphic"></i>Preset function<s class="ico ico-alone-bottom"></s></h6>
+            <ul class="anime-fade-in">
+                <li><a class="smooth" href="#anew">anew</a></li>
+                <li><a class="smooth" href="#anime">anime</a></li>
+                <li><a class="smooth" href="#browser">browser title</a></li>
+                <li><a class="smooth" href="#calculation">calculation</a></li>
+                <li><a class="smooth" href="#disable">disable</a></li>
+                <li><a class="smooth" href="#font">font</a></li>
+                <li><a class="smooth" href="#form">form</a></li>
+                <li><a class="smooth" href="#fullscreen">fullscreen</a></li>
+                <li><a class="smooth" href="#load">load</a></li>
+                <li><a class="smooth" href="#menu">menu</a></li>
+                <li><a class="smooth" href="#mix">mix</a></li>
+                <li><a class="smooth" href="#page">page</a></li>
+                <li><a class="smooth" href="#random">random</a></li>
+                <li><a class="smooth" href="#return">return</a></li>
+                <li><a class="smooth" href="#smooth">smooth</a></li>
+                <li><a class="smooth" href="#tab">tab</a></li>
+                <li><a class="smooth" href="#table">table</a></li>
+                <li><a class="smooth" href="#tip">tip</a></li>
+                <li><a class="smooth" href="#title">title</a></li>
+                <li><a class="smooth" href="#toggle">toggle</a></li>
+            </ul>
+            <h6><i class="ico ico-phone-ios"></i>Mobile terminal<s class="ico ico-alone-bottom"></s></h6>
+            <ul class="anime-fade-in">
+                <li><a class="smooth" href="#name">name</a></li>
+                <li><a class="smooth" href="#nav">nav</a></li>
+                <li><a class="smooth" href="#music">music</a></li>
+                <li><a class="smooth" href="#touch">touch</a></li>
+            </ul>
+            <h6><i class="ico ico-usb"></i>Internal components<s class="ico ico-alone-bottom"></s></h6>
+            <ul class="anime-fade-in">
+                <li><a class="smooth" href="#calendar">calendar</a></li>
+                <li><a class="smooth" href="#pop">pop</a></li>
+            </ul>
+            <h6><i class="ico ico-response"></i>External components<s class="ico ico-alone-bottom"></s></h6>
+            <ul class="anime-fade-in">
+                <li><a class="smooth" href="#swiper">swiper</a></li>
+            </ul>
+            <h6><i class="ico ico-app"></i>General library<s class="ico ico-alone-bottom"></s></h6>
+            <ul class="anime-fade-in">
+                <li><a class="smooth" href="#color">color</a></li>
+                <li><a class="smooth" href="#ico">ico</a></li>
+            </ul>
         </div>
     </section>
     <section class="contant">
         <h2><i class="ico ico-uigg"></i>Using uigg</h2>
         <div class="cont" id="get">
-            <h3>get uigg</h3><hr>
+            <h3>get uigg</h3>
             <h5>download zip</h5>
             <p>You can download uigg from the official website</p>
-            <a class="btn view" href="https://ui.gg/" target="_blank">uigg</a>
-            <a class="btn view" href="https://ui.gg/master/master.zip" target="_blank">download</a>
-            <h5>download design template</h5>
-            <p>We have prepared the design specification of rapid prototyping for designers</p>
-            <a class="btn view" href="https://ui.gg/master/uigg.xd" target="_blank">Adobe XD</a>
+            <a class="btn" href="https://ui.gg/" target="_blank">uigg</a>
+            <a class="btn" href="https://ui.gg/master.zip" target="_blank">download</a>
             <h5>get gitHub</h5>
             <p>You can also get uigg from gitHub</p>
-            <a class="btn view" href="https://github.com/mixice/uigg" target="_blank">gitHub</a>
+            <a class="btn" href="https://github.com/mixice/uigg" target="_blank">gitHub</a>
+            <h5>download design template</h5>
+            <p>We have prepared the design specification of rapid prototyping for designers</p>
+            <a class="btn" href="https://ui.gg/xd.zip" target="_blank">Adobe XD</a>
             <h5>quote</h5>
             <p>You also refer to files directly from the web</p>
 <xmp>
@@ -133,7 +148,7 @@
         </div>
         <h2><i class="ico ico-graphic"></i>Preset function</h2>
         <div class="cont" id="anew">
-            <h3>anew</h3><hr>
+            <h3>anew</h3>
             <h5>code</h5>
             <p>Add the class to the DOM</p>
 <xmp>
@@ -141,14 +156,14 @@ class="anew"
 </xmp>
             <p>If you need a separate button</p>
 <xmp>
-class="anew anew-btn ico"
+class="anew btn ico"
 </xmp>
             <h5>effect display</h5>
             <iframe src="anew.html"></iframe>
-            <a class="btn view" href="anew.html" target="_blank">view</a>
+            <a class="btn" href="anew.html" target="_blank">view</a>
         </div>
         <div class="cont" id="anime">
-            <h3>anime</h3><hr>
+            <h3>anime</h3>
             <h5>code</h5>
             <p>Add the class to the DOM</p>
 <xmp>
@@ -171,11 +186,11 @@ class="anime-zoom-in"
 class="anime-zoom-out"
 </xmp>
             <h5>effect display</h5>
-            <iframe src="anime.html" height="1000"></iframe>
-            <a class="btn view" href="anime.html" target="_blank">view</a>
+            <iframe src="anime.html" height="700"></iframe>
+            <a class="btn" href="anime.html" target="_blank">view</a>
         </div>
         <div class="cont" id="browser">
-            <h3>browser</h3><hr>
+            <h3>browser</h3>
             <h5>code</h5>
             <p>Add the javascript to the page, you can customize the title in <span>browsertitle()</span></p>
 <xmp>
@@ -183,10 +198,10 @@ class="anime-zoom-out"
     browserTitle();
 </script>
 </xmp>
-        <a class="btn view" href="browser.html" target="_blank">view</a>
+        <a class="btn" href="browser.html" target="_blank">view</a>
         </div>
         <div class="cont" id="calculation">
-            <h3>calculation</h3><hr>
+            <h3>calculation</h3>
             <h5>code</h5>
             <p>Add the code to the DOM</p>
 <xmp>
@@ -198,10 +213,10 @@ class="anime-zoom-out"
 </xmp>
             <h5>effect display</h5>
             <iframe src="calculation.html"></iframe>
-            <a class="btn view" href="calculation.html" target="_blank">view</a>
+            <a class="btn" href="calculation.html" target="_blank">view</a>
         </div>
         <div class="cont" id="disable">
-            <h3>disable</h3><hr>
+            <h3>disable</h3>
             <h5>code</h5>
             <p>Add the function to the DOM</p>
 <xmp>
@@ -209,10 +224,10 @@ class="anime-zoom-out"
     disable();
 </script>
 </xmp>
-            <a class="btn view" href="disable.html" target="_blank">view</a>
+            <a class="btn" href="disable.html" target="_blank">view</a>
         </div>
         <div class="cont" id="font">
-            <h3>font</h3><hr>
+            <h3>font</h3>
             <h5>code</h5>
             <p>Add the class to the DOM</p>
 <xmp>
@@ -230,11 +245,11 @@ class="font-arial"
 class="font-helvetica"
 class="font-tahoma"
 </xmp>
-            <iframe src="font.html" height="1200"></iframe>
-            <a class="btn view" href="font.html" target="_blank">view</a>
+            <iframe src="font.html" height="900"></iframe>
+            <a class="btn" href="font.html" target="_blank">view</a>
         </div>
         <div class="cont" id="form">
-            <h3>form</h3><hr>
+            <h3>form</h3>
             <h5>code</h5>
             <p>Add the code to the DOM</p>
 <xmp>
@@ -296,11 +311,11 @@ class="font-tahoma"
 </section>
 </xmp>
             <h5>effect display</h5>
-            <iframe src="form.html" height="1000"></iframe>
-            <a class="btn view" href="form.html" target="_blank">view</a>
+            <iframe src="form.html" height="900"></iframe>
+            <a class="btn" href="form.html" target="_blank">view</a>
         </div>
         <div class="cont" id="fullscreen">
-            <h3>fullscreen</h3><hr>
+            <h3>fullscreen</h3>
             <h5>code</h5>
             <p>Add the class to the DOM</p>
 <xmp>
@@ -308,10 +323,10 @@ class="fullscreen ico"
 </xmp>
             <h5>effect display</h5>
             <iframe src="fullscreen.html"></iframe>
-            <a class="btn view" href="fullscreen.html" target="_blank">view</a>
+            <a class="btn" href="fullscreen.html" target="_blank">view</a>
         </div>
         <div class="cont" id="load">
-            <h3>load</h3><hr>
+            <h3>load</h3>
             <h5>code</h5>
             <p>If you need to wait for the page to be displayed after loading, Add the code to the DOM</p>
 <xmp>
@@ -319,46 +334,46 @@ class="fullscreen ico"
 </xmp>
         </div>
         <div class="cont" id="menu">
-            <h3>menu</h3><hr>
+            <h3>menu</h3>
             <h5>code</h5>
             <p>Add the code to the DOM</p>
 <xmp>
-<section class="menu">
-    <div class="menu-switch ico"></div>
-    <div class="menu-cont anime-fade-in">
+<menu>
+    <x class="ico"></x>
+    <menu-cont class="anime-fade-in">
         <li><a href="">one</a></li>
         <li><a>two</a>
-            <div class="menu-group anime-fade-in">
+            <menu-group class="anime-fade-in">
                 <a href="">one</a>
                 <a href="">two</a>
                 <a href="">three</a>
-            </div>
+            </menu-group>
         </li>
         <li><a>three</a>
-            <div class="menu-group anime-fade-in">
-                <div class="menu-list">
+            <menu-group class="anime-fade-in">
+                <menu-list>
                     <h6>group</h6>
                     <a href="">one</a>
                     <a href="">two</a>
                     <a href="">three</a>
-                </div>
-                <div class="menu-list">
+                </menu-list>
+                <menu-list>
                     <h6>group</h6>
                     <a href="">one</a>
                     <a href="">two</a>
                     <a href="">three</a>
-                </div>
-            </div>
+                </menu-list>
+            </menu-group>
         </li>
-    </div>
-</section>
+    </menu-cont>
+</menu>
 </xmp>
             <h5>effect display</h5>
-            <iframe src="menu.html" height="500"></iframe>
-            <a class="btn view" href="menu.html" target="_blank">view</a>
+            <iframe src="menu.html" height="450"></iframe>
+            <a class="btn" href="menu.html" target="_blank">view</a>
         </div>
         <div class="cont" id="mix">
-            <h3>mix</h3><hr>
+            <h3>mix</h3>
             <h5>code</h5>
             <p>Add the class to the DOM</p>
 <xmp>
@@ -373,10 +388,10 @@ class="mono-click"
 </xmp>
             <h5>effect display</h5>
             <iframe src="mix.html" height="900"></iframe>
-            <a class="btn view" href="mix.html" target="_blank">view</a>
+            <a class="btn" href="mix.html" target="_blank">view</a>
         </div>
         <div class="cont" id="page">
-            <h3>page</h3><hr>
+            <h3>page</h3>
             <h5>code</h5>
             <p>Add the code to the DOM</p>
 <xmp>
@@ -397,10 +412,10 @@ class="mono-click"
 </xmp>
             <h5>effect display</h5>
             <iframe src="page.html"></iframe>
-            <a class="btn view" href="page.html" target="_blank">view</a>
+            <a class="btn" href="page.html" target="_blank">view</a>
         </div>
         <div class="cont" id="random">
-            <h3>random</h3><hr>
+            <h3>random</h3>
             <h5>code</h5>
             <p>Using the tag below, you can get random images to fill your content area. Both img and background can be used</p>
 <xmp>
@@ -415,11 +430,11 @@ uigg-avatar
 <uigg-txt></uigg-txt>
 </xmp>
             <h5>effect display</h5>
-            <iframe src="random.html" height="400"></iframe>
-            <a class="btn view" href="random.html" target="_blank">view</a>
+            <iframe src="random.html" height="450"></iframe>
+            <a class="btn" href="random.html" target="_blank">view</a>
         </div>
         <div class="cont" id="return">
-            <h3>return</h3><hr>
+            <h3>return</h3>
             <h5>code</h5>
             <p>Add the class to the DOM</p>
 <xmp>
@@ -427,7 +442,7 @@ class="return"
 </xmp>
         </div>
         <div class="cont" id="smooth">
-            <h3>smooth</h3><hr>
+            <h3>smooth</h3>
             <h5>code</h5>
             <p>Add the code to the DOM</p>
 <xmp>
@@ -435,41 +450,10 @@ class="return"
 </xmp>
             <h5>effect display</h5>
             <iframe src="smooth.html" height="300"></iframe>
-            <a class="btn view" href="smooth.html" target="_blank">view</a>
-        </div>
-        <div class="cont" id="switch">
-            <h3>switch</h3><hr>
-            <h5>code</h5>
-            <p>Add the code to the DOM</p>
-<xmp>
-<o class="radio"></o>
-<o class="radio"></o>
-<o class="radio-done"></o>
-<o class="radio-done"></o>
-<o class="checkbox"></o>
-<o class="checkbox-done"></o>
-<o class="checkbox checkbox-all"></o>
-<o class="checkbox-cancel"></o>
-<o class="favorite"></o>
-<o class="star"></o>
-<o class="visibility"></o>
-<o class="mic"></o>
-<o class="volume"></o>
-<o class="muzak"></o>
-<o class="phonecard"></o>
-<o class="telecamera"></o>
-<o class="camera"></o>
-<o class="aim"></o>
-<o class="semaphore"></o>
-<o class="suitcase"></o>
-<o class="toggle"></o>
-</xmp>
-            <h5>effect display</h5>
-            <iframe src="switch.html"></iframe>
-            <a class="btn view" href="switch.html" target="_blank">view</a>
+            <a class="btn" href="smooth.html" target="_blank">view</a>
         </div>
         <div class="cont" id="tab">
-            <h3>tab</h3><hr>
+            <h3>tab</h3>
             <h5>code</h5>
             <p>Add the code to the DOM</p>
 <xmp>
@@ -488,10 +472,10 @@ class="return"
 </xmp>
             <h5>effect display</h5>
             <iframe src="tab.html" height="300"></iframe>
-            <a class="btn view" href="tab.html" target="_blank">view</a>
+            <a class="btn" href="tab.html" target="_blank">view</a>
         </div>
         <div class="cont" id="table">
-            <h3>table</h3><hr>
+            <h3>table</h3>
             <h5>code</h5>
             <p>Add the code to the DOM</p>
 <xmp>
@@ -538,10 +522,10 @@ class="return"
 </xmp>
             <h5>effect display</h5>
             <iframe src="table.html" height="310"></iframe>
-            <a class="btn view" href="table.html" target="_blank">view</a>
+            <a class="btn" href="table.html" target="_blank">view</a>
         </div>
         <div class="cont" id="tip">
-            <h3>tip</h3><hr>
+            <h3>tip</h3>
             <h5>code</h5>
             <p>Add the code to the DOM</p>
 <xmp>
@@ -551,10 +535,10 @@ class="return"
 </xmp>
             <h5>effect display</h5>
             <iframe src="tip.html" height="300"></iframe>
-            <a class="btn view" href="tip.html" target="_blank">view</a>
+            <a class="btn" href="tip.html" target="_blank">view</a>
         </div>
         <div class="cont" id="title">
-            <h3>title</h3><hr>
+            <h3>title</h3>
             <h5>code 1</h5>
             <p>Add the code to the DOM</p>
 <xmp>
@@ -574,11 +558,57 @@ class="return"
 </xmp>
             <h5>effect display</h5>
             <iframe src="title.html" height="300"></iframe>
-            <a class="btn view" href="title.html" target="_blank">view</a>
+            <a class="btn" href="title.html" target="_blank">view</a>
+        </div>
+        <div class="cont" id="toggle">
+            <h3>toggle</h3>
+            <h5>code</h5>
+            <p>Add the code to the DOM</p>
+<xmp>
+<o class="radio"></o>
+<o class="radio"></o>
+<o class="radio-done"></o>
+<o class="radio-done"></o>
+<o class="checkbox"></o>
+<o class="checkbox-done"></o>
+<o class="checkbox checkbox-all"></o>
+<o class="checkbox-cancel"></o>
+<o class="favorite"></o>
+<o class="star"></o>
+<o class="visibility"></o>
+<o class="mic"></o>
+<o class="volume"></o>
+<o class="muzak"></o>
+<o class="phonecard"></o>
+<o class="telecamera"></o>
+<o class="camera"></o>
+<o class="aim"></o>
+<o class="semaphore"></o>
+<o class="suitcase"></o>
+<o class="toggle"></o>
+</xmp>
+            <h5>effect display</h5>
+            <iframe src="toggle.html"></iframe>
+            <a class="btn" href="toggle.html" target="_blank">view</a>
         </div>
         <h2><i class="ico ico-phone-ios"></i>Mobile terminal</h2>
+        <div class="cont" id="name">
+            <h3>name</h3>
+            <h5>code</h5>
+            <p>Add the code to the DOM</p>
+<xmp>
+<name class="anime-fade-in-down">
+    <a class="ico ico-return-left"></a>
+    <h2>name</h2>
+    <a href="" class="ico ico-menu"></a>
+</name>
+</xmp>
+            <h5>effect display</h5>
+            <iframe src="name.html"></iframe>
+            <a class="btn" href="name.html" target="_blank">view</a>
+        </div>
         <div class="cont" id="nav">
-            <h3>nav</h3><hr>
+            <h3>nav</h3>
             <h5>code</h5>
             <p>Add the code to the DOM</p>
 <xmp>
@@ -592,25 +622,10 @@ class="return"
 </xmp>
             <h5>effect display</h5>
             <iframe src="nav.html"></iframe>
-            <a class="btn view" href="nav.html" target="_blank">view</a>
-        </div>
-        <div class="cont" id="name">
-            <h3>name</h3><hr>
-            <h5>code</h5>
-            <p>Add the code to the DOM</p>
-<xmp>
-<name class="anime-fade-in-down">
-    <a class="ico ico-return-left"></a>
-    <h2>name</h2>
-    <a href="" class="ico ico-menu"></a>
-</name>
-</xmp>
-            <h5>effect display</h5>
-            <iframe src="name.html"></iframe>
-            <a class="btn view" href="name.html" target="_blank">view</a>
+            <a class="btn" href="nav.html" target="_blank">view</a>
         </div>
         <div class="cont" id="music">
-            <h3>muzak</h3><hr>
+            <h3>muzak</h3>
             <h5>code</h5>
             <p>Add the code to the DOM</p>
 <xmp>
@@ -620,21 +635,10 @@ class="return"
 </xmp>
             <h5>effect display</h5>
             <iframe src="music.html" height="150"></iframe>
-            <a class="btn view" href="music.html" target="_blank">view</a>
-        </div>
-        <div class="cont" id="play">
-            <h3>play</h3><hr>
-            <h5>code</h5>
-            <p>Add the code to the DOM</p>
-<xmp>
-
-</xmp>
-            <h5>effect display</h5>
-            <iframe src=""></iframe>
-            <a class="btn view" href="play.html" target="_blank">view</a>
+            <a class="btn" href="music.html" target="_blank">view</a>
         </div>
         <div class="cont" id="touch">
-            <h3>touch</h3><hr>
+            <h3>touch</h3>
             <h5>code</h5>
             <p>Add the code to the DOM</p>
 <xmp>
@@ -654,22 +658,22 @@ class="touch-all"
 </xmp>
             <h5>effect display</h5>
             <iframe src="touch.html" height="400"></iframe>
-            <a class="btn view" href="touch.html" target="_blank">view</a>
+            <a class="btn" href="touch.html" target="_blank">view</a>
         </div>
         <h2><i class="ico ico-usb"></i>Internal components</h2>
         <div class="cont" id="calendar">
-            <h3>calendar</h3><hr>
+            <h3>calendar</h3>
             <h5>code</h5>
             <p>Add the code to the DOM</p>
 <xmp>
 <input type="text" class="calendar">
 </xmp>
             <h5>effect display</h5>
-            <iframe src="calendar.html" height="700"></iframe>
-            <a class="btn view" href="calendar.html" target="_blank">view</a>
+            <iframe src="calendar.html" height="420"></iframe>
+            <a class="btn" href="calendar.html" target="_blank">view</a>
         </div>
         <div class="cont" id="pop">
-            <h3>pop</h3><hr>
+            <h3>pop</h3>
             <h5>pop center code</h5>
             <p>Add the code to the DOM</p>
 <xmp>
@@ -718,14 +722,14 @@ class="touch-all"
 </pop>
 </xmp>
             <h5>effect display</h5>
-            <iframe src="pop.html" height="300"></iframe>
-            <a class="btn view" href="pop.html" target="_blank">view</a>
+            <iframe src="pop.html" height="200"></iframe>
+            <a class="btn" href="pop.html" target="_blank">view</a>
         </div>
         <h2><i class="ico ico-response"></i>External components</h2>
         <div class="cont" id="swiper">
-            <h3>swiper</h3><hr>
+            <h3>swiper</h3>
             <p>You can go to swiper to see more parameters. uigg only provides a few common models</p>
-            <a class="btn view" href="https://swiperjs.com/api/" target="_blank">Swiper API</a>
+            <a class="btn" href="https://swiperjs.com/api/" target="_blank">Swiper API</a>
             <h5>swiper banner code</h5>
             <p>Add the code to the DOM</p>
 <xmp>
@@ -794,7 +798,7 @@ class="touch-all"
                 nextEl: '.swiper-button-next',
                 prevEl: '.swiper-button-prev',
             },
-            breakpoints: { 
+            breakpoints: {
                 320: {
                   slidesPerView: 2,
                   spaceBetween: 15
@@ -916,8 +920,8 @@ class="touch-all"
                 init: function(){
                     swiperAnimateCache(this);
                     this.emit('slideChangeTransitionEnd');
-                }, 
-                slideChangeTransitionEnd: function(){ 
+                },
+                slideChangeTransitionEnd: function(){
                     swiperAnimate(this);
                     //this.slides.eq(this.activeIndex).find('.ani').removeClass('ani'); //Run only once
                 },
@@ -970,26 +974,31 @@ class="touch-all"
 </section>
 </xmp>
             <h5>effect display</h5>
-            <iframe src="swiper.html" height="1300"></iframe>
-            <a class="btn view" href="swiper.html" target="_blank">view</a>
+            <iframe src="swiper.html" height="1400"></iframe>
+            <a class="btn" href="swiper.html" target="_blank">view</a>
         </div>
         <h2><i class="ico ico-app"></i>General library</h2>
         <div class="cont" id="color">
-            <h3>color</h3><hr>
+            <h3>color</h3>
+            <h5>CSS functions</h5>
+            <p>Uigg preset some common color functions</p>
             <iframe src="color.html" height="1760"></iframe>
-            <a class="btn view" href="color.html" target="_blank">view</a>
+            <a class="btn" href="color.html" target="_blank">view</a>
         </div>
         <div class="cont" id="ico">
-            <h3>ico</h3><hr>
-            <iframe src="ico.html" height="1200"></iframe>
-            <a class="btn view" href="ico.html" target="_blank">view</a>
-            <a class="btn view" href="/ico/" target="_blank">ico</a>
+            <h3>ico</h3>
+            <h5>uigg iconfont</h5>
+            <p>Uigg fonts is a library of 1200+ free licensed font families and api for conveniently using the fonts via iconfont, img, unicode, symbol and css. We also provide delightful, beautifully crafted icons for common actions and items. Download them for use in your digital products for Android, iOS, and web</p>
+            <a class="btn" href="/ico.html" target="_blank">view</a>
         </div>
     </section>
 </section>
 <script>
     $('.sider u').click(function(){
         $('.sider').toggleClass('active');
+    });
+    $('.sider-list h6').click(function(){
+        $(this).next().toggle();
     });
 </script>
 </body>

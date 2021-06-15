@@ -1,0 +1,47 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>thumb</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+
+<link rel="stylesheet" href="../styles/uigg.css">
+
+<script src="../js/jquery.min.js"></script>
+<script src="../js/uigg.js"></script>
+</head>
+
+<body>
+
+<style>
+    section {display: flex;flex-direction: column;height: 100vh;padding: 10px;}
+    div {color: white;text-align: center;flex: 1;border-width: 1px;margin: 10px;display: flex;}
+    i.ico {font-size: 1rem;display: none;}
+</style>
+
+<!----------------------------------------------------------------------------------------->
+
+<!--
+priority: all>left>right>down>up
+Up and down can be used at the same time
+Left and right can be used at the same time
+This function can only be used in jQuery environment
+-->
+<section>
+    <div class="touch-left touch-right"><i class="ico ico-angle-left"></i><i class="ico ico-angle-right"></i></div>
+    <div class="touch-up touch-down"><i class="ico ico-angle-top"></i><i class="ico ico-angle-bottom"></i></div>
+    <div class="touch-all"><i class="ico ico-angle-enlarge"></i></div>
+</section>
+
+<script>
+    $('.touch-up').bindmove('touchup','$("i").hide();$(".ico-angle-top").show()');
+    $('.touch-down').bindmove('touchdown','$("i").hide();$(".ico-angle-bottom").show()');
+    $('.touch-left').bindmove('touchleft','$("i").hide();$(".ico-angle-left").show()');
+    $('.touch-right').bindmove('touchright','$("i").hide();$(".ico-angle-right").show()');
+    $('.touch-all').bindmove('touchall','$(".ico-angle-enlarge").show()');
+</script>
+
+<!----------------------------------------------------------------------------------------->
+
+</body>
+</html>
