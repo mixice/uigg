@@ -1,6 +1,6 @@
 /*basic*/
 body {background-image: ;}
-.shadow {background-color: var(--);box-shadow: 0 0 0 var(--);}
+shadow {background-color: var(--);box-shadow: 0 0 0 var(--);}
 
 .anime {transition-duration: 0s;}
 

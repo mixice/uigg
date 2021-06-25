@@ -9,6 +9,7 @@
 <meta name="author" content="mixice.com">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
 
+<link rel="shortcut icon" href="../images/logo.svg">
 <link rel="stylesheet" href="../styles/uigg.css">
 
 <script src="../js/jquery.min.js"></script>
@@ -18,10 +19,10 @@
 <body>
 
 <style>
-    .sider {width: 280px;background: var(--f7);position: fixed;left: 0;top: 0;height: 100%;}
+    .sider {width: 280px;background: var(--f7);position: fixed;left: 0;top: 0;height: 100%;display: flex;flex-direction: column;}
     .sider u {position: absolute;top: 0;display: none;cursor: pointer;background: var(--sapphire);color: var(--fff);}
     .sider em {display: block;width: 30%;margin: 20px auto;}
-    .sider-list {padding: 10px;height: calc(100% - 200px);overflow: auto;}
+    .sider-list {padding: 10px;overflow: auto;flex: 1;}
     .sider-list::-webkit-scrollbar {width: 5px;}
     .sider-list::-webkit-scrollbar-thumb {background: var(--eee);}
     .sider-list h6 {cursor: pointer;line-height: 45px;border-bottom-width: 1px;}
@@ -76,11 +77,13 @@
             </ul>
             <h6><i class="ico ico-graphic"></i>Preset function<s class="ico ico-alone-bottom"></s></h6>
             <ul class="anime-fade-in">
+                <li><a class="smooth" href="#alone">alone</a></li>
                 <li><a class="smooth" href="#anew">anew</a></li>
                 <li><a class="smooth" href="#anime">anime</a></li>
                 <li><a class="smooth" href="#browser">browser title</a></li>
                 <li><a class="smooth" href="#calculation">calculation</a></li>
                 <li><a class="smooth" href="#disable">disable</a></li>
+                <li><a class="smooth" href="#drop">drop</a></li>
                 <li><a class="smooth" href="#font">font</a></li>
                 <li><a class="smooth" href="#form">form</a></li>
                 <li><a class="smooth" href="#fullscreen">fullscreen</a></li>
@@ -137,16 +140,39 @@
             <h5>quote</h5>
             <p>You also refer to files directly from the web</p>
 <xmp>
-<link rel="stylesheet" href="https://ui.gg/master/styles/uigg.css">
-<link rel="stylesheet" href="https://ui.gg/master/styles/swiper-bundle.min.css">
+<link rel="stylesheet" href="https://ui.gg/uigg/styles/uigg.css">
 
-<script src="https://ui.gg/master/js/jquery.min.js"></script>
-<script src="https://ui.gg/master/js/less.min.js"></script>
-<script src="https://ui.gg/master/js/swiper-bundle.min.js"></script>
-<script src="https://ui.gg/master/js/uigg.js"></script>
+<script src="https://ui.gg/uigg/js/uigg.js"></script>
+</xmp>
+            <h5>plugin</h5>
+            <p>Load the following plug-ins on demand (jquery is must)</p>
+<xmp>
+<link rel="stylesheet" href="https://ui.gg/uigg/styles/swiper-bundle.min.css">
+
+<script src="https://ui.gg/uigg/js/jquery.min.js"></script>
+<script src="https://ui.gg/uigg/js/less.min.js"></script>
+<script src="https://ui.gg/uigg/js/anime.min.js"></script>
+<script src="https://ui.gg/uigg/js/swiper-bundle.min.js"></script>
 </xmp>
         </div>
         <h2><i class="ico ico-graphic"></i>Preset function</h2>
+        <div class="cont" id="alone">
+            <h3>alone</h3>
+            <h5>code</h5>
+            <p>Add the javascript to the DOM</p>
+<xmp>
+alone = $('element');
+</xmp>
+            <p>If you need manipulating character objects, must choose <span>Z</span> in <span>$(document).ready()</span></p>
+<xmp>
+$(function(){
+    $('element z');
+});
+</xmp>
+            <h5>effect display</h5>
+            <iframe src="alone.html" height="250"></iframe>
+            <a class="btn" href="alone.html" target="_blank">view</a>
+        </div>
         <div class="cont" id="anew">
             <h3>anew</h3>
             <h5>code</h5>
@@ -225,6 +251,26 @@ class="anime-zoom-out"
 </script>
 </xmp>
             <a class="btn" href="disable.html" target="_blank">view</a>
+        </div>
+        <div class="cont" id="drop">
+            <h3>drop</h3>
+            <h5>code</h5>
+            <p>Add the code to the DOM</p>
+<xmp>
+<drop>
+    <i class="ico ico-alone-bottom"></i>
+    <drop-cont></drop-cont>
+    <drop-list class="anime-fade-in">
+        <x></x>
+        <li><a>drop 1</a></li>
+        <li><a>drop 2</a></li>
+        <li><a>drop 3</a></li>
+    </drop-list>
+</drop>
+</xmp>
+            <h5>effect display</h5>
+            <iframe src="drop.html" height="300"></iframe>
+            <a class="btn" href="drop.html" target="_blank">view</a>
         </div>
         <div class="cont" id="font">
             <h3>font</h3>
@@ -534,7 +580,7 @@ class="return"
 </tip>
 </xmp>
             <h5>effect display</h5>
-            <iframe src="tip.html" height="300"></iframe>
+            <iframe src="tip.html" height="200"></iframe>
             <a class="btn" href="tip.html" target="_blank">view</a>
         </div>
         <div class="cont" id="title">

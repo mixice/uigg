@@ -8,22 +8,33 @@
 <link rel="stylesheet" href="../styles/uigg.css">
 
 <script src="../js/jquery.min.js"></script>
+<script src="../js/anime.min.js"></script>
 <script src="../js/uigg.js"></script>
 </head>
 
 <body class="center">
 
 <style>
-    .btn {width: 200px;}
+    section {font-size: 36px;font-weight: bold;text-transform: uppercase;}
 </style>
 
 <!----------------------------------------------------------------------------------------->
 
-<a class="btn" onclick="$('tip').show()">tip</a>
+<section class="">uigg</section>
 
-<tip class="anime-zoom-in">
-    <i class="ico ico-circular-warn"></i>Lorem ipsum dolor koole
-</tip>
+<script>
+    $(document).ready(function(){});
+    alone = $('section');
+    $(function(){
+        anime({
+            targets: 'section z',
+            translateY: [100,0],
+            opacity: [0,1],
+            delay: anime.stagger(100),
+            loop: true,
+        });
+    });
+</script>
 
 <!----------------------------------------------------------------------------------------->
 

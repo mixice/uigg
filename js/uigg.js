@@ -391,12 +391,46 @@ $(function(){
 $(function(){
     var tipHeight = $('tip').height();
     var tipWidth = $('tip').width();
-    $('tip').css('margin-top', -tipHeight/2-20 + 'px');
+    $('tip').css('margin-top', -tipHeight/2-11 + 'px');
     $('tip').css('margin-left', -tipWidth/2-20 + 'px');
     $('html').click(function(){
         setTimeout(function(){
              $('tip').hide();
         },2000);
+    });
+});
+
+//----------------------------------------------------------------------------------drop
+$(function(){
+    $('dorp').ready(function(){
+        var dropFirst = $(this).find('drop-list li').html();
+        $(this).find('drop-cont').html(dropFirst);
+    });
+    $('drop-cont').click(function(){
+        $(this).siblings('drop-list').show();
+    });
+    $('drop x').click(function(){
+        $(this).parent().hide();
+    });
+    $('drop-list li').click(function(){
+        var dropFirst = $(this).html();
+        $(this).parents('drop').find('drop-cont').html(dropFirst);
+        $(this).parents('drop-list').hide();
+    });
+});
+
+//----------------------------------------------------------------------------------alone
+var alone;
+$(function(){
+    $(alone).each(function(){
+        txt = $(this).html();
+        aloneEl = txt.match(/./g);
+        element = '';
+        for (var i = 0; i < aloneEl.length; i++){
+            word = aloneEl[i];
+            element += '<z>' + word + '</z>';
+         }
+         $(this).html(element);
     });
 });
 
