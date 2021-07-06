@@ -395,7 +395,7 @@ tip span {vertical-align: middle;}
 }
 
 /*nav*/
-nav {width: 100%;display: flex;border-top-width: 1px;position: fixed;left: 0;bottom: 0;z-index: 3;padding: 5px;background-color: white;}
+nav {width: 100%;display: flex;border-top-width: 1px;position: fixed;left: 0;bottom: 0;z-index: 3;padding: 5px;background-color: white;box-shadow: 0 3px 10px var(--000-1);}
 nav li {width: 100%;}
 nav li a {display: block;padding: 10px 0;}
 nav li .ico {display: block;margin: 0 auto 5px;}
@@ -404,7 +404,7 @@ nav li shadow {width: 70%;}
 
 @media(max-width:640px) {
     space {height: 1.4rem;}
-	nav {height: .9rem;padding: .1rem;}
+	nav {height: .9rem;padding: .1rem;box-shadow: 0 .03rem .1rem var(--000-1);}
     nav li a {padding: .08rem 0;}
     nav li i {margin: 0 auto .05rem;}
     nav li span {font-size: .18rem;}
