@@ -57,7 +57,7 @@
         .contant h2 {padding: .2rem 0;font-size: .5rem;}
         .contant h2 i {font-size: .5rem;margin: .1rem;}
         .cont {padding: 0 0 .5rem;}
-        .cont iframe {margin: .1rem 0;border-radius: .1rem;}
+        .cont iframe {margin: .1rem 0;}
         .cont xmp {padding: 0 .2rem .25rem;margin: .1rem 0;border-radius: .1rem;}
         .cont h3 {padding: .1rem 0;}
         .cont h5,
@@ -81,6 +81,7 @@
                 <li><a class="smooth" href="#anew">anew</a></li>
                 <li><a class="smooth" href="#anime">anime</a></li>
                 <li><a class="smooth" href="#browser">browser title</a></li>
+                <li><a class="smooth" href="#button">button</a></li>
                 <li><a class="smooth" href="#calculation">calculation</a></li>
                 <li><a class="smooth" href="#disable">disable</a></li>
                 <li><a class="smooth" href="#drop">drop</a></li>
@@ -210,6 +211,8 @@ class="anime-flip-out-x"
 class="anime-flip-out-y"
 class="anime-zoom-in"
 class="anime-zoom-out"
+class="anime-shrink-in"
+class="anime-shrink-out"
 </xmp>
             <h5>effect display</h5>
             <iframe src="anime.html" height="700"></iframe>
@@ -225,6 +228,44 @@ class="anime-zoom-out"
 </script>
 </xmp>
         <a class="btn" href="browser.html" target="_blank">view</a>
+        </div>
+        <div class="cont" id="button">
+            <h3>button</h3>
+            <h5>code</h5>
+            <p>Add the class to the DOM</p>
+<xmp>
+class="btn"
+</xmp>
+            <p>Empty button</p>
+<xmp>
+class="btn"
+</xmp>
+            <p>Color button</p>
+<xmp>
+class="btn bg-red"
+</xmp>
+            <p>Color empty button</p>
+<xmp>
+class="btn co-red"
+</xmp>
+            <p>Button disable</p>
+<xmp>
+class="btn btn-disable"
+</xmp>
+            <p>Button ico</p>
+<xmp>
+<a class="btn"><i class="ico ico-search"></i><span>button</span></a>
+</xmp>
+            <p>Button flex group</p>
+<xmp>
+<div class="btn-flex">
+    <a class="btn">button</a>
+    <a class="btn">button</a>
+</div>
+</xmp>
+            <h5>effect display</h5>
+            <iframe src="button.html" height="500"></iframe>
+            <a class="btn" href="button.html" target="_blank">view</a>
         </div>
         <div class="cont" id="calculation">
             <h3>calculation</h3>
@@ -640,17 +681,44 @@ class="return"
         <h2><i class="ico ico-phone-ios"></i>Mobile terminal</h2>
         <div class="cont" id="name">
             <h3>name</h3>
-            <h5>code</h5>
+            <h5>name code</h5>
             <p>Add the code to the DOM</p>
 <xmp>
 <name class="anime-fade-in-down">
-    <a class="ico ico-return-left"></a>
+    <a class="ico ico-return-left return"></a>
     <h2>name</h2>
     <a href="" class="ico ico-menu"></a>
 </name>
 </xmp>
+            <h5>left name code</h5>
+            <p>Add the code to the DOM</p>
+<xmp>
+<name class="anime-fade-in-down">
+    <a class="ico ico-return-left return"></a>
+    <h3>name</h3>
+    <a href="" class="ico ico-menu"></a>
+</name>
+</xmp>
+            <h5>logo name code</h5>
+            <p>Add the code to the DOM</p>
+<xmp>
+<name class="anime-fade-in-down">
+    <a class="ico ico-return-left return"></a>
+    <name-logo><img src="../images/logo.svg"><h1>uigg</h1></name-logo>
+    <a href="" class="ico ico-menu"></a>
+</name>
+</xmp>
+            <h5>search name code</h5>
+            <p>Add the code to the DOM</p>
+<xmp>
+<name class="anime-fade-in-down">
+    <a class="ico ico-return-left return"></a>
+    <name-search><i class="ico ico-search"></i><input type="text" placeholder="Search"></name-search>
+    <a href="" class="ico ico-menu"></a>
+</name>
+</xmp>
             <h5>effect display</h5>
-            <iframe src="name.html"></iframe>
+            <iframe src="name.html" height="400"></iframe>
             <a class="btn" href="name.html" target="_blank">view</a>
         </div>
         <div class="cont" id="nav">
@@ -660,7 +728,7 @@ class="return"
 <xmp>
 <space></space>
 <nav class="anime-fade-in-up">
-    <li><a href=""><i class="ico ico-home"></i><span>home</span></a></li>
+    <li><a href="" class="active"><i class="ico ico-home"></i><span>home</span></a></li>
     <li><a href=""><i class="ico ico-app"></i><span>apps</span></a></li>
     <li><a href=""><i class="ico ico-shoppingcart"></i><span>shop</span></a></li>
     <li><a href=""><i class="ico ico-user"></i><span>user</span></a></li>

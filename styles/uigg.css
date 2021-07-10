@@ -21,16 +21,18 @@ button,input,select,textarea,optgroup,
 time,mark,audio,video,
 x,o,z,
 menu,menu-cont,menu-group,menu-list,
+name,name-logo,name-search,
 tab,tab-list,tab-cont,tab-group,
 drop,drop-cont,drop-list,
 pop,pop-main,pop-title,pop-cont,pop-solve,pop-choice,pop-sider,
-tip,page,music,name,space,corner {margin: 0;padding: 0;border: 0;outline: 0;background: transparent center no-repeat;background-size: contain;box-sizing: border-box;font-family: uigg;border-color: var(--eee);border-style: solid;-webkit-tap-highlight-color: transparent;transition-duration: .3s;}
+tip,page,music,space,corner {margin: 0;padding: 0;border: 0;outline: 0;background: transparent center no-repeat;background-size: contain;box-sizing: border-box;font-family: uigg;border-color: var(--eee);border-style: solid;-webkit-tap-highlight-color: transparent;transition-duration: .3s;}
 article,aside,details,figcaption,figure,footer,header,hgroup,main,nav,section,summary,
 menu,menu-cont,menu-group,menu-list,
+name,name-logo,name-search,
 tab,tab-list,tab-cont,tab-group,
 drop,drop-cont,drop-list,
 pop,pop-main,pop-title,pop-cont,pop-solve,pop-choice,pop-sider,
-tip,page,music,name,space,corner {display: block;}
+tip,page,music,space,corner {display: block;}
 html,body {height: 100%;font-size: 14px;transition-duration: 0s;}
 html {-webkit-font-smoothing: antialiased;}
 body,a {color: var(--333);}
@@ -56,7 +58,8 @@ z {display: inline-block;transition-duration: 0s;}
 .anime-fade-in,.anime-fade-in-down,.anime-fade-in-left,.anime-fade-in-right,.anime-fade-in-up,
 .anime-fade-out,.anime-fade-out-down,.anime-fade-out-left,.anime-fade-out-right,.anime-fade-out-up,
 .anime-flip-in-x,.anime-flip-in-y,.anime-flip-out-x,.anime-flip-out-y,
-.anime-zoom-in,.anime-zoom-out {animation-duration: .6s;animation-fill-mode: both;}
+.anime-zoom-in,.anime-zoom-out,
+.anime-shrink-in,.anime-shrink-out {animation-duration: .5s;animation-fill-mode: both;}
 .anime-flip-in-x,.anime-flip-in-y,.anime-flip-out-x,.anime-flip-out-y {backface-visibility: visible;animation-timing-function: ease-in;}
 
 .anime-pulse {animation-name: anime-pulse;}
@@ -76,6 +79,8 @@ z {display: inline-block;transition-duration: 0s;}
 .anime-flip-out-y {animation-name: anime-flip-out-y;}
 .anime-zoom-in {animation-name: anime-zoom-in;}
 .anime-zoom-out {animation-name: anime-zoom-out;}
+.anime-shrink-in {animation-name: anime-shrink-in;}
+.anime-shrink-out {animation-name: anime-shrink-out;}
 
 .infinite {animation-iteration-count: infinite;}
 
@@ -90,12 +95,14 @@ z {display: inline-block;transition-duration: 0s;}
 @keyframes anime-fade-out-left {0% {opacity: 1;}100% {opacity: 0;transform: translateX(-100%);}}
 @keyframes anime-fade-out-right {0% {opacity: 1;}100% {opacity: 0;transform: translateX(100%);}}
 @keyframes anime-fade-out-up {0% {opacity: 1;}100% {opacity: 0;transform: translateY(-100%);}}
-@keyframes anime-flip-in-x {0% {transform: perspective(400px) rotate3d(1, 0, 0, 90deg);opacity: 0;}80% {transform: perspective(400px);opacity: 1;}}
-@keyframes anime-flip-in-y {0% {transform: perspective(400px) rotate3d(0, 1, 0, 90deg);opacity: 0;}80% {transform: perspective(400px);opacity: 1;}}
-@keyframes anime-flip-out-x {0% {transform: perspective(400px);opacity: 1;}80% {transform: perspective(400px) rotate3d(1, 0, 0, 90deg);opacity: 0;}}
-@keyframes anime-flip-out-y {0% {transform: perspective(400px);opacity: 1;}80% {transform: perspective(400px) rotate3d(0, 1, 0, 90deg);opacity: 0;}}
+@keyframes anime-flip-in-x {0% {transform: perspective(400px) rotate3d(1, 0, 0, 90deg);opacity: 0;}100% {transform: perspective(400px);opacity: 1;}}
+@keyframes anime-flip-in-y {0% {transform: perspective(400px) rotate3d(0, 1, 0, 90deg);opacity: 0;}100% {transform: perspective(400px);opacity: 1;}}
+@keyframes anime-flip-out-x {0% {transform: perspective(400px);opacity: 1;}100% {transform: perspective(400px) rotate3d(1, 0, 0, 90deg);opacity: 0;}}
+@keyframes anime-flip-out-y {0% {transform: perspective(400px);opacity: 1;}100% {transform: perspective(400px) rotate3d(0, 1, 0, 90deg);opacity: 0;}}
 @keyframes anime-zoom-in {0% {opacity: 0;transform: scale(0.3);}100% {opacity: 1;}}
 @keyframes anime-zoom-out {0% {opacity: 1;}100% {opacity: 0;transform: scale(0.3);}}
+@keyframes anime-shrink-in {0% {opacity: 0;transform: scale(5);filter: blur(10px);}100% {opacity: 1;transform: scale(1);filter: blur(0);}}
+@keyframes anime-shrink-out {0% {opacity: 1;transform: scale(1);filter: blur(0);}100% {opacity: 0;transform: scale(5);filter: blur(10px);}}
 
 /*frame*/
 .main,
@@ -129,6 +136,14 @@ z {display: inline-block;transition-duration: 0s;}
 @media(max-width:640px) {
 	.main,
     .mobile {padding: 0 .1rem;}
+}
+
+/*special*/
+corner {width: 0;height: 0;border-width: 0 0 0 0;border-color: transparent transparent transparent transparent;position: absolute;margin: auto;display:  block;}
+shadow {width: 90%;height: 20px;border-radius: 10px;position: absolute;left: 0;right: 0;bottom: 0;margin: auto;z-index: -1;opacity: .7;}
+
+@media(max-width:640px) {
+	shadow {height: .2rem;border-radius: .1rem;}
 }
 
 /*color*/
@@ -263,16 +278,6 @@ a[title="到百度地图查看此区域"] {display: none;}
 .touch-right {}
 .touch-all {}
 
-/*calculation*/
-.calc {display: flex;}
-.calc .btn {width: 50px;}
-.calc .btn:hover {transform: translateY(0);}
-.calc input {text-align: center;flex: 1;}
-
-@media(max-width:640px) {
-	.calc .btn {width: .7rem;}
-}
-
 /*ico*/
 @font-face {font-family: "ico";src: url('ico.woff2') format('woff2');}
 .ico {font-family: "ico" !important;font-size: 24px;font-style: normal;font-weight: normal;text-decoration: none;text-align: center;justify-content: center;margin: auto;vertical-align: middle;line-height: 1;text-transform: none;display: inline-block;direction: ltr;letter-spacing: normal;word-wrap: normal;white-space: nowrap;}
@@ -336,14 +341,6 @@ h6 {font-size: 14px;}
 	h6 {font-size: .18rem;}
 }
 
-/*special*/
-corner {width: 0;height: 0;border-width: 0 0 0 0;border-color: transparent transparent transparent transparent;position: absolute;margin: auto;display:  block;}
-shadow {width: 90%;height: 20px;border-radius: 10px;position: absolute;left: 0;right: 0;bottom: 0;margin: auto;z-index: -1;opacity: .7;}
-
-@media(max-width:640px) {
-	shadow {height: .2rem;border-radius: .1rem;}
-}
-
 /*pop*/
 pop,
 pop x {width: 100%;height: 100%;left: 0;top: 0;}
@@ -361,7 +358,7 @@ pop-solve .btn {width: 100%;border-radius: 0;box-shadow: none;}
 pop-solve .btn:hover {transform: translate(0);}
 
 pop-choice,
-pop-sider {animation-delay: .3s;position: absolute;}
+pop-sider {position: absolute;}
 pop-choice {bottom: 0;width: 100%;}
 pop-sider {top: 0;left: 0;width: 300px;height: 100%;background-color: white;}
 
@@ -383,30 +380,38 @@ tip span {vertical-align: middle;}
 }
 
 /*btn*/
-.btn {width: 100%;text-align: center;display: block;height: 50px;line-height: 50px;position: relative;z-index: 1;cursor: pointer;background-color: var(--sapphire);color: white;border-radius: 2px;}
+.btn {width: 100%;text-align: center;display: block;height: 50px;line-height: 50px;position: relative;z-index: 1;cursor: pointer;background-color: var(--sapphire);color: white;border-radius: 2px;text-transform: capitalize;}
+.btn span {vertical-align: middle;margin-left: 5px;}
 .btn:hover {transform: translateY(5px);}
 .btn-flex {display: flex;justify-content: center;}
 .btn-flex .btn {flex: 1;}
-.btn-empty {background-color: transparent;border: 1px solid;color: var(--333);}
+.btn-empty {background-color: transparent;border: 1px solid;color: var(--sapphire);}
+.btn-disable {filter: grayscale(100%);}
+.btn-disable:hover {transform: translateY(0);cursor: no-drop;}
 
 @media(max-width:640px) {
 	.btn {height: .7rem;line-height: .7rem;border-radius: .03rem;}
+    .btn span {margin-left: .05rem;}
 	.btn:hover {transform: translateY(0);}
 }
 
 /*nav*/
-nav {width: 100%;display: flex;border-top-width: 1px;position: fixed;left: 0;bottom: 0;z-index: 3;padding: 5px;background-color: white;box-shadow: 0 3px 10px var(--000-1);}
-nav li {width: 100%;}
-nav li a {display: block;padding: 10px 0;}
+nav {width: 100%;display: flex;border-top-width: 1px;position: fixed;left: 0;bottom: 0;z-index: 3;background-color: white;}
+nav li {width: 100%;padding: 8px;}
+nav li a {display: block;padding: 8px 0;position: relative;border-radius: 5px;}
 nav li .ico {display: block;margin: 0 auto 5px;}
 nav li span {display: block;text-align: center;line-height: 100%;text-transform: capitalize;}
-nav li shadow {width: 70%;}
+nav li shadow {display: none;}
+nav li a.active {background-color: var(--sapphire);}
+nav li a.active i {color: white;}
+nav li a.active span {color: white;}
+nav li a.active shadow {display: block;}
 
 @media(max-width:640px) {
     space {height: 1.4rem;}
-	nav {height: .9rem;padding: .1rem;box-shadow: 0 .03rem .1rem var(--000-1);}
+    nav li {padding: .08rem;}
     nav li a {padding: .08rem 0;}
-    nav li i {margin: 0 auto .05rem;}
+    nav li .ico {margin: 0 auto .02rem;}
     nav li span {font-size: .18rem;}
 }
 
@@ -500,7 +505,6 @@ input[type="reset"],
 select,textarea { -webkit-appearance: none;}
 ::-webkit-input-placeholder {color: var(--ccc);}
 ::-moz-placeholder {color: var(--ccc);}
-::-ms-input-placeholder {color: var(--ccc);}
 button,
 .select,
 .select i,
@@ -544,7 +548,7 @@ select {padding: 0 50px 0 10px;}
 .form li {padding: 5px 0;display: block;width: 100%;float: left;}
 .form li.resolve {padding-left: 110px;}
 .form li .code {text-align: center;width: 140px;}
-.form li em.code {background-color: var(--222);}
+.form li em.code {background-color: var(--333);color: var(--666);}
 .form span {text-transform: capitalize;}
 .form li span:first-child {width: 100px;}
 .form button {width: 200px;}
@@ -626,7 +630,7 @@ page {text-align: center;}
 page a,
 page button,
 page span,
-page input {height: 50px;display: inline-block;text-align: center;vertical-align: middle;float: none;font-size: 16px;}
+page input {height: 50px;display: inline-block;text-align: center;vertical-align: middle;float: none;font-size: 16px;border-radius: 2px;}
 page a,
 page .ico,
 page button,
@@ -645,7 +649,7 @@ page button.active {background-color: var(--sapphire);color: white;}
     page a,
     page button,
     page span,
-    page input {height: .7rem;font-size: .2rem;}
+    page input {height: .7rem;font-size: .2rem;border-radius: .03rem;}
     page a,
     page .ico,
     page button,
@@ -710,24 +714,48 @@ tab-group.active {display: block;}
 }
 
 /*name*/
-name {display: flex;background-color: var(--f7);height: 80px;}
-name h2 {width: 100%;text-align: center;flex: 1;line-height: 80px;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;}
-name .ico {font-size: 36px;width: 80px;line-height: 80px;}
+name {display: flex;background-color: var(--sapphire);height: 80px;}
+name h2,
+name h3,
+name-logo,
+name-search {flex: 1;text-align: center;color: white;}
+name h2,
+name h3 {white-space: nowrap;overflow: hidden;text-overflow: ellipsis;font-size: 26px;margin: 20px 0;line-height: 40px;padding: 0 20px;}
+name h3 {text-align: left;border-left: 1px white solid;}
+name .ico {font-size: 36px;width: 80px;line-height: 80px;color: white;}
+name-logo {padding: 15px;}
+name-logo img {height: 100%;width: auto;}
+name-logo h1 {display: inline-block;vertical-align: middle;text-transform: uppercase;font-size: 30px;padding-left: 10px;}
+name-search {position: relative;margin: 10px 0;background-color: var(--fff-1);border-radius: 30px;}
+name-search .ico {position: absolute;left: 10px;top: 0;line-height: 60px;width: 60px;}
+name-search input {height: 60px;text-align: inherit;font-size: 24px;color: inherit;}
+name-search input::-webkit-input-placeholder {color: var(--fff-2);}
+name-search input::-moz-placeholder {color: var(--fff-2);}
 
 @media(max-width:640px) {
     name {height: .8rem;}
-    name h2 {line-height: .8rem;}
+    name h2,
+    name h3 {font-size: .3rem;margin: .2rem 0;line-height: .4rem;padding: 0 .25rem;}
     name .ico {font-size: .42rem;width: .8rem;height: .8rem;line-height: .8rem;}
+    name-logo {padding: .15rem;}
+    name-logo h1 {font-size: .32rem;padding-left: .1rem;}
+    name-search {margin: .1rem 0;border-radius: .3rem;}
+    name-search .ico {left: .1rem;line-height: .6rem;width: .6rem;}
+    name-search input {height: .6rem;font-size: .24rem;}
 }
 
 /*load*/
-load {width: 100vw;height: 100vh;position: fixed;top: 0;left: 0;z-index: 999;display: flex;justify-content: center;align-items: center;background: white url(../images/load.svg) center no-repeat;background-size: 100px 100px;}
-load.disable {font-size: 50px;font-weight: lighter;text-transform: uppercase;text-align: center;color: whitesmoke;display: flex !important;background: white;}
-load.disable:after {content: 'please use another browser';}
+load {width: 100vw;height: 100vh;position: fixed;top: 0;left: 0;z-index: 999;background: white url(../images/load.svg) center no-repeat;background-size: 100px 100px;}
 
 @media(max-width:640px) {
     load {background-size: 1rem 1rem;}
-    load.disable {font-size: .3rem;}
+}
+
+/*browser*/
+msie {width: 100vw;height: 100vh;background-color: white;display: flex;justify-content: center;align-items: center;position: fixed;top: 0;left: 0;z-index: 999;font-size: 50px;font-weight: lighter;text-transform: uppercase;color: whitesmoke;}
+
+@media(max-width:640px) {
+    msie {font-size: .3rem;}
 }
 
 /*anew*/
@@ -739,6 +767,16 @@ load.disable:after {content: 'please use another browser';}
 @media(max-width:640px) {
     .anew.btn {right: .2rem;width: .7rem;height: .7rem;line-height: .7rem;}
     .anew.btn:hover {transform: translateY(0);}
+}
+
+/*calculation*/
+.calc {display: flex;}
+.calc .btn {width: 50px;}
+.calc .btn:hover {transform: translateY(0);}
+.calc input {text-align: center;flex: 1;}
+
+@media(max-width:640px) {
+	.calc .btn {width: .7rem;}
 }
 
 /*list*/
@@ -793,8 +831,8 @@ load.disable:after {content: 'please use another browser';}
 }
 
 /*music*/
-music {color: white;animation: muzak 10s infinite linear;-webkit-tap-highlight-color: transparent;background-color: var(--000-4);border-radius: 100%;z-index: 1;width: 50px;height: 50px;}
-music.ico {line-height: 50px;}
+music {color: white;animation: muzak 10s infinite linear;-webkit-tap-highlight-color: transparent;background-color: var(--000-4);border-radius: 100%;z-index: 1;width: 50px;height: 50px;position: fixed;top: 0;}
+music.ico {line-height: 50px;margin: 30px;}
 music.pause {animation: none;}
 music:after {content: '\e98c';}
 music.pause:after {content: '\e990';}
@@ -804,8 +842,8 @@ music.pause:after {content: '\e990';}
 }
 
 @media(max-width:640px) {
-    music {width: .8rem;height: .8rem;margin: .3rem;}
-    music.ico {line-height: .8rem;font-size: .48rem;}
+    music {width: .8rem;height: .8rem;}
+    music.ico {line-height: .8rem;font-size: .48rem;margin: .3rem;}
 }
 
 /*drop*/

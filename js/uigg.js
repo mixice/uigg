@@ -35,7 +35,7 @@ document.onreadystatechange = function(){
 $(function(){
     var OsObject=navigator.userAgent;
     if(OsObject.indexOf("MSIE") != -1 || OsObject.indexOf("Trident") != -1){
-        $('load').addClass('disable');
+        $('body').html('<msie>please use another browser</msie>');
     }
     //else if(OsObject.indexOf("Chrome") != -1){}
     //else if(OsObject.indexOf("Firefox") != -1){}
