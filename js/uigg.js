@@ -44,6 +44,11 @@ $(function(){
 
 //----------------------------------------------------------------------------------music
 $(function(){
+    $('music').addClass('ico');
+    $('music audio').attr('id','music');
+    $('music audio').attr('autoplay','');
+    $('music audio').attr('loop','');
+    $('music').css('opacity','1');
     document.addEventListener('DOMContentLoaded',function(){
         function audioAutoPlay(){
             var audio = document.getElementById('music');
@@ -89,6 +94,7 @@ $(document).on("click",".fullscreen", function toggleFullScreen() {
     }
 });
 $(function(){
+    $('.fullscreen').addClass('ico');
     $('.fullscreen').click(function(){
         $(this).toggleClass('active');
     });
@@ -116,26 +122,30 @@ jQuery.fn.bindmove = function(newdirect,newfn) {
         X = moveEndX - startX,
         Y = moveEndY - startY;
         console.log(X,Y,newdirect);
-        if((X!=0 || Y!=0) && newdirect=='touchall'){
+        if((X != 0 || Y != 0) && newdirect=='touchall'){
             eval(newfn); return;
         }
-        if ( X > 0  && newdirect=='touchleft') {
+        if ( X > 30  && newdirect=='touchright') {
             eval(newfn); return;
         }
-        else if ( X < 0  && newdirect=='touchright') {
+        else if ( X < -30  && newdirect=='touchleft') {
             eval(newfn); return;
         }
-        else if ( Y > 0 && newdirect=='touchdown') {
+        else if ( Y > 30 && newdirect=='touchdown') {
             eval(newfn); return;
         }
-        else if ( Y < 0  && newdirect=='touchup') {
+        else if ( Y < -30  && newdirect=='touchup') {
             console.log(newfn);
             eval(newfn); return;
         }
     });
 };
 
-//----------------------------------------------------------------------------------swiper-animate
+//----------------------------------------------------------------------------------swiper
+$(function(){
+    $('.swiper-button-next').addClass('ico ico-alone-right');
+    $('.swiper-button-prev').addClass('ico ico-alone-left');
+});
 //swiper-animate 1.03 from the www.swiper.com.cn
 function swiperAnimateCache(a){
 	for (j = 0; j < a.slides.length; j++) for (allBoxes = a.slides[j].querySelectorAll(".ani"), i = 0; i < allBoxes.length; i++) allBoxes[i].attributes["style"] ? allBoxes[i].setAttribute("swiper-animate-style-cache", allBoxes[i].attributes["style"].value) : allBoxes[i].setAttribute("swiper-animate-style-cache", " "),
@@ -282,6 +292,7 @@ $(function(){
 
 //----------------------------------------------------------------------------------anew
 $(function(){
+    $('.anew.btn').addClass('ico ico-alone-top');
     $('.anew').click(function(){
 		$('html,body').animate({scrollTop:'0px'},800);
 	});
@@ -298,6 +309,7 @@ $(function(){
 
 //----------------------------------------------------------------------------------tab
 $(function(){
+    $('tab-group').addClass('anime-fade-in');
     $('tab-list li').click(function(){
         tabIndex = $(this).index();
         $(this).addClass('active').siblings().removeClass('active');
@@ -307,6 +319,12 @@ $(function(){
 
 //----------------------------------------------------------------------------------pop
 $(function(){
+    $('pop-main,pop-choice,pop-sider').before('<x></x>');
+    $('pop').addClass('anime-fade-in');
+    $('pop-main').wrap('<div class="full center"></div>');
+    $('pop-main').addClass('anime-zoom-in');
+    $('pop-choice').addClass('anime-fade-in-up');
+    $('pop-title .close').addClass('ico');
     $('pop .close, pop x').click(function(){
         $(this).parents('pop').hide();
     });
@@ -314,9 +332,11 @@ $(function(){
 
 //----------------------------------------------------------------------------------menu
 $(function(){
+    $('menu').append('<x class="ico"></x>');
     $('menu x').click(function(){
         $('menu-cont').toggle();
     });
+    $('menu-cont,menu-group').addClass('anime-fade-in');
     $('menu-cont li').click(function(){
         var menuGroup = $(this).children('menu-group');
         if(menuGroup.css('display') == 'block'){
@@ -346,13 +366,15 @@ $(function(){
     });
 });
 
-//----------------------------------------------------------------------------------calculation
+//----------------------------------------------------------------------------------scaler
 $(function(){
-    $('.calc .ico-add').click(function(){
+    $('scaler input').before('<a class="btn ico ico-reduce"></a>');
+    $('scaler input').after('<a class="btn ico ico-add"></a>');
+    $('scaler .ico-add').click(function(){
         var calcInput = $(this).siblings('input');
         calcInput.val(parseInt(calcInput.val()) + 1);
     });
-    $('.calc .ico-reduce').click(function(){
+    $('scaler .ico-reduce').click(function(){
         var calcInput = $(this).siblings('input');
         if(calcInput.val() > 0){
             calcInput.val(parseInt(calcInput.val()) - 1);
@@ -389,6 +411,7 @@ $(function(){
 
 //----------------------------------------------------------------------------------tip
 $(function(){
+    $('tip').addClass('anime-zoom-in');
     var tipHeight = $('tip').height();
     var tipWidth = $('tip').width();
     $('tip').css('margin-top', -tipHeight/2-11 + 'px');
@@ -402,20 +425,21 @@ $(function(){
 
 //----------------------------------------------------------------------------------drop
 $(function(){
-    $('dorp').ready(function(){
-        var dropFirst = $(this).find('drop-list li').html();
-        $(this).find('drop-cont').html(dropFirst);
-    });
+    $('drop').append('<i class="ico ico-alone-bottom"></i><drop-cont></drop-cont>');
+    var dropFirst = $(this).find('drop-list li').html();
+    $(this).find('drop-cont').html(dropFirst);
     $('drop-cont').click(function(){
-        $(this).siblings('drop-list').show();
+        $(this).parent().toggleClass('active');
     });
-    $('drop x').click(function(){
-        $(this).parent().hide();
-    });
+    $('drop-list').addClass('anime-fade-in');
+    $('drop-list li:first').before('<x></x>');
     $('drop-list li').click(function(){
         var dropFirst = $(this).html();
         $(this).parents('drop').find('drop-cont').html(dropFirst);
-        $(this).parents('drop-list').hide();
+        $(this).parents('drop').removeClass('active');
+    });
+    $('drop x').click(function(){
+        $(this).parents('drop').removeClass('active');
     });
 });
 
@@ -432,6 +456,29 @@ $(function(){
          }
          $(this).html(element);
     });
+});
+
+//----------------------------------------------------------------------------------rate
+$(function(){
+    $('rate').html('<i></i><i></i><i></i><i></i><i></i>');
+    $('rate i').addClass('ico ico-star');
+    $('rate.edit i').click(function(){
+        $(this).siblings().removeClass('active');
+        $(this).prevAll().addClass('active');
+        $(this).addClass('active');
+    });
+});
+
+//----------------------------------------------------------------------------------name
+$(function(){
+    $('name').addClass('anime-fade-in-down');
+    $('name-search').append('<i class="ico ico-search"></i>');
+});
+
+//----------------------------------------------------------------------------------nav
+$(function(){
+    $('nav').before('<space></space>');
+    $('nav').addClass('anime-fade-in-up');
 });
 
 //----------------------------------------------------------------------------------

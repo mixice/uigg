@@ -1,10 +1,10 @@
-/*basic*/
+/* basic */
 body {}
 shadow {background-color: var(--);box-shadow: 0 0 0 var(--);}
 
 .anime {transition-duration: 0s;}
 
-/*frame*/
+/* frame */
 .group {}
 .contant {}
 .sider {}
@@ -12,15 +12,15 @@ shadow {background-color: var(--);box-shadow: 0 0 0 var(--);}
 .subject {}
 .clause {}
 
-/*color*/
+/* color */
 :root {
     --color: color;
 }
 
-/*ico*/
+/* ico */
 .ico- {background-image: url(../images/ico/)}
 
-/*pop*/
+/* pop */
 pop {}
 pop-main {}
 pop-title {}
@@ -29,15 +29,15 @@ pop-title a {}
 pop-cont {}
 pop-solve {}
 
-/*btn*/
+/* btn */
 .btn {}
 
-/*head*/
+/* head */
 .head {}
 .head-cont {}
 .logo {}
 
-/*menu*/
+/* menu */
 menu {}
 menu cite {}
 menu-cont {}
@@ -47,13 +47,13 @@ menu-group {}
 menu-group a {}
 menu-list {}
 
-/*title*/
+/* title */
 .title {}
 .title h3 {}
 .title em {}
 .title span {}
 
-/*form*/
+/* form */
 .form {}
 .form li {}
 .form li input {}
@@ -62,20 +62,20 @@ menu-list {}
 .form li .code {}
 .form li button {}
 
-/*page*/
+/* page */
 page {}
 page a {}
 
-/*notice*/
+/* notice */
 .notice {}
 .notice i {}
 
-/*foot*/
+/* foot */
 .foot {}
 .foot-cont {}
 .foot-copy {}
 
-/*tab*/
+/* tab */
 tab {}
 tab-list {}
 tab-list li {}
@@ -85,7 +85,7 @@ tab-list li.active a {}
 tab-cont {}
 tab-group {}
 
-/*table*/
+/* table */
 .table {}
 .table table {}
 .table table td {}
@@ -93,25 +93,25 @@ tab-group {}
 .table table thead td {}
 .table table tbody td {}
 
-/*list*/
+/* list */
 .list {}
 .list li {}
 .list li a {}
 .list li i {}
 
-/*crumb*/
+/* crumb */
 .crumb {}
 
 /*------------------------------------------------------------------------------------------*/
 
-/*nav*/
+/* nav */
 nav {}
 nav li {}
 nav li a {}
 nav li a i {}
 nav li a span {}
 
-/*name*/
+/* name */
 name {}
 name h2 {}
 name a {}

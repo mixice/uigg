@@ -39,8 +39,10 @@
     .cont xmp {background: var(--f7);padding: 0 20px 20px;margin: 5px 0;color: var(--tomato);border-radius: 10px;white-space: pre-wrap;}
     .cont h3 {padding: 20px 0;margin-bottom: 10px;border-bottom-width: 1px;}
     .cont h5 {padding: 10px 0;}
-    .cont p {padding: 5px 0;}
-    .cont p span {color: var(--sapphire);}
+    .cont p {padding: 10px 0;}
+    .cont p a,
+    .cont p span {color: var(--sapphire);background-color: var(--f7);padding: 5px 10px;border-radius: 2px;margin: 0 5px;}
+    .cont p a:hover {background-color: var(--sapphire);color: white;}
     .cont .btn {width: 200px;background: var(--sapphire);margin: 10px 0;font-weight: bold;text-transform: capitalize;}
 
     @media(max-width:640px) {
@@ -62,6 +64,8 @@
         .cont h3 {padding: .1rem 0;}
         .cont h5,
         .cont p {padding: .1rem 0;}
+        .cont p a,
+        .cont p span {padding: .05rem .1rem;margin: 0 .05rem;}
         .cont .btn {width:2.5rem;border-radius: .05rem;margin: .1rem 0;}
     }
 </style>
@@ -74,6 +78,8 @@
             <h6><i class="ico ico-uigg"></i>Using uigg<s class="ico ico-alone-bottom"></s></h6>
             <ul class="anime-fade-in">
                 <li><a class="smooth" href="#get">get uigg</a></li>
+                <li><a class="smooth" href="#responsive">responsive rule</a></li>
+                <li><a class="smooth" href="#preset">layout preset</a></li>
             </ul>
             <h6><i class="ico ico-graphic"></i>Preset function<s class="ico ico-alone-bottom"></s></h6>
             <ul class="anime-fade-in">
@@ -82,7 +88,6 @@
                 <li><a class="smooth" href="#anime">anime</a></li>
                 <li><a class="smooth" href="#browser">browser title</a></li>
                 <li><a class="smooth" href="#button">button</a></li>
-                <li><a class="smooth" href="#calculation">calculation</a></li>
                 <li><a class="smooth" href="#disable">disable</a></li>
                 <li><a class="smooth" href="#drop">drop</a></li>
                 <li><a class="smooth" href="#font">font</a></li>
@@ -93,7 +98,9 @@
                 <li><a class="smooth" href="#mix">mix</a></li>
                 <li><a class="smooth" href="#page">page</a></li>
                 <li><a class="smooth" href="#random">random</a></li>
+                <li><a class="smooth" href="#rate">rate</a></li>
                 <li><a class="smooth" href="#return">return</a></li>
+                <li><a class="smooth" href="#scaler">scaler</a></li>
                 <li><a class="smooth" href="#smooth">smooth</a></li>
                 <li><a class="smooth" href="#tab">tab</a></li>
                 <li><a class="smooth" href="#table">table</a></li>
@@ -146,7 +153,7 @@
 <script src="https://ui.gg/uigg/js/uigg.js"></script>
 </xmp>
             <h5>plugin</h5>
-            <p>Load the following plug-ins on demand (jquery is must)</p>
+            <p>Load the following plug-ins on demand <span>jquery is must</span></p>
 <xmp>
 <link rel="stylesheet" href="https://ui.gg/uigg/styles/swiper-bundle.min.css">
 
@@ -154,6 +161,69 @@
 <script src="https://ui.gg/uigg/js/less.min.js"></script>
 <script src="https://ui.gg/uigg/js/anime.min.js"></script>
 <script src="https://ui.gg/uigg/js/swiper-bundle.min.js"></script>
+</xmp>
+        </div>
+        <div class="cont" id="responsive">
+            <h3>responsive rule</h3>
+            <h5>PC rule</h5>
+            <p><span>.main</span> defines the center of the content area, the maximum width is <span>1300px</span> , add the class to the DOM</p>
+<xmp>
+class="main"
+</xmp>
+            <h5>mobile rule</h5>
+            <p><span>.mobile</span> defines the center of the content area, the maximum width is <span>640px</span> , add the class to the DOM</p>
+<xmp>
+class="mobile"
+</xmp>
+            <h5>unit conversion</h5>
+            <p>Uigg uses <span>rem</span> as the response unit, and the calculation rule is <span>100px = 1rem</span></p>
+
+
+        </div>
+        <div class="cont" id="preset">
+            <h3>layout preset</h3>
+            <h5>basic preset</h5>
+            <p>Add the class to the DOM</p>
+<xmp>
+class="block"
+class="clear"
+class="hide"
+class="show"
+class="center"
+class="float-left"
+class="float-right"
+class="flex"
+class="flex-column"
+class="full"
+class="full-device"
+</xmp>
+            <h5>absolute preset</h5>
+            <p>Add the class to the DOM</p>
+<xmp>
+class="absolute"
+class="absolute-left"
+class="absolute-right"
+class="absolute-top"
+class="absolute-bottom"
+class="absolute-top-left"
+class="absolute-top-right"
+class="absolute-bottom-left"
+class="absolute-bottom-right"
+class="fixed"
+class="fixed-left"
+class="fixed-right"
+class="fixed-top"
+class="fixed-bottom"
+class="fixed-top-left"
+class="fixed-top-right"
+class="fixed-bottom-left"
+class="fixed-bottom-right"
+</xmp>
+            <h5>special preset</h5>
+            <p>Add the code to the DOM</p>
+<xmp>
+<corner></corner>
+<shadow></shadow>
 </xmp>
         </div>
         <h2><i class="ico ico-graphic"></i>Preset function</h2>
@@ -181,9 +251,9 @@ $(function(){
 <xmp>
 class="anew"
 </xmp>
-            <p>If you need a separate button</p>
+            <p>If you need a separate button, add the class to the DOM</p>
 <xmp>
-class="anew btn ico"
+class="anew btn"
 </xmp>
             <h5>effect display</h5>
             <iframe src="anew.html"></iframe>
@@ -195,6 +265,7 @@ class="anew btn ico"
             <p>Add the class to the DOM</p>
 <xmp>
 class="anime-pulse"
+class="anime-rotate"
 class="anime-fade-in"
 class="anime-fade-in-down"
 class="anime-fade-in-left"
@@ -214,6 +285,10 @@ class="anime-zoom-out"
 class="anime-shrink-in"
 class="anime-shrink-out"
 </xmp>
+            <p>If you want the animation to loop all the time, add the class to the DOM</p>
+<xmp>
+class="infinite"
+</xmp>
             <h5>effect display</h5>
             <iframe src="anime.html" height="700"></iframe>
             <a class="btn" href="anime.html" target="_blank">view</a>
@@ -221,7 +296,7 @@ class="anime-shrink-out"
         <div class="cont" id="browser">
             <h3>browser</h3>
             <h5>code</h5>
-            <p>Add the javascript to the page, you can customize the title in <span>browsertitle()</span></p>
+            <p>If you need customize the title, add the function to the DOM</p>
 <xmp>
 <script>
     browserTitle();
@@ -238,13 +313,13 @@ class="btn"
 </xmp>
             <p>Empty button</p>
 <xmp>
-class="btn"
+class="btn btn-empty"
 </xmp>
-            <p>Color button</p>
+            <p>Color button, please refer to <a href="#color" target="_blank">color</a></p>
 <xmp>
 class="btn bg-red"
 </xmp>
-            <p>Color empty button</p>
+            <p>Color empty button, please refer to <a href="#color" target="_blank">color</a></p>
 <xmp>
 class="btn co-red"
 </xmp>
@@ -267,25 +342,10 @@ class="btn btn-disable"
             <iframe src="button.html" height="500"></iframe>
             <a class="btn" href="button.html" target="_blank">view</a>
         </div>
-        <div class="cont" id="calculation">
-            <h3>calculation</h3>
-            <h5>code</h5>
-            <p>Add the code to the DOM</p>
-<xmp>
-<section class="calc">
-    <a class="btn ico ico-reduce"></a>
-    <input class="calc-answer" type="text" value="1">
-    <a class="btn ico ico-add"></a>
-</section>
-</xmp>
-            <h5>effect display</h5>
-            <iframe src="calculation.html"></iframe>
-            <a class="btn" href="calculation.html" target="_blank">view</a>
-        </div>
         <div class="cont" id="disable">
             <h3>disable</h3>
             <h5>code</h5>
-            <p>Add the function to the DOM</p>
+            <p>If you need to prevent users from viewing your code, add the function to the DOM</p>
 <xmp>
 <script>
     disable();
@@ -299,10 +359,7 @@ class="btn btn-disable"
             <p>Add the code to the DOM</p>
 <xmp>
 <drop>
-    <i class="ico ico-alone-bottom"></i>
-    <drop-cont></drop-cont>
-    <drop-list class="anime-fade-in">
-        <x></x>
+    <drop-list>
         <li><a>drop 1</a></li>
         <li><a>drop 2</a></li>
         <li><a>drop 3</a></li>
@@ -406,7 +463,7 @@ class="font-tahoma"
             <h5>code</h5>
             <p>Add the class to the DOM</p>
 <xmp>
-class="fullscreen ico"
+class="fullscreen"
 </xmp>
             <h5>effect display</h5>
             <iframe src="fullscreen.html"></iframe>
@@ -415,7 +472,7 @@ class="fullscreen ico"
         <div class="cont" id="load">
             <h3>load</h3>
             <h5>code</h5>
-            <p>If you need to wait for the page to be displayed after loading, Add the code to the DOM</p>
+            <p>If you need to wait for the page to be displayed after loading, add the code to the DOM</p>
 <xmp>
 <load></load>
 </xmp>
@@ -426,18 +483,17 @@ class="fullscreen ico"
             <p>Add the code to the DOM</p>
 <xmp>
 <menu>
-    <x class="ico"></x>
-    <menu-cont class="anime-fade-in">
+    <menu-cont>
         <li><a href="">one</a></li>
         <li><a>two</a>
-            <menu-group class="anime-fade-in">
+            <menu-group>
                 <a href="">one</a>
                 <a href="">two</a>
                 <a href="">three</a>
             </menu-group>
         </li>
         <li><a>three</a>
-            <menu-group class="anime-fade-in">
+            <menu-group>
                 <menu-list>
                     <h6>group</h6>
                     <a href="">one</a>
@@ -490,9 +546,9 @@ class="mono-click"
     <a href="" class="active">3</a>
     <a href="">4</a>
     <a href="">5</a>
-    <span>1/12</span>
     <a href="" class="ico ico-alone-right"></a>
     <a href="" class="ico ico-alone-side-right"></a>
+    <span>1/12</span>
     <input type="text">
     <button class="ico ico-arrow-enter"></button>
 </page>
@@ -504,14 +560,14 @@ class="mono-click"
         <div class="cont" id="random">
             <h3>random</h3>
             <h5>code</h5>
-            <p>Using the tag below, you can get random images to fill your content area. Both img and background can be used</p>
+            <p>Put the tags below into <span>src</span> and <span>background</span> , and you'll get random images</p>
 <xmp>
 uigg-img
 uigg-product
 uigg-bg
 uigg-avatar
 </xmp>
-            <p>In addition to the pictures, we also prepared random titles and paragraphs, just write the DOM in the corresponding position</p>
+            <p>If you need random text, add the code to the DOM</p>
 <xmp>
 <uigg-title></uigg-title>
 <uigg-txt></uigg-txt>
@@ -520,6 +576,21 @@ uigg-avatar
             <iframe src="random.html" height="450"></iframe>
             <a class="btn" href="random.html" target="_blank">view</a>
         </div>
+        <div class="cont" id="rate">
+            <h3>rate</h3>
+            <h5>code</h5>
+            <p>Add the code to the DOM</p>
+<xmp>
+<rate></rate>
+</xmp>
+            <p>If you need edit it, add the class to the DOM</p>
+<xmp>
+class="edit"
+</xmp>
+            <h5>effect display</h5>
+            <iframe src="rate.html"></iframe>
+            <a class="btn" href="rate.html" target="_blank">view</a>
+        </div>
         <div class="cont" id="return">
             <h3>return</h3>
             <h5>code</h5>
@@ -527,6 +598,19 @@ uigg-avatar
 <xmp>
 class="return"
 </xmp>
+        </div>
+        <div class="cont" id="scaler">
+            <h3>scaler</h3>
+            <h5>code</h5>
+            <p>Add the code to the DOM</p>
+<xmp>
+<scaler>
+    <input type="text" value="1">
+</scaler>
+</xmp>
+            <h5>effect display</h5>
+            <iframe src="scaler.html"></iframe>
+            <a class="btn" href="scaler.html" target="_blank">view</a>
         </div>
         <div class="cont" id="smooth">
             <h3>smooth</h3>
@@ -551,9 +635,9 @@ class="return"
         <li><a>three</a></li>
     </tab-list>
     <tab-cont>
-        <tab-group class="anime-fade-in active">one</tab-group>
-        <tab-group class="anime-fade-in">two</tab-group>
-        <tab-group class="anime-fade-in">three</tab-group>
+        <tab-group class="active">one</tab-group>
+        <tab-group>two</tab-group>
+        <tab-group>three</tab-group>
     </tab-cont>
 </tab>
 </xmp>
@@ -614,11 +698,9 @@ class="return"
         <div class="cont" id="tip">
             <h3>tip</h3>
             <h5>code</h5>
-            <p>Add the code to the DOM</p>
+            <p>Add the code to the DOM (You need jquery to <span>.show()</span> it)</p>
 <xmp>
-<tip class="anime-zoom-in">
-    <i class="ico ico-circular-warn"></i>Lorem ipsum dolor
-</tip>
+<tip></tip>
 </xmp>
             <h5>effect display</h5>
             <iframe src="tip.html" height="200"></iframe>
@@ -684,7 +766,7 @@ class="return"
             <h5>name code</h5>
             <p>Add the code to the DOM</p>
 <xmp>
-<name class="anime-fade-in-down">
+<name>
     <a class="ico ico-return-left return"></a>
     <h2>name</h2>
     <a href="" class="ico ico-menu"></a>
@@ -693,7 +775,7 @@ class="return"
             <h5>left name code</h5>
             <p>Add the code to the DOM</p>
 <xmp>
-<name class="anime-fade-in-down">
+<name>
     <a class="ico ico-return-left return"></a>
     <h3>name</h3>
     <a href="" class="ico ico-menu"></a>
@@ -702,7 +784,7 @@ class="return"
             <h5>logo name code</h5>
             <p>Add the code to the DOM</p>
 <xmp>
-<name class="anime-fade-in-down">
+<name>
     <a class="ico ico-return-left return"></a>
     <name-logo><img src="../images/logo.svg"><h1>uigg</h1></name-logo>
     <a href="" class="ico ico-menu"></a>
@@ -711,9 +793,9 @@ class="return"
             <h5>search name code</h5>
             <p>Add the code to the DOM</p>
 <xmp>
-<name class="anime-fade-in-down">
+<name>
     <a class="ico ico-return-left return"></a>
-    <name-search><i class="ico ico-search"></i><input type="text" placeholder="Search"></name-search>
+    <name-search><input type="text" placeholder="Search"></name-search>
     <a href="" class="ico ico-menu"></a>
 </name>
 </xmp>
@@ -726,8 +808,7 @@ class="return"
             <h5>code</h5>
             <p>Add the code to the DOM</p>
 <xmp>
-<space></space>
-<nav class="anime-fade-in-up">
+<nav>
     <li><a href="" class="active"><i class="ico ico-home"></i><span>home</span></a></li>
     <li><a href=""><i class="ico ico-app"></i><span>apps</span></a></li>
     <li><a href=""><i class="ico ico-shoppingcart"></i><span>shop</span></a></li>
@@ -743,9 +824,13 @@ class="return"
             <h5>code</h5>
             <p>Add the code to the DOM</p>
 <xmp>
-<music class="pause ico">
-    <audio id="music" src="../" autoplay loop></audio>
+<music>
+    <audio src="../"></audio>
 </music>
+</xmp>
+            <p>If you need pause by default, add the class to the <span>music</span></p>
+<xmp>
+class="pause"
 </xmp>
             <h5>effect display</h5>
             <iframe src="music.html" height="150"></iframe>
@@ -778,9 +863,9 @@ class="touch-all"
         <div class="cont" id="calendar">
             <h3>calendar</h3>
             <h5>code</h5>
-            <p>Add the code to the DOM</p>
+            <p>Add the class to the input</p>
 <xmp>
-<input type="text" class="calendar">
+class="calendar"
 </xmp>
             <h5>effect display</h5>
             <iframe src="calendar.html" height="420"></iframe>
@@ -791,29 +876,25 @@ class="touch-all"
             <h5>pop center code</h5>
             <p>Add the code to the DOM</p>
 <xmp>
-<pop class="anime-fade-in">
-    <x></x>
-    <div class="full center">
-        <pop-main class="anime-zoom-in">
-            <pop-title><h3>title</h3><a class="ico close"></a></pop-title>
-            <pop-cont>article</pop-cont>
-            <pop-solve>
-                <a href="" class="btn">previous</a>
-                <a href="" class="btn">cancel</a>
-                <button class="btn">submit</button>
-                <a href="" class="btn">confirm</a>
-            </pop-solve>
-        </pop-main>
-    </div>
+<pop>
+    <pop-main>
+        <pop-title><h3>title</h3><a class="close"></a></pop-title>
+        <pop-cont>article</pop-cont>
+        <pop-solve>
+            <a href="" class="btn">previous</a>
+            <a href="" class="btn">cancel</a>
+            <button class="btn">submit</button>
+            <a href="" class="btn">confirm</a>
+        </pop-solve>
+    </pop-main>
 </pop>
 </xmp>
             <h5>pop choice code</h5>
             <p>Add the code to the DOM</p>
 <xmp>
-<pop class="anime-fade-in">
-    <x></x>
-    <pop-choice class="anime-fade-in-up">
-        <pop-title><h3>title</h3><a class="ico close"></a></pop-title>
+<pop>
+    <pop-choice>
+        <pop-title><h3>title</h3><a class="close"></a></pop-title>
         <pop-cont>article</pop-cont>
         <pop-solve>
             <a href="" class="btn">previous</a>
@@ -827,10 +908,9 @@ class="touch-all"
             <h5>pop sider code</h5>
             <p>Add the code to the DOM</p>
 <xmp>
-<pop class="anime-fade-in">
-    <x></x>
+<pop>
     <pop-sider class="anime-fade-in-left">
-        <pop-title><h3>title</h3><a class="ico close"></a></pop-title>
+        <pop-title><h3>title</h3><a class="close"></a></pop-title>
         <pop-cont>article</pop-cont>
     </pop-sider>
 </pop>
@@ -854,8 +934,8 @@ class="touch-all"
         <div class="swiper-slide">three</div>
     </div>
     <div class="swiper-pagination"></div>
-    <div class="swiper-button-next ico"></div>
-    <div class="swiper-button-prev ico"></div>
+    <div class="swiper-button-next"></div>
+    <div class="swiper-button-prev"></div>
     <script>
         var swiper = new Swiper('.swiper-banner', {
             spaceBetween: 10,
@@ -896,8 +976,8 @@ class="touch-all"
         <div class="swiper-slide">eight</div>
     </div>
     <div class="swiper-pagination"></div>
-    <div class="swiper-button-next ico"></div>
-    <div class="swiper-button-prev ico"></div>
+    <div class="swiper-button-next"></div>
+    <div class="swiper-button-prev"></div>
     <script>
         var swiper = new Swiper('.swiper-list', {
             slidesPerView: 4,
@@ -970,8 +1050,8 @@ class="touch-all"
             <div class="swiper-slide" style="background-image: url(https://ui.gg/lib/img?5)"></div>
             <div class="swiper-slide" style="background-image: url(https://ui.gg/lib/img?6)"></div>
         </div>
-        <div class="swiper-button-next ico"></div>
-        <div class="swiper-button-prev ico"></div>
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
     </div>
     <div class="swiper-container gallery-thumbs">
         <div class="swiper-wrapper">
@@ -1018,8 +1098,8 @@ class="touch-all"
         <div class="swiper-slide"><p class="ani" swiper-animate-effect="anime-zoom-in" swiper-animate-duration=".6s" swiper-animate-delay=".3s">swiper</p></div>
     </div>
     <div class="swiper-pagination"></div>
-    <div class="swiper-button-next ico"></div>
-    <div class="swiper-button-prev ico"></div>
+    <div class="swiper-button-next"></div>
+    <div class="swiper-button-prev"></div>
     <script>
         var mySwiper = new Swiper('.swiper-animate', {
             pagination: {

@@ -20,7 +20,7 @@
 </head>
     
 <body>
-<section class="load center"><i></i></section>
+<load></load>
 <section class="admin flex flex-column">
     <!------------------------------------------head start------------------------------------------>
     <section class="head anime-fade-in-down">
@@ -37,10 +37,7 @@
                 </div>
             </div>-->
             <drop class="float-left">
-                <i class="ico ico-alone-bottom"></i>
-                <drop-cont></drop-cont>
                 <drop-list class="anime-fade-in">
-                    <x></x>
                     <li><a>industry</a></li>
                     <li><a>information</a></li>
                     <li><a>classify</a></li>
@@ -52,7 +49,7 @@
             <div class="head-info flex float-left">
                 <span>welcome<em>mixice</em></span>
                 <a href="" class="ico ico-circular-user"></a>
-                <a class="fullscreen ico co-orange"></a>
+                <a class="fullscreen co-orange"></a>
                 <a href="" class="ico ico-close co-red"></a>
             </div>
         </div>
@@ -315,9 +312,9 @@
                         <li><a>three</a></li>
                     </tab-list>
                     <tab-cont>
-                        <tab-group class="anime-fade-in active">one</tab-group>
-                        <tab-group class="anime-fade-in">two</tab-group>
-                        <tab-group class="anime-fade-in">three</tab-group>
+                        <tab-group class="active">one</tab-group>
+                        <tab-group>two</tab-group>
+                        <tab-group>three</tab-group>
                     </tab-cont>
                 </tab>
             </div>
@@ -445,30 +442,24 @@
         </section>
     </section>
 </section>
-<pop class="anime-fade-in">
-    <x></x>
-    <div class="full center">
-        <pop-main class="anime-zoom-in">
-            <pop-title>
-                <h3>title</h3>
-                <a class="ico close"></a>
-            </pop-title>
-            <pop-cont>
-                <div class="pop-tip">
-                    <i class="ico ico-emot-smile"></i>
-                    <i class="ico ico-emot-pain co-red"></i>
-                    <h3>Lorem ipsum dolor sit amet</h3>
-                    <p>Lorem ipsum dolor sit amet</p>
-                    <p class="co-ccc">Lorem ipsum dolor sit amet</p>
-                </div>
-            </pop-cont>
-            <pop-solve>
-                <a href="" class="btn">confirm</a>
-                <a href="" class="btn bg-orange">cancel</a>
-                <a href="" class="btn bg-red">delete</a>
-            </pop-solve>
-        </pop-main>
-    </div>
+<pop>
+    <pop-main>
+        <pop-title><h3>title</h3><a class="close"></a></pop-title>
+        <pop-cont>
+            <div class="pop-tip">
+                <i class="ico ico-emot-smile"></i>
+                <i class="ico ico-emot-pain co-red"></i>
+                <h3>Lorem ipsum dolor sit amet</h3>
+                <p>Lorem ipsum dolor sit amet</p>
+                <p class="co-ccc">Lorem ipsum dolor sit amet</p>
+            </div>
+        </pop-cont>
+        <pop-solve>
+            <a href="" class="btn">confirm</a>
+            <a href="" class="btn bg-orange">cancel</a>
+            <a href="" class="btn bg-red">delete</a>
+        </pop-solve>
+    </pop-main>
 </pop>
 </body>
 </html>
