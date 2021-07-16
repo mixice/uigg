@@ -145,6 +145,9 @@ jQuery.fn.bindmove = function(newdirect,newfn) {
 $(function(){
     $('.swiper-button-next').addClass('ico ico-alone-right');
     $('.swiper-button-prev').addClass('ico ico-alone-left');
+    $('.lug-thumbs a').click(function(){
+        $(this).addClass('active').siblings().removeClass('active');
+    });
 });
 //swiper-animate 1.03 from the www.swiper.com.cn
 function swiperAnimateCache(a){

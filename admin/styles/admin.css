@@ -391,8 +391,8 @@ pop-cont {padding: 20px 0;}
 }
 
 /*login*/
-.login {width: 100%;height: 100%;background-size: cover;}
-.login u {width: 100%;height: 100%;position: fixed;top: 0;left: 0;background-image: url(../images/login.svg);}
+.login {width: 100%;height: 100%;}
+.login u {width: 100%;height: 100%;position: fixed;top: 0;left: 0;background-image: url(../images/login.svg);background-size: cover;}
 .login-main {width: 90%;max-width: 550px;background-color: white;box-shadow: 0 5px 10px var(--color-basic-1);padding: 30px;animation-duration: .5s;}
 .login-title {padding: 10px 0;}
 .login-title h1 {margin: auto;transform: scale(1.3);}

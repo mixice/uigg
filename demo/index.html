@@ -426,7 +426,7 @@ class="font-helvetica"
 class="font-tahoma"
 </xmp>
             <h5>effect display</h5>
-            <iframe src="font.html" height="640"></iframe>
+            <iframe src="font.html" height="630"></iframe>
             <a class="btn" href="font.html" target="_blank">view</a>
         </div>
         <div class="cont" id="form">
@@ -973,9 +973,9 @@ class="calendar"
 <xmp>
 <section class="swiper-container swiper-banner">
     <div class="swiper-wrapper">
-        <div class="swiper-slide">one</div>
-        <div class="swiper-slide">two</div>
-        <div class="swiper-slide">three</div>
+        <div class="swiper-slide"></div>
+        <div class="swiper-slide"></div>
+        <div class="swiper-slide"></div>
     </div>
     <div class="swiper-pagination"></div>
     <div class="swiper-button-next"></div>
@@ -1010,22 +1010,17 @@ class="calendar"
 <xmp>
 <section class="swiper-container swiper-list">
     <div class="swiper-wrapper">
-        <div class="swiper-slide">one</div>
-        <div class="swiper-slide">two</div>
-        <div class="swiper-slide">three</div>
-        <div class="swiper-slide">four</div>
-        <div class="swiper-slide">five</div>
-        <div class="swiper-slide">six</div>
-        <div class="swiper-slide">seven</div>
-        <div class="swiper-slide">eight</div>
+        <div class="swiper-slide"></div>
+        <div class="swiper-slide"></div>
+        <div class="swiper-slide"></div>
     </div>
     <div class="swiper-pagination"></div>
     <div class="swiper-button-next"></div>
     <div class="swiper-button-prev"></div>
     <script>
         var swiper = new Swiper('.swiper-list', {
-            slidesPerView: 4,
-            slidesPerGroup: 4, //Scroll by group
+            slidesPerView: 3,
+            //slidesPerGroup: 3
             loop: true,
             loopFillGroupWithBlank: true,
             pagination: {
@@ -1038,16 +1033,16 @@ class="calendar"
             },
             breakpoints: {
                 320: {
-                  slidesPerView: 2,
-                  spaceBetween: 15
+                    slidesPerView: 1,
+                    spaceBetween: 10
                 },
                 720: {
-                  slidesPerView: 3,
-                  spaceBetween: 20
+                    slidesPerView: 2,
+                    spaceBetween: 15
                 },
                 960: {
-                  slidesPerView: 4,
-                  spaceBetween: 30
+                    slidesPerView: 3,
+                    spaceBetween: 20
                 },
             },
         });
@@ -1059,9 +1054,9 @@ class="calendar"
 <xmp>
 <section class="swiper-container swiper-vertical">
     <div class="swiper-wrapper">
-        <div class="swiper-slide">one</div>
-        <div class="swiper-slide">two</div>
-        <div class="swiper-slide">three</div>
+        <div class="swiper-slide"></div>
+        <div class="swiper-slide"></div>
+        <div class="swiper-slide"></div>
     </div>
     <div class="swiper-pagination"></div>
     <script>
@@ -1084,27 +1079,21 @@ class="calendar"
             <h5>swiper gallery code</h5>
             <p>Add the code to the DOM</p>
 <xmp>
-<section>
+<section class="swiper-gallery">
     <div class="swiper-container gallery-top">
         <div class="swiper-wrapper">
-            <div class="swiper-slide" style="background-image: url(https://ui.gg/lib/img?1)"></div>
-            <div class="swiper-slide" style="background-image: url(https://ui.gg/lib/img?2)"></div>
-            <div class="swiper-slide" style="background-image: url(https://ui.gg/lib/img?3)"></div>
-            <div class="swiper-slide" style="background-image: url(https://ui.gg/lib/img?4)"></div>
-            <div class="swiper-slide" style="background-image: url(https://ui.gg/lib/img?5)"></div>
-            <div class="swiper-slide" style="background-image: url(https://ui.gg/lib/img?6)"></div>
+            <div class="swiper-slide"></div>
+            <div class="swiper-slide"></div>
+            <div class="swiper-slide"></div>
         </div>
         <div class="swiper-button-next"></div>
         <div class="swiper-button-prev"></div>
     </div>
     <div class="swiper-container gallery-thumbs">
         <div class="swiper-wrapper">
-            <div class="swiper-slide" style="background-image: url(https://ui.gg/lib/img?1)"></div>
-            <div class="swiper-slide" style="background-image: url(https://ui.gg/lib/img?2)"></div>
-            <div class="swiper-slide" style="background-image: url(https://ui.gg/lib/img?3)"></div>
-            <div class="swiper-slide" style="background-image: url(https://ui.gg/lib/img?4)"></div>
-            <div class="swiper-slide" style="background-image: url(https://ui.gg/lib/img?5)"></div>
-            <div class="swiper-slide" style="background-image: url(https://ui.gg/lib/img?6)"></div>
+            <div class="swiper-slide"></div>
+            <div class="swiper-slide"></div>
+            <div class="swiper-slide"></div>
         </div>
     </div>
     <script>
@@ -1132,14 +1121,57 @@ class="calendar"
     </script>
 </section>
 </xmp>
+            <h5>swiper relative code</h5>
+            <p>Add the code to the DOM</p>
+<xmp>
+<section class="swiper-relative">
+    <div class="swiper-container relative-top">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide"></div>
+            <div class="swiper-slide"></div>
+            <div class="swiper-slide"></div>
+        </div>
+    </div>
+    <div class="swiper-container relative-thumb">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide"></div>
+            <div class="swiper-slide"></div>
+            <div class="swiper-slide"></div>
+        </div>
+    </div>
+    <script>
+        var relativeTop = new Swiper('.relative-top',{
+            loop: true,
+            loopedSlides: 5,
+        });
+        var relativeThumb = new Swiper('.relative-thumb',{
+            spaceBetween: 10,
+            slidesPerView : 5,
+            centeredSlides : true,
+            loop: true,
+            loopedSlides: 5,
+            slideToClickedSlide: true,
+            controller: {
+                control: relativeTop,
+            },
+        });
+    </script>
+</section>
+</xmp>
             <h5>swiper animate code</h5>
             <p>Add the code to the DOM</p>
 <xmp>
 <section class="swiper-container swiper-animate">
     <div class="swiper-wrapper">
-        <div class="swiper-slide"><p class="ani" swiper-animate-effect="anime-fade-in-up" swiper-animate-duration=".6s" swiper-animate-delay=".3s">swiper</p></div>
-        <div class="swiper-slide"><p class="ani" swiper-animate-effect="anime-fade-in-right" swiper-animate-duration=".6s" swiper-animate-delay=".3s">swiper</p></div>
-        <div class="swiper-slide"><p class="ani" swiper-animate-effect="anime-zoom-in" swiper-animate-duration=".6s" swiper-animate-delay=".3s">swiper</p></div>
+        <div class="swiper-slide center">
+            <p class="ani" swiper-animate-effect="anime-fade-in-up" swiper-animate-duration=".6s" swiper-animate-delay=".3s"></p>
+        </div>
+        <div class="swiper-slide center">
+            <p class="ani" swiper-animate-effect="anime-fade-in-right" swiper-animate-duration=".6s" swiper-animate-delay=".3s"></p>
+        </div>
+        <div class="swiper-slide center">
+            <p class="ani" swiper-animate-effect="anime-zoom-in" swiper-animate-duration=".6s" swiper-animate-delay=".3s"></p>
+        </div>
     </div>
     <div class="swiper-pagination"></div>
     <div class="swiper-button-next"></div>
@@ -1168,51 +1200,115 @@ class="calendar"
     </script>
 </section>
 </xmp>
-            <h5>swiper tab code</h5>
+            <h5>swiper lug code</h5>
             <p>Add the code to the DOM</p>
 <xmp>
-<section>
-    <div class="swiper-tab-btn">
-        <a class="default" id="swiper-btn-1">1</a>
-        <a id="swiper-btn-2">2</a>
-        <a id="swiper-btn-3">3</a>
-        <a id="swiper-btn-4">4</a>
-        <a id="swiper-btn-5">5</a>
+<section class="swiper-lug">
+    <div class="lug-thumbs">
+        <a id="lug-1" class="active"></a>
+        <a id="lug-2"></a>
+        <a id="lug-3"></a>
     </div>
-    <div class="swiper-container swiper-tab">
+    <div class="swiper-container lug-top">
         <div class="swiper-wrapper">
-            <div class="swiper-slide">one</div>
-            <div class="swiper-slide">two</div>
-            <div class="swiper-slide">three</div>
-            <div class="swiper-slide">four</div>
-            <div class="swiper-slide">five</div>
+            <div class="swiper-slide"></div>
+            <div class="swiper-slide"></div>
+            <div class="swiper-slide"></div>
         </div>
     </div>
     <script>
-        var mySwiper = new Swiper('.swiper-tab',{
+        var mySwiper = new Swiper('.lug-top',{
             loop: true,
             //effect : 'fade',
         });
-        $('#swiper-btn-1').click(function(){
+        $('#lug-1').click(function(){
             mySwiper.slideToLoop(0, 1000, false);
         })
-        $('#swiper-btn-2').click(function(){
+        $('#lug-2').click(function(){
             mySwiper.slideToLoop(1, 1000, false);
         })
-        $('#swiper-btn-3').click(function(){
+        $('#lug-3').click(function(){
             mySwiper.slideToLoop(2, 1000, false);
-        })
-        $('#swiper-btn-4').click(function(){
-            mySwiper.slideToLoop(3, 1000, false);
-        })
-        $('#swiper-btn-5').click(function(){
-            mySwiper.slideToLoop(4, 1000, false);
         })
     </script>
 </section>
 </xmp>
+            <h5>swiper scrollbar code</h5>
+            <p>Add the code to the DOM</p>
+<xmp>
+<section class="swiper-container swiper-scroll">
+    <div class="swiper-wrapper">
+        <div class="swiper-slide"></div>
+        <div class="swiper-slide"></div>
+        <div class="swiper-slide"></div>
+    </div>
+    <div class="swiper-scrollbar"></div>
+    <script>
+        var swiper = new Swiper('.swiper-scroll', {
+            scrollbar: {
+                el: '.swiper-scrollbar',
+                hide: true,
+            },
+        });
+    </script>
+</section>
+</xmp>
+            <h5>swiper coverflow code</h5>
+            <p>Add the code to the DOM</p>
+<xmp>
+<section class="swiper-container swiper-coverflow">
+    <div class="swiper-wrapper">
+        <div class="swiper-slide"></div>
+        <div class="swiper-slide"></div>
+        <div class="swiper-slide"></div>
+    </div>
+    <div class="swiper-pagination"></div>
+    <script>
+        var swiper = new Swiper('.swiper-coverflow', {
+            effect: 'coverflow',
+            grabCursor: true,
+            centeredSlides: true,
+            slidesPerView: 'auto',
+            coverflowEffect: {
+                rotate: 50,
+                stretch: 0,
+                depth: 100,
+                modifier: 1,
+                slideShadows: true,
+            },
+            pagination: {
+                el: '.swiper-pagination',
+            },
+        });
+    </script>
+</section>
+</xmp>
+            <h5>swiper parallax code</h5>
+            <p>Add the code to the DOM</p>
+<xmp>
+<section class="swiper-container swiper-parallax">
+    <div class="parallax-bg" style="background-image: url()" data-swiper-parallax="-23%"></div>
+    <div class="swiper-wrapper">
+        <div class="swiper-slide center">
+            <h3 data-swiper-parallax="-300"><span data-swiper-parallax="100"></span></h3>
+        </div>
+        <div class="swiper-slide center">
+            <h3 data-swiper-parallax="-300"><span data-swiper-parallax="100"></span></h3>
+        </div>
+        <div class="swiper-slide center">
+            <h3 data-swiper-parallax="-300"><span data-swiper-parallax="100"></span></h3>
+        </div>
+    </div>
+    <script>
+        var swiper = new Swiper('.swiper-parallax', {
+            speed: 600,
+            parallax: true,
+        });
+    </script>
+</section>
+</xmp>
             <h5>effect display</h5>
-            <iframe src="swiper.html" height="1400"></iframe>
+            <iframe src="swiper.html" height="600"></iframe>
             <a class="btn" href="swiper.html" target="_blank">view</a>
         </div>
         <h2><i class="ico ico-app"></i>General library</h2>

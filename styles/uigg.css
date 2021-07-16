@@ -574,7 +574,7 @@ select {padding: 0 50px 0 10px;}
 
 .upload {float: left;}
 .upload-group,
-.upload-add {width: 100px;height: 100px;float: left;margin: 0 10px 10px 0;background-color: var(--f7);line-height: 100px;font-size: 48px;color: var(--000-2);}
+.upload-add {width: 100px;height: 100px;float: left;margin: 0 10px 10px 0;background-color: var(--f7);line-height: 100px;font-size: 36px;color: var(--000-2);}
 .upload-group {position: relative;background-size: cover;}
 .upload-group input[type="file"] {width: 100%;height: 100%;position: absolute;top: 0;left: 0;opacity: 0;}
 .upload x {position: absolute;top: 0;right: 0;background-color: var(--red);color: white;border-radius: 0 0 0 36px;width: 36px;height: 36px;line-height: 30px;font-size: 24px;margin: 0;padding: 0 0 10px 10px;}
@@ -634,7 +634,7 @@ select {padding: 0 50px 0 10px;}
 
     .upload {padding-top: .1rem;flex: 1;}
     .upload-group,
-    .upload-add {width: 1.1rem;height: 1.1rem;margin: 0 .1rem .1rem 0;line-height: 1.1rem;font-size: .5rem;}
+    .upload-add {width: 1.1rem;height: 1.1rem;margin: 0 .1rem .1rem 0;line-height: 1.1rem;font-size: .42rem;}
     .upload x {border-radius: 0 0 0 .5rem;width: .5rem;height: .5rem;line-height: .4rem;font-size: .32rem;padding: 0 0 .1rem .1rem;}
 }
 
@@ -709,8 +709,6 @@ tab-group.active {display: block;}
 .swiper {}
 .swiper-container {width: 100%;height: 100%;}
 .swiper-slide {width: 100%;height: 100%;background-size: cover;}
-.swiper-tab-btn {margin: auto;text-align: center;}
-.swiper-tab-btn a {display: inline-block;}
 .swiper-button-next,.swiper-button-prev {width: 50px;height: 50px;font-size: 40px;line-height: 50px;color: var(--sapphire);margin-top: -25px;}
 .swiper-button-next {right: 0;}
 .swiper-button-prev {left: 0;}
@@ -718,8 +716,17 @@ tab-group.active {display: block;}
 .swiper-button-next:after {font-family: 'ico';content: '';}
 .swiper-pagination .swiper-pagination-bullet-active {background-color: var(--sapphire);}
 
+.parallax-bg {position: absolute;left: 0;top: 0;width: 130%;height: 100%;background-size: cover;}
+
+.lug-thumbs a {display: inline-block;}
+
+.gallery-top,
+.relative-top {margin-bottom: 10px;}
+
 @media(max-width:640px) {
     .swiper-button-next,.swiper-button-prev {width: .5rem;height: .5rem;font-size: .4rem;line-height: .5rem;margin-top: -.25rem;}
+    .gallery-top,
+    .relative-top  {margin-bottom: .1rem;}
 }
 
 /* name */

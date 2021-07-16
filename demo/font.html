@@ -14,25 +14,24 @@
 <body>
 
 <style>
-    span {font-size: 20px;display: block;padding: 5px 0;}
-    .font {display: flex;height: 100%;}
-    .font-name {width: 200px;height: 100%;background-color: var(--f7);overflow: auto;}
-    .font-name h4 {padding: 20px;}
-    .font-name a {display: block;text-transform: capitalize;line-height: 40px;padding: 0 20px;}
-    .font-name a:hover {background-color: var(--eee);}
-    .font-name a.active {background-color: var(--ddd);}
-    .font-view {flex: 1;height: 100%;overflow: auto;}
-    .font-view > * {font-size: 30px;margin: 30px;display: block;word-break: break-all;}
-    .font-view a {}
-    .font-view b {}
-    .font-view u {text-transform: uppercase;}
-    .font-view p {font-size: 16px;}
+    .subject {display: flex;height: 100%;}
+    .sider {width: 200px;height: 100%;background-color: var(--f7);overflow: auto;}
+    .sider h4 {padding: 20px;}
+    .sider a {display: block;text-transform: capitalize;line-height: 35px;padding: 0 20px;}
+    .sider a:hover {background-color: var(--eee);}
+    .sider a.active {background-color: var(--ddd);}
+    .contant {flex: 1;height: 100%;overflow: auto;}
+    .contant > * {font-size: 30px;margin: 30px;display: block;word-break: break-all;}
+    .contant a {}
+    .contant b {}
+    .contant u {text-transform: uppercase;}
+    .contant p {font-size: 16px;}
 </style>
 
 <!----------------------------------------------------------------------------------------->
 
-<section class="font">
-    <div class="font-name">
+<section class="subject">
+    <div class="sider">
         <h4>web font</h4>
         <a class="din">din</a>
         <a class="din-bold">din-bold</a>
@@ -69,7 +68,7 @@
         <a class="helvetica">helvetica</a>
         <a class="tahoma">tahoma</a>
     </div>
-    <div class="font-view">
+    <div class="contant">
         <a>abcdefghijklmnopqrstuvwxyz</a>
         <b>abcdefghijklmnopqrstuvwxyz</b>
         <u>abcdefghijklmnopqrstuvwxyz</u>
@@ -87,43 +86,43 @@
 <!----------------------------------------------------------------------------------------->
 
 <script>
-    $('.font-name a').click(function(){
+    $('.sider a').click(function(){
         $(this).addClass('active').siblings().removeClass('active');
     });
-    $('.din').click(function(){$('.font-view *').attr('class','font-din');});
-    $('.din-bold').click(function(){$('.font-view *').attr('class','font-din-bold');});
-    $('.gotham').click(function(){$('.font-view *').attr('class','font-gotham');});
-    $('.gotham-bold').click(function(){$('.font-view *').attr('class','font-gotham-bold');});
-    $('.lat').click(function(){$('.font-view *').attr('class','font-lat');});
-    $('.lat-bold').click(function(){$('.font-view *').attr('class','font-lat-bold');});
-    $('.moto').click(function(){$('.font-view *').attr('class','font-moto');});
-    $('.moto-bold').click(function(){$('.font-view *').attr('class','font-moto-bold');});
-    $('.museo').click(function(){$('.font-view *').attr('class','font-museo');});
-    $('.museo-bold').click(function(){$('.font-view *').attr('class','font-museo-bold');});
-    $('.raleway').click(function(){$('.font-view *').attr('class','font-raleway');});
-    $('.raleway-bold').click(function(){$('.font-view *').attr('class','font-raleway-bold');});
-    $('.read').click(function(){$('.font-view *').attr('class','font-read');});
-    $('.read-bold').click(function(){$('.font-view *').attr('class','font-read-bold');});
-    $('.renault').click(function(){$('.font-view *').attr('class','font-renault');});
-    $('.renault-bold').click(function(){$('.font-view *').attr('class','font-renault-bold');});
-    $('.renaultgroup').click(function(){$('.font-view *').attr('class','font-renaultgroup');});
-    $('.renaultgroup-bold').click(function(){$('.font-view *').attr('class','font-renaultgroup-bold');});
-    $('.santander').click(function(){$('.font-view *').attr('class','font-santander');});
-    $('.santander-bold').click(function(){$('.font-view *').attr('class','font-santander-bold');});
+    $('.din').click(function(){$('.contant *').attr('class','font-din');});
+    $('.din-bold').click(function(){$('.contant *').attr('class','font-din-bold');});
+    $('.gotham').click(function(){$('.contant *').attr('class','font-gotham');});
+    $('.gotham-bold').click(function(){$('.contant *').attr('class','font-gotham-bold');});
+    $('.lat').click(function(){$('.contant *').attr('class','font-lat');});
+    $('.lat-bold').click(function(){$('.contant *').attr('class','font-lat-bold');});
+    $('.moto').click(function(){$('.contant *').attr('class','font-moto');});
+    $('.moto-bold').click(function(){$('.contant *').attr('class','font-moto-bold');});
+    $('.museo').click(function(){$('.contant *').attr('class','font-museo');});
+    $('.museo-bold').click(function(){$('.contant *').attr('class','font-museo-bold');});
+    $('.raleway').click(function(){$('.contant *').attr('class','font-raleway');});
+    $('.raleway-bold').click(function(){$('.contant *').attr('class','font-raleway-bold');});
+    $('.read').click(function(){$('.contant *').attr('class','font-read');});
+    $('.read-bold').click(function(){$('.contant *').attr('class','font-read-bold');});
+    $('.renault').click(function(){$('.contant *').attr('class','font-renault');});
+    $('.renault-bold').click(function(){$('.contant *').attr('class','font-renault-bold');});
+    $('.renaultgroup').click(function(){$('.contant *').attr('class','font-renaultgroup');});
+    $('.renaultgroup-bold').click(function(){$('.contant *').attr('class','font-renaultgroup-bold');});
+    $('.santander').click(function(){$('.contant *').attr('class','font-santander');});
+    $('.santander-bold').click(function(){$('.contant *').attr('class','font-santander-bold');});
     
-    $('.uigg').click(function(){$('.font-view *').attr('class','font-uigg');});
-    $('.yahei').click(function(){$('.font-view *').attr('class','font-yahei');});
-    $('.jhenghei').click(function(){$('.font-view *').attr('class','font-jhenghei');});
-    $('.nsimsun').click(function(){$('.font-view *').attr('class','font-nsimsun');});
-    $('.kaiti').click(function(){$('.font-view *').attr('class','font-kaiti');});
-    $('.lisu').click(function(){$('.font-view *').attr('class','font-lisu');});
-    $('.youyuan').click(function(){$('.font-view *').attr('class','font-youyuan');});
-    $('.fangsong').click(function(){$('.font-view *').attr('class','font-fangsong');});
-    $('.xingkai').click(function(){$('.font-view *').attr('class','font-xingkai');});
-    $('.xinwei').click(function(){$('.font-view *').attr('class','font-xinwei');});
-    $('.arial').click(function(){$('.font-view *').attr('class','font-arial');});
-    $('.helvetica').click(function(){$('.font-view *').attr('class','font-helvetica');});
-    $('.tahoma').click(function(){$('.font-view *').attr('class','font-tahoma');});
+    $('.uigg').click(function(){$('.contant *').attr('class','font-uigg');});
+    $('.yahei').click(function(){$('.contant *').attr('class','font-yahei');});
+    $('.jhenghei').click(function(){$('.contant *').attr('class','font-jhenghei');});
+    $('.nsimsun').click(function(){$('.contant *').attr('class','font-nsimsun');});
+    $('.kaiti').click(function(){$('.contant *').attr('class','font-kaiti');});
+    $('.lisu').click(function(){$('.contant *').attr('class','font-lisu');});
+    $('.youyuan').click(function(){$('.contant *').attr('class','font-youyuan');});
+    $('.fangsong').click(function(){$('.contant *').attr('class','font-fangsong');});
+    $('.xingkai').click(function(){$('.contant *').attr('class','font-xingkai');});
+    $('.xinwei').click(function(){$('.contant *').attr('class','font-xinwei');});
+    $('.arial').click(function(){$('.contant *').attr('class','font-arial');});
+    $('.helvetica').click(function(){$('.contant *').attr('class','font-helvetica');});
+    $('.tahoma').click(function(){$('.contant *').attr('class','font-tahoma');});
 </script>
 
 </body>
