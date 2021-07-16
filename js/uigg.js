@@ -191,28 +191,27 @@ function browserTitle(){
 //----------------------------------------------------------------------------------random
 $(function(){
     $('[src~="uigg-img"]').each(function(){
-        $(this).attr('src','https://ui.gg/lib/img?='+Math.floor(Math.random()*100));
+        $(this).attr('src','https://ui.gg/lib/images/img?=' + Math.floor(Math.random() * 100));
     });
     $('[src~="uigg-product"]').each(function(){
-        $(this).attr('src','https://ui.gg/lib/product?='+Math.floor(Math.random()*100));
+        $(this).attr('src','https://ui.gg/lib/images/product?=' + Math.floor(Math.random() * 100));
     });
     $('[src~="uigg-bg"]').each(function(){
-        $(this).attr('src','https://ui.gg/lib/bg?='+Math.floor(Math.random()*100));
+        $(this).attr('src','https://ui.gg/lib/images/bg?=' + Math.floor(Math.random() * 100));
     });
-    $('[src~="uigg-avatar"]').each(function(){
-        $(this).attr('src','https://ui.gg/lib/avatar?='+Math.floor(Math.random()*100));
+    $('[src~="uigg-avatar"]').each(function(){$(this).attr('src','https://ui.gg/lib/images/avatar?=' + Math.floor(Math.random() * 100));
     });
     $('[style~="uigg-img"]').each(function(){
-        $(this).attr('style','background-image: url(https://ui.gg/lib/img?='+Math.floor(Math.random()*100)+');');
+        $(this).attr('style','background-image: url(https://ui.gg/lib/images/img?=' + Math.floor(Math.random() * 100) +');');
     });
     $('[style~="uigg-product"]').each(function(){
-        $(this).attr('style','background-image: url(https://ui.gg/lib/product?='+Math.floor(Math.random()*100)+');');
+        $(this).attr('style','background-image: url(https://ui.gg/lib/images/product?=' + Math.floor(Math.random() * 100) +');');
     });
     $('[style~="uigg-bg"]').each(function(){
-        $(this).attr('style','background-image: url(https://ui.gg/lib/bg?='+Math.floor(Math.random()*100)+');');
+        $(this).attr('style','background-image: url(https://ui.gg/lib/images/bg?=' + Math.floor(Math.random() * 100) +');');
     });
     $('[style~="uigg-avatar"]').each(function(){
-        $(this).attr('style','background-image: url(https://ui.gg/lib/avatar?='+Math.floor(Math.random()*100)+');');
+        $(this).attr('style','background-image: url(https://ui.gg/lib/images/avatar?=' + Math.floor(Math.random() * 100) +');');
     });
     $('uigg-title').each(function(){
         var len = 10;

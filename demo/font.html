@@ -14,40 +14,117 @@
 <body>
 
 <style>
-    section {padding: 30px;}
     span {font-size: 20px;display: block;padding: 5px 0;}
+    .font {display: flex;height: 100%;}
+    .font-name {width: 200px;height: 100%;background-color: var(--f7);overflow: auto;}
+    .font-name h4 {padding: 20px;}
+    .font-name a {display: block;text-transform: capitalize;line-height: 40px;padding: 0 20px;}
+    .font-name a:hover {background-color: var(--eee);}
+    .font-name a.active {background-color: var(--ddd);}
+    .font-view {flex: 1;height: 100%;overflow: auto;}
+    .font-view > * {font-size: 30px;margin: 30px;display: block;word-break: break-all;}
+    .font-view a {}
+    .font-view b {}
+    .font-view u {text-transform: uppercase;}
+    .font-view p {font-size: 16px;}
 </style>
 
 <!----------------------------------------------------------------------------------------->
 
-<section>
-   <span class="font-uigg">雅黑苹方 Lorem ipsum dolor sit amet</span>
-   <span class="font-yahei">微软雅黑 Lorem ipsum dolor sit amet</span>
-   <span class="font-jhenghei">微软正黑 Lorem ipsum dolor sit amet</span>
-   <span class="font-nsimsun">新宋体 Lorem ipsum dolor sit amet</span>
-   <span class="font-kaiti">楷体 Lorem ipsum dolor sit amet</span>
-   <span class="font-lisu">隶书 Lorem ipsum dolor sit amet</span> 
-   <span class="font-youyuan">幼圆 Lorem ipsum dolor sit amet</span>
-   <span class="font-fangsong">仿宋 Lorem ipsum dolor sit amet</span>
-   <span class="font-xingkai">华文行楷 Lorem ipsum dolor sit amet</span>
-   <span class="font-Xinwei">华文新魏 Lorem ipsum dolor sit amet</span>
-   <span class="font-arial">"arial Lorem ipsum dolor sit amet</span>
-   <span class="font-helvetica">"helvetica Lorem ipsum dolor sit amet</span>
-   <span class="font-tahoma">"tahoma Lorem ipsum dolor sit amet</span>
-   <br>
-   <h1>h1 Lorem ipsum dolor sit amet</h1>
-   <h2>h2 Lorem ipsum dolor sit amet</h2>
-   <h3>h3 Lorem ipsum dolor sit amet</h3>
-   <h4>h4 Lorem ipsum dolor sit amet</h4>
-   <h5>h5 Lorem ipsum dolor sit amet</h5>
-   <h6>h6 Lorem ipsum dolor sit amet</h6>
-   <br>
-   <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+<section class="font">
+    <div class="font-name">
+        <h4>web font</h4>
+        <a class="din">din</a>
+        <a class="din-bold">din-bold</a>
+        <a class="gotham">gotham</a>
+        <a class="gotham-bold">gotham-bold</a>
+        <a class="lat">lat</a>
+        <a class="lat-bold">lat-bold</a>
+        <a class="moto">moto</a>
+        <a class="moto-bold">moto-bold</a>
+        <a class="museo">museo</a>
+        <a class="museo-bold">museo-bold</a>
+        <a class="raleway">raleway</a>
+        <a class="raleway-bold">raleway-bold</a>
+        <a class="read">read</a>
+        <a class="read-bold">read-bold</a>
+        <a class="renault">renault</a>
+        <a class="renault-bold">renault-bold</a>
+        <a class="renaultgroup">renaultgroup</a>
+        <a class="renaultgroup-bold">renaultgroup-bold</a>
+        <a class="santander">santander</a>
+        <a class="santander-bold">santander-bold</a>
+        <h4>local font</h4>
+        <a class="uigg">uigg</a>
+        <a class="yahei">微软雅黑</a>
+        <a class="jhenghei">微软正黑</a>
+        <a class="nsimsun">新宋体</a>
+        <a class="kaiti">楷体</a>
+        <a class="lisu">隶书</a>
+        <a class="youyuan">幼圆</a>
+        <a class="fangsong">仿宋</a>
+        <a class="xingkai">华文行楷</a>
+        <a class="xinwei">华文新魏</a>
+        <a class="arial">arial</a>
+        <a class="helvetica">helvetica</a>
+        <a class="tahoma">tahoma</a>
+    </div>
+    <div class="font-view">
+        <a>abcdefghijklmnopqrstuvwxyz</a>
+        <b>abcdefghijklmnopqrstuvwxyz</b>
+        <u>abcdefghijklmnopqrstuvwxyz</u>
+        <u><b>abcdefghijklmnopqrstuvwxyz</b></u>
+        <a>,.|/\:;"'<>{}[]()-=_+`~!@#$%^&*</a>
+        <a><b>,.|/\:;"'<>{}[]()-=_+`~!@#$%^&*</b></a>
+        <a>1234567890<b>1234567890</b></a>
+        <p>abcdefghijklmnopqrstuvwxyz,.|/\:;"'<>{}[]()-=_+`~!@#$%^&*1234567890</p>
+        <p><b>abcdefghijklmnopqrstuvwxyz,.|/\:;"'<>{}[]()-=_+`~!@#$%^&*1234567890</b></p>
+        <p><uigg-txt></uigg-txt></p>
    <p>时光之河缓缓地流淌着，走过春的明媚，趟过夏的繁华，涉足秋的静美，静立于冬的冷峻。一颗心在岁月的磨砺中，少了棱角，渐渐学会了适应，变得如一枚鹅卵石般的光滑。想来，生活应顺其自然，随遇而安，如行云般自在，像流水般洒脱，才是人生应有的姿态。</p>
-    
+    </div>
 </section>
 
 <!----------------------------------------------------------------------------------------->
+
+<script>
+    $('.font-name a').click(function(){
+        $(this).addClass('active').siblings().removeClass('active');
+    });
+    $('.din').click(function(){$('.font-view *').attr('class','font-din');});
+    $('.din-bold').click(function(){$('.font-view *').attr('class','font-din-bold');});
+    $('.gotham').click(function(){$('.font-view *').attr('class','font-gotham');});
+    $('.gotham-bold').click(function(){$('.font-view *').attr('class','font-gotham-bold');});
+    $('.lat').click(function(){$('.font-view *').attr('class','font-lat');});
+    $('.lat-bold').click(function(){$('.font-view *').attr('class','font-lat-bold');});
+    $('.moto').click(function(){$('.font-view *').attr('class','font-moto');});
+    $('.moto-bold').click(function(){$('.font-view *').attr('class','font-moto-bold');});
+    $('.museo').click(function(){$('.font-view *').attr('class','font-museo');});
+    $('.museo-bold').click(function(){$('.font-view *').attr('class','font-museo-bold');});
+    $('.raleway').click(function(){$('.font-view *').attr('class','font-raleway');});
+    $('.raleway-bold').click(function(){$('.font-view *').attr('class','font-raleway-bold');});
+    $('.read').click(function(){$('.font-view *').attr('class','font-read');});
+    $('.read-bold').click(function(){$('.font-view *').attr('class','font-read-bold');});
+    $('.renault').click(function(){$('.font-view *').attr('class','font-renault');});
+    $('.renault-bold').click(function(){$('.font-view *').attr('class','font-renault-bold');});
+    $('.renaultgroup').click(function(){$('.font-view *').attr('class','font-renaultgroup');});
+    $('.renaultgroup-bold').click(function(){$('.font-view *').attr('class','font-renaultgroup-bold');});
+    $('.santander').click(function(){$('.font-view *').attr('class','font-santander');});
+    $('.santander-bold').click(function(){$('.font-view *').attr('class','font-santander-bold');});
+    
+    $('.uigg').click(function(){$('.font-view *').attr('class','font-uigg');});
+    $('.yahei').click(function(){$('.font-view *').attr('class','font-yahei');});
+    $('.jhenghei').click(function(){$('.font-view *').attr('class','font-jhenghei');});
+    $('.nsimsun').click(function(){$('.font-view *').attr('class','font-nsimsun');});
+    $('.kaiti').click(function(){$('.font-view *').attr('class','font-kaiti');});
+    $('.lisu').click(function(){$('.font-view *').attr('class','font-lisu');});
+    $('.youyuan').click(function(){$('.font-view *').attr('class','font-youyuan');});
+    $('.fangsong').click(function(){$('.font-view *').attr('class','font-fangsong');});
+    $('.xingkai').click(function(){$('.font-view *').attr('class','font-xingkai');});
+    $('.xinwei').click(function(){$('.font-view *').attr('class','font-xinwei');});
+    $('.arial').click(function(){$('.font-view *').attr('class','font-arial');});
+    $('.helvetica').click(function(){$('.font-view *').attr('class','font-helvetica');});
+    $('.tahoma').click(function(){$('.font-view *').attr('class','font-tahoma');});
+</script>
 
 </body>
 </html>

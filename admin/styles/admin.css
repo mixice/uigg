@@ -1,15 +1,15 @@
-/*blue*/
+/*color*/
 :root {
-    --color-white:#f6f9fc;
-    --color-shallow:#e5f4ff;
-    --color-obviou:#dde6ef;
-    --color-obviou-5:rgb(221,230,239,.5);
-    --color-bright:#95ceff;
-    --color-basic:#2098ff;
-    --color-basic-1:rgb(32,152,255,.1);
-    --color-strong:#0074d6;
-    --color-deep:#002e57;
-    --color-dark:#00192f;
+    --color-white:#f9f9fd;
+    --color-shallow:#ebeaff;
+    --color-obviou:#e6e5ef;
+    --color-obviou-5:rgb(230, 229, 239,.5);
+    --color-bright:#a49fff;
+    --color-basic:#6c62f9;
+    --color-basic-1:rgb(108, 98, 249,.1);
+    --color-strong:#4a41c4;
+    --color-deep:#302d5f;
+    --color-dark:#1a1838;
     --color-black:;
 }
 
@@ -61,7 +61,6 @@ body {background: var(--color-white);}
 .logo i {width: 60px;height: 60px;display: block;background-image: url(../../images/logo.svg);background-size: 85%;}
 .logo span {flex: 1;}
 .logo em {font-weight: 300;}
-.logo-uigg {filter: hue-rotate(-47deg) saturate(200%);}
 .head-cont {animation-delay: .3s;padding: 20px;}
 .head-info {margin: 0 0 0 20px;}
 .head-info span {line-height: 40px;text-transform: capitalize;}
@@ -135,7 +134,7 @@ drop-list a:hover {background-color: var(--color-basic);}
 .title h4 a {float: right;width: 40px;line-height: 35px;}
 .title h5 {line-height: 50px;padding: 0 20px;color: var(--color-basic);border-bottom: 1px var(--color-shallow) solid;}
 .title h5 a {float: right;margin: 5px 0 5px 5px;}
-.title h5 cite {font-weight: normal;color: var(--ccc);font-size: 14px;padding: 0 20px;}
+.title h5 cite {font-weight: normal;color: var(--color-obviou);font-size: 14px;padding: 0 20px;}
 
 .title .return {padding: 0 10px;border-right: 1px var(--color-obviou) solid;margin-right: 10px;}
 
@@ -392,13 +391,15 @@ pop-cont {padding: 20px 0;}
 }
 
 /*login*/
-.login {width: 100%;height: 100%;background-size: cover;background-image: url(../images/login.svg);}
+.login {width: 100%;height: 100%;background-size: cover;}
+.login u {width: 100%;height: 100%;position: fixed;top: 0;left: 0;background-image: url(../images/login.svg);}
 .login-main {width: 90%;max-width: 550px;background-color: white;box-shadow: 0 5px 10px var(--color-basic-1);padding: 30px;animation-duration: .5s;}
 .login-title {padding: 10px 0;}
 .login-title h1 {margin: auto;transform: scale(1.3);}
 .login-cont {}
 .login-form {padding: 0 10px;}
 .login-form li {position: relative;display: flex;}
+.login-form li:last-child {border-bottom: 0;}
 .login-form li *:last-child {margin-right: 0;}
 .login-form li i {width: 50px;position: absolute;left: 0;top:10px;line-height: 50px;font-size: 24px;}
 .login-form li input {padding: 0 10px 0 50px;}

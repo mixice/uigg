@@ -1,0 +1,20 @@
+/*black*/
+:root {
+    --color-white: var(--f7);
+    --color-shallow: var(--eee);
+    --color-obviou: var(--ddd);
+    --color-obviou-5: var(--000-1);
+    --color-bright: var(--000-5);
+    --color-basic: var(--333);
+    --color-basic-1: var(--000-1);
+    --color-strong: var(--666);
+    --color-deep: var(--222);
+    --color-dark: var(--111);
+    --color-black:;
+}
+
+/*head*/
+.logo i {filter: grayscale(100%);}
+
+/*login*/
+.login u {filter: grayscale(100%);}
