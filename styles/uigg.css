@@ -51,7 +51,7 @@ z {display: inline-block;transition-duration: 0s;}
 ::-webkit-scrollbar-thumb {background-color: var(--eee);}
 
 @media(max-width:640px) {
-	html,body {font-size: .18rem;}
+	html,body {font-size: .2rem;}
 	::-webkit-scrollbar {width: .03rem;}
     body::-webkit-scrollbar {width: 0;}
 }
@@ -338,7 +338,7 @@ a[title="到百度地图查看此区域"] {display: none;}
 .font-tahoma {font-family: tahoma;}
 
 h1,h2,h3,h4,h5,h6 {font-weight: bold;text-transform: capitalize;}
-h1 {font-size: 24px;}
+h1 {font-size: 26px;}
 h2 {font-size: 22px;}
 h3 {font-size: 20px;}
 h4 {font-size: 18px;}
@@ -346,12 +346,12 @@ h5 {font-size: 16px;}
 h6 {font-size: 14px;}
 
 @media(max-width:640px) {
-	h1 {font-size: .28rem;}
-	h2 {font-size: .26rem;}
-	h3 {font-size: .24rem;}
-	h4 {font-size: .22rem;}
-	h5 {font-size: .2rem;}
-	h6 {font-size: .18rem;}
+	h1 {font-size: .32rem;}
+	h2 {font-size: .28rem;}
+	h3 {font-size: .26rem;}
+	h4 {font-size: .24rem;}
+	h5 {font-size: .22rem;}
+	h6 {font-size: .2rem;}
 }
 
 /* pop */
@@ -382,14 +382,14 @@ pop-sider {top: 0;left: 0;width: 300px;height: 100%;background-color: white;}
 }
 
 /* tip */
-tip {position: fixed;top: 50%;left: 50%;z-index: 999;padding: 10px 20px;background-color: white;transition-duration: 0s;line-height: 24px;border-width: 1px;display: none;}
-tip.zoomIn {animation-duration: .5s;}
-tip .ico {margin-right: 5px;width: 24px;height: 24px;display: block;float: left;}
-tip span {vertical-align: middle;}
+tip {position: fixed;top: 50%;left: 50%;z-index: 999;padding: 10px 15px;background-color: white;transition-duration: 0s;border-width: 1px;display: none;}
+tip .ico,
+tip span {line-height: 24px;vertical-align: middle;margin: 0 2px;}
 
 @media(max-width:640px) {
-	tip {line-height: .32rem;padding: .1rem .2rem;}
-    tip .ico {margin-right: .05rem;width: .32rem;}
+	tip {padding: .1rem .15rem;}
+    tip .ico,
+    tip span {margin: 0 .02rem;line-height: .3rem;}
 }
 
 /* btn */
@@ -662,7 +662,7 @@ page button.active {background-color: var(--sapphire);color: white;}
     page a,
     page button,
     page span,
-    page input {height: .7rem;font-size: .2rem;border-radius: .03rem;}
+    page input {height: .7rem;font-size: .22rem;border-radius: .03rem;}
     page a,
     page .ico,
     page button,
@@ -836,7 +836,7 @@ scaler input {text-align: center;flex: 1;}
 
 @media(max-width:640px) {
     .calendar-single {width: 100%;padding: .1rem;}
-    .calendar-single.is-bound {box-shadow: 0 .1rem .2rem -.1rem var(--000-2);position: fixed !important;left: 0 !important;bottom: 0 !important;top: auto !important;}
+    .calendar-single.is-bound {box-shadow: 0 0 .2rem -.1rem var(--000-2);position: fixed !important;left: 0 !important;bottom: 0 !important;top: auto !important;}
     .calendar-label {padding: 0 .1rem;line-height: .5rem;}
     .calendar-prev,
     .calendar-next {width: .5rem;height: .5rem;}
