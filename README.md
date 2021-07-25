@@ -1,12 +1,44 @@
 # UIGG
 
-uigg is quick CSS scheme, based on LESS and JQuery.
+UIGG is quick CSS scheme, based on LESS and JQuery.
 
-Official website：[ui.gg](https://ui.gg/)
+Official website: [ui.gg](https://ui.gg/)
 
-Author：[mixice.com](http://mixice.com/)
+Icon Library: [uigg ico](https://ui.gg/ico.html)
 
- **uigg 2.0**
+Author: [mixice.com](http://mixice.com/)
+
+ **UIGG 2.0**
+
+1.1 Rewriting a lot of code to adapt to the new industry
+
+2.1 We have designed a new icon library for UIGG, and has been added for use
+
+2.2 Removed Google material icons
+
+3.1 Refactoring some JavaScript
+
+4.1 Module with rate added
+
+5.1 Added web font
+
+6.1 Updated some styles and definitions of swiper
+
+7.1 We have written more cool CSS animation for UIGG, and it is more efficient and concise
+
+7.2 Removed animated.css
+
+8.1 Added a function to separate the text, we call it alone
+
+9.1 Removed the previously attached image, and now it has become an external plug-in
+
+10.1 We wrote some standard examples of buttons
+
+11.1 Drop is added, and we will gradually optimize it later, and finally replace select
+
+12.1 After the ume project becomes UIGG, it is no longer compatible with each other
+
+12.2 UIGG is no longer compatible with any IE version
 
  **ume 1.7**
 
