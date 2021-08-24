@@ -74,21 +74,21 @@ $(function(){
 });
 
 //----------------------------------------------------------------------------------fullscreen
-$(document).on("click",".fullscreen", function toggleFullScreen() {
-    if ((document.fullScreenElement !== undefined && document.fullScreenElement === null) || (document.msFullscreenElement !== undefined && document.msFullscreenElement === null) || (document.mozFullScreen !== undefined && !document.mozFullScreen) || (document.webkitIsFullScreen !== undefined && !document.webkitIsFullScreen)) {
-        if (document.documentElement.requestFullScreen) {
+$(document).on("click",".fullscreen", function toggleFullScreen(){
+    if ((document.fullScreenElement !== undefined && document.fullScreenElement === null) || (document.msFullscreenElement !== undefined && document.msFullscreenElement === null) || (document.mozFullScreen !== undefined && !document.mozFullScreen) || (document.webkitIsFullScreen !== undefined && !document.webkitIsFullScreen)){
+        if (document.documentElement.requestFullScreen){
           document.documentElement.requestFullScreen();
-        } else if (document.documentElement.mozRequestFullScreen) {
+        } else if (document.documentElement.mozRequestFullScreen){
           document.documentElement.mozRequestFullScreen();
-        } else if (document.documentElement.webkitRequestFullScreen) {
+        } else if (document.documentElement.webkitRequestFullScreen){
           document.documentElement.webkitRequestFullScreen(Element.ALLOW_KEYBOARD_INPUT);
         }
     } else {
-        if (document.cancelFullScreen) {
+        if (document.cancelFullScreen){
           document.cancelFullScreen();
-        } else if (document.mozCancelFullScreen) {
+        } else if (document.mozCancelFullScreen){
           document.mozCancelFullScreen();
-        } else if (document.webkitCancelFullScreen) {
+        } else if (document.webkitCancelFullScreen){
           document.webkitCancelFullScreen();
         }
     }
@@ -101,19 +101,19 @@ $(function(){
 });
 
 //----------------------------------------------------------------------------------touch
-jQuery.fn.bindmove = function(newdirect,newfn) {
-    $(this).on("touchstart", function(e) {
-        if (e.cancelable) {
-            if (!e.defaultPrevented) {
+jQuery.fn.bindmove = function(newdirect,newfn){
+    $(this).on("touchstart", function(e){
+        if (e.cancelable){
+            if (!e.defaultPrevented){
                 e.preventDefault();
             }
         }
         startX = e.originalEvent.changedTouches[0].pageX,
         startY = e.originalEvent.changedTouches[0].pageY;
         });
-        $(this).on("touchend", function(e) {
-            if (e.cancelable) {
-            if (!e.defaultPrevented) {
+        $(this).on("touchend", function(e){
+            if (e.cancelable){
+            if (!e.defaultPrevented){
                 e.preventDefault();
             }
         }
@@ -125,16 +125,16 @@ jQuery.fn.bindmove = function(newdirect,newfn) {
         if((X != 0 || Y != 0) && newdirect=='touchall'){
             eval(newfn); return;
         }
-        if ( X > 30  && newdirect=='touchright') {
+        if ( X > 30  && newdirect=='touchright'){
             eval(newfn); return;
         }
-        else if ( X < -30  && newdirect=='touchleft') {
+        else if ( X < -30  && newdirect=='touchleft'){
             eval(newfn); return;
         }
-        else if ( Y > 30 && newdirect=='touchdown') {
+        else if ( Y > 30 && newdirect=='touchdown'){
             eval(newfn); return;
         }
-        else if ( Y < -30  && newdirect=='touchup') {
+        else if ( Y < -30  && newdirect=='touchup'){
             console.log(newfn);
             eval(newfn); return;
         }
@@ -145,10 +145,20 @@ jQuery.fn.bindmove = function(newdirect,newfn) {
 $(function(){
     $('.swiper-button-next').addClass('ico ico-alone-right');
     $('.swiper-button-prev').addClass('ico ico-alone-left');
+});
+function lug(){
     $('.lug-thumbs a').click(function(){
         $(this).addClass('active').siblings().removeClass('active');
     });
-});
+    var mySwiper = new Swiper('.lug-top',{
+        on: {
+            touchEnd: function(swiper,event){
+                var swiperIndex = $('.lug-top .swiper-slide-active').index();
+                $('.lug-thumbs a').eq(swiperIndex).addClass('active').siblings().removeClass('active');
+            },
+        },
+    });
+};
 //swiper-animate 1.03 from the www.swiper.com.cn
 function swiperAnimateCache(a){
 	for (j = 0; j < a.slides.length; j++) for (allBoxes = a.slides[j].querySelectorAll(".ani"), i = 0; i < allBoxes.length; i++) allBoxes[i].attributes["style"] ? allBoxes[i].setAttribute("swiper-animate-style-cache", allBoxes[i].attributes["style"].value) : allBoxes[i].setAttribute("swiper-animate-style-cache", " "),
@@ -202,7 +212,11 @@ $(function(){
     $('[src~="uigg-bg"]').each(function(){
         $(this).attr('src','https://ui.gg/lib/images/bg?=' + Math.floor(Math.random() * 100));
     });
-    $('[src~="uigg-avatar"]').each(function(){$(this).attr('src','https://ui.gg/lib/images/avatar?=' + Math.floor(Math.random() * 100));
+    $('[src~="uigg-avatar"]').each(function(){
+        $(this).attr('src','https://ui.gg/lib/images/avatar?=' + Math.floor(Math.random() * 100));
+    });
+    $('[src~="uigg-color"]').each(function(){
+        $(this).attr('src','https://ui.gg/lib/images/color?=' + Math.floor(Math.random() * 100));
     });
     $('[style~="uigg-img"]').each(function(){
         $(this).attr('style','background-image: url(https://ui.gg/lib/images/img?=' + Math.floor(Math.random() * 100) +');');
@@ -215,6 +229,9 @@ $(function(){
     });
     $('[style~="uigg-avatar"]').each(function(){
         $(this).attr('style','background-image: url(https://ui.gg/lib/images/avatar?=' + Math.floor(Math.random() * 100) +');');
+    });
+    $('[style~="uigg-color"]').each(function(){
+        $(this).attr('style','background-image: url(https://ui.gg/lib/images/color?=' + Math.floor(Math.random() * 100) +');');
     });
     $('uigg-title').each(function(){
         var len = 10;
@@ -237,18 +254,18 @@ $(function(){
 
 //----------------------------------------------------------------------------------disable
 //Disable right click menu
-function disable() {
-    document.oncontextmenu = function (event) {
-        if (window.event) {
+function disable(){
+    document.oncontextmenu = function (event){
+        if (window.event){
             event = window.event;
         }
         try {
             var the = Event.srcElement;
-            if (!((the.tagName == "INPUT" && the.type.toLowerCase() == "text") || the.tagName == "TEXTAREA")) {
+            if (!((the.tagName == "INPUT" && the.type.toLowerCase() == "text") || the.tagName == "TEXTAREA")){
                 return false;
             }
             return true;
-        } catch (e) {
+        } catch (e){
             return false;
         }
     }
@@ -256,24 +273,24 @@ function disable() {
     var arr = [123, 17, 18];
     document.oncontextmenu = new Function("event.returnValue=false;"),
 
-        window.onkeydown = function (e) {
+        window.onkeydown = function (e){
             var keyCode = e.keyCode || e.which || e.charCode;
             var ctrlKey = e.ctrlKey || e.metaKey;
             console.log(keyCode + "--" + keyCode);
-            if (ctrlKey && keyCode == 85) {
+            if (ctrlKey && keyCode == 85){
                 e.preventDefault();
             }
-            if (arr.indexOf(keyCode) > -1) {
+            if (arr.indexOf(keyCode) > -1){
                 e.preventDefault();
             }
         }
     //Disable F12
-    document.onkeydown = function (event) {
-        if (KeyboardEvent.keyCode == 123) {
+    document.onkeydown = function (event){
+        if (KeyboardEvent.keyCode == 123){
             return false;
         }
     }
-    window.onhelp = function () {
+    window.onhelp = function (){
         return false;
     }
 };
@@ -321,7 +338,7 @@ $(function(){
 
 //----------------------------------------------------------------------------------pop
 $(function(){
-    $('pop-main,pop-choice,pop-sider').before('<x></x>');
+    $('pop').append('<x></x>');
     $('pop').addClass('anime-fade-in');
     $('pop-main').wrap('<div class="full center"></div>');
     $('pop-main').addClass('anime-zoom-in');
@@ -339,15 +356,18 @@ $(function(){
         $('menu-cont').toggle();
     });
     $('menu-cont,menu-group').addClass('anime-fade-in');
-    $('menu-cont li').click(function(){
-        var menuGroup = $(this).children('menu-group');
-        if(menuGroup.css('display') == 'block'){
-            menuGroup.hide();
-        }else{
-            $('menu-group').hide();
-            menuGroup.show();
-        };
-    });
+    var docWidth = $(document).width();
+    if(docWidth <= 640){
+        $('menu-cont li').click(function(){
+            var menuGroup = $(this).children('menu-group');
+            if(menuGroup.css('display') == 'block'){
+                menuGroup.hide();
+            }else{
+                $('menu-group').hide();
+                menuGroup.show();
+            };
+        });
+    }
 });
 
 //----------------------------------------------------------------------------------switch
@@ -421,24 +441,27 @@ $(function(){
     $('html').click(function(){
         setTimeout(function(){
              $('tip').hide();
-        },2000);
+        },3000);
     });
 });
 
 //----------------------------------------------------------------------------------drop
 $(function(){
-    $('drop').append('<i class="ico ico-alone-bottom"></i><drop-cont></drop-cont>');
+    $('drop-list').before('<i class="ico ico-alone-right"></i>');
+    $('drop').append('<drop-cont></drop-cont>');
     var dropFirst = $(this).find('drop-list li').html();
     $(this).find('drop-cont').html(dropFirst);
     $('drop-cont').click(function(){
         $(this).parent().toggleClass('active');
     });
     $('drop-list').addClass('anime-fade-in');
-    $('drop-list li:first').before('<x></x>');
+    $('drop-list ul').before('<x></x>');
     $('drop-list li').click(function(){
-        var dropFirst = $(this).html();
-        $(this).parents('drop').find('drop-cont').html(dropFirst);
-        $(this).parents('drop').removeClass('active');
+        if($(this).children('drop-list').length){}else{
+            var dropFirst = $(this).html();
+            $(this).parents('drop').find('drop-cont').html(dropFirst);
+            $(this).parents('drop').removeClass('active');
+        };
     });
     $('drop x').click(function(){
         $(this).parents('drop').removeClass('active');
@@ -481,6 +504,49 @@ $(function(){
 $(function(){
     $('nav').before('<space></space>');
     $('nav').addClass('anime-fade-in-up');
+});
+
+//----------------------------------------------------------------------------------countdown
+var countDate;
+function countdown(){
+    var date = new Date();
+    var now = date.getTime();
+    var endDate = new Date(countDate);
+    var end = endDate.getTime();
+    var leftTime = end-now;
+    var d,h,m,s;
+    if (leftTime>=0){
+        d = Math.floor(leftTime/1000/60/60/24);
+        h = Math.floor(leftTime/1000/60/60%24);
+        m = Math.floor(leftTime/1000/60%60);
+        s = Math.floor(leftTime/1000%60);
+    }
+    function digit(num,n){
+        return (Array(n).join(0) + num).slice(-n);
+    };
+    $('.countdown d').html(d);
+    $('.countdown h').html(digit(h,2));
+    $('.countdown m').html(digit(m,2));
+    $('.countdown s').html(digit(s,2));
+    setTimeout(countdown,1000);
+};
+
+//----------------------------------------------------------------------------------notify
+var notifyValue;
+function notifyAdd(){
+    $('notify').append('<li class="anime-fade-in-right"><x class="ico ico-close"></x>'+ notifyValue +'</li>');
+    $('notify audio')[0].play();
+};
+function notify(){
+    if($('notify').length == 0){
+        $('body').append('<notify><audio src="https://ui.gg/lib/media/notify.mp3"></audio></notify>');
+        notifyAdd();
+    }else{
+        notifyAdd();
+    }
+};
+$(document).on('click','notify x',function(){
+    $(this).parent().hide();
 });
 
 //----------------------------------------------------------------------------------

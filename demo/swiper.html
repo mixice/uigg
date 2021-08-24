@@ -309,7 +309,6 @@
                 </div>
                 <script>
                     var mySwiper = new Swiper('.lug-top',{
-                        loop: true,
                         //effect : 'fade',
                     });
                     $('#lug-1').click(function(){
@@ -326,7 +325,8 @@
                     })
                     $('#lug-5').click(function(){
                         mySwiper.slideToLoop(4, 1000, false);
-                    })
+                    });
+                    lug();
                 </script>
             </section>
         </div>

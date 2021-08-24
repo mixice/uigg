@@ -70,6 +70,8 @@
     }
 </style>
 
+<!----------------------------------------------------------------------------------------->
+
 <section class="subject">
     <section class="sider">
         <u class="ico ico-menu"></u>
@@ -88,6 +90,7 @@
                 <li><a class="smooth" href="#anime">anime</a></li>
                 <li><a class="smooth" href="#browser">browser title</a></li>
                 <li><a class="smooth" href="#button">button</a></li>
+                <li><a class="smooth" href="#countdown">countdown</a></li>
                 <li><a class="smooth" href="#disable">disable</a></li>
                 <li><a class="smooth" href="#drop">drop</a></li>
                 <li><a class="smooth" href="#font">font</a></li>
@@ -96,6 +99,7 @@
                 <li><a class="smooth" href="#load">load</a></li>
                 <li><a class="smooth" href="#menu">menu</a></li>
                 <li><a class="smooth" href="#mix">mix</a></li>
+                <li><a class="smooth" href="#notify">notify</a></li>
                 <li><a class="smooth" href="#page">page</a></li>
                 <li><a class="smooth" href="#random">random</a></li>
                 <li><a class="smooth" href="#rate">rate</a></li>
@@ -290,12 +294,13 @@ class="anime-zoom-out"
 
 class="anime-shrink-in"
 class="anime-shrink-out"
-class="anime-shrink-enlarge-in"
-class="anime-shrink-enlarge-out"
+class="anime-shrink-in-enlarge"
+class="anime-shrink-out-enlarge"
 </xmp>
-            <p>If you want the animation to loop all the time, add the class to the DOM</p>
+            <p>If you want the some effects, add the class to the DOM</p>
 <xmp>
 class="infinite"
+class="alternate"
 </xmp>
             <h5>effect display</h5>
             <iframe src="anime.html" height="400"></iframe>
@@ -350,6 +355,29 @@ class="btn btn-disable"
             <iframe src="button.html" height="500"></iframe>
             <a class="btn" href="button.html" target="_blank">view</a>
         </div>
+        <div class="cont" id="countdown">
+            <h3>countdown</h3>
+            <h5>code</h5>
+            <p>Add the code to the DOM</p>
+<xmp>
+<section class="countdown">
+    <d>00</d>
+    <h>00</h>
+    <m>00</m>
+    <s>00</s>
+</section>
+</xmp>
+            <p>Add the javascript to the DOM</p>
+<xmp>
+<script>
+    countDate="0000/00/00 00:00:00";
+    countdown();
+</script>
+</xmp>
+            <h5>effect display</h5>
+            <iframe src="countdown.html"></iframe>
+            <a class="btn" href="countdown.html" target="_blank">view</a>
+        </div>
         <div class="cont" id="disable">
             <h3>disable</h3>
             <h5>code</h5>
@@ -374,8 +402,9 @@ class="btn btn-disable"
     </drop-list>
 </drop>
 </xmp>
+            <p>If you need to add a submenu, just add <span>drop-list</span> to <span>li</span>, you can have unlimited sets of dolls</p>
             <h5>effect display</h5>
-            <iframe src="drop.html" height="300"></iframe>
+            <iframe src="drop.html" height="350"></iframe>
             <a class="btn" href="drop.html" target="_blank">view</a>
         </div>
         <div class="cont" id="font">
@@ -383,16 +412,36 @@ class="btn btn-disable"
             <h5>web font</h5>
             <p>Add the class to the DOM</p>
 <xmp>
+class="font-amaranth"
+class="font-amaranth-bold"
+class="font-avenir"
+class="font-avenir-bold"
+class="font-clarendon"
+class="font-clarendon-bold"
+class="font-didot"
+class="font-didot-bold"
 class="font-din"
 class="font-din-bold"
+class="font-geo"
+class="font-geo-bold"
+class="font-glamor"
+class="font-glamor-bold"
 class="font-gotham"
 class="font-gotham-bold"
+class="font-helvetica"
+class="font-helvetica-bold"
 class="font-lat"
 class="font-lat-bold"
 class="font-moto"
 class="font-moto-bold"
 class="font-museo"
 class="font-museo-bold"
+class="font-neo"
+class="font-neo-bold"
+class="font-philosopher"
+class="font-philosopher-bold"
+class="font-portada"
+class="font-portada-bold"
 class="font-raleway"
 class="font-raleway-bold"
 class="font-read"
@@ -401,15 +450,19 @@ class="font-renault"
 class="font-renault-bold"
 class="font-renaultgroup"
 class="font-renaultgroup-bold"
+class="font-roboto"
+class="font-roboto-bold"
 class="font-santander"
 class="font-santander-bold"
+class="font-tanseek"
+class="font-tanseek-bold"
 </xmp>
             <p>Webfont is an independent element, you can introduce it directly into your styles</p>
 <xmp>
 @import url('https://ui.gg/lib/font/font.css');
 </xmp>
             <h5>local font</h5>
-            <p>Add the class to the DOM</p>
+            <p>Add the class to the DOM (Local font is only valid on the computer side)</p>
 <xmp>
 class="font-uigg"
 class="font-yahei"
@@ -422,7 +475,6 @@ class="font-fangsong"
 class="font-xingkai"
 class="font-Xinwei"
 class="font-arial"
-class="font-helvetica"
 class="font-tahoma"
 </xmp>
             <h5>effect display</h5>
@@ -570,6 +622,18 @@ class="mono-click"
             <iframe src="mix.html" height="900"></iframe>
             <a class="btn" href="mix.html" target="_blank">view</a>
         </div>
+        <div class="cont" id="notify">
+            <h3>notify</h3>
+            <h5>code</h5>
+            <p>Use <span>notifyValue</span> to define what you want to notify, run <span>notify()</span></p>
+<xmp>
+notifyValue = 'notify';
+notify();
+</xmp>
+            <h5>effect display</h5>
+            <iframe src="notify.html" height="300"></iframe>
+            <a class="btn" href="notify.html" target="_blank">view</a>
+        </div>
         <div class="cont" id="page">
             <h3>page</h3>
             <h5>code</h5>
@@ -603,6 +667,7 @@ uigg-img
 uigg-product
 uigg-bg
 uigg-avatar
+uigg-color
 </xmp>
             <p>If you need random text, add the code to the DOM</p>
 <xmp>
@@ -805,7 +870,7 @@ class="return"
 <xmp>
 <name>
     <a class="ico ico-return-left return"></a>
-    <h2>name</h2>
+    <h2>name</h2><u></u>
     <a href="" class="ico ico-menu"></a>
 </name>
 </xmp>
@@ -823,7 +888,7 @@ class="return"
 <xmp>
 <name>
     <a class="ico ico-return-left return"></a>
-    <name-logo><img src="../images/logo.svg"><h1>uigg</h1></name-logo>
+    <name-logo><img src="../images/logo.svg"><h1>uigg</h1></name-logo><u></u>
     <a href="" class="ico ico-menu"></a>
 </name>
 </xmp>
@@ -846,7 +911,7 @@ class="return"
             <p>Add the code to the DOM</p>
 <xmp>
 <nav>
-    <li><a href="" class="active"><i class="ico ico-home"></i><span>home</span></a></li>
+    <li><a href=""><i class="ico ico-home"></i><span>home</span></a></li>
     <li><a href=""><i class="ico ico-app"></i><span>apps</span></a></li>
     <li><a href=""><i class="ico ico-shoppingcart"></i><span>shop</span></a></li>
     <li><a href=""><i class="ico ico-user"></i><span>user</span></a></li>
@@ -1163,13 +1228,13 @@ class="calendar"
 <xmp>
 <section class="swiper-container swiper-animate">
     <div class="swiper-wrapper">
-        <div class="swiper-slide center">
+        <div class="swiper-slide">
             <p class="ani" swiper-animate-effect="anime-fade-in-up" swiper-animate-duration=".6s" swiper-animate-delay=".3s"></p>
         </div>
-        <div class="swiper-slide center">
+        <div class="swiper-slide">
             <p class="ani" swiper-animate-effect="anime-fade-in-right" swiper-animate-duration=".6s" swiper-animate-delay=".3s"></p>
         </div>
-        <div class="swiper-slide center">
+        <div class="swiper-slide">
             <p class="ani" swiper-animate-effect="anime-zoom-in" swiper-animate-duration=".6s" swiper-animate-delay=".3s"></p>
         </div>
     </div>
@@ -1218,7 +1283,6 @@ class="calendar"
     </div>
     <script>
         var mySwiper = new Swiper('.lug-top',{
-            loop: true,
             //effect : 'fade',
         });
         $('#lug-1').click(function(){
@@ -1229,7 +1293,8 @@ class="calendar"
         })
         $('#lug-3').click(function(){
             mySwiper.slideToLoop(2, 1000, false);
-        })
+        });
+        lug();
     </script>
 </section>
 </xmp>
@@ -1289,13 +1354,13 @@ class="calendar"
 <section class="swiper-container swiper-parallax">
     <div class="parallax-bg" style="background-image: url()" data-swiper-parallax="-23%"></div>
     <div class="swiper-wrapper">
-        <div class="swiper-slide center">
+        <div class="swiper-slide">
             <h3 data-swiper-parallax="-300"><span data-swiper-parallax="100"></span></h3>
         </div>
-        <div class="swiper-slide center">
+        <div class="swiper-slide">
             <h3 data-swiper-parallax="-300"><span data-swiper-parallax="100"></span></h3>
         </div>
-        <div class="swiper-slide center">
+        <div class="swiper-slide">
             <h3 data-swiper-parallax="-300"><span data-swiper-parallax="100"></span></h3>
         </div>
     </div>
@@ -1322,11 +1387,14 @@ class="calendar"
         <div class="cont" id="ico">
             <h3>ico</h3>
             <h5>uigg iconfont</h5>
-            <p>Uigg fonts is a library of 1200+ free licensed font families and api for conveniently using the fonts via iconfont, img, unicode, symbol and css. We also provide delightful, beautifully crafted icons for common actions and items. Download them for use in your digital products for Android, iOS, and web</p>
+            <p>Uigg fonts is a library free licensed font families and api for conveniently using the fonts via iconfont, img, unicode, symbol and css. We also provide delightful, beautifully crafted icons for common actions and items. Download them for use in your digital products for Android, iOS, and web</p>
             <a class="btn" href="/ico.html" target="_blank">view</a>
         </div>
     </section>
 </section>
+
+<!----------------------------------------------------------------------------------------->
+
 <script>
     $('.sider u').click(function(){
         $('.sider').toggleClass('active');
