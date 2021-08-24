@@ -905,6 +905,11 @@ notify {position: fixed;top: 0;right: 0;margin: 0 10px;z-index: 999;}
 notify li {width: 300px;padding: 30px 20px 20px;border-radius: 5px;background-color: white;box-shadow: 0 5px 10px -3px var(--000-1);position: relative;margin: 10px 0;}
 notify li x.ico {position: absolute;top: 0;right: 0;margin: 5px;}
 
+@media(max-width:640px) {
+    notify {margin: 0 .1rem;}
+    notify li {width: 4rem;padding: .4rem .2rem .2rem;border-radius: .1rem;box-shadow: 0 .05rem .1rem -.03rem var(--000-1);margin: .1rem 0;}
+    notify li x.ico {margin: .05rem;}
+}
 
 
 
