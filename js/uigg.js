@@ -184,23 +184,6 @@ function clearSwiperAnimate(a){
 	allBoxes[i].attributes["swiper-animate-effect"] && (effect = allBoxes[i].attributes["swiper-animate-effect"].value, allBoxes[i].className = allBoxes[i].className.replace(effect, " "))
 };
 
-//----------------------------------------------------------------------------------title
-function browserTitle(){
-    var originTitile = document.title;
-    var titleTime;
-    document.addEventListener('visibilitychange', function(){
-        if (document.hidden){
-            document.title = 'Google';
-            clearTimeout(titleTime);
-        }else{
-            document.title = 'Google';
-            titleTime = setTimeout(function(){
-                document.title = originTitile;
-            }, 100);
-        }
-    });
-};
-
 //----------------------------------------------------------------------------------random
 $(function(){
     $('[src~="uigg-img"]').each(function(){
