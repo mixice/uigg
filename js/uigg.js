@@ -30,6 +30,9 @@ document.onreadystatechange = function(){
         $('load').hide();
     }
 };
+setTimeout(function(){
+    $('load').hide();
+},5000);
 
 //----------------------------------------------------------------------------------browser
 $(function(){
@@ -529,7 +532,11 @@ function notify(){
     }
 };
 $(document).on('click','notify x',function(){
-    $(this).parent().hide();
+    $(this).parent().addClass('anime-flip-out-x');
+    var notifyThis = $(this).parent();
+    setTimeout(function(){
+        notifyThis.hide();
+    },500);
 });
 
 //----------------------------------------------------------------------------------

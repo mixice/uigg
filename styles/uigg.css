@@ -36,7 +36,8 @@ tab,tab-list,tab-cont,tab-group,
 drop,drop-cont,drop-list,
 pop,pop-main,pop-title,pop-cont,pop-solve,pop-choice,pop-sider,
 tip,page,music,space,corner,msie,rate,scaler,notify {display: block;}
-html,body {height: 100%;font-size: 14px;transition-duration: 0s;}
+html,body,input {height: 100%;transition-duration: 0s;}
+html,body,input {font-size: 14px;}
 html {-webkit-font-smoothing: antialiased;}
 body,a {color: var(--333);}
 a,a:hover,b,i,em,u,cite {text-decoration: none;font-style: normal;}
@@ -638,7 +639,7 @@ page {text-align: center;}
 page a,
 page button,
 page span,
-page input {height: 50px;display: inline-block;text-align: center;vertical-align: middle;float: none;font-size: 16px;border-radius: 2px;}
+page input {height: 50px;display: inline-block;text-align: center;vertical-align: middle;float: none;border-radius: 2px;font-size: 16px;}
 page a,
 page .ico,
 page button,
@@ -657,7 +658,7 @@ page button.active {background-color: var(--sapphire);color: white;}
     page a,
     page button,
     page span,
-    page input {height: .7rem;font-size: .22rem;border-radius: .03rem;}
+    page input {height: .7rem;border-radius: .03rem;font-size: .2rem;}
     page a,
     page .ico,
     page button,
@@ -869,7 +870,7 @@ music.pause:after {content: '\e990';}
 }
 
 /* drop */
-drop {width: 100%;height: 50px;line-height: 50px;position: relative;background: var(--f7);cursor: pointer;}
+drop {width: 100%;height: 50px;line-height: 50px;position: relative;background-color: var(--f7);cursor: pointer;}
 drop x {position: fixed;width: 100%;height: 100%;top: 0;left: 0;}
 drop i.ico {position: absolute;top: 0;right: 0;line-height: 50px;width: 50px;}
 drop > i.ico {transform: rotate(90deg);}
@@ -902,7 +903,7 @@ rate i.active::before {content:'\ea65';}
 
 /* notify */
 notify {position: fixed;top: 0;right: 0;margin: 0 10px;z-index: 999;}
-notify li {width: 300px;padding: 30px 20px 20px;border-radius: 5px;background-color: white;box-shadow: 0 5px 10px -3px var(--000-1);position: relative;margin: 10px 0;}
+notify li {width: 300px;padding: 30px 20px 20px;border-radius: 5px;background-color: white;box-shadow: 0 5px 10px -3px var(--000-1);position: relative;margin: 10px 0;transition: .3s;}
 notify li x.ico {position: absolute;top: 0;right: 0;margin: 5px;}
 
 @media(max-width:640px) {
