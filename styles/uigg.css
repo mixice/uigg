@@ -58,6 +58,7 @@ z {display: inline-block;transition-duration: 0s;}
 }
 
 /* anime */
+.anime {transition-duration: 0s;}
 .anime-pulse,.anime-rotate,
 .anime-fade-in,.anime-fade-in-down,.anime-fade-in-left,.anime-fade-in-right,.anime-fade-in-up,
 .anime-fade-out,.anime-fade-out-down,.anime-fade-out-left,.anime-fade-out-right,.anime-fade-out-up,
@@ -454,7 +455,7 @@ menu-list h6 {line-height: 50px;}
 .title {text-align: center;}
 .title h3,
 .title em {display: inline-block;vertical-align: middle;}
-.title span {text-transform: capitalize;display: block;}
+.title span {display: block;}
 
 .title-left {text-align: left;}
 
