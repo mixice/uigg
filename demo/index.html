@@ -1023,7 +1023,7 @@ class="calendar"
 </pop>
 </xmp>
             <h5>effect display</h5>
-            <iframe src="pop.html" height="200"></iframe>
+            <iframe src="pop.html" height="300"></iframe>
             <a class="btn" href="pop.html" target="_blank">view</a>
         </div>
         <div class="cont" id="admin">
@@ -1041,7 +1041,7 @@ class="calendar"
             <h5>swiper banner code</h5>
             <p>Add the code to the DOM</p>
 <xmp>
-<section class="swiper-container swiper-banner">
+<section class="swiper swiper-banner">
     <div class="swiper-wrapper">
         <div class="swiper-slide"></div>
         <div class="swiper-slide"></div>
@@ -1078,7 +1078,7 @@ class="calendar"
             <h5>swiper list code</h5>
             <p>Add the code to the DOM</p>
 <xmp>
-<section class="swiper-container swiper-list">
+<section class="swiper swiper-list">
     <div class="swiper-wrapper">
         <div class="swiper-slide"></div>
         <div class="swiper-slide"></div>
@@ -1122,7 +1122,7 @@ class="calendar"
             <h5>swiper vertical code</h5>
             <p>Add the code to the DOM</p>
 <xmp>
-<section class="swiper-container swiper-vertical">
+<section class="swiper swiper-vertical">
     <div class="swiper-wrapper">
         <div class="swiper-slide"></div>
         <div class="swiper-slide"></div>
@@ -1150,7 +1150,7 @@ class="calendar"
             <p>Add the code to the DOM</p>
 <xmp>
 <section class="swiper-gallery">
-    <div class="swiper-container gallery-top">
+    <div class="swiper gallery-top">
         <div class="swiper-wrapper">
             <div class="swiper-slide"></div>
             <div class="swiper-slide"></div>
@@ -1159,7 +1159,7 @@ class="calendar"
         <div class="swiper-button-next"></div>
         <div class="swiper-button-prev"></div>
     </div>
-    <div class="swiper-container gallery-thumbs">
+    <div class="swiper gallery-thumbs">
         <div class="swiper-wrapper">
             <div class="swiper-slide"></div>
             <div class="swiper-slide"></div>
@@ -1195,14 +1195,14 @@ class="calendar"
             <p>Add the code to the DOM</p>
 <xmp>
 <section class="swiper-relative">
-    <div class="swiper-container relative-top">
+    <div class="swiper relative-top">
         <div class="swiper-wrapper">
             <div class="swiper-slide"></div>
             <div class="swiper-slide"></div>
             <div class="swiper-slide"></div>
         </div>
     </div>
-    <div class="swiper-container relative-thumb">
+    <div class="swiper relative-thumb">
         <div class="swiper-wrapper">
             <div class="swiper-slide"></div>
             <div class="swiper-slide"></div>
@@ -1231,17 +1231,11 @@ class="calendar"
             <h5>swiper animate code</h5>
             <p>Add the code to the DOM</p>
 <xmp>
-<section class="swiper-container swiper-animate">
+<section class="swiper swiper-animate">
     <div class="swiper-wrapper">
-        <div class="swiper-slide">
-            <p class="ani" swiper-animate-effect="anime-fade-in-up" swiper-animate-duration=".6s" swiper-animate-delay=".3s"></p>
-        </div>
-        <div class="swiper-slide">
-            <p class="ani" swiper-animate-effect="anime-fade-in-right" swiper-animate-duration=".6s" swiper-animate-delay=".3s"></p>
-        </div>
-        <div class="swiper-slide">
-            <p class="ani" swiper-animate-effect="anime-zoom-in" swiper-animate-duration=".6s" swiper-animate-delay=".3s"></p>
-        </div>
+        <div class="swiper-slide"><div class="swiper-anime anime-fade-in"></div></div>
+        <div class="swiper-slide"><div class="swiper-anime anime-fade-in"></div></div>
+        <div class="swiper-slide"><div class="swiper-anime anime-fade-in"></div></div>
     </div>
     <div class="swiper-pagination"></div>
     <div class="swiper-button-next"></div>
@@ -1256,16 +1250,6 @@ class="calendar"
                 nextEl: '.swiper-button-next',
                 prevEl: '.swiper-button-prev',
             },
-            on:{
-                init: function(){
-                    swiperAnimateCache(this);
-                    this.emit('slideChangeTransitionEnd');
-                },
-                slideChangeTransitionEnd: function(){
-                    swiperAnimate(this);
-                    //this.slides.eq(this.activeIndex).find('.ani').removeClass('ani'); //Run only once
-                },
-            },
         });
     </script>
 </section>
@@ -1279,7 +1263,7 @@ class="calendar"
         <a id="lug-2"></a>
         <a id="lug-3"></a>
     </div>
-    <div class="swiper-container lug-top">
+    <div class="swiper lug-top">
         <div class="swiper-wrapper">
             <div class="swiper-slide"></div>
             <div class="swiper-slide"></div>
@@ -1303,10 +1287,40 @@ class="calendar"
     </script>
 </section>
 </xmp>
+            <h5>swiper hash code</h5>
+            <p>Add the code to the DOM</p>
+<xmp>
+<section class="swiper swiper-hash">
+    <div class="swiper-wrapper">
+        <div data-hash="one" class="swiper-slide center">one</div>
+        <div data-hash="two" class="swiper-slide center">two</div>
+        <div data-hash="three" class="swiper-slide center">three</div>
+    </div>
+    <div class="swiper-button-next"></div>
+    <div class="swiper-button-prev"></div>
+    <div class="swiper-pagination"></div>
+    <script>
+        var swiper = new Swiper(".swiper-hash", {
+            spaceBetween: 30,
+            hashNavigation: {
+                watchState: true,
+            },
+            pagination: {
+                el: ".swiper-pagination",
+                clickable: true,
+            },
+            navigation: {
+                nextEl: ".swiper-button-next",
+                prevEl: ".swiper-button-prev",
+            },
+        });
+    </script>
+</section>
+</xmp>
             <h5>swiper scrollbar code</h5>
             <p>Add the code to the DOM</p>
 <xmp>
-<section class="swiper-container swiper-scroll">
+<section class="swiper swiper-scroll">
     <div class="swiper-wrapper">
         <div class="swiper-slide"></div>
         <div class="swiper-slide"></div>
@@ -1326,7 +1340,7 @@ class="calendar"
             <h5>swiper coverflow code</h5>
             <p>Add the code to the DOM</p>
 <xmp>
-<section class="swiper-container swiper-coverflow">
+<section class="swiper swiper-coverflow">
     <div class="swiper-wrapper">
         <div class="swiper-slide"></div>
         <div class="swiper-slide"></div>
@@ -1356,7 +1370,7 @@ class="calendar"
             <h5>swiper parallax code</h5>
             <p>Add the code to the DOM</p>
 <xmp>
-<section class="swiper-container swiper-parallax">
+<section class="swiper swiper-parallax">
     <div class="parallax-bg" style="background-image: url()" data-swiper-parallax="-23%"></div>
     <div class="swiper-wrapper">
         <div class="swiper-slide">

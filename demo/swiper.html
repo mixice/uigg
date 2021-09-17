@@ -18,7 +18,7 @@
 
 <style>
     
-    .swiper-container {height: 100%;}
+    .swiper {height: 100%;}
     .swiper-slide {background-color: var(--f7);font-size: .6rem;text-transform: uppercase;font-weight: bold;color: var(--eee);}
     
     .swiper-gallery,
@@ -26,6 +26,7 @@
     .swiper-relative {height: 100%;display: flex;flex-direction: column;}
     .gallery-top,
     .lug-top,
+    .swiper-hash,
     .relative-top {flex: 1;}
     .gallery-thumbs,
     .relative-thumb {height: 180px;}
@@ -47,7 +48,9 @@
     .sider a.active {background-color: var(--ddd);}
     .contant {padding-left: 200px;}
     
-    .item {height: 100vh;padding: 30px;}
+    .item {height: 100vh;padding: 30px;position: relative;}
+    #hash menu {background: var(--f7);display: flex;justify-content: center;margin-bottom: 20px;}
+    #hash menu a {padding: 20px;font-weight: bold;font-size: 18px;text-transform: uppercase;}
 </style>
 
 <!----------------------------------------------------------------------------------------->
@@ -62,13 +65,14 @@
         <a class="smooth" href="#relative">relative</a>
         <a class="smooth" href="#animate">animate</a>
         <a class="smooth" href="#lug">lug</a>
+        <a class="smooth" href="#hash">hash</a>
         <a class="smooth" href="#scrollbar">scrollbar</a>
         <a class="smooth" href="#coverflow">coverflow</a>
         <a class="smooth" href="#parallax">parallax</a>
     </div>
     <div class="contant">
         <div class="item" id="banner">
-            <section class="swiper-container swiper-banner">
+            <section class="swiper swiper-banner">
                 <div class="swiper-wrapper">
                     <div class="swiper-slide center">one</div>
                     <div class="swiper-slide center">two</div>
@@ -103,7 +107,7 @@
             </section>
         </div>
         <div class="item" id="list">
-            <section class="swiper-container swiper-list">
+            <section class="swiper swiper-list">
                 <div class="swiper-wrapper">
                     <div class="swiper-slide center">one</div>
                     <div class="swiper-slide center">two</div>
@@ -145,7 +149,7 @@
             </section>
         </div>
         <div class="item" id="vertical">
-            <section class="swiper-container swiper-vertical">
+            <section class="swiper swiper-vertical">
                 <div class="swiper-wrapper">
                     <div class="swiper-slide center">one</div>
                     <div class="swiper-slide center">two</div>
@@ -171,7 +175,7 @@
         </div>
         <div class="item" id="gallery">
             <section class="swiper-gallery">
-                <div class="swiper-container gallery-top">
+                <div class="swiper gallery-top">
                     <div class="swiper-wrapper">
                         <div class="swiper-slide center">one</div>
                         <div class="swiper-slide center">two</div>
@@ -182,7 +186,7 @@
                     <div class="swiper-button-next"></div>
                     <div class="swiper-button-prev"></div>
                 </div>
-                <div class="swiper-container gallery-thumbs">
+                <div class="swiper gallery-thumbs">
                     <div class="swiper-wrapper">
                         <div class="swiper-slide center">one</div>
                         <div class="swiper-slide center">two</div>
@@ -212,13 +216,13 @@
                         thumbs: {
                             swiper: galleryThumbs,
                         },
-                    });
+                    });   
                 </script>
             </section>
         </div>
         <div class="item" id="relative">
             <section class="swiper-relative">
-                <div class="swiper-container relative-top">
+                <div class="swiper relative-top">
                     <div class="swiper-wrapper">
                         <div class="swiper-slide center">one</div>
                         <div class="swiper-slide center">two</div>
@@ -227,7 +231,7 @@
                         <div class="swiper-slide center">five</div>
                     </div>
                 </div>
-                <div class="swiper-container relative-thumb">
+                <div class="swiper relative-thumb">
                     <div class="swiper-wrapper">
                         <div class="swiper-slide center">one</div>
                         <div class="swiper-slide center">two</div>
@@ -256,11 +260,11 @@
             </section>
         </div>
         <div class="item" id="animate">
-            <section class="swiper-container swiper-animate">
+            <section class="swiper swiper-animate">
                 <div class="swiper-wrapper">
-                    <div class="swiper-slide center"><p class="ani" swiper-animate-effect="anime-fade-in-up" swiper-animate-duration=".6s" swiper-animate-delay=".3s">one</p></div>
-                    <div class="swiper-slide center"><p class="ani" swiper-animate-effect="anime-fade-in-right" swiper-animate-duration=".6s" swiper-animate-delay=".3s">two</p></div>
-                    <div class="swiper-slide center"><p class="ani" swiper-animate-effect="anime-zoom-in" swiper-animate-duration=".6s" swiper-animate-delay=".3s">three</p></div>
+                    <div class="swiper-slide center"><div class="swiper-anime anime-fade-in">one</div></div>
+                    <div class="swiper-slide center"><div class="swiper-anime anime-fade-in-down">two</div></div>
+                    <div class="swiper-slide center"><div class="swiper-anime anime-zoom-in">three</div></div>
                 </div>
                 <div class="swiper-pagination"></div>
                 <div class="swiper-button-next"></div>
@@ -275,16 +279,6 @@
                             nextEl: '.swiper-button-next',
                             prevEl: '.swiper-button-prev',
                         },
-                        on:{
-                            init: function(){
-                                swiperAnimateCache(this);
-                                this.emit('slideChangeTransitionEnd');
-                            }, 
-                            slideChangeTransitionEnd: function(){ 
-                                swiperAnimate(this);
-                                //this.slides.eq(this.activeIndex).find('.ani').removeClass('ani'); //Run only once
-                            },
-                        },
                     });
                 </script>
             </section>
@@ -298,7 +292,7 @@
                     <a id="lug-4">four</a>
                     <a id="lug-5">five</a>
                 </div>
-                <div class="swiper-container lug-top">
+                <div class="swiper lug-top">
                     <div class="swiper-wrapper">
                         <div class="swiper-slide center">one</div>
                         <div class="swiper-slide center">two</div>
@@ -330,8 +324,43 @@
                 </script>
             </section>
         </div>
+        <div class="item" id="hash">
+            <div class="full flex flex-column">
+                <menu>
+                    <a href="#one">one</a>
+                    <a href="#two">two</a>
+                    <a href="#three">three</a>
+                </menu>
+                <section class="swiper swiper-hash">
+                    <div class="swiper-wrapper">
+                        <div data-hash="one" class="swiper-slide center">one</div>
+                        <div data-hash="two" class="swiper-slide center">two</div>
+                        <div data-hash="three" class="swiper-slide center">three</div>
+                    </div>
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div>
+                    <div class="swiper-pagination"></div>
+                    <script>
+                        var swiper = new Swiper(".swiper-hash", {
+                            spaceBetween: 30,
+                            hashNavigation: {
+                                watchState: true,
+                            },
+                            pagination: {
+                                el: ".swiper-pagination",
+                                clickable: true,
+                            },
+                            navigation: {
+                                nextEl: ".swiper-button-next",
+                                prevEl: ".swiper-button-prev",
+                            },
+                        });
+                    </script>
+                </section>
+            </div>
+        </div>
         <div class="item" id="scrollbar">
-            <section class="swiper-container swiper-scroll">
+            <section class="swiper swiper-scroll">
                 <div class="swiper-wrapper">
                     <div class="swiper-slide center">one</div>
                     <div class="swiper-slide center">two</div>
@@ -351,7 +380,7 @@
             </section>
         </div>
         <div class="item" id="coverflow">
-            <section class="swiper-container swiper-coverflow">
+            <section class="swiper swiper-coverflow">
                 <div class="swiper-wrapper">
                     <div class="swiper-slide center">one</div>
                     <div class="swiper-slide center">two</div>
@@ -382,7 +411,7 @@
             </section>
         </div>
         <div class="item" id="parallax">
-            <section class="swiper-container swiper-parallax">
+            <section class="swiper swiper-parallax">
                 <div class="parallax-bg" style="background-image: url(http://ui.gg/lib/images/bg)" data-swiper-parallax="-23%"></div>
                 <div class="swiper-wrapper">
                     <div class="swiper-slide center">
