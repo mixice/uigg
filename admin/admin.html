@@ -13,10 +13,6 @@
 <link rel="shortcut icon" href="../images/logo.svg">
 <link rel="stylesheet" href="../styles/uigg.css">
 <link rel="stylesheet" href="styles/admin.css">
-<!--
-<link rel="stylesheet" href="styles/black.css">
-<link rel="stylesheet" href="styles/blue.css">
--->
 
 <script src="../js/jquery.min.js"></script>
 <script src="../js/uigg.js"></script>
@@ -25,9 +21,9 @@
     
 <body>
 <load></load>
-<section class="admin flex flex-column">
+<section class="admin anime-fade-in flex flex-column">
     <!------------------------------------------head start------------------------------------------>
-    <section class="head anime-fade-in-down">
+    <section class="head">
         <h1 class="logo float-left center anime-zoom-in"><i></i><span>uigg<em>admin</em></span></h1>
         <div class="head-cont float-left anime-fade-in">
             <a class="btn side float-left"><i class="ico ico-menu"></i></a>
@@ -52,9 +48,9 @@
         </div>
     </section>
    <!------------------------------------------head end------------------------------------------>
-    <section class="subject anime-fade-in">
+    <section class="subject">
         <!------------------------------------------sider start------------------------------------------>
-        <section class="sider anime-fade-in-left">
+        <section class="sider">
             <div class="sider-search"><input type="text"><button class="ico ico-search"></button></div>
             <h6>basic</h6>
             <div class="sider-list">
@@ -62,14 +58,14 @@
                 <li><a><i class="ico ico-set"></i>setting</a></li>
                 <li><a><i class="ico ico-app"></i>classify</a>
                     <div class="sider-group anime-fade-in">
-                        <a href=""><em></em>classify add</a>
-                        <a href=""><em></em>classify edit</a>
+                        <a href="">classify add</a>
+                        <a href="">classify edit</a>
                     </div>
                 </li>
                 <li><a><i class="ico ico-document"></i>article</a>
                     <div class="sider-group anime-fade-in">
-                        <a href=""><em></em>article add</a>
-                        <a href=""><em></em>article list</a>
+                        <a href="">article add</a>
+                        <a href="">article list</a>
                     </div>
                 </li>
             </div>
@@ -77,28 +73,28 @@
             <div class="sider-list">
                 <li><a><i class="ico ico-alipay"></i>recharge</a>
                     <div class="sider-group anime-fade-in">
-                        <a href=""><em></em>recharge</a>
-                        <a href=""><em></em>order</a>
+                        <a href="">recharge</a>
+                        <a href="">order</a>
                     </div>
                 </li>
                 <li><a><i class="ico ico-wallet"></i>withdrawal</a>
                     <div class="sider-group anime-fade-in">
-                        <a href=""><em></em>withdrawal</a>
-                        <a href=""><em></em>order</a>
+                        <a href="">withdrawal</a>
+                        <a href="">order</a>
                     </div>
                 </li>
                 <li><a><i class="ico ico-box"></i>integral</a>
                     <div class="sider-group anime-fade-in">
-                        <a href=""><em></em>exchange</a>
-                        <a href=""><em></em>consignment</a>
-                        <a href=""><em></em>query</a>
-                        <a href=""><em></em>order</a>
+                        <a href="">exchange</a>
+                        <a href="">consignment</a>
+                        <a href="">query</a>
+                        <a href="">order</a>
                     </div>
                 </li>
             </div>
             <h6>other</h6>
             <div class="sider-list">
-                <li><a><i class="ico ico-circular-user"></i> user</a></li>
+                <li><a><i class="ico ico-circular-user"></i>user</a></li>
                 <li><a><i class="ico ico-volume"></i>notice<span>23</span></a></li>
             </div>
         </section>
@@ -109,7 +105,7 @@
                     <div class="notice">
                         <i class="ico ico-volume-empty"></i>
                         <marquee onMouseOut="this.start()" onMouseOver="this.stop()">
-                            <a href="">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</a>
+                            <a href=""><uigg-txt></uigg-txt></a>
                         </marquee>
                         <a href=""><i class="ico ico-more-horizontal"></i></a>
                     </div>
@@ -143,7 +139,9 @@
                     <div class="article">
                         <p><uigg-txt></uigg-txt></p>
                         <ul>
-                            <li><uigg-txt></uigg-txt></li>
+                            <li><uigg-title></uigg-title></li>
+                            <li><uigg-title></uigg-title></li>
+                            <li><uigg-title></uigg-title></li>
                         </ul>
                         <a class="btn" onclick="$('pop').show()">Pop Test</a>
                         <a class="btn" onclick="$('pop').show()">Pop Test</a>
@@ -277,12 +275,12 @@
                             </li>
                             <li><span>robot</span>
                                 <input class="min" type="text">
-                                <em class="code center">OOOO</em>
+                                <a class="code"><img src="uigg-color"></a>
                                 <cite>Lorem ipsum dolor sit amet</cite>
                             </li>
                             <li><span>code</span>
                                 <input class="min" type="text">
-                                <a href="" class="btn code">get code</a>
+                                <a class="btn code">get code</a>
                                 <cite>Lorem ipsum dolor sit amet</cite>
                             </li>
                             <li><span>message</span>
@@ -435,7 +433,6 @@
                     </div>
                 </div>
             </div>
-            
         </section>
     </section>
 </section>

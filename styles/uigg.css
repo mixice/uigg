@@ -273,7 +273,7 @@ shadow {width: calc(100% - 20px);height: 10px;border-radius: 10px;position: abso
 }
 
 /* media */
-img {vertical-align: middle;max-width: 100%;height: auto;}
+img {max-width: 100%;height: auto;}
 audio,canvas,progress,video {display: inline-block;}
 audio:not([controls]) {display: none;height: 0;}
 video {object-fit: fill;}
@@ -382,19 +382,17 @@ tip span {line-height: 24px;vertical-align: middle;margin: 0 2px;}
 }
 
 /* btn */
-.btn {width: 100%;text-align: center;display: block;height: 50px;line-height: 50px;position: relative;background-color: var(--333);color: white;border-radius: 2px;text-transform: capitalize;}
-.btn .ico {margin-left: -10px;}
+.btn {width: 100%;text-align: center;display: block;height: 50px;line-height: 50px;position: relative;background-color: var(--sapphire);color: white;border-radius: 2px;text-transform: capitalize;}
 .btn span {vertical-align: middle;margin-left: 5px;}
 .btn:hover {transform: translateY(5px);}
 .btn-flex {display: flex;justify-content: center;}
 .btn-flex .btn {flex: 1;}
-.btn-empty {background-color: transparent !important;border: 1px solid;color: var(--333);}
+.btn-empty {background-color: transparent !important;border: 1px solid;color: var(--sapphire);}
 .btn-disable {filter: grayscale(100%);}
 .btn-disable:hover {transform: translateY(0);cursor: no-drop;}
 
 @media(max-width:640px) {
 	.btn {height: .8rem;line-height: .8rem;border-radius: .03rem;}
-    .btn .ico {margin-left: -.1rem;}
     .btn span {margin-left: .05rem;}
 	.btn:hover {transform: translateY(0);}
 }
@@ -548,12 +546,11 @@ select {padding: 0 50px 0 10px;}
 .form span,
 .form cite,
 .form li,
-.form li .code,
 .form o {line-height: 50px;}
 .form li {padding: 5px 0;display: block;width: 100%;float: left;}
 .form li.resolve {padding-left: 110px;}
-.form li .code {text-align: center;width: 140px;}
-.form li em.code {background-color: var(--333);color: var(--666);}
+.form li .code {width: 140px;height: 50px;overflow: hidden;}
+.form li .code img {width: 100%;height: 100%;}
 .form span:first-child {text-transform: capitalize;}
 .form li span:first-child {width: 100px;}
 .form button {width: 200px;}
@@ -612,7 +609,9 @@ select {padding: 0 50px 0 10px;}
     .form li .code,
     .form o {line-height: .7rem;}
     .form li {padding: .1rem 0;border-bottom-width: 1px;display: flex;}
-    .form li.resolve {padding: .1rem 0;border: 0;}
+    .form li:last-child,
+    .form li.resolve {border: 0;}
+    .form li.resolve {padding: .1rem 0;}
     .form li .code {width: 2rem;}
     .form li span:first-child {width: 1.2rem;}
     .form button {width: 100%;}
@@ -878,7 +877,7 @@ drop li:last-child {border: 0;}
 drop li drop-list {right: -100%;top: 0;left: auto;}
 drop li drop-list x {display: none;}
 drop a {padding: 0 20px;display: block;}
-drop li:hover > a {color: white;background-color: var(--333);}
+drop li:hover > a {color: white;background-color: var(--sapphire);}
 drop li:hover > drop-list {display: block;}
 drop li:hover > i {color: white;}
 drop.active > drop-list {display: block;}
