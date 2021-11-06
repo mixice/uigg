@@ -17,4 +17,4 @@
 .logo i {filter: hue-rotate(-47deg) saturate(200%);}
 
 /*login*/
-.login u {filter: hue-rotate(-47deg) saturate(200%);}
+.login u {background: repeating-radial-gradient(circle at 50% 50%, transparent 0, var(--000-1) 2px 5px, transparent 5px 10px) var(--blue);}

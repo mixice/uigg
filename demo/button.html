@@ -14,14 +14,17 @@
 <body>
 
 <style>
+    shadow {box-shadow: 0 5px 10px var(--sapphire);}
     section {padding: 10px;}
-    .btn {margin: 10px;width: 300px;}
+    .btn {margin: 10px;width: 300px;background-color: var(--sapphire);}
+    .btn-empty {color: var(--sapphire);}
 </style>
 
 <!----------------------------------------------------------------------------------------->
 
 <section>
     <a class="btn">button</a>
+    <a class="btn">button<shadow></shadow></a>
     <a class="btn btn-empty">button</a>
     <a class="btn bg-red">button</a>
     <a class="btn btn-empty co-red">button</a>

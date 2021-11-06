@@ -1,5 +1,5 @@
 /*
- * uigg 2.0 (build 20210601)
+ * uigg 2.1 (build 20210918)
  * Project: https://ui.gg
  * Author: http://www.mixice.com
  * Github: https://github.com/mixice/uigg
@@ -189,7 +189,7 @@ $(function(){
     $('[style~="uigg-bg"]').each(function(){
         $(this).attr('style','background-image: url(https://ui.gg/lib/images/bg?=' + Math.floor(Math.random() * 100) +');');
     });
-    $('[style~="uigg-avatar"]').each(function(){
+    $('[style~="uigg-avatar"],.avatar').each(function(){
         $(this).attr('style','background-image: url(https://ui.gg/lib/images/avatar?=' + Math.floor(Math.random() * 100) +');');
     });
     $('[style~="uigg-color"]').each(function(){
@@ -240,6 +240,9 @@ function disable(){
             var ctrlKey = e.ctrlKey || e.metaKey;
             console.log(keyCode + "--" + keyCode);
             if (ctrlKey && keyCode == 85){
+                e.preventDefault();
+            }
+            if (ctrlKey && keyCode == 83){
                 e.preventDefault();
             }
             if (arr.indexOf(keyCode) > -1){
@@ -308,6 +311,7 @@ $(function(){
     $('pop-title .close').addClass('ico');
     $('pop .close, pop x').click(function(){
         $(this).parents('pop').hide();
+        $(this).parents('pop').find('video')[0].pause();
     });
 });
 
@@ -332,7 +336,7 @@ $(function(){
     }
 });
 
-//----------------------------------------------------------------------------------switch
+//----------------------------------------------------------------------------------toggle
 $(function(){
     $('.checkbox,.checkbox-done,.checkbox-cancel,.favorite,.star,.visibility,.mic,.volume,.muzak,.phonecard,.telecamera,.camera,.aim,.semaphore,.suitcase,.toggle').click(function(){
         $(this).toggleClass('active');
@@ -379,7 +383,6 @@ $(function(){
         $('.upload-group input').on('change', function(){
             var imgValue = $(this).val(),
             fileFormat = imgValue.substring(imgValue.lastIndexOf(".")).toLowerCase(),
-            windowURL = window.URL || window.webkitURL,
             imgUrl = window.URL.createObjectURL(this.files[0]);
             if(!fileFormat.match(/.png|.jpg|.jpeg|.svg|.webp/)){
                 alert('File format must be: png/jpg/jpeg/svg/webp');
@@ -459,7 +462,8 @@ $(function(){
 //----------------------------------------------------------------------------------name
 $(function(){
     $('name').addClass('anime-fade-in-down');
-    $('name-search').append('<i class="ico ico-search"></i>');
+    $('name-search input').before('<i class="ico ico-search"></i>');
+    $('name h2,name-logo').after('<u></u>');
 });
 
 //----------------------------------------------------------------------------------nav
@@ -524,10 +528,10 @@ $(function(){
 (function (root, factory)
 {'use strict';
     var moment;
-    if (typeof exports === 'object') {
-        try { moment = require('moment'); } catch (e) {}
+    if (typeof exports === 'object'){
+        try { moment = require('moment'); } catch (e){}
         module.exports = factory(moment);
-    } else if (typeof define === 'function' && define.amd) {
+    } else if (typeof define === 'function' && define.amd){
         define(function (req){
             var id = 'moment';
             moment = req.defined && req.defined(id) ? req(id) : undefined;
@@ -543,14 +547,14 @@ $(function(){
     document = window.document,
     sto = window.setTimeout,
     addEvent = function(el, e, callback, capture){
-        if (hasEventListeners) {
+        if (hasEventListeners){
             el.addEventListener(e, callback, !!capture);
         } else {
             el.attachEvent('on' + e, callback);
         }
     },
     removeEvent = function(el, e, callback, capture){
-        if (hasEventListeners) {
+        if (hasEventListeners){
             el.removeEventListener(e, callback, !!capture);
         } else {
             el.detachEvent('on' + e, callback);
@@ -558,12 +562,12 @@ $(function(){
     },
     fireEvent = function(el, eventName, data){
         var ev;
-        if (document.createEvent) {
+        if (document.createEvent){
             ev = document.createEvent('HTMLEvents');
             ev.initEvent(eventName, true, false);
             ev = extend(ev, data);
             el.dispatchEvent(ev);
-        } else if (document.createEventObject) {
+        } else if (document.createEventObject){
             ev = document.createEventObject();
             ev = extend(ev, data);
             el.fireEvent('on' + eventName, ev);
@@ -574,7 +578,7 @@ $(function(){
     hasClass = function(el, cn)
     {return (' ' + el.className + ' ').indexOf(' ' + cn + ' ') !== -1;},
     addClass = function(el, cn)
-    {if (!hasClass(el, cn)) {el.className = (el.className === '') ? cn : el.className + ' ' + cn;}},
+    {if (!hasClass(el, cn)){el.className = (el.className === '') ? cn : el.className + ' ' + cn;}},
     removeClass = function(el, cn)
     {el.className = trim((' ' + el.className + ' ').replace(' ' + cn + ' ', ' '));},
     isArray = function(obj)
@@ -591,22 +595,22 @@ $(function(){
     {return a.getTime() === b.getTime();},
     extend = function(to, from, overwrite){
         var prop, hasProp;
-        for (prop in from) {
+        for (prop in from){
             hasProp = to[prop] !== undefined;
-            if (hasProp && typeof from[prop] === 'object' && from[prop].nodeName === undefined) {
-                if (isDate(from[prop])) {
-                    if (overwrite) {
+            if (hasProp && typeof from[prop] === 'object' && from[prop].nodeName === undefined){
+                if (isDate(from[prop])){
+                    if (overwrite){
                         to[prop] = new Date(from[prop].getTime());
                     }
                 }
-                else if (isArray(from[prop])) {
-                    if (overwrite) {
+                else if (isArray(from[prop])){
+                    if (overwrite){
                         to[prop] = from[prop].slice(0);
                     }
                 } else {
                     to[prop] = extend({}, from[prop], overwrite);
                 }
-            } else if (overwrite || !hasProp) {
+            } else if (overwrite || !hasProp){
                 to[prop] = from[prop];
             }
         }
@@ -644,23 +648,23 @@ $(function(){
     },
     renderDayName = function(opts, day, abbr){
         day += opts.firstDay;
-        while (day >= 7) {
+        while (day >= 7){
             day -= 7;
         }
         return abbr ? opts.i18n.weekdaysShort[day] : opts.i18n.weekdays[day];
     },
     renderDay = function(i, isSelected, isToday, isDisabled, isEmpty){
-        if (isEmpty) {
+        if (isEmpty){
             return '<td class="is-empty"></td>';
         }
         var arr = [];
-        if (isDisabled) {
+        if (isDisabled){
             arr.push('is-disabled');
         }
-        if (isToday) {
+        if (isToday){
             arr.push('is-today');
         }
-        if (isSelected) {
+        if (isSelected){
             arr.push('is-selected');
         }
         return '<td data-day="' + i + '" class="' + arr.join(' ') + '"><button class="calendar-button" type="button">' + i + '</button>' + '</td>';
@@ -671,7 +675,7 @@ $(function(){
     {return '<tbody>' + rows.join('') + '</tbody>';},
     renderHead = function(opts){
         var i, arr = [];
-        for (i = 0; i < 7; i++) {
+        for (i = 0; i < 7; i++){
             arr.push('<th scope="col"><span title="' + renderDayName(opts, i) + '">' + renderDayName(opts, i, true) + '</span></th>');
         }
         return '<thead>' + (opts.isRTL ? arr.reverse() : arr).join('') + '</thead>';
@@ -689,7 +693,7 @@ $(function(){
             prev = true,
             next = true;
 
-        for (arr = [], i = 0; i < 12; i++) {
+        for (arr = [], i = 0; i < 12; i++){
             arr.push('<option value="' + i + '"' +
                 (i === month ? ' selected': '') +
                 ((isMinYear && i < opts.minMonth) || (isMaxYear && i > opts.maxMonth) ? 'disabled' : '') + '>' +
@@ -697,29 +701,29 @@ $(function(){
         }
         monthHtml = '<div class="calendar-label">' + opts.i18n.months[month] + '<select class="calendar-select calendar-select-month">' + arr.join('') + '</select></div>';
 
-        if (isArray(opts.yearRange)) {
+        if (isArray(opts.yearRange)){
             i = opts.yearRange[0];
             j = opts.yearRange[1] + 1;
         } else {
             i = year - opts.yearRange;
             j = 1 + year + opts.yearRange;
         }
-        for (arr = []; i < j && i <= opts.maxYear; i++) {
-            if (i >= opts.minYear) {
+        for (arr = []; i < j && i <= opts.maxYear; i++){
+            if (i >= opts.minYear){
                 arr.push('<option value="' + i + '"' + (i === year ? ' selected': '') + '>' + (i) + '</option>');
             }
         }
         yearHtml = '<div class="calendar-label">' + year + opts.yearSuffix + '<select class="calendar-select calendar-select-year">' + arr.join('') + '</select></div>';
 
-        if (opts.showMonthAfterYear) {
+        if (opts.showMonthAfterYear){
             html += yearHtml + monthHtml;
         } else {
             html += monthHtml + yearHtml;
         }
-        if (isMinYear && (month === 0 || opts.minMonth >= month)) {
+        if (isMinYear && (month === 0 || opts.minMonth >= month)){
             prev = false;
         }
-        if (isMaxYear && (month === 11 || opts.maxMonth <= month)) {
+        if (isMaxYear && (month === 11 || opts.maxMonth <= month)){
             next = false;
         }
         html += '<button class="calendar-prev ico' + (prev ? '' : ' is-disabled') + '" type="button">' + opts.i18n.previousMonth + '</button>';
@@ -734,33 +738,33 @@ $(function(){
         var self = this,
             opts = self.config(options);
         self._onMouseDown = function(e){
-            if (!self._v) {
+            if (!self._v){
                 return;
             }
             e = e || window.event;
             var target = e.target || e.srcElement;
-            if (!target) {
+            if (!target){
                 return;
             }
-            if (!hasClass(target, 'is-disabled')) {
-                if (hasClass(target, 'calendar-button') && !hasClass(target, 'is-empty')) {
+            if (!hasClass(target, 'is-disabled')){
+                if (hasClass(target, 'calendar-button') && !hasClass(target, 'is-empty')){
                     self.setDate(new Date(self._y, self._m, parseInt(target.innerHTML, 10)));
-                    if (opts.bound) {
-                        sto(function() {
+                    if (opts.bound){
+                        sto(function(){
                             self.hide();
                         }, 100);
                     }
                     return;
                 }
-                else if (hasClass(target, 'calendar-prev')) {
+                else if (hasClass(target, 'calendar-prev')){
                     self.prevMonth();
                 }
-                else if (hasClass(target, 'calendar-next')) {
+                else if (hasClass(target, 'calendar-next')){
                     self.nextMonth();
                 }
             }
-            if (!hasClass(target, 'calendar-select')) {
-                if (e.preventDefault) {
+            if (!hasClass(target, 'calendar-select')){
+                if (e.preventDefault){
                     e.preventDefault();
                 } else {
                     e.returnValue = false;
@@ -774,23 +778,23 @@ $(function(){
         {
             e = e || window.event;
             var target = e.target || e.srcElement;
-            if (!target) {
+            if (!target){
                 return;
             }
-            if (hasClass(target, 'calendar-select-month')) {
+            if (hasClass(target, 'calendar-select-month')){
                 self.gotoMonth(target.value);
             }
-            else if (hasClass(target, 'calendar-select-year')) {
+            else if (hasClass(target, 'calendar-select-year')){
                 self.gotoYear(target.value);
             }
         };
         self._onInputChange = function(e){
             var date;
 
-            if (e.firedBy === self) {
+            if (e.firedBy === self){
                 return;
             }
-            if (hasMoment) {
+            if (hasMoment){
                 date = moment(opts.field.value, opts.format);
                 date = (date && date.isValid()) ? date.toDate() : null;
             }
@@ -798,7 +802,7 @@ $(function(){
                 date = new Date(Date.parse(opts.field.value));
             }
             self.setDate(isDate(date) ? date : null);
-            if (!self._v) {
+            if (!self._v){
                 self.show();
             }
         };
@@ -809,8 +813,8 @@ $(function(){
             self.show();
         };
         self._onInputBlur = function(){
-            if (!self._c) {
-                self._b = sto(function() {
+            if (!self._c){
+                self._b = sto(function(){
                     self.hide();
                 }, 50);
             }
@@ -820,22 +824,22 @@ $(function(){
             e = e || window.event;
             var target = e.target || e.srcElement,
                 pEl = target;
-            if (!target) {
+            if (!target){
                 return;
             }
-            if (!hasEventListeners && hasClass(target, 'calendar-select')) {
-                if (!target.onchange) {
+            if (!hasEventListeners && hasClass(target, 'calendar-select')){
+                if (!target.onchange){
                     target.setAttribute('onchange', 'return;');
                     addEvent(target, 'change', self._onChange);
                 }
             }
             do {
-                if (hasClass(pEl, 'calendar-single')) {
+                if (hasClass(pEl, 'calendar-single')){
                     return;
                 }
             }
             while ((pEl = pEl.parentNode));
-            if (self._v && target !== opts.trigger) {
+            if (self._v && target !== opts.trigger){
                 self.hide();
             }
         };
@@ -845,16 +849,16 @@ $(function(){
         addEvent(self.el, 'mousedown', self._onMouseDown, true);
         addEvent(self.el, 'change', self._onChange);
 
-        if (opts.field) {
-            if (opts.bound) {
+        if (opts.field){
+            if (opts.bound){
                 document.body.appendChild(self.el);
             } else {
                 opts.field.parentNode.insertBefore(self.el, opts.field.nextSibling);
             }
             addEvent(opts.field, 'change', self._onInputChange);
 
-            if (!opts.defaultDate) {
-                if (hasMoment && opts.field.value) {
+            if (!opts.defaultDate){
+                if (hasMoment && opts.field.value){
                     opts.defaultDate = moment(opts.field.value, opts.format).toDate();
                 } else {
                     opts.defaultDate = new Date(Date.parse(opts.field.value));
@@ -864,8 +868,8 @@ $(function(){
         }
         var defDate = opts.defaultDate;
 
-        if (isDate(defDate)) {
-            if (opts.setDefaultDate) {
+        if (isDate(defDate)){
+            if (opts.setDefaultDate){
                 self.setDate(defDate, true);
             } else {
                 self.gotoDate(defDate);
@@ -873,7 +877,7 @@ $(function(){
         } else {
             self.gotoDate(new Date());
         }
-        if (opts.bound) {
+        if (opts.bound){
             this.hide();
             self.el.className += ' is-bound';
             addEvent(opts.trigger, 'click', self._onInputClick);
@@ -885,7 +889,7 @@ $(function(){
     };
     calendarday.prototype = {
         config: function(options){
-            if (!this._o) {
+            if (!this._o){
                 this._o = extend({}, defaults, true);
             }
             var opts = extend(this._o, options, true);
@@ -895,32 +899,32 @@ $(function(){
             opts.trigger = (opts.trigger && opts.trigger.nodeName) ? opts.trigger : opts.field;
             var nom = parseInt(opts.numberOfMonths, 10) || 1;
             opts.numberOfMonths = nom > 4 ? 4 : nom;
-            if (!isDate(opts.minDate)) {
+            if (!isDate(opts.minDate)){
                 opts.minDate = false;
             }
-            if (!isDate(opts.maxDate)) {
+            if (!isDate(opts.maxDate)){
                 opts.maxDate = false;
             }
-            if ((opts.minDate && opts.maxDate) && opts.maxDate < opts.minDate) {
+            if ((opts.minDate && opts.maxDate) && opts.maxDate < opts.minDate){
                 opts.maxDate = opts.minDate = false;
             }
-            if (opts.minDate) {
+            if (opts.minDate){
                 setToStartOfDay(opts.minDate);
                 opts.minYear  = opts.minDate.getFullYear();
                 opts.minMonth = opts.minDate.getMonth();
             }
-            if (opts.maxDate) {
+            if (opts.maxDate){
                 setToStartOfDay(opts.maxDate);
                 opts.maxYear  = opts.maxDate.getFullYear();
                 opts.maxMonth = opts.maxDate.getMonth();
             }
-            if (isArray(opts.yearRange)) {
+            if (isArray(opts.yearRange)){
                 var fallback = new Date().getFullYear() - 10;
                 opts.yearRange[0] = parseInt(opts.yearRange[0], 10) || fallback;
                 opts.yearRange[1] = parseInt(opts.yearRange[1], 10) || fallback;
             } else {
                 opts.yearRange = Math.abs(parseInt(opts.yearRange, 10)) || defaults.yearRange;
-                if (opts.yearRange > 100) {
+                if (opts.yearRange > 100){
                     opts.yearRange = 100;
                 }
             }
@@ -933,7 +937,7 @@ $(function(){
             return hasMoment ? moment(this._d) : null;
         },
         setMoment: function(date){
-            if (hasMoment && moment.isMoment(date)) {
+            if (hasMoment && moment.isMoment(date)){
                 this.setDate(date.toDate());
             }
         },
@@ -941,40 +945,40 @@ $(function(){
             return isDate(this._d) ? new Date(this._d.getTime()) : null;
         },
         setDate: function(date, preventOnSelect){
-            if (!date) {
+            if (!date){
                 this._d = null;
                 return this.draw();
             }
-            if (typeof date === 'string') {
+            if (typeof date === 'string'){
                 date = new Date(Date.parse(date));
             }
-            if (!isDate(date)) {
+            if (!isDate(date)){
                 return;
             }
             var min = this._o.minDate,
                 max = this._o.maxDate;
-            if (isDate(min) && date < min) {
+            if (isDate(min) && date < min){
                 date = min;
-            } else if (isDate(max) && date > max) {
+            } else if (isDate(max) && date > max){
                 date = max;
             }
             this._d = new Date(date.getTime());
             setToStartOfDay(this._d);
             this.gotoDate(this._d);
 
-            if (this._o.field) {
+            if (this._o.field){
                 //this._o.field.value = this.toString();
                 var datestr = this.getDate();
                 this._o.field.value=datestr.getFullYear().toString() +'-'+(datestr.getMonth()+1).toString() +'-'+datestr.getDate().toString();
                 //-------------------------------------------------------------------Custom date format
                 fireEvent(this._o.field, 'change', { firedBy: this });
             }
-            if (!preventOnSelect && typeof this._o.onSelect === 'function') {
+            if (!preventOnSelect && typeof this._o.onSelect === 'function'){
                 this._o.onSelect.call(this, this.getDate());
             }
         },
         gotoDate: function(date){
-            if (!isDate(date)) {
+            if (!isDate(date)){
                 return;
             }
             this._y = date.getFullYear();
@@ -985,27 +989,27 @@ $(function(){
             this.gotoDate(new Date());
         },
         gotoMonth: function(month){
-            if (!isNaN( (month = parseInt(month, 10)) )) {
+            if (!isNaN( (month = parseInt(month, 10)) )){
                 this._m = month < 0 ? 0 : month > 11 ? 11 : month;
                 this.draw();
             }
         },
         nextMonth: function(){
-            if (++this._m > 11) {
+            if (++this._m > 11){
                 this._m = 0;
                 this._y++;
             }
             this.draw();
         },
         prevMonth: function(){
-            if (--this._m < 0) {
+            if (--this._m < 0){
                 this._m = 11;
                 this._y--;
             }
             this.draw();
         },
         gotoYear: function(year){
-            if (!isNaN(year)) {
+            if (!isNaN(year)){
                 this._y = parseInt(year, 10);
                 this.draw();
             }
@@ -1017,7 +1021,7 @@ $(function(){
             this._o.maxDate = value;
         },
         draw: function(force){
-            if (!this._v && !force) {
+            if (!this._v && !force){
                 return;
             }
             var opts = this._o,
@@ -1026,30 +1030,30 @@ $(function(){
                 minMonth = opts.minMonth,
                 maxMonth = opts.maxMonth;
 
-            if (this._y <= minYear) {
+            if (this._y <= minYear){
                 this._y = minYear;
-                if (!isNaN(minMonth) && this._m < minMonth) {
+                if (!isNaN(minMonth) && this._m < minMonth){
                     this._m = minMonth;
                 }
             }
-            if (this._y >= maxYear) {
+            if (this._y >= maxYear){
                 this._y = maxYear;
-                if (!isNaN(maxMonth) && this._m > maxMonth) {
+                if (!isNaN(maxMonth) && this._m > maxMonth){
                     this._m = maxMonth;
                 }
             }
             this.el.innerHTML = renderTitle(this) + this.render(this._y, this._m);
-            if (opts.bound) {
+            if (opts.bound){
                 this.adjustPosition();
-                if(opts.field.type !== 'hidden') {
-                    sto(function() {
+                if(opts.field.type !== 'hidden'){
+                    sto(function(){
                         opts.trigger.focus();
                     }, 1);
                 }
             }
-            if (typeof this._o.onDraw === 'function') {
+            if (typeof this._o.onDraw === 'function'){
                 var self = this;
-                sto(function() {
+                sto(function(){
                     self._o.onDraw.call(self);
                 }, 0);
             }
@@ -1062,22 +1066,22 @@ $(function(){
             scrollTop = window.pageYOffset || document.body.scrollTop || document.documentElement.scrollTop,
             left, top, clientRect;
 
-            if (typeof field.getBoundingClientRect === 'function') {
+            if (typeof field.getBoundingClientRect === 'function'){
                 clientRect = field.getBoundingClientRect();
                 left = clientRect.left + window.pageXOffset;
                 top = clientRect.bottom + window.pageYOffset;
             } else {
                 left = pEl.offsetLeft;
                 top  = pEl.offsetTop + pEl.offsetHeight;
-                while((pEl = pEl.offsetParent)) {
+                while((pEl = pEl.offsetParent)){
                     left += pEl.offsetLeft;
                     top  += pEl.offsetTop;
                 }
             }
-            if (left + width > viewportWidth) {
+            if (left + width > viewportWidth){
                 left = left - width + field.offsetWidth;
             }
-            if (top + height > viewportHeight + scrollTop) {
+            if (top + height > viewportHeight + scrollTop){
                 top = top - height - field.offsetHeight;
             }
             this.el.style.cssText = 'position:absolute;left:' + left + 'px;top:' + top + 'px;';
@@ -1090,15 +1094,15 @@ $(function(){
                 data   = [],
                 row    = [];
             setToStartOfDay(now);
-            if (opts.firstDay > 0) {
+            if (opts.firstDay > 0){
                 before -= opts.firstDay;
-                if (before < 0) {
+                if (before < 0){
                     before += 7;
                 }
             }
             var cells = days + before,
                 after = cells;
-            while(after > 7) {
+            while(after > 7){
                 after -= 7;
             }
             cells += 7 - after;
@@ -1111,7 +1115,7 @@ $(function(){
 
                 row.push(renderDay(1 + (i - before), isSelected, isToday, isDisabled, isEmpty));
 
-                if (++r === 7) {
+                if (++r === 7){
                     data.push(renderRow(row, opts.isRTL));
                     row = [];
                     r = 0;
@@ -1123,28 +1127,28 @@ $(function(){
             return this._v;
         },
         show: function(){
-            if (!this._v) {
-                if (this._o.bound) {
+            if (!this._v){
+                if (this._o.bound){
                     addEvent(document, 'click', this._onClick);
                 }
                 removeClass(this.el, 'is-hidden');
                 this._v = true;
                 this.draw();
-                if (typeof this._o.onOpen === 'function') {
+                if (typeof this._o.onOpen === 'function'){
                     this._o.onOpen.call(this);
                 }
             }
         },
         hide: function(){
             var v = this._v;
-            if (v !== false) {
-                if (this._o.bound) {
+            if (v !== false){
+                if (this._o.bound){
                     removeEvent(document, 'click', this._onClick);
                 }
                 this.el.style.cssText = '';
                 addClass(this.el, 'is-hidden');
                 this._v = false;
-                if (v !== undefined && typeof this._o.onClose === 'function') {
+                if (v !== undefined && typeof this._o.onClose === 'function'){
                     this._o.onClose.call(this);
                 }
             }
@@ -1153,15 +1157,15 @@ $(function(){
             this.hide();
             removeEvent(this.el, 'mousedown', this._onMouseDown, true);
             removeEvent(this.el, 'change', this._onChange);
-            if (this._o.field) {
+            if (this._o.field){
                 removeEvent(this._o.field, 'change', this._onInputChange);
-                if (this._o.bound) {
+                if (this._o.bound){
                     removeEvent(this._o.trigger, 'click', this._onInputClick);
                     removeEvent(this._o.trigger, 'focus', this._onInputFocus);
                     removeEvent(this._o.trigger, 'blur', this._onInputBlur);
                 }
             }
-            if (this.el.parentNode) {
+            if (this.el.parentNode){
                 this.el.parentNode.removeChild(this.el);
             }
         }
