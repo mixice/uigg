@@ -1,5 +1,5 @@
 /*
- * uigg 2.1 (build 20210918)
+ * uigg 2.1 (build 20211111)
  * Project: https://ui.gg
  * Author: http://www.mixice.com
  * Github: https://github.com/mixice/uigg
@@ -517,6 +517,11 @@ $(document).on('click','notify x',function(){
     setTimeout(function(){
         notifyThis.hide();
     },500);
+});
+
+//----------------------------------------------------------------------------------btn
+$(function(){
+    $('.btn').attr('onselectstart','return false');
 });
 
 //----------------------------------------------------------------------------------

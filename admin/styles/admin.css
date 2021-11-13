@@ -5,7 +5,7 @@
     --color-bright:#a49fff;
     --color-basic:#6c62f9;
     --color-deep:#4a41c4;
-    
+
     --color-shadow: 0 5px 5px rgb(108, 98, 249,.05);
 }
 
@@ -37,7 +37,7 @@ body {background: var(--color-white);}
 }
 
 /*login*/
-.login {width: 100%;height: 100%;background: repeating-radial-gradient(circle at 50% 50%, transparent 0, var(--000-1) 2px 5px, transparent 5px 10px) var(--sapphire);}
+.login {width: 100%;height: 100%;background: repeating-radial-gradient(circle at 50% 50%, transparent 0, var(--000-1) 2px 5px, transparent 5px 10px) var(--color-basic);}
 .login-main {width: 90%;max-width: 550px;background-color: white;box-shadow: var(--color-shadow);padding: 30px;animation-duration: .5s;}
 .login-title {padding: 10px 0;}
 .login-title h1 {margin: auto;transform: scale(1.3);}
@@ -70,7 +70,7 @@ body {background: var(--color-white);}
 .admin {width: 100vw;height: 100vh;overflow: hidden;}
 .head {height: 80px;background: white;box-shadow: var(--color-shadow);position: relative;z-index: 1;}
 .subject {width: 100%;height: 100%;flex: 1;animation-delay: .3s;overflow: hidden;display: flex;position: relative;}
-.sider {width: 250px;overflow: auto;padding: 10px 0;background: repeating-radial-gradient(circle at 110% 80%, transparent 0, var(--000-1) 2px 5px, transparent 5px 10px) var(--sapphire);}
+.sider {width: 240px;overflow: auto;padding: 10px 0;background: repeating-radial-gradient(circle at 110% 80%, transparent 0, var(--000-1) 2px 5px, transparent 5px 10px) var(--color-basic);}
 .sider::-webkit-scrollbar {width: 0;}
 .clause {width: 100%;height: 100%;flex: 1;overflow: auto;padding: 20px;}
 .contant {background: white;box-shadow: var(--color-shadow);margin: 0 0 20px;}
@@ -118,7 +118,7 @@ drop-list a:hover {background-color: var(--color-basic);}
     .head-info a {width: .4rem;height: .4rem;line-height: .4rem;}
     .head-info a.fullscreen,
     .mailbox {display: none;}
-    
+
     drop {width: 1.6rem;height: .5rem;line-height: .5rem;border-radius: .3rem;}
     drop i.ico {line-height: .5rem;width: .5rem;}
     drop-list {top: .5rem;}
@@ -157,23 +157,20 @@ drop-list a:hover {background-color: var(--color-basic);}
 }
 
 /*title*/
-.title {height: 50px;text-align: left;}
-.title h4 {line-height: 35px;}
-.title h4 a {float: right;width: 40px;line-height: 35px;}
-.title h5 {line-height: 50px;padding: 0 20px;color: var(--color-basic);border-bottom: 1px var(--color-light) solid;}
-.title h5 a {float: right;margin: 5px 0 5px 5px;}
-.title h5 cite {font-weight: normal;color: var(--color-light);font-size: 14px;padding: 0 20px;}
+.title {height: 50px;display: flex;align-items: center;}
+.title u {flex: 1;}
+.title .ico {margin: inherit;padding: 0 10px;}
+.title cite {font-weight: normal;color: var(--color-light);padding: 0 20px;}
+.title .return {border-right: 1px var(--color-light) solid;margin-right: 20px;}
 
-.title .return {padding: 0 10px;border-right: 1px var(--color-light) solid;margin-right: 10px;}
+.contant .title {border-bottom: 1px var(--color-light) solid;padding: 0 20px;}
 
 @media(max-width:640px) {
-    .title {height: .6rem;}
-    .title h4 {line-height: .6rem;}
-    .title h4 a {width: .6rem;;line-height: .6rem;}
-    .title h5 {line-height: .65rem;padding: 0 .15rem;}
-    .title h5 a {margin: .05rem 0 .05rem .05rem;}
-    .title h5 cite {display: none;}
-    .title .return {padding: 0 .1rem;margin-right: ,1rem;}
+    .title {height: .7rem;}
+    .title .ico {padding: 0 .1rem;}
+    .title cite {padding: 0 .2rem;}
+    .title .return {margin-right: .2rem;}
+    .contant .title {padding: 0 .2rem;}
 }
 
 /*page*/
@@ -317,7 +314,8 @@ o {color: var(--color-basic);}
     input:focus,
     textarea:focus {box-shadow: 0 0 0;}
     .form li {border-bottom-color: var(--color-light);}
-    
+    .form li input[readonly] {background: none;}
+
     .control {padding:.1rem .1rem 0;}
     .control li {width: 100%;}
     .control span,

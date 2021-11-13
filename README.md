@@ -8,6 +8,24 @@ Icon Library: [uigg ico](https://ui.gg/ico.html)
 
 Author: [mixice.com](http://mixice.com/)
 
+ **UIGG 2.1**
+
+1.1 A large number of rules have been modified
+
+2.1 The admin management system has been slightly updated, but please note that admin is still a beta version
+
+3.1 Updated uigg ico
+
+4.1 The working principle of some JS code has been fixed
+
+5.1 Adjusted the font of uigg
+
+6.1 Add notify to uigg, which is a cool notification application
+
+7.1 Fixed some wrong definitions
+
+8.1 Some definitions of experiments are added
+
  **UIGG 2.0**
 
 1.1 Rewriting a lot of code to adapt to the new industry
