@@ -524,6 +524,26 @@ $(function(){
     $('.btn').attr('onselectstart','return false');
 });
 
+//----------------------------------------------------------------------------------copy
+var copy;
+var copyNum;
+$(function(){
+    $(copy).click(function(){
+        copyNum = $(this).attr('copy-btn');
+        copyFunction();
+    });
+    function copyFunction() {
+        if(copyNum == ''){var copyEl = $('*[copy-val]');}else{var copyEl = $('*[copy-val='+copyNum+']');};
+        if(copyEl.is('input')){var copyVal = copyEl.val();}else{var copyVal = copyEl.html();};
+        var copyInput = document.createElement('input');
+        copyInput.value = copyVal;
+        document.body.appendChild(copyInput);
+        copyInput.select();
+        document.execCommand('Copy');
+        copyInput.remove();
+    };
+});
+
 //----------------------------------------------------------------------------------
 $(function(){
 
