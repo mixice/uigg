@@ -62,10 +62,12 @@ z {display: inline-block;transition-duration: 0s;}
 .anime-pulse,.anime-rotate,
 .anime-fade-in,.anime-fade-in-down,.anime-fade-in-left,.anime-fade-in-right,.anime-fade-in-up,
 .anime-fade-out,.anime-fade-out-down,.anime-fade-out-left,.anime-fade-out-right,.anime-fade-out-up,
+.anime-bounce-in,.anime-bounce-in-down,.anime-bounce-in-left,.anime-bounce-in-right,.anime-bounce-in-up,
+.anime-bounce-out,.anime-bounce-out-down,.anime-bounce-out-left,.anime-bounce-out-right,.anime-bounce-out-up,
 .anime-flip-in-x,.anime-flip-in-y,.anime-flip-out-x,.anime-flip-out-y,
 .anime-zoom-in,.anime-zoom-out,
 .anime-shrink-in,.anime-shrink-out,.anime-shrink-in-enlarge,.anime-shrink-out-enlarge {animation-duration: .6s;animation-fill-mode: both;}
-
+.anime-bounce-in,.anime-bounce-in-down,.anime-bounce-in-left,.anime-bounce-in-right,.anime-bounce-in-up {animation-timing-function: cubic-bezier(.215, .61, .355, 1);animation-duration: 1s;}
 .anime-shrink-in,.anime-shrink-out {animation-duration: 2s;}
 .anime-flip-in-x,.anime-flip-in-y,.anime-flip-out-x,.anime-flip-out-y {backface-visibility: visible;}
 
@@ -81,6 +83,16 @@ z {display: inline-block;transition-duration: 0s;}
 .anime-fade-out-left {animation-name: anime-fade-out-left;}
 .anime-fade-out-right {animation-name: anime-fade-out-right;}
 .anime-fade-out-up {animation-name: anime-fade-out-up;}
+.anime-bounce-in {animation-name: anime-bounce-in;}
+.anime-bounce-in-down {animation-name: anime-bounce-in-down;}
+.anime-bounce-in-left {animation-name: anime-bounce-in-left;}
+.anime-bounce-in-right {animation-name: anime-bounce-in-right;}
+.anime-bounce-in-up {animation-name: anime-bounce-in-up;}
+.anime-bounce-out {animation-name: anime-bounce-out;}
+.anime-bounce-out-down {animation-name: anime-bounce-out-down;}
+.anime-bounce-out-left {animation-name: anime-bounce-out-left;}
+.anime-bounce-out-right {animation-name: anime-bounce-out-right;}
+.anime-bounce-out-up {animation-name: anime-bounce-out-up;}
 .anime-flip-in-x {animation-name: anime-flip-in-x;}
 .anime-flip-in-y {animation-name: anime-flip-in-y;}
 .anime-flip-out-x {animation-name: anime-flip-out-x;}
@@ -107,6 +119,16 @@ z {display: inline-block;transition-duration: 0s;}
 @keyframes anime-fade-out-left {0% {opacity: 1;}100% {opacity: 0;transform: translateX(-100%);}}
 @keyframes anime-fade-out-right {0% {opacity: 1;}100% {opacity: 0;transform: translateX(100%);}}
 @keyframes anime-fade-out-up {0% {opacity: 1;}100% {opacity: 0;transform: translateY(-100%);}}
+@keyframes anime-bounce-in {0% {opacity: 0;transform: scale(.3);}20% {transform: scale(1.1);}40% {transform: scale(.9);}60% {opacity: 1;transform: scale(1.03);}80% {transform: scale(.97);}100% {opacity: 1;transform: scale(1);}}
+@keyframes anime-bounce-in-down {0% {opacity: 0;transform: translateY(-1000px);}60% {opacity: 1;transform: translateY(25px);}75% {transform: translateY(-10px);}90% {transform: translateY(5px);}100% {transform: translate(0);}}
+@keyframes anime-bounce-in-left {0% {opacity: 0;transform: translateX(-1000px);}60% {opacity: 1;transform: translateX(25px);}75% {transform: translateX(-10px);}90% {transform: translateX(5px);}100% {transform: translate(0);}}
+@keyframes anime-bounce-in-right {0% {opacity: 0;transform: translateX(3000px);}60% {opacity: 1;transform: translateX(-25px);}75% {transform: translateX(10px);}90% {transform: translateX(-5px);}100% {transform: translate(0);}}
+@keyframes anime-bounce-in-up {0% {opacity: 0;transform: translateY(3000px);}60% {opacity: 1;transform: translateY(-20px);}75% {transform: translateY(10px);}90% {transform: translateY(-5px);}100% {transform: translate(0);}}
+@keyframes anime-bounce-out {20% {transform: scale(.9);}50% {opacity: 1;transform: scale(1.1);}100% {opacity: 0;transform: scale(.3);}}
+@keyframes anime-bounce-out-down {20% {transform: translateY(10px);}50% {opacity: 1;transform: translateY(-20px);}100% {opacity: 0;transform: translateY(1000px);}}
+@keyframes anime-bounce-out-left {20% {opacity: 1;transform: translateX(20px);}100% {opacity: 0;transform: translateX(-1000px);}}
+@keyframes anime-bounce-out-right {20% {opacity: 1;transform: translateX(-20px);}100% {opacity: 0;transform: translateX(1000px);}}
+@keyframes anime-bounce-out-up {20% {transform: translateY(-10px);}50% {opacity: 1;transform: translateY(20px);}100% {opacity: 0;transform: translateY(-1000px);}}
 @keyframes anime-flip-in-x {0% {transform: perspective(400px) rotate3d(1, 0, 0, 90deg);opacity: 0;}100% {transform: perspective(400px);opacity: 1;}}
 @keyframes anime-flip-in-y {0% {transform: perspective(400px) rotate3d(0, 1, 0, 90deg);opacity: 0;}100% {transform: perspective(400px);opacity: 1;}}
 @keyframes anime-flip-out-x {0% {transform: perspective(400px);opacity: 1;}100% {transform: perspective(400px) rotate3d(1, 0, 0, 90deg);opacity: 0;}}

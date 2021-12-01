@@ -2,6 +2,13 @@
 
 $(function(){
     
+    //----------------------------------------------------------------------------------active
+    var localUrl = window.location.href;
+    var pageAllName = localUrl.substr(localUrl.lastIndexOf('/')+1);
+    var pageName = pageAllName.substring(0,pageAllName.indexOf('.'));
+    //if(pageName == ''){pageName = ''};
+    $('.sider-list a[href="'+pageName+'.php"]').addClass('active');
+    
     //----------------------------------------------------------------------------------industry
 	$('.industry').click(function(){
         $('.industry-cont').toggle();
@@ -28,4 +35,6 @@ $(function(){
         $(this).toggleClass('active');
         $(this).next().toggle();
     });
+    
+    
 });
