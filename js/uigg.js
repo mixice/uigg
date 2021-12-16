@@ -338,19 +338,27 @@ $(function(){
 
 //----------------------------------------------------------------------------------toggle
 $(function(){
-    $('.checkbox,.checkbox-done,.checkbox-cancel,.favorite,.star,.visibility,.mic,.volume,.muzak,.phonecard,.telecamera,.camera,.aim,.semaphore,.suitcase,.toggle').click(function(){
+    $('o.checkbox,o.checkbox-done,o.checkbox-cancel,o.favorite,o.star,o.visibility,o.password,o.mic,o.volume,o.muzak,o.phonecard,o.telecamera,o.camera,o.aim,o.semaphore,o.suitcase,o.toggle').click(function(){
         $(this).toggleClass('active');
     });
-    $(document).on('click','.radio,.radio-done',function(){
-        $(this).parent().parent().parent().find('.radio,.radio-done').removeClass('active');
+    $(document).on('click','o.radio,o.radio-done',function(){
+        $(this).parent().parent().parent().find('o.radio,o.radio-done').removeClass('active');
         $(this).addClass('active');
     });
-    $('.checkbox-all').click(function(){
+    $('o.checkbox-all').click(function(){
         if($(this).hasClass('active')){
-            $(this).parent().parent().parent().parent().find('.checkbox,.checkbox-done').addClass('active');
+            $(this).parent().parent().parent().parent().find('o.checkbox,o.checkbox-done').addClass('active');
         }else{
-            $(this).parent().parent().parent().parent().find('.checkbox,.checkbox-done').removeClass('active');
+            $(this).parent().parent().parent().parent().find('o.checkbox,o.checkbox-done').removeClass('active');
         }
+    });
+    $('o.password').click(function(){
+        var inputType = $(this).siblings('input').attr('type');
+        if(inputType == 'password'){
+            $(this).siblings('input').attr('type','text');
+        }else{
+            $(this).siblings('input').attr('type','password');
+        };
     });
 });
 
@@ -380,12 +388,12 @@ $(function(){
         $(this).parent().remove();
     });
     function uploadImg(){
-        $('.upload-group input').on('change', function(){
+        $('.upload-group input').on('change',function(){
             var imgValue = $(this).val(),
             fileFormat = imgValue.substring(imgValue.lastIndexOf(".")).toLowerCase(),
             imgUrl = window.URL.createObjectURL(this.files[0]);
-            if(!fileFormat.match(/.png|.jpg|.jpeg|.svg|.webp/)){
-                alert('File format must be: png/jpg/jpeg/svg/webp');
+            if(!fileFormat.match(/.png|.jpg|.jpeg|.svg|.webp|.ico|.gif/)){
+                alert('File format must be: png/jpg/jpeg/svg/webp/ico/gif');
                 return;
             }else{
                 $(this).parent().attr('style','background-image:url('+ imgUrl+');');
@@ -397,18 +405,17 @@ $(function(){
 });
 
 //----------------------------------------------------------------------------------tip
-$(function(){
-    $('tip').addClass('anime-zoom-in');
+var tipVal;
+function tip(){
+    $('body').append('<tip class="anime-zoom-in">' + tipVal + '</tip>');
     var tipHeight = $('tip').height();
     var tipWidth = $('tip').width();
     $('tip').css('margin-top', -tipHeight/2-11 + 'px');
     $('tip').css('margin-left', -tipWidth/2-20 + 'px');
-    $('html').click(function(){
-        setTimeout(function(){
-             $('tip').hide();
-        },3000);
-    });
-});
+    setTimeout(function(){
+         $('tip').hide();
+    },3000);
+}
 
 //----------------------------------------------------------------------------------drop
 $(function(){
@@ -498,9 +505,9 @@ function countdown(){
 };
 
 //----------------------------------------------------------------------------------notify
-var notifyValue;
+var notifyVal;
 function notifyAdd(){
-    $('notify').append('<li class="anime-fade-in-right"><x class="ico ico-close"></x>'+ notifyValue +'</li>');
+    $('notify').append('<li class="anime-bounce-in-right"><x class="ico ico-close"></x>'+ notifyVal +'</li>');
     $('notify audio')[0].play();
 };
 function notify(){
@@ -532,7 +539,7 @@ $(function(){
         copyNum = $(this).attr('copy-btn');
         copyFunction();
     });
-    function copyFunction() {
+    function copyFunction(){
         if(copyNum == ''){var copyEl = $('*[copy-val]');}else{var copyEl = $('*[copy-val='+copyNum+']');};
         if(copyEl.is('input')){var copyVal = copyEl.val();}else{var copyVal = copyEl.html();};
         var copyInput = document.createElement('input');
@@ -995,7 +1002,7 @@ $(function(){
                 //this._o.field.value = this.toString();
                 var datestr = this.getDate();
                 this._o.field.value=datestr.getFullYear().toString() +'-'+(datestr.getMonth()+1).toString() +'-'+datestr.getDate().toString();
-                //-------------------------------------------------------------------Custom date format
+                //-------------------------------------------------------------------custom date format
                 fireEvent(this._o.field, 'change', { firedBy: this });
             }
             if (!preventOnSelect && typeof this._o.onSelect === 'function'){

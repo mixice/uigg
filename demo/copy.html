@@ -35,15 +35,14 @@
     </ul>
 </section>
 
-<tip>
-    <i class="ico ico-circular-warn"></i><span>Copy successful</span>
-</tip>
-
 <!----------------------------------------------------------------------------------------->
 
 <script>
     copy = $('a');
-    copy.click(function(){$('tip').show();});
+    copy.click(function(){
+        tipVal = '<i class="ico ico-circular-warn"></i><span>Copy successful</span>';
+        tip();
+    });
 </script>
 
 </body>

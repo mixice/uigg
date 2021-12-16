@@ -46,7 +46,7 @@ body {background: var(--color-white);}
 .login-form li {position: relative;display: flex;}
 .login-form li:last-child {border-bottom: 0;}
 .login-form li *:last-child {margin-right: 0;}
-.login-form li i {width: 50px;position: absolute;left: 0;top:10px;line-height: 50px;font-size: 24px;}
+.login-form li i {width: 50px;position: absolute;left: 0;top:10px;line-height: 50px;}
 .login-form li input {padding: 0 10px 0 50px;}
 .login-form li .btn {width: 100%;margin: 10px 0;}
 .login-info {padding: 0 10px 10px;overflow: hidden;}
@@ -59,9 +59,9 @@ body {background: var(--color-white);}
     .login-title {padding: .1rem 0;}
     .login-title h1 {margin: .15rem auto;}
     .login-form {padding: 0 .1rem;}
-    .login-form li i {width: .7rem;line-height: .7rem;font-size: .3rem;top: .1rem;}
+    .login-form li i {width: .7rem;line-height: .7rem;top: .1rem;}
     .login-form li input {padding: 0 .1rem 0 .7rem;}
-    .login-form li .btn {margin: .1rem 0;}
+    .login-form li .btn {margin: .1rem 0;font-size: .24rem;}
     .login-info {padding: 0 .1rem .1rem;}
     .login-tip {height: .4rem;line-height: .4rem;}
 }
@@ -382,7 +382,7 @@ tab-group {}
 pop {}
 pop-main {}
 pop-title {border-bottom-color: var(--color-light);}
-pop-title h3 {color: var(--color-basic);}
+pop-title h3 {}
 pop-cont {padding: 20px 0;}
 .pop-tip {text-align: center;padding: 50px 0;}
 .pop-tip i {font-size: 60px;margin: 10px;}
@@ -427,10 +427,6 @@ pop-cont {padding: 20px 0;}
 #editor2,
 #editor3,
 #editor4 {float: left;}
-
-
-
-
 
 
 

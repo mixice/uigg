@@ -19,13 +19,16 @@
 
 <!----------------------------------------------------------------------------------------->
 
-<a class="btn" onclick="$('tip').show()">tip</a>
-
-<tip>
-    <i class="ico ico-circular-warn"></i><span>Lorem ipsum dolor koole</span>
-</tip>
+<a class="btn">tip</a>
 
 <!----------------------------------------------------------------------------------------->
+
+<script>
+    $('a').click(function(){
+        tipVal = '<i class="ico ico-circular-warn"></i><span>Lorem ipsum dolor koole</span>';
+        tip();
+    });
+</script>
 
 </body>
 </html>

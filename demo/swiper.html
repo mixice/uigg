@@ -13,14 +13,14 @@
 <script src="../js/swiper-bundle.min.js"></script>
 <script src="../js/uigg.js"></script>
 </head>
-    
+
 <body>
 
 <style>
-    
+
     .swiper {height: 100%;}
     .swiper-slide {background-color: var(--f7);font-size: .6rem;text-transform: uppercase;font-weight: bold;color: var(--eee);}
-    
+
     .swiper-gallery,
     .swiper-lug,
     .swiper-relative {height: 100%;display: flex;flex-direction: column;}
@@ -28,10 +28,10 @@
     .lug-top,
     .swiper-hash,
     .relative-top {flex: 1;}
-    .gallery-thumbs,
+    .gallery-thumb,
     .relative-thumb {height: 180px;}
     .swiper-list .swiper-slide,
-    .gallery-thumbs .swiper-slide,
+    .gallery-thumb .swiper-slide,
     .relative-thumb .swiper-slide {font-size: .3rem;}
     .lug-thumbs a {height: 60px;line-height: 60px;font-size: 16px;padding: 0 20px;font-weight: bold;background-color: var(--eee);text-transform: uppercase;}
     .lug-thumbs a.active {background-color: var(--f7);}
@@ -39,7 +39,7 @@
     .swiper-parallax .swiper-slide {background: none;text-align: center;}
     .swiper-parallax .swiper-slide h3 {font-size: .6rem;text-transform: uppercase;}
     .swiper-parallax .swiper-slide h3 span {display: block;font-weight: 300;}
-    
+
     .subject {height: 100%;}
     .sider {width: 260px;height: 100%;background-color: var(--f7);overflow: auto;position: fixed;left: 0;top: 0;}
     .sider h4 {padding: 20px;}
@@ -47,7 +47,7 @@
     .sider a:hover {background-color: var(--eee);}
     .sider a.active {background-color: var(--ddd);}
     .contant {padding-left: 260px;}
-    
+
     .item {height: 100vh;padding: 30px;position: relative;}
     #hash menu {background: var(--f7);display: flex;justify-content: center;margin-bottom: 20px;}
     #hash menu a {padding: 20px;font-weight: bold;font-size: 18px;text-transform: uppercase;}
@@ -130,7 +130,7 @@
                             nextEl: '.swiper-button-next',
                             prevEl: '.swiper-button-prev',
                         },
-                        breakpoints: { 
+                        breakpoints: {
                             320: {
                               slidesPerView: 1,
                               spaceBetween: 10
@@ -186,7 +186,7 @@
                     <div class="swiper-button-next"></div>
                     <div class="swiper-button-prev"></div>
                 </div>
-                <div class="swiper gallery-thumbs">
+                <div class="swiper gallery-thumb">
                     <div class="swiper-wrapper">
                         <div class="swiper-slide center">one</div>
                         <div class="swiper-slide center">two</div>
@@ -196,7 +196,7 @@
                     </div>
                 </div>
                 <script>
-                    var galleryThumbs = new Swiper('.gallery-thumbs', {
+                    var galleryThumbs = new Swiper('.gallery-thumb', {
                         spaceBetween: 10,
                         slidesPerView: 4,
                         freeMode: true,
@@ -216,7 +216,7 @@
                         thumbs: {
                             swiper: galleryThumbs,
                         },
-                    });   
+                    });
                 </script>
             </section>
         </div>
@@ -240,7 +240,7 @@
                         <div class="swiper-slide center">five</div>
                     </div>
                 </div>
-                <script> 
+                <script>
                     var relativeTop = new Swiper('.relative-top',{
                         loop: true,
                         loopedSlides: 5,

@@ -22,11 +22,11 @@
 <section class="form">
     <form>
         <li><span>account</span>
-            <input class="med" type="text">
+            <input class="med" type="text" required>
             <cite>Lorem ipsum dolor sit amet</cite>
         </li>
         <li><span>password</span>
-            <input class="sml" type="password">
+            <div class="input sml"><input type="password" required><o class="password"></o></div>
             <cite class="co-red">Password error</cite>
         </li>
         <li><span>time</span>
@@ -49,6 +49,10 @@
         </li>
         <li><span>toggle</span>
             <o class="toggle"></o>
+            <cite>Lorem ipsum dolor sit amet</cite>
+        </li>
+        <li><span>range</span>
+            <input class="sml" type="range" min="0" max="100" step="0" value="50">
             <cite>Lorem ipsum dolor sit amet</cite>
         </li>
         <li><span>select</span>

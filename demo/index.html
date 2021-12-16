@@ -403,10 +403,8 @@ copy = $('element');
 </xmp>
             <p>Add the javascript to the DOM</p>
 <xmp>
-<script>
-    countDate="0000/00/00 00:00:00";
-    countdown();
-</script>
+countDate="0000/00/00 00:00:00";
+countdown();
 </xmp>
             <h5>effect display</h5>
             <iframe src="countdown.html"></iframe>
@@ -417,9 +415,7 @@ copy = $('element');
             <h5>code</h5>
             <p>If you need to prevent users from viewing your code, add the function to the DOM</p>
 <xmp>
-<script>
-    disable();
-</script>
+disable();
 </xmp>
             <a class="btn" href="disable.html" target="_blank">view</a>
         </div>
@@ -499,11 +495,11 @@ class="font-tahoma"
 <section class="form">
     <form>
         <li><span>account</span>
-            <input class="med" type="text">
+            <input class="med" type="text" required>
             <cite>Lorem ipsum dolor sit amet</cite>
         </li>
         <li><span>password</span>
-            <input class="sml" type="password">
+            <div class="input sml"><input type="password" required><o class="password"></o></div>
             <cite class="co-red">Password error</cite>
         </li>
         <li><span>time</span>
@@ -526,6 +522,10 @@ class="font-tahoma"
         </li>
         <li><span>toggle</span>
             <o class="toggle"></o>
+            <cite>Lorem ipsum dolor sit amet</cite>
+        </li>
+        <li><span>range</span>
+            <input class="sml" type="range" min="0" max="100" step="0" value="50">
             <cite>Lorem ipsum dolor sit amet</cite>
         </li>
         <li><span>select</span>
@@ -645,9 +645,9 @@ class="mono-click"
         <div class="cont" id="notify">
             <h3>notify</h3>
             <h5>code</h5>
-            <p>Use <span>notifyValue</span> to define what you want to notify, run <span>notify()</span></p>
+            <p>Use <span>notifyVal</span> to define what you want to notify, run <span>notify()</span></p>
 <xmp>
-notifyValue = 'notify';
+notifyVal = 'notify';
 notify();
 </xmp>
             <h5>effect display</h5>
@@ -820,9 +820,10 @@ class="return"
         <div class="cont" id="tip">
             <h3>tip</h3>
             <h5>code</h5>
-            <p>Add the code to the DOM (You need jquery to <span>.show()</span> it)</p>
+            <p>Use tipVal to define what you want to tip, run tip()</p>
 <xmp>
-<tip><i class="ico ico-circular-warn"></i><span>Lorem ipsum</span></tip>
+tipVal = 'tip';
+tip();
 </xmp>
             <h5>effect display</h5>
             <iframe src="tip.html" height="200"></iframe>
@@ -1179,7 +1180,7 @@ class="calendar"
         <div class="swiper-button-next"></div>
         <div class="swiper-button-prev"></div>
     </div>
-    <div class="swiper gallery-thumbs">
+    <div class="swiper gallery-thumb">
         <div class="swiper-wrapper">
             <div class="swiper-slide"></div>
             <div class="swiper-slide"></div>
@@ -1187,7 +1188,7 @@ class="calendar"
         </div>
     </div>
     <script>
-        var galleryThumbs = new Swiper('.gallery-thumbs', {
+        var galleryThumbs = new Swiper('.gallery-thumb', {
             spaceBetween: 10,
             slidesPerView: 4,
             freeMode: true,
@@ -1459,6 +1460,7 @@ https://ui.gg/lib/images/product/
 <xmp>
 https://ui.gg/lib/media/audio.mp3
 https://ui.gg/lib/media/bounce.mp3
+https://ui.gg/lib/media/ding.mp3
 https://ui.gg/lib/media/dulcimer.mp3
 https://ui.gg/lib/media/notify.mp3
 https://ui.gg/lib/media/right.mp3
