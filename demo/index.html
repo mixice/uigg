@@ -101,6 +101,7 @@
                 <li><a class="smooth" href="#mix">mix</a></li>
                 <li><a class="smooth" href="#notify">notify</a></li>
                 <li><a class="smooth" href="#page">page</a></li>
+                <li><a class="smooth" href="#pop">pop</a></li>
                 <li><a class="smooth" href="#random">random</a></li>
                 <li><a class="smooth" href="#rate">rate</a></li>
                 <li><a class="smooth" href="#return">return</a></li>
@@ -121,8 +122,6 @@
             </ul>
             <h6><i class="ico ico-usb"></i>Internal components<s class="ico ico-alone-bottom"></s></h6>
             <ul class="anime-fade-in">
-                <li><a class="smooth" href="#calendar">calendar</a></li>
-                <li><a class="smooth" href="#pop">pop</a></li>
                 <li><a class="smooth" href="#admin">admin</a></li>
             </ul>
             <h6><i class="ico ico-response"></i>External components<s class="ico ico-alone-bottom"></s></h6>
@@ -502,12 +501,6 @@ class="font-tahoma"
             <div class="input sml"><input type="password" required><o class="password"></o></div>
             <cite class="co-red">Password error</cite>
         </li>
-        <li><span>time</span>
-            <div class="input sml"><i class="ico ico-calendar"></i><input type="text" class="calendar" readonly></div>
-            <span>to</span>
-            <div class="input sml"><i class="ico ico-calendar"></i><input type="text" class="calendar" readonly></div>
-            <cite>Lorem ipsum dolor sit amet</cite>
-        </li>
         <li><span>radio</span>
             <o class="radio"></o><span>radio</span>
             <o class="radio"></o><span>radio</span>
@@ -526,6 +519,22 @@ class="font-tahoma"
         </li>
         <li><span>range</span>
             <input class="sml" type="range" min="0" max="100" step="0" value="50">
+            <cite>Lorem ipsum dolor sit amet</cite>
+        </li>
+        <li><span>file</span>
+            <input class="med" type="file">
+            <cite>Lorem ipsum dolor sit amet</cite>
+        </li>
+        <li><span>color</span>
+            <input type="color">
+            <cite>Lorem ipsum dolor sit amet</cite>
+        </li>
+        <li><span>time</span>
+            <input class="sml" type="date">
+            <input class="sml" type="datetime-local">
+            <input class="min" type="time">
+            <input class="sml" type="week">
+            <input class="sml" type="month">
             <cite>Lorem ipsum dolor sit amet</cite>
         </li>
         <li><span>select</span>
@@ -552,7 +561,7 @@ class="font-tahoma"
         <li><span>message</span>
             <textarea class="big"></textarea>
         </li>
-        <li><span>upload</span>
+        <li><span>images</span>
             <div class="upload max">
                 <div class="ico upload-group"><input type="file"><x class="ico"></x></div>
                 <div class="ico upload-add"></div>
@@ -677,6 +686,54 @@ notify();
             <h5>effect display</h5>
             <iframe src="page.html"></iframe>
             <a class="btn" href="page.html" target="_blank">view</a>
+        </div>
+        <div class="cont" id="pop">
+            <h3>pop</h3>
+            <h5>pop center code</h5>
+            <p>Add the code to the DOM</p>
+<xmp>
+<pop>
+    <pop-main>
+        <pop-title><h3>title</h3><a class="close"></a></pop-title>
+        <pop-cont>article</pop-cont>
+        <pop-solve>
+            <a href="" class="btn">previous</a>
+            <a href="" class="btn">cancel</a>
+            <button class="btn">submit</button>
+            <a href="" class="btn">confirm</a>
+        </pop-solve>
+    </pop-main>
+</pop>
+</xmp>
+            <h5>pop choice code</h5>
+            <p>Add the code to the DOM</p>
+<xmp>
+<pop>
+    <pop-choice>
+        <pop-title><h3>title</h3><a class="close"></a></pop-title>
+        <pop-cont>article</pop-cont>
+        <pop-solve>
+            <a href="" class="btn">previous</a>
+            <a href="" class="btn">cancel</a>
+            <button class="btn">submit</button>
+            <a href="" class="btn">confirm</a>
+        </pop-solve>
+    </pop-choice>
+</pop>
+</xmp>
+            <h5>pop sider code</h5>
+            <p>Add the code to the DOM</p>
+<xmp>
+<pop>
+    <pop-sider class="anime-fade-in-left">
+        <pop-title><h3>title</h3><a class="close"></a></pop-title>
+        <pop-cont>article</pop-cont>
+    </pop-sider>
+</pop>
+</xmp>
+            <h5>effect display</h5>
+            <iframe src="pop.html" height="300"></iframe>
+            <a class="btn" href="pop.html" target="_blank">view</a>
         </div>
         <div class="cont" id="random">
             <h3>random</h3>
@@ -988,65 +1045,6 @@ class="touch-all"
             <a class="btn" href="touch.html" target="_blank">view</a>
         </div>
         <h2><i class="ico ico-usb"></i>Internal components</h2>
-        <div class="cont" id="calendar">
-            <h3>calendar</h3>
-            <h5>code</h5>
-            <p>Add the class to the input</p>
-<xmp>
-class="calendar"
-</xmp>
-            <h5>effect display</h5>
-            <iframe src="calendar.html" height="420"></iframe>
-            <a class="btn" href="calendar.html" target="_blank">view</a>
-        </div>
-        <div class="cont" id="pop">
-            <h3>pop</h3>
-            <h5>pop center code</h5>
-            <p>Add the code to the DOM</p>
-<xmp>
-<pop>
-    <pop-main>
-        <pop-title><h3>title</h3><a class="close"></a></pop-title>
-        <pop-cont>article</pop-cont>
-        <pop-solve>
-            <a href="" class="btn">previous</a>
-            <a href="" class="btn">cancel</a>
-            <button class="btn">submit</button>
-            <a href="" class="btn">confirm</a>
-        </pop-solve>
-    </pop-main>
-</pop>
-</xmp>
-            <h5>pop choice code</h5>
-            <p>Add the code to the DOM</p>
-<xmp>
-<pop>
-    <pop-choice>
-        <pop-title><h3>title</h3><a class="close"></a></pop-title>
-        <pop-cont>article</pop-cont>
-        <pop-solve>
-            <a href="" class="btn">previous</a>
-            <a href="" class="btn">cancel</a>
-            <button class="btn">submit</button>
-            <a href="" class="btn">confirm</a>
-        </pop-solve>
-    </pop-choice>
-</pop>
-</xmp>
-            <h5>pop sider code</h5>
-            <p>Add the code to the DOM</p>
-<xmp>
-<pop>
-    <pop-sider class="anime-fade-in-left">
-        <pop-title><h3>title</h3><a class="close"></a></pop-title>
-        <pop-cont>article</pop-cont>
-    </pop-sider>
-</pop>
-</xmp>
-            <h5>effect display</h5>
-            <iframe src="pop.html" height="300"></iframe>
-            <a class="btn" href="pop.html" target="_blank">view</a>
-        </div>
         <div class="cont" id="admin">
             <h3>admin (Preview)</h3>
             <h5>admin general template</h5>

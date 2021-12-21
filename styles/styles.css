@@ -1,6 +1,6 @@
 /* basic */
 body {}
-shadow {background-color: var(--);box-shadow: 0 0 0 var(--);}
+shadow {background-color: var(--);box-shadow: 0 5px 10px var(--);}
 
 /* frame */
 .group {}
