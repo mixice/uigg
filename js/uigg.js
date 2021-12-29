@@ -311,8 +311,12 @@ $(function(){
     $('pop-title .close').addClass('ico');
     $('pop .close, pop x').click(function(){
         $(this).parents('pop').hide();
-        $(this).parents('pop').find('video')[0].pause();
     });
+    if($('pop-sider').css('left') == 'auto'){
+        $('pop-sider').addClass('anime-fade-in-right');
+    }else{
+        $('pop-sider').addClass('anime-fade-in-left');
+    };
 });
 
 //----------------------------------------------------------------------------------menu
