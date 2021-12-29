@@ -3,6 +3,7 @@
  * Project: https://ui.gg
  * Author: http://www.mixice.com
  * Github: https://github.com/mixice/uigg
+ * license: MIT
  */
 
 //----------------------------------------------------------------------------------rem
