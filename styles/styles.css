@@ -86,8 +86,8 @@ tab-group {}
 /* table */
 .table {}
 .table table {}
-.table table td {}
 .table table tr {}
+.table table td {}
 .table table thead td {}
 .table table tbody td {}
 

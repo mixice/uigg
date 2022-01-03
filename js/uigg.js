@@ -21,13 +21,13 @@
         docElement.style.fontSize = 100 * (viewWidth / 640) + 'px';
     };
     recalc();
-    if (!doc.addEventListener) return;
+    if(!doc.addEventListener) return;
     win.addEventListener(resizeEvt, recalc, false);
 })(document, window);
 
 //----------------------------------------------------------------------------------load
 document.onreadystatechange = function(){
-    if(document.readyState == "complete"){
+    if(document.readyState == 'complete'){
         $('load').hide();
     }
 };
@@ -37,13 +37,13 @@ setTimeout(function(){
 
 //----------------------------------------------------------------------------------browser
 $(function(){
-    var OsObject=navigator.userAgent;
-    if(OsObject.indexOf("MSIE") != -1 || OsObject.indexOf("Trident") != -1){
+    var OsObject = navigator.userAgent;
+    if(OsObject.indexOf('MSIE') != -1 || OsObject.indexOf('Trident') != -1){
         $('body').html('<msie>please use another browser</msie>');
     }
-    //else if(OsObject.indexOf("Chrome") != -1){}
-    //else if(OsObject.indexOf("Firefox") != -1){}
-    //else if(OsObject.indexOf("Safari") != -1){}
+    //else if(OsObject.indexOf('Chrome') != -1){}
+    //else if(OsObject.indexOf('Firefox') != -1){}
+    //else if(OsObject.indexOf('Safari') != -1){}
 });
 
 //----------------------------------------------------------------------------------music
@@ -57,7 +57,7 @@ $(function(){
         function audioAutoPlay(){
             var audio = document.getElementById('music');
                 audio.play();
-            document.addEventListener("WeixinJSBridgeReady",function(){
+            document.addEventListener('WeixinJSBridgeReady',function(){
                 audio.play();
             }, false);
         }
@@ -78,22 +78,22 @@ $(function(){
 });
 
 //----------------------------------------------------------------------------------fullscreen
-$(document).on("click",".fullscreen", function toggleFullScreen(){
-    if ((document.fullScreenElement !== undefined && document.fullScreenElement === null) || (document.msFullscreenElement !== undefined && document.msFullscreenElement === null) || (document.mozFullScreen !== undefined && !document.mozFullScreen) || (document.webkitIsFullScreen !== undefined && !document.webkitIsFullScreen)){
-        if (document.documentElement.requestFullScreen){
-          document.documentElement.requestFullScreen();
-        } else if (document.documentElement.mozRequestFullScreen){
-          document.documentElement.mozRequestFullScreen();
-        } else if (document.documentElement.webkitRequestFullScreen){
-          document.documentElement.webkitRequestFullScreen(Element.ALLOW_KEYBOARD_INPUT);
+$(document).on('click','.fullscreen', function toggleFullScreen(){
+    if((document.fullScreenElement !== undefined && document.fullScreenElement === null) || (document.msFullscreenElement !== undefined && document.msFullscreenElement === null) || (document.mozFullScreen !== undefined && !document.mozFullScreen) || (document.webkitIsFullScreen !== undefined && !document.webkitIsFullScreen)){
+        if(document.documentElement.requestFullScreen){
+            document.documentElement.requestFullScreen();
+        }else if(document.documentElement.mozRequestFullScreen){
+            document.documentElement.mozRequestFullScreen();
+        }else if(document.documentElement.webkitRequestFullScreen){
+            document.documentElement.webkitRequestFullScreen(Element.ALLOW_KEYBOARD_INPUT);
         }
-    } else {
-        if (document.cancelFullScreen){
-          document.cancelFullScreen();
-        } else if (document.mozCancelFullScreen){
-          document.mozCancelFullScreen();
-        } else if (document.webkitCancelFullScreen){
-          document.webkitCancelFullScreen();
+    }else{
+        if(document.cancelFullScreen){
+            document.cancelFullScreen();
+        }else if(document.mozCancelFullScreen){
+            document.mozCancelFullScreen();
+        }else if(document.webkitCancelFullScreen){
+            document.webkitCancelFullScreen();
         }
     }
 });
@@ -106,18 +106,18 @@ $(function(){
 
 //----------------------------------------------------------------------------------touch
 jQuery.fn.bindmove = function(newdirect,newfn){
-    $(this).on("touchstart", function(e){
-        if (e.cancelable){
-            if (!e.defaultPrevented){
+    $(this).on('touchstart', function(e){
+        if(e.cancelable){
+            if(!e.defaultPrevented){
                 e.preventDefault();
             }
         }
         startX = e.originalEvent.changedTouches[0].pageX,
         startY = e.originalEvent.changedTouches[0].pageY;
-        });
-        $(this).on("touchend", function(e){
-            if (e.cancelable){
-            if (!e.defaultPrevented){
+    });
+    $(this).on('touchend', function(e){
+        if(e.cancelable){
+            if(!e.defaultPrevented){
                 e.preventDefault();
             }
         }
@@ -129,16 +129,13 @@ jQuery.fn.bindmove = function(newdirect,newfn){
         if((X != 0 || Y != 0) && newdirect=='touchall'){
             eval(newfn); return;
         }
-        if ( X > 30  && newdirect=='touchright'){
+        if( X > 30  && newdirect=='touchright'){
             eval(newfn); return;
-        }
-        else if ( X < -30  && newdirect=='touchleft'){
+        }else if( X < -30  && newdirect=='touchleft'){
             eval(newfn); return;
-        }
-        else if ( Y > 30 && newdirect=='touchdown'){
+        }else if( Y > 30 && newdirect=='touchdown'){
             eval(newfn); return;
-        }
-        else if ( Y < -30  && newdirect=='touchup'){
+        }else if( Y < -30  && newdirect=='touchup'){
             console.log(newfn);
             eval(newfn); return;
         }
@@ -190,12 +187,18 @@ $(function(){
     $('[style~="uigg-bg"]').each(function(){
         $(this).attr('style','background-image: url(https://ui.gg/lib/images/bg?=' + Math.floor(Math.random() * 100) +');');
     });
-    $('[style~="uigg-avatar"],.avatar').each(function(){
+    $('[style~="uigg-avatar"]').each(function(){
         $(this).attr('style','background-image: url(https://ui.gg/lib/images/avatar?=' + Math.floor(Math.random() * 100) +');');
     });
     $('[style~="uigg-color"]').each(function(){
         $(this).attr('style','background-image: url(https://ui.gg/lib/images/color?=' + Math.floor(Math.random() * 100) +');');
     });
+    $('.avatar').each(function(){
+        if($(this).css('background-image') == 'none'){
+            $(this).attr('style','background-image: url(https://ui.gg/lib/images/avatar?=' + Math.floor(Math.random() * 100) +');');
+        }
+    });
+    
     $('uigg-title').each(function(){
         var len = 10;
         var rnd = Math.floor(Math.random() * len);
@@ -216,15 +219,15 @@ $(function(){
 });
 
 //----------------------------------------------------------------------------------disable
-//Disable right click menu
+//disable right click menu
 function disable(){
-    document.oncontextmenu = function (event){
-        if (window.event){
+    document.oncontextmenu = function(event){
+        if(window.event){
             event = window.event;
         }
         try {
             var the = Event.srcElement;
-            if (!((the.tagName == "INPUT" && the.type.toLowerCase() == "text") || the.tagName == "TEXTAREA")){
+            if(!((the.tagName == 'INPUT' && the.type.toLowerCase() == 'text') || the.tagName == 'TEXTAREA')){
                 return false;
             }
             return true;
@@ -232,27 +235,27 @@ function disable(){
             return false;
         }
     }
-    //Disable Ctrl+U
+    //disable Ctrl+U
     var arr = [123, 17, 18];
-    document.oncontextmenu = new Function("event.returnValue=false;"),
+    document.oncontextmenu = new Function('event.returnValue=false'),
 
         window.onkeydown = function (e){
             var keyCode = e.keyCode || e.which || e.charCode;
             var ctrlKey = e.ctrlKey || e.metaKey;
-            console.log(keyCode + "--" + keyCode);
-            if (ctrlKey && keyCode == 85){
+            console.log(keyCode + '--' + keyCode);
+            if(ctrlKey && keyCode == 85){
                 e.preventDefault();
             }
-            if (ctrlKey && keyCode == 83){
+            if(ctrlKey && keyCode == 83){
                 e.preventDefault();
             }
-            if (arr.indexOf(keyCode) > -1){
+            if(arr.indexOf(keyCode) > -1){
                 e.preventDefault();
             }
         }
-    //Disable F12
+    //disable F12
     document.onkeydown = function (event){
-        if (KeyboardEvent.keyCode == 123){
+        if(KeyboardEvent.keyCode == 123){
             return false;
         }
     }
@@ -395,7 +398,7 @@ $(function(){
     function uploadImg(){
         $('.upload-group input').on('change',function(){
             var imgValue = $(this).val(),
-            fileFormat = imgValue.substring(imgValue.lastIndexOf(".")).toLowerCase(),
+            fileFormat = imgValue.substring(imgValue.lastIndexOf('.')).toLowerCase(),
             imgUrl = window.URL.createObjectURL(this.files[0]);
             if(!fileFormat.match(/.png|.jpg|.jpeg|.svg|.webp|.ico|.gif/)){
                 alert('File format must be: png/jpg/jpeg/svg/webp/ico/gif');
@@ -493,7 +496,7 @@ function countdown(){
     var end = endDate.getTime();
     var leftTime = end-now;
     var d,h,m,s;
-    if (leftTime>=0){
+    if(leftTime>=0){
         d = Math.floor(leftTime/1000/60/60/24);
         h = Math.floor(leftTime/1000/60/60%24);
         m = Math.floor(leftTime/1000/60%60);
