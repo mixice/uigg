@@ -1,9 +1,0 @@
-{
-  "name": "uigg",
-  "private": true,
-  "main": "uigg.js",
-  "jsnext:main": "uigg.js",
-  "module": "uigg.js",
-  "typings": "uigg.ts",
-  "sideEffects": false
-}
