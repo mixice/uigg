@@ -232,7 +232,7 @@ page a.active {background-color: var(--color-basic);box-shadow: 0 3px 5px var(--
 
 /*form*/
 input, select, textarea {border: 1px var(--color-light) solid;}
-input, .form .input, .form .select, select, .form textarea {background: none;}
+input, .form .input, .form select, .form textarea {background-color: transparent;}
 input:focus,
 textarea:focus {box-shadow: var(--color-shadow);}
 o {color: var(--color-basic);}
@@ -249,20 +249,14 @@ o {color: var(--color-basic);}
 .control li {float: left;width: 20%;display: flex;}
 .control li input,
 .control li .input,
-.control li .select,
-.control li .select select {width: 100%;flex: 1;}
+.control li select {width: 100%;flex: 1;}
 .control span,
 .control input,
 .control .input,
 .control .input i,
-.control .select,
-.control .select i,
-.control .select select {height: 40px;}
+.control select {height: 40px;}
 .control span,
-.control .input i,
-.control .select,
-.control .select i {line-height: 40px;}
-.control .select i,
+.control .input i {line-height: 40px;}
 .control .input i {width: 40px;}
 .control li span {width: auto !important;}
 .control a.btn {margin: 0 0 0 10px;}
@@ -280,14 +274,9 @@ o {color: var(--color-basic);}
     .control input,
     .control .input,
     .control .input i,
-    .control .select,
-    .control .select i,
-    .control .select select {height: .6rem;}
+    .control select {height: .6rem;}
     .control span,
-    .control .input i,
-    .control .select,
-    .control .select i {line-height: .6rem;}
-    .control .select i,
+    .control .input i {line-height: .6rem;}
     .control .input i {width: .5rem;}
     .control li span {width: 1.4rem !important;}
     .control a.btn {margin: .1rem;}

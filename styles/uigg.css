@@ -207,9 +207,9 @@ shadow {width: calc(100% - 20px);height: 10px;border-radius: 10px;position: abso
     --blue: #2e6efd;
     --cyan: #0df0f0;
     --green: #47DCA1;
-    --lime: #a2ff00;
-    --yellow: #ffeb00;
-    --orange: #ffba00;
+    --lime: #af0;
+    --yellow: #fe0;
+    --orange: #fb0;
     --tomato: #f60;
 
     --fff-1: rgba(255,255,255,.1);
