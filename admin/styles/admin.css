@@ -57,9 +57,9 @@ body {background: var(--color-white);}
 
 /*head*/
 .head {}
-.logo {width: 250px;height: 80px;line-height: 60px;padding: 10px;animation-delay: .5s;text-transform: uppercase;}
+.logo {height: 80px;line-height: 60px;padding: 10px;animation-delay: .5s;text-transform: uppercase;}
 .logo i {width: 60px;height: 60px;display: block;background-image: url(../../images/logo.svg);background-size: 85%;}
-.logo span {flex: 1;}
+.logo span {}
 .logo em {font-weight: 300;}
 .head-cont {animation-delay: .3s;padding: 20px;}
 .head-info {margin: 0 0 0 20px;}
@@ -80,7 +80,7 @@ drop-list {top: 40px;}
 drop-list a:hover {background-color: var(--color-basic);}
 
 @media(max-width:640px) {
-    .logo {width: 2.5rem;height: .8rem;line-height: .7rem;padding: .05rem;font-size: .28rem;}
+    .logo {height: .8rem;line-height: .7rem;padding: .05rem;font-size: .28rem;}
     .logo i {width: .7rem;height: .7rem;background-size: 75%;}
     .head-cont {padding: .15rem .1rem;}
     .head-info {margin: 0;padding: .05rem 0;}

@@ -29,7 +29,7 @@ name,name-logo,name-search,
 tab,tab-list,tab-cont,tab-group,
 drop,drop-cont,drop-list,
 pop,pop-main,pop-title,pop-cont,pop-solve,pop-choice,pop-sider,
-tip,page,music,space,corner,msie,rate,scaler,notify {margin: 0;padding: 0;border: 0;outline: 0;background: transparent center no-repeat;background-size: contain;box-sizing: border-box;font-family: uigg;border-color: var(--eee);border-style: solid;-webkit-tap-highlight-color: transparent;transition-duration: .3s;}
+tip,page,music,space,corner,msie,rate,scaler,notify,empty {margin: 0;padding: 0;border: 0;outline: 0;background: transparent center no-repeat;background-size: contain;box-sizing: border-box;font-family: uigg;border-color: var(--eee);border-style: solid;-webkit-tap-highlight-color: transparent;transition-duration: .3s;}
 article,aside,details,figcaption,figure,footer,header,hgroup,main,nav,section,summary,
 menu,menu-cont,menu-group,menu-list,
 name,name-logo,name-search,
@@ -758,6 +758,7 @@ tab-group.active {display: block;}
 @media(max-width:640px) {
     .table table th,
     .table table td {height: .7rem;}
+    .table table tbody tr:hover {background-color: transparent;}
 }
 
 /* swiper */
@@ -929,12 +930,17 @@ notify li x.ico {position: absolute;top: 0;right: 0;margin:  7px;}
 /* avatar */
 .avatar {border-radius: 100%;background-size: cover;display: block;}
 
+/* empty */
+empty {height: 100%;display: flex;align-items: center;justify-content: center;}
+empty.default {font-size: 30px;color: var(--000-1);text-transform: capitalize;}
+empty.default:after {content: 'empty';}
+empty .ico {display: block;font-size: 72px;}
+empty > .ico {margin: inherit;}
 
-
-
-
-
-
+@media(max-width:640px) {
+    empty {font-size: .36rem;}
+    empty .ico {font-size: .8rem;}
+}
 
 
 
