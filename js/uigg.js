@@ -568,6 +568,23 @@ $(function(){
     });
 });
 
+//----------------------------------------------------------------------------------hop
+$(function(){
+    $('hop-cont').before('<x></x>');
+    $('hop-cont').addClass('anime-fade-in');
+    $('hop-cont a:first-child').after('<corner></corner>');
+    var hopWidth = $('hop > a').width();
+    var cornerWidth = $('hop-cont corner').width();
+    $('hop-cont corner').css('right',(hopWidth+cornerWidth)/2+'px');
+    $('hop > a').click(function(){
+        $(this).siblings('hop-cont').toggle();
+        $(this).siblings('x').toggle();
+    });
+    $('hop x').click(function(){
+        $(this).siblings('hop-cont').hide();
+        $(this).hide();
+    });
+});
 //----------------------------------------------------------------------------------
 $(function(){
 

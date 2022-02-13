@@ -29,6 +29,7 @@ name,name-logo,name-search,
 tab,tab-list,tab-cont,tab-group,
 drop,drop-cont,drop-list,
 pop,pop-main,pop-title,pop-cont,pop-solve,pop-choice,pop-sider,
+hop,hop-cont,
 tip,page,music,space,corner,msie,rate,scaler,notify,empty {margin: 0;padding: 0;border: 0;outline: 0;background: transparent center no-repeat;background-size: contain;box-sizing: border-box;font-family: uigg;border-color: var(--eee);border-style: solid;-webkit-tap-highlight-color: transparent;transition-duration: .3s;}
 article,aside,details,figcaption,figure,footer,header,hgroup,main,nav,section,summary,
 menu,menu-cont,menu-group,menu-list,
@@ -36,7 +37,8 @@ name,name-logo,name-search,
 tab,tab-list,tab-cont,tab-group,
 drop,drop-cont,drop-list,
 pop,pop-main,pop-title,pop-cont,pop-solve,pop-choice,pop-sider,
-tip,page,music,space,corner,msie,rate,scaler,notify {display: block;}
+hop,hop-cont,
+tip,page,music,space,corner,msie,rate,scaler,notify,empty {display: block;}
 html,body {height: 100%;transition-duration: 0s;background-size: cover;}
 html,body,input,select,textarea {font-size: 14px;}
 html {-webkit-font-smoothing: antialiased;}
@@ -941,6 +943,33 @@ empty > .ico {margin: inherit;}
     empty {font-size: .36rem;}
     empty .ico {font-size: .8rem;}
 }
+
+/* hop */
+hop {position: relative;}
+hop x {width: 100vw;height: 100vh;position: fixed;top: 0;left: 0;display: none;}
+hop a {height: 50px;line-height: 50px;display: block;text-align: center;min-width: 50px;}
+hop-cont {position: absolute;right: 0;top: 70px;width: 200px;box-shadow: 0 5px 10px var(--000-1);border-radius: 5px;display: none;}
+hop-cont corner {border-width: 0 10px 10px 10px;border-bottom-color: white;top: -10px;}
+hop-cont a {background-color: white;border-bottom-width: 1px;text-transform: capitalize;}
+hop-cont a:first-child {border-radius: 5px 5px 0 0;}
+hop-cont a:last-child {border-radius: 0 0 5px 5px;border: 0;}
+hop-cont a:hover {background-color: var(--333);color: white;}
+
+@media(max-width:640px) {
+    hop a {height: .7rem;line-height: .7rem;min-width: .7rem;}
+    hop-cont {top: .8rem;width: 3rem;box-shadow: 0 .05rem .1rem var(--000-1);border-radius: .05rem;}
+    hop-cont corner {border-width: 0 .1rem .1rem .1rem;top: -.1rem;}
+    hop-cont a:first-child {border-radius: .1rem .1rem 0 0;}
+    hop-cont a:last-child {border-radius: 0 0 .1rem .1rem;}
+}
+
+
+
+
+
+
+
+
 
 
 
