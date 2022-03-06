@@ -51,7 +51,7 @@ ul {overflow: hidden;}
 z {display: inline-block;transition-duration: 0s;}
 
 ::selection {background-color: var(--333);color: var(--ccc);text-shadow: none;}
-::-webkit-scrollbar {background: transparent;width: 10px;}
+::-webkit-scrollbar {background-color: transparent;width: 10px;}
 ::-webkit-scrollbar-thumb {background-color: var(--eee);}
 
 @media(max-width:640px) {
@@ -474,8 +474,8 @@ menu-list h6 {line-height: 50px;}
 @media(max-width:640px) {
     menu x.ico {display: block;width: .8rem;height: .8rem;line-height: .8rem;font-size: .42rem;}
     menu-cont {position: absolute;left:0;top: .8rem;background-color: var(--000-9);width: 100vw;display: none;}
-    menu-cont li {width: 100%;height: auto;border-bottom: 1px var(--333) solid;display:block;overflow: hidden;}
-    menu-cont li:last-child {border: 0;}
+    menu-cont li {width: 100%;height: auto;display:block;overflow: hidden;}
+    menu-cont li:not(:last-child) {border-bottom: 1px var(--333) solid;}
     menu-cont li,
     menu-cont li a {color: white;}
     menu-cont li a {line-height: .7rem;padding: 0 .2rem;}
@@ -555,14 +555,17 @@ input[type="range"],
 input[type="range"]::-webkit-slider-thumb,
 input[type="search"]::-webkit-search-cancel-button,
 select,
-textarea { -webkit-appearance: none;}
+textarea,
+::-webkit-outer-spin-button,
+::-webkit-inner-spin-button { -webkit-appearance: none;}
 ::-webkit-input-placeholder {color: var(--ccc);}
 ::-moz-placeholder {color: var(--ccc);}
+
 input[type="range"],
 input[type="file"],
 input[type="color"] {padding: 0;background: none !important;border: 0;}
-input[type="range"]::-webkit-slider-runnable-track {height: 4px;background: var(--sapphire);}
-input[type="range"]::-webkit-slider-thumb {width: 24px;height: 24px;background: var(--sapphire);border-radius: 100%;margin-top: -10px;box-shadow: 0 3px 6px var(--sapphire);}
+input[type="range"]::-webkit-slider-runnable-track {height: 4px;background-color: var(--sapphire);}
+input[type="range"]::-webkit-slider-thumb {width: 24px;height: 24px;background-color: var(--sapphire);border-radius: 100%;margin-top: -10px;box-shadow: 0 3px 6px var(--sapphire);}
 input[type="file"]::-webkit-file-upload-button {background-color: var(--sapphire);border: 0;cursor: pointer;height: 50px;color: white;border-radius: 2px;text-transform: capitalize;padding: 0 20px;}
 input[type="color"] {width: 50px;}
 
@@ -652,7 +655,7 @@ select {padding: 0 50px 0 10px;background-image: url(https://ui.gg/lib/ico/svg/a
     .input o {width: .7rem;line-height: .7rem;}
     textarea {padding: .18rem .1rem;height: 2rem;}
     input {padding: 0 .1rem;}
-    select {padding: 0 .7rem 0 .1rem;background-size: .36rem;background-position:calc(100% - .16rem) center;}
+    select {padding: 0 .7rem 0 .1rem;background-size: .36rem;background-position: calc(100% - .16rem) center;}
 
     .form .input,
     .form input,
@@ -674,10 +677,10 @@ select {padding: 0 50px 0 10px;background-image: url(https://ui.gg/lib/ico/svg/a
     .form li,
     .form li .code,
     .form o {line-height: .7rem;}
-    .form li {padding: .1rem 0;border-bottom-width: 1px;display: flex;}
-    .form li:last-child,
+    .form li,
+    .form li.resolve {padding: .1rem 0;display: flex;}
+    .form li:not(:last-child) {border-bottom-width: 1px;}
     .form li.resolve {border: 0;}
-    .form li.resolve {padding: .1rem 0;}
     .form li .code {width: 1.8rem;height: .7rem;}
     .form li span:first-child {width: 1.2rem;}
     .form button {width: 100%;}
@@ -745,7 +748,7 @@ tab-group.active {display: block;}
 
 /* table */
 .table {}
-.table table {width: 100%;border-collapse: separate;border-spacing:0;}
+.table table {width: 100%;border-collapse: separate;border-spacing:0;background-color: white;}
 .table table th,
 .table table td {vertical-align: middle;text-align: center;height: 50px;}
 .table table th {text-transform: capitalize;}
@@ -851,18 +854,16 @@ msie {width: 100vw;height: 100vh;display: flex;justify-content: center;align-ite
 
 /* scaler */
 scaler {display: flex;}
-scaler .btn {width: 50px;}
-scaler .btn:hover {transform: translateY(0);}
-scaler input {text-align: center;flex: 1;}
+scaler a {width: 50px;}
+scaler input {flex: 1;text-align: center;}
 
 @media(max-width:640px) {
-	.scaler .btn {width: .7rem;}
+	scaler a {width: .7rem;}
 }
 
 /* list */
 .list {overflow: hidden;}
-.list li {border-bottom-width: 1px;}
-.list li:last-child {border-bottom-width: 0;}
+.list li:not(:last-child) {border-bottom-width: 1px;}
 
 @media(max-width:640px) {}
 
@@ -871,7 +872,7 @@ scaler input {text-align: center;flex: 1;}
 .countdown s {text-decoration: none;}
 
 /* music */
-music {animation: muzak 10s infinite linear;border-radius: 100%;z-index: 999;width: 50px;height: 50px;position: fixed;top: 0;opacity: 0;}
+music {animation: muzak 10s infinite linear;border-radius: 100%;z-index: 999;width: 50px;height: 50px;position: fixed;top: 0;background-color: var(--sapphire);color: white;}
 music.ico {line-height: 50px;margin: 30px;}
 music.pause {animation: none;}
 music:after {content: '\e98c';}
@@ -894,8 +895,8 @@ drop > i.ico {transform: rotate(90deg);}
 drop-cont {width: 100%;height: 100%;overflow: hidden;position: relative;}
 drop-list {display: none;position: absolute;top: 50px;left: 0;background-color: white;width: 100%;box-shadow: 0 3px 6px var(--000-1);max-height: 50vh;}
 drop ul {overflow: visible;}
-drop li {position: relative;border-bottom-width: 1px;}
-drop li:last-child {border: 0;}
+drop li {position: relative;}
+drop li:not(:last-child) {border-bottom-width: 1px;}
 drop li drop-list {right: -100%;top: 0;left: auto;}
 drop li drop-list x {display: none;}
 drop a {padding: 0 20px;display: block;}
@@ -947,13 +948,13 @@ empty > .ico {margin: inherit;}
 /* hop */
 hop {position: relative;}
 hop x {width: 100vw;height: 100vh;position: fixed;top: 0;left: 0;display: none;}
-hop a {height: 50px;line-height: 50px;display: block;text-align: center;min-width: 50px;}
+hop a {height: 50px;line-height: 50px;min-width: 50px;display: block;text-align: center;}
 hop-cont {position: absolute;right: 0;top: 70px;width: 200px;box-shadow: 0 5px 10px var(--000-1);border-radius: 5px;display: none;}
 hop-cont corner {border-width: 0 10px 10px 10px;border-bottom-color: white;top: -10px;}
 hop-cont a {background-color: white;border-bottom-width: 1px;text-transform: capitalize;}
 hop-cont a:first-child {border-radius: 5px 5px 0 0;}
 hop-cont a:last-child {border-radius: 0 0 5px 5px;border: 0;}
-hop-cont a:hover {background-color: var(--333);color: white;}
+hop-cont a:hover {background-color: var(--sapphire);color: white;}
 
 @media(max-width:640px) {
     hop a {height: .7rem;line-height: .7rem;min-width: .7rem;}

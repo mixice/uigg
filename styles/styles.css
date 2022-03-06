@@ -55,8 +55,7 @@ menu-list {}
 .form {}
 .form li {}
 .form li input {}
-.form li .select {}
-.form li .select select {}
+.form li select {}
 .form li .code {}
 .form li button {}
 

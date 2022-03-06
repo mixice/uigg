@@ -52,7 +52,6 @@ $(function(){
     $('music audio').attr('id','music');
     $('music audio').attr('autoplay','');
     $('music audio').attr('loop','');
-    $('music').css('opacity','1');
     document.addEventListener('DOMContentLoaded',function(){
         function audioAutoPlay(){
             var audio = document.getElementById('music');
@@ -239,7 +238,7 @@ function disable(){
     var arr = [123, 17, 18];
     document.oncontextmenu = new Function('event.returnValue=false'),
 
-        window.onkeydown = function (e){
+        window.onkeydown = function(e){
             var keyCode = e.keyCode || e.which || e.charCode;
             var ctrlKey = e.ctrlKey || e.metaKey;
             console.log(keyCode + '--' + keyCode);
@@ -259,7 +258,7 @@ function disable(){
             return false;
         }
     }
-    window.onhelp = function (){
+    window.onhelp = function(){
         return false;
     }
 };
@@ -372,8 +371,8 @@ $(function(){
 
 //----------------------------------------------------------------------------------scaler
 $(function(){
-    $('scaler input').before('<a class="btn ico ico-reduce"></a>');
-    $('scaler input').after('<a class="btn ico ico-add"></a>');
+    $('scaler input').before('<a class="ico ico-reduce"></a>');
+    $('scaler input').after('<a class="ico ico-add"></a>');
     $('scaler .ico-add').click(function(){
         var calcInput = $(this).siblings('input');
         calcInput.val(parseInt(calcInput.val()) + 1);
