@@ -2,14 +2,6 @@
 body {}
 shadow {background-color: var(--);box-shadow: 0 5px 10px var(--);}
 
-/* frame */
-.group {}
-.contant {}
-.sider {}
-.item {}
-.subject {}
-.clause {}
-
 /* color */
 :root {
     --color: color;
@@ -17,6 +9,14 @@ shadow {background-color: var(--);box-shadow: 0 5px 10px var(--);}
 
 /* ico */
 .ico- {background-image: url(../images/ico/)}
+
+/* frame */
+.group {}
+.contant {}
+.sider {}
+.item {}
+.subject {}
+.clause {}
 
 /* pop */
 pop {}
@@ -136,7 +136,9 @@ name a {}
 
 
 
-@media(max-width:640px) {}
+@media(max-width:640px) {
+    
+}
 
 
 
