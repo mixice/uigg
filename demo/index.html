@@ -43,7 +43,7 @@
     .cont p a,
     .cont p span {color: var(--sapphire);background-color: var(--f7);padding: 5px 10px;border-radius: 2px;margin: 0 5px;}
     .cont p a:hover {background-color: var(--sapphire);color: white;}
-    .cont .btn {width: 200px;background: var(--sapphire);margin: 10px 0;font-weight: bold;text-transform: capitalize;}
+    .cont .btn {width: 200px;margin: 10px 0;font-weight: bold;}
 
     @media(max-width:640px) {
         .sider {width: 80%;z-index: 3;transform: translateX(-100%);}
@@ -537,6 +537,9 @@ class="font-tahoma"
         <li><span>toggle</span>
             <o class="toggle"></o>
             <cite>Lorem ipsum dolor sit amet</cite>
+        </li>
+        <li><span>progress</span>
+            <progress class="med" max="100" value="50"></progress>
         </li>
         <li><span>range</span>
             <input class="sml" type="range" min="0" max="100" step="0" value="50">

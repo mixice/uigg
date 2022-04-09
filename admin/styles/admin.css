@@ -26,13 +26,13 @@ body {background: var(--color-white);}
 }
 
 /*btn*/
-.btn {width: 150px;background-color: var(--color-basic);box-shadow: 0 3px 5px var(--color-bright);font-weight: normal;font-size: 16px;float: left;border-radius: 100px;}
-.btn-med {width: 100px;height: 40px;line-height: 40px;font-size: 14px;}
+.btn {background-color: var(--color-basic);box-shadow: 0 3px 5px var(--color-bright);font-weight: normal;font-size: 16px;float: left;border-radius: 100px;}
+.btn-med {height: 40px;font-size: 14px;}
 .btn-empty {background-color: white;color: var(--color-basic);box-shadow: none;}
 
 @media(max-width:640px) {
-    .btn {width: 2rem;box-shadow: 0 .05rem .05rem var(--color-bright);font-size: .2rem;border-radius: 1rem;}
-    .btn-med {width: 1.5rem;height: .5rem;line-height: .5rem;font-size: .18rem;}
+    .btn {box-shadow: 0 .05rem .05rem var(--color-bright);font-size: .2rem;}
+    .btn-med {height: .5rem;line-height: .5rem;font-size: .18rem;}
     .btn-empty {box-shadow: none;}
 }
 
@@ -40,7 +40,7 @@ body {background: var(--color-white);}
 .admin {width: 100vw;height: 100vh;overflow: hidden;}
 .head {height: 80px;background: white;box-shadow: var(--color-shadow);position: relative;z-index: 1;}
 .subject {width: 100%;height: 100%;flex: 1;animation-delay: .3s;overflow: hidden;display: flex;position: relative;}
-.sider {width: 240px;overflow: auto;padding: 10px 0;background: repeating-radial-gradient(circle at 110% 80%, transparent 0, var(--000-1) 2px 5px, transparent 5px 10px) var(--color-basic);}
+.sider {width: 240px;overflow: auto;padding: 10px 0;background: repeating-radial-gradient(circle at 110% 80%, transparent 0, var(--000-1) 3px 3px, transparent 5px 10px) var(--color-basic);}
 .sider::-webkit-scrollbar {width: 0;}
 .clause {width: 100%;height: 100%;flex: 1;overflow: auto;padding: 20px;}
 .contant {background: white;box-shadow: var(--color-shadow);margin: 0 0 20px;}
@@ -95,8 +95,7 @@ drop-list a:hover {background-color: var(--color-basic);}
 }
 
 /*sider*/
-.side {width: 40px;height: 40px;border-radius: 100%;margin: 0 20px 0 0;text-transform: none;}
-.side i {color: white;line-height: 40px;display: block;}
+.sider {}
 .sider h6 {color: var(--color-deep);text-transform: uppercase;padding: 15px;}
 .sider-list {}
 .sider-list li a {display: block;height: 50px;line-height: 50px;color: white;text-transform: capitalize;padding: 0 10px;}
@@ -111,6 +110,8 @@ drop-list a:hover {background-color: var(--color-basic);}
 .sider-search {position: relative;margin: 0 10px;overflow: hidden;}
 .sider-search input {height: 40px;padding: 0 40px 0 20px;border-radius: 25px;background: var(--color-deep);color: white;border: 0;}
 .sider-search button {width: 40px;height: 40px;position: absolute;top: 0;right: 0;}
+
+.sider-toggle {width: 40px;margin: 0 20px;}
 
 @media(max-width:640px) {
     .side {width: .5rem;height: .5rem;margin: 0 .1rem 0 0;}
@@ -183,7 +184,7 @@ page a.active {background-color: var(--color-basic);box-shadow: 0 3px 5px var(--
 .statistics li span {padding: 0 0 10px;display: block;text-transform: capitalize;}
 .statistics li h3 {color: var(--color-basic);}
 .statistics li em {font-weight: normal;font-size: 12px;vertical-align: top;text-transform: uppercase;color: var(--color-bright);padding: 0 0 0 5px;}
-.statistics li a {margin: 10px auto 0;float: none;}
+.statistics li a {margin: 10px auto 0;float: none;width: 60%;}
 
 @media(max-width:640px) {
     .statistics {padding: .1rem;}
@@ -259,7 +260,6 @@ o {color: var(--color-basic);}
 .control .input i {line-height: 40px;}
 .control .input i {width: 40px;}
 .control li span {width: auto !important;}
-.control a.btn {margin: 0 0 0 10px;}
 
 @media(max-width:640px) {
     input, select, textarea {border: 0;}
@@ -279,7 +279,6 @@ o {color: var(--color-basic);}
     .control .input i {line-height: .6rem;}
     .control .input i {width: .5rem;}
     .control li span {width: 1.4rem !important;}
-    .control a.btn {margin: .1rem;}
 }
 
 /*tab*/
@@ -377,7 +376,8 @@ pop-cont {padding: 20px 0;}
 
 
 /*login*/
-.login {width: 100%;height: 100%;background: repeating-radial-gradient(circle at 50% 50%, transparent 0, var(--000-1) 2px 5px, transparent 5px 10px) var(--color-basic);}
+.login {width: 100%;height: 100%;background: repeating-radial-gradient(circle at 50% 50%, transparent 0, var(--000-1) 3px 3px, transparent 5px 10px) var(--color-basic);}
+
 .login-main {width: 90%;max-width: 550px;background-color: white;box-shadow: var(--color-shadow);padding: 30px;animation-duration: .5s;}
 .login-title {padding: 10px 0;}
 .login-title h1 {margin: auto;transform: scale(1.3);}

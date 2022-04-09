@@ -6,7 +6,7 @@ $(function(){
 	$('.industry').click(function(){
         $('.industry-cont').toggle();
     });
-    $('.side').click(function(){
+    $('.sider-toggle').click(function(){
         $('.sider').toggle();
     });
     

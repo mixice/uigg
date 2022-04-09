@@ -427,19 +427,20 @@ tip span {line-height: 24px;vertical-align: middle;margin: 0 2px;}
 }
 
 /* btn */
-.btn {width: 100%;text-align: center;display: block;height: 50px;line-height: 50px;position: relative;background-color: var(--sapphire);color: white;border-radius: 2px;text-transform: capitalize;}
-.btn span {vertical-align: middle;margin-left: 5px;}
+.btn {text-align: center;height: 50px;line-height: 50px;position: relative;background-color: var(--sapphire);color: white;border-radius: 2px;text-transform: capitalize;display: flex;align-items: center;justify-content: center;padding: 0 20px;}
+.btn .ico {margin: 5px;color: white;}
 .btn:hover {transform: translateY(5px);}
-.btn-flex {display: flex;justify-content: center;}
+.btn-flex {display: flex;justify-content: center;align-items: center;}
 .btn-flex .btn {flex: 1;}
+.btn-flex button {flex: 1;}
 .btn-empty {background-color: transparent !important;border: 1px solid;color: var(--sapphire);}
 .btn-disable {filter: grayscale(100%);}
 .btn-disable:hover {transform: translateY(0);cursor: no-drop;}
 
 @media(max-width:640px) {
-	.btn {height: .8rem;line-height: .8rem;border-radius: .03rem;}
-    .btn span {margin-left: .05rem;}
+	.btn {height: .8rem;line-height: .8rem;border-radius: .03rem;padding: 0 .2rem;}
 	.btn:hover {transform: translateY(0);}
+    .btn .ico {margin: .05rem;}
 }
 
 /* nav */
@@ -556,10 +557,14 @@ input[type="range"]::-webkit-slider-thumb,
 input[type="search"]::-webkit-search-cancel-button,
 select,
 textarea,
+progress,
 ::-webkit-outer-spin-button,
 ::-webkit-inner-spin-button { -webkit-appearance: none;}
 ::-webkit-input-placeholder {color: var(--ccc);}
 ::-moz-placeholder {color: var(--ccc);}
+::-webkit-progress-bar {background-color: var(--f7);border-radius: 100px;height: 10px;}
+::-webkit-progress-value {background-color: var(--sapphire);border-radius: 100px;}
+::-moz-progress-bar {background-color: var(--sapphire);}
 
 input[type="range"],
 input[type="file"],
@@ -576,7 +581,6 @@ input[type="time"]::-webkit-calendar-picker-indicator {background-image: url(htt
 input[type="week"]::-webkit-calendar-picker-indicator {background-image: url(https://ui.gg/lib/ico/svg/time/calendar-less.svg);}
 input[type="month"]::-webkit-calendar-picker-indicator {background-image: url(https://ui.gg/lib/ico/svg/time/calendar-reduce.svg);}
 
-button,
 select,
 .input,
 .input i,
@@ -598,7 +602,7 @@ select {padding: 0 50px 0 10px;background-image: url(https://ui.gg/lib/ico/svg/a
 .form button,
 .form o,
 .form cite,
-.form .code {margin:5px;float: left;display: block;}
+.form .code {margin:5px;float: left;}
 .form select,
 .form .input,
 .form input,
@@ -607,6 +611,8 @@ select {padding: 0 50px 0 10px;background-image: url(https://ui.gg/lib/ico/svg/a
 .form .input o {margin: 0;}
 .form li .input input {margin: 0;}
 
+.form progress {margin: 20px 5px 0;}
+
 .form {padding: 20px;overflow: hidden;}
 .form span,
 .form cite,
@@ -614,15 +620,15 @@ select {padding: 0 50px 0 10px;background-image: url(https://ui.gg/lib/ico/svg/a
 .form o {line-height: 50px;}
 .form li {display: block;width: 100%;float: left;}
 .form li.resolve {padding-left: 110px;}
+.form li.resolve .btn:not(:last-child) {margin-right: 10px;}
 .form li .code {width: 140px;height: 50px;}
 .form li .code img {width: 100%;height: 100%;}
 .form span:first-child {text-transform: capitalize;}
 .form li span:first-child {width: 100px;}
-.form button {width: 200px;}
 .form .btn span {margin: 0;}
 .form .min {width: 10%;}
 .form .sml {width: 20%;}
-.form .med {width: 33%;}
+.form .med {width: 30%;}
 .form .lag {width: 50%;}
 .form .big {width: 60%;}
 .form .max {width: 80%;}
@@ -644,6 +650,8 @@ select {padding: 0 50px 0 10px;background-image: url(https://ui.gg/lib/ico/svg/a
     input[type="file"]::-webkit-file-upload-button {height: .7rem;border-radius: .03rem;padding: 0 .2rem;}
     input[type="color"] {width: .7rem;flex: none !important;}
 
+    ::-webkit-progress-bar {height: .1rem;}
+
     button,
     select,
     .input,
@@ -660,6 +668,7 @@ select {padding: 0 50px 0 10px;background-image: url(https://ui.gg/lib/ico/svg/a
     .form .input,
     .form input,
     .form select,
+    .form textarea,
     .form span,
     .form a,
     .form button,
@@ -670,6 +679,7 @@ select {padding: 0 50px 0 10px;background-image: url(https://ui.gg/lib/ico/svg/a
     .form .input,
     .form input,
     .form textarea {background-color: transparent;flex: 1;}
+    .form progress {margin: .3rem 0 0;}
 
     .form {padding: .1rem;}
     .form span,
@@ -681,6 +691,7 @@ select {padding: 0 50px 0 10px;background-image: url(https://ui.gg/lib/ico/svg/a
     .form li.resolve {padding: .1rem 0;display: flex;}
     .form li:not(:last-child) {border-bottom-width: 1px;}
     .form li.resolve {border: 0;}
+    .form li.resolve .btn:not(:last-child) {margin-right: .1rem;}
     .form li .code {width: 1.8rem;height: .7rem;}
     .form li span:first-child {width: 1.2rem;}
     .form button {width: 100%;}
@@ -848,7 +859,7 @@ msie {width: 100vw;height: 100vh;display: flex;justify-content: center;align-ite
 .anew.btn:hover {transform: translateY(-5px);}
 
 @media(max-width:640px) {
-    .anew.btn {right: .2rem;width: .7rem;height: .7rem;line-height: .7rem;}
+    .anew.btn {right: .2rem;width: .7rem;height: .7rem;margin: .2rem;}
     .anew.btn:hover {transform: translateY(0);}
 }
 
