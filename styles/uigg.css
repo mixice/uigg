@@ -438,7 +438,7 @@ tip span {line-height: 24px;vertical-align: middle;margin: 0 2px;}
 .btn-disable:hover {transform: translateY(0);cursor: no-drop;}
 
 @media(max-width:640px) {
-	.btn {height: .8rem;line-height: .8rem;border-radius: .03rem;padding: 0 .2rem;}
+	.btn {height: .8rem;line-height: .8rem;border-radius: .03rem;padding: 0 .2rem;font-size: .22rem;font-weight: bold;}
 	.btn:hover {transform: translateY(0);}
     .btn .ico {margin: .05rem;}
 }
@@ -691,8 +691,9 @@ select {padding: 0 50px 0 10px;background-image: url(https://ui.gg/lib/ico/svg/a
     .form li.resolve {padding: .1rem 0;display: flex;}
     .form li:not(:last-child) {border-bottom-width: 1px;}
     .form li.resolve {border: 0;}
+    .form li.resolve .btn {width: 100%;}
     .form li.resolve .btn:not(:last-child) {margin-right: .1rem;}
-    .form li .code {width: 1.8rem;height: .7rem;}
+    .form li .code {width: 1.8rem;height: .7rem;font-size: .2rem;font-weight: normal;}
     .form li span:first-child {width: 1.2rem;}
     .form button {width: 100%;}
     .form cite {display: none;}
