@@ -28,6 +28,7 @@ menu,menu-cont,menu-group,menu-list,
 name,name-logo,name-search,
 tab,tab-list,tab-cont,tab-group,
 drop,drop-cont,drop-list,
+chat,chat-title,chat-sider,chat-cont,chat-list,chat-message,chat-tool,chat-control,chat-emot,
 pop,pop-main,pop-title,pop-cont,pop-solve,pop-choice,pop-sider,
 hop,hop-cont,
 tip,page,music,space,corner,msie,rate,scaler,notify,empty {margin: 0;padding: 0;border: 0;outline: 0;background: transparent center no-repeat;background-size: contain;box-sizing: border-box;font-family: uigg;border-color: var(--eee);border-style: solid;-webkit-tap-highlight-color: transparent;transition-duration: .3s;}
@@ -36,6 +37,7 @@ menu,menu-cont,menu-group,menu-list,
 name,name-logo,name-search,
 tab,tab-list,tab-cont,tab-group,
 drop,drop-cont,drop-list,
+chat,chat-title,chat-sider,chat-cont,chat-list,chat-message,chat-tool,chat-control,chat-emot,
 pop,pop-main,pop-title,pop-cont,pop-solve,pop-choice,pop-sider,
 hop,hop-cont,
 tip,page,music,space,corner,msie,rate,scaler,notify,empty {display: block;}
@@ -151,6 +153,7 @@ z {display: inline-block;transition-duration: 0s;}
 .block {width: 100%;overflow: hidden;position: relative;}
 .clear {clear: both;}
 .flex {display: flex !important;}
+.flex-auto {flex: 1;min-width: 0;}
 .flex-column {display: flex;flex-direction: column;}
 .hide {display: none !important;}
 .show {display: block !important;}
@@ -310,7 +313,10 @@ audio,canvas,progress,video {display: inline-block;}
 audio:not([controls]) {display: none;height: 0;}
 video {object-fit: fill;}
 canvas {user-select: none;}
-a[title="到百度地图查看此区域"] {display: none;}
+
+a[title="到百度地图查看此区域"],
+.BMap_cpyCtrl,
+.anchorBL {display: none;}
 
 @media(max-width:640px) {
     img {width: 100%;}
@@ -542,7 +548,7 @@ textarea,
 progress,
 ::-webkit-outer-spin-button,
 ::-webkit-inner-spin-button { -webkit-appearance: none;}
-::-webkit-input-placeholder {color: var(--ccc);}
+::-webkit-input-placeholder {color: var(--ccc);text-transform: capitalize;}
 ::-moz-placeholder {color: var(--ccc);}
 ::-webkit-progress-bar {background-color: var(--f7);border-radius: 100px;height: 10px;}
 ::-webkit-progress-value {background-color: var(--sapphire);border-radius: 100px;}
@@ -943,7 +949,7 @@ empty > .ico {margin: inherit;}
 hop {position: relative;}
 hop x {width: 100vw;height: 100vh;position: fixed;top: 0;left: 0;display: none;}
 hop a {height: 50px;line-height: 50px;min-width: 50px;display: block;text-align: center;}
-hop-cont {position: absolute;right: 0;top: 70px;width: 200px;box-shadow: 0 5px 10px var(--000-1);border-radius: 5px;display: none;}
+hop-cont {position: absolute;right: 0;top: 60px;width: 200px;box-shadow: 0 5px 10px var(--000-1);border-radius: 5px;display: none;}
 hop-cont corner {border-width: 0 10px 10px 10px;border-bottom-color: white;top: -10px;}
 hop-cont a {background-color: white;border-bottom-width: 1px;text-transform: capitalize;}
 hop-cont a:first-child {border-radius: 5px 5px 0 0;}
@@ -958,12 +964,86 @@ hop-cont a:hover {background-color: var(--sapphire);color: white;}
     hop-cont a:last-child {border-radius: 0 0 .1rem .1rem;}
 }
 
+/*chat*/
+chat {height: 100%;display: flex;position: relative;}
+chat ::-webkit-scrollbar {width: 3px;}
+chat .ico {width: 50px;height: 50px;line-height: 50px;}
+chat .ico:hover {background: var(--eee);}
+chat .avatar {width: 50px;height: 50px;}
+chat s {width: 50px;height: 50px;display: inline-block;background-size: 90%;vertical-align: middle;}
 
+chat-title {height: 50px;display: flex;align-items: center;border-bottom-width: 1px;position: relative;z-index: 1;}
+chat-title h3 {font-size: 16px;flex: 1;padding: 0 10px;}
+chat-title input {flex: 1;}
+chat-title x.ico-close {background: var(--red) !important;color: white;display: none;}
+chat-sider {width: 240px;display: flex;flex-direction: column;border-right-width: 1px;}
+chat-list {flex: 1;overflow: auto;}
+chat-list li {}
+chat-list li a {display: flex;align-items: center;padding: 10px;}
+chat-list li .avatar {margin-right: 5px;}
+chat-list li h6,
+chat-list li span {white-space: nowrap;overflow: hidden;text-overflow: ellipsis;}
+chat-list li h6 {flex: 1;min-width: 0;}
+chat-list li span {color: var(--ccc);display: block;}
+chat-list li a.disable {filter: grayscale(100%);}
+chat-list li a.active {background-color: var(--f7);}
+chat-list li a:hover {background-color: var(--eee);}
 
+chat-cont {flex: 1;min-width: 0;display: flex;flex-direction: column;background-color: white;position: relative;z-index: 1;}
+chat-message {flex: 1;border-bottom-width: 1px;overflow: auto;}
+chat-message li {padding: 10px 70px;position: relative;overflow: hidden;}
+chat-message li .avatar {position: absolute;left: 0;top: 0;margin: 10px;}
+chat-message li cite {display: block;margin-bottom: 5px;color: var(--ccc);}
+chat-message li p {background-color: var(--f7);border-radius: 0 10px 10px 10px;padding: 10px;display: inline-block;}
+chat-message li p img {max-width: 200px;border-radius: 5px;cursor: pointer;}
+chat-message li p video {max-width: 300px;}
 
+chat-message li.mine {}
+chat-message li.mine .avatar {left: auto;right: 0;}
+chat-message li.mine cite {text-align: right;}
+chat-message li.mine p {background-color: aliceblue;border-radius: 10px 0 10px 10px;float: right;}
 
+chat-tool {height: 50px;position: relative;}
+chat-tool > a {float: left;position: relative;}
+chat-tool > a input[type="file"]{position: absolute;top: 0;left: 0;width: 100%;height: 100%;opacity: 0;}
+chat-emot {position: absolute;bottom: 50px;left: 0;background-color: white;border-width: 1px 0;width: 100%;overflow: auto;padding: 10px;display: none;}
+chat-emot s:hover {background-color: var(--eee);}
 
+chat-control {height: 150px;position: relative;overflow: hidden;}
+chat-control textarea {height: 100%;padding: 0 70px 0 10px;}
+chat-control .ico {margin: 10px;background-color: var(--sapphire) !important;color: white;border-radius: 100%;position: absolute;right: 0;bottom: 0;}
+chat-control .btn:hover {transform: translateY(0);}
 
+@media(max-width:640px) {
+    chat {display: block;}
+    chat .ico {width: .7rem;height: .7rem;line-height: .7rem;}
+    chat .avatar {width: .6rem;height: .6rem;}
+    chat s {width: .6rem;height: .6rem;}
+
+    chat-title {height: .7rem;}
+    chat-title h3 {font-size: .22rem;padding: 0 .1rem;}
+    chat-title x.ico-close {display: block;}
+    chat-sider {width: 100%;height: 100%;border-right-width: 0;}
+    chat-list li a {padding: .15rem;}
+    chat-list li .avatar {margin-right: .1rem;}
+
+    chat-cont {position: absolute;top: 0;left: 0;width: 100%;height: 100%;display: none;}
+    chat-message li {padding: .1rem .8rem;}
+    chat-message li .avatar {margin: .1rem;}
+    chat-message li cite {margin-bottom: .05rem;}
+    chat-message li p {border-radius: 0 .1rem .1rem .1rem;padding: .1rem;}
+    chat-message li p img {max-width: 3rem;border-radius: .05rem;}
+    chat-message li p video {max-width: 3rem;}
+
+    chat-message li.mine p {border-radius: .1rem 0 .1rem .1rem;}
+
+    chat-tool {height: .7rem;}
+    chat-emot {bottom: .7rem;padding: .1rem;}
+
+    chat-control {height: 2rem;}
+    chat-control textarea {padding: 0 .9rem 0 .1rem;}
+    chat-control .ico {margin: .1rem;}
+}
 
 
 

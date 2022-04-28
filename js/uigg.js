@@ -281,7 +281,7 @@ $(function(){
 $(function(){
     $('.anew.btn').addClass('ico ico-alone-top');
     $('.anew').click(function(){
-		$('html,body').animate({scrollTop:'0px'},800);
+		$('html,body').animate({scrollTop:'0px'},1000);
 	});
     $(document).scroll(function(){
         var winTop = $(window).scrollTop();
@@ -584,6 +584,47 @@ $(function(){
         $(this).hide();
     });
 });
+
+//----------------------------------------------------------------------------------chat
+$(function(){
+    $('chat-cont,chat-emot').addClass('anime-fade-in');
+    function chatNew(){
+        $('chat-message').animate({scrollTop: '999999999'},1000);
+    };
+    chatNew();
+    $('chat-control .btn').click(function(){
+        chatNew();
+    });
+    var arr = new Array();
+    for(var i = 1;i <= 100;i++){
+        arr[i] = i;
+        $('chat-emot').append('<s data="'+i+'"></s>');
+    };
+    $('chat s').each(function(){
+        $(this).css('background-image','url(https://ui.gg/lib/emot/'+$(this).attr('data')+'.svg)');
+    });
+    $('chat-emot s').click(function(){
+        $('chat-emot').hide();
+    });
+    $('.ico-emot-smile').click(function(){
+        $('chat-emot').toggle();
+    });
+    $('chat-title x.ico-close').click(function(){
+        $(this).parent().parent().hide();
+    });
+    $('chat-message li p img').click(function(){
+        var url = $(this).attr('src');
+        $('chat').append('<pop class="anime-fade-in center"><img src="'+url+'"></pop>');
+    });
+    $(document).on('click','chat pop',function(){
+        $(this).remove();
+    });
+    $('chat-list li').click(function(){
+        $('chat-cont').css('display','flex');
+        chatNew();
+    });
+});
+
 //----------------------------------------------------------------------------------
 $(function(){
 
