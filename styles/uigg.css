@@ -28,19 +28,21 @@ menu,menu-cont,menu-group,menu-list,
 name,name-logo,name-search,
 tab,tab-list,tab-cont,tab-group,
 drop,drop-cont,drop-list,
-chat,chat-title,chat-sider,chat-cont,chat-list,chat-message,chat-tool,chat-control,chat-emot,
+chat,chat-title,chat-sider,chat-cont,chat-list,chat-message,chat-tool,chat-control,chat-tip,
+uigg-title,uigg-txt,uigg-emot,
 pop,pop-main,pop-title,pop-cont,pop-solve,pop-choice,pop-sider,
 hop,hop-cont,
-tip,page,music,space,corner,msie,rate,scaler,notify,empty {margin: 0;padding: 0;border: 0;outline: 0;background: transparent center no-repeat;background-size: contain;box-sizing: border-box;font-family: uigg;border-color: var(--eee);border-style: solid;-webkit-tap-highlight-color: transparent;transition-duration: .3s;}
+countdown,tip,page,music,space,corner,msie,rate,scaler,notify,empty,fold {margin: 0;padding: 0;border: 0;outline: 0;background: transparent center no-repeat;background-size: contain;box-sizing: border-box;font-family: uigg;border-color: var(--eee);border-style: solid;-webkit-tap-highlight-color: transparent;transition-duration: .3s;}
 article,aside,details,figcaption,figure,footer,header,hgroup,main,nav,section,summary,
 menu,menu-cont,menu-group,menu-list,
 name,name-logo,name-search,
 tab,tab-list,tab-cont,tab-group,
 drop,drop-cont,drop-list,
-chat,chat-title,chat-sider,chat-cont,chat-list,chat-message,chat-tool,chat-control,chat-emot,
+chat,chat-title,chat-sider,chat-cont,chat-list,chat-message,chat-tool,chat-control,chat-tip,
+uigg-title,uigg-txt,uigg-emot,
 pop,pop-main,pop-title,pop-cont,pop-solve,pop-choice,pop-sider,
 hop,hop-cont,
-tip,page,music,space,corner,msie,rate,scaler,notify,empty {display: block;}
+countdown,tip,page,music,space,corner,msie,rate,scaler,notify,empty,fold {display: block;}
 html,body {height: 100%;transition-duration: 0s;background-size: cover;}
 html,body,input,select,textarea {font-size: 14px;}
 html {-webkit-font-smoothing: antialiased;}
@@ -157,6 +159,7 @@ z {display: inline-block;transition-duration: 0s;}
 .flex-column {display: flex;flex-direction: column;}
 .hide {display: none !important;}
 .show {display: block !important;}
+.single {white-space: nowrap;text-overflow: ellipsis;overflow: hidden;flex: 1;min-width: 0;}
 .float-left {float: left !important;}
 .float-right {float: right !important;}
 .full {width: 100% !important;height: 100% !important;}
@@ -383,7 +386,7 @@ pop {position: fixed;background-color: var(--000-8);z-index: 3;display: none;}
 pop x {position: absolute;}
 pop-main {width: 90%;max-width: 720px;overflow: hidden;position: relative;z-index: 1;}
 pop-title {background-color: white;border-bottom-width: 1px;overflow: hidden;display: flex;align-items: center;}
-pop-title h3 {width: 100%;line-height: 50px;padding: 0 20px;flex: 1;font-size: 18px;}
+pop-title h3 {width: 100%;line-height: 50px;padding: 0 20px;flex: 1;min-width: 0;font-size: 18px;}
 pop-title h3:nth-child(2) {padding: 0;}
 pop-title .ico {line-height: 50px;width: 50px;height: 50px;}
 pop-title .close:after {content: '\e826';}
@@ -404,14 +407,10 @@ pop-sider {top: 0;left: 0;width: 300px;height: 100%;background-color: white;}
 }
 
 /* tip */
-tip {position: fixed;top: 50%;left: 50%;z-index: 999;padding: 10px 15px;background-color: white;transition-duration: 0s;border-width: 1px;}
-tip .ico,
-tip span {line-height: 24px;vertical-align: middle;margin: 0 2px;}
+tip {position: fixed;top: 50%;left: 50%;z-index: 999;padding: 10px 15px;background-color: white;transition-duration: 0s;border-width: 1px;line-height: 24px;}
 
 @media(max-width:640px) {
-	tip {padding: .1rem .15rem;}
-    tip .ico,
-    tip span {line-height: .3rem;margin: 0 .02rem;}
+	tip {padding: .1rem .15rem;line-height: .3rem;}
 }
 
 /* btn */
@@ -419,7 +418,7 @@ tip span {line-height: 24px;vertical-align: middle;margin: 0 2px;}
 .btn .ico {margin: 5px;color: white;}
 .btn:hover {transform: translateY(5px);}
 .btn-flex {display: flex;justify-content: center;align-items: center;}
-.btn-flex .btn {flex: 1;}
+.btn-flex .btn,
 .btn-flex button {flex: 1;}
 .btn-empty {background-color: transparent !important;border: 1px solid;color: var(--sapphire);}
 .btn-disable {filter: grayscale(100%);}
@@ -480,7 +479,7 @@ menu-list h6 {line-height: 50px;}
 .title span {display: block;}
 
 .title-flex {display: flex;}
-.title-flex h3 {flex: 1;padding: 0 10px;}
+.title-flex h3 {flex: 1;min-width: 0;padding: 0 10px;}
 
 @media(max-width:640px) {
     .title-flex h3 {padding: 0 .1rem;}
@@ -622,7 +621,7 @@ select {padding: 0 50px 0 10px;background-image: url(https://ui.gg/lib/ico/svg/a
 .form .max {width: 80%;}
 
 
-.upload {float: left;flex: 1;}
+.upload {float: left;flex: 1;min-width: 0;}
 .upload-group,
 .upload-add {width: 100px;height: 100px;float: left;margin: 5px;background-color: var(--f7);line-height: 100px;font-size: 36px;color: var(--000-2);}
 .upload-group {position: relative;background-size: cover;}
@@ -666,7 +665,7 @@ select {padding: 0 50px 0 10px;background-image: url(https://ui.gg/lib/ico/svg/a
     .form select,
     .form .input,
     .form input,
-    .form textarea {background-color: transparent;flex: 1;}
+    .form textarea {background-color: transparent;flex: 1;min-width: 0;}
     .form progress {margin: .3rem 0 0;}
 
     .form {padding: .1rem;}
@@ -690,7 +689,7 @@ select {padding: 0 50px 0 10px;background-image: url(https://ui.gg/lib/ico/svg/a
     .form .med,
     .form .lag,
     .form .big,
-    .form .max {width: auto;flex: 1;}
+    .form .max {width: auto;flex: 1;min-width: 0;}
 
     .upload-group,
     .upload-add {width: 1.1rem;height: 1.1rem;margin: .05rem;line-height: 1.1rem;font-size: .42rem;}
@@ -750,7 +749,7 @@ tab-group.active {display: block;}
 .table {}
 .table table {width: 100%;border-collapse: separate;border-spacing:0;background-color: white;}
 .table table th,
-.table table td {vertical-align: middle;text-align: center;height: 50px;}
+.table table td {vertical-align: middle;text-align: center;height: 50px;word-break: break-all;}
 .table table th {text-transform: capitalize;}
 .table table thead th,
 .table table thead td {font-weight: bold;color: white;text-transform: capitalize;}
@@ -800,7 +799,7 @@ name u,
 name h2,
 name h3,
 name-logo,
-name-search {flex: 1;text-align: center;}
+name-search {flex: 1;min-width: 0;text-align: center;}
 name h2,
 name h3 {white-space: nowrap;overflow: hidden;text-overflow: ellipsis;font-size: 26px;}
 name h2,
@@ -855,7 +854,7 @@ msie {width: 100vw;height: 100vh;display: flex;justify-content: center;align-ite
 /* scaler */
 scaler {display: flex;}
 scaler a {width: 50px;}
-scaler input {flex: 1;text-align: center;}
+scaler input {flex: 1;min-width: 0;text-align: center;}
 
 @media(max-width:640px) {
 	scaler a {width: .7rem;}
@@ -868,15 +867,15 @@ scaler input {flex: 1;text-align: center;}
 @media(max-width:640px) {}
 
 /* countdown */
-.countdown {}
-.countdown s {text-decoration: none;}
+countdown {}
+countdown s {text-decoration: none;}
 
 /* music */
 music {animation: muzak 10s infinite linear;border-radius: 100%;z-index: 999;width: 50px;height: 50px;position: fixed;top: 0;background-color: var(--sapphire);color: white;}
 music.ico {line-height: 50px;margin: 30px;}
-music.pause {animation: none;}
+music[pause] {animation: none;}
 music:after {content: '\e98c';}
-music.pause:after {content: '\e990';}
+music[pause]:after {content: '\e990';}
 @keyframes muzak {
     0% {transform: rotate(0);}
     100% {transform: rotate(360deg);}
@@ -964,19 +963,41 @@ hop-cont a:hover {background-color: var(--sapphire);color: white;}
     hop-cont a:last-child {border-radius: 0 0 .1rem .1rem;}
 }
 
-/*chat*/
+/* random */
+uigg-emot s {width: 50px;height: 50px;display: inline-block;background-size: 90%;vertical-align: middle;cursor: pointer;}
+uigg-emot s:hover {background-color: var(--eee);}
+@media(max-width:640px) {
+    uigg-emot s {width: .6rem;height: .6rem;}
+}
+
+/* chat */
 chat {height: 100%;display: flex;position: relative;}
 chat ::-webkit-scrollbar {width: 3px;}
 chat .ico {width: 50px;height: 50px;line-height: 50px;}
-chat .ico:hover {background: var(--eee);}
+chat s {width: 50px;height: 50px;display: inline-block;background-size: 90%;vertical-align: middle;cursor: pointer;}
+chat chat-title .ico:hover,
+chat chat-tool .ico:hover {background: var(--eee);}
 chat .avatar {width: 50px;height: 50px;}
-chat s {width: 50px;height: 50px;display: inline-block;background-size: 90%;vertical-align: middle;}
+
+chat pop img {max-height: 100%;}
+chat aside {word-break: break-all;}
+chat aside * {white-space: normal;}
+chat aside img {max-width: 200px;border-radius: 5px;cursor: pointer;min-width: 50px;min-height: 50px;}
+chat aside video {max-width: 300px;}
+chat a[download] {background-color: var(--orange);display: inline-block;border-radius: 5px;padding-right: 10px;}
+chat a[download] .ico-file {width: 50px;height: 50px;background-color: transparent;}
+chat a[download]:hover .ico-file:before {content: '\e74e';}
 
 chat-title {height: 50px;display: flex;align-items: center;border-bottom-width: 1px;position: relative;z-index: 1;}
 chat-title h3 {font-size: 16px;flex: 1;padding: 0 10px;}
-chat-title input {flex: 1;}
+chat-title input {flex: 1;min-width: 0;}
 chat-title x.ico-close {background: var(--red) !important;color: white;display: none;}
 chat-sider {width: 240px;display: flex;flex-direction: column;border-right-width: 1px;}
+chat-sider hop {position: static;}
+chat-sider hop-cont {width: 100%;top: 50px;}
+chat-sider hop-cont a {border-radius: 0 !important;}
+chat-sider hop-cont corner {display: none;}
+
 chat-list {flex: 1;overflow: auto;}
 chat-list li {}
 chat-list li a {display: flex;align-items: center;padding: 10px;}
@@ -994,36 +1015,39 @@ chat-message {flex: 1;border-bottom-width: 1px;overflow: auto;}
 chat-message li {padding: 10px 70px;position: relative;overflow: hidden;}
 chat-message li .avatar {position: absolute;left: 0;top: 0;margin: 10px;}
 chat-message li cite {display: block;margin-bottom: 5px;color: var(--ccc);}
-chat-message li p {background-color: var(--f7);border-radius: 0 10px 10px 10px;padding: 10px;display: inline-block;}
-chat-message li p img {max-width: 200px;border-radius: 5px;cursor: pointer;}
-chat-message li p video {max-width: 300px;}
+chat-message li aside {background-color: var(--f7);border-radius: 0 10px 10px 10px;padding: 10px;display: inline-block;}
 
 chat-message li.mine {}
 chat-message li.mine .avatar {left: auto;right: 0;}
 chat-message li.mine cite {text-align: right;}
-chat-message li.mine p {background-color: aliceblue;border-radius: 10px 0 10px 10px;float: right;}
+chat-message li.mine aside {background-color: aliceblue;border-radius: 10px 0 10px 10px;float: right;}
 
 chat-tool {height: 50px;position: relative;}
 chat-tool > a {float: left;position: relative;}
 chat-tool > a input[type="file"]{position: absolute;top: 0;left: 0;width: 100%;height: 100%;opacity: 0;}
-chat-emot {position: absolute;bottom: 50px;left: 0;background-color: white;border-width: 1px 0;width: 100%;overflow: auto;padding: 10px;display: none;}
-chat-emot s:hover {background-color: var(--eee);}
+chat-tip {position: absolute;bottom: 50px;left: 0;background-color: white;border-width: 1px 0;width: 100%;overflow: auto;padding: 10px;display: none;}
 
 chat-control {height: 150px;position: relative;overflow: hidden;}
-chat-control textarea {height: 100%;padding: 0 70px 0 10px;}
-chat-control .ico {margin: 10px;background-color: var(--sapphire) !important;color: white;border-radius: 100%;position: absolute;right: 0;bottom: 0;}
-chat-control .btn:hover {transform: translateY(0);}
+chat-control aside {height: 100%;padding: 0 70px 0 10px;overflow: auto;-webkit-user-modify: read-write;}
+chat-control aside * {-webkit-user-modify: read-only;}
+chat-control .ico-paperplane {margin: 10px;background-color: var(--sapphire);color: white;border-radius: 100%;position: absolute;right: 0;bottom: 0;}
 
 @media(max-width:640px) {
     chat {display: block;}
     chat .ico {width: .7rem;height: .7rem;line-height: .7rem;}
-    chat .avatar {width: .6rem;height: .6rem;}
     chat s {width: .6rem;height: .6rem;}
+    chat .avatar {width: .6rem;height: .6rem;}
+
+    chat aside img {max-width: 3rem;border-radius: .05rem;min-width: .7rem;min-height: .7rem;}
+    chat aside video {max-width: 3rem;}
+    chat a[download] {border-radius: .05rem;padding-right: .1rem;}
+    chat a[download] .ico-file {width: .7rem;height: .7rem;}
 
     chat-title {height: .7rem;}
     chat-title h3 {font-size: .22rem;padding: 0 .1rem;}
     chat-title x.ico-close {display: block;}
     chat-sider {width: 100%;height: 100%;border-right-width: 0;}
+    chat-sider hop-cont {top: .7rem;}
     chat-list li a {padding: .15rem;}
     chat-list li .avatar {margin-right: .1rem;}
 
@@ -1031,24 +1055,33 @@ chat-control .btn:hover {transform: translateY(0);}
     chat-message li {padding: .1rem .8rem;}
     chat-message li .avatar {margin: .1rem;}
     chat-message li cite {margin-bottom: .05rem;}
-    chat-message li p {border-radius: 0 .1rem .1rem .1rem;padding: .1rem;}
-    chat-message li p img {max-width: 3rem;border-radius: .05rem;}
-    chat-message li p video {max-width: 3rem;}
+    chat-message li aside {border-radius: 0 .1rem .1rem .1rem;padding: .1rem;}
 
-    chat-message li.mine p {border-radius: .1rem 0 .1rem .1rem;}
+    chat-message li.mine aside {border-radius: .1rem 0 .1rem .1rem;}
 
     chat-tool {height: .7rem;}
     chat-emot {bottom: .7rem;padding: .1rem;}
 
     chat-control {height: 2rem;}
-    chat-control textarea {padding: 0 .9rem 0 .1rem;}
-    chat-control .ico {margin: .1rem;}
+    chat-control aside {padding: 0 .9rem 0 .1rem;}
+    chat-control ..ico-paperplane {margin: .1rem;}
 }
 
+/* fold */
+fold {}
+fold > li {display: flex;cursor: pointer;padding: 10px;border-bottom-width: 1px;}
+fold > li h5 {flex: 1;min-width: 0;line-height: 30px;}
+fold > li .ico {width: 40px;}
+fold > li.active s {transform: rotate(180deg);}
 
+fold aside {display: none;padding: 10px;}
 
-
-
+@media(max-width:640px) {
+    fold > li {padding: .1rem;}
+    fold > li h5 {line-height: .5rem;}
+    fold > li .ico {width: .5rem;}
+    fold aside {padding: .1rem;}
+}
 
 
 

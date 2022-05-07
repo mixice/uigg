@@ -345,23 +345,6 @@ pop-cont {padding: 20px 0;}
 
 @media(max-width:640px) {}
 
-/*louver*/
-.louver {padding: 10px;}
-.louver li {height: 50px;line-height: 50px;border-bottom: 1px var(--color-light) solid;cursor: pointer;padding: 0 10px;display: flex;}
-.louver li h6 {width: 100%;flex: 1;white-space: nowrap;text-overflow: ellipsis;overflow: hidden;}
-.louver li i {float: right;line-height: 50px;}
-.louver li:hover {background-color: var(--color-white);}
-.louver li.active {background-color: var(--color-light);}
-.louver li:hover h6, .louver li.active h6 {color: var(--color-basic);}
-.louver li.active i {transform: rotate(90deg);}
-.louver-cont {background: var(--color-white);display: none;}
-
-@media(max-width:640px) {
-    .louver {padding: .1rem;}
-    .louver li {height: .6rem;line-height: .6rem;padding: 0 .1rem;}
-    .louver li i {line-height: .6rem;}
-}
-
 /*edui*/
 .edui-editor {width: 100% !important;line-height: normal;}
 .edui-default {padding: 0 !important;}

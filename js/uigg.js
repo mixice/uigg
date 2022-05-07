@@ -62,17 +62,17 @@ $(function(){
         }
         audioAutoPlay();
     });
-    if($('music').hasClass('pause')){
+    if(typeof($('music').attr('pause')) == 'undefined'){}else{
         $('#music')[0].pause();
     };
     $('music').click(function(){
-        if($(this).hasClass('pause')){
-            $(this).removeClass('pause');
-            $('#music')[0].play();
-        }else{
-            $(this).addClass('pause');
+        if(typeof($(this).attr('pause')) == 'undefined'){
+            $(this).attr('pause','');
             $('#music')[0].pause();
-        }
+        }else{
+            $(this).removeAttr('pause');
+            $('#music')[0].play();
+        };
     });
 });
 
@@ -197,7 +197,7 @@ $(function(){
             $(this).attr('style','background-image: url(https://ui.gg/lib/images/avatar?=' + Math.floor(Math.random() * 100) +');');
         }
     });
-    
+
     $('uigg-title').each(function(){
         var len = 10;
         var rnd = Math.floor(Math.random() * len);
@@ -215,6 +215,12 @@ $(function(){
         $(this).append(txt[rnd]);
     });
     $('uigg-txt').append('Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.');
+
+    var arr = new Array();
+    for(var i = 1;i <= 100;i++){
+        arr[i] = i;
+        $('uigg-emot').append('<s style="background-image: url(https://ui.gg/lib/emot/' + i + '.svg)"></s>');
+    };
 });
 
 //----------------------------------------------------------------------------------disable
@@ -396,16 +402,15 @@ $(function(){
     });
     function uploadImg(){
         $('.upload-group input').on('change',function(){
-            var imgValue = $(this).val(),
-            fileFormat = imgValue.substring(imgValue.lastIndexOf('.')).toLowerCase(),
-            imgUrl = window.URL.createObjectURL(this.files[0]);
-            if(!fileFormat.match(/.png|.jpg|.jpeg|.svg|.webp|.ico|.gif/)){
-                alert('File format must be: png/jpg/jpeg/svg/webp/ico/gif');
-                return;
+            var imgValue = $(this).val();
+            var fileFormat = imgValue.substring(imgValue.lastIndexOf('.')).toLowerCase();
+            var imgUrl = window.URL.createObjectURL(this.files[0]);
+            if(!fileFormat.match(/.png|.jpg|.jpeg|.svg|.webp|.gif/)){
+                alert('File format must be: png/jpg/jpeg/svg/webp/gif');
             }else{
-                $(this).parent().attr('style','background-image:url('+ imgUrl+');');
+                $(this).parent().attr('style','background-image:url(' + imgUrl + ');');
+                $(this).parent().css('color','transparent');
             };
-            $(this).parent().css('color','transparent');
         });
     };
     uploadImg();
@@ -465,8 +470,9 @@ $(function(){
 //----------------------------------------------------------------------------------rate
 $(function(){
     $('rate').html('<i></i><i></i><i></i><i></i><i></i>');
-    $('rate i').addClass('ico ico-star');
-    $('rate.edit i').click(function(){
+    $('rate i').addClass('ico ico-star').filter(':lt('+$('rate').attr('value')+')').addClass('active');
+    $('rate[edit] i').click(function(){
+        $(this).parent().attr('value',$(this).index()+1);
         $(this).siblings().removeClass('active');
         $(this).prevAll().addClass('active');
         $(this).addClass('active');
@@ -504,10 +510,10 @@ function countdown(){
     function digit(num,n){
         return (Array(n).join(0) + num).slice(-n);
     };
-    $('.countdown d').html(d);
-    $('.countdown h').html(digit(h,2));
-    $('.countdown m').html(digit(m,2));
-    $('.countdown s').html(digit(s,2));
+    $('countdown d').html(d);
+    $('countdown h').html(digit(h,2));
+    $('countdown m').html(digit(m,2));
+    $('countdown s').html(digit(s,2));
     setTimeout(countdown,1000);
 };
 
@@ -539,9 +545,9 @@ $(function(){
 });
 
 //----------------------------------------------------------------------------------copy
-var copy;
-var copyNum;
+var copy, copyNum;
 $(function(){
+    copy = $('[copy-btn]');
     $(copy).click(function(){
         copyNum = $(this).attr('copy-btn');
         copyFunction();
@@ -587,34 +593,24 @@ $(function(){
 
 //----------------------------------------------------------------------------------chat
 $(function(){
-    $('chat-cont,chat-emot').addClass('anime-fade-in');
+    $('chat-cont,chat-tip').addClass('anime-fade-in');
     function chatNew(){
         $('chat-message').animate({scrollTop: '999999999'},1000);
     };
     chatNew();
-    $('chat-control .btn').click(function(){
-        chatNew();
-    });
-    var arr = new Array();
-    for(var i = 1;i <= 100;i++){
-        arr[i] = i;
-        $('chat-emot').append('<s data="'+i+'"></s>');
-    };
-    $('chat s').each(function(){
-        $(this).css('background-image','url(https://ui.gg/lib/emot/'+$(this).attr('data')+'.svg)');
-    });
-    $('chat-emot s').click(function(){
-        $('chat-emot').hide();
-    });
     $('.ico-emot-smile').click(function(){
-        $('chat-emot').toggle();
+        $(this).next().toggle();
+    });
+    $('chat uigg-emot s').click(function(){
+        $(this).parent().parent().hide();
+        console.log(1);
+        $('chat-control aside').append($(this));
     });
     $('chat-title x.ico-close').click(function(){
         $(this).parent().parent().hide();
     });
-    $('chat-message li p img').click(function(){
-        var url = $(this).attr('src');
-        $('chat').append('<pop class="anime-fade-in center"><img src="'+url+'"></pop>');
+    $(document).on('click','chat aside img',function(){
+        $('chat').append('<pop class="anime-fade-in center"><img src="' + $(this).attr('src') + '"></pop>');
     });
     $(document).on('click','chat pop',function(){
         $(this).remove();
@@ -623,6 +619,60 @@ $(function(){
         $('chat-cont').css('display','flex');
         chatNew();
     });
+    $('chat-control a').click(function(){
+        var messageVal = $('chat-control aside').html();
+        var date = new Date();
+        var time = date.toLocaleTimeString();
+        if(messageVal == ''){}else{
+            $('chat-message').append('<li class="mine"><em class="avatar" style="background-image: "></em><cite>' + time + '</cite><aside>' + messageVal + '</aside></li>');
+            $('chat-control aside').html('');
+            chatNew();
+        };
+    });
+    $('chat-tool .ico-folder-empty input').on('change',function(){
+        var fileValue = $(this).val();
+        var fileFormat = fileValue.substring(fileValue.lastIndexOf('.')).toLowerCase();
+        var fileName = fileValue.substring(fileValue.lastIndexOf('\\')+1);
+        var fileUrl = window.URL.createObjectURL(this.files[0]);
+        if(fileFormat.match(/.png|.jpg|.jpeg|.svg|.webp|.gif/)){
+            $('chat-control aside').append('<img src="' + fileUrl + '">');
+            return;
+        }if(fileFormat.match(/.mp4|.webm/)){
+            $('chat-control aside').append('<video src="' + fileUrl + '" controls></video>');
+            return;
+        }if(fileFormat.match(/.mp3|.ogg|.wav|.midi/)){
+            $('chat-control aside').append('<audio src="' + fileUrl + '" controls></audio>');
+            return;
+        }else{
+            $('chat-control aside').append('<a download href="' + fileUrl + '"><i class="ico ico-file"></i>' + fileName + '</a>');
+        };
+    });
+});
+
+//----------------------------------------------------------------------------------fold
+$(function(){
+    $('fold > li').append('<s class="ico ico-alone-bottom"></s>');
+    $('fold aside').addClass('anime-fade-in');
+
+    if(typeof($('fold').attr('show')) == 'undefined'){
+        $('fold > li').click(function(){
+            var foldCont = $(this).next();
+            if($(this).hasClass('active')){
+                $(this).removeClass('active');
+                foldCont.hide();
+            }else{
+                foldCont.show().siblings('fold aside').hide();
+                $(this).addClass('active').siblings().removeClass('active');
+            }
+        });
+    }else{
+        $('fold > li').addClass('active');
+        $('fold aside').css('display','block');
+        $('fold > li').click(function(){
+            $(this).toggleClass('active');
+            $(this).next().toggle();
+        });
+    };
 });
 
 //----------------------------------------------------------------------------------

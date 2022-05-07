@@ -1,22 +1,17 @@
 //----------------------------------------------------------------------------------function
 
 $(function(){
-    
-    //----------------------------------------------------------------------------------industry
-	$('.industry').click(function(){
-        $('.industry-cont').toggle();
-    });
+    //----------------------------------------------------------------------------------sider
     $('.sider-toggle').click(function(){
         $('.sider').toggle();
     });
-    
-    //----------------------------------------------------------------------------------sider
+
     var localUrl = window.location.href;
-    var pageAllName = localUrl.substr(localUrl.lastIndexOf('/')+1);
+    var pageAllName = localUrl.substring(localUrl.lastIndexOf('/')+1);
     var pageName = pageAllName.substring(0,pageAllName.indexOf('.'));
     //if(pageName == ''){pageName = ''};
     $('.sider-list a[href="'+pageName+'.php"]').addClass('active');
-    
+
     $('.sider-list li > a').click(function(){
         $('.sider-group').hide();
         if($(this).hasClass('active')){
@@ -28,12 +23,5 @@ $(function(){
             $(this).next().show();
         };
     });
-     
-    //----------------------------------------------------------------------------------louver
-    $('.louver li').click(function(){
-        $(this).toggleClass('active');
-        $(this).next().toggle();
-    });
-    
-    
+
 });
