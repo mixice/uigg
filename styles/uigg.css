@@ -414,7 +414,7 @@ tip {position: fixed;top: 50%;left: 50%;z-index: 999;padding: 10px 15px;backgrou
 }
 
 /* btn */
-.btn {text-align: center;height: 50px;line-height: 50px;position: relative;background-color: var(--sapphire);color: white;border-radius: 2px;text-transform: capitalize;display: flex;align-items: center;justify-content: center;padding: 0 20px;}
+.btn {text-align: center;height: 50px;line-height: 50px;position: relative;background-color: var(--sapphire);color: white;border-radius: 2px;text-transform: capitalize;display: flex;align-items: center;justify-content: center;padding: 0 20px;user-select: none;}
 .btn .ico {margin: 5px;color: white;}
 .btn:hover {transform: translateY(5px);}
 .btn-flex {display: flex;justify-content: center;align-items: center;}
@@ -898,7 +898,7 @@ drop li {position: relative;}
 drop li:not(:last-child) {border-bottom-width: 1px;}
 drop li drop-list {right: -100%;top: 0;left: auto;}
 drop li drop-list x {display: none;}
-drop a {padding: 0 20px;display: block;}
+drop a {padding: 0 20px;display: block;user-select: none;}
 drop li:hover > a {color: white;background-color: var(--sapphire);}
 drop li:hover > drop-list {display: block;}
 drop li:hover > i {color: white;}
@@ -947,7 +947,7 @@ empty > .ico {margin: inherit;}
 /* hop */
 hop {position: relative;}
 hop x {width: 100vw;height: 100vh;position: fixed;top: 0;left: 0;display: none;}
-hop a {height: 50px;line-height: 50px;min-width: 50px;display: block;text-align: center;}
+hop a {height: 50px;line-height: 50px;min-width: 50px;display: block;text-align: center;user-select: none;}
 hop-cont {position: absolute;right: 0;top: 60px;width: 200px;box-shadow: 0 5px 10px var(--000-1);border-radius: 5px;display: none;}
 hop-cont corner {border-width: 0 10px 10px 10px;border-bottom-color: white;top: -10px;}
 hop-cont a {background-color: white;border-bottom-width: 1px;text-transform: capitalize;}
@@ -1064,7 +1064,7 @@ chat-control .ico-paperplane {margin: 10px;background-color: var(--sapphire);col
 
     chat-control {height: 2rem;}
     chat-control aside {padding: 0 .9rem 0 .1rem;}
-    chat-control ..ico-paperplane {margin: .1rem;}
+    chat-control .ico-paperplane {margin: .1rem;}
 }
 
 /* fold */
