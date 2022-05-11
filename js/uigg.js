@@ -49,9 +49,7 @@ $(function(){
 //----------------------------------------------------------------------------------music
 $(function(){
     $('music').addClass('ico');
-    $('music audio').attr('id','music');
-    $('music audio').attr('autoplay','');
-    $('music audio').attr('loop','');
+    $('music audio').attr('id','music').attr('autoplay','').attr('loop','');
     document.addEventListener('DOMContentLoaded',function(){
         function audioAutoPlay(){
             var audio = document.getElementById('music');
@@ -150,7 +148,7 @@ function lug(){
     $('.lug-thumbs a').click(function(){
         $(this).addClass('active').siblings().removeClass('active');
     });
-    var mySwiper = new Swiper('.lug-top',{
+    var swiperLug = new Swiper('.lug-top',{
         on: {
             touchEnd: function(swiper,event){
                 var swiperIndex = $('.lug-top .swiper-slide-active').index();
@@ -178,40 +176,57 @@ $(function(){
         $(this).attr('src','https://ui.gg/lib/images/color?=' + Math.floor(Math.random() * 100));
     });
     $('[style~="uigg-img"]').each(function(){
-        $(this).attr('style','background-image: url(https://ui.gg/lib/images/img?=' + Math.floor(Math.random() * 100) +');');
+        $(this).attr('style','background-image: url(https://ui.gg/lib/images/img?=' + Math.floor(Math.random() * 100) + ');');
     });
     $('[style~="uigg-product"]').each(function(){
-        $(this).attr('style','background-image: url(https://ui.gg/lib/images/product?=' + Math.floor(Math.random() * 100) +');');
+        $(this).attr('style','background-image: url(https://ui.gg/lib/images/product?=' + Math.floor(Math.random() * 100) + ');');
     });
     $('[style~="uigg-bg"]').each(function(){
-        $(this).attr('style','background-image: url(https://ui.gg/lib/images/bg?=' + Math.floor(Math.random() * 100) +');');
+        $(this).attr('style','background-image: url(https://ui.gg/lib/images/bg?=' + Math.floor(Math.random() * 100) + ');');
     });
     $('[style~="uigg-avatar"]').each(function(){
-        $(this).attr('style','background-image: url(https://ui.gg/lib/images/avatar?=' + Math.floor(Math.random() * 100) +');');
+        $(this).attr('style','background-image: url(https://ui.gg/lib/images/avatar?=' + Math.floor(Math.random() * 100) + ');');
     });
     $('[style~="uigg-color"]').each(function(){
-        $(this).attr('style','background-image: url(https://ui.gg/lib/images/color?=' + Math.floor(Math.random() * 100) +');');
+        $(this).attr('style','background-image: url(https://ui.gg/lib/images/color?=' + Math.floor(Math.random() * 100) + ');');
     });
     $('.avatar').each(function(){
         if($(this).css('background-image') == 'none'){
-            $(this).attr('style','background-image: url(https://ui.gg/lib/images/avatar?=' + Math.floor(Math.random() * 100) +');');
+            $(this).attr('style','background-image: url(https://ui.gg/lib/images/avatar?=' + Math.floor(Math.random() * 100) + ');');
         }
+    });
+
+    $('uigg-color').each(function(){
+        var len = 10;
+        var rnd = Math.floor(Math.random() * len);
+        var txt = new Array(len);
+        txt[0] = 'Lorem ipsum dolor sit amet consectetur adipisicing elit';
+        txt[1] = 'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua';
+        txt[2] = 'Ut enim ad minim veniam';
+        txt[3] = 'Quis nostrud exercitation ullamco laboris nisi ut aliquip exea commodo consequat';
+        txt[4] = 'Duis aute irure dolor in reprehenderit in voluptate';
+        txt[5] = 'Velit esse cillum dolore eu fugiat';
+        txt[6] = 'Excepteur sint occaecat cupidatat non proident';
+        txt[7] = 'Sunt in culpa qui officia deserunt mollit anim id est laborum';
+        txt[8] = 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium';
+        txt[9] = 'Totam rem aperiam eaque ipsa quae ab illo inventore veritatis enim';
+        $(this).append(txt[rnd]);
     });
 
     $('uigg-title').each(function(){
         var len = 10;
         var rnd = Math.floor(Math.random() * len);
         var txt = new Array(len);
-        txt[0]='Lorem ipsum dolor sit amet consectetur adipisicing elit';
-        txt[1]='Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua';
-        txt[2]='Ut enim ad minim veniam';
-        txt[3]='Quis nostrud exercitation ullamco laboris nisi ut aliquip exea commodo consequat';
-        txt[4]='Duis aute irure dolor in reprehenderit in voluptate';
-        txt[5]='Velit esse cillum dolore eu fugiat';
-        txt[6]='Excepteur sint occaecat cupidatat non proident';
-        txt[7]='Sunt in culpa qui officia deserunt mollit anim id est laborum';
-        txt[8]='Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium';
-        txt[9]='Totam rem aperiam eaque ipsa quae ab illo inventore veritatis enim';
+        txt[0] = 'Lorem ipsum dolor sit amet consectetur adipisicing elit';
+        txt[1] = 'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua';
+        txt[2] = 'Ut enim ad minim veniam';
+        txt[3] = 'Quis nostrud exercitation ullamco laboris nisi ut aliquip exea commodo consequat';
+        txt[4] = 'Duis aute irure dolor in reprehenderit in voluptate';
+        txt[5] = 'Velit esse cillum dolore eu fugiat';
+        txt[6] = 'Excepteur sint occaecat cupidatat non proident';
+        txt[7] = 'Sunt in culpa qui officia deserunt mollit anim id est laborum';
+        txt[8] = 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium';
+        txt[9] = 'Totam rem aperiam eaque ipsa quae ab illo inventore veritatis enim';
         $(this).append(txt[rnd]);
     });
     $('uigg-txt').append('Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.');
@@ -470,9 +485,9 @@ $(function(){
 //----------------------------------------------------------------------------------rate
 $(function(){
     $('rate').html('<i></i><i></i><i></i><i></i><i></i>');
-    $('rate i').addClass('ico ico-star').filter(':lt('+$('rate').attr('value')+')').addClass('active');
+    $('rate i').addClass('ico ico-star').filter(':lt(' + $('rate').attr('value') + ')').addClass('active');
     $('rate[edit] i').click(function(){
-        $(this).parent().attr('value',$(this).index()+1);
+        $(this).parent().attr('value',$(this).index() + 1);
         $(this).siblings().removeClass('active');
         $(this).prevAll().addClass('active');
         $(this).addClass('active');
@@ -545,22 +560,16 @@ $(function(){
 });
 
 //----------------------------------------------------------------------------------copy
-var copy, copyNum;
 $(function(){
-    copy = $('[copy-btn]');
+    var copy = $('[copy-btn]');
     $(copy).click(function(){
         copyNum = $(this).attr('copy-btn');
         copyFunction();
     });
     function copyFunction(){
-        if(copyNum == ''){var copyEl = $('[copy-val]');}else{var copyEl = $('[copy-val='+copyNum+']');};
+        if(copyNum == ''){var copyEl = $('[copy-val]');}else{var copyEl = $('[copy-val=' + copyNum + ']');};
         if(copyEl.is('input')){var copyVal = copyEl.val();}else{var copyVal = copyEl.html();};
-        var copyInput = document.createElement('input');
-        copyInput.value = copyVal;
-        document.body.appendChild(copyInput);
-        copyInput.select();
-        document.execCommand('Copy');
-        copyInput.remove();
+        navigator.clipboard.writeText(copyVal);
     };
 });
 
@@ -580,7 +589,7 @@ $(function(){
     $('hop-cont a:first-child').after('<corner></corner>');
     var hopWidth = $('hop > a').width();
     var cornerWidth = $('hop-cont corner').width();
-    $('hop-cont corner').css('right',(hopWidth+cornerWidth)/2+'px');
+    $('hop-cont corner').css('right',(hopWidth + cornerWidth)/2 + 'px');
     $('hop > a').click(function(){
         $(this).siblings('hop-cont').toggle();
         $(this).siblings('x').toggle();
@@ -632,7 +641,7 @@ $(function(){
     $('chat-tool .ico-folder-empty input').on('change',function(){
         var fileValue = $(this).val();
         var fileFormat = fileValue.substring(fileValue.lastIndexOf('.')).toLowerCase();
-        var fileName = fileValue.substring(fileValue.lastIndexOf('\\')+1);
+        var fileName = fileValue.substring(fileValue.lastIndexOf('\\') + 1);
         var fileUrl = window.URL.createObjectURL(this.files[0]);
         if(fileFormat.match(/.png|.jpg|.jpeg|.svg|.webp|.gif/)){
             $('chat-control aside').append('<img src="' + fileUrl + '">');
