@@ -679,6 +679,66 @@ $(function(){
     };
 });
 
+//----------------------------------------------------------------------------------page
+$(function(){
+    var pageVal = $('page').attr('value');
+    var pageMax = $('page').attr('max');
+    $('page').append('<a class="ico ico-alone-side-left"></a><a class="ico ico-alone-left"></a><ul></ul><a class="ico ico-alone-right"></a><a class="ico ico-alone-side-right"></a><span>' + pageVal + '/' + pageMax + '</span><input type="text"><button class="ico ico-arrow-enter"></button>');
+    var arr = new Array();
+    for(var i = 1;i <= pageMax;i++){
+        arr[i] = i;
+        $('page ul').append('<a>' + i + '</a>');
+    };
+    function page(){
+        pageVal = $('page').attr('value');
+        pageMax = $('page').attr('max');
+        $('page ul a').removeClass('active').hide();
+        if(pageVal == 1){
+            $('page ul a:first').addClass('active').show().next().show().next().show();
+        }else{
+            $('page ul a').eq(pageVal - 1).addClass('active').show().prev().show().prev().show().end().next().show().next().show().next().show();
+        };
+        $('page span').html(pageVal + '/' + pageMax);
+    };
+    page();
+    $('page .ico-alone-side-right').click(function(){
+        $('page').attr('value',pageMax);
+        page();
+    });
+    $('page .ico-alone-side-left').click(function(){
+        $('page').attr('value','1');
+        page();
+    });
+    $('page .ico-alone-left').click(function(){
+        if(pageVal == 1){
+            return false;
+        }else{
+            $('page').attr('value',pageVal - 1);
+            page();
+        };
+    });
+    $('page .ico-alone-right').click(function(){
+        if(pageVal == pageMax){
+            return false;
+        }else{
+            $('page').attr('value',+ pageVal + 1);
+            page();
+        };
+    });
+    $('page ul a').click(function(){
+        $('page').attr('value',$(this).text());
+        page();
+    });
+    $('page .ico-arrow-enter').click(function(){
+        var inputVal = $('page input').val();
+        if(inputVal > parseInt(pageMax)){inputVal = pageMax;};
+        if(inputVal < 1 || isNaN(inputVal)){inputVal = 1};
+        $('page').attr('value',inputVal);
+        page();
+        $('page input').val('');
+    });
+});
+
 //----------------------------------------------------------------------------------
 $(function(){
 

@@ -697,39 +697,36 @@ select {padding: 0 50px 0 10px;background-image: url(https://ui.gg/lib/ico/svg/a
 }
 
 /* page */
-page {text-align: center;}
-page a,
-page button,
-page span,
-page input {height: 50px;display: inline-block;text-align: center;vertical-align: middle;float: none;border-radius: 2px;font-size: 16px;}
-page a,
 page .ico,
-page button,
-page span {line-height: 50px;}
+page * {height: 50px;display: block;border-radius: 2px;text-align: center;margin: 2px;line-height: 50px;}
+page,
+page ul {display: flex;align-items: center;}
+page ul a,
+page span,
+page input {font-size: 16px;}
 page a,
-page button {background-color: var(--f7);width: 50px;}
-page span {min-width: 50px;}
+page button {background-color: var(--f7);width: 50px;user-select: none;}
+page ul {margin: 0;}
+page ul a {display: none;}
+page span {padding: 0 10px;}
 page input {border-width: 1px;width: 80px;}
 page a:hover,
 page a.active,
-page button:hover,
-page button.active {background-color: var(--sapphire);color: white;}
+page button:hover {background-color: var(--sapphire);color: white;}
+page[min] span,
+page[min] input,
+page[min] button {display: none;}
 
 @media(max-width:640px) {
-    page a,
-    page button,
+    page .ico,
+    page * {height: .7rem;border-radius: .02rem;margin: .02rem;line-height: .7rem;}
+    page ul a,
     page span,
-    page input {height: .7rem;border-radius: .03rem;font-size: .22rem;}
+    page input {font-size: .22rem;}
     page a,
-    page .ico,
-    page button,
-    page span {line-height: .7rem;}
-    page a,
-    page button {width: .7rem;display: none;}
-    page .ico,
-    page a.ico,
-    page button.ico {display: inline-block;font-size: .32rem;}
-    page span {min-width: .7rem;}
+    page button {width: .7rem;}
+    page ul {display: none;}
+    page span {padding: 0 .1rem;}
     page input {width: .7rem;}
 }
 
