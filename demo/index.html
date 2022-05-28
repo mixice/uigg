@@ -30,7 +30,7 @@
     fold a.active {background-color: var(--eee);}
 
     .contant {padding-left: 260px;overflow: hidden;}
-    .contant h2 {padding: 20px 0;font-size: 40px;font-weight: normal;}
+    .contant h2 {padding: 20px;font-size: 40px;font-weight: normal;}
     .contant h2 i {font-size: 40px;float: left;margin: 5px;}
     .cont {padding: 0 30px;margin: 30px 0;}
     .cont iframe {width: 100%;border: 1px var(--eee) solid;margin: 5px 0;}
@@ -52,7 +52,7 @@
         fold {height: calc(100% - 3rem);overflow: auto;}
         fold a {padding: 0 .1rem;height: .5rem;line-height: .5rem;font-size: .2rem;}
         .contant {padding: 0;font-size: .2rem;}
-        .contant h2 {padding: .2rem 0;font-size: .5rem;}
+        .contant h2 {padding: .2rem;font-size: .5rem;}
         .contant h2 i {font-size: .5rem;margin: .1rem;}
         .cont {padding: 0 .2rem;margin: .2rem 0;}
         .cont iframe {margin: .1rem 0;}
@@ -132,6 +132,7 @@
             <aside>
                 <a class="smooth" href="#color">color</a>
                 <a class="smooth" href="#ico">ico</a>
+                <a class="smooth" href="#attribute">attribute</a>
                 <a class="smooth" href="#label">label</a>
                 <a class="smooth" href="#lib">lib</a>
             </aside>
@@ -842,7 +843,7 @@ class="return"
             <p>Add the code to the DOM</p>
 <xmp>
 <scaler>
-    <input type="text" value="1">
+    <input value="1">
 </scaler>
 </xmp>
             <h5>effect display</h5>
@@ -1375,9 +1376,9 @@ class="touch-all"
 <xmp>
 <section class="swiper swiper-hash">
     <div class="swiper-wrapper">
-        <div data-hash="one" class="swiper-slide center">one</div>
-        <div data-hash="two" class="swiper-slide center">two</div>
-        <div data-hash="three" class="swiper-slide center">three</div>
+        <div data-hash="one" class="swiper-slide">one</div>
+        <div data-hash="two" class="swiper-slide">two</div>
+        <div data-hash="three" class="swiper-slide">three</div>
     </div>
     <div class="swiper-button-next"></div>
     <div class="swiper-button-prev"></div>
@@ -1492,6 +1493,35 @@ class="touch-all"
             <p>Uigg fonts is a library free licensed font families and api for conveniently using the fonts via iconfont, img, unicode, symbol and css. We also provide delightful, beautifully crafted icons for common actions and items. Download them for use in your digital products for Android, iOS, and web</p>
             <a class="btn" href="/ico.php" target="_blank">view</a>
         </div>
+        <div class="cont" id="attribute">
+            <h3>attribute</h3>
+            <h5>independent attribute</h5>
+            <p>Common available attributes in uiigg</p>
+            <div class="table">
+                <table>
+                    <thead>
+                        <tr><td>attribute</td><td>definition</td></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td><xmp>edit</xmp></td><td>Make components editable</td></tr>
+                        <tr><td><xmp>value</xmp></td><td>Sets the current value of the component</td></tr>
+                        <tr><td><xmp>max</xmp></td><td>Set the maximum value of the component</td></tr>
+                        <tr><td><xmp>min</xmp></td><td>Set the minimum value of the component</td></tr>
+                        <tr><td><xmp>pause</xmp></td><td>Set media pause</td></tr>
+                        <tr><td><xmp>play</xmp></td><td>Set media play</td></tr>
+                        <tr><td><xmp>disabled</xmp></td><td>Set component disable</td></tr>
+                        <tr><td><xmp>selected</xmp></td><td>Disable selection</td></tr>
+                        <tr><td><xmp>center</xmp></td><td>Set object centered content</td></tr>
+                        <tr><td><xmp>show</xmp></td><td>Force display object</td></tr>
+                        <tr><td><xmp>hide</xmp></td><td>Force hidden objects</td></tr>
+                        <tr><td><xmp>infinite</xmp></td><td>Set animation loop</td></tr>
+                        <tr><td><xmp>alternate</xmp></td><td>Set animation alternate</td></tr>
+                        <tr><td><xmp>copy-val</xmp></td><td>Copy trigger value</td></tr>
+                        <tr><td><xmp>copy-btn</xmp></td><td>Copy trigger button</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
         <div class="cont" id="label">
             <h3>label</h3>
             <h5>label quick reference</h5>
@@ -1502,16 +1532,16 @@ class="touch-all"
                         <tr><td>label</td><td>definition</td></tr>
                     </thead>
                     <tbody>
-                        <tr><td><xmp><u></u></xmp></td><td>second tag, inheriting the underline of HTML</td></tr>
-                        <tr><td><xmp><s></s></xmp></td><td>third tag, inheriting the underline of HTML, seconds in time component</td></tr>
-                        <tr><td><xmp><i></i></xmp></td><td>icon definition</td></tr>
-                        <tr><td><xmp><x></x></xmp></td><td>close button and close layer</td></tr>
-                        <tr><td><xmp><z></z></xmp></td><td>lonely element</td></tr>
-                        <tr><td><xmp><o></o></xmp></td><td>global toggle element</td></tr>
-                        <tr><td><xmp><m></m></xmp></td><td>minute in time component</td></tr>
-                        <tr><td><xmp><d></d></xmp></td><td>day in time component</td></tr>
-                        <tr><td><xmp><h></h></xmp></td><td>hour in time component</td></tr>
-                        <tr><td><xmp><cite></cite></xmp></td><td>prompt text</td></tr>
+                        <tr><td><xmp><u></u></xmp></td><td>Second tag, inheriting the underline of HTML</td></tr>
+                        <tr><td><xmp><s></s></xmp></td><td>Third tag, inheriting the underline of HTML, seconds in time component</td></tr>
+                        <tr><td><xmp><i></i></xmp></td><td>Icon definition</td></tr>
+                        <tr><td><xmp><x></x></xmp></td><td>Close button and close layer</td></tr>
+                        <tr><td><xmp><z></z></xmp></td><td>Lonely element</td></tr>
+                        <tr><td><xmp><o></o></xmp></td><td>Global toggle element</td></tr>
+                        <tr><td><xmp><m></m></xmp></td><td>Minute in time component</td></tr>
+                        <tr><td><xmp><d></d></xmp></td><td>Day in time component</td></tr>
+                        <tr><td><xmp><h></h></xmp></td><td>Hour in time component</td></tr>
+                        <tr><td><xmp><cite></cite></xmp></td><td>Prompt text</td></tr>
                     </tbody>
                 </table>
             </div>
@@ -1555,11 +1585,12 @@ https://ui.gg/lib/media/video.mp4
             <h5>qrcode</h5>
             <p>Library related connections</p>
 <xmp>
-https://ui.gg/lib/qr/icox.cc.svg
-https://ui.gg/lib/qr/mix.vc.svg
 https://ui.gg/lib/qr/mixice.com.svg
 https://ui.gg/lib/qr/mssay.com.svg
 https://ui.gg/lib/qr/ui.gg.svg
+https://ui.gg/lib/qr/icox.cc.svg
+https://ui.gg/lib/qr/mix.vc.svg
+https://ui.gg/lib/qr/svgbg.com.svg
 https://ui.gg/lib/qr/wechat.svg
 https://ui.gg/lib/qr/wechat-mssay.svg
 </xmp>

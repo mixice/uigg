@@ -15,7 +15,7 @@ h1,h2,h3,h4,h5,h6,p,blockquote,pre,
 abbr,address,cite,code,
 del,dfn,em,img,ins,kbd,q,samp,
 big,small,strong,sub,sup,var,
-b,i,a,s,u,cite,
+b,i,a,s,u,
 dl,dt,dd,ol,ul,li,
 fieldset,form,label,legend,
 table,caption,tbody,tfoot,thead,tr,th,td,
@@ -39,12 +39,12 @@ name,name-logo,name-search,
 tab,tab-list,tab-cont,tab-group,
 drop,drop-cont,drop-list,
 chat,chat-title,chat-sider,chat-cont,chat-list,chat-message,chat-tool,chat-control,chat-tip,
-uigg-title,uigg-txt,uigg-emot,
+uigg-emot,
 pop,pop-main,pop-title,pop-cont,pop-solve,pop-choice,pop-sider,
 hop,hop-cont,
 countdown,tip,page,music,space,corner,msie,rate,scaler,notify,empty,fold {display: block;}
 html,body {height: 100%;transition-duration: 0s;background-size: cover;}
-html,body,input,select,textarea {font-size: 14px;}
+html,body,input,select,textarea,button {font-size: 14px;}
 html {-webkit-font-smoothing: antialiased;}
 body,a {color: var(--333);}
 a,a:hover,b,i,em,cite {text-decoration: none;font-style: normal;}
@@ -59,7 +59,7 @@ z {display: inline-block;transition-duration: 0s;}
 ::-webkit-scrollbar-thumb {background-color: var(--000-1);}
 
 @media(max-width:640px) {
-	html,body,input,select,textarea {font-size: .2rem;}
+	html,body,input,select,textarea,button {font-size: .2rem;}
 	::-webkit-scrollbar {width: .03rem;}
     body::-webkit-scrollbar {width: 0;}
 }
@@ -152,6 +152,7 @@ z {display: inline-block;transition-duration: 0s;}
 .mobile {width: 100%;margin: auto;position: relative;}
 .main {max-width: 1300px;padding: 0 10px;}
 .mobile {max-width: 640px;min-height: 100%;}
+.mobile img {width: 100%;}
 .block {width: 100%;overflow: hidden;position: relative;}
 .clear {clear: both;}
 .flex {display: flex !important;}
@@ -421,6 +422,7 @@ tip {position: fixed;top: 50%;left: 50%;z-index: 999;padding: 10px 15px;backgrou
 .btn-flex .btn,
 .btn-flex button {flex: 1;}
 .btn-empty {background-color: transparent !important;border: 1px solid;color: var(--sapphire);}
+.btn-empty .ico {color: var(--sapphire);}
 .btn-disable {filter: grayscale(100%);}
 .btn-disable:hover {transform: translateY(0);cursor: no-drop;}
 
@@ -453,7 +455,7 @@ menu x.ico:after {content: '\e961';}
 menu-cont {text-align: center;}
 menu-cont li {cursor: pointer;position: relative;display: inline-block;}
 menu-cont li:hover menu-group {display: block;}
-menu-cont li a {display: block;}
+menu-cont li a {display: block;user-select: none;}
 menu-cont li > a {padding: 0 10px;}
 menu-group {position: absolute;left: 0;display: none;width: 100%;background-color: white;box-shadow: 0 5px 10px var(--000-1);}
 menu-group a {line-height: 40px;}
@@ -468,7 +470,7 @@ menu-list h6 {line-height: 50px;}
     menu-cont li a {color: white;}
     menu-cont li a {line-height: .7rem;padding: 0 .2rem;}
     menu-cont li:hover menu-group {display: none;}
-    menu-group {width: 100%;background-color: var(--333);padding: .1rem .2rem;position: static;overflow: hidden;}
+    menu-group {width: 100%;background-color: var(--333);padding: 0;position: static;overflow: hidden;}
     menu-list h6 {color: white;line-height: .7rem;}
 }
 
@@ -698,15 +700,15 @@ select {padding: 0 50px 0 10px;background-image: url(https://ui.gg/lib/ico/svg/a
 
 /* page */
 page .ico,
-page * {height: 50px;display: block;border-radius: 2px;text-align: center;margin: 2px;line-height: 50px;}
+page * {height: 50px;border-radius: 2px;text-align: center;margin: 2px;line-height: 50px;}
 page,
-page ul {display: flex;align-items: center;}
+page ul {display: flex;align-items: center;justify-content: center;}
 page ul a,
 page span,
 page input {font-size: 16px;}
 page a,
 page button {background-color: var(--f7);width: 50px;user-select: none;}
-page ul {margin: 0;}
+page ul {margin: 0;overflow: inherit;}
 page ul a {display: none;}
 page span {padding: 0 10px;}
 page input {border-width: 1px;width: 80px;}
@@ -839,12 +841,12 @@ msie {width: 100vw;height: 100vh;display: flex;justify-content: center;align-ite
 }
 
 /* anew */
-.anew {opacity: 0;}
-.anew.btn {position: fixed;right: 0;bottom: 0;margin: 30px;width: 50px;}
+.anew {opacity: 0;z-index: 1;}
+.anew.btn {position: fixed;right: 0;bottom: 0;margin: 30px;width: 50px;font-size: 24px;font-weight: normal;}
 .anew.btn:hover {transform: translateY(-5px);}
 
 @media(max-width:640px) {
-    .anew.btn {right: .2rem;width: .7rem;height: .7rem;margin: .2rem;}
+    .anew.btn {right: .2rem;width: .7rem;height: .7rem;margin: .2rem;font-size: .32rem;}
     .anew.btn:hover {transform: translateY(0);}
 }
 
@@ -868,7 +870,7 @@ countdown {}
 countdown s {text-decoration: none;}
 
 /* music */
-music {animation: muzak 10s infinite linear;border-radius: 100%;z-index: 999;width: 50px;height: 50px;position: fixed;top: 0;background-color: var(--sapphire);color: white;}
+music {animation: muzak 10s infinite linear;border-radius: 100%;z-index: 999;width: 50px;height: 50px;position: fixed;top: 0;background-color: var(--sapphire);color: white;display: none;}
 music.ico {line-height: 50px;margin: 30px;}
 music[pause] {animation: none;}
 music:after {content: '\e98c';}

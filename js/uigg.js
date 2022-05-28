@@ -6,6 +6,16 @@
  * license: MIT
  */
 
+//----------------------------------------------------------------------------------preset
+$(function(){
+    $('[hide]').hide();
+    $('[show]').show();
+    $('[center]').addClass('center');
+    $('[infinite]').addClass('infinite');
+    $('[alternate]').addClass('alternate');
+    $('.btn[disabled]').addClass('btn-disable');
+});
+
 //----------------------------------------------------------------------------------rem
 (function(doc, win){
     var docElement = doc.documentElement,
@@ -50,6 +60,7 @@ $(function(){
 $(function(){
     $('music').addClass('ico');
     $('music audio').attr('id','music').attr('autoplay','').attr('loop','');
+    $('music').show();
     document.addEventListener('DOMContentLoaded',function(){
         function audioAutoPlay(){
             var audio = document.getElementById('music');
@@ -76,13 +87,9 @@ $(function(){
 
 //----------------------------------------------------------------------------------fullscreen
 $(document).on('click','.fullscreen', function toggleFullScreen(){
-    if((document.fullScreenElement !== undefined && document.fullScreenElement === null) || (document.msFullscreenElement !== undefined && document.msFullscreenElement === null) || (document.mozFullScreen !== undefined && !document.mozFullScreen) || (document.webkitIsFullScreen !== undefined && !document.webkitIsFullScreen)){
-        if(document.documentElement.requestFullScreen){
-            document.documentElement.requestFullScreen();
-        }else if(document.documentElement.mozRequestFullScreen){
-            document.documentElement.mozRequestFullScreen();
-        }else if(document.documentElement.webkitRequestFullScreen){
-            document.documentElement.webkitRequestFullScreen(Element.ALLOW_KEYBOARD_INPUT);
+    if(document.fullscreenElement !== undefined && document.fullscreenElement === null){
+        if(document.documentElement.requestFullscreen){
+            document.documentElement.requestFullscreen();
         }
     }else{
         if(document.cancelFullScreen){
@@ -102,7 +109,7 @@ $(function(){
 });
 
 //----------------------------------------------------------------------------------touch
-jQuery.fn.bindmove = function(newdirect,newfn){
+$.fn.bindmove = function(newdirect,newfn){
     $(this).on('touchstart', function(e){
         if(e.cancelable){
             if(!e.defaultPrevented){
@@ -550,11 +557,12 @@ $(document).on('click','notify x',function(){
     $(this).parent().addClass('anime-flip-out-x');
     var notifyThis = $(this).parent();
     setTimeout(function(){
-        notifyThis.hide();
+        notifyThis.remove();
     },500);
 });
 
 //----------------------------------------------------------------------------------copy
+var copyNum;
 $(function(){
     var copy = $('[copy-btn]');
     $(copy).click(function(){
@@ -584,7 +592,13 @@ $(function(){
     $('hop-cont a:first-child').after('<corner></corner>');
     var hopWidth = $('hop > a').width();
     var cornerWidth = $('hop-cont corner').width();
-    $('hop-cont corner').css('right',(hopWidth + cornerWidth)/2 + 'px');
+    var contWidth = $('hop-cont').width();
+    var cornerPos = (hopWidth + cornerWidth)/2;
+    if(cornerPos >= contWidth){
+        $('hop-cont corner').css('right',contWidth - 30 + 'px');
+    }else{
+        $('hop-cont corner').css('right',cornerPos + 'px');
+    };
     $('hop > a').click(function(){
         $(this).siblings('hop-cont').toggle();
         $(this).siblings('x').toggle();

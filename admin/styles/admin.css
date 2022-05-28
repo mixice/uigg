@@ -5,7 +5,6 @@
     --color-bright:#a49fff;
     --color-basic:#6c62f9;
     --color-deep:#4a41c4;
-
     --color-shadow: 0 5px 5px rgb(108, 98, 249,.05);
 }
 
@@ -26,7 +25,7 @@ body {background: var(--color-white);}
 }
 
 /*btn*/
-.btn {background-color: var(--color-basic);box-shadow: 0 3px 5px var(--color-bright);font-weight: normal;font-size: 16px;float: left;border-radius: 100px;}
+.btn {background-color: var(--color-basic);box-shadow: 0 3px 5px var(--color-bright);float: left;border-radius: 100px;font-weight: normal;}
 .btn-med {height: 40px;font-size: 14px;}
 .btn-empty {background-color: white;color: var(--color-basic);box-shadow: none;}
 
@@ -145,11 +144,11 @@ drop-list a:hover {background-color: var(--color-basic);}
 }
 
 /*page*/
-page {padding:10px;display: block;}
+page {padding:10px;}
+page .ico,
+page * {height: 40px;line-height: 40px;}
 page a,
-page button {width: 40px;height: 40px;line-height: 40px;background: var(--color-white);font-size: 16px;color: var(--333);}
-page .ico {line-height: 40px;}
-page input {height: 40px;border: 1px var(--color-light) solid;float: none;display: inline-block;}
+page button {background-color: var(--color-white);width: 40px;}
 page button:hover,
 page a:hover,
 page a.active {background-color: var(--color-basic);box-shadow: 0 3px 5px var(--color-bright);}
