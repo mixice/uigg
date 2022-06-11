@@ -12,7 +12,7 @@
 /* basic */
 html,body,div,span,object,iframe,frame,
 h1,h2,h3,h4,h5,h6,p,blockquote,pre,
-abbr,address,cite,code,
+abbr,address,cite,code,tt,
 del,dfn,em,img,ins,kbd,q,samp,
 big,small,strong,sub,sup,var,
 b,i,a,s,u,
@@ -709,12 +709,12 @@ page input {font-size: 16px;}
 page a,
 page button {background-color: var(--f7);width: 50px;user-select: none;}
 page ul {margin: 0;overflow: inherit;}
-page ul a {display: none;}
+page ul a {display: none;transition-duration: 0s;}
 page span {padding: 0 10px;}
 page input {border-width: 1px;width: 80px;}
 page a:hover,
 page a.active,
-page button:hover {background-color: var(--sapphire);color: white;}
+page button:hover {background-color: var(--sapphire);color: white;transition-duration: .3s;}
 page[min] span,
 page[min] input,
 page[min] button {display: none;}
@@ -1068,17 +1068,18 @@ chat-control .ico-paperplane {margin: 10px;background-color: var(--sapphire);col
 
 /* fold */
 fold {}
-fold > li {display: flex;cursor: pointer;padding: 10px;border-bottom-width: 1px;}
-fold > li h5 {flex: 1;min-width: 0;line-height: 30px;}
-fold > li .ico {width: 40px;}
-fold > li.active s {transform: rotate(180deg);}
+fold tt {display: block;border-bottom-width: 1px;}
+fold tt a {display: flex;cursor: pointer;padding: 10px;}
+fold tt a h5 {flex: 1;min-width: 0;line-height: 30px;}
+fold tt a .ico {width: 40px;}
+fold tt.active s {transform: rotate(180deg);}
 
 fold aside {display: none;padding: 10px;}
 
 @media(max-width:640px) {
-    fold > li {padding: .1rem;}
-    fold > li h5 {line-height: .5rem;}
-    fold > li .ico {width: .5rem;}
+    fold tt a {padding: .1rem;}
+    fold tt a h5 {line-height: .5rem;}
+    fold tt a .ico {width: .5rem;}
     fold aside {padding: .1rem;}
 }
 

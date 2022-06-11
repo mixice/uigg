@@ -540,7 +540,7 @@ function countdown(){
 };
 
 //----------------------------------------------------------------------------------notify
-var notifyVal;
+var notifyVal,notifyThis;
 function notifyAdd(){
     $('notify').append('<li class="anime-bounce-in-right"><x class="ico ico-close"></x>'+ notifyVal +'</li>');
     $('notify audio')[0].play();
@@ -553,13 +553,23 @@ function notify(){
         notifyAdd();
     }
 };
+function notifyAuto(notifyTime){
+    notify();
+    setTimeout(function(){
+        notifyThis = $('notify li:first');
+        notifyRemre();
+    },notifyTime);
+};
 $(document).on('click','notify x',function(){
-    $(this).parent().addClass('anime-flip-out-x');
-    var notifyThis = $(this).parent();
+    notifyThis = $(this).parent();
+    notifyRemre();
+});
+function notifyRemre(){
+    notifyThis.addClass('anime-flip-out-x');
     setTimeout(function(){
         notifyThis.remove();
     },500);
-});
+};
 
 //----------------------------------------------------------------------------------copy
 var copyNum;
@@ -669,11 +679,10 @@ $(function(){
 
 //----------------------------------------------------------------------------------fold
 $(function(){
-    $('fold > li').append('<s class="ico ico-alone-bottom"></s>');
+    $('fold tt a').append('<s class="ico ico-alone-bottom"></s>');
     $('fold aside').addClass('anime-fade-in');
-
     if(typeof($('fold').attr('show')) == 'undefined'){
-        $('fold > li').click(function(){
+        $('fold tt').click(function(){
             var foldCont = $(this).next();
             if($(this).hasClass('active')){
                 $(this).removeClass('active');
@@ -684,9 +693,9 @@ $(function(){
             }
         });
     }else{
-        $('fold > li').addClass('active');
+        $('fold tt').addClass('active');
         $('fold aside').css('display','block');
-        $('fold > li').click(function(){
+        $('fold tt').click(function(){
             $(this).toggleClass('active');
             $(this).next().toggle();
         });
