@@ -365,12 +365,12 @@ pop-cont {padding: 20px 0;}
 .login-title h1 {margin: auto;transform: scale(1.3);}
 .login-cont {}
 .login-form {padding: 0;}
-.login-form li {position: relative;display: flex;}
+.login-form li {position: relative;display: flex;padding: 0 10px;}
 .login-form li:last-child {border-bottom: 0;}
 .login-form li *:last-child {margin-right: 0;}
-.login-form li i {width: 50px;position: absolute;left: 5px;top:5px;line-height: 50px;}
+.login-form li i {width: 50px;position: absolute;left: 15px;top:5px;line-height: 50px;}
 .login-form li input {padding: 0 10px 0 50px;}
-.login-form li .btn {width: 100%;margin: 10px 0;}
+.login-form li .btn {width: 100%;margin: 30px 0;}
 .login-info {padding: 0 10px 10px;overflow: hidden;}
 .login-info a {}
 .login-info a:hover {color: var(--color-basic);}
@@ -380,9 +380,10 @@ pop-cont {padding: 20px 0;}
     .login-title {padding: .1rem 0;}
     .login-title h1 {margin: .15rem auto;}
     .login-form {padding: 0 .1rem;}
-    .login-form li i {width: .7rem;line-height: .7rem;top: .1rem;left: 0;}
+    .login-form li {padding: 0;}
+    .login-form li i {width: .7rem;line-height: .7rem;top: 0;left: 0;}
     .login-form li input {padding: 0 .1rem 0 .7rem;}
-    .login-form li .btn {margin: .1rem 0;font-size: .24rem;}
+    .login-form li .btn {margin: .3rem 0;font-size: .24rem;}
     .login-info {padding: 0 .1rem .1rem;}
     .login-tip {height: .4rem;line-height: .4rem;}
 }
