@@ -51,9 +51,6 @@ $(function(){
     if(OsObject.indexOf('MSIE') != -1 || OsObject.indexOf('Trident') != -1){
         $('body').html('<msie>please use another browser</msie>');
     }
-    //else if(OsObject.indexOf('Chrome') != -1){}
-    //else if(OsObject.indexOf('Firefox') != -1){}
-    //else if(OsObject.indexOf('Safari') != -1){}
 });
 
 //----------------------------------------------------------------------------------music
