@@ -489,7 +489,9 @@ $(function(){
 //----------------------------------------------------------------------------------rate
 $(function(){
     $('rate').html('<i></i><i></i><i></i><i></i><i></i>');
-    $('rate i').addClass('ico ico-star').filter(':lt(' + $('rate').attr('value') + ')').addClass('active');
+    $('rate').each(function(){
+        $(this).find('i').addClass('ico ico-star').filter(':lt(' + $(this).attr('value') + ')').addClass('active');
+    });
     $('rate[edit] i').click(function(){
         $(this).parent().attr('value',$(this).index() + 1);
         $(this).siblings().removeClass('active');
@@ -623,7 +625,7 @@ $(function(){
         $('chat-message').animate({scrollTop: '999999999'},1000);
     };
     chatNew();
-    $('.ico-emot-smile').click(function(){
+    $('chat-tool .ico-emot-smile').click(function(){
         $(this).next().toggle();
     });
     $('chat uigg-emot s').click(function(){
