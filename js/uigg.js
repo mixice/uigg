@@ -238,7 +238,7 @@ $(function(){
     var arr = new Array();
     for(var i = 1;i <= 100;i++){
         arr[i] = i;
-        $('uigg-emot').append('<s style="background-image: url(https://ui.gg/lib/emot/' + i + '.svg)"></s>');
+        $('uigg-emot').append('<s style="background-image: url(https://cdn.jsdelivr.net/npm/uigg/emot/' + i + '.svg)"></s>');
     };
 });
 
@@ -546,7 +546,7 @@ function notifyAdd(){
 };
 function notify(){
     if($('notify').length == 0){
-        $('body').append('<notify><audio src="https://ui.gg/lib/media/notify.mp3"></audio></notify>');
+        $('body').append('<notify><audio src="https://cdn.jsdelivr.net/npm/uigg/media/notify.mp3"></audio></notify>');
         notifyAdd();
     }else{
         notifyAdd();
