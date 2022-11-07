@@ -99,7 +99,8 @@
 
 <script>
     $('fold a').click(function(){
-        $(this).addClass('active').siblings().removeClass('active');
+        $('fold a').removeClass('active');
+        $(this).addClass('active');
     });
     $('.aclonica').click(function(){$('.contant *').attr('class','font-aclonica');});
     $('.aller').click(function(){$('.contant *').attr('class','font-aller');});

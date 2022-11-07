@@ -176,9 +176,7 @@ $(function(){
     $('[src~="uigg-avatar"]').each(function(){
         $(this).attr('src','https://ui.gg/lib/images/avatar?=' + Math.floor(Math.random() * 100));
     });
-    $('[src~="uigg-color"]').each(function(){
-        $(this).attr('src','https://ui.gg/lib/images/color?=' + Math.floor(Math.random() * 100));
-    });
+
     $('[style~="uigg-img"]').each(function(){
         $(this).attr('style','background-image: url(https://ui.gg/lib/images/img?=' + Math.floor(Math.random() * 100) + ');');
     });
@@ -191,49 +189,44 @@ $(function(){
     $('[style~="uigg-avatar"]').each(function(){
         $(this).attr('style','background-image: url(https://ui.gg/lib/images/avatar?=' + Math.floor(Math.random() * 100) + ');');
     });
-    $('[style~="uigg-color"]').each(function(){
-        $(this).attr('style','background-image: url(https://ui.gg/lib/images/color?=' + Math.floor(Math.random() * 100) + ');');
-    });
+
     $('.avatar').each(function(){
         if($(this).css('background-image') == 'none'){
             $(this).attr('style','background-image: url(https://ui.gg/lib/images/avatar?=' + Math.floor(Math.random() * 100) + ');');
         }
     });
 
-    $('uigg-color').each(function(){
-        var len = 10;
-        var rnd = Math.floor(Math.random() * len);
-        var txt = new Array(len);
-        txt[0] = 'Lorem ipsum dolor sit amet consectetur adipisicing elit';
-        txt[1] = 'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua';
-        txt[2] = 'Ut enim ad minim veniam';
-        txt[3] = 'Quis nostrud exercitation ullamco laboris nisi ut aliquip exea commodo consequat';
-        txt[4] = 'Duis aute irure dolor in reprehenderit in voluptate';
-        txt[5] = 'Velit esse cillum dolore eu fugiat';
-        txt[6] = 'Excepteur sint occaecat cupidatat non proident';
-        txt[7] = 'Sunt in culpa qui officia deserunt mollit anim id est laborum';
-        txt[8] = 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium';
-        txt[9] = 'Totam rem aperiam eaque ipsa quae ab illo inventore veritatis enim';
-        $(this).append(txt[rnd]);
+    $('[style~="uigg-color"]').each(function(){
+        var color = 'rgb(' + parseInt(Math.random() * 255) + ',' + parseInt(Math.random() * 255) + ',' + parseInt(Math.random() * 255) + ')';
+        $(this).css('background-color',color);
+    });
+    $('[src~="uigg-color"]').each(function(){
+        var color = 'rgb(' + parseInt(Math.random() * 255) + ',' + parseInt(Math.random() * 255) + ',' + parseInt(Math.random() * 255) + ')';
+        $(this).css('background-color',color).attr('src','data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyRpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDcuMS1jMDAwIDc5LmRhYmFjYmIsIDIwMjEvMDQvMTQtMDA6Mzk6NDQgICAgICAgICI+IDxyZGY6UkRGIHhtbG5zOnJkZj0iaHR0cDovL3d3dy53My5vcmcvMTk5OS8wMi8yMi1yZGYtc3ludGF4LW5zIyI+IDxyZGY6RGVzY3JpcHRpb24gcmRmOmFib3V0PSIiIHhtbG5zOnhtcD0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wLyIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bXA6Q3JlYXRvclRvb2w9IkFkb2JlIFBob3Rvc2hvcCAyMy4wIChXaW5kb3dzKSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDpBOEEyRTBGRDM3MjMxMUVEOTdCMEJCNzE1OEMyQUM2NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDpBOEEyRTBGRTM3MjMxMUVEOTdCMEJCNzE1OEMyQUM2NyI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkE4QTJFMEZCMzcyMzExRUQ5N0IwQkI3MTU4QzJBQzY3IiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOkE4QTJFMEZDMzcyMzExRUQ5N0IwQkI3MTU4QzJBQzY3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+64gAAgAAABBJREFUeNpi+P//PwNAgAEACPwC/tuiTRYAAAAASUVORK5CYII=');
     });
 
+    var sentence = [
+        'Lorem ipsum dolor sit amet, consectetur adipisicing elit ',
+        'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua ',
+        'Ut enim ad minim veniam, quis nostrud exercitation ',
+        'Ullamco laboris nisi ut aliquip ex ea commodo consequat ',
+        'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore ',
+        'Ugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident ',
+        'Sunt in culpa qui officia deserunt mollit anim id est laborum ',
+        'Sed ut perspiciatis unde omnis iste natus error sit ',
+        'voluptatem accusantium doloremque laudantium, totam rem aperiam ',
+        'eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae ',
+        'dicta sunt explicabo nemo enim ipsam voluptatem ',
+        'quia voluptas sit aspernatur aut odit aut fugit sed quia ',
+        'consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt ',
+        'Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet ',
+        'consectetur, adipisci velit, sed quia non numquam ',
+        'eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem '
+    ];
+    $('uigg-txt').append(sentence);
     $('uigg-title').each(function(){
-        var len = 10;
-        var rnd = Math.floor(Math.random() * len);
-        var txt = new Array(len);
-        txt[0] = 'Lorem ipsum dolor sit amet consectetur adipisicing elit';
-        txt[1] = 'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua';
-        txt[2] = 'Ut enim ad minim veniam';
-        txt[3] = 'Quis nostrud exercitation ullamco laboris nisi ut aliquip exea commodo consequat';
-        txt[4] = 'Duis aute irure dolor in reprehenderit in voluptate';
-        txt[5] = 'Velit esse cillum dolore eu fugiat';
-        txt[6] = 'Excepteur sint occaecat cupidatat non proident';
-        txt[7] = 'Sunt in culpa qui officia deserunt mollit anim id est laborum';
-        txt[8] = 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium';
-        txt[9] = 'Totam rem aperiam eaque ipsa quae ab illo inventore veritatis enim';
-        $(this).append(txt[rnd]);
+        $(this).append(sentence[Math.floor(Math.random() * 16)]);
     });
-    $('uigg-txt').append('Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.');
 
     var arr = new Array();
     for(var i = 1;i <= 100;i++){
@@ -337,10 +330,10 @@ $(function(){
     $('pop-main').addClass('anime-zoom-in');
     $('pop-choice').addClass('anime-fade-in-up');
     $('pop-title .close').addClass('ico');
-    $('pop .close, pop x').click(function(){
+    $('pop .close, pop > x').click(function(){
         $(this).parents('pop').hide();
     });
-    if($('pop-sider').css('left') == 'auto'){
+    if($('pop-sider').css('right') == '0px'){
         $('pop-sider').addClass('anime-fade-in-right');
     }else{
         $('pop-sider').addClass('anime-fade-in-left');
@@ -444,7 +437,7 @@ function tip(){
     $('tip').css('margin-top', -tipHeight/2-11 + 'px');
     $('tip').css('margin-left', -tipWidth/2-20 + 'px');
     setTimeout(function(){
-         $('tip').hide();
+        $('tip').hide();
     },3000);
 }
 
@@ -481,8 +474,8 @@ $(function(){
         for (var i = 0; i < aloneEl.length; i++){
             word = aloneEl[i];
             element += '<z>' + word + '</z>';
-         }
-         $(this).html(element);
+        }
+        $(this).html(element);
     });
 });
 
@@ -715,12 +708,14 @@ $(function(){
         pageVal = $('page').attr('value');
         pageMax = $('page').attr('max');
         $('page ul a').removeClass('active').hide();
-        if(pageVal == 1){
-            $('page ul a:first').addClass('active').show().next().show().next().show();
-        }else{
-            $('page ul a').eq(pageVal - 1).addClass('active').show().prev().show().prev().show().end().next().show().next().show().next().show();
-        };
-        $('page span').html(pageVal + '/' + pageMax);
+        $('page').each(function(){
+            if(pageVal == 1){
+                $(this).find('ul a:first').addClass('active').show().next().show().next().show();
+            }else{
+                $(this).find('ul a').eq(pageVal - 1).addClass('active').show().prev().show().prev().show().end().next().show().next().show().next().show();
+            };
+            $(this).find('span').html(pageVal + '/' + pageMax);
+        });
     };
     page();
     $('page .ico-alone-side-right').click(function(){
@@ -762,29 +757,27 @@ $(function(){
 });
 
 //----------------------------------------------------------------------------------cookie
-$(function(){
-    //input cookie
-    function setCookie(objName, objValue, objHours){
-        var str = objName + '=' + encodeURI(objValue);
-        if (objHours > 0) {
-            var date = new Date();
-            var ms = objHours * 3600 * 1000;
-            date.setTime(date.getTime() + ms);
-            str += '; expires=' + date.toGMTString();
-        };
-        document.cookie = str;
+//input cookie
+function setCookie(objName, objValue, objHours){
+    var str = objName + '=' + encodeURI(objValue);
+    if (objHours > 0){
+        var date = new Date();
+        var ms = objHours * 3600 * 1000;
+        date.setTime(date.getTime() + ms);
+        str += '; expires=' + date.toGMTString();
     };
+    document.cookie = str;
+};
 
-    //output cookie
-    function getCookie(objName){
-        var arrStr = document.cookie.split('; ');
-        for (var i = 0; i < arrStr.length; i++){
-            var temp = arrStr[i].split('=');
-            if (temp[0] == objName) return decodeURI(temp[1]);
-        };
-        return '';
+//output cookie
+function getCookie(objName){
+    var arrStr = document.cookie.split('; ');
+    for (var i = 0; i < arrStr.length; i++){
+        var temp = arrStr[i].split('=');
+        if (temp[0] == objName) return decodeURI(temp[1]);
     };
-});
+    return '';
+};
 
 //----------------------------------------------------------------------------------
 $(function(){

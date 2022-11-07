@@ -354,7 +354,7 @@ pop-cont {padding: 20px 0;}
 #editor1,
 #editor2,
 #editor3,
-#editor4 {float: left;}
+#editor4 {float: left;margin: 5px;}
 
 
 /*login*/

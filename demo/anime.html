@@ -92,7 +92,8 @@
 
 <script>
     $('fold a').click(function(){
-        $(this).addClass('active').siblings().removeClass('active');
+        $('fold a').removeClass('active');
+        $(this).addClass('active');
     });
 
     $('.pulse').click(function(){$('h3').attr('class','anime-pulse')});
