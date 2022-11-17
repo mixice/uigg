@@ -22,7 +22,7 @@
     fold aside a {display: block;text-transform: capitalize;line-height: 35px;padding: 0 20px;}
     fold aside a:hover,
     fold aside a.active {background-color: var(--eee);}
-    .contant {flex: 1;height: 100%;overflow: auto;overflow-x: hidden;}
+    .contant {flex: 1;height: 100%;overflow: hidden;overflow-x: hidden;}
     .contant h3 {font-size: 50px;text-transform: uppercase;text-align: center;width: 60%;margin: 50px auto;color: var(--sapphire);}
 </style>
 
@@ -92,42 +92,42 @@
 
 <script>
     $('fold a').click(function(){
-        $('fold a').removeClass('active');
-        $(this).addClass('active');
-    });
+        $('fold a').removeClass('active')
+        $(this).addClass('active')
+    })
 
-    $('.pulse').click(function(){$('h3').attr('class','anime-pulse')});
-    $('.rotate').click(function(){$('h3').attr('class','anime-rotate infinite')});
-    $('.fade-in').click(function(){$('h3').attr('class','anime-fade-in')});
-    $('.fade-in-down').click(function(){$('h3').attr('class','anime-fade-in-down')});
-    $('.fade-in-left').click(function(){$('h3').attr('class','anime-fade-in-left')});
-    $('.fade-in-right').click(function(){$('h3').attr('class','anime-fade-in-right')});
-    $('.fade-in-up').click(function(){$('h3').attr('class','anime-fade-in-up')});
-    $('.fade-out').click(function(){$('h3').attr('class','anime-fade-out')});
-    $('.fade-out-down').click(function(){$('h3').attr('class','anime-fade-out-down')});
-    $('.fade-out-left').click(function(){$('h3').attr('class','anime-fade-out-left')});
-    $('.fade-out-right').click(function(){$('h3').attr('class','anime-fade-out-right')});
-    $('.fade-out-up').click(function(){$('h3').attr('class','anime-fade-out-up')});
-    $('.bounce-in').click(function(){$('h3').attr('class','anime-bounce-in')});
-    $('.bounce-in-down').click(function(){$('h3').attr('class','anime-bounce-in-down')});
-    $('.bounce-in-left').click(function(){$('h3').attr('class','anime-bounce-in-left')});
-    $('.bounce-in-right').click(function(){$('h3').attr('class','anime-bounce-in-right')});
-    $('.bounce-in-up').click(function(){$('h3').attr('class','anime-bounce-in-up')});
-    $('.bounce-out').click(function(){$('h3').attr('class','anime-bounce-out')});
-    $('.bounce-out-down').click(function(){$('h3').attr('class','anime-bounce-out-down')});
-    $('.bounce-out-left').click(function(){$('h3').attr('class','anime-bounce-out-left')});
-    $('.bounce-out-right').click(function(){$('h3').attr('class','anime-bounce-out-right')});
-    $('.bounce-out-up').click(function(){$('h3').attr('class','anime-bounce-out-up')});
-    $('.flip-in-x').click(function(){$('h3').attr('class','anime-flip-in-x')});
-    $('.flip-in-y').click(function(){$('h3').attr('class','anime-flip-in-y')});
-    $('.flip-out-x').click(function(){$('h3').attr('class','anime-flip-out-x')});
-    $('.flip-out-y').click(function(){$('h3').attr('class','anime-flip-out-y')});
-    $('.zoom-in').click(function(){$('h3').attr('class','anime-zoom-in')});
-    $('.zoom-out').click(function(){$('h3').attr('class','anime-zoom-out')});
-    $('.shrink-in').click(function(){$('h3').attr('class','anime-shrink-in')});
-    $('.shrink-out').click(function(){$('h3').attr('class','anime-shrink-out')});
-    $('.shrink-in-enlarge').click(function(){$('h3').attr('class','anime-shrink-in-enlarge')});
-    $('.shrink-out-enlarge').click(function(){$('h3').attr('class','anime-shrink-out-enlarge')});
+    $('.pulse').click(function(){$('h3').attr('class','anime-pulse')})
+    $('.rotate').click(function(){$('h3').attr('class','anime-rotate infinite')})
+    $('.fade-in').click(function(){$('h3').attr('class','anime-fade-in')})
+    $('.fade-in-down').click(function(){$('h3').attr('class','anime-fade-in-down')})
+    $('.fade-in-left').click(function(){$('h3').attr('class','anime-fade-in-left')})
+    $('.fade-in-right').click(function(){$('h3').attr('class','anime-fade-in-right')})
+    $('.fade-in-up').click(function(){$('h3').attr('class','anime-fade-in-up')})
+    $('.fade-out').click(function(){$('h3').attr('class','anime-fade-out')})
+    $('.fade-out-down').click(function(){$('h3').attr('class','anime-fade-out-down')})
+    $('.fade-out-left').click(function(){$('h3').attr('class','anime-fade-out-left')})
+    $('.fade-out-right').click(function(){$('h3').attr('class','anime-fade-out-right')})
+    $('.fade-out-up').click(function(){$('h3').attr('class','anime-fade-out-up')})
+    $('.bounce-in').click(function(){$('h3').attr('class','anime-bounce-in')})
+    $('.bounce-in-down').click(function(){$('h3').attr('class','anime-bounce-in-down')})
+    $('.bounce-in-left').click(function(){$('h3').attr('class','anime-bounce-in-left')})
+    $('.bounce-in-right').click(function(){$('h3').attr('class','anime-bounce-in-right')})
+    $('.bounce-in-up').click(function(){$('h3').attr('class','anime-bounce-in-up')})
+    $('.bounce-out').click(function(){$('h3').attr('class','anime-bounce-out')})
+    $('.bounce-out-down').click(function(){$('h3').attr('class','anime-bounce-out-down')})
+    $('.bounce-out-left').click(function(){$('h3').attr('class','anime-bounce-out-left')})
+    $('.bounce-out-right').click(function(){$('h3').attr('class','anime-bounce-out-right')})
+    $('.bounce-out-up').click(function(){$('h3').attr('class','anime-bounce-out-up')})
+    $('.flip-in-x').click(function(){$('h3').attr('class','anime-flip-in-x')})
+    $('.flip-in-y').click(function(){$('h3').attr('class','anime-flip-in-y')})
+    $('.flip-out-x').click(function(){$('h3').attr('class','anime-flip-out-x')})
+    $('.flip-out-y').click(function(){$('h3').attr('class','anime-flip-out-y')})
+    $('.zoom-in').click(function(){$('h3').attr('class','anime-zoom-in')})
+    $('.zoom-out').click(function(){$('h3').attr('class','anime-zoom-out')})
+    $('.shrink-in').click(function(){$('h3').attr('class','anime-shrink-in')})
+    $('.shrink-out').click(function(){$('h3').attr('class','anime-shrink-out')})
+    $('.shrink-in-enlarge').click(function(){$('h3').attr('class','anime-shrink-in-enlarge')})
+    $('.shrink-out-enlarge').click(function(){$('h3').attr('class','anime-shrink-out-enlarge')})
 </script>
 
 </body>

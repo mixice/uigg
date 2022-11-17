@@ -273,13 +273,13 @@ class="shadow"
             <h5>code</h5>
             <p>Add the javascript to the DOM</p>
 <xmp>
-alone = $('element');
+alone = $('element')
 </xmp>
             <p>If you need manipulating character objects, must choose <span>Z</span> in <span>$(document).ready()</span></p>
 <xmp>
 $(function(){
-    $('element z');
-});
+    $('element z')
+})
 </xmp>
             <h5>effect display</h5>
             <iframe src="alone.html" height="250"></iframe>
@@ -422,8 +422,8 @@ copy-btn="copy1"
 </xmp>
             <p>Add the javascript to the DOM</p>
 <xmp>
-countDate="0000/00/00 00:00:00";
-countdown();
+countDate="0000/00/00 00:00:00"
+countdown()
 </xmp>
             <h5>effect display</h5>
             <iframe src="countdown.html"></iframe>
@@ -434,7 +434,7 @@ countdown();
             <h5>code</h5>
             <p>If you need to prevent users from viewing your code, add the function to the DOM</p>
 <xmp>
-disable();
+disable()
 </xmp>
             <a class="btn shadow" href="disable.html" target="_blank">view</a>
         </div>
@@ -761,13 +761,13 @@ class="mono-click"
             <h5>code</h5>
             <p>Use <span>notifyVal</span> to define what you want to notify, run <span>notify()</span></p>
 <xmp>
-notifyVal = 'notify';
-notify();
+notifyVal = 'notify'
+notify()
 </xmp>
             <p>If you need auto close, run <span>notifyAuto()</span>, parameter value determines closing time</p>
 <xmp>
-notifyVal = 'notify';
-notifyAuto(5000);
+notifyVal = 'notify'
+notifyAuto(5000)
 </xmp>
             <h5>effect display</h5>
             <iframe src="notify.html" height="300"></iframe>
@@ -980,8 +980,8 @@ class="return"
             <h5>code</h5>
             <p>Use tipVal to define what you want to tip, run tip()</p>
 <xmp>
-tipVal = 'tip';
-tip();
+tipVal = 'tip'
+tip()
 </xmp>
             <h5>effect display</h5>
             <iframe src="tip.html" height="200"></iframe>
@@ -1134,11 +1134,11 @@ class="touch-down"
 class="touch-all"
 
 <script>
-    $('.touch-up').bindmove('touchup','event');
-    $('.touch-down').bindmove('touchdown','event');
-    $('.touch-left').bindmove('touchleft','event');
-    $('.touch-right').bindmove('touchright','event');
-    $('.touch-all').bindmove('touchall','event');
+    $('.touch-up').bindmove('touchup','event')
+    $('.touch-down').bindmove('touchdown','event')
+    $('.touch-left').bindmove('touchleft','event')
+    $('.touch-right').bindmove('touchright','event')
+    $('.touch-all').bindmove('touchall','event')
 </script>
 </xmp>
             <h5>effect display</h5>
@@ -1177,13 +1177,11 @@ class="touch-all"
     <div class="swiper-button-next"></div>
     <div class="swiper-button-prev"></div>
     <script>
-        var swiper = new Swiper('.swiper-banner', {
+        var swiper = new Swiper('.swiper-banner',{
             spaceBetween: 10,
             centeredSlides: true,
             loop: true,
-            keyboard: {
-                enabled: true,
-            },
+            keyboard: {enabled: true},
             autoplay: {
                 delay: 5000,
                 disableOnInteraction: false,
@@ -1197,7 +1195,7 @@ class="touch-all"
                 nextEl: '.swiper-button-next',
                 prevEl: '.swiper-button-prev',
             },
-        });
+        })
     </script>
 </section>
 </xmp>
@@ -1214,7 +1212,7 @@ class="touch-all"
     <div class="swiper-button-next"></div>
     <div class="swiper-button-prev"></div>
     <script>
-        var swiper = new Swiper('.swiper-list', {
+        var swiper = new Swiper('.swiper-list',{
             slidesPerView: 3,
             //slidesPerGroup: 3
             loop: true,
@@ -1241,7 +1239,7 @@ class="touch-all"
                     spaceBetween: 20
                 },
             },
-        });
+        })
     </script>
 </section>
 </xmp>
@@ -1256,19 +1254,17 @@ class="touch-all"
     </div>
     <div class="swiper-pagination"></div>
     <script>
-        var swiper = new Swiper('.swiper-vertical', {
+        var swiper = new Swiper('.swiper-vertical',{
             direction: 'vertical',
             slidesPerView: 1,
             spaceBetween: 10,
             mousewheel: true,
-            keyboard: {
-                enabled: true,
-            },
+            keyboard: {enabled: true},
             pagination: {
                 el: '.swiper-pagination',
                 clickable: true,
             },
-        });
+        })
     </script>
 </section>
 </xmp>
@@ -1293,7 +1289,7 @@ class="touch-all"
         </div>
     </div>
     <script>
-        var galleryThumbs = new Swiper('.gallery-thumb', {
+        var galleryThumbs = new Swiper('.gallery-thumb',{
             spaceBetween: 10,
             slidesPerView: 4,
             freeMode: true,
@@ -1301,8 +1297,8 @@ class="touch-all"
             loopedSlides: 5, //looped slides should be the same
             watchSlidesVisibility: true,
             watchSlidesProgress: true,
-        });
-        var galleryTop = new Swiper('.gallery-top', {
+        })
+        var galleryTop = new Swiper('.gallery-top',{
             spaceBetween: 10,
             loop:true,
             loopedSlides: 5, //looped slides should be the same
@@ -1310,10 +1306,8 @@ class="touch-all"
                 nextEl: '.swiper-button-next',
                 prevEl: '.swiper-button-prev',
             },
-            thumbs: {
-                swiper: galleryThumbs,
-            },
-        });
+            thumbs: {swiper: galleryThumbs},
+        })
     </script>
 </section>
 </xmp>
@@ -1339,7 +1333,7 @@ class="touch-all"
         var relativeTop = new Swiper('.relative-top',{
             loop: true,
             loopedSlides: 5,
-        });
+        })
         var relativeThumb = new Swiper('.relative-thumb',{
             spaceBetween: 10,
             slidesPerView : 5,
@@ -1347,10 +1341,8 @@ class="touch-all"
             loop: true,
             loopedSlides: 5,
             slideToClickedSlide: true,
-            controller: {
-                control: relativeTop,
-            },
-        });
+            controller: {control: relativeTop},
+        })
     </script>
 </section>
 </xmp>
@@ -1367,7 +1359,7 @@ class="touch-all"
     <div class="swiper-button-next"></div>
     <div class="swiper-button-prev"></div>
     <script>
-        var swiper = new Swiper('.swiper-animate', {
+        var swiper = new Swiper('.swiper-animate',{
             pagination: {
                 el: '.swiper-pagination',
                 clickable: true,
@@ -1376,7 +1368,7 @@ class="touch-all"
                 nextEl: '.swiper-button-next',
                 prevEl: '.swiper-button-prev',
             },
-        });
+        })
     </script>
 </section>
 </xmp>
@@ -1399,17 +1391,11 @@ class="touch-all"
     <script>
         var swiperLug = new Swiper('.lug-top',{
             //effect : 'fade',
-        });
-        $('#lug-1').click(function(){
-            swiperLug.slideToLoop(0, 1000, false);
         })
-        $('#lug-2').click(function(){
-            swiperLug.slideToLoop(1, 1000, false);
-        })
-        $('#lug-3').click(function(){
-            swiperLug.slideToLoop(2, 1000, false);
-        });
-        lug();
+        $('#lug-1').click(function(){swiperLug.slideToLoop(0, 1000, false)})
+        $('#lug-2').click(function(){swiperLug.slideToLoop(1, 1000, false)})
+        $('#lug-3').click(function(){swiperLug.slideToLoop(2, 1000, false)})
+        lug()
     </script>
 </section>
 </xmp>
@@ -1426,11 +1412,9 @@ class="touch-all"
     <div class="swiper-button-prev"></div>
     <div class="swiper-pagination"></div>
     <script>
-        var swiper = new Swiper(".swiper-hash", {
+        var swiper = new Swiper(".swiper-hash",{
             spaceBetween: 30,
-            hashNavigation: {
-                watchState: true,
-            },
+            hashNavigation: {watchState: true},
             pagination: {
                 el: ".swiper-pagination",
                 clickable: true,
@@ -1439,7 +1423,7 @@ class="touch-all"
                 nextEl: ".swiper-button-next",
                 prevEl: ".swiper-button-prev",
             },
-        });
+        })
     </script>
 </section>
 </xmp>
@@ -1454,12 +1438,12 @@ class="touch-all"
     </div>
     <div class="swiper-scrollbar"></div>
     <script>
-        var swiper = new Swiper('.swiper-scroll', {
+        var swiper = new Swiper('.swiper-scroll',{
             scrollbar: {
                 el: '.swiper-scrollbar',
                 hide: true,
             },
-        });
+        })
     </script>
 </section>
 </xmp>
@@ -1474,7 +1458,7 @@ class="touch-all"
     </div>
     <div class="swiper-pagination"></div>
     <script>
-        var swiper = new Swiper('.swiper-coverflow', {
+        var swiper = new Swiper('.swiper-coverflow',{
             effect: 'coverflow',
             grabCursor: true,
             centeredSlides: true,
@@ -1486,10 +1470,8 @@ class="touch-all"
                 modifier: 1,
                 slideShadows: true,
             },
-            pagination: {
-                el: '.swiper-pagination',
-            },
-        });
+            pagination: {el: '.swiper-pagination'},
+        })
     </script>
 </section>
 </xmp>
@@ -1510,10 +1492,10 @@ class="touch-all"
         </div>
     </div>
     <script>
-        var swiper = new Swiper('.swiper-parallax', {
+        var swiper = new Swiper('.swiper-parallax',{
             speed: 600,
             parallax: true,
-        });
+        })
     </script>
 </section>
 </xmp>
@@ -1630,9 +1612,6 @@ https://cdn.jsdelivr.net/npm/uigg/media/video.mp4
 https://cdn.jsdelivr.net/npm/uigg/qr/mixice.com.svg
 https://cdn.jsdelivr.net/npm/uigg/qr/mssay.com.svg
 https://cdn.jsdelivr.net/npm/uigg/qr/ui.gg.svg
-https://cdn.jsdelivr.net/npm/uigg/qr/icox.cc.svg
-https://cdn.jsdelivr.net/npm/uigg/qr/mix.vc.svg
-https://cdn.jsdelivr.net/npm/uigg/qr/svgbg.com.svg
 https://cdn.jsdelivr.net/npm/uigg/qr/wechat.svg
 https://cdn.jsdelivr.net/npm/uigg/qr/wechat-mssay.svg
 </xmp>
@@ -1643,18 +1622,16 @@ https://cdn.jsdelivr.net/npm/uigg/qr/wechat-mssay.svg
 <!----------------------------------------------------------------------------------------->
 
 <script>
-    $('.sider u').click(function(){
-        $('.sider').toggleClass('active');
-    });
+    $('.sider u').click(function(){$('.sider').toggleClass('active')})
     $('fold a').click(function(){
-        $('fold a').removeClass('active');
-        $(this).addClass('active');
-    });
+        $('fold a').removeClass('active')
+        $(this).addClass('active')
+    })
     $('xmp').click(function(){
-        navigator.clipboard.writeText($(this).html());
-        tipVal = 'Copy successful';
-        tip();
-    });
+        navigator.clipboard.writeText($(this).html())
+        tipVal = 'Copy successful'
+        tip()
+    })
 </script>
 </body>
 </html>
