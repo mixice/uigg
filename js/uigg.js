@@ -103,7 +103,7 @@ $(function(){
 })
 function lug(){
     $('.lug-thumbs a').click(function(){$(this).addClass('active').siblings().removeClass('active')})
-    let swiperLug = new Swiper('.lug-top',{
+    var swiperLug = new Swiper('.lug-top',{
         on: {
             touchEnd: function(swiper,event){
                 let swiperIndex = $('.lug-top .swiper-slide-active').index()

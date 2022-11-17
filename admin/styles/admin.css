@@ -57,7 +57,7 @@ body {background: var(--color-white);}
 /*head*/
 .head {}
 .logo {height: 80px;line-height: 60px;padding: 10px;animation-delay: .5s;text-transform: uppercase;}
-.logo i {width: 60px;height: 60px;display: block;background-image: url(../../images/logo.svg);background-size: 85%;}
+.logo i {width: 60px;height: 60px;display: block;background-image: url(../../images/ico.svg);background-size: 85%;}
 .logo span {}
 .logo em {font-weight: 300;}
 .head-cont {animation-delay: .3s;padding: 20px;}
