@@ -1,0 +1,134 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>thumb</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+
+<link rel="stylesheet" href="../styles/uigg.css">
+
+<script src="../js/jquery.min.js"></script>
+<script src="../js/uigg.js"></script>
+</head>
+
+<body>
+
+<style>
+    .subject {display: flex;height: 100%;}
+    .sider {width: 260px;height: 100%;display: flex;background-color: var(--f7);}
+    fold {height: 100%;flex: 1;overflow: auto;}
+    fold::-webkit-scrollbar {width: 5px;}
+    fold::-webkit-scrollbar-thumb {background: var(--eee);}
+    fold aside a {display: block;text-transform: capitalize;line-height: 35px;padding: 0 20px;}
+    fold aside a:hover,
+    fold aside a.active {background-color: var(--eee);}
+    .contant {flex: 1;height: 100%;overflow: hidden;overflow-x: hidden;}
+    .contant h3 {font-size: 50px;text-transform: uppercase;text-align: center;width: 60%;margin: 50px auto;color: var(--sapphire);}
+</style>
+
+<!----------------------------------------------------------------------------------------->
+
+<section class="subject">
+    <div class="sider">
+        <fold show>
+            <tt><a><i class="ico ico-command"></i><h5>basic</h5></a></tt>
+            <aside>
+                <a class="pulse">anime-pulse</a>
+                <a class="rotate">anime-rotate</a>
+            </aside>
+            <tt><a><i class="ico ico-menu-center"></i><h5>fade</h5></a></tt>
+            <aside>
+                <a class="fade-in">anime-fade-in</a>
+                <a class="fade-in-down">anime-fade-in-down</a>
+                <a class="fade-in-left">anime-fade-in-left</a>
+                <a class="fade-in-right">anime-fade-in-right</a>
+                <a class="fade-in-up">anime-fade-in-up</a>
+                <a class="fade-out">anime-fade-out</a>
+                <a class="fade-out-down">anime-fade-out-down</a>
+                <a class="fade-out-left">anime-fade-out-left</a>
+                <a class="fade-out-right">anime-fade-out-right</a>
+                <a class="fade-out-up">anime-fade-out-up</a>
+            </aside>
+            <tt><a><i class="ico ico-zip"></i><h5>bounce</h5></a></tt>
+            <aside>
+                <a class="bounce-in">anime-bounce-in</a>
+                <a class="bounce-in-down">anime-bounce-in-down</a>
+                <a class="bounce-in-left">anime-bounce-in-left</a>
+                <a class="bounce-in-right">anime-bounce-in-right</a>
+                <a class="bounce-in-up">anime-bounce-in-up</a>
+                <a class="bounce-out">anime-bounce-out</a>
+                <a class="bounce-out-down">anime-bounce-out-down</a>
+                <a class="bounce-out-left">anime-bounce-out-left</a>
+                <a class="bounce-out-right">anime-bounce-out-right</a>
+                <a class="bounce-out-up">anime-bounce-out-up</a>
+            </aside>
+            <tt><a><i class="ico ico-layer"></i><h5>flip</h5></a></tt>
+            <aside>
+                <a class="flip-in-x">anime-flip-in-x</a>
+                <a class="flip-in-y">anime-flip-in-y</a>
+                <a class="flip-out-x">anime-flip-out-x</a>
+                <a class="flip-out-y">anime-flip-out-y</a>
+            </aside>
+            <tt><a><i class="ico ico-angle-disperse"></i><h5>zoom</h5></a></tt>
+            <aside>
+                <a class="zoom-in">anime-zoom-in</a>
+                <a class="zoom-out">anime-zoom-out</a>
+            </aside>
+            <tt><a><i class="ico ico-graphic"></i><h5>shrink</h5></a></tt>
+            <aside>
+                <a class="shrink-in">anime-shrink-in</a>
+                <a class="shrink-out">anime-shrink-out</a>
+                <a class="shrink-in-enlarge">anime-shrink-in-enlarge</a>
+                <a class="shrink-out-enlarge">anime-shrink-out-enlarge</a>
+            </aside>
+        </fold>
+    </div>
+    <div class="contant center">
+        <h3>uigg-anime</h3>
+    </div>
+</section>
+
+<!----------------------------------------------------------------------------------------->
+
+<script>
+    $('fold a').click(function(){
+        $('fold a').removeClass('active')
+        $(this).addClass('active')
+    })
+
+    $('.pulse').click(function(){$('h3').attr('class','anime-pulse')})
+    $('.rotate').click(function(){$('h3').attr('class','anime-rotate infinite')})
+    $('.fade-in').click(function(){$('h3').attr('class','anime-fade-in')})
+    $('.fade-in-down').click(function(){$('h3').attr('class','anime-fade-in-down')})
+    $('.fade-in-left').click(function(){$('h3').attr('class','anime-fade-in-left')})
+    $('.fade-in-right').click(function(){$('h3').attr('class','anime-fade-in-right')})
+    $('.fade-in-up').click(function(){$('h3').attr('class','anime-fade-in-up')})
+    $('.fade-out').click(function(){$('h3').attr('class','anime-fade-out')})
+    $('.fade-out-down').click(function(){$('h3').attr('class','anime-fade-out-down')})
+    $('.fade-out-left').click(function(){$('h3').attr('class','anime-fade-out-left')})
+    $('.fade-out-right').click(function(){$('h3').attr('class','anime-fade-out-right')})
+    $('.fade-out-up').click(function(){$('h3').attr('class','anime-fade-out-up')})
+    $('.bounce-in').click(function(){$('h3').attr('class','anime-bounce-in')})
+    $('.bounce-in-down').click(function(){$('h3').attr('class','anime-bounce-in-down')})
+    $('.bounce-in-left').click(function(){$('h3').attr('class','anime-bounce-in-left')})
+    $('.bounce-in-right').click(function(){$('h3').attr('class','anime-bounce-in-right')})
+    $('.bounce-in-up').click(function(){$('h3').attr('class','anime-bounce-in-up')})
+    $('.bounce-out').click(function(){$('h3').attr('class','anime-bounce-out')})
+    $('.bounce-out-down').click(function(){$('h3').attr('class','anime-bounce-out-down')})
+    $('.bounce-out-left').click(function(){$('h3').attr('class','anime-bounce-out-left')})
+    $('.bounce-out-right').click(function(){$('h3').attr('class','anime-bounce-out-right')})
+    $('.bounce-out-up').click(function(){$('h3').attr('class','anime-bounce-out-up')})
+    $('.flip-in-x').click(function(){$('h3').attr('class','anime-flip-in-x')})
+    $('.flip-in-y').click(function(){$('h3').attr('class','anime-flip-in-y')})
+    $('.flip-out-x').click(function(){$('h3').attr('class','anime-flip-out-x')})
+    $('.flip-out-y').click(function(){$('h3').attr('class','anime-flip-out-y')})
+    $('.zoom-in').click(function(){$('h3').attr('class','anime-zoom-in')})
+    $('.zoom-out').click(function(){$('h3').attr('class','anime-zoom-out')})
+    $('.shrink-in').click(function(){$('h3').attr('class','anime-shrink-in')})
+    $('.shrink-out').click(function(){$('h3').attr('class','anime-shrink-out')})
+    $('.shrink-in-enlarge').click(function(){$('h3').attr('class','anime-shrink-in-enlarge')})
+    $('.shrink-out-enlarge').click(function(){$('h3').attr('class','anime-shrink-out-enlarge')})
+</script>
+
+</body>
+</html>

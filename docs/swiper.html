@@ -1,0 +1,430 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>thumb</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+
+
+<link rel="stylesheet" href="../styles/swiper-bundle.min.css">
+<link rel="stylesheet" href="../styles/uigg.css">
+
+<script src="../js/jquery.min.js"></script>
+<script src="../js/swiper-bundle.min.js"></script>
+<script src="../js/uigg.js"></script>
+</head>
+
+<body>
+
+<style>
+    .swiper {height: 100%;}
+    .swiper-slide {background-color: var(--f7);font-size: .6rem;text-transform: uppercase;font-weight: bold;color: var(--eee);}
+
+    .swiper-gallery,
+    .swiper-lug,
+    .swiper-relative {height: 100%;display: flex;flex-direction: column;}
+    .gallery-top,
+    .lug-top,
+    .swiper-hash,
+    .relative-top {flex: 1;}
+    .gallery-thumb,
+    .relative-thumb {height: 180px;}
+    .swiper-list .swiper-slide,
+    .gallery-thumb .swiper-slide,
+    .relative-thumb .swiper-slide {font-size: .3rem;}
+    .lug-thumbs a {height: 60px;line-height: 60px;font-size: 16px;padding: 0 20px;font-weight: bold;background-color: var(--eee);text-transform: uppercase;}
+    .lug-thumbs a.active {background-color: var(--f7);}
+    .swiper-coverflow .swiper-slide {width:60%;}
+    .swiper-parallax .swiper-slide {background: none;text-align: center;}
+    .swiper-parallax .swiper-slide h3 {font-size: .6rem;text-transform: uppercase;}
+    .swiper-parallax .swiper-slide h3 span {display: block;font-weight: 300;}
+
+    .subject {height: 100%;}
+    .sider {width: 260px;height: 100%;background-color: var(--f7);overflow: auto;position: fixed;left: 0;top: 0;}
+    fold {height: 100%;flex: 1;overflow: auto;}
+    fold::-webkit-scrollbar {width: 5px;}
+    fold::-webkit-scrollbar-thumb {background: var(--eee);}
+    fold aside a {display: block;text-transform: capitalize;line-height: 35px;padding: 0 20px;}
+    fold aside a:hover,
+    fold aside a.active {background-color: var(--eee);}
+
+    .contant {padding-left: 260px;}
+    .item {height: 100vh;padding: 30px;position: relative;}
+    #hash menu {background: var(--f7);display: flex;justify-content: center;margin-bottom: 20px;}
+    #hash menu a {padding: 20px;font-weight: bold;font-size: 18px;text-transform: uppercase;}
+</style>
+
+<!----------------------------------------------------------------------------------------->
+
+<section class="subject">
+    <div class="sider">
+        <fold show>
+            <tt><a><h5>swiper</h5></a></tt>
+            <aside>
+                <a class="smooth active" href="#banner">banner</a>
+                <a class="smooth" href="#list">list</a>
+                <a class="smooth" href="#vertical">vertical</a>
+                <a class="smooth" href="#gallery">gallery</a>
+                <a class="smooth" href="#relative">relative</a>
+                <a class="smooth" href="#animate">animate</a>
+                <a class="smooth" href="#lug">lug</a>
+                <a class="smooth" href="#hash">hash</a>
+                <a class="smooth" href="#scrollbar">scrollbar</a>
+                <a class="smooth" href="#coverflow">coverflow</a>
+                <a class="smooth" href="#parallax">parallax</a>
+            </aside>
+        </fold>
+    </div>
+    <div class="contant">
+        <div class="item" id="banner">
+            <section class="swiper swiper-banner">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide center">one</div>
+                    <div class="swiper-slide center">two</div>
+                    <div class="swiper-slide center">three</div>
+                </div>
+                <div class="swiper-pagination"></div>
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+                <script>
+                    var swiper = new Swiper('.swiper-banner',{
+                        spaceBetween: 10,
+                        centeredSlides: true,
+                        loop: true,
+                        keyboard: {enabled: true,},
+                        autoplay: {
+                            delay: 5000,
+                            disableOnInteraction: false,
+                        },
+                        pagination: {
+                            el: '.swiper-pagination',
+                            clickable: true,
+                            dynamicBullets: true,
+                        },
+                        navigation: {
+                            nextEl: '.swiper-button-next',
+                            prevEl: '.swiper-button-prev',
+                        },
+                    })
+                </script>
+            </section>
+        </div>
+        <div class="item" id="list">
+            <section class="swiper swiper-list">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide center">one</div>
+                    <div class="swiper-slide center">two</div>
+                    <div class="swiper-slide center">three</div>
+                </div>
+                <div class="swiper-pagination"></div>
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+                <script>
+                    var swiper = new Swiper('.swiper-list',{
+                        slidesPerView: 3,
+                        //slidesPerGroup: 3
+                        loop: true,
+                        loopFillGroupWithBlank: true,
+                        pagination: {
+                            el: '.swiper-pagination',
+                            clickable: true,
+                        },
+                        navigation: {
+                            nextEl: '.swiper-button-next',
+                            prevEl: '.swiper-button-prev',
+                        },
+                        breakpoints: {
+                            320: {
+                              slidesPerView: 1,
+                              spaceBetween: 10
+                            },
+                            720: {
+                              slidesPerView: 2,
+                              spaceBetween: 15
+                            },
+                            960: {
+                              slidesPerView: 3,
+                              spaceBetween: 20
+                            },
+                        },
+                    })
+                </script>
+            </section>
+        </div>
+        <div class="item" id="vertical">
+            <section class="swiper swiper-vertical">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide center">one</div>
+                    <div class="swiper-slide center">two</div>
+                    <div class="swiper-slide center">three</div>
+                </div>
+                <div class="swiper-pagination"></div>
+                <script>
+                    var swiper = new Swiper('.swiper-vertical',{
+                        direction: 'vertical',
+                        slidesPerView: 1,
+                        spaceBetween: 10,
+                        mousewheel: true,
+                        keyboard: {enabled: true,},
+                        pagination: {
+                            el: '.swiper-pagination',
+                            clickable: true,
+                        },
+                    })
+                </script>
+            </section>
+        </div>
+        <div class="item" id="gallery">
+            <section class="swiper-gallery">
+                <div class="swiper gallery-top">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide center">one</div>
+                        <div class="swiper-slide center">two</div>
+                        <div class="swiper-slide center">three</div>
+                        <div class="swiper-slide center">four</div>
+                        <div class="swiper-slide center">five</div>
+                    </div>
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div>
+                </div>
+                <div class="swiper gallery-thumb">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide center">one</div>
+                        <div class="swiper-slide center">two</div>
+                        <div class="swiper-slide center">three</div>
+                        <div class="swiper-slide center">four</div>
+                        <div class="swiper-slide center">five</div>
+                    </div>
+                </div>
+                <script>
+                    var galleryThumbs = new Swiper('.gallery-thumb',{
+                        spaceBetween: 10,
+                        slidesPerView: 4,
+                        freeMode: true,
+                        loop: true,
+                        loopedSlides: 5, //looped slides should be the same
+                        watchSlidesVisibility: true,
+                        watchSlidesProgress: true,
+                    })
+                    var galleryTop = new Swiper('.gallery-top', {
+                        spaceBetween: 10,
+                        loop:true,
+                        loopedSlides: 5, //looped slides should be the same
+                        navigation: {
+                            nextEl: '.swiper-button-next',
+                            prevEl: '.swiper-button-prev',
+                        },
+                        thumbs: {swiper: galleryThumbs,},
+                    })
+                </script>
+            </section>
+        </div>
+        <div class="item" id="relative">
+            <section class="swiper-relative">
+                <div class="swiper relative-top">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide center">one</div>
+                        <div class="swiper-slide center">two</div>
+                        <div class="swiper-slide center">three</div>
+                        <div class="swiper-slide center">four</div>
+                        <div class="swiper-slide center">five</div>
+                    </div>
+                </div>
+                <div class="swiper relative-thumb">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide center">one</div>
+                        <div class="swiper-slide center">two</div>
+                        <div class="swiper-slide center">three</div>
+                        <div class="swiper-slide center">four</div>
+                        <div class="swiper-slide center">five</div>
+                    </div>
+                </div>
+                <script>
+                    var relativeTop = new Swiper('.relative-top',{
+                        loop: true,
+                        loopedSlides: 5,
+                    })
+                    var relativeThumb = new Swiper('.relative-thumb',{
+                        spaceBetween: 10,
+                        slidesPerView : 5,
+                        centeredSlides : true,
+                        loop: true,
+                        loopedSlides: 5,
+                        slideToClickedSlide: true,
+                        controller: {control: relativeTop},
+                    })
+                </script>
+            </section>
+        </div>
+        <div class="item" id="animate">
+            <section class="swiper swiper-animate">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide center"><div class="swiper-anime anime-fade-in">one</div></div>
+                    <div class="swiper-slide center"><div class="swiper-anime anime-fade-in-down">two</div></div>
+                    <div class="swiper-slide center"><div class="swiper-anime anime-zoom-in">three</div></div>
+                </div>
+                <div class="swiper-pagination"></div>
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+                <script>
+                    var swiper = new Swiper('.swiper-animate',{
+                        pagination: {
+                            el: '.swiper-pagination',
+                            clickable: true,
+                        },
+                        navigation: {
+                            nextEl: '.swiper-button-next',
+                            prevEl: '.swiper-button-prev',
+                        },
+                    })
+                </script>
+            </section>
+        </div>
+        <div class="item" id="lug">
+            <section class="swiper-lug">
+                <div class="lug-thumbs">
+                    <a id="lug-1" class="active">one</a>
+                    <a id="lug-2">two</a>
+                    <a id="lug-3">three</a>
+                    <a id="lug-4">four</a>
+                    <a id="lug-5">five</a>
+                </div>
+                <div class="swiper lug-top">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide center">one</div>
+                        <div class="swiper-slide center">two</div>
+                        <div class="swiper-slide center">three</div>
+                        <div class="swiper-slide center">four</div>
+                        <div class="swiper-slide center">five</div>
+                    </div>
+                </div>
+                <script>
+                    var swiperLug = new Swiper('.lug-top',{
+                        //effect : 'fade',
+                    })
+                    $('#lug-1').click(function(){swiperLug.slideToLoop(0, 1000, false)})
+                    $('#lug-2').click(function(){swiperLug.slideToLoop(1, 1000, false)})
+                    $('#lug-3').click(function(){swiperLug.slideToLoop(2, 1000, false)})
+                    $('#lug-4').click(function(){swiperLug.slideToLoop(3, 1000, false)})
+                    $('#lug-5').click(function(){swiperLug.slideToLoop(4, 1000, false)})
+                    lug()
+                </script>
+            </section>
+        </div>
+        <div class="item" id="hash">
+            <div class="full flex flex-column">
+                <menu>
+                    <a href="#one">one</a>
+                    <a href="#two">two</a>
+                    <a href="#three">three</a>
+                </menu>
+                <section class="swiper swiper-hash">
+                    <div class="swiper-wrapper">
+                        <div data-hash="one" class="swiper-slide center">one</div>
+                        <div data-hash="two" class="swiper-slide center">two</div>
+                        <div data-hash="three" class="swiper-slide center">three</div>
+                    </div>
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div>
+                    <div class="swiper-pagination"></div>
+                    <script>
+                        var swiper = new Swiper(".swiper-hash", {
+                            spaceBetween: 30,
+                            hashNavigation: {watchState: true},
+                            pagination: {
+                                el: ".swiper-pagination",
+                                clickable: true,
+                            },
+                            navigation: {
+                                nextEl: ".swiper-button-next",
+                                prevEl: ".swiper-button-prev",
+                            },
+                        });
+                    </script>
+                </section>
+            </div>
+        </div>
+        <div class="item" id="scrollbar">
+            <section class="swiper swiper-scroll">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide center">one</div>
+                    <div class="swiper-slide center">two</div>
+                    <div class="swiper-slide center">three</div>
+                    <div class="swiper-slide center">four</div>
+                    <div class="swiper-slide center">five</div>
+                </div>
+                <div class="swiper-scrollbar"></div>
+                <script>
+                    var swiper = new Swiper('.swiper-scroll', {
+                        scrollbar: {
+                            el: '.swiper-scrollbar',
+                            hide: true,
+                        },
+                    });
+                </script>
+            </section>
+        </div>
+        <div class="item" id="coverflow">
+            <section class="swiper swiper-coverflow">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide center">one</div>
+                    <div class="swiper-slide center">two</div>
+                    <div class="swiper-slide center">three</div>
+                    <div class="swiper-slide center">four</div>
+                    <div class="swiper-slide center">five</div>
+                    <div class="swiper-slide center">six</div>
+                </div>
+                <div class="swiper-pagination"></div>
+                <script>
+                    var swiper = new Swiper('.swiper-coverflow', {
+                        effect: 'coverflow',
+                        grabCursor: true,
+                        centeredSlides: true,
+                        slidesPerView: 'auto',
+                        coverflowEffect: {
+                            rotate: 50,
+                            stretch: 0,
+                            depth: 100,
+                            modifier: 1,
+                            slideShadows: true,
+                        },
+                        pagination: {el: '.swiper-pagination'},
+                    });
+                </script>
+            </section>
+        </div>
+        <div class="item" id="parallax">
+            <section class="swiper swiper-parallax">
+                <div class="parallax-bg" style="background-image: url(http://ui.gg/lib/images/bg)" data-swiper-parallax="-23%"></div>
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide center">
+                        <h3 data-swiper-parallax="-300">one<span data-swiper-parallax="100">txt</span></h3>
+                    </div>
+                    <div class="swiper-slide center">
+                        <h3 data-swiper-parallax="-300">two<span data-swiper-parallax="100">txt</span></h3>
+                    </div>
+                    <div class="swiper-slide center">
+                        <h3 data-swiper-parallax="-300">three<span data-swiper-parallax="100">txt</span></h3>
+                    </div>
+                </div>
+                <script>
+                    var swiper = new Swiper('.swiper-parallax',{
+                        speed: 600,
+                        parallax: true,
+                    })
+                </script>
+            </section>
+        </div>
+    </div>
+</section>
+
+<!----------------------------------------------------------------------------------------->
+
+<script>
+    $('fold a').click(function(){
+        $(this).addClass('active').siblings().removeClass('active')
+    })
+</script>
+
+</body>
+</html>
