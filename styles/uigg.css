@@ -1105,6 +1105,7 @@ step.column ul li {text-align: left;display: flex;align-items: center;}
 
 /* crumb */
 crumb {display: flex;align-items: center;width: 100%;white-space: nowrap;overflow: hidden;}
+crumb li {display: flex;align-items: center;}
 crumb li i.ico {font-size: 20px;}
 crumb li a {padding: 0 5px;}
 crumb li a:hover {color: var(--color);}
