@@ -24,6 +24,9 @@
     fold aside a.active {background-color: var(--eee);}
     .contant {flex: 1;height: 100%;overflow: hidden;overflow-x: hidden;}
     .contant h3 {font-size: 50px;text-transform: uppercase;text-align: center;width: 60%;margin: 50px auto;color: var(--sapphire);}
+    .condition {position: fixed;top: 0;right: 0;padding: 20px;display: flex;;}
+    .condition a {display: block;text-align: center;text-transform: capitalize;padding: 10px;border: 1px var(--color) solid;color: var(--color);margin: 5px;}
+    .condition a.active {background-color: var(--color);color: white;}
 </style>
 
 <!----------------------------------------------------------------------------------------->
@@ -34,6 +37,8 @@
             <tt><a><i class="ico ico-command"></i><h5>basic</h5></a></tt>
             <aside>
                 <a class="pulse">anime-pulse</a>
+                <a class="beat">anime-beat</a>
+                <a class="spasm">anime-spasm</a>
                 <a class="rotate">anime-rotate</a>
             </aside>
             <tt><a><i class="ico ico-menu-center"></i><h5>fade</h5></a></tt>
@@ -73,6 +78,8 @@
             <aside>
                 <a class="zoom-in">anime-zoom-in</a>
                 <a class="zoom-out">anime-zoom-out</a>
+                <a class="zoom-in-enlarge">anime-zoom-in-enlarge</a>
+                <a class="zoom-out-enlarge">anime-zoom-out-enlarge</a>
             </aside>
             <tt><a><i class="ico ico-graphic"></i><h5>shrink</h5></a></tt>
             <aside>
@@ -86,6 +93,10 @@
     <div class="contant center">
         <h3>uigg-anime</h3>
     </div>
+    <div class="condition">
+        <a class="infinite">infinite</a>
+        <a class="alternate">alternate</a>
+    </div>
 </section>
 
 <!----------------------------------------------------------------------------------------->
@@ -94,10 +105,25 @@
     $('fold a').click(function(){
         $('fold a').removeClass('active')
         $(this).addClass('active')
+        $('.condition a').removeClass('active')
+    })
+    $('.condition a.infinite').click(function(){
+        if($('.contant h3').attr('class') == undefined){}else{
+            $(this).toggleClass('active')
+            $('.contant h3').toggleClass('infinite')
+        }
+    })
+    $('.condition a.alternate').click(function(){
+        if($('.contant h3').attr('class') == undefined){}else{
+            $(this).toggleClass('active')
+            $('.contant h3').toggleClass('alternate')
+        }
     })
 
     $('.pulse').click(function(){$('h3').attr('class','anime-pulse')})
-    $('.rotate').click(function(){$('h3').attr('class','anime-rotate infinite')})
+    $('.beat').click(function(){$('h3').attr('class','anime-beat')})
+    $('.spasm').click(function(){$('h3').attr('class','anime-spasm')})
+    $('.rotate').click(function(){$('h3').attr('class','anime-rotate')})
     $('.fade-in').click(function(){$('h3').attr('class','anime-fade-in')})
     $('.fade-in-down').click(function(){$('h3').attr('class','anime-fade-in-down')})
     $('.fade-in-left').click(function(){$('h3').attr('class','anime-fade-in-left')})
@@ -124,6 +150,8 @@
     $('.flip-out-y').click(function(){$('h3').attr('class','anime-flip-out-y')})
     $('.zoom-in').click(function(){$('h3').attr('class','anime-zoom-in')})
     $('.zoom-out').click(function(){$('h3').attr('class','anime-zoom-out')})
+    $('.zoom-in-enlarge').click(function(){$('h3').attr('class','anime-zoom-in-enlarge')})
+    $('.zoom-out-enlarge').click(function(){$('h3').attr('class','anime-zoom-out-enlarge')})
     $('.shrink-in').click(function(){$('h3').attr('class','anime-shrink-in')})
     $('.shrink-out').click(function(){$('h3').attr('class','anime-shrink-out')})
     $('.shrink-in-enlarge').click(function(){$('h3').attr('class','anime-shrink-in-enlarge')})

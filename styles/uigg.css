@@ -33,7 +33,7 @@ chat,chat-title,chat-sider,chat-cont,chat-list,chat-message,chat-tool,chat-contr
 uigg-title,uigg-txt,uigg-emot,
 pop,pop-main,pop-title,pop-cont,pop-solve,pop-choice,pop-sider,
 hop,hop-cont,
-countdown,tip,page,music,space,corner,msie,rate,scaler,notify,empty,fold {margin: 0;padding: 0;border: 0;outline: 0;background: transparent center no-repeat;background-size: contain;box-sizing: border-box;font-family: uigg;border-color: var(--eee);border-style: solid;-webkit-tap-highlight-color: transparent;transition-duration: .3s;}
+countdown,tip,page,music,space,corner,msie,rate,scaler,notify,empty,fold,step,crumb {margin: 0;padding: 0;border: 0;outline: 0;background: transparent center no-repeat;background-size: contain;box-sizing: border-box;font-family: uigg;border-color: var(--eee);border-style: solid;-webkit-tap-highlight-color: transparent;transition-duration: .3s;}
 article,aside,details,figcaption,figure,footer,header,hgroup,main,nav,section,summary,
 menu,menu-cont,menu-group,menu-list,
 name,name-logo,name-search,
@@ -43,7 +43,7 @@ chat,chat-title,chat-sider,chat-cont,chat-list,chat-message,chat-tool,chat-contr
 uigg-emot,
 pop,pop-main,pop-title,pop-cont,pop-solve,pop-choice,pop-sider,
 hop,hop-cont,
-countdown,tip,page,music,space,corner,msie,rate,scaler,notify,empty,fold {display: block;}
+countdown,tip,page,music,space,corner,msie,rate,scaler,notify,empty,fold,step,crumb {display: block;}
 html,body {height: 100%;transition-duration: 0s;background-size: cover;}
 html,body,input,select,textarea,button {font-size: 14px;}
 html {-webkit-font-smoothing: antialiased;}
@@ -67,19 +67,21 @@ z {display: inline-block;transition-duration: 0s;}
 
 /* anime */
 .anime {transition-duration: 0s;}
-.anime-pulse,.anime-rotate,
+.anime-pulse,.anime-beat,.anime-rotate,
 .anime-fade-in,.anime-fade-in-down,.anime-fade-in-left,.anime-fade-in-right,.anime-fade-in-up,
 .anime-fade-out,.anime-fade-out-down,.anime-fade-out-left,.anime-fade-out-right,.anime-fade-out-up,
 .anime-bounce-in,.anime-bounce-in-down,.anime-bounce-in-left,.anime-bounce-in-right,.anime-bounce-in-up,
 .anime-bounce-out,.anime-bounce-out-down,.anime-bounce-out-left,.anime-bounce-out-right,.anime-bounce-out-up,
 .anime-flip-in-x,.anime-flip-in-y,.anime-flip-out-x,.anime-flip-out-y,
-.anime-zoom-in,.anime-zoom-out,
-.anime-shrink-in,.anime-shrink-out,.anime-shrink-in-enlarge,.anime-shrink-out-enlarge {animation-duration: .6s;animation-fill-mode: both;}
+.anime-zoom-in,.anime-zoom-out,.anime-zoom-in-enlarge,.anime-zoom-out-enlarge {animation-duration: .6s;animation-fill-mode: both;}
+.anime-spasm {animation-duration: .3s;}
 .anime-bounce-in,.anime-bounce-in-down,.anime-bounce-in-left,.anime-bounce-in-right,.anime-bounce-in-up {animation-timing-function: cubic-bezier(.215, .61, .355, 1);animation-duration: 1s;}
-.anime-shrink-in,.anime-shrink-out {animation-duration: 2s;}
+.anime-shrink-in,.anime-shrink-out,.anime-shrink-in-enlarge,.anime-shrink-out-enlarge {animation-duration: 2s;animation-fill-mode: both;}
 .anime-flip-in-x,.anime-flip-in-y,.anime-flip-out-x,.anime-flip-out-y {backface-visibility: visible;}
 
 .anime-pulse {animation-name: anime-pulse;}
+.anime-beat {animation-name: anime-beat;}
+.anime-spasm {animation-name: anime-spasm;}
 .anime-rotate {animation-name: anime-rotate;animation-timing-function: linear;}
 .anime-fade-in {animation-name: anime-fade-in;}
 .anime-fade-in-down {animation-name: anime-fade-in-down;}
@@ -107,6 +109,8 @@ z {display: inline-block;transition-duration: 0s;}
 .anime-flip-out-y {animation-name: anime-flip-out-y;}
 .anime-zoom-in {animation-name: anime-zoom-in;}
 .anime-zoom-out {animation-name: anime-zoom-out;}
+.anime-zoom-in-enlarge {animation-name: anime-zoom-in-enlarge;}
+.anime-zoom-out-enlarge {animation-name: anime-zoom-out-enlarge;}
 .anime-shrink-in {animation-name: anime-shrink-in;}
 .anime-shrink-out {animation-name: anime-shrink-out;}
 .anime-shrink-in-enlarge {animation-name: anime-shrink-in-enlarge;}
@@ -116,6 +120,8 @@ z {display: inline-block;transition-duration: 0s;}
 .alternate {animation-direction:alternate;}
 
 @keyframes anime-pulse {0% {transform: scale(1);}50% {transform: scale(1.05);}100% {transform: scale(1);}}
+@keyframes anime-beat {0% {transform: translateY(0);}50% {transform: translateY(-50%);}100% {transform: translateY(0);}}
+@keyframes anime-spasm {0% {transform: translate(0,0);}10% {transform: translate(5px,0);}20% {transform: translate(0,0);}30% {transform: translate(-5px,0);}40% {transform: translate(0,5px);}50% {transform: translate(0,0);}60% {transform: translate(0,-5px);}70% {transform: translate(0,0);}80% {transform: translate(5px,5px);}90% {transform: translate(0,0);}100% {transform: translate(-5px,-5px);}}
 @keyframes anime-rotate {0% {transform: rotate(0);}100% {transform: rotate(360deg);}}
 @keyframes anime-fade-in {0% {opacity: 0;}100% {opacity: 1;}}
 @keyframes anime-fade-in-down {0% {opacity: 0;transform: translateY(-100%);}100% {opacity: 1;transform: translateY(0);}}
@@ -143,6 +149,8 @@ z {display: inline-block;transition-duration: 0s;}
 @keyframes anime-flip-out-y {0% {transform: perspective(400px);opacity: 1;}100% {transform: perspective(400px) rotate3d(0, 1, 0, 90deg);opacity: 0;}}
 @keyframes anime-zoom-in {0% {opacity: 0;transform: scale(0.3);}100% {opacity: 1;}}
 @keyframes anime-zoom-out {0% {opacity: 1;}100% {opacity: 0;transform: scale(0.3);}}
+@keyframes anime-zoom-in-enlarge {0% {opacity: 0;transform: scale(3);}100% {opacity: 1;}}
+@keyframes anime-zoom-out-enlarge {0% {opacity: 1;}100% {opacity: 0;transform: scale(3);}}
 @keyframes anime-shrink-in {0% {opacity: 0;filter: blur(20px);}100% {opacity: 1;filter: blur(0);}}
 @keyframes anime-shrink-out {0% {opacity: 1;filter: blur(0);}100% {opacity: 0;filter: blur(20px);}}
 @keyframes anime-shrink-in-enlarge {0% {opacity: 0;transform: scale(5);filter: blur(10px);}100% {opacity: 1;transform: scale(1);filter: blur(0);}}
@@ -395,11 +403,12 @@ pop-cont {background-color: white;display: block;}
 pop-solve {display: flex;}
 pop-solve .btn {width: 100%;border-radius: 0;box-shadow: none;}
 pop-solve .btn:hover {transform: translate(0);}
-
 pop-choice,
 pop-sider {overflow: hidden;position: absolute;z-index: 1;}
 pop-choice {bottom: 0;width: 100%;}
-pop-sider {top: 0;left: 0;width: 300px;height: 100%;background-color: white;}
+pop-sider {top: 0;width: 300px;height: 100%;background-color: white;}
+pop-sider {display: flex;flex-direction: column;}
+pop-sider pop-cont {flex: 1;overflow: auto;}
 
 @media(max-width:640px) {
 	pop-title h3 {line-height: .7rem;padding: 0 .2rem;font-size: .24rem;}
@@ -479,7 +488,6 @@ menu-list h6 {line-height: 50px;}
 .title h3,
 .title em {display: inline-block;vertical-align: middle;}
 .title span {display: block;}
-
 .title-flex {display: flex;}
 .title-flex h3 {flex: 1;min-width: 0;padding: 0 10px;}
 
@@ -489,7 +497,6 @@ menu-list h6 {line-height: 50px;}
 
 /* toggle */
 o {font-family: ico !important;font-size: 24px;font-style: normal;font-weight: normal;text-decoration: none;text-align: center;vertical-align: middle;justify-content: center;margin: auto;line-height: 1;text-transform: none;display: inline-block;direction: ltr;letter-spacing: normal;word-wrap: normal;white-space: nowrap;color: var(--color);}
-
 o.radio:after {content: '\e9ce';}
 o.radio.active:after {content: '\e9c6';}
 o.radio-done:after {content: '\e9ce';}
@@ -554,7 +561,6 @@ progress,
 ::-webkit-progress-bar {background-color: var(--f7);border-radius: 100px;height: 10px;}
 ::-webkit-progress-value {background-color: var(--color);border-radius: 100px;}
 ::-moz-progress-bar {background-color: var(--color);}
-
 input[type="range"],
 input[type="file"],
 input[type="color"] {padding: 0;background: none !important;border: 0;}
@@ -599,9 +605,7 @@ select {padding: 0 50px 0 10px;background-image: url(https://cdn.jsdelivr.net/np
 .form .input input {background-color: transparent;}
 .form .input o {margin: 0;}
 .form li .input input {margin: 0;}
-
 .form progress {margin: 20px 5px 0;}
-
 .form {padding: 20px;overflow: hidden;}
 .form span,
 .form cite,
@@ -621,7 +625,6 @@ select {padding: 0 50px 0 10px;background-image: url(https://cdn.jsdelivr.net/np
 .form .lag {width: 50%;}
 .form .big {width: 60%;}
 .form .max {width: 80%;}
-
 
 .upload {float: left;flex: 1;min-width: 0;}
 .upload-group,
@@ -669,7 +672,6 @@ select {padding: 0 50px 0 10px;background-image: url(https://cdn.jsdelivr.net/np
     .form input,
     .form textarea {background-color: transparent;flex: 1;min-width: 0;}
     .form progress {margin: .3rem 0 0;}
-
     .form {padding: .1rem;}
     .form span,
     .form cite,
@@ -780,7 +782,6 @@ tab-group.active {display: block;}
 
 .parallax-bg {position: absolute;left: 0;top: 0;width: 130%;height: 100%;background-size: cover;}
 .lug-thumbs a {display: inline-block;}
-
 .gallery-top,
 .relative-top {margin-bottom: 10px;}
 
@@ -805,7 +806,6 @@ name h2,
 name h3 {white-space: nowrap;overflow: hidden;text-overflow: ellipsis;font-size: 26px;}
 name h2,
 name-logo {position: absolute;left: 0;top: 0;width: 100%;height: 100%;}
-
 name h3 {text-align: left;border-left: 1px var(--eee) solid;padding: 0 20px;}
 name .ico {font-size: 36px;width: 80px;position: relative;z-index: 1;}
 name-logo {padding: 15px;}
@@ -918,7 +918,6 @@ rate {}
 rate i {color: var(--orange);cursor: pointer;}
 rate i.active::before {content:'\ea65';}
 
-
 /* notify */
 notify {position: fixed;top: 0;right: 0;margin: 0 10px;z-index: 999;}
 notify li {width: 300px;padding: 30px 20px 20px;border-radius: 5px;background-color: white;box-shadow: 0 5px 10px -3px var(--000-1);position: relative;margin: 10px 0;transition: .3s;}
@@ -937,12 +936,11 @@ notify li x.ico {position: absolute;top: 0;right: 0;margin:  7px;}
 empty {height: 100%;display: flex;align-items: center;justify-content: center;}
 empty.default {font-size: 30px;color: var(--000-1);text-transform: capitalize;}
 empty.default:after {content: 'empty';}
-empty .ico {display: block;font-size: 72px;}
-empty > .ico {margin: inherit;}
+empty .ico {display: block;font-size: 72px;margin: 20px;}
 
 @media(max-width:640px) {
     empty {font-size: .36rem;}
-    empty .ico {font-size: .8rem;}
+    empty .ico {font-size: .8rem;margin: .2rem;}
 }
 
 /* hop */
@@ -979,7 +977,6 @@ chat s {width: 50px;height: 50px;display: inline-block;background-size: 90%;vert
 chat chat-title .ico:hover,
 chat chat-tool .ico:hover {background: var(--eee);}
 chat .avatar {width: 50px;height: 50px;}
-
 chat pop img {max-height: 100%;}
 chat aside {word-break: break-all;}
 chat aside * {white-space: normal;}
@@ -1075,7 +1072,6 @@ fold tt a {display: flex;align-items: center;cursor: pointer;padding: 10px;}
 fold tt a h5 {flex: 1;min-width: 0;line-height: 30px;}
 fold tt a .ico {width: 40px;}
 fold tt.active s {transform: rotate(180deg);}
-
 fold aside {display: none;padding: 10px;}
 
 @media(max-width:640px) {
@@ -1085,8 +1081,38 @@ fold aside {display: none;padding: 10px;}
     fold aside {padding: .1rem;}
 }
 
+/* step */
+step {width: 100%;}
+step aside {position: relative;display: flex;align-items: center;justify-content: space-around;}
+step aside cite {width: 100%;height: 50%;position: absolute;top: 0;left: 0;border-bottom-width: 1px;}
+step aside i {width: 80px;height: 80px;background-color: white;border-radius: 100%;display: flex;align-items: center;justify-content: center;position: relative;border: 2px solid;color: var(--color);font-size: 30px;margin: 10px;}
+step ul {display: flex;justify-content: space-around;}
+step ul li {flex: 1;font-size: 20px;text-align: center;font-weight: bold;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;}
 
+step.column {display: flex;}
+step.column aside {flex-direction: column;width: 100px;}
+step.column aside cite {border-width: 0 1px 0 0;height: 100%;width: 50%;}
+step.column aside i {width: 50px;height: 50px;font-size: 22px;}
+step.column ul {flex: 1;flex-direction: column;}
+step.column ul li {text-align: left;display: flex;align-items: center;}
 
+@media(max-width:640px) {
+    step aside i {width: .6rem;height: .6rem;border-width: .03rem;font-size: .24rem;margin: .1rem;}
+    step ul li {font-size: .2rem;}
+    step.column aside {width: 1rem;}
+    step.column aside i {width: .6rem;height: .6rem;font-size: .26rem;}
+}
+
+/* crumb */
+crumb {display: flex;align-items: center;width: 100%;white-space: nowrap;overflow: hidden;}
+crumb li i.ico {font-size: 20px;}
+crumb li a {padding: 0 5px;}
+crumb li a:hover {color: var(--color);}
+
+@media(max-width:640px) {
+    crumb li i.ico {font-size: .3rem;}
+    crumb li a {padding: 0 .05rem;}
+}
 
 
 

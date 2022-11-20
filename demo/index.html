@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=Edge">
 <meta http-equiv="window-target" content="_top">
 <title>UIGG Document</title>
-<meta name="description" content="Uigg is a front-end bracket for designers">
+<meta name="description" content="UIGG is a front-end bracket for designers">
 <meta name="author" content="mixice.com">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
 
@@ -74,9 +74,9 @@
         <u class="ico ico-menu"></u>
         <a href="/"><em><img src="../images/ico.svg"></em></a>
         <fold show>
-            <tt><a><i class="ico ico-uigg"></i><h5>using uigg</h5></a></tt>
+            <tt><a><i class="ico ico-uigg"></i><h5>using UIGG</h5></a></tt>
             <aside>
-                <a class="smooth" href="#get">get uigg</a>
+                <a class="smooth" href="#get">get UIGG</a>
                 <a class="smooth" href="#responsive">responsive rule</a>
                 <a class="smooth" href="#preset">layout preset</a>
             </aside>
@@ -86,8 +86,10 @@
                 <a class="smooth" href="#anew">anew</a>
                 <a class="smooth" href="#anime">anime</a>
                 <a class="smooth" href="#button">button</a>
+                <a class="smooth" href="#cookie">cookie</a>
                 <a class="smooth" href="#copy">copy</a>
                 <a class="smooth" href="#countdown">countdown</a>
+                <a class="smooth" href="#crumb">crumb</a>
                 <a class="smooth" href="#disable">disable</a>
                 <a class="smooth" href="#drop">drop</a>
                 <a class="smooth" href="#empty">empty</a>
@@ -107,6 +109,7 @@
                 <a class="smooth" href="#return">return</a>
                 <a class="smooth" href="#scaler">scaler</a>
                 <a class="smooth" href="#smooth">smooth</a>
+                <a class="smooth" href="#step">step</a>
                 <a class="smooth" href="#tab">tab</a>
                 <a class="smooth" href="#table">table</a>
                 <a class="smooth" href="#tip">tip</a>
@@ -140,24 +143,24 @@
         </fold>
     </section>
     <section class="contant">
-        <h2><i class="ico ico-uigg"></i>Using uigg</h2>
+        <h2><i class="ico ico-uigg"></i>Using UIGG</h2>
         <div class="cont" id="get">
-            <h3>get uigg</h3>
+            <h3>get UIGG</h3>
             <h5>download zip</h5>
-            <p>You can download uigg from the official website</p>
+            <p>You can download UIGG from the official website</p>
             <a class="btn shadow" href="https://ui.gg/uigg.zip" target="_blank">download</a>
             <h5>download design template</h5>
             <p>We have prepared the design specification of rapid prototyping for designers</p>
             <a class="btn shadow" href="https://ui.gg/xd.zip" target="_blank">Adobe XD</a>
             <a class="btn shadow" href="https://www.figma.com/@mixice" target="_blank">figma</a>
             <h5>get gitHub</h5>
-            <p>You can get uigg from gitHub (Click the code block to copy it)</p>
+            <p>You can get UIGG from gitHub (Click the code block to copy it)</p>
 <xmp>
 https://github.com/mixice/uigg.git
 </xmp>
             <a class="btn shadow" href="https://github.com/mixice/uigg" target="_blank">gitHub</a>
             <h5>get npm</h5>
-            <p>You can get uigg from npm</p>
+            <p>You can get UIGG from npm</p>
 <xmp>
 npm i uigg
 </xmp>
@@ -189,7 +192,6 @@ import 'uigg'
 <link rel="stylesheet" href="https://ui.gg/uigg/styles/swiper-bundle.min.css">
 
 <script src="https://ui.gg/uigg/js/jquery.min.js"></script>
-<script src="https://ui.gg/uigg/js/less.min.js"></script>
 <script src="https://ui.gg/uigg/js/anime.min.js"></script>
 <script src="https://ui.gg/uigg/js/swiper-bundle.min.js"></script>
 </xmp>
@@ -199,7 +201,6 @@ import 'uigg'
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css">
 
 <script src="https://cdn.jsdelivr.net/npm/jquery"></script>
-<script src="https://cdn.jsdelivr.net/npm/less"></script>
 <script src="https://cdn.jsdelivr.net/npm/animejs"></script>
 <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
 </xmp>
@@ -217,7 +218,7 @@ class="main"
 class="mobile"
 </xmp>
             <h5>unit conversion</h5>
-            <p>Uigg uses <span>rem</span> as the response unit, and the calculation rule is <span>100px = 1rem</span></p>
+            <p>UIGG uses <span>rem</span> as the response unit, and the calculation rule is <span>100px = 1rem</span></p>
 
 
         </div>
@@ -306,6 +307,8 @@ class="anew btn"
             <p>Add the class to the DOM</p>
 <xmp>
 class="anime-pulse"
+class="anime-beat"
+class="anime-spasm"
 class="anime-rotate"
 
 class="anime-fade-in"
@@ -337,6 +340,8 @@ class="anime-flip-out-y"
 
 class="anime-zoom-in"
 class="anime-zoom-out"
+class="anime-zoom-in-enlarge"
+class="anime-zoom-out-enlarge"
 
 class="anime-shrink-in"
 class="anime-shrink-out"
@@ -390,6 +395,21 @@ class="btn btn-disable"
             <iframe src="button.html" height="550"></iframe>
             <a class="btn shadow" href="button.html" target="_blank">view</a>
         </div>
+        <div class="cont" id="cookie">
+            <h3>cookie</h3>
+            <h5>code</h5>
+            <p>Save cookies, add the javascript to the DOM</p>
+<xmp>
+setCookie('name', value, 'time')
+</xmp>
+            <p>Get cookies, add the javascript to the DOM</p>
+<xmp>
+getCookie('name')
+</xmp>
+            <h5>effect display</h5>
+            <iframe src="cookie.html" height="300"></iframe>
+            <a class="btn shadow" href="cookie.html" target="_blank">view</a>
+        </div>
         <div class="cont" id="copy">
             <h3>copy</h3>
             <p>Warning: This function can work normally only after obtaining user clipboard authorization or under the <span>https</span> security domain</p>
@@ -428,6 +448,21 @@ countdown()
             <h5>effect display</h5>
             <iframe src="countdown.html"></iframe>
             <a class="btn shadow" href="countdown.html" target="_blank">view</a>
+        </div>
+        <div class="cont" id="crumb">
+            <h3>crumb</h3>
+            <h5>code</h5>
+            <p>Add the code to the DOM</p>
+<xmp>
+<crumb>
+    <li><a href="/">home</a></li>
+    <li><a href="">layer</a></li>
+    <li><a href="">layer</a></li>
+</crumb>
+</xmp>
+            <h5>effect display</h5>
+            <iframe src="crumb.html"></iframe>
+            <a class="btn shadow" href="crumb.html" target="_blank">view</a>
         </div>
         <div class="cont" id="disable">
             <h3>disable</h3>
@@ -525,7 +560,7 @@ class="font-santander"
 class="font-steel"
 class="font-tanseek"
 </xmp>
-            <p>Set <span>font-family</span> in CSS, because uigg uses uigg fonts by default, you maybe need <span>!important</span></p>
+            <p>Set <span>font-family</span> in CSS, because UIGG uses UIGG fonts by default, you maybe need <span>!important</span></p>
 <xmp>
 font-family: 'aclonica'
 font-family: 'aller'
@@ -834,6 +869,7 @@ notifyAuto(5000)
         </div>
         <div class="cont" id="random">
             <h3>random</h3>
+            <p>Warning: Random content is only used for temporary filling and will be delayed when used in the production environment</p>
             <h5>code</h5>
             <p>Put the tags below into <span>src</span> and <span>background</span> , and you'll get random images</p>
 <xmp>
@@ -902,6 +938,27 @@ class="return"
             <h5>effect display</h5>
             <iframe src="smooth.html" height="300"></iframe>
             <a class="btn shadow" href="smooth.html" target="_blank">view</a>
+        </div>
+        <div class="cont" id="step">
+            <h3>step</h3>
+            <h5>code</h5>
+            <p>Add the code to the DOM</p>
+<xmp>
+<step>
+    <ul>
+        <li>step 1</li>
+        <li>step 2</li>
+        <li>step 3</li>
+    </ul>
+</step>
+</xmp>
+            <p>If you need flex vertical arrangement, add the <span>column</span> attribute to the <span>step</span></p>
+<xmp>
+column
+</xmp>
+            <h5>effect display</h5>
+            <iframe src="step.html" height="300"></iframe>
+            <a class="btn shadow" href="step.html" target="_blank">view</a>
         </div>
         <div class="cont" id="tab">
             <h3>tab</h3>
@@ -1031,6 +1088,7 @@ tip()
 <o class="favorite"></o>
 <o class="star"></o>
 <o class="visibility"></o>
+<o class="password"></o>
 <o class="mic"></o>
 <o class="volume"></o>
 <o class="muzak"></o>
@@ -1072,7 +1130,7 @@ tip()
 <xmp>
 <name>
     <a class="ico ico-return-left return"></a>
-    <name-logo><img src="../images/ico.svg"><h1>uigg</h1></name-logo>
+    <name-logo><img src="../images/ico.svg"><h1>UIGG</h1></name-logo>
     <a href="" class="ico ico-menu"></a>
 </name>
 </xmp>
@@ -1124,6 +1182,7 @@ pause
         </div>
         <div class="cont" id="touch">
             <h3>touch</h3>
+            <p>Warning: Touch is only available on the mobile terminal</p>
             <h5>code</h5>
             <p>Add the code to the DOM</p>
 <xmp>
@@ -1162,7 +1221,7 @@ class="touch-all"
         <h2><i class="ico ico-response"></i>External components</h2>
         <div class="cont" id="swiper">
             <h3>swiper</h3>
-            <p>You can go to swiper to see more parameters. uigg only provides a few common models</p>
+            <p>You can go to swiper to see more parameters. UIGG only provides a few common models</p>
             <a class="btn shadow" href="https://swiperjs.com/swiper-api" target="_blank">Swiper API</a>
             <h5>swiper banner code</h5>
             <p>Add the code to the DOM</p>
@@ -1507,20 +1566,20 @@ class="touch-all"
         <div class="cont" id="color">
             <h3>color</h3>
             <h5>CSS functions</h5>
-            <p>Uigg preset some common color functions</p>
+            <p>UIGG preset some common color functions</p>
             <iframe src="color.html" height="1760"></iframe>
             <a class="btn shadow" href="color.html" target="_blank">view</a>
         </div>
         <div class="cont" id="ico">
             <h3>ico</h3>
-            <h5>uigg iconfont</h5>
-            <p>Uigg fonts is a library free licensed font families and api for conveniently using the fonts via iconfont, img, unicode, symbol and css. We also provide delightful, beautifully crafted icons for common actions and items. Download them for use in your digital products for Android, iOS, and web</p>
+            <h5>UIGG iconfont</h5>
+            <p>UIGG iconfont is a library free licensed font families and api for conveniently using the fonts via iconfont, img, unicode, symbol and css. We also provide delightful, beautifully crafted icons for common actions and items. Download them for use in your digital products for Android, iOS, and web</p>
             <a class="btn shadow" href="/ico.php" target="_blank">view</a>
         </div>
         <div class="cont" id="attribute">
             <h3>attribute</h3>
             <h5>independent attribute</h5>
-            <p>Common available attributes in uiigg</p>
+            <p>Common available attributes in UIGG</p>
             <div class="table">
                 <table>
                     <thead>
@@ -1533,6 +1592,7 @@ class="touch-all"
                         <tr><td><xmp>min</xmp></td><td>Set the minimum value of the component</td></tr>
                         <tr><td><xmp>pause</xmp></td><td>Set media pause</td></tr>
                         <tr><td><xmp>play</xmp></td><td>Set media play</td></tr>
+                        <tr><td><xmp>column</xmp></td><td>Flex vertical arrangement</td></tr>
                         <tr><td><xmp>disabled</xmp></td><td>Set component disable</td></tr>
                         <tr><td><xmp>selected</xmp></td><td>Disable selection</td></tr>
                         <tr><td><xmp>center</xmp></td><td>Set object centered content</td></tr>
@@ -1549,7 +1609,7 @@ class="touch-all"
         <div class="cont" id="label">
             <h3>label</h3>
             <h5>label quick reference</h5>
-            <p>Uigg exclusive label definition</p>
+            <p>UIGG exclusive label definition</p>
             <div class="table">
                 <table>
                     <thead>
@@ -1565,6 +1625,7 @@ class="touch-all"
                         <tr><td><xmp><m></m></xmp></td><td>Minute in time component</td></tr>
                         <tr><td><xmp><d></d></xmp></td><td>Day in time component</td></tr>
                         <tr><td><xmp><h></h></xmp></td><td>Hour in time component</td></tr>
+                        <tr><td><xmp><y></y></xmp></td><td>Year in time component</td></tr>
                         <tr><td><xmp><cite></cite></xmp></td><td>Prompt text</td></tr>
                     </tbody>
                 </table>
@@ -1572,6 +1633,11 @@ class="touch-all"
         </div>
         <div class="cont" id="lib">
             <h3>lib</h3>
+            <h5>emot</h5>
+            <p>Library related connections, from <span>1.svg</span> to <span>100.svg</span></p>
+<xmp>
+https://cdn.jsdelivr.net/npm/uigg/emot/1.svg
+</xmp>
             <h5>font</h5>
             <p>Library related connections</p>
 <xmp>
@@ -1585,6 +1651,11 @@ https://cdn.jsdelivr.net/npm/uigg/ico/iconfont/ico.min.js
 https://cdn.jsdelivr.net/npm/uigg/ico/iconfont/ico.json
 https://cdn.jsdelivr.net/npm/uigg/ico/iconfont/ico.woff
 https://cdn.jsdelivr.net/npm/uigg/ico/iconfont/ico.woff2
+</xmp>
+            <h5>svg ico</h5>
+            <p>Library related connections, category name and icon name, for example:</p>
+<xmp>
+https://cdn.jsdelivr.net/npm/uigg/ico/svg/brand/uigg.svg
 </xmp>
             <h5>images</h5>
             <p>Library related connections</p>

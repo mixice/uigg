@@ -96,8 +96,20 @@ tab-group {}
 .list li a {}
 .list li i {}
 
+/* step */
+step {}
+step aside {}
+step aside cite {}
+step aside i {}
+step ul {}
+step ul li {}
+step.column {}
+
 /* crumb */
-.crumb {}
+crumb {}
+crumb li {}
+crumb li i {}
+crumb li a {}
 
 /*------------------------------------------------------------------------------------------*/
 
@@ -137,7 +149,7 @@ name a {}
 
 
 @media(max-width:640px) {
-    
+
 }
 
 

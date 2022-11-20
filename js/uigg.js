@@ -13,6 +13,7 @@ $(function(){
     $('[center]').addClass('center')
     $('[infinite]').addClass('infinite')
     $('[alternate]').addClass('alternate')
+    $('[column]').addClass('column')
     $('.btn[disabled]').addClass('btn-disable')
 });
 
@@ -22,8 +23,8 @@ $(function(){
         resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
         recalc = function(){
         let viewWidth = docElement.clientWidth
-        if(viewWidth > 640){viewWidth = 640}
-        if(viewWidth < 320){viewWidth = 320}
+        if(viewWidth > 640) viewWidth = 640
+        if(viewWidth < 320) viewWidth = 320
         docElement.style.fontSize = 100 * (viewWidth / 640) + 'px'
     }
     recalc()
@@ -32,14 +33,12 @@ $(function(){
 })(document, window);
 
 //----------------------------------------------------------------------------------load
-document.onreadystatechange = function(){if(document.readyState == 'complete'){$('load').hide()}}
+document.onreadystatechange = function(){if(document.readyState == 'complete') $('load').hide()}
 setTimeout(function(){$('load').hide()},6000);
 
 //----------------------------------------------------------------------------------browser
-$(function(){
-    let OsObject = navigator.userAgent
-    if(OsObject.indexOf('MSIE') != -1 || OsObject.indexOf('Trident') != -1){$('body').html('<msie>please use another browser</msie>')}
-});
+let OsObject = navigator.userAgent
+if(OsObject.indexOf('MSIE') != -1 || OsObject.indexOf('Trident') != -1) $('body').html('<msie>please use another browser</msie>')
 
 //----------------------------------------------------------------------------------music
 $(function(){
@@ -64,10 +63,10 @@ $(function(){
 //----------------------------------------------------------------------------------fullscreen
 $(document).on('click','.fullscreen', function toggleFullScreen(){
     if(document.fullscreenElement !== undefined && document.fullscreenElement === null){
-        if(document.documentElement.requestFullscreen){document.documentElement.requestFullscreen()}}
-    else{if(document.cancelFullScreen){document.cancelFullScreen()}
-        else if(document.mozCancelFullScreen){document.mozCancelFullScreen()}
-        else if(document.webkitCancelFullScreen){document.webkitCancelFullScreen()}
+        if(document.documentElement.requestFullscreen) document.documentElement.requestFullscreen()}
+    else{if(document.cancelFullScreen) document.cancelFullScreen()
+        else if(document.mozCancelFullScreen) document.mozCancelFullScreen()
+        else if(document.webkitCancelFullScreen) document.webkitCancelFullScreen()
     }
 })
 $(function(){
@@ -78,12 +77,12 @@ $(function(){
 //----------------------------------------------------------------------------------touch
 $.fn.bindmove = function(newdirect,newfn){
     $(this).on('touchstart', function(e){
-        if(e.cancelable){if(!e.defaultPrevented){e.preventDefault()}}
+        if(e.cancelable){if(!e.defaultPrevented) e.preventDefault()}
         startX = e.originalEvent.changedTouches[0].pageX,
         startY = e.originalEvent.changedTouches[0].pageY
     })
     $(this).on('touchend', function(e){
-        if(e.cancelable){if(!e.defaultPrevented){e.preventDefault()}}
+        if(e.cancelable){if(!e.defaultPrevented) e.preventDefault()}
         moveEndX = e.originalEvent.changedTouches[0].pageX,
         moveEndY = e.originalEvent.changedTouches[0].pageY,
         X = moveEndX - startX,
@@ -126,9 +125,7 @@ $(function(){
     $('[style~="uigg-avatar"]').each(function(){$(this).attr('style','background-image: url(https://ui.gg/lib/images/avatar?=' + Math.floor(Math.random() * 100) + ')')})
 
     $('.avatar').each(function(){
-        if($(this).css('background-image') == 'none'){
-            $(this).attr('style','background-image: url(https://ui.gg/lib/images/avatar?=' + Math.floor(Math.random() * 100) + ')')
-        }
+        if($(this).css('background-image') == 'none') $(this).attr('style','background-image: url(https://ui.gg/lib/images/avatar?=' + Math.floor(Math.random() * 100) + ')')
     })
     $('[style~="uigg-color"]').each(function(){
         let color = 'rgb(' + parseInt(Math.random() * 255) + ',' + parseInt(Math.random() * 255) + ',' + parseInt(Math.random() * 255) + ')'
@@ -171,7 +168,7 @@ $(function(){
 //disable right click menu
 function disable(){
     document.oncontextmenu = function(event){
-        if(window.event){event = window.event}
+        if(window.event) event = window.event
         try {let the = Event.srcElement
             if(!((the.tagName == 'INPUT' && the.type.toLowerCase() == 'text') || the.tagName == 'TEXTAREA')){return false}
             return true
@@ -183,9 +180,9 @@ function disable(){
         window.onkeydown = function(e){
             let keyCode = e.keyCode || e.which || e.charCode,
                 ctrlKey = e.ctrlKey || e.metaKey
-            if(ctrlKey && keyCode == 85){e.preventDefault()}
-            if(ctrlKey && keyCode == 83){e.preventDefault()}
-            if(arr.indexOf(keyCode) > -1){e.preventDefault()}
+            if(ctrlKey && keyCode == 85) e.preventDefault()
+            if(ctrlKey && keyCode == 83) e.preventDefault()
+            if(arr.indexOf(keyCode) > -1) e.preventDefault()
         }
     //disable F12
     document.onkeydown = function (event){if(KeyboardEvent.keyCode == 123){return false}}
@@ -205,12 +202,9 @@ $(function(){
 //----------------------------------------------------------------------------------anew
 $(function(){
     $('.anew.btn').addClass('ico ico-alone-top')
-    $('.anew').click(function(){
-		$('html,body').animate({scrollTop:'0px'},1000)
-	})
+    $('.anew').click(function(){$('html,body').animate({scrollTop:'0px'},1000)})
     $(document).scroll(function(){
-        if($(window).scrollTop() > $(window).height()){$('.anew').css('opacity','1')}
-        else{$('.anew').css('opacity','0')}
+        $(window).scrollTop() > $(window).height() ? $('.anew').css('opacity','1') : $('.anew').css('opacity','0')
     })
 });
 
@@ -232,8 +226,7 @@ $(function(){
     $('pop-choice').addClass('anime-fade-in-up')
     $('pop-title .close').addClass('ico')
     $('pop .close, pop > x').click(function(){$(this).parents('pop').hide()})
-    if($('pop-sider').css('right') == '0px'){$('pop-sider').addClass('anime-fade-in-right')}
-    else{$('pop-sider').addClass('anime-fade-in-left')}
+    $('pop-sider').css('right') == '0px' ? $('pop-sider').addClass('anime-fade-in-right') : $('pop-sider').addClass('anime-fade-in-left')
 });
 
 //----------------------------------------------------------------------------------menu
@@ -258,13 +251,13 @@ $(function(){
         $(this).addClass('active')
     })
     $('o.checkbox-all').click(function(){
-        if($(this).hasClass('active')){$(this).parent().parent().parent().parent().find('o.checkbox,o.checkbox-done').addClass('active')}
-        else{$(this).parent().parent().parent().parent().find('o.checkbox,o.checkbox-done').removeClass('active')}
+        $(this).hasClass('active')
+        ? $(this).parent().parent().parent().parent().find('o.checkbox,o.checkbox-done').addClass('active')
+        : $(this).parent().parent().parent().parent().find('o.checkbox,o.checkbox-done').removeClass('active')
     })
     $('o.password').click(function(){
         let inputType = $(this).siblings('input').attr('type')
-        if(inputType == 'password'){$(this).siblings('input').attr('type','text')}
-        else{$(this).siblings('input').attr('type','password')}
+        inputType == 'password' ? $(this).siblings('input').attr('type','text') : $(this).siblings('input').attr('type','password')
     })
 });
 
@@ -278,7 +271,7 @@ $(function(){
     })
     $('scaler .ico-reduce').click(function(){
         let calcInput = $(this).siblings('input')
-        if(calcInput.val() > 0){calcInput.val(parseInt(calcInput.val()) - 1)}
+        if(calcInput.val() > 0) calcInput.val(parseInt(calcInput.val()) - 1)
     })
 });
 
@@ -417,22 +410,17 @@ function notifyRemre(){
 let copyNum,copyEl,copyVal
 $(function(){
     let copy = $('[copy-btn]')
-    $(copy).click(function(){
+    copy.click(function(){
         copyNum = $(this).attr('copy-btn')
-        copyFunction()
-    })
-    function copyFunction(){
-        if(copyNum == ''){copyEl = $('[copy-val]')}
-        else{copyEl = $('[copy-val=' + copyNum + ']')}
-        if(copyEl.is('input')){copyVal = copyEl.val()}
-        else{copyVal = copyEl.html()}
+        copyNum == '' ? copyEl = $('[copy-val]') : copyEl = $('[copy-val=' + copyNum + ']')
+        copyEl.is('input') ? copyVal = copyEl.val() : copyVal = copyEl.html()
         navigator.clipboard.writeText(copyVal)
-    }
+    })
 });
 
 //----------------------------------------------------------------------------------empty
 $(function(){
-    $('empty').each(function(){if($(this).is(':empty')){$(this).addClass('default')}})
+    $('empty').each(function(){if($(this).is(':empty')) $(this).addClass('default')})
 });
 
 //----------------------------------------------------------------------------------hop
@@ -442,8 +430,7 @@ $(function(){
     $('hop-cont a:first-child').after('<corner></corner>')
     let contWidth = $('hop-cont').width(),
         cornerPos = ($('hop > a').width() + $('hop-cont corner').width())/2
-    if(cornerPos >= contWidth){$('hop-cont corner').css('right',contWidth - 30 + 'px')}
-    else{$('hop-cont corner').css('right',cornerPos + 'px')}
+    cornerPos >= contWidth ? $('hop-cont corner').css('right',contWidth - 30 + 'px') : $('hop-cont corner').css('right',cornerPos + 'px')
     $('hop > a').click(function(){
         $(this).siblings('hop-cont').toggle()
         $(this).siblings('x').toggle()
@@ -528,8 +515,7 @@ $(function(){
         pageMax = $('page').attr('max')
         $('page ul a').removeClass('active').hide()
         $('page').each(function(){
-            if(pageVal == 1){$(this).find('ul a:first').addClass('active').show().next().show().next().show()}
-            else{$(this).find('ul a').eq(pageVal - 1).addClass('active').show().prev().show().prev().show().end().next().show().next().show().next().show()}
+            pageVal == 1 ? $(this).find('ul a:first').addClass('active').show().next().show().next().show() : $(this).find('ul a').eq(pageVal - 1).addClass('active').show().prev().show().prev().show().end().next().show().next().show().next().show()
             $(this).find('span').html(pageVal + '/' + pageMax)
         })
     }
@@ -547,8 +533,8 @@ $(function(){
     $('page ul a').click(function(){$('page').attr('value',$(this).text());page()})
     $('page .ico-arrow-enter').click(function(){
         let inputVal = $('page input').val()
-        if(inputVal > parseInt(pageMax)){inputVal = pageMax}
-        if(inputVal < 1 || isNaN(inputVal)){inputVal = 1}
+        if(inputVal > parseInt(pageMax)) inputVal = pageMax
+        if(inputVal < 1 || isNaN(inputVal)) inputVal = 1
         $('page').attr('value',inputVal)
         page()
         $('page input').val('')
@@ -559,7 +545,7 @@ $(function(){
 //input cookie
 function setCookie(objName, objValue, objHours){
     let str = objName + '=' + encodeURI(objValue)
-    if (objHours > 0){
+    if(objHours > 0){
         let date = new Date(),
             ms = objHours * 3600 * 1000
         date.setTime(date.getTime() + ms)
@@ -573,10 +559,27 @@ function getCookie(objName){
     let arrStr = document.cookie.split(';')
     for (let i = 0;i < arrStr.length;i++){
         let temp = arrStr[i].split('=')
-        if (temp[0] == objName) return decodeURI(temp[1])
+        if(temp[0] == objName) return decodeURI(temp[1])
     }
     return ''
 };
+
+//----------------------------------------------------------------------------------step
+$(function(){
+    let stepLength = $('step ul li').length
+    $('step').prepend('<aside><cite></cite></aside>')
+    for(let i = 0;i < stepLength;i++){$('aside').append('<i></i>')}
+    $('step li').each(function(){
+        let index = $(this).index()
+        $('aside i').eq(index).append(index + 1)
+    })
+});
+
+//----------------------------------------------------------------------------------crumb
+$(function(){
+    $('crumb li:first').prepend('<i class="ico ico-home"></i>')
+    $('crumb li:not(:first)').prepend('<i class="ico ico-alone-right"></i>')
+});
 
 //----------------------------------------------------------------------------------
 $(function(){
