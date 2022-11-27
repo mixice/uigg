@@ -155,7 +155,7 @@ $(function(){
     ]
     $('uigg-txt').append(sentence)
     $('uigg-title').each(function(){
-        $(this).append(sentence[Math.floor(Math.random() * 16)])
+        $(this).append(sentence[Math.floor(Math.random() * sentence.length)])
     })
 
     let arr = new Array()
@@ -332,7 +332,7 @@ $(function(){
         let txt = $(this).html(),
             aloneEl = txt.match(/./g),
             element = ''
-        for (let i = 0;i < aloneEl.length;i++){element += '<z>' + aloneEl[i] + '</z>'}
+        for(let i = 0;i < aloneEl.length;i++){element += '<z>' + aloneEl[i] + '</z>'}
         $(this).html(element)
     })
 });
@@ -556,8 +556,8 @@ function setCookie(objName, objValue, objHours){
 
 //output cookie
 function getCookie(objName){
-    let arrStr = document.cookie.split(';')
-    for (let i = 0;i < arrStr.length;i++){
+    let arrStr = document.cookie.split('; ')
+    for(let i = 0;i < arrStr.length;i++){
         let temp = arrStr[i].split('=')
         if(temp[0] == objName) return decodeURI(temp[1])
     }
@@ -579,6 +579,37 @@ $(function(){
 $(function(){
     $('crumb li:first').prepend('<i class="ico ico-home"></i>')
     $('crumb li:not(:first)').prepend('<i class="ico ico-alone-right"></i>')
+});
+
+//----------------------------------------------------------------------------------lang
+$(function(){
+    let langType = getCookie('lang') == '' ? 'en' : getCookie('lang')
+    function lang(){
+        $.get(`../lang/${langType}.json`,function(data){
+            $('[lang]').each(function(){
+                langVal = $(this).attr('lang').split('-')
+                $(this).html(eval('data.' + langVal[0] + '[0].' + langVal[1]))
+            })
+            $('[lang-placeholder]').each(function(){
+                langVal = $(this).attr('lang-placeholder').split('-')
+                $(this).attr('placeholder',eval('data.' + langVal[0] + '[0].' + langVal[1]))
+            })
+            $('[lang-value]').each(function(){
+                langVal = $(this).attr('lang-value').split('-')
+                $(this).attr('value',eval('data.' + langVal[0] + '[0].' + langVal[1]))
+            })
+            $('[lang-content]').each(function(){
+                langVal = $(this).attr('lang-content').split('-')
+                $(this).attr('content',eval('data.' + langVal[0] + '[0].' + langVal[1]))
+            })
+        })
+        setCookie('lang', langType, '72')
+    }
+    lang()
+    $('[lang-set]').click(function(){
+        langType = $(this).attr('lang-set')
+        lang()
+    })
 });
 
 //----------------------------------------------------------------------------------
