@@ -347,7 +347,9 @@ a[title="到百度地图查看此区域"],
 .touch-all {}
 
 /* ico */
-.ico-load {animation: anime-rotate 5s infinite linear;}
+.ico {display: inline-block;vertical-align: middle;}
+.ico-load,
+.ico-ringdot {animation: anime-rotate 5s infinite linear;}
 
 @media(max-width:640px) {
     .ico {font-size: .36rem;}

@@ -585,29 +585,31 @@ $(function(){
 $(function(){
     let langType = getCookie('lang') == '' ? 'en' : getCookie('lang')
     function lang(){
-        $.get(`../lang/${langType}.json`,function(data){
-            $('[lang]').each(function(){
-                langVal = $(this).attr('lang').split('-')
-                $(this).html(eval('data.' + langVal[0] + '[0].' + langVal[1]))
+        if($('[lang-set]').length != 0){
+            $.get(`../lang/${langType}.json`,function(data){
+                $('[lang]').each(function(){
+                    langVal = $(this).attr('lang').split('-')
+                    $(this).html(eval('data.' + langVal[0] + '[0].' + langVal[1]))
+                })
+                $('[lang-placeholder]').each(function(){
+                    langVal = $(this).attr('lang-placeholder').split('-')
+                    $(this).attr('placeholder',eval('data.' + langVal[0] + '[0].' + langVal[1]))
+                })
+                $('[lang-value]').each(function(){
+                    langVal = $(this).attr('lang-value').split('-')
+                    $(this).attr('value',eval('data.' + langVal[0] + '[0].' + langVal[1]))
+                })
+                $('[lang-content]').each(function(){
+                    langVal = $(this).attr('lang-content').split('-')
+                    $(this).attr('content',eval('data.' + langVal[0] + '[0].' + langVal[1]))
+                })
             })
-            $('[lang-placeholder]').each(function(){
-                langVal = $(this).attr('lang-placeholder').split('-')
-                $(this).attr('placeholder',eval('data.' + langVal[0] + '[0].' + langVal[1]))
-            })
-            $('[lang-value]').each(function(){
-                langVal = $(this).attr('lang-value').split('-')
-                $(this).attr('value',eval('data.' + langVal[0] + '[0].' + langVal[1]))
-            })
-            $('[lang-content]').each(function(){
-                langVal = $(this).attr('lang-content').split('-')
-                $(this).attr('content',eval('data.' + langVal[0] + '[0].' + langVal[1]))
-            })
-        })
-        setCookie('lang', langType, '72')
+        }
     }
     lang()
     $('[lang-set]').click(function(){
         langType = $(this).attr('lang-set')
+        setCookie('lang', langType, '72')
         lang()
     })
 });
