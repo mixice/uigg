@@ -7,7 +7,7 @@
  */
 
 /* import */
-@import url('https://cdn.jsdelivr.net/npm/uigg/font/font.min.css');
+@import url('https://ui.gg/lib/font/font.css');
 @import url('ico.css');
 
 /* basic */
@@ -117,7 +117,7 @@ z {display: inline-block;transition-duration: 0s;}
 .anime-shrink-out-enlarge {animation-name: anime-shrink-out-enlarge;}
 
 .infinite {animation-iteration-count: infinite;}
-.alternate {animation-direction:alternate;}
+.alternate {animation-direction: alternate;}
 
 @keyframes anime-pulse {0% {transform: scale(1);}50% {transform: scale(1.05);}100% {transform: scale(1);}}
 @keyframes anime-beat {0% {transform: translateY(0);}50% {transform: translateY(-50%);}100% {transform: translateY(0);}}
@@ -475,7 +475,7 @@ menu-list h6 {line-height: 50px;}
 @media(max-width:640px) {
     menu x.ico {display: block;width: .8rem;height: .8rem;line-height: .8rem;font-size: .42rem;}
     menu-cont {position: absolute;left:0;top: .8rem;background-color: var(--000-9);width: 100vw;display: none;}
-    menu-cont li {width: 100%;height: auto;display:block;overflow: hidden;}
+    menu-cont li {width: 100%;height: auto;display: block;overflow: hidden;}
     menu-cont li:not(:last-child) {border-bottom: 1px var(--333) solid;}
     menu-cont li,
     menu-cont li a {color: white;}
@@ -588,7 +588,7 @@ button {line-height: 50px;}
 .input o {width: 50px;line-height: 50px;position: absolute;top: 0;right: 0;}
 textarea {width: 100%;height: 120px;padding: 15px 10px;line-height: 160%;}
 input {padding: 0 10px;}
-select {padding: 0 50px 0 10px;background-image: url(https://cdn.jsdelivr.net/npm/uigg/ico/svg/arrow/alone-bottom.svg);background-size: 24px;background-position:calc(100% - 12px) center;}
+select {padding: 0 50px 0 10px;background-image: url(https://cdn.jsdelivr.net/npm/uigg/ico/svg/arrow/alone-bottom.svg);background-size: 24px;background-position: calc(100% - 12px) center;}
 
 .form .input,
 .form input,
@@ -773,7 +773,7 @@ tab-group.active {display: block;}
 /* swiper */
 .swiper {width: 100%;height: 100%;}
 .swiper-slide {width: 100%;height: 100%;background-size: cover;}
-.swiper-button-next,.swiper-button-prev {width: 50px;height: 50px;font-size: 40px;line-height: 50px;color: var(--color);margin-top: -25px;display:flex;}
+.swiper-button-next,.swiper-button-prev {width: 50px;height: 50px;font-size: 40px;line-height: 50px;color: var(--color);margin-top: -25px;display: flex;}
 .swiper-button-next {right: 0;}
 .swiper-button-prev {left: 0;}
 .swiper-button-prev:after,
@@ -967,6 +967,7 @@ hop-cont a:hover {background-color: var(--color);color: white;}
 /* random */
 uigg-emot s {width: 50px;height: 50px;display: inline-block;background-size: 90%;vertical-align: middle;cursor: pointer;}
 uigg-emot s:hover {background-color: var(--eee);}
+*[src="uigg-color"] {content-visibility: hidden;}
 @media(max-width:640px) {
     uigg-emot s {width: .6rem;height: .6rem;}
 }

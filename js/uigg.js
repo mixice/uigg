@@ -127,13 +127,8 @@ $(function(){
     $('.avatar').each(function(){
         if($(this).css('background-image') == 'none') $(this).attr('style','background-image: url(https://ui.gg/lib/images/avatar?=' + Math.floor(Math.random() * 100) + ')')
     })
-    $('[style~="uigg-color"]').each(function(){
-        let color = 'rgb(' + parseInt(Math.random() * 255) + ',' + parseInt(Math.random() * 255) + ',' + parseInt(Math.random() * 255) + ')'
-        $(this).css('background-color',color)
-    })
-    $('[src~="uigg-color"]').each(function(){
-        let color = 'rgb(' + parseInt(Math.random() * 255) + ',' + parseInt(Math.random() * 255) + ',' + parseInt(Math.random() * 255) + ')'
-        $(this).css('background-color',color).attr('src','data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyRpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDcuMS1jMDAwIDc5LmRhYmFjYmIsIDIwMjEvMDQvMTQtMDA6Mzk6NDQgICAgICAgICI+IDxyZGY6UkRGIHhtbG5zOnJkZj0iaHR0cDovL3d3dy53My5vcmcvMTk5OS8wMi8yMi1yZGYtc3ludGF4LW5zIyI+IDxyZGY6RGVzY3JpcHRpb24gcmRmOmFib3V0PSIiIHhtbG5zOnhtcD0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wLyIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bXA6Q3JlYXRvclRvb2w9IkFkb2JlIFBob3Rvc2hvcCAyMy4wIChXaW5kb3dzKSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDpBOEEyRTBGRDM3MjMxMUVEOTdCMEJCNzE1OEMyQUM2NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDpBOEEyRTBGRTM3MjMxMUVEOTdCMEJCNzE1OEMyQUM2NyI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkE4QTJFMEZCMzcyMzExRUQ5N0IwQkI3MTU4QzJBQzY3IiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOkE4QTJFMEZDMzcyMzExRUQ5N0IwQkI3MTU4QzJBQzY3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+64gAAgAAABBJREFUeNpi+P//PwNAgAEACPwC/tuiTRYAAAAASUVORK5CYII=')
+    $('[style~="uigg-color"],[src~="uigg-color"]').each(function(){
+        $(this).css('background-color','rgb(' + parseInt(Math.random() * 255) + ',' + parseInt(Math.random() * 255) + ',' + parseInt(Math.random() * 255) + ')')
     })
     let sentence = [
         'Lorem ipsum dolor sit amet, consectetur adipisicing elit ',
@@ -145,18 +140,10 @@ $(function(){
         'Sunt in culpa qui officia deserunt mollit anim id est laborum ',
         'Sed ut perspiciatis unde omnis iste natus error sit ',
         'voluptatem accusantium doloremque laudantium, totam rem aperiam ',
-        'eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae ',
-        'dicta sunt explicabo nemo enim ipsam voluptatem ',
-        'quia voluptas sit aspernatur aut odit aut fugit sed quia ',
-        'consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt ',
-        'Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet ',
-        'consectetur, adipisci velit, sed quia non numquam ',
-        'eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem '
+        'eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae '
     ]
     $('uigg-txt').append(sentence)
-    $('uigg-title').each(function(){
-        $(this).append(sentence[Math.floor(Math.random() * sentence.length)])
-    })
+    $('uigg-title').each(function(){$(this).append(sentence[Math.floor(Math.random() * sentence.length)])})
 
     let arr = new Array()
     for(let i = 1;i <= 100;i++){arr[i] = i
