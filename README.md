@@ -1,7 +1,7 @@
 # UIGG
 
 [![](https://data.jsdelivr.com/v1/package/npm/uigg/badge)](https://www.jsdelivr.com/package/npm/uigg)
-[![Sponsor](https://img.shields.io/static/v1?style=flat-square&logo=appveyor)](https://github.com/mixice/uigg)
+[![Sponsor](https://img.shields.io/static/v1?style=flat-square&=appveyor)](https://github.com/mixice/uigg)
 
 UIGG is quick CSS scheme.
 
