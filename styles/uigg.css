@@ -559,10 +559,8 @@ progress,
 ::-webkit-outer-spin-button,
 ::-webkit-inner-spin-button { -webkit-appearance: none;}
 ::-webkit-input-placeholder {color: var(--ccc);text-transform: capitalize;}
-::-moz-placeholder {color: var(--ccc);}
 ::-webkit-progress-bar {background-color: var(--f7);border-radius: 100px;height: 10px;}
 ::-webkit-progress-value {background-color: var(--color);border-radius: 100px;}
-::-moz-progress-bar {background-color: var(--color);}
 input[type="range"],
 input[type="file"],
 input[type="color"] {padding: 0;background: none !important;border: 0;}
@@ -571,29 +569,44 @@ input[type="range"]::-webkit-slider-thumb {width: 24px;height: 24px;background-c
 input[type="file"]::-webkit-file-upload-button {background-color: var(--color);border: 0;cursor: pointer;height: 50px;color: white;border-radius: 2px;text-transform: capitalize;padding: 0 20px;}
 input[type="color"] {width: 50px;}
 
-::-webkit-calendar-picker-indicator {transform: scale(1.3);}
-input[type="date"]::-webkit-calendar-picker-indicator {background-image: url(https://cdn.jsdelivr.net/npm/uigg/ico/svg/time/calendar.svg);}
-input[type="datetime-local"]::-webkit-calendar-picker-indicator {background-image: url(https://cdn.jsdelivr.net/npm/uigg/ico/svg/time/calendar-many.svg);}
-input[type="time"]::-webkit-calendar-picker-indicator {background-image: url(https://cdn.jsdelivr.net/npm/uigg/ico/svg/time/time.svg);}
-input[type="week"]::-webkit-calendar-picker-indicator {background-image: url(https://cdn.jsdelivr.net/npm/uigg/ico/svg/time/calendar-less.svg);}
-input[type="month"]::-webkit-calendar-picker-indicator {background-image: url(https://cdn.jsdelivr.net/npm/uigg/ico/svg/time/calendar-reduce.svg);}
+::-webkit-calendar-picker-indicator {transform: scale(2);}
+input[type="date"]::-webkit-calendar-picker-indicator,
+input[type="datetime-local"]::-webkit-calendar-picker-indicator,
+input[type="time"]::-webkit-calendar-picker-indicator,
+input[type="week"]::-webkit-calendar-picker-indicator,
+input[type="month"]::-webkit-calendar-picker-indicator {background: none;}
+input[type="date"]::before,
+input[type="datetime-local"]::before,
+input[type="time"]::before,
+input[type="week"]::before,
+input[type="month"]::before,
+.select::after {position: absolute;right: 10px;font-family: ico !important;font-size: 24px;}
+input[type="date"]::before {content: '\e7b2';}
+input[type="datetime-local"]::before {content: '\e7bc';}
+input[type="time"]::before {content: '\eb32';}
+input[type="week"]::before {content: '\e7b7';}
+input[type="month"]::before {content: '\e7bb';}
+input::before,
+.select::after {color: var(--color);}
 
+.select,
 select,
 .input,
-.input i,
-.input o,
 input {width: 100%;height: 50px;position: relative;}
-button {line-height: 50px;}
 .input i,
-.input o {width: 50px;line-height: 50px;position: absolute;top: 0;right: 0;}
-textarea {width: 100%;height: 120px;padding: 15px 10px;line-height: 160%;}
+.input o {line-height: 50px;position: absolute;top: 0;right: 10px;}
+textarea {width: 100%;height: 120px;padding: 10px;line-height: 160%;}
 input {padding: 0 10px;}
-select {padding: 0 50px 0 10px;background-image: url(https://cdn.jsdelivr.net/npm/uigg/ico/svg/arrow/alone-bottom.svg);background-size: 24px;background-position: calc(100% - 12px) center;}
+.select::after {content: '\e70a';pointer-events: none;}
+.input input,
+select {padding: 0 50px 0 10px;}
 
 .form .input,
 .form input,
+.form .select,
 .form select,
 .form textarea,
+.form progress,
 .form span,
 .form a,
 .form button,
@@ -601,24 +614,22 @@ select {padding: 0 50px 0 10px;background-image: url(https://cdn.jsdelivr.net/np
 .form cite,
 .form .code {margin:5px;float: left;}
 .form select,
-.form .input,
 .form input,
 .form textarea {background-color: var(--f7);}
-.form .input input {background-color: transparent;}
-.form .input o {margin: 0;}
-.form li .input input {margin: 0;}
-.form progress {margin: 20px 5px 0;}
-.form {padding: 20px;overflow: hidden;}
+.form .input o,
+.form li .input input,
+.form li .select select {margin: 0;}
+.form {overflow: hidden;}
 .form span,
 .form cite,
 .form li,
 .form o {line-height: 50px;}
-.form li {display: block;width: 100%;float: left;}
+.form li {display: flex;align-items: center;width: 100%;}
 .form li.resolve {padding-left: 110px;}
 .form li.resolve .btn:not(:last-child) {margin-right: 10px;}
 .form li .code {width: 140px;height: 50px;}
 .form li .code img {width: 100%;height: 100%;}
-.form span:first-child {text-transform: capitalize;}
+.form span:first-child {text-transform: capitalize;white-space: nowrap;text-overflow: ellipsis;overflow: hidden;;}
 .form li span:first-child {width: 100px;}
 .form .btn span {margin: 0;}
 .form .min {width: 10%;}
@@ -639,55 +650,63 @@ select {padding: 0 50px 0 10px;background-image: url(https://cdn.jsdelivr.net/np
 .upload-add:after {content: '\e6f3';}
 
 @media(max-width:640px) {
+    ::-webkit-progress-bar {height: .1rem;}
+
     input[type="range"]::-webkit-slider-runnable-track {height: .05rem;}
     input[type="range"]::-webkit-slider-thumb {width: .35rem;height: .35rem;margin-top: -.15rem;box-shadow: 0 .03rem .06rem var(--color);}
     input[type="file"]::-webkit-file-upload-button {height: .7rem;border-radius: .03rem;padding: 0 .2rem;}
     input[type="color"] {width: .7rem;flex: none !important;}
 
-    ::-webkit-progress-bar {height: .1rem;}
+    input[type="date"]::before,
+    input[type="datetime-local"]::before,
+    input[type="time"]::before,
+    input[type="week"]::before,
+    input[type="month"]::before,
+    .select::after {right: .1rem;font-size: .32rem;}
 
-    button,
+    .select,
     select,
     .input,
-    .input i,
-    .input o,
     input {height: .7rem;}
-    button {line-height: .7rem;}
     .input i,
-    .input o {width: .7rem;line-height: .7rem;}
-    textarea {padding: .18rem .1rem;height: 2rem;}
+    .input o {line-height: .7rem;}
+    textarea {padding: .1rem;height: 2rem;}
     input {padding: 0 .1rem;}
-    select {padding: 0 .7rem 0 .1rem;background-size: .36rem;background-position: calc(100% - .16rem) center;}
+    .input input,
+    select {padding: 0 .7rem 0 .1rem;}
 
     .form .input,
     .form input,
+    .form .select,
     .form select,
     .form textarea,
+    .form progress,
     .form span,
     .form a,
     .form button,
     .form o,
     .form cite,
     .form .code {margin: 0;}
+    .form .select,
     .form select,
     .form .input,
     .form input,
     .form textarea {background-color: transparent;flex: 1;min-width: 0;}
-    .form progress {margin: .3rem 0 0;}
-    .form {padding: .1rem;}
     .form span,
     .form cite,
     .form li,
     .form li .code,
     .form o {line-height: .7rem;}
     .form li,
-    .form li.resolve {padding: .1rem 0;display: flex;}
+    .form li.resolve {padding: .1rem 0;}
     .form li:not(:last-child) {border-bottom-width: 1px;}
     .form li.resolve {border: 0;}
     .form li.resolve .btn {width: 100%;}
     .form li.resolve .btn:not(:last-child) {margin-right: .1rem;}
-    .form li .code {width: 1.8rem;height: .7rem;font-size: .2rem;font-weight: normal;}
-    .form li span:first-child {width: 1.2rem;}
+    .form li .code {width: 1.8rem;height: .7rem;font-size: .2rem;}
+    .form li span {padding: 0 .05rem;}
+    .form li span:first-child {width: 1.5rem;}
+    .form .btn,
     .form button {width: 100%;}
     .form cite {display: none;}
     .form .min,
@@ -752,21 +771,20 @@ tab-group.active {display: block;}
 .table {}
 .table table {width: 100%;border-collapse: separate;border-spacing:0;background-color: white;}
 .table table th,
-.table table td {vertical-align: middle;text-align: center;height: 50px;}
+.table table td {vertical-align: middle;text-align: center;height: 50px;padding: 0 10px;}
 .table table th {text-transform: capitalize;}
 .table table thead th,
-.table table thead td {font-weight: bold;color: white;text-transform: capitalize;}
-.table table thead tr {background-color: var(--color);}
+.table table thead td {font-weight: bold;text-transform: capitalize;border-bottom: 2px var(--color) solid;}
 .table table tbody tr:nth-child(2n) {background-color: var(--f7);}
 .table table tbody tr:hover {background-color: var(--eee);}
-.table table tfoot tr:first-child td,
-.table table tfoot tr:first-child th {border-top: 1px var(--color) solid;}
+.table table tfoot tr:first-child th,
+.table table tfoot tr:first-child td {border-top: 1px var(--color) solid;}
 
 @media(max-width:640px) {
     .table {overflow: auto;}
     .table table {max-width: 15rem;}
     .table table th,
-    .table table td {height: .7rem;}
+    .table table td {height: .7rem;padding: 0 .1rem;}
     .table table tbody tr:hover {background-color: transparent;}
 }
 
@@ -816,7 +834,6 @@ name-logo h1 {text-transform: uppercase;font-size: 30px;padding-left: 10px;}
 name-search {position: relative;margin: 10px 0;background-color: var(--000-1);border-radius: 30px;}
 name-search input {text-align: inherit;font-size: 24px;color: inherit;padding: 0 80px 0 0;}
 name-search input::-webkit-input-placeholder {color: var(--000-2);}
-name-search input::-moz-placeholder {color: var(--000-2);}
 
 @media(max-width:640px) {
     name {height: .8rem;box-shadow: 0 0 .05rem var(--000-1);}
@@ -949,7 +966,8 @@ empty .ico {display: block;font-size: 72px;margin: 20px;}
 hop {position: relative;}
 hop x {width: 100vw;height: 100vh;position: fixed;top: 0;left: 0;display: none;}
 hop a {height: 50px;line-height: 50px;min-width: 50px;display: block;text-align: center;user-select: none;}
-hop-cont {position: absolute;right: 0;top: 60px;width: 200px;box-shadow: 0 5px 10px var(--000-1);border-radius: 5px;display: none;}
+hop > a {box-sizing: content-box;}
+hop-cont {position: absolute;right: 0;width: 200px;box-shadow: 0 5px 10px var(--000-1);border-radius: 5px;display: none;}
 hop-cont corner {border-width: 0 10px 10px 10px;border-bottom-color: white;top: -10px;}
 hop-cont a {background-color: white;border-bottom-width: 1px;text-transform: capitalize;}
 hop-cont a:first-child {border-radius: 5px 5px 0 0;}
@@ -958,8 +976,7 @@ hop-cont a:hover {background-color: var(--color);color: white;}
 
 @media(max-width:640px) {
     hop a {height: .7rem;line-height: .7rem;min-width: .7rem;}
-    hop-cont {top: .8rem;width: 3rem;box-shadow: 0 .05rem .1rem var(--000-1);border-radius: .05rem;}
-    hop-cont corner {border-width: 0 .1rem .1rem .1rem;top: -.1rem;}
+    hop-cont {width: 3rem;box-shadow: 0 .05rem .1rem var(--000-1);border-radius: .05rem;}
     hop-cont a:first-child {border-radius: .1rem .1rem 0 0;}
     hop-cont a:last-child {border-radius: 0 0 .1rem .1rem;}
 }
@@ -995,7 +1012,7 @@ chat-title input {flex: 1;min-width: 0;}
 chat-title x.ico-close {background: var(--red) !important;color: white;display: none;}
 chat-sider {width: 240px;display: flex;flex-direction: column;border-right-width: 1px;}
 chat-sider hop {position: static;}
-chat-sider hop-cont {width: 100%;top: 50px;}
+chat-sider hop-cont {width: 100%;}
 chat-sider hop-cont a {border-radius: 0 !important;}
 chat-sider hop-cont corner {display: none;}
 
@@ -1017,7 +1034,6 @@ chat-message li {padding: 10px 70px;position: relative;overflow: hidden;}
 chat-message li .avatar {position: absolute;left: 0;top: 0;margin: 10px;}
 chat-message li cite {display: block;margin-bottom: 5px;color: var(--ccc);}
 chat-message li aside {background-color: var(--f7);border-radius: 0 10px 10px 10px;padding: 10px;display: inline-block;}
-
 chat-message li.mine {}
 chat-message li.mine .avatar {left: auto;right: 0;}
 chat-message li.mine cite {text-align: right;}
@@ -1048,7 +1064,6 @@ chat-control .ico-paperplane {margin: 10px;background-color: var(--color);color:
     chat-title h3 {font-size: .22rem;padding: 0 .1rem;}
     chat-title x.ico-close {display: block;}
     chat-sider {width: 100%;height: 100%;border-right-width: 0;}
-    chat-sider hop-cont {top: .7rem;}
     chat-list li a {padding: .15rem;}
     chat-list li .avatar {margin-right: .1rem;}
 
@@ -1057,7 +1072,6 @@ chat-control .ico-paperplane {margin: 10px;background-color: var(--color);color:
     chat-message li .avatar {margin: .1rem;}
     chat-message li cite {margin-bottom: .05rem;}
     chat-message li aside {border-radius: 0 .1rem .1rem .1rem;padding: .1rem;}
-
     chat-message li.mine aside {border-radius: .1rem 0 .1rem .1rem;}
 
     chat-tool {height: .7rem;}

@@ -6,35 +6,26 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
 
 <link rel="stylesheet" href="../styles/uigg.css">
+<link rel="stylesheet" href="demo.css">
 
 <script src="../js/jquery.min.js"></script>
 <script src="../js/uigg.js"></script>
+<script src="demo.js"></script>
 </head>
 
 <body>
 
 <style>
-    .subject {display: flex;height: 100%;}
-    .sider {width: 260px;height: 100%;display: flex;background-color: var(--f7);}
-    fold {height: 100%;flex: 1;overflow: auto;}
-    fold::-webkit-scrollbar {width: 5px;}
-    fold::-webkit-scrollbar-thumb {background: var(--eee);}
-    fold aside a {display: block;text-transform: capitalize;line-height: 35px;padding: 0 20px;}
-    fold aside a:hover,
-    fold aside a.active {background-color: var(--eee);}
-
-    .contant {flex: 1;height: 100%;overflow: auto;}
-    .contant > * {font-size: 30px;margin: 30px;display: block;word-break: break-all;}
-    .contant a {}
-    .contant b {}
-    .contant u {text-transform: uppercase;text-decoration: none;}
-    .contant p {font-size: 16px;}
+    i {font-size: 30px;display: block;padding: 10px 0;}
+    u {text-transform: uppercase;text-decoration: none;}
+    p {font-size: 16px;padding: 10px 0;}
 </style>
 
 <!----------------------------------------------------------------------------------------->
 
 <section class="subject">
     <div class="sider">
+        <u class="ico ico-menu"></u>
         <fold show>
             <tt><a><i class="ico ico-earth"></i><h5>web font</h5></a></tt>
             <aside>
@@ -84,13 +75,12 @@
         </fold>
     </div>
     <div class="contant">
-        <a>abcdefghijklmnopqrstuvwxyz</a>
-        <b>abcdefghijklmnopqrstuvwxyz</b>
-        <u>abcdefghijklmnopqrstuvwxyz</u>
-        <u><b>abcdefghijklmnopqrstuvwxyz</b></u>
-        <a>,.|/\:;"'<>{}[]()-=_+`~!@#$%^&*?</a>
-        <a><b>,.|/\:;"'<>{}[]()-=_+`~!@#$%^&*?</b></a>
-        <a>1234567890<b>1234567890</b></a>
+        <i>abcdefghijklmnopqrstuvwxyz</i>
+        <i><b>abcdefghijklmnopqrstuvwxyz</b></i>
+        <i><u>abcdefghijklmnopqrstuvwxyz</u></i>
+        <i><u><b>abcdefghijklmnopqrstuvwxyz</b></u></i>
+        <i>,.|/\:;"'<>{}[]()-=_+`~!@#$%^&*?1234567890</i>
+        <i><b>,.|/\:;"'<>{}[]()-=_+`~!@#$%^&*?1234567890</b></i>
         <p>abcdefghijklmnopqrstuvwxyz,.|/\:;"'<>{}[]()-=_+`~!@#$%^&*?1234567890</p>
         <p><b>abcdefghijklmnopqrstuvwxyz,.|/\:;"'<>{}[]()-=_+`~!@#$%^&*?1234567890</b></p>
         <p><uigg-txt></uigg-txt></p>

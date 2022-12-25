@@ -8,17 +8,19 @@
 
 <link rel="stylesheet" href="../styles/swiper-bundle.min.css">
 <link rel="stylesheet" href="../styles/uigg.css">
+<link rel="stylesheet" href="demo.css">
 
 <script src="../js/jquery.min.js"></script>
 <script src="../js/swiper-bundle.min.js"></script>
 <script src="../js/uigg.js"></script>
+<script src="demo.js"></script>
 </head>
 
 <body>
 
 <style>
     .swiper {height: 100%;}
-    .swiper-slide {background-color: var(--f7);font-size: .6rem;text-transform: uppercase;font-weight: bold;color: var(--eee);}
+    .swiper-slide {background-color: var(--f7);font-size: .6rem;text-transform: uppercase;font-weight: bold;color: var(--eee);text-align: center;}
 
     .swiper-gallery,
     .swiper-lug,
@@ -35,21 +37,12 @@
     .lug-thumbs a {height: 60px;line-height: 60px;font-size: 16px;padding: 0 20px;font-weight: bold;background-color: var(--eee);text-transform: uppercase;}
     .lug-thumbs a.active {background-color: var(--f7);}
     .swiper-coverflow .swiper-slide {width:60%;}
-    .swiper-parallax .swiper-slide {background: none;text-align: center;}
+    .swiper-parallax .swiper-slide {background: none;}
     .swiper-parallax .swiper-slide h3 {font-size: .6rem;text-transform: uppercase;}
     .swiper-parallax .swiper-slide h3 span {display: block;font-weight: 300;}
 
-    .subject {height: 100%;}
-    .sider {width: 260px;height: 100%;background-color: var(--f7);overflow: auto;position: fixed;left: 0;top: 0;}
-    fold {height: 100%;flex: 1;overflow: auto;}
-    fold::-webkit-scrollbar {width: 5px;}
-    fold::-webkit-scrollbar-thumb {background: var(--eee);}
-    fold aside a {display: block;text-transform: capitalize;line-height: 35px;padding: 0 20px;}
-    fold aside a:hover,
-    fold aside a.active {background-color: var(--eee);}
-
-    .contant {padding-left: 260px;}
-    .item {height: 100vh;padding: 30px;position: relative;}
+    .contant {padding: 0;}
+    .item {height: 100%;padding: 30px;}
     #hash menu {background: var(--f7);display: flex;justify-content: center;margin-bottom: 20px;}
     #hash menu a {padding: 20px;font-weight: bold;font-size: 18px;text-transform: uppercase;}
 </style>
@@ -58,6 +51,7 @@
 
 <section class="subject">
     <div class="sider">
+        <u class="ico ico-menu"></u>
         <fold show>
             <tt><a><h5>swiper</h5></a></tt>
             <aside>

@@ -6,33 +6,28 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
 
 <link rel="stylesheet" href="../styles/uigg.css">
+<link rel="stylesheet" href="demo.css">
 
 <script src="../js/jquery.min.js"></script>
 <script src="../js/uigg.js"></script>
+<script src="demo.js"></script>
 </head>
 
 <body>
 
 <style>
-    .subject {display: flex;height: 100%;}
-    .sider {width: 260px;height: 100%;display: flex;background-color: var(--f7);}
-    fold {height: 100%;flex: 1;overflow: auto;}
-    fold::-webkit-scrollbar {width: 5px;}
-    fold::-webkit-scrollbar-thumb {background: var(--eee);}
-    fold aside a {display: block;text-transform: capitalize;line-height: 35px;padding: 0 20px;}
-    fold aside a:hover,
-    fold aside a.active {background-color: var(--eee);}
-    .contant {flex: 1;height: 100%;overflow: hidden;overflow-x: hidden;}
-    .contant h3 {font-size: 50px;text-transform: uppercase;text-align: center;width: 60%;margin: 50px auto;color: var(--sapphire);}
+    .contant {overflow: hidden;}
+    h3 {font-size: 50px;text-transform: uppercase;text-align: center;width: 60%;margin: 50px auto;}
     .condition {position: fixed;top: 0;right: 0;padding: 20px;display: flex;;}
-    .condition a {display: block;text-align: center;text-transform: capitalize;padding: 10px;border: 1px var(--color) solid;color: var(--color);margin: 5px;}
-    .condition a.active {background-color: var(--color);color: white;}
+    .condition a {display: block;text-align: center;text-transform: capitalize;padding: 10px;border-width: 1px;margin: 5px;}
+    .condition a.active {background-color: var(--eee);}
 </style>
 
 <!----------------------------------------------------------------------------------------->
 
 <section class="subject">
     <div class="sider">
+        <u class="ico ico-menu"></u>
         <fold show>
             <tt><a><i class="ico ico-command"></i><h5>basic</h5></a></tt>
             <aside>

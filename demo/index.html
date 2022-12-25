@@ -11,28 +11,16 @@
 
 <link rel="shortcut icon" href="../images/ico.svg">
 <link rel="stylesheet" href="../styles/uigg.css">
+<link rel="stylesheet" href="demo.css">
 
 <script src="../js/jquery.min.js"></script>
 <script src="../js/uigg.js"></script>
+<script src="demo.js"></script>
 </head>
 
 <body>
 
 <style>
-    .sider {width: 260px;background: var(--f7);position: fixed;left: 0;top: 0;height: 100%;display: flex;flex-direction: column;}
-    .sider u {position: absolute;top: 0;display: none;cursor: pointer;background: var(--sapphire);color: var(--fff);}
-    .sider em {display: block;width: 30%;margin: 20px auto;}
-    fold {height: 100%;flex: 1;overflow: auto;}
-    fold::-webkit-scrollbar {width: 5px;}
-    fold::-webkit-scrollbar-thumb {background: var(--eee);}
-    fold aside a {display: block;text-transform: capitalize;line-height: 35px;padding: 0 20px;}
-    fold aside a:hover,
-    fold aside a.active {background-color: var(--eee);}
-
-    .contant {padding-left: 260px;overflow: hidden;}
-    .contant h2 {padding: 20px;font-size: 40px;font-weight: normal;}
-    .contant h2 i {font-size: 40px;float: left;margin: 5px;}
-    .cont {padding: 0 30px;margin: 30px 0;}
     .cont iframe {width: 100%;border: 1px var(--eee) solid;margin: 5px 0;}
     .cont xmp {color: var(--tomato);white-space: pre-wrap;word-break: break-all;cursor: pointer;background: var(--f7);padding: 0 20px 20px;margin: 5px 0;}
     .cont h3 {padding: 20px 0;margin-bottom: 10px;border-bottom-width: 1px;}
@@ -44,17 +32,7 @@
     .cont .btn {width: 200px;margin: 10px 0;font-weight: bold;}
     .cont table xmp {padding: 0;line-height: 50px;}
 
-    @media(max-width:640px) {
-        .sider {width: 80%;z-index: 3;transform: translateX(-100%);}
-        .sider em {width: 30%;margin: .4rem auto;}
-        .sider u {right: -.6rem;width: .6rem;height: .6rem;line-height: .6rem;display: block;}
-        .sider.active {transform: translateX(0);}
-        fold {height: calc(100% - 3rem);overflow: auto;}
-        fold a {padding: 0 .1rem;height: .5rem;line-height: .5rem;font-size: .2rem;}
-        .contant {padding: 0;font-size: .2rem;}
-        .contant h2 {padding: .2rem;font-size: .5rem;}
-        .contant h2 i {font-size: .5rem;margin: .1rem;}
-        .cont {padding: 0 .2rem;margin: .2rem 0;}
+    @media(max-width:640px){
         .cont iframe {margin: .1rem 0;}
         .cont xmp {padding: 0 .2rem .25rem;margin: .1rem 0;border-radius: .1rem;}
         .cont h3 {padding: .1rem 0;}
@@ -656,17 +634,28 @@ class="font-tahoma"
             <input type="color">
             <cite>Lorem ipsum dolor sit amet</cite>
         </li>
-        <li><span>time</span>
+        <li><span>date</span>
             <input class="sml" type="date">
+            <cite>Lorem ipsum dolor sit amet</cite>
+        </li>
+        <li><span>datetime</span>
             <input class="sml" type="datetime-local">
-            <input class="min" type="time">
-            <input class="sml" type="week">
+            <cite>Lorem ipsum dolor sit amet</cite>
+        </li>
+        <li><span>month</span>
             <input class="sml" type="month">
             <cite>Lorem ipsum dolor sit amet</cite>
         </li>
+        <li><span>week</span>
+            <input class="sml" type="week">
+            <cite>Lorem ipsum dolor sit amet</cite>
+        </li>
+        <li><span>time</span>
+            <input class="min" type="time">
+            <cite>Lorem ipsum dolor sit amet</cite>
+        </li>
         <li><span>select</span>
-            <select class="sml"><option selected disabled>select</option><option>select</option></select>
-            <select class="sml"><option selected disabled>select</option><option>select</option></select>
+            <div class="select sml"><select><option selected disabled>select</option><option>select</option></select></div>
             <cite>Lorem ipsum dolor sit amet</cite>
         </li>
         <li><span>robot</span>
@@ -1748,17 +1737,5 @@ https://cdn.jsdelivr.net/npm/uigg/qr/wechat-mssay.svg
 
 <!----------------------------------------------------------------------------------------->
 
-<script>
-    $('.sider u').click(function(){$('.sider').toggleClass('active')})
-    $('fold a').click(function(){
-        $('fold a').removeClass('active')
-        $(this).addClass('active')
-    })
-    $('xmp').click(function(){
-        navigator.clipboard.writeText($(this).html())
-        tipVal = 'Copy successful'
-        tip()
-    })
-</script>
 </body>
 </html>

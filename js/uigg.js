@@ -415,9 +415,13 @@ $(function(){
     $('hop-cont').before('<x></x>')
     $('hop-cont').addClass('anime-fade-in')
     $('hop-cont a:first-child').after('<corner></corner>')
-    let contWidth = $('hop-cont').width(),
-        cornerPos = ($('hop > a').width() + $('hop-cont corner').width())/2
-    cornerPos >= contWidth ? $('hop-cont corner').css('right',contWidth - 30 + 'px') : $('hop-cont corner').css('right',cornerPos + 'px')
+    let contWidth = $('hop-cont').outerWidth(true),
+        cornerPos
+    setTimeout(() => {
+        cornerPos = $('hop > a').outerWidth(true)/2 - 10
+        cornerPos >= contWidth ? $('hop-cont corner').hide() : $('hop-cont corner').css('right',cornerPos + 'px')
+    }, 10);
+    $('hop-cont').css('top',$('hop > a').outerHeight(true) + 'px')
     $('hop > a').click(function(){
         $(this).siblings('hop-cont').toggle()
         $(this).siblings('x').toggle()
