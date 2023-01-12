@@ -58,7 +58,7 @@
                 <li><a><i class="ico ico-set"></i>setting</a></li>
                 <li><a><i class="ico ico-app"></i>classify</a>
                     <div class="sider-group anime-fade-in">
-                        <a href="">classify add</a>
+                        <a href="" class="active">classify add</a>
                         <a href="">classify edit</a>
                     </div>
                 </li>
@@ -135,6 +135,7 @@
                 <div class="title">
                     <h5>title</h5><cite>Prompt text description</cite><u></u>
                     <a href="" class="btn btn-med">submit</a>
+                    <a href="" class="btn btn-med">submit</a>
                 </div>
                 <div class="item">
                     <div class="article">
@@ -159,7 +160,7 @@
                     <div class="form control">
                         <li><span>input</span><input type="text"></li>
                         <li><span>select</span>
-                            <select><option>select</option><option>select</option></select>
+                            <div class="select"><select><option selected disabled>select</option><option>select</option></select></div>
                         </li>
                         <li><span>time</span>
                             <input type="date">
@@ -408,14 +409,18 @@
                 </div>
                 <div class="item">
                     <fold>
-                        <tt><a><h5><uigg-title></uigg-title></h5></a></tt>
-                        <aside><uigg-txt></uigg-txt></aside>
-                        <tt><a><h5><uigg-title></uigg-title></h5></a></tt>
-                        <aside><uigg-txt></uigg-txt></aside>
-                        <tt><a><h5><uigg-title></uigg-title></h5></a></tt>
-                        <aside><uigg-txt></uigg-txt></aside>
-                        <tt><a><h5><uigg-title></uigg-title></h5></a></tt>
-                        <aside><uigg-txt></uigg-txt></aside>
+                        <fold-group>
+                            <a><fold-title><uigg-title></uigg-title><u></u></fold-title></a>
+                            <fold-cont><uigg-txt></uigg-txt></fold-cont>
+                        </fold-group>
+                        <fold-group>
+                            <fold-title><uigg-title></uigg-title><u></u></fold-title>
+                            <fold-cont><uigg-txt></uigg-txt></fold-cont>
+                        </fold-group>
+                        <fold-group>
+                            <fold-title><uigg-title></uigg-title><u></u></fold-title>
+                            <fold-cont><uigg-txt></uigg-txt></fold-cont>
+                        </fold-group>
                     </fold>
                 </div>
             </div>

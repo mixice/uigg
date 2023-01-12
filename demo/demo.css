@@ -6,9 +6,9 @@
 fold {height: 100%;flex: 1;overflow: auto;}
 fold::-webkit-scrollbar {width: 5px;}
 fold::-webkit-scrollbar-thumb {background: var(--eee);}
-fold aside a {display: block;text-transform: capitalize;line-height: 35px;padding: 0 20px;}
-fold aside a:hover,
-fold aside a.active {background-color: var(--eee);}
+fold-cont a {display: block;text-transform: capitalize;line-height: 35px;padding: 0 20px;}
+fold-cont a:hover,
+fold-cont a.active {background-color: var(--eee);}
 
 .contant {flex: 1;min-width: 0;height: 100%;overflow: auto;padding: 30px;}
 .contant h2 {padding: 20px 0;font-size: 40px;font-weight: normal;}

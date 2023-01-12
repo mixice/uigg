@@ -37,8 +37,8 @@ document.onreadystatechange = function(){if(document.readyState == 'complete') $
 setTimeout(function(){$('load').hide()},6000);
 
 //----------------------------------------------------------------------------------browser
-let OsObject = navigator.userAgent
-if(OsObject.indexOf('MSIE') != -1 || OsObject.indexOf('Trident') != -1) $('body').html('<msie>please use another browser</msie>')
+let userAgent = JSON.stringify(navigator.userAgentData.brands)
+if(userAgent.indexOf('MSIE') != -1 || userAgent.indexOf('Trident') != -1) $(function(){$('body').html('<msie>please use another browser</msie>')})
 
 //----------------------------------------------------------------------------------music
 $(function(){
@@ -59,7 +59,6 @@ $(function(){
         else{$(this).removeAttr('pause');$('#music')[0].play()}
     })
 });
-
 //----------------------------------------------------------------------------------fullscreen
 $(document).on('click','.fullscreen', function toggleFullScreen(){
     if(document.fullscreenElement !== undefined && document.fullscreenElement === null){
@@ -414,13 +413,6 @@ $(function(){
 $(function(){
     $('hop-cont').before('<x></x>')
     $('hop-cont').addClass('anime-fade-in')
-    $('hop-cont a:first-child').after('<corner></corner>')
-    let contWidth = $('hop-cont').outerWidth(true),
-        cornerPos
-    setTimeout(() => {
-        cornerPos = $('hop > a').outerWidth(true)/2 - 10
-        cornerPos >= contWidth ? $('hop-cont corner').hide() : $('hop-cont corner').css('right',cornerPos + 'px')
-    }, 10);
     $('hop-cont').css('top',$('hop > a').outerHeight(true) + 'px')
     $('hop > a').click(function(){
         $(this).siblings('hop-cont').toggle()
@@ -473,23 +465,25 @@ $(function(){
 
 //----------------------------------------------------------------------------------fold
 $(function(){
-    $('fold tt a').append('<s class="ico ico-alone-bottom"></s>')
-    $('fold aside').addClass('anime-fade-in')
+    $('fold-title u').after('<s class="ico ico-alone-bottom"></s>')
+    $('fold-cont').addClass('anime-fade-in')
     if(typeof($('fold').attr('show')) == 'undefined'){
-        $('fold tt').click(function(){
-            let foldCont = $(this).next()
+        $('fold-title').click(function(){
+            let foldCont = $(this).parents('fold-group').find('fold-cont')
             if($(this).hasClass('active')){$(this).removeClass('active');foldCont.hide()}
             else{
-                foldCont.show().siblings('fold aside').hide()
-                $(this).addClass('active').siblings().removeClass('active')
+                $('fold-cont').hide()
+                foldCont.show()
+                $('fold-title').removeClass('active')
+                $(this).addClass('active')
             }
         })
     }else{
-        $('fold tt').addClass('active')
-        $('fold aside').css('display','block')
-        $('fold tt').click(function(){
+        $('fold-title').addClass('active')
+        $('fold-cont').show()
+        $('fold-title').click(function(){
             $(this).toggleClass('active')
-            $(this).next().toggle()
+            $(this).parents('fold-group').find('fold-cont').toggle()
         })
     }
 });
@@ -602,6 +596,22 @@ $(function(){
         langType = $(this).attr('lang-set')
         setCookie('lang', langType, '72')
         lang()
+    })
+});
+
+//----------------------------------------------------------------------------------clue
+$(function(){
+    $('*[title]').hover(function(){
+        if($(this).attr('clue') == undefined){
+            $(this).attr('clue',$(this).attr('title')).append('<clue class="corner anime-fade-in">' + $(this).attr('clue') + '</clue>').removeAttr('title')
+            let clue = $(this).find('clue'),
+                clueWidth = clue.width(),
+                selfWidth = $(this).width()
+            if(clueWidth > selfWidth){
+                let lft = - (clueWidth - selfWidth) / 2 - 10
+                clue.css('left',lft)
+            }
+        }
     })
 });
 

@@ -132,6 +132,7 @@ drop-list a:hover {background-color: var(--color-basic);}
 .title .ico {margin: inherit;padding: 0 10px;}
 .title cite {font-weight: normal;color: var(--color-light);padding: 0 20px;}
 .title .return {border-right: 1px var(--color-light) solid;margin-right: 20px;}
+.title a {margin-left: 5px;}
 
 .contant .title {border-bottom: 1px var(--color-light) solid;padding: 0 20px;}
 
@@ -141,6 +142,7 @@ drop-list a:hover {background-color: var(--color-basic);}
     .title cite {padding: 0 .2rem;}
     .title .return {margin-right: .2rem;}
     .contant .title {padding: 0 .2rem;}
+    .title a {margin-left: .1rem;}
 }
 
 /*page*/
@@ -213,7 +215,7 @@ page a.active {background-color: var(--color-basic);box-shadow: 0 3px 5px var(--
 .table table thead tr,
 .table table tfoot tr {background: var(--color-white);}
 .table table thead td,
-.table table thead th {border-bottom: 1px var(--color-basic) solid;color: var(--333);}
+.table table thead th {border-bottom: 1px var(--color-basic) solid;}
 .table table tbody tr:nth-child(2n),
 .table table tbody tr:hover {background-color: var(--color-white);}
 .table table td input {height: 30px;width: auto;border:1px var(--color-light) solid;text-align: center;}
@@ -233,8 +235,8 @@ page a.active {background-color: var(--color-basic);box-shadow: 0 3px 5px var(--
 /*form*/
 input, select, textarea {border: 1px var(--color-light) solid;}
 input, .form .input, .form select, .form textarea {background-color: transparent;}
-input:focus,
-textarea:focus {box-shadow: var(--color-shadow);}
+input:not([readonly]):focus,
+textarea:not([readonly]):focus {box-shadow: var(--color-shadow);}
 o {color: var(--color-basic);}
 
 .form {padding: 10px;overflow: hidden;}
@@ -249,13 +251,16 @@ o {color: var(--color-basic);}
 .control li {float: left;width: 20%;display: flex;}
 .control li input,
 .control li .input,
-.control li select {width: 100%;flex: 1;}
+.control li .select {width: 100%;flex: 1;}
 .control span,
 .control input,
 .control .input,
 .control .input i,
+.control .select,
+.control .select::after,
 .control select {height: 40px;}
 .control span,
+.control .select::after,
 .control .input i {line-height: 40px;}
 .control .input i {width: 40px;}
 .control li span {width: auto !important;}
@@ -273,8 +278,11 @@ o {color: var(--color-basic);}
     .control input,
     .control .input,
     .control .input i,
+    .control .select,
+    .control .select::after,
     .control select {height: .6rem;}
     .control span,
+    .control .select::after,
     .control .input i {line-height: .6rem;}
     .control .input i {width: .5rem;}
     .control li span {width: 1.4rem !important;}
@@ -367,25 +375,24 @@ pop-cont {padding: 20px 0;}
 .login-form {padding: 0;}
 .login-form li {position: relative;display: flex;padding: 0 10px;}
 .login-form li:last-child {border-bottom: 0;}
-.login-form li *:last-child {margin-right: 0;}
 .login-form li i {width: 50px;position: absolute;left: 15px;top:5px;line-height: 50px;}
-.login-form li input {padding: 0 10px 0 50px;}
-.login-form li .btn {width: 100%;margin: 30px 0;}
-.login-info {padding: 0 10px 10px;overflow: hidden;}
+.login-form li input {padding: 0 10px 0 50px;flex: 1;}
+.login-form li .btn {width: 100%;margin: 20px 5px;font-weight: bold;}
+.login-info {padding: 0 15px 10px;overflow: hidden;}
 .login-info a {}
 .login-info a:hover {color: var(--color-basic);}
-.login-tip {height: 35px;line-height: 35px;color: white;text-align: center;clear: both;display: none;}
+.login-tip {height: 35px;line-height: 35px;color: white;text-align: center;clear: both;display: none;margin: 5px 15px;}
 
 @media(max-width:640px) {
     .login-title {padding: .1rem 0;}
     .login-title h1 {margin: .15rem auto;}
     .login-form {padding: 0 .1rem;}
-    .login-form li {padding: 0;}
-    .login-form li i {width: .7rem;line-height: .7rem;top: 0;left: 0;}
+    .login-form li {padding: .05rem 0;}
+    .login-form li i {width: .7rem;line-height: .8rem;top: 0;left: 0;}
     .login-form li input {padding: 0 .1rem 0 .7rem;}
     .login-form li .btn {margin: .3rem 0;font-size: .24rem;}
     .login-info {padding: 0 .1rem .1rem;}
-    .login-tip {height: .4rem;line-height: .4rem;}
+    .login-tip {height: .4rem;line-height: .4rem;margin: .1rem 0;}
 }
 
 
