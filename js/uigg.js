@@ -37,8 +37,9 @@ document.onreadystatechange = function(){if(document.readyState == 'complete') $
 setTimeout(function(){$('load').hide()},6000);
 
 //----------------------------------------------------------------------------------browser
-let userAgent = JSON.stringify(navigator.userAgentData.brands)
-if(userAgent.indexOf('MSIE') != -1 || userAgent.indexOf('Trident') != -1) $(function(){$('body').html('<msie>please use another browser</msie>')})
+//let userAgent = JSON.stringify(navigator.userAgentData.brands)
+let userAgent = JSON.stringify(navigator.userAgent)
+if(userAgent.indexOf('MSIE') != -1 || userAgent.indexOf('Trident') != -1) $(function(){$('body').html('<msie>please use another browser</msie>')});
 
 //----------------------------------------------------------------------------------music
 $(function(){

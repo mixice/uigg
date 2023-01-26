@@ -1,5 +1,5 @@
 $(function(){
-    $('.sider u').click(function(){$('.sider').toggleClass('active')})
+    $('.sider x').click(function(){$('.sider').toggleClass('active')})
     $('fold a').click(function(){
         $('fold a').removeClass('active')
         $(this).addClass('active')

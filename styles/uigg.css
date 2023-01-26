@@ -1095,7 +1095,7 @@ chat-control .ico-paperplane {margin: 10px;background-color: var(--color);color:
 fold {}
 fold-title {border-bottom-width: 1px;display: flex;align-items: center;cursor: pointer;padding: 10px;}
 fold-title u {flex: 1;}
-fold-title h5 {flex: 1;min-width: 0;line-height: 30px;}
+fold-title h5 {min-width: 0;line-height: 30px;}
 fold-title .ico {width: 40px;margin: inherit;}
 fold-title.active s {transform: rotate(180deg);}
 fold-cont {display: none;padding: 10px;}
