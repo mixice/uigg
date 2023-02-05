@@ -875,7 +875,7 @@ msie {width: 100vw;height: 100vh;display: flex;justify-content: center;align-ite
 .anew.btn:hover {transform: translateY(-5px);}
 
 @media(max-width:640px) {
-    .anew.btn {right: .2rem;width: .7rem;height: .7rem;margin: .2rem;font-size: .32rem;}
+    .anew.btn {width: .7rem;height: .7rem;margin: .2rem;font-size: .32rem;}
     .anew.btn:hover {transform: translateY(0);}
 }
 
@@ -975,7 +975,6 @@ empty div {text-align: center;}
 hop {position: relative;}
 hop x {width: 100vw;height: 100vh;position: fixed;top: 0;left: 0;display: none;}
 hop a {height: 50px;line-height: 50px;min-width: 50px;display: block;text-align: center;user-select: none;}
-hop > a {box-sizing: content-box;}
 hop-cont {position: absolute;box-shadow: 0 5px 10px var(--000-1);border-radius: 5px;display: none;}
 hop-cont[right] {right: 0;}
 hop-cont a {background-color: white;border-bottom-width: 1px;text-transform: capitalize;white-space: nowrap;padding: 0 10px;}

@@ -18,47 +18,37 @@
 <style>
 	body {padding: 30px;}
 	h2 {padding: 30px 0;}
-    * {transition-duration: 0s !important;}
-    .tox-statusbar__branding {display: none;}
+
+	.tox-statusbar__branding {display: none;}
+	.tox-tinymce {border-width: 1px !important;border-radius: 0 !important;}
+	.tox:not(.tox-tinymce-inline) .tox-editor-header {box-shadow: none !important;border-bottom: 1px var(--eee) solid !important;}
+	.tox-simple + .tox-tinymce .tox-statusbar {display: none;}
 </style>
 
 <!----------------------------------------------------------------------------------------->
+
 <h2>simple</h2>
-<textarea class="simple"></textarea>
-<h2>free</h2>
-<textarea class="free"></textarea>
-<h2>premium</h2>
-<textarea class="premium"></textarea>
+<textarea class="tox-simple"></textarea>
+<h2>full</h2>
+<textarea class="tox-full"></textarea>
 
 <!----------------------------------------------------------------------------------------->
 
 <script>
 	tinymce.init({
-		selector: '.simple',
+		selector: '.tox-simple',
 		menubar: false,
 		language: 'zh_CN',
-		plugins: 'image link media table',
-		toolbar: 'undo redo fontsize bold italic underline strikethrough align removeformat link image media table',
+		plugins: 'image link media',
+		toolbar: 'undo redo styles fontsize bold italic underline strikethrough align removeformat link image media',
     })
-
 	tinymce.init({
-		selector: '.free',
+		selector: '.tox-full',
 		language: 'zh_CN',
 		plugins: 'save autosave anchor link autolink charmap codesample emoticons image lists advlist media searchreplace table visualblocks wordcount fullscreen code directionality help insertdatetime pagebreak nonbreaking preview visualchars',
-		toolbar: 'save undo redo restoredraft | blocks fontfamily fontsize | bold italic underline strikethrough | align lineheight numlist bullist indent outdent ltr rtl | link image media table | emoticons charmap anchor codesample insertdatetime nonbreaking pagebreak | removeformat visualchars visualblocks wordcount code searchreplace preview fullscreen',
+		toolbar: 'save undo redo restoredraft | styles blocks fontfamily fontsize | bold italic underline strikethrough | align lineheight numlist bullist indent outdent ltr rtl | link image media table | emoticons charmap anchor codesample insertdatetime nonbreaking pagebreak | removeformat visualchars visualblocks wordcount code searchreplace preview fullscreen',
     })
-
-	tinymce.init({
-		selector: '.premium',
-		language: 'zh_CN',
-		plugins: 'save autosave anchor link autolink charmap codesample emoticons image lists advlist checklist media searchreplace table visualblocks wordcount mediaembed casechange export formatpainter pageembed linkchecker a11ychecker tinymcespellchecker permanentpen powerpaste advtable advcode editimage tableofcontents footnotes autocorrect typography inlinecss fullscreen  directionality help insertdatetime pagebreak nonbreaking preview visualchars',
-		toolbar: 'save export undo redo restoredraft | blocks fontfamily fontsize | bold italic underline strikethrough casechange permanentpen | language spellchecker spellcheckdialog a11ycheck typography | align lineheight numlist bullist indent outdent ltr rtl | link image media table pageembed editimage tableofcontents | checklist footnotes emoticons charmap anchor codesample insertdatetime nonbreaking pagebreak | removeformat formatpainter visualchars visualblocks wordcount code searchreplace preview fullscreen',
-		content_langs: [
-			{ title: 'English (US)', code: 'en_US' },
-			{ title: 'Chinese', code: 'zh' }
-		]
-    })
-  </script>
+</script>
 
 </body>
 </html>

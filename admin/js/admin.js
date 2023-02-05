@@ -19,6 +19,6 @@ $(function(){
             $(this).addClass('active')
             $(this).next().show()
         }
-    })
+    });
 
 })
