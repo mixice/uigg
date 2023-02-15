@@ -1,5 +1,5 @@
 /*
- * uigg 2.3 (build 20221111)
+ * uigg 2.4 (build 20230202)
  * Project: https://ui.gg
  * Author: http://www.mixice.com
  * Github: https://github.com/mixice/uigg
@@ -22,11 +22,11 @@ $(function(){
     let docElement = doc.documentElement,
         resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
         recalc = function(){
-        let viewWidth = docElement.clientWidth
-        if(viewWidth > 640) viewWidth = 640
-        if(viewWidth < 320) viewWidth = 320
-        docElement.style.fontSize = 100 * (viewWidth / 640) + 'px'
-    }
+            let viewWidth = docElement.clientWidth
+            if(viewWidth > 640) viewWidth = 640
+            if(viewWidth < 320) viewWidth = 320
+            docElement.style.fontSize = 100 * (viewWidth / 640) + 'px'
+        }
     recalc()
     if(!doc.addEventListener) return
     win.addEventListener(resizeEvt, recalc, false)
@@ -43,9 +43,11 @@ if(userAgent.indexOf('MSIE') != -1 || userAgent.indexOf('Trident') != -1) $(func
 
 //----------------------------------------------------------------------------------music
 $(function(){
-    $('music').addClass('ico')
-    $('music audio').attr('id','music').attr('autoplay','').attr('loop','')
-    $('music').show()
+    $('music').addClass('ico').find('audio').attr('id','music').attr('autoplay','').attr('loop','')
+    if($('music').attr('pause') == '') $('#music')[0].pause()
+    $('music').click(function(){
+        $(this).attr('pause') == '' ? $(this).removeAttr('pause').find('#music')[0].play() : $(this).attr('pause','').find('#music')[0].pause()
+    })
     document.addEventListener('DOMContentLoaded',function(){
         function audioAutoPlay(){
             let audio = document.getElementById('music')
@@ -53,11 +55,6 @@ $(function(){
             document.addEventListener('WeixinJSBridgeReady',function(){audio.play()},false)
         }
         audioAutoPlay()
-    })
-    if(typeof($('music').attr('pause')) == 'undefined'){}else{$('#music')[0].pause()}
-    $('music').click(function(){
-        if(typeof($(this).attr('pause')) == 'undefined'){$(this).attr('pause','');$('#music')[0].pause()}
-        else{$(this).removeAttr('pause');$('#music')[0].play()}
     })
 });
 //----------------------------------------------------------------------------------fullscreen
@@ -468,23 +465,13 @@ $(function(){
 $(function(){
     $('fold-title u').after('<s class="ico ico-alone-bottom"></s>')
     $('fold-cont').addClass('anime-fade-in')
-    if(typeof($('fold').attr('show')) == 'undefined'){
-        $('fold-title').click(function(){
-            let foldCont = $(this).parents('fold-group').find('fold-cont')
-            if($(this).hasClass('active')){$(this).removeClass('active');foldCont.hide()}
-            else{
-                $('fold-cont').hide()
-                foldCont.show()
-                $('fold-title').removeClass('active')
-                $(this).addClass('active')
-            }
-        })
+    if($('fold').attr('show') == ''){
+        $('fold-group').addClass('active')
+        $('fold-title').click(function(){$(this).parents('fold-group').toggleClass('active')})
     }else{
-        $('fold-title').addClass('active')
-        $('fold-cont').show()
         $('fold-title').click(function(){
-            $(this).toggleClass('active')
-            $(this).parents('fold-group').find('fold-cont').toggle()
+            let foldActive = $(this).parents('fold-group')
+            foldActive.hasClass('active') ? foldActive.removeClass('active') : foldActive.addClass('active').siblings().removeClass('active')
         })
     }
 });
@@ -609,8 +596,8 @@ $(function(){
                 clueWidth = clue.width(),
                 selfWidth = $(this).width()
             if(clueWidth > selfWidth){
-                let lft = - (clueWidth - selfWidth) / 2 - 10
-                clue.css('left',lft)
+                let clueLeft = - (clueWidth - selfWidth) / 2 - 10
+                clue.css('left',clueLeft)
             }
         }
     })

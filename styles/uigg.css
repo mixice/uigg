@@ -1,5 +1,5 @@
 /*
- * uigg 2.3 (build 20221111)
+ * uigg 2.4 (build 20230202)
  * Project: https://ui.gg
  * Author: http://www.mixice.com
  * Github: https://github.com/mixice/uigg
@@ -16,7 +16,7 @@ h1,h2,h3,h4,h5,h6,p,blockquote,pre,
 abbr,address,cite,code,tt,
 del,dfn,em,img,ins,kbd,q,samp,
 big,small,strong,sub,sup,var,
-b,i,a,s,u,
+b,i,a,s,u,x,o,z,d,h,m,
 dl,dt,dd,ol,ul,li,
 fieldset,form,label,legend,
 table,caption,tbody,tfoot,thead,tr,th,td,
@@ -24,7 +24,6 @@ article,aside,canvas,details,figcaption,figure,
 footer,header,hgroup,nav,section,summary,
 button,input,select,textarea,optgroup,
 time,mark,audio,video,marquee,
-x,o,z,d,h,m,
 menu,menu-cont,menu-group,menu-list,
 name,name-logo,name-search,
 tab,tab-list,tab-cont,tab-group,
@@ -56,6 +55,7 @@ p {margin: 0;line-height: 180%;text-align: justify;}
 ul,li {list-style: none;}
 ul {overflow: hidden;}
 z {display: inline-block;transition-duration: 0s;}
+u {flex: 1;}
 
 ::selection {background-color: var(--333);color: var(--ccc);text-shadow: none;}
 ::-webkit-scrollbar {background-color: transparent;width: 10px;}
@@ -409,7 +409,7 @@ pop-title h3 {width: 100%;line-height: 50px;padding: 0 20px;flex: 1;min-width: 0
 pop-title h3:nth-child(2) {padding: 0;}
 pop-title .ico {line-height: 50px;width: 50px;height: 50px;}
 pop-title .close:after {content: '\e826';}
-pop-cont {background-color: white;display: block;max-height: 80%;overflow: auto;}
+pop-cont {background-color: white;display: block;max-height: 80vh;overflow: auto;}
 pop-solve {display: flex;}
 pop-solve .btn {width: 100%;border-radius: 0;box-shadow: none;}
 pop-solve .btn:hover {transform: translate(0);}
@@ -1093,11 +1093,11 @@ chat-control .ico-paperplane {margin: 10px;background-color: var(--color);color:
 /* fold */
 fold {}
 fold-title {border-bottom-width: 1px;display: flex;align-items: center;cursor: pointer;padding: 10px;}
-fold-title u {flex: 1;}
 fold-title h5 {min-width: 0;line-height: 30px;}
 fold-title .ico {width: 40px;margin: inherit;}
-fold-title.active s {transform: rotate(180deg);}
 fold-cont {display: none;padding: 10px;}
+fold-group.active fold-cont {display: block;}
+fold-group.active fold-title s {transform: rotate(180deg);}
 
 @media(max-width:640px) {
     fold-title {padding: .1rem;}
@@ -1141,15 +1141,15 @@ crumb li a:hover {color: var(--color);}
 }
 
 /* clue */
-clue {position: absolute;top: 150%;left: 0;right: 0;margin: auto;background-color: var(--000-8);border-radius: 10px;display: none;text-align: center;width: fit-content;min-width: 70px;padding: 10px;max-width: 300px;word-break: break-all;font-size: 14px;font-weight: normal;color: white;}
+clue {position: absolute;top: calc(100% + 15px);left: 0;right: 0;margin: auto;background-color: var(--000-8);border-radius: 10px;display: none;text-align: center;width: fit-content;min-width: 70px;padding: 10px;max-width: 300px;word-break: break-all;font-size: 14px;font-weight: normal;color: white;}
 clue.corner {position: absolute;}
 clue.corner::after {border-width: 0 10px 10px 10px;border-bottom-color: var(--000-8);top: -10px;left: 0;right: 0;}
-*[clue] {position: relative;}
+*[clue] {position: relative;cursor: pointer;}
 *[clue]:hover clue {display: block;}
 
 @media(max-width:640px) {
-    clue {border-radius: .1rem;min-width: 1rem;max-width: 3rem;font-size: .2rem;}
-    clue.corner::after {border-width: 0 .1rem .1rem .1rem;top: -.1rem;}
+    clue {top: calc(100% + .15rem);border-radius: .1rem;min-width: 1rem;max-width: 3rem;font-size: .2rem;}
+    clue.corner::after {border-width: 0 .1rem .1rem .1rem;top: -.09rem;}
 }
 
 /* reminder */

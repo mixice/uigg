@@ -23,17 +23,13 @@
     .swiper-slide {background-color: var(--f7);font-size: .6rem;text-transform: uppercase;font-weight: bold;color: var(--eee);text-align: center;}
 
     .swiper-gallery,
-    .swiper-lug,
-    .swiper-relative {height: 100%;display: flex;flex-direction: column;}
+    .swiper-lug {height: 100%;display: flex;flex-direction: column;}
     .gallery-top,
     .lug-top,
-    .swiper-hash,
-    .relative-top {flex: 1;}
-    .gallery-thumb,
-    .relative-thumb {height: 180px;}
+    .swiper-hash {flex: 1;}
+    .gallery-thumb {height: 180px;}
     .swiper-list .swiper-slide,
-    .gallery-thumb .swiper-slide,
-    .relative-thumb .swiper-slide {font-size: .3rem;}
+    .gallery-thumb .swiper-slide {font-size: .3rem;}
     .lug-thumbs a {height: 60px;line-height: 60px;font-size: 16px;padding: 0 20px;font-weight: bold;background-color: var(--eee);text-transform: uppercase;}
     .lug-thumbs a.active {background-color: var(--f7);}
     .swiper-coverflow .swiper-slide {width:60%;}
@@ -60,7 +56,6 @@
                     <a class="smooth" href="#list">list</a>
                     <a class="smooth" href="#vertical">vertical</a>
                     <a class="smooth" href="#gallery">gallery</a>
-                    <a class="smooth" href="#relative">relative</a>
                     <a class="smooth" href="#animate">animate</a>
                     <a class="smooth" href="#lug">lug</a>
                     <a class="smooth" href="#hash">hash</a>
@@ -111,6 +106,9 @@
                     <div class="swiper-slide center">one</div>
                     <div class="swiper-slide center">two</div>
                     <div class="swiper-slide center">three</div>
+                    <div class="swiper-slide center">four</div>
+                    <div class="swiper-slide center">five</div>
+                    <div class="swiper-slide center">six</div>
                 </div>
                 <div class="swiper-pagination"></div>
                 <div class="swiper-button-next"></div>
@@ -120,7 +118,6 @@
                         slidesPerView: 3,
                         //slidesPerGroup: 3
                         loop: true,
-                        loopFillGroupWithBlank: true,
                         pagination: {
                             el: '.swiper-pagination',
                             clickable: true,
@@ -179,6 +176,9 @@
                         <div class="swiper-slide center">three</div>
                         <div class="swiper-slide center">four</div>
                         <div class="swiper-slide center">five</div>
+                        <div class="swiper-slide center">six</div>
+                        <div class="swiper-slide center">seven</div>
+                        <div class="swiper-slide center">eight</div>
                     </div>
                     <div class="swiper-button-next"></div>
                     <div class="swiper-button-prev"></div>
@@ -190,64 +190,27 @@
                         <div class="swiper-slide center">three</div>
                         <div class="swiper-slide center">four</div>
                         <div class="swiper-slide center">five</div>
+                        <div class="swiper-slide center">six</div>
+                        <div class="swiper-slide center">seven</div>
+                        <div class="swiper-slide center">eight</div>
                     </div>
                 </div>
                 <script>
                     var galleryThumbs = new Swiper('.gallery-thumb',{
                         spaceBetween: 10,
                         slidesPerView: 4,
-                        freeMode: true,
                         loop: true,
-                        loopedSlides: 5, //looped slides should be the same
                         watchSlidesVisibility: true,
                         watchSlidesProgress: true,
                     })
                     var galleryTop = new Swiper('.gallery-top', {
                         spaceBetween: 10,
                         loop:true,
-                        loopedSlides: 5, //looped slides should be the same
                         navigation: {
                             nextEl: '.swiper-button-next',
                             prevEl: '.swiper-button-prev',
                         },
                         thumbs: {swiper: galleryThumbs,},
-                    })
-                </script>
-            </section>
-        </div>
-        <div class="item" id="relative">
-            <section class="swiper-relative">
-                <div class="swiper relative-top">
-                    <div class="swiper-wrapper">
-                        <div class="swiper-slide center">one</div>
-                        <div class="swiper-slide center">two</div>
-                        <div class="swiper-slide center">three</div>
-                        <div class="swiper-slide center">four</div>
-                        <div class="swiper-slide center">five</div>
-                    </div>
-                </div>
-                <div class="swiper relative-thumb">
-                    <div class="swiper-wrapper">
-                        <div class="swiper-slide center">one</div>
-                        <div class="swiper-slide center">two</div>
-                        <div class="swiper-slide center">three</div>
-                        <div class="swiper-slide center">four</div>
-                        <div class="swiper-slide center">five</div>
-                    </div>
-                </div>
-                <script>
-                    var relativeTop = new Swiper('.relative-top',{
-                        loop: true,
-                        loopedSlides: 5,
-                    })
-                    var relativeThumb = new Swiper('.relative-thumb',{
-                        spaceBetween: 10,
-                        slidesPerView : 5,
-                        centeredSlides : true,
-                        loop: true,
-                        loopedSlides: 5,
-                        slideToClickedSlide: true,
-                        controller: {control: relativeTop},
                     })
                 </script>
             </section>

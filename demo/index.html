@@ -1294,6 +1294,8 @@ class="touch-all"
         <div class="cont" id="swiper">
             <h3>swiper</h3>
             <p>You can go to swiper to see more parameters. UIGG only provides a few common models</p>
+            <h5>about loop</h5>
+            <p>Amount of slides in loop mode should be at least 2x of <span>slidesPerView</span> value</p>
             <a class="btn shadow" href="https://swiperjs.com/swiper-api" target="_blank">Swiper API</a>
             <h5>swiper banner code</h5>
             <p>Add the code to the DOM</p>
@@ -1338,6 +1340,9 @@ class="touch-all"
         <div class="swiper-slide"></div>
         <div class="swiper-slide"></div>
         <div class="swiper-slide"></div>
+        <div class="swiper-slide"></div>
+        <div class="swiper-slide"></div>
+        <div class="swiper-slide"></div>
     </div>
     <div class="swiper-pagination"></div>
     <div class="swiper-button-next"></div>
@@ -1347,7 +1352,6 @@ class="touch-all"
             slidesPerView: 3,
             //slidesPerGroup: 3
             loop: true,
-            loopFillGroupWithBlank: true,
             pagination: {
                 el: '.swiper-pagination',
                 clickable: true,
@@ -1408,6 +1412,11 @@ class="touch-all"
             <div class="swiper-slide"></div>
             <div class="swiper-slide"></div>
             <div class="swiper-slide"></div>
+            <div class="swiper-slide"></div>
+            <div class="swiper-slide"></div>
+            <div class="swiper-slide"></div>
+            <div class="swiper-slide"></div>
+            <div class="swiper-slide"></div>
         </div>
         <div class="swiper-button-next"></div>
         <div class="swiper-button-prev"></div>
@@ -1417,62 +1426,29 @@ class="touch-all"
             <div class="swiper-slide"></div>
             <div class="swiper-slide"></div>
             <div class="swiper-slide"></div>
+            <div class="swiper-slide"></div>
+            <div class="swiper-slide"></div>
+            <div class="swiper-slide"></div>
+            <div class="swiper-slide"></div>
+            <div class="swiper-slide"></div>
         </div>
     </div>
     <script>
         var galleryThumbs = new Swiper('.gallery-thumb',{
             spaceBetween: 10,
             slidesPerView: 4,
-            freeMode: true,
             loop: true,
-            loopedSlides: 5, //looped slides should be the same
             watchSlidesVisibility: true,
             watchSlidesProgress: true,
         })
         var galleryTop = new Swiper('.gallery-top',{
             spaceBetween: 10,
             loop:true,
-            loopedSlides: 5, //looped slides should be the same
             navigation: {
                 nextEl: '.swiper-button-next',
                 prevEl: '.swiper-button-prev',
             },
             thumbs: {swiper: galleryThumbs},
-        })
-    </script>
-</section>
-</xmp>
-            <h5>swiper relative code</h5>
-            <p>Add the code to the DOM</p>
-<xmp>
-<section class="swiper-relative">
-    <div class="swiper relative-top">
-        <div class="swiper-wrapper">
-            <div class="swiper-slide"></div>
-            <div class="swiper-slide"></div>
-            <div class="swiper-slide"></div>
-        </div>
-    </div>
-    <div class="swiper relative-thumb">
-        <div class="swiper-wrapper">
-            <div class="swiper-slide"></div>
-            <div class="swiper-slide"></div>
-            <div class="swiper-slide"></div>
-        </div>
-    </div>
-    <script>
-        var relativeTop = new Swiper('.relative-top',{
-            loop: true,
-            loopedSlides: 5,
-        })
-        var relativeThumb = new Swiper('.relative-thumb',{
-            spaceBetween: 10,
-            slidesPerView : 5,
-            centeredSlides : true,
-            loop: true,
-            loopedSlides: 5,
-            slideToClickedSlide: true,
-            controller: {control: relativeTop},
         })
     </script>
 </section>
