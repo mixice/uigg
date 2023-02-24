@@ -7,7 +7,7 @@
  */
 
 /* import */
-@import url('https://ui.gg/lib/font/font.css');
+/* @import url('https://ui.gg/lib/font/font.css'); */
 @import url('ico.css');
 
 /* basic */
@@ -29,7 +29,6 @@ name,name-logo,name-search,
 tab,tab-list,tab-cont,tab-group,
 drop,drop-cont,drop-list,
 chat,chat-title,chat-sider,chat-cont,chat-list,chat-message,chat-tool,chat-control,chat-tip,
-uigg-title,uigg-txt,uigg-emot,
 pop,pop-main,pop-title,pop-cont,pop-solve,pop-choice,pop-sider,
 hop,hop-cont,
 fold,fold-title,fold-cont,
@@ -40,7 +39,6 @@ name,name-logo,name-search,
 tab,tab-list,tab-cont,tab-group,
 drop,drop-cont,drop-list,
 chat,chat-title,chat-sider,chat-cont,chat-list,chat-message,chat-tool,chat-control,chat-tip,
-uigg-emot,
 pop,pop-main,pop-title,pop-cont,pop-solve,pop-choice,pop-sider,
 hop,hop-cont,
 fold,fold-title,fold-cont,
@@ -452,7 +450,7 @@ tip {position: fixed;top: 50%;left: 50%;z-index: 999;padding: 10px 15px;backgrou
 .btn-disable:hover {transform: translateY(0);cursor: no-drop;}
 
 @media(max-width:640px) {
-	.btn {height: .8rem;line-height: .8rem;padding: 0 .2rem;font-size: .22rem;font-weight: bold;}
+	.btn {height: .8rem;line-height: .8rem;padding: 0 .2rem;}
 	.btn:hover {transform: translateY(0);}
     .btn .ico {margin: .05rem;}
 }
@@ -582,7 +580,7 @@ input[type="file"],
 input[type="color"] {padding: 0;background: none !important;border: 0;}
 input[type="range"]::-webkit-slider-runnable-track {height: 4px;background-color: var(--color);}
 input[type="range"]::-webkit-slider-thumb {width: 24px;height: 24px;background-color: var(--color);border-radius: 100%;margin-top: -10px;box-shadow: 0 3px 6px var(--color);}
-input[type="file"]::-webkit-file-upload-button {background-color: var(--color);border: 0;cursor: pointer;height: 50px;color: white;border-radius: 2px;text-transform: capitalize;padding: 0 20px;}
+input[type="file"]::-webkit-file-upload-button {background-color: var(--color);border: 0;cursor: pointer;height: 50px;color: white;border-radius: 3px;text-transform: capitalize;padding: 0 20px;}
 input[type="color"] {width: 50px;}
 
 ::-webkit-calendar-picker-indicator {transform: scale(2);}
@@ -671,7 +669,7 @@ select {padding: 0 50px 0 10px;}
 
     input[type="range"]::-webkit-slider-runnable-track {height: .05rem;}
     input[type="range"]::-webkit-slider-thumb {width: .35rem;height: .35rem;margin-top: -.15rem;box-shadow: 0 .03rem .06rem var(--color);}
-    input[type="file"]::-webkit-file-upload-button {height: .7rem;border-radius: .03rem;padding: 0 .2rem;}
+    input[type="file"]::-webkit-file-upload-button {height: .7rem;padding: 0 .2rem;}
     input[type="color"] {width: .7rem;flex: none !important;}
 
     input[type="date"]::before,
@@ -1001,11 +999,11 @@ hop-cont a:hover {background-color: var(--color);color: white;}
 }
 
 /* random */
-uigg-emot s {width: 50px;height: 50px;display: inline-block;background-size: 90%;vertical-align: middle;cursor: pointer;}
-uigg-emot s:hover {background-color: var(--eee);}
-*[src="uigg-color"] {content-visibility: hidden;}
+[uigg="emot"] s {width: 50px;height: 50px;display: inline-block;background-size: 90%;vertical-align: middle;cursor: pointer;}
+[uigg="emot"] s:hover {background-color: var(--eee);}
+*[uigg="color"] {content-visibility: hidden;}
 @media(max-width:640px) {
-    uigg-emot s {width: .6rem;height: .6rem;}
+    [uigg="emot"] s {width: .6rem;height: .6rem;}
 }
 
 /* chat */
@@ -1176,6 +1174,33 @@ reminder > * {padding: 10px;}
 .tox-tinymce {border-width: 1px !important;border-radius: 0 !important;transition-duration: 0s;flex: 1;min-width: 0;}
 .tox:not(.tox-tinymce-inline) .tox-editor-header {box-shadow: none !important;border-bottom: 1px var(--eee) solid !important;}
 .tox-simple + .tox-tinymce .tox-statusbar {display: none;}
+
+.tox-selectimage input[type="file"] {font-size: 14px;}
+.tox-selectimage input[type="file"]::-webkit-file-upload-button {height: 36px;}
+
+.tox .tox-button {border-radius: 3px !important;}
+.tox-dialog__footer-end .tox-button {background-color: var(--color) !important;border: 0 !important;}
+.tox .tox-button--secondary,
+.tox .tox-button--icon {background-color: transparent !important;border-width: 1px !important;}
+
+.tox .tox-tbtn:hover,
+.tox .tox-collection--list .tox-collection__item--active {background-color: var(--eee) !important;}
+.tox .tox-tbtn--enabled, .tox .tox-tbtn--enabled:hover {background-color: var(--ddd) !important;}
+
+.tox-textarea,
+.tox-textfield {border-radius: 0 !important;}
+.tox-textarea:focus,
+.tox-textfield:focus {border: 1px var(--eee) solid !important;box-shadow: 0 0 0 !important;}
+
+.tox-dialog {padding: 8px 0 !important;border-radius: 5px !important;}
+.tox-dialog__header {padding-right: 5px !important;}
+.tox-dialog__title {font-weight: bold !important;}
+.tox-dialog__body-nav-item {padding: 5px !important;border: 0 !important;border-radius: 3px;}
+.tox-dialog__body-nav-item:focus,
+.tox-dialog__body-nav-item--active {color: white!important;background-color: var(--color) !important;}
+
+
+
 
 
 

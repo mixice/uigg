@@ -734,7 +734,7 @@ class="font-tahoma"
         </li>
         <li><span>robot</span>
             <input class="min" type="text">
-            <a class="code"><img src="uigg-color"></a>
+            <a class="code"><img uigg="color"></a>
             <cite>Lorem ipsum dolor sit amet</cite>
         </li>
         <li><span>code</span>
@@ -960,24 +960,24 @@ notifyAuto(5000)
         </div>
         <div class="cont" id="random">
             <h3>random</h3>
-            <p>Warning: Random content is only used for temporary filling and will be delayed when used in the production environment</p>
+            <p>Warning: When the defined element is missing the default value, the remote value will be obtained automatically</p>
             <h5>code</h5>
-            <p>Put the tags below into <span>src</span> and <span>background</span> , and you'll get random images</p>
+            <p>Add the attribute to the DOM, When the element is <span>img</span> will be given <span>src</span> and <span></span> ,Other elements will be given <span>background-image</span></p>
 <xmp>
-uigg-img
-uigg-product
-uigg-bg
-uigg-avatar
-uigg-color
+uigg="img"
+uigg="product"
+uigg="bg"
+uigg="avatar"
+uigg="color"
 </xmp>
-            <p>If you need random text, add the code to the DOM</p>
+            <p>If you need random text, add the attribute to the DOM</p>
 <xmp>
-<uigg-title></uigg-title>
-<uigg-txt></uigg-txt>
+uigg="title"
+uigg="txt"
 </xmp>
-            <p>If you need emot, add the code to the DOM</p>
+            <p>If you need emot, add the attribute to the DOM</p>
 <xmp>
-<uigg-emot></uigg-emot>
+uigg="emot"
 </xmp>
             <h5>effect display</h5>
             <iframe src="random.html" height="450"></iframe>
@@ -1780,6 +1780,7 @@ calss="editor"
                         <tr><td>attribute</td><td>definition</td></tr>
                     </thead>
                     <tbody>
+                        <tr><td><xmp>uigg</xmp></td><td>Exclusive function call of uigg framework</td></tr>
                         <tr><td><xmp>edit</xmp></td><td>Make components editable</td></tr>
                         <tr><td><xmp>value</xmp></td><td>Sets the current value of the component</td></tr>
                         <tr><td><xmp>max</xmp></td><td>Set the maximum value of the component</td></tr>

@@ -25,12 +25,12 @@ body {background: var(--color-white);}
 }
 
 /*btn*/
-.btn {background-color: var(--color-basic);box-shadow: 0 3px 5px var(--color-bright);float: left;border-radius: 100px;font-weight: normal;}
+.btn {background-color: var(--color-basic);box-shadow: 0 3px 5px var(--color-bright);float: left;border-radius: 100px;}
 .btn-med {height: 40px;font-size: 14px;}
 .btn-empty {background-color: white;color: var(--color-basic);box-shadow: none;}
 
 @media(max-width:640px) {
-    .btn {box-shadow: 0 .05rem .05rem var(--color-bright);font-size: .2rem;}
+    .btn {box-shadow: 0 .05rem .05rem var(--color-bright);}
     .btn-med {height: .5rem;line-height: .5rem;font-size: .18rem;}
     .btn-empty {box-shadow: none;}
 }

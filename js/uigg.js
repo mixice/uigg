@@ -110,22 +110,17 @@ function lug(){
 
 //----------------------------------------------------------------------------------random
 $(function(){
-    $('[src~="uigg-img"]').each(function(){$(this).attr('src','https://ui.gg/lib/images/img?=' + Math.floor(Math.random() * 100))})
-    $('[src~="uigg-product"]').each(function(){$(this).attr('src','https://ui.gg/lib/images/product?=' + Math.floor(Math.random() * 100))})
-    $('[src~="uigg-bg"]').each(function(){$(this).attr('src','https://ui.gg/lib/images/bg?=' + Math.floor(Math.random() * 100))})
-    $('[src~="uigg-avatar"]').each(function(){$(this).attr('src','https://ui.gg/lib/images/avatar?=' + Math.floor(Math.random() * 100))})
+    $('img[uigg="bg"]').each(function(){if(!$(this).attr('src')) $(this).attr('src','https://ui.gg/lib/images/bg?=' + Math.floor(Math.random() * 100))})
+    $('img[uigg="img"]').each(function(){if(!$(this).attr('src')) $(this).attr('src','https://ui.gg/lib/images/img?=' + Math.floor(Math.random() * 100))})
+    $('img[uigg="product"]').each(function(){if(!$(this).attr('src')) $(this).attr('src','https://ui.gg/lib/images/product?=' + Math.floor(Math.random() * 100))})
+    $('img[uigg="avatar"]').each(function(){if(!$(this).attr('src')) $(this).attr('src','https://ui.gg/lib/images/avatar?=' + Math.floor(Math.random() * 100))})
 
-    $('[style~="uigg-img"]').each(function(){$(this).attr('style','background-image: url(https://ui.gg/lib/images/img?=' + Math.floor(Math.random() * 100) + ')')})
-    $('[style~="uigg-product"]').each(function(){$(this).attr('style','background-image: url(https://ui.gg/lib/images/product?=' + Math.floor(Math.random() * 100) + ')')})
-    $('[style~="uigg-bg"]').each(function(){$(this).attr('style','background-image: url(https://ui.gg/lib/images/bg?=' + Math.floor(Math.random() * 100) + ')')})
-    $('[style~="uigg-avatar"]').each(function(){$(this).attr('style','background-image: url(https://ui.gg/lib/images/avatar?=' + Math.floor(Math.random() * 100) + ')')})
+    $('[uigg="bg"]').each(function(){if($(this).css('background-image') == 'none'){$(this).css('background-image','url(https://ui.gg/lib/images/bg?=' + Math.floor(Math.random() * 100) + ')')}})
+    $('[uigg="img"]').each(function(){if($(this).css('background-image') == 'none'){$(this).css('background-image','url(https://ui.gg/lib/images/img?=' + Math.floor(Math.random() * 100) + ')')}})
+    $('[uigg="product"]').each(function(){if($(this).css('background-image') == 'none'){$(this).css('background-image','url(https://ui.gg/lib/images/product?=' + Math.floor(Math.random() * 100) + ')')}})
+    $('[uigg="avatar"],.avatar').each(function(){if($(this).css('background-image') == 'none'){$(this).css('background-image','url(https://ui.gg/lib/images/avatar?=' + Math.floor(Math.random() * 100) + ')')}})
+    $('[uigg="color"]').each(function(){$(this).css('background-color','rgb(' + parseInt(Math.random() * 255) + ',' + parseInt(Math.random() * 255) + ',' + parseInt(Math.random() * 255) + ')')})
 
-    $('.avatar').each(function(){
-        if($(this).css('background-image') == 'none') $(this).attr('style','background-image: url(https://ui.gg/lib/images/avatar?=' + Math.floor(Math.random() * 100) + ')')
-    })
-    $('[style~="uigg-color"],[src~="uigg-color"]').each(function(){
-        $(this).css('background-color','rgb(' + parseInt(Math.random() * 255) + ',' + parseInt(Math.random() * 255) + ',' + parseInt(Math.random() * 255) + ')')
-    })
     let sentence = [
         'Lorem ipsum dolor sit amet, consectetur adipisicing elit ',
         'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua ',
@@ -138,12 +133,12 @@ $(function(){
         'voluptatem accusantium doloremque laudantium, totam rem aperiam ',
         'eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae '
     ]
-    $('uigg-txt').append(sentence)
-    $('uigg-title').each(function(){$(this).append(sentence[Math.floor(Math.random() * sentence.length)])})
+    if(!$('[uigg="txt"]').attr('lang')) $('[uigg="txt"]').append(sentence)
+    $('[uigg="title"]').each(function(){if(!$(this).attr('lang')) $(this).append(sentence[Math.floor(Math.random() * sentence.length)])})
 
     let arr = new Array()
     for(let i = 1;i <= 100;i++){arr[i] = i
-        $('uigg-emot').append('<s style="background-image: url(https://ui.gg/lib/emot/' + i + '.svg)"></s>')
+        $('[uigg="emot"]').append('<s style="background-image: url(https://ui.gg/lib/emot/' + i + '.svg)"></s>')
     }
 });
 
@@ -427,7 +422,7 @@ $(function(){
     function chatNew(){$('chat-message').animate({scrollTop: '999999999'},1000)}
     chatNew()
     $('chat-tool .ico-emot-smile').click(function(){$(this).next().toggle()})
-    $('chat uigg-emot s').click(function(){
+    $('chat [uigg="emot"] s').click(function(){
         $(this).parent().parent().hide()
         console.log(1)
         $('chat-control aside').append($(this))
