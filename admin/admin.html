@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta http-equiv="window-target" content="_top">
 <title>Admin</title>
-<meta name="Keywords" content="">
+<meta name="keywords" content="">
 <meta name="description" content="">
 <meta name="author" content="">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -15,7 +15,7 @@
 <link rel="stylesheet" href="styles/admin.css">
 
 <script src="../js/jquery.min.js"></script>
-<script src="https://cdn.tiny.cloud/1/ruw2afcu3motodod15a15wxtendpa6dv5oepnclo6mmwatph/tinymce/6/tinymce.min.js"></script>
+<script src="https://ui.gg/lib/editor/editor.js"></script>
 <script src="../js/uigg.js"></script>
 <script src="js/admin.js"></script>
 </head>
@@ -306,6 +306,9 @@
                             <li><span>message</span>
                                 <textarea class="big"></textarea>
                             </li>
+                            <li><span>editor</span>
+                                <textarea class="editor"></textarea>
+                            </li>
                             <li><span>images</span>
                                 <div class="upload max">
                                     <div class="ico upload-group"><input type="file"><x class="ico"></x></div>
@@ -316,6 +319,17 @@
                             <li class="resolve"><button class="btn">cancel</button><button class="btn">submit</button></li>
                         </form>
                     </section>
+                </div>
+            </div>
+            <div class="contant">
+                <div class="title">
+                    <h5>editor</h5><cite>Prompt text description</cite><u></u>
+                    <a href="" class="btn btn-med">submit</a>
+                </div>
+                <div class="item">
+                    <div class="item">
+                        <section class="editor"></section>
+                    </div>
                 </div>
             </div>
             <div class="title"><h4>tab</h4></div>

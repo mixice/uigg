@@ -18,6 +18,7 @@
   letter-spacing: normal;
   word-wrap: normal;
   white-space: nowrap;
+  margin: auto;
 }
 
 .ico-bubble-comment:before {

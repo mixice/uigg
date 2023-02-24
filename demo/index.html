@@ -122,6 +122,7 @@
                 <fold-title><i class="ico ico-response"></i><h5>external</h5><u></u></fold-title>
                 <fold-cont>
                     <a class="smooth" href="#swiper">swiper</a>
+                    <a class="smooth" href="#editor">editor</a>
                 </fold-cont>
             </fold-group>
             <fold-group>
@@ -223,12 +224,16 @@ class="block"
 class="clear"
 class="hide"
 class="show"
+class="hide-important"
+class="show-important"
 class="center"
 class="single"
 class="only-web"
 class="only-mob"
 class="float-left"
 class="float-right"
+class="float-left-important"
+class="float-right-important"
 class="flex"
 class="flex-auto"
 class="flex-column"
@@ -240,22 +245,30 @@ class="full-device"
 <xmp>
 class="absolute"
 class="absolute-left"
+class="absolute-left-center"
 class="absolute-right"
+class="absolute-right-center"
 class="absolute-top"
-class="absolute-bottom"
 class="absolute-top-left"
 class="absolute-top-right"
+class="absolute-top-center"
+class="absolute-bottom"
 class="absolute-bottom-left"
 class="absolute-bottom-right"
+class="absolute-bottom-center"
 class="fixed"
 class="fixed-left"
+class="fixed-left-center"
 class="fixed-right"
+class="fixed-right-center"
 class="fixed-top"
-class="fixed-bottom"
 class="fixed-top-left"
 class="fixed-top-right"
+class="fixed-top-center"
+class="fixed-bottom"
 class="fixed-bottom-left"
 class="fixed-bottom-right"
+class="fixed-bottom-center"
 </xmp>
             <h5>corner</h5>
             <p>Add the class to the DOM</p>
@@ -264,7 +277,7 @@ class="corner"
 </xmp>
             <p>Styles demo</p>
 <xmp>
-.corner::after {border-width: 0 10px 10px 10px;border-bottom-color: white; top: -10px;}
+.corner::after {border-width: 0 10px 10px 10px;border-bottom-color: white;top: -10px;}
 </xmp>
             <h5>shadow</h5>
             <p>Add the class to the DOM</p>
@@ -274,6 +287,15 @@ class="shadow"
             <p>Styles demo</p>
 <xmp>
 .shadow::after {background-color: white;box-shadow: 0 5px 10px white;}
+</xmp>
+            <h5>adrift</h5>
+            <p>Add the class to the DOM</p>
+<xmp>
+class="adrift"
+</xmp>
+            <p>Styles demo</p>
+<xmp>
+.adrift {filter: drop-shadow(0 10px 10px var(--color));}
 </xmp>
             <h5>return</h5>
             <p>Add the class to the DOM</p>
@@ -923,7 +945,7 @@ notifyAuto(5000)
 </pop>
 </xmp>
             <h5>pop sider code</h5>
-            <p>Add the code to the DOM</p>
+            <p>Add the code to the DOM, if you need pop align right, add <span>right</span> attribute to <span>pop-sider</span></p>
 <xmp>
 <pop>
     <pop-sider>
@@ -1610,6 +1632,30 @@ class="touch-all"
             <iframe src="swiper.html" height="600"></iframe>
             <a class="btn shadow" href="swiper.html" target="_blank">view</a>
         </div>
+        <div class="cont" id="editor">
+            <p>You can go to tiny to see more parameters. UIGG only provides a few common models</p>
+            <a class="btn shadow" href="https://www.tiny.cloud/docs/tinymce/6/" target="_blank">tiny API</a>
+            <h3>editor</h3>
+            <h5>code</h5>
+            <p>Add the javascript to the <span>head</span></p>
+<xmp>
+<script src="https://ui.gg/lib/editor/editor.js"></script>
+</xmp>
+            <p>Add the class to the DOM</p>
+<xmp>
+calss="editor"
+</xmp>
+            <h5>upload</h5>
+            <p>If you need upload image, Add the javascript to the <span>head</span></p>
+<xmp>
+<script src="https://ui.gg/lib/editor/editor-upload.js"></script>
+</xmp>
+            <p>You must download <a href="https://ui.gg/lib/editor/upload.zip">upload.php</a> to to your website directory and configure php</p>
+            <a class="btn shadow" href="https://ui.gg/lib/editor/upload.zip" target="_blank">download</a>
+            <h5>effect display</h5>
+            <iframe src="editor.html" height="500"></iframe>
+            <a class="btn shadow" href="editor.html" target="_blank">view</a>
+        </div>
         <h2><i class="ico ico-app"></i>General library</h2>
         <div class="cont" id="color">
             <h3>color</h3>
@@ -1744,6 +1790,7 @@ class="touch-all"
                         <tr><td><xmp>disabled</xmp></td><td>Set component disable</td></tr>
                         <tr><td><xmp>selected</xmp></td><td>Disable selection</td></tr>
                         <tr><td><xmp>center</xmp></td><td>Set object centered content</td></tr>
+                        <tr><td><xmp>right</xmp></td><td>Set object right alignment</td></tr>
                         <tr><td><xmp>show</xmp></td><td>Force display object</td></tr>
                         <tr><td><xmp>hide</xmp></td><td>Force hidden objects</td></tr>
                         <tr><td><xmp>infinite</xmp></td><td>Set animation loop</td></tr>
@@ -1810,7 +1857,6 @@ https://cdn.jsdelivr.net/npm/uigg/font/font.min.css
 https://ui.gg/lib/ico/iconfont/ico.css
 https://ui.gg/lib/ico/iconfont/ico.js
 https://ui.gg/lib/ico/iconfont/ico.json
-https://ui.gg/lib/ico/iconfont/ico.woff
 https://ui.gg/lib/ico/iconfont/ico.woff2
 </xmp>
             <p>CDN</p>
@@ -1818,7 +1864,6 @@ https://ui.gg/lib/ico/iconfont/ico.woff2
 https://cdn.jsdelivr.net/npm/uigg/ico/iconfont/ico.min.css
 https://cdn.jsdelivr.net/npm/uigg/ico/iconfont/ico.min.js
 https://cdn.jsdelivr.net/npm/uigg/ico/iconfont/ico.json
-https://cdn.jsdelivr.net/npm/uigg/ico/iconfont/ico.woff
 https://cdn.jsdelivr.net/npm/uigg/ico/iconfont/ico.woff2
 </xmp>
             <h5>svg ico</h5>
@@ -1829,6 +1874,19 @@ https://ui.gg/lib/ico/svg/brand/uigg.svg
             <p>CDN</p>
 <xmp>
 https://cdn.jsdelivr.net/npm/uigg/ico/svg/brand/uigg.svg
+</xmp>
+            <h5>editor</h5>
+            <p>Library related connections</p>
+<xmp>
+https://ui.gg/lib/editor/editor.js
+https://ui.gg/lib/editor/editor-upload.js
+https://ui.gg/lib/editor/upload.zip
+</xmp>
+            <p>CDN</p>
+<xmp>
+https://cdn.jsdelivr.net/npm/uigg/editor/editor.js
+https://cdn.jsdelivr.net/npm/uigg/editor/editor-upload.js
+https://cdn.jsdelivr.net/npm/uigg/editor/upload.zip
 </xmp>
             <h5>images</h5>
             <p>Library related connections</p>

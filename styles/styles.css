@@ -1,5 +1,6 @@
 /* basic */
-body {}
+body,
+load {}
 .shadow::after {background-color: var(--);box-shadow: 0 5px 10px var(--);}
 
 /* color */

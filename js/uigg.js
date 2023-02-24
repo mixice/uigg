@@ -37,7 +37,6 @@ document.onreadystatechange = function(){if(document.readyState == 'complete') $
 setTimeout(function(){$('load').hide()},6000);
 
 //----------------------------------------------------------------------------------browser
-//let userAgent = JSON.stringify(navigator.userAgentData.brands)
 let userAgent = JSON.stringify(navigator.userAgent)
 if(userAgent.indexOf('MSIE') != -1 || userAgent.indexOf('Trident') != -1) $(function(){$('body').html('<msie>please use another browser</msie>')});
 
@@ -210,7 +209,7 @@ $(function(){
     $('pop-choice').addClass('anime-fade-in-up')
     $('pop-title .close').addClass('ico')
     $('pop .close, pop > x').click(function(){$(this).parents('pop').hide()})
-    $('pop-sider').css('right') == '0px' ? $('pop-sider').addClass('anime-fade-in-right') : $('pop-sider').addClass('anime-fade-in-left')
+    $('pop-sider').attr('right') == '' ? $('pop-sider').css('right','0').addClass('anime-fade-in-right') : $('pop-sider').addClass('anime-fade-in-left')
 });
 
 //----------------------------------------------------------------------------------menu
@@ -271,7 +270,7 @@ $(function(){
             let imgValue = $(this).val(),
                 fileFormat = imgValue.substring(imgValue.lastIndexOf('.')).toLowerCase(),
                 imgUrl = window.URL.createObjectURL(this.files[0])
-            if(!fileFormat.match(/.png|.jpg|.jpeg|.svg|.webp|.gif/)){alert('File format must be: png/jpg/jpeg/svg/webp/gif')}
+            if(!fileFormat.match(/.png|.jpg|.jpeg|.webp|.gif/)){alert('File format must be: png/jpg/jpeg/webp/gif')}
             else{
                 $(this).parent().attr('style','background-image:url(' + imgUrl + ')')
                 $(this).parent().css('color','transparent')
@@ -454,7 +453,7 @@ $(function(){
             fileFormat = fileValue.substring(fileValue.lastIndexOf('.')).toLowerCase(),
             fileName = fileValue.substring(fileValue.lastIndexOf('\\') + 1),
             fileUrl = window.URL.createObjectURL(this.files[0])
-        if(fileFormat.match(/.png|.jpg|.jpeg|.svg|.webp|.gif/)){$('chat-control aside').append('<img src="' + fileUrl + '">');return}
+        if(fileFormat.match(/.png|.jpg|.jpeg|.webp|.gif/)){$('chat-control aside').append('<img src="' + fileUrl + '">');return}
         if(fileFormat.match(/.mp4|.webm/)){$('chat-control aside').append('<video src="' + fileUrl + '" controls></video>');return}
         if(fileFormat.match(/.mp3|.ogg|.wav|.midi/)){$('chat-control aside').append('<audio src="' + fileUrl + '" controls></audio>');return}
         else{$('chat-control aside').append('<a download href="' + fileUrl + '"><i class="ico ico-file"></i>' + fileName + '</a>')}
@@ -559,7 +558,7 @@ $(function(){
     let langType = getCookie('lang') == '' ? 'en' : getCookie('lang')
     function lang(){
         if($('[lang-set]').length != 0){
-            $.get(`../lang/${langType}.json`,function(data){
+            $.get(`/lang/${langType}.json`,function(data){
                 $('[lang]').each(function(){
                     langVal = $(this).attr('lang').split('-')
                     $(this).html(eval('data.' + langVal[0] + '[0].' + langVal[1]))
