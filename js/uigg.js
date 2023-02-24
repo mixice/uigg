@@ -133,8 +133,8 @@ $(function(){
         'voluptatem accusantium doloremque laudantium, totam rem aperiam ',
         'eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae '
     ]
-    if(!$('[uigg="txt"]').attr('lang')) $('[uigg="txt"]').append(sentence)
-    $('[uigg="title"]').each(function(){if(!$(this).attr('lang')) $(this).append(sentence[Math.floor(Math.random() * sentence.length)])})
+    if(!$('[uigg="txt"]').attr('lang') && !$('[uigg="txt"]').html()) $('[uigg="txt"]').append(sentence)
+    $('[uigg="title"]').each(function(){if(!$(this).attr('lang') && !$(this).html()) $(this).append(sentence[Math.floor(Math.random() * sentence.length)])})
 
     let arr = new Array()
     for(let i = 1;i <= 100;i++){arr[i] = i
