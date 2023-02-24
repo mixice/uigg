@@ -1,13 +1,13 @@
 /*
- * uigg 2.4 (build 20230202)
+ * uigg 2.5 (build 20230225)
  * Project: https://ui.gg
- * Author: http://www.mixice.com
+ * Author: https://www.mixice.com
  * Github: https://github.com/mixice/uigg
  * license: MIT
  */
 
 /* import */
-/* @import url('https://ui.gg/lib/font/font.css'); */
+@import url('//ui.gg/lib/font/font.css');
 @import url('ico.css');
 
 /* basic */
@@ -1176,7 +1176,7 @@ reminder > * {padding: 10px;}
 .tox-simple + .tox-tinymce .tox-statusbar {display: none;}
 
 .tox-selectimage input[type="file"] {font-size: 14px;}
-.tox-selectimage input[type="file"]::-webkit-file-upload-button {height: 36px;}
+.tox-selectimage input[type="file"]::-webkit-file-upload-button {height: 32px;}
 
 .tox .tox-button {border-radius: 3px !important;}
 .tox-dialog__footer-end .tox-button {background-color: var(--color) !important;border: 0 !important;}

@@ -1,7 +1,7 @@
 /*
- * uigg 2.4 (build 20230202)
+ * uigg 2.5 (build 20230225)
  * Project: https://ui.gg
- * Author: http://www.mixice.com
+ * Author: https://www.mixice.com
  * Github: https://github.com/mixice/uigg
  * license: MIT
  */
@@ -110,15 +110,15 @@ function lug(){
 
 //----------------------------------------------------------------------------------random
 $(function(){
-    $('img[uigg="bg"]').each(function(){if(!$(this).attr('src')) $(this).attr('src','https://ui.gg/lib/images/bg?=' + Math.floor(Math.random() * 100))})
-    $('img[uigg="img"]').each(function(){if(!$(this).attr('src')) $(this).attr('src','https://ui.gg/lib/images/img?=' + Math.floor(Math.random() * 100))})
-    $('img[uigg="product"]').each(function(){if(!$(this).attr('src')) $(this).attr('src','https://ui.gg/lib/images/product?=' + Math.floor(Math.random() * 100))})
-    $('img[uigg="avatar"]').each(function(){if(!$(this).attr('src')) $(this).attr('src','https://ui.gg/lib/images/avatar?=' + Math.floor(Math.random() * 100))})
+    $('img[uigg="bg"]').each(function(){if(!$(this).attr('src')) $(this).attr('src','//ui.gg/lib/images/bg?=' + Math.floor(Math.random() * 100))})
+    $('img[uigg="img"]').each(function(){if(!$(this).attr('src')) $(this).attr('src','//ui.gg/lib/images/img?=' + Math.floor(Math.random() * 100))})
+    $('img[uigg="product"]').each(function(){if(!$(this).attr('src')) $(this).attr('src','//ui.gg/lib/images/product?=' + Math.floor(Math.random() * 100))})
+    $('img[uigg="avatar"]').each(function(){if(!$(this).attr('src')) $(this).attr('src','//ui.gg/lib/images/avatar?=' + Math.floor(Math.random() * 100))})
 
-    $('[uigg="bg"]').each(function(){if($(this).css('background-image') == 'none'){$(this).css('background-image','url(https://ui.gg/lib/images/bg?=' + Math.floor(Math.random() * 100) + ')')}})
-    $('[uigg="img"]').each(function(){if($(this).css('background-image') == 'none'){$(this).css('background-image','url(https://ui.gg/lib/images/img?=' + Math.floor(Math.random() * 100) + ')')}})
-    $('[uigg="product"]').each(function(){if($(this).css('background-image') == 'none'){$(this).css('background-image','url(https://ui.gg/lib/images/product?=' + Math.floor(Math.random() * 100) + ')')}})
-    $('[uigg="avatar"],.avatar').each(function(){if($(this).css('background-image') == 'none'){$(this).css('background-image','url(https://ui.gg/lib/images/avatar?=' + Math.floor(Math.random() * 100) + ')')}})
+    $('[uigg="bg"]').each(function(){if($(this).css('background-image') == 'none'){$(this).css('background-image','url(//ui.gg/lib/images/bg?=' + Math.floor(Math.random() * 100) + ')')}})
+    $('[uigg="img"]').each(function(){if($(this).css('background-image') == 'none'){$(this).css('background-image','url(//ui.gg/lib/images/img?=' + Math.floor(Math.random() * 100) + ')')}})
+    $('[uigg="product"]').each(function(){if($(this).css('background-image') == 'none'){$(this).css('background-image','url(//ui.gg/lib/images/product?=' + Math.floor(Math.random() * 100) + ')')}})
+    $('[uigg="avatar"],.avatar').each(function(){if($(this).css('background-image') == 'none'){$(this).css('background-image','url(//ui.gg/lib/images/avatar?=' + Math.floor(Math.random() * 100) + ')')}})
     $('[uigg="color"]').each(function(){$(this).css('background-color','rgb(' + parseInt(Math.random() * 255) + ',' + parseInt(Math.random() * 255) + ',' + parseInt(Math.random() * 255) + ')')})
 
     let sentence = [
@@ -138,7 +138,7 @@ $(function(){
 
     let arr = new Array()
     for(let i = 1;i <= 100;i++){arr[i] = i
-        $('[uigg="emot"]').append('<s style="background-image: url(https://ui.gg/lib/emot/' + i + '.svg)"></s>')
+        $('[uigg="emot"]').append('<s style="background-image: url(//ui.gg/lib/emot/' + i + '.svg)"></s>')
     }
 });
 
@@ -368,7 +368,7 @@ function notifyAdd(){
     $('notify audio')[0].play()
 }
 function notify(){
-    if($('notify').length == 0){$('body').append('<notify><audio src="https://ui.gg/lib/media/notify.mp3"></audio></notify>');notifyAdd()}
+    if($('notify').length == 0){$('body').append('<notify><audio src="//ui.gg/lib/media/notify.mp3"></audio></notify>');notifyAdd()}
     else{notifyAdd()}
 }
 function notifyAuto(notifyTime){
