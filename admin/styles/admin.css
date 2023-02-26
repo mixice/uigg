@@ -8,7 +8,7 @@
     --color-shadow: 0 5px 5px rgb(108, 98, 249,.05);
 }
 
-@media(max-width:640px) {
+@media(max-width:640px){
     :root {
         --color-shadow: 0 .05rem .05rem rgb(108, 98, 249,.05);
     }
@@ -20,7 +20,7 @@ body {background: var(--color-white);}
 .ico {color: var(--color-basic);}
 ::-webkit-scrollbar-thumb {background: var(--color-light);}
 
-@media(max-width:640px) {
+@media(max-width:640px){
     body {font-size: .18rem;}
 }
 
@@ -29,7 +29,7 @@ body {background: var(--color-white);}
 .btn-med {height: 40px;font-size: 14px;}
 .btn-empty {background-color: white;color: var(--color-basic);box-shadow: none;}
 
-@media(max-width:640px) {
+@media(max-width:640px){
     .btn {box-shadow: 0 .05rem .05rem var(--color-bright);}
     .btn-med {height: .5rem;line-height: .5rem;font-size: .18rem;}
     .btn-empty {box-shadow: none;}
@@ -45,7 +45,7 @@ body {background: var(--color-white);}
 .contant {background: white;box-shadow: var(--color-shadow);margin: 0 0 20px;}
 .item {padding: 10px;}
 
-@media(max-width:640px) {
+@media(max-width:640px){
     .head {height: .8rem;}
     .subject {display: block;}
     .sider {width: 100%;height: 100%;position: absolute;left: 0;top: 0;display: none;padding: .1rem 0;z-index: 3;}
@@ -78,7 +78,7 @@ drop i.ico {line-height: 40px;width: 40px;}
 drop-list {top: 40px;}
 drop-list a:hover {background-color: var(--color-basic);}
 
-@media(max-width:640px) {
+@media(max-width:640px){
     .logo {height: .8rem;line-height: .7rem;padding: .05rem;font-size: .28rem;}
     .logo i {width: .7rem;height: .7rem;background-size: 75%;}
     .head-cont {padding: .15rem .1rem;}
@@ -112,7 +112,7 @@ drop-list a:hover {background-color: var(--color-basic);}
 
 .sider-toggle {width: 40px;margin: 0 20px;}
 
-@media(max-width:640px) {
+@media(max-width:640px){
     .side {width: .5rem;height: .5rem;margin: 0 .1rem 0 0;}
     .side i {line-height: .5rem;}
     .sider h6 {padding: .1rem;}
@@ -136,7 +136,7 @@ drop-list a:hover {background-color: var(--color-basic);}
 
 .contant .title {border-bottom: 1px var(--color-light) solid;padding: 0 20px;}
 
-@media(max-width:640px) {
+@media(max-width:640px){
     .title {height: .7rem;}
     .title .ico {padding: 0 .1rem;}
     .title cite {padding: 0 .2rem;}
@@ -155,7 +155,7 @@ page button:hover,
 page a:hover,
 page a.active {background-color: var(--color-basic);box-shadow: 0 3px 5px var(--color-bright);}
 
-@media(max-width:640px) {
+@media(max-width:640px){
     page {padding:.1rem;}
     page a,
     page button {width: .6rem;height: .6rem;line-height: .6rem;font-size: .22rem;}
@@ -172,7 +172,7 @@ page a.active {background-color: var(--color-basic);box-shadow: 0 3px 5px var(--
 .notice i, .notice marquee {line-height: 40px;}
 .notice i {width: 40px;display: block;}
 
-@media(max-width:640px) {
+@media(max-width:640px){
     .notice, .notice i, .notice marquee {height: .5rem;}
     .notice i, .notice marquee {line-height: .5rem;}
     .notice i {width: .5rem;}
@@ -187,7 +187,7 @@ page a.active {background-color: var(--color-basic);box-shadow: 0 3px 5px var(--
 .statistics li em {font-weight: normal;font-size: 12px;vertical-align: top;text-transform: uppercase;color: var(--color-bright);padding: 0 0 0 5px;}
 .statistics li a {margin: 10px auto 0;float: none;width: 60%;}
 
-@media(max-width:640px) {
+@media(max-width:640px){
     .statistics {padding: .1rem;}
     .statistics li span {padding: 0 0 .1rem;}
     .statistics li em {font-size: .16rem;padding: 0 0 0 .05rem;}
@@ -201,7 +201,7 @@ page a.active {background-color: var(--color-basic);box-shadow: 0 3px 5px var(--
 .article li {list-style:inside;}
 .article .btn {margin: 5px;}
 
-@media(max-width:640px) {
+@media(max-width:640px){
     .article {padding:.1rem;}
     .article p {padding: .05rem 0;}
     .article ul {padding: .05rem 0;}
@@ -224,7 +224,7 @@ page a.active {background-color: var(--color-basic);box-shadow: 0 3px 5px var(--
 .table table tfoot tr:first-child td,
 .table table tfoot tr:first-child th {border-top-color: var(--color-basic);}
 
-@media(max-width:640px) {
+@media(max-width:640px){
     .table {padding:.1rem;overflow: auto;}
     .table table {min-width: 200vw;}
     .table table td input {height: .4rem;}
@@ -265,7 +265,7 @@ o {color: var(--color-basic);}
 .control .input i {width: 40px;}
 .control li span {width: auto !important;}
 
-@media(max-width:640px) {
+@media(max-width:640px){
     input, select, textarea {border: 0;}
     input:focus,
     textarea:focus {box-shadow: 0 0 0;}
@@ -298,7 +298,7 @@ tab-list li.active a {border-color: var(--color-basic);color: var(--color-basic)
 tab-cont {}
 tab-group {}
 
-@media(max-width:640px) {
+@media(max-width:640px){
     .tab-list li a {line-height: .6rem;font-size: .2rem;border-bottom: .03rem white solid;}
 }
 
@@ -318,7 +318,7 @@ tab-group {}
 .list-control {margin: 0 0 0 20px;display: flex;}
 .list-control a {margin: 5px;line-height: 40px;}
 
-@media(max-width:640px) {
+@media(max-width:640px){
     .list li {padding: .1rem;border-bottom: 1px var(--color-light) solid;}
     .list li em {width: 1.4rem;height: 1.4rem;margin: 0 .2rem 0 0;float: left;}
     .list-cont {width: calc(100% - 1.4rem - .2rem);float: right;}
@@ -341,7 +341,7 @@ pop-cont {padding: 20px 0;}
 .pop-tip i {font-size: 60px;margin: 10px;}
 .pop-tip p {text-align: center;}
 
-@media(max-width:640px) {
+@media(max-width:640px){
     pop-cont {padding: .2rem 0;}
     .pop-tip {padding: .2rem 0;}
     .pop-tip i {font-size: .8rem;margin: .1rem;}
@@ -350,7 +350,7 @@ pop-cont {padding: 20px 0;}
 /*chart*/
 .chart {}
 
-@media(max-width:640px) {}
+@media(max-width:640px){}
 
 /*edui*/
 .edui-editor {width: 100% !important;line-height: normal;}
@@ -383,7 +383,7 @@ pop-cont {padding: 20px 0;}
 .login-info a:hover {color: var(--color-basic);}
 .login-tip {height: 35px;line-height: 35px;color: white;text-align: center;clear: both;display: none;margin: 5px 15px;}
 
-@media(max-width:640px) {
+@media(max-width:640px){
     .login-title {padding: .1rem 0;}
     .login-title h1 {margin: .15rem auto;}
     .login-form {padding: 0 .1rem;}
