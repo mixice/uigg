@@ -8,7 +8,7 @@
 
 /* import */
 @import url('//ui.gg/lib/font/font.css');
-@import url('ico.css');
+@import url('ico/ico.css');
 
 /* basic */
 html,body,div,span,object,iframe,frame,
