@@ -15,7 +15,8 @@ $(function(){
     $('[alternate]').addClass('alternate')
     $('[column]').addClass('column')
     $('.btn[disabled]').addClass('btn-disable')
-});
+})
+console.log('%c  POWERED BY UIGG  ','background:#6c62f9;color:white;border-radius:10px','http://ui.gg');
 
 //----------------------------------------------------------------------------------rem
 (function(doc, win){
@@ -241,8 +242,8 @@ $(function(){
 
 //----------------------------------------------------------------------------------scaler
 $(function(){
-    $('scaler input').before('<a class="ico ico-reduce"></a>')
-    $('scaler input').after('<a class="ico ico-add"></a>')
+    $('scaler input').before('<a class="btn ico ico-reduce"></a>')
+    $('scaler input').after('<a class="btn ico ico-add"></a>')
     $('scaler .ico-add').click(function(){
         let calcInput = $(this).siblings('input')
         calcInput.val(parseInt(calcInput.val()) + 1)

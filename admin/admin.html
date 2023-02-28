@@ -53,51 +53,60 @@
         <!------------------------------------------sider start------------------------------------------>
         <section class="sider">
             <div class="sider-search"><input type="text"><button class="ico ico-search"></button></div>
-            <h6>basic</h6>
-            <div class="sider-list">
-                <li><a href="admin.html" class="active"><i class="ico ico-home"></i>home</a></li>
-                <li><a><i class="ico ico-set"></i>setting</a></li>
-                <li><a><i class="ico ico-app"></i>classify</a>
-                    <div class="sider-group anime-fade-in">
-                        <a href="" class="active">classify add</a>
+            <fold>
+                <h6>basic</h6>
+                <fold-group>
+                    <fold-title><a href="admin.html"><i class="ico ico-home"></i>home</a></fold-title>
+                </fold-group>
+                <fold-group>
+                    <fold-title><a><i class="ico ico-set"></i>setting</a></fold-title>
+                </fold-group>
+                <fold-group>
+                    <fold-title><a><i class="ico ico-app"></i>classify</a></fold-title>
+                    <fold-cont>
+                        <a href="">classify add</a>
                         <a href="">classify edit</a>
-                    </div>
-                </li>
-                <li><a><i class="ico ico-document"></i>article</a>
-                    <div class="sider-group anime-fade-in">
+                    </fold-cont>
+                </fold-group>
+                <fold-group>
+                    <fold-title><a><i class="ico ico-document"></i>article</a></fold-title>
+                    <fold-cont>
                         <a href="">article add</a>
                         <a href="">article list</a>
-                    </div>
-                </li>
-            </div>
-            <h6>integral</h6>
-            <div class="sider-list">
-                <li><a><i class="ico ico-alipay"></i>recharge</a>
-                    <div class="sider-group anime-fade-in">
+                    </fold-cont>
+                </fold-group>
+                <h6>integral</h6>
+                <fold-group>
+                    <fold-title><a><i class="ico ico-alipay"></i>recharge</a></fold-title>
+                    <fold-cont>
                         <a href="">recharge</a>
                         <a href="">order</a>
-                    </div>
-                </li>
-                <li><a><i class="ico ico-wallet"></i>withdrawal</a>
-                    <div class="sider-group anime-fade-in">
+                    </fold-cont>
+                </fold-group>
+                <fold-group>
+                    <fold-title><a><i class="ico ico-wallet"></i>withdrawal</a></fold-title>
+                    <fold-cont>
                         <a href="">withdrawal</a>
                         <a href="">order</a>
-                    </div>
-                </li>
-                <li><a><i class="ico ico-box"></i>integral</a>
-                    <div class="sider-group anime-fade-in">
+                    </fold-cont>
+                </fold-group>
+                <fold-group>
+                    <fold-title><a><i class="ico ico-box"></i>integral</a></fold-title>
+                    <fold-cont>
                         <a href="">exchange</a>
                         <a href="">consignment</a>
                         <a href="">query</a>
                         <a href="">order</a>
-                    </div>
-                </li>
-            </div>
-            <h6>other</h6>
-            <div class="sider-list">
-                <li><a><i class="ico ico-circular-user"></i>user</a></li>
-                <li><a><i class="ico ico-volume"></i>notice<span>23</span></a></li>
-            </div>
+                    </fold-cont>
+                </fold-group>
+                <h6>other</h6>
+                <fold-group>
+                    <fold-title><a><i class="ico ico-circular-user"></i>user</a></fold-title>
+                </fold-group>
+                <fold-group>
+                    <fold-title><a><i class="ico ico-volume"></i>notice<span>3</span></a></fold-title>
+                </fold-group>
+            </fold>
         </section>
         <!------------------------------------------sider end------------------------------------------>
         <section class="clause">
@@ -146,9 +155,12 @@
                             <li uigg="title"></li>
                             <li uigg="title"></li>
                         </ul>
-                        <a class="btn" onclick="$('pop').show()">pop test</a>
-                        <a class="btn" onclick="$('pop').show()">pop test</a>
+                        <a class="btn" onclick="$('pop').show()">pop</a>
                     </div>
+                    <reminder>
+                        <h5 uigg="title"></h5>
+                        <p uigg="txt"></p>
+                    </reminder>
                 </div>
             </div>
             <div class="title"><h4>table</h4></div>
@@ -238,6 +250,10 @@
                                 <div class="input sml"><input type="password" required><o class="password"></o></div>
                                 <cite class="co-red">Password error</cite>
                             </li>
+                            <li><span>scaler</span>
+                                <scaler><input value="1"></scaler>
+                                <cite>Lorem ipsum dolor sit amet</cite>
+                            </li>
                             <li><span>radio</span>
                                 <o class="radio"></o><span>radio</span>
                                 <o class="radio"></o><span>radio</span>
@@ -307,7 +323,7 @@
                                 <textarea class="big"></textarea>
                             </li>
                             <li><span>editor</span>
-                                <textarea class="editor"></textarea>
+                                <div class="editor-simple"></div>
                             </li>
                             <li><span>images</span>
                                 <div class="upload max">
@@ -341,9 +357,21 @@
                         <li><a>three</a></li>
                     </tab-list>
                     <tab-cont>
-                        <tab-group class="active">one</tab-group>
-                        <tab-group>two</tab-group>
-                        <tab-group>three</tab-group>
+                        <tab-group class="active">
+                            <div class="item">
+                                <empty><div><i class="ico ico-emot-smile"></i><h3>congratulations, successful!</h3></div></empty>
+                            </div>
+                        </tab-group>
+                        <tab-group>
+                            <div class="item">
+                                <empty><i class="ico ico-emot-smile"></i><h3>congratulations, successful!</h3></empty>
+                            </div>
+                        </tab-group>
+                        <tab-group>
+                            <div class="item">
+                                <empty></empty>
+                            </div>
+                        </tab-group>
                     </tab-cont>
                 </tab>
             </div>
@@ -406,14 +434,22 @@
                     <page value="3" max="9"></page>
                 </div>
             </div>
-            <div class="title"><h4>chart</h4></div>
+            <div class="title"><h4>step</h4></div>
             <div class="contant">
                 <div class="title">
                     <h5>title</h5><cite>Prompt text description</cite><u></u>
                     <a href="" class="btn btn-med">submit</a>
                 </div>
                 <div class="item">
-                    <div class="chart"></div>
+                    <step>
+                        <ul>
+                            <li>step 1</li>
+                            <li>step 2</li>
+                            <li>step 3</li>
+                            <li>step 4</li>
+                            <li>step 5</li>
+                        </ul>
+                    </step>
                 </div>
             </div>
             <div class="title"><h4>fold</h4></div>
