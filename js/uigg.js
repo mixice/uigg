@@ -363,27 +363,32 @@ function countdown(){
 };
 
 //----------------------------------------------------------------------------------notify
-let notifyVal,notifyThis
+let notifyVal,notifyThis,notifyAlign
 function notifyAdd(){
-    $('notify').append('<li class="anime-bounce-in-right"><x class="ico ico-close"></x>'+ notifyVal +'</li>')
+    let addClass = 'n' + ($('notify li').length + 1)
+    $('notify').append('<li class="' + addClass + ' anime-bounce-in-right"><x class="ico ico-close"></x>'+ notifyVal +'</li>')
     $('notify audio')[0].play()
+    notifyThis = $('.' + addClass)
+}
+function notifyRemre(){
+    notifyThis.addClass('anime-flip-out-x')
+    setTimeout(function(){notifyThis.remove()},500)
 }
 function notify(){
-    if($('notify').length == 0){$('body').append('<notify><audio src="//ui.gg/lib/media/notify.mp3"></audio></notify>');notifyAdd()}
-    else{notifyAdd()}
+    if($('notify').length == 0){
+        $('body').append('<notify><audio src="//ui.gg/lib/media/notify.mp3"></audio></notify>')
+        if(notifyAlign == 'bottom'){$('notify').addClass('bottom')}
+        notifyAdd()
+    }else{notifyAdd()}
 }
 function notifyAuto(notifyTime){
     notify()
-    setTimeout(function(){notifyThis = $('notify li:first');notifyRemre()},notifyTime)
+    setTimeout(function(){notifyRemre()},notifyTime)
 }
 $(document).on('click','notify x',function(){
     notifyThis = $(this).parent()
     notifyRemre()
-})
-function notifyRemre(){
-    notifyThis.addClass('anime-flip-out-x')
-    setTimeout(function(){notifyThis.remove()},500)
-};
+});
 
 //----------------------------------------------------------------------------------copy
 let copyNum,copyEl,copyVal
@@ -458,7 +463,7 @@ $(function(){
 
 //----------------------------------------------------------------------------------fold
 $(function(){
-    $('fold-title u').after('<s class="ico ico-alone-bottom"></s>')
+    $('fold-title u').after('<s class="ico ico-alone-bottom"></s>').remove()
     $('fold-cont').addClass('anime-fade-in')
     if($('fold').attr('show') == ''){
         $('fold-group').addClass('active')

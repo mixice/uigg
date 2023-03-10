@@ -53,8 +53,8 @@ body {background: var(--flash);}
 
 /* head */
 .logo {height: 80px;line-height: 60px;padding: 10px;animation-delay: .5s;text-transform: uppercase;}
-.logo i {width: 60px;height: 60px;display: block;background-image: url(../../images/ico.svg);background-size: 85%;}
-.logo em {font-weight: 300;}
+.logo i {width: 60px;height: 60px;display: block;background-image: url(../../images/ico.svg);background-size: 85%;margin-right: 10px;}
+.logo em {font-weight: normal;}
 .head-cont {animation-delay: .3s;padding: 20px;}
 .head-info {margin: 0 0 0 20px;}
 .head-info span {line-height: 40px;text-transform: capitalize;}
@@ -75,7 +75,7 @@ drop-list a:hover {background-color: var(--basic);}
 
 @media(max-width:640px){
     .logo {height: .8rem;line-height: .7rem;padding: .05rem;font-size: .28rem;}
-    .logo i {width: .7rem;height: .7rem;background-size: 75%;}
+    .logo i {width: .7rem;height: .7rem;background-size: 75%;margin-right: .05rem;}
     .head-cont {padding: .15rem .1rem;}
     .head-info {margin: 0;padding: .05rem 0;}
     .head-info span {display: none;}
@@ -118,6 +118,7 @@ drop-list a:hover {background-color: var(--basic);}
     .sider-search input {height: .7rem;padding: 0 .7rem 0 .3rem;}
     .sider-search button {width: .7rem;height: .7rem;}
     .sider-toggle {width: .5rem;margin: 0 .1rem;}
+    .sider-toggle i {font-size: .32rem;}
 }
 
 /* title */
@@ -152,9 +153,10 @@ page a.active {background-color: var(--basic);box-shadow: 0 3px 5px var(--bright
 @media(max-width:640px){
     page {padding:.1rem;}
     page a,
+    page .ico,
     page button {width: .6rem;height: .6rem;line-height: .6rem;font-size: .22rem;}
-    page a.ico {font-size: .3rem;line-height: .6rem;}
-    page input {height: .6rem;}
+    page .ico {font-size: .3rem;}
+    page input {height: .6rem;border: 1px var(--light) solid;}
     page a:hover,
     page a.active {box-shadow: 0 .05rem .05rem var(--bright);}
 
@@ -337,34 +339,39 @@ pop-cont {padding: 20px 0;}
 
 /* login */
 .login {width: 100%;height: 100%;background: repeating-radial-gradient(circle at 50% 50%, transparent 0, var(--000-1) 3px 3px, transparent 5px 10px) var(--basic);}
-.login-main {width: 90%;max-width: 900px;background-color: white;padding: 30px;animation-duration: .5s;position: relative;border-radius: 10px;}
+.login-main {background-color: white;padding: 30px;animation-duration: .5s;position: relative;border-radius: 10px;}
 .login-main cite {position: absolute;right: 0;top: -50px;font-size: 70px;text-transform: uppercase;color: var(--fff-2);line-height: 100%;}
 .login-title {padding: 10px 0 20px;overflow: hidden;}
 .login-title h1 {margin: auto;transform: scale(1.3);}
 .login-cont {display: flex;align-items: center;}
-.login-form {flex: 1;}
+.login-form {width: 500px;}
 .login-form li {position: relative;display: flex;}
 .login-form li:last-child {border-bottom: 0;}
 .login-form li i {width: 50px;position: absolute;line-height: 50px;}
 .login-form li input {padding: 0 10px 0 50px;flex: 1;}
-.login-form li .btn {width: 100%;margin: 20px 5px;font-weight: bold;}
+.login-form li .btn {width: 100%;margin: 20px 5px 10px;font-weight: bold;}
 .login-info {padding: 0 15px;overflow: hidden;}
 .login-info a:hover {color: var(--basic);}
+.login-other {overflow: hidden;}
+.login-other a {padding: 5px;display: block;float: left;border-radius: 5px;}
+.login-other a:hover {background-color: var(--light);}
 .login-tip {line-height: 40px;color: white;text-align: center;clear: both;display: none;margin: 5px;border-radius: 3px;}
-.login-other {width: 40%;}
-.login-other a:hover {color: var(--basic);}
+.login-status {width: 360px;}
+.login-status a:hover {color: var(--basic);}
 
 @media(max-width:640px){
-    .login-main {padding: .1rem;border-radius: .1rem;}
+    .login-main {padding: .1rem;border-radius: .1rem;width: 95%;}
     .login-main cite {top: -.5rem;font-size: .7rem;}
     .login-title {padding: .1rem 0;}
     .login-cont {display: block;}
+    .login-form {width: 100%;}
     .login-form li i {width: .7rem;line-height: .7rem;}
     .login-form li input {padding: 0 .1rem 0 .7rem;}
-    .login-form li .btn {margin: .1rem 0;}
+    .login-form li .btn {margin: .2rem 0 0;font-size: .24rem;}
     .login-info {padding: 0 .15rem;}
+    .login-other a {padding: .1rem;border-radius: .1rem;}
     .login-tip {line-height: .5rem;margin: 0;}
-    .login-other {width: 100%;border-top-width: 1px;margin-top: .2rem;}
+    .login-status {width: 100%;border-top-width: 1px;margin-top: .2rem;}
 }
 
 /* reminder */
