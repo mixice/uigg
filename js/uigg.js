@@ -10,11 +10,6 @@
 $(function(){
     $('[hide]').hide()
     $('[show]').show()
-    $('[center]').addClass('center')
-    $('[infinite]').addClass('infinite')
-    $('[alternate]').addClass('alternate')
-    $('[column]').addClass('column')
-    $('.btn[disabled]').addClass('btn-disable')
 })
 console.log('%c  POWERED BY UIGG  ','background:#6c62f9;color:white;border-radius:10px','http://ui.gg');
 
@@ -116,10 +111,10 @@ $(function(){
     $('img[uigg="product"]').each(function(){if(!$(this).attr('src')) $(this).attr('src','//ui.gg/lib/images/product?=' + Math.floor(Math.random() * 100))})
     $('img[uigg="avatar"]').each(function(){if(!$(this).attr('src')) $(this).attr('src','//ui.gg/lib/images/avatar?=' + Math.floor(Math.random() * 100))})
 
-    $('[uigg="bg"]').each(function(){if($(this).css('background-image') == 'none'){$(this).css('background-image','url(//ui.gg/lib/images/bg?=' + Math.floor(Math.random() * 100) + ')')}})
-    $('[uigg="img"]').each(function(){if($(this).css('background-image') == 'none'){$(this).css('background-image','url(//ui.gg/lib/images/img?=' + Math.floor(Math.random() * 100) + ')')}})
-    $('[uigg="product"]').each(function(){if($(this).css('background-image') == 'none'){$(this).css('background-image','url(//ui.gg/lib/images/product?=' + Math.floor(Math.random() * 100) + ')')}})
-    $('[uigg="avatar"],.avatar').each(function(){if($(this).css('background-image') == 'none'){$(this).css('background-image','url(//ui.gg/lib/images/avatar?=' + Math.floor(Math.random() * 100) + ')')}})
+    $('[uigg="bg"]:not(img)').each(function(){if($(this).css('background-image') == 'none'){$(this).css('background-image','url(//ui.gg/lib/images/bg?=' + Math.floor(Math.random() * 100) + ')')}})
+    $('[uigg="img"]:not(img)').each(function(){if($(this).css('background-image') == 'none'){$(this).css('background-image','url(//ui.gg/lib/images/img?=' + Math.floor(Math.random() * 100) + ')')}})
+    $('[uigg="product"]:not(img)').each(function(){if($(this).css('background-image') == 'none'){$(this).css('background-image','url(//ui.gg/lib/images/product?=' + Math.floor(Math.random() * 100) + ')')}})
+    $('[uigg="avatar"]:not(img),.avatar').each(function(){if($(this).css('background-image') == 'none'){$(this).css('background-image','url(//ui.gg/lib/images/avatar?=' + Math.floor(Math.random() * 100) + ')')}})
     $('[uigg="color"]').each(function(){$(this).css('background-color','rgb(' + parseInt(Math.random() * 255) + ',' + parseInt(Math.random() * 255) + ',' + parseInt(Math.random() * 255) + ')')})
 
     let sentence = [
@@ -205,7 +200,9 @@ $(function(){
     $('pop-choice').addClass('anime-fade-in-up')
     $('pop-title .close').addClass('ico')
     $('pop .close, pop > x').click(function(){$(this).parents('pop').hide()})
-    $('pop-sider').attr('right') == '' ? $('pop-sider').css('right','0').addClass('anime-fade-in-right') : $('pop-sider').addClass('anime-fade-in-left')
+    $('pop').each(function(){
+        $(this).attr('right') == '' ? $(this).find('pop-sider').addClass('anime-fade-in-right') : $(this).find('pop-sider').addClass('anime-fade-in-left')
+    })
 });
 
 //----------------------------------------------------------------------------------menu
@@ -257,10 +254,10 @@ $(function(){
 //----------------------------------------------------------------------------------upload
 $(function(){
     $('.upload-add').click(function(){
-        $(this).before('<div class="ico upload-group"><input type="file"><x class="ico"></x></div>')
+        $(this).before('<div class="ico upload-group"><input type="file"><horn class="ico"></horn></div>')
         uploadImg()
     })
-    $(document).on('click','.upload-group x',function(){$(this).parent().remove()})
+    $(document).on('click','.upload-group horn',function(){$(this).parent().remove()})
     function uploadImg(){
         $('.upload-group input').on('change',function(){
             let imgValue = $(this).val(),
@@ -600,6 +597,14 @@ $(function(){
                 clue.css('left',clueLeft)
             }
         }
+    })
+});
+
+//----------------------------------------------------------------------------------horn
+$(function(){
+    $('horn').each(function(){
+        let hornParent = $(this).parent()
+        if(hornParent.css('position') !=='absolute' || hornParent.css('position') !=='fixed') hornParent.css('position','relative')
     })
 });
 

@@ -82,6 +82,7 @@
                     <a class="smooth" href="#form">form</a>
                     <a class="smooth" href="#fullscreen">fullscreen</a>
                     <a class="smooth" href="#hop">hop</a>
+                    <a class="smooth" href="#horn">horn</a>
                     <a class="smooth" href="#language">language</a>
                     <a class="smooth" href="#load">load</a>
                     <a class="smooth" href="#menu">menu</a>
@@ -397,7 +398,7 @@ class="btn co-red"
 </xmp>
             <p>Button disable</p>
 <xmp>
-class="btn btn-disable"
+<a class="btn" disabled>button</a>
 </xmp>
             <p>Button ico</p>
 <xmp>
@@ -738,7 +739,7 @@ class="font-tahoma"
         </li>
         <li><span>images</span>
             <div class="upload max">
-                <div class="ico upload-group"><input type="file"><x class="ico"></x></div>
+                <div class="ico upload-group"><input type="file"><horn class="ico"></horn></div>
                 <div class="ico upload-add"></div>
             </div>
         </li>
@@ -765,7 +766,7 @@ class="fullscreen"
         <div class="cont" id="hop">
             <h3>hop</h3>
             <h5>code</h5>
-            <p>Add the class to the DOM</p>
+            <p>Add the class to the DOM, if you need align right, add attribute <span>right</span> to <span>hop</span></p>
 <xmp>
 <hop>
     <a>link</a>
@@ -776,13 +777,20 @@ class="fullscreen"
     </hop-cont>
 </hop>
 </xmp>
-            <p>If you need align Right, add attribute <span>right</span> to <span>hop-cont</span></p>
-<xmp>
-right
-</xmp>
             <h5>effect display</h5>
             <iframe src="hop.html" height="350"></iframe>
             <a class="btn shadow" href="hop.html" target="_blank">view</a>
+        </div>
+        <div class="cont" id="horn">
+            <h3>horn</h3>
+            <h5>code</h5>
+            <p>Add the class to the DOM, if you need align left, add attribute <span>left</span> to <span>horn</span></p>
+<xmp>
+<horn></horn>
+</xmp>
+            <h5>effect display</h5>
+            <iframe src="horn.html" height="350"></iframe>
+            <a class="btn shadow" href="horn.html" target="_blank">view</a>
         </div>
         <div class="cont" id="language">
             <h3>language</h3>
@@ -940,7 +948,7 @@ notifyAlign = 'bottom'
 </pop>
 </xmp>
             <h5>pop sider code</h5>
-            <p>Add the code to the DOM, if you need pop align right, add <span>right</span> attribute to <span>pop-sider</span></p>
+            <p>Add the code to the DOM, if you need pop align right, add <span>right</span> attribute to <span>pop</span></p>
 <xmp>
 <pop>
     <pop-sider>
@@ -1791,11 +1799,10 @@ calss="editor-all"
                         <tr><td><xmp>disabled</xmp></td><td>Set component disable</td></tr>
                         <tr><td><xmp>selected</xmp></td><td>Disable selection</td></tr>
                         <tr><td><xmp>center</xmp></td><td>Set object centered content</td></tr>
+                        <tr><td><xmp>left</xmp></td><td>Set object left alignment</td></tr>
                         <tr><td><xmp>right</xmp></td><td>Set object right alignment</td></tr>
                         <tr><td><xmp>show</xmp></td><td>Force display object</td></tr>
                         <tr><td><xmp>hide</xmp></td><td>Force hidden objects</td></tr>
-                        <tr><td><xmp>infinite</xmp></td><td>Set animation loop</td></tr>
-                        <tr><td><xmp>alternate</xmp></td><td>Set animation alternate</td></tr>
                         <tr><td><xmp>copy-val</xmp></td><td>Copy trigger value</td></tr>
                         <tr><td><xmp>copy-btn</xmp></td><td>Copy trigger button</td></tr>
                         <tr><td><xmp>lang</xmp></td><td>Paragraph translation</td></tr>

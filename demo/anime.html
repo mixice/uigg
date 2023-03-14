@@ -110,21 +110,16 @@
 
 <script>
     $('fold a').click(function(){
-        $('fold a').removeClass('active')
+        $('fold a,.condition a').removeClass('active')
         $(this).addClass('active')
-        $('.condition a').removeClass('active')
     })
     $('.condition a.infinite').click(function(){
-        if($('.contant h3').attr('class') == undefined){}else{
-            $(this).toggleClass('active')
-            $('.contant h3').toggleClass('infinite')
-        }
+        $(this).toggleClass('active')
+        $('.contant h3').toggleClass('infinite')
     })
     $('.condition a.alternate').click(function(){
-        if($('.contant h3').attr('class') == undefined){}else{
-            $(this).toggleClass('active')
-            $('.contant h3').toggleClass('alternate')
-        }
+        $(this).toggleClass('active')
+        $('.contant h3').toggleClass('alternate')
     })
 
     $('.pulse').click(function(){$('h3').attr('class','anime-pulse')})
