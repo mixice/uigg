@@ -438,10 +438,12 @@ pop[right] pop-sider {right: 0;}
 }
 
 /* tip */
-tip {position: fixed;top: 50%;left: 50%;z-index: 999;padding: 10px 15px;background-color: white;transition-duration: 0s;line-height: 24px;border-radius: 5px;box-shadow: 0 3px 6px var(--000-1);}
+tip {position: fixed;top: 50%;left: 50%;z-index: 999;padding: 5px 10px;background-color: white;transition-duration: 0s;line-height: 24px;border-radius: 5px;box-shadow: 0 3px 6px var(--000-1);}
+tip > * {padding: 5px;}
 
 @media(max-width:640px){
-	tip {padding: .1rem .15rem;line-height: .3rem;}
+	tip {padding: .05rem .1rem;line-height: .3rem;}
+    tip > * {padding: .05rem;}
 }
 
 /* btn */

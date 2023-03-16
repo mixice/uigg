@@ -13,18 +13,28 @@
 
 <body center>
 
+<style>
+    a {margin: 10px;}
+</style>
+
 <!----------------------------------------------------------------------------------------->
 
-<a class="btn">add notify</a>
+<a class="btn auto">notify auto</a>
+<a class="btn open">notify</a>
 
 <!----------------------------------------------------------------------------------------->
 
 <script>
-    $('a').click(function(){
+    $('.auto').click(function(){
+        notifyVal = 'Notify auto'
+        //notifyAlign = 'bottom'
+        notifyAuto(5000)
+    })
+
+    $('.open').click(function(){
         notifyVal = 'Notify'
         //notifyAlign = 'bottom'
-        //notify()
-        notifyAuto(5000)
+        notify()
     })
 </script>
 

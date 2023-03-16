@@ -276,10 +276,11 @@ $(function(){
 //----------------------------------------------------------------------------------tip
 let tipVal
 function tip(){
-    $('body').append('<tip class="anime-zoom-in">' + tipVal + '</tip>')
-    $('tip').css('margin-top', - $('tip').height()/2-11 + 'px')
-    $('tip').css('margin-left', - $('tip').width()/2-20 + 'px')
-    setTimeout(function(){$('tip').hide()},3000)
+    let addClass = 't' + Math.round(Math.random() * 999999),
+        tipThis = '.' + addClass
+    $('body').append('<tip class="' + addClass + ' center anime-zoom-in">' + tipVal + '</tip>')
+    $(tipThis).css('margin', (- $(tipThis).height()/2-11) + 'px 0 0 ' + (- $(tipThis).width()/2-20 + 'px'))
+    setTimeout(function(){$(tipThis).remove()},3000)
 };
 
 //----------------------------------------------------------------------------------drop
@@ -360,31 +361,25 @@ function countdown(){
 };
 
 //----------------------------------------------------------------------------------notify
-let notifyVal,notifyThis,notifyAlign
-function notifyAdd(){
-    let addClass = 'n' + ($('notify li').length + 1)
-    $('notify').append('<li class="' + addClass + ' anime-bounce-in-right"><x class="ico ico-close"></x>'+ notifyVal +'</li>')
-    $('notify audio')[0].play()
-    notifyThis = $('.' + addClass)
-}
-function notifyRemre(){
-    notifyThis.addClass('anime-flip-out-x')
-    setTimeout(function(){notifyThis.remove()},500)
-}
+let notifyVal,notifyAlign,addClass
 function notify(){
-    if($('notify').length == 0){
-        $('body').append('<notify><audio src="//ui.gg/lib/media/notify.mp3"></audio></notify>')
-        if(notifyAlign == 'bottom'){$('notify').addClass('bottom')}
-        notifyAdd()
-    }else{notifyAdd()}
+    if($('notify').length == 0) $('body').append('<notify><audio src="//ui.gg/lib/media/notify.mp3"></audio></notify>')
+    if(notifyAlign == 'bottom'){$('notify').addClass('bottom')}
+    addClass = 'n' + Math.round(Math.random() * 999999)
+    $('notify').append('<li class="' + addClass + ' anime-bounce-in-right"><x class="ico ico-close"></x>' + notifyVal + '</li>').find('audio')[0].play()
+}
+function notifyRemre(notifyThis){
+    notifyThis.addClass('anime-bounce-out-right')
+    setTimeout(function(){notifyThis.remove()},500)
 }
 function notifyAuto(notifyTime){
     notify()
-    setTimeout(function(){notifyRemre()},notifyTime)
+    let notifyThis = $('.' + addClass)
+    setTimeout(function(){notifyRemre(notifyThis)},notifyTime)
 }
 $(document).on('click','notify x',function(){
-    notifyThis = $(this).parent()
-    notifyRemre()
+    let notifyThis = $(this).parent()
+    notifyRemre(notifyThis)
 });
 
 //----------------------------------------------------------------------------------copy
