@@ -21,6 +21,10 @@
   margin: auto;
 }
 
+.ico-arrow-undo:before {
+  content: "\ecda";
+}
+
 .ico-bubble-comment:before {
   content: "\ecbc";
 }
@@ -2239,10 +2243,6 @@
 
 .ico-wash:before {
   content: "\eb66";
-}
-
-.ico-arrow-return:before {
-  content: "\e767";
 }
 
 .ico-diningtable:before {

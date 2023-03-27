@@ -7,11 +7,11 @@
  */
 
 //----------------------------------------------------------------------------------preset
+console.log('%c  POWERED BY UIGG  ','background:#6c62f9;color:white;border-radius:10px','http://ui.gg')
 $(function(){
     $('[hide]').hide()
     $('[show]').show()
-})
-console.log('%c  POWERED BY UIGG  ','background:#6c62f9;color:white;border-radius:10px','http://ui.gg');
+});
 
 //----------------------------------------------------------------------------------rem
 (function(doc, win){
@@ -29,8 +29,8 @@ console.log('%c  POWERED BY UIGG  ','background:#6c62f9;color:white;border-radiu
 })(document, window);
 
 //----------------------------------------------------------------------------------load
-document.onreadystatechange = function(){if(document.readyState == 'complete') $('load').hide()}
-setTimeout(function(){$('load').hide()},6000);
+onload = () => {$('load').hide()}
+setTimeout(() => {$('load').hide()},6000);
 
 //----------------------------------------------------------------------------------browser
 let userAgent = JSON.stringify(navigator.userAgent)
@@ -106,15 +106,15 @@ function lug(){
 
 //----------------------------------------------------------------------------------random
 $(function(){
-    $('img[uigg="bg"]').each(function(){if(!$(this).attr('src')) $(this).attr('src','//ui.gg/lib/images/bg?=' + Math.floor(Math.random() * 100))})
-    $('img[uigg="img"]').each(function(){if(!$(this).attr('src')) $(this).attr('src','//ui.gg/lib/images/img?=' + Math.floor(Math.random() * 100))})
-    $('img[uigg="product"]').each(function(){if(!$(this).attr('src')) $(this).attr('src','//ui.gg/lib/images/product?=' + Math.floor(Math.random() * 100))})
-    $('img[uigg="avatar"]').each(function(){if(!$(this).attr('src')) $(this).attr('src','//ui.gg/lib/images/avatar?=' + Math.floor(Math.random() * 100))})
+    $('img[uigg="bg"]').each(function(){if(!$(this).attr('src')) $(this).attr('src','//ui.gg/lib/images/bg?=' + Math.round(Math.random() * 100))})
+    $('img[uigg="img"]').each(function(){if(!$(this).attr('src')) $(this).attr('src','//ui.gg/lib/images/img?=' + Math.round(Math.random() * 100))})
+    $('img[uigg="product"]').each(function(){if(!$(this).attr('src')) $(this).attr('src','//ui.gg/lib/images/product?=' + Math.round(Math.random() * 100))})
+    $('img[uigg="avatar"]').each(function(){if(!$(this).attr('src')) $(this).attr('src','//ui.gg/lib/images/avatar?=' + Math.round(Math.random() * 100))})
 
-    $('[uigg="bg"]:not(img)').each(function(){if($(this).css('background-image') == 'none'){$(this).css('background-image','url(//ui.gg/lib/images/bg?=' + Math.floor(Math.random() * 100) + ')')}})
-    $('[uigg="img"]:not(img)').each(function(){if($(this).css('background-image') == 'none'){$(this).css('background-image','url(//ui.gg/lib/images/img?=' + Math.floor(Math.random() * 100) + ')')}})
-    $('[uigg="product"]:not(img)').each(function(){if($(this).css('background-image') == 'none'){$(this).css('background-image','url(//ui.gg/lib/images/product?=' + Math.floor(Math.random() * 100) + ')')}})
-    $('[uigg="avatar"]:not(img),.avatar').each(function(){if($(this).css('background-image') == 'none'){$(this).css('background-image','url(//ui.gg/lib/images/avatar?=' + Math.floor(Math.random() * 100) + ')')}})
+    $('[uigg="bg"]:not(img)').each(function(){if($(this).css('background-image') == 'none'){$(this).css('background-image','url(//ui.gg/lib/images/bg?=' + Math.round(Math.random() * 100) + ')')}})
+    $('[uigg="img"]:not(img)').each(function(){if($(this).css('background-image') == 'none'){$(this).css('background-image','url(//ui.gg/lib/images/img?=' + Math.round(Math.random() * 100) + ')')}})
+    $('[uigg="product"]:not(img)').each(function(){if($(this).css('background-image') == 'none'){$(this).css('background-image','url(//ui.gg/lib/images/product?=' + Math.round(Math.random() * 100) + ')')}})
+    $('[uigg="avatar"]:not(img),.avatar').each(function(){if($(this).css('background-image') == 'none'){$(this).css('background-image','url(//ui.gg/lib/images/avatar?=' + Math.round(Math.random() * 100) + ')')}})
     $('[uigg="color"]').each(function(){$(this).css('background-color','rgb(' + parseInt(Math.random() * 255) + ',' + parseInt(Math.random() * 255) + ',' + parseInt(Math.random() * 255) + ')')})
 
     let sentence = [
@@ -130,7 +130,7 @@ $(function(){
         'eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae '
     ]
     if(!$('[uigg="txt"]').attr('lang') && !$('[uigg="txt"]').html()) $('[uigg="txt"]').append(sentence)
-    $('[uigg="title"]').each(function(){if(!$(this).attr('lang') && !$(this).html()) $(this).append(sentence[Math.floor(Math.random() * sentence.length)])})
+    $('[uigg="title"]').each(function(){if(!$(this).attr('lang') && !$(this).html()) $(this).append(sentence[Math.round(Math.random() * (sentence.length - 1))])})
 
     let arr = new Array()
     for(let i = 1;i <= 100;i++){arr[i] = i
@@ -173,13 +173,11 @@ $(function(){
     $('.return').click(function(){history.back(-1)})
 });
 
-//----------------------------------------------------------------------------------anew
+//----------------------------------------------------------------------------------top
 $(function(){
-    $('.anew.btn').addClass('ico ico-alone-top')
-    $('.anew').click(function(){$('html,body').animate({scrollTop:'0px'},1000)})
-    $(document).scroll(function(){
-        $(window).scrollTop() > $(window).height() ? $('.anew').css('opacity','1') : $('.anew').css('opacity','0')
-    })
+    $('.top.btn').addClass('ico ico-alone-top')
+    $('.top').click(function(){$('html,body').animate({scrollTop:'0px'},1000)})
+    $(document).scroll(function(){$(window).scrollTop() > $(window).height() ? $('.top').css('opacity','1') : $('.top').css('opacity','0')})
 });
 
 //----------------------------------------------------------------------------------tab
@@ -193,15 +191,16 @@ $(function(){
 
 //----------------------------------------------------------------------------------pop
 $(function(){
-    $('pop').append('<x></x>')
-    $('pop').addClass('anime-fade-in')
-    $('pop-main').wrap('<div class="full center"></div>')
-    $('pop-main').addClass('anime-zoom-in')
+    $('pop').addClass('anime-fade-in').append('<x></x>')
+    $('pop-main').addClass('anime-zoom-in').wrap('<div class="full center"></div>')
     $('pop-choice').addClass('anime-fade-in-up')
     $('pop-title .close').addClass('ico')
     $('pop .close, pop > x').click(function(){$(this).parents('pop').hide()})
     $('pop').each(function(){
         $(this).attr('right') == '' ? $(this).find('pop-sider').addClass('anime-fade-in-right') : $(this).find('pop-sider').addClass('anime-fade-in-left')
+    })
+    $('[class$="-pop"]').click(function(){
+        if($(this).prop('tagName') != 'POP') $('pop.'+ $.grep($(this).attr('class').split(' '),function(item){return item.indexOf("-pop") !== -1}).join(' ')).show()
     })
 });
 
@@ -239,15 +238,17 @@ $(function(){
 
 //----------------------------------------------------------------------------------scaler
 $(function(){
-    $('scaler input').before('<a class="btn ico ico-reduce"></a>')
-    $('scaler input').after('<a class="btn ico ico-add"></a>')
-    $('scaler .ico-add').click(function(){
-        let calcInput = $(this).siblings('input')
-        calcInput.val(parseInt(calcInput.val()) + 1)
-    })
-    $('scaler .ico-reduce').click(function(){
-        let calcInput = $(this).siblings('input')
-        if(calcInput.val() > 0) calcInput.val(parseInt(calcInput.val()) - 1)
+    $('scaler input').before('<a class="btn ico ico-reduce"></a>').after('<a class="btn ico ico-add"></a>')
+    $('scaler input').on('input',function(){if(!Number($(this).val(),10)) $(this).val('')})
+    $('scaler a').click(function(){
+        let calcInput = $(this).siblings('input'),
+            step = calcInput.attr('step') != undefined ? Number(calcInput.attr('step')) : 1,
+            len = step.toString().indexOf('.') != -1 ? (step.toString().split('.'))[1].toString().split('').length : 0,
+            max = Number(calcInput.attr('max')),
+            min = calcInput.attr('min') != undefined ? Number(calcInput.attr('min')) : 0,
+            calc = Number((Number(calcInput.val()) + step).toFixed(len))
+        if($(this).hasClass('ico-add')) calc > max ? calcInput.val(max) : calcInput.val(calc)
+        if($(this).hasClass('ico-reduce')) calcInput.val() > min ? calcInput.val((Number(calcInput.val()) - step).toFixed(len)) : calcInput.val(min)
     })
 });
 
@@ -280,7 +281,7 @@ function tip(){
         tipThis = '.' + addClass
     $('body').append('<tip class="' + addClass + ' center anime-zoom-in">' + tipVal + '</tip>')
     $(tipThis).css('margin', (- $(tipThis).height()/2-11) + 'px 0 0 ' + (- $(tipThis).width()/2-20 + 'px'))
-    setTimeout(function(){$(tipThis).remove()},3000)
+    setTimeout(() => {$(tipThis).remove()},3000)
 };
 
 //----------------------------------------------------------------------------------drop
@@ -335,8 +336,7 @@ $(function(){
 
 //----------------------------------------------------------------------------------nav
 $(function(){
-    $('nav').before('<space></space>')
-    $('nav').addClass('anime-fade-in-up')
+    $('nav').addClass('anime-fade-in-up').before('<space></space>')
 });
 
 //----------------------------------------------------------------------------------countdown
@@ -370,12 +370,12 @@ function notify(){
 }
 function notifyRemre(notifyThis){
     notifyThis.addClass('anime-bounce-out-right')
-    setTimeout(function(){notifyThis.remove()},500)
+    setTimeout(() => {notifyThis.remove()},500)
 }
 function notifyAuto(notifyTime){
     notify()
     let notifyThis = $('.' + addClass)
-    setTimeout(function(){notifyRemre(notifyThis)},notifyTime)
+    setTimeout(() => {notifyRemre(notifyThis)},notifyTime)
 }
 $(document).on('click','notify x',function(){
     let notifyThis = $(this).parent()
@@ -385,12 +385,13 @@ $(document).on('click','notify x',function(){
 //----------------------------------------------------------------------------------copy
 let copyNum,copyEl,copyVal
 $(function(){
-    let copy = $('[copy-btn]')
-    copy.click(function(){
+    $('[copy-btn]').click(function(){
         copyNum = $(this).attr('copy-btn')
         copyNum == '' ? copyEl = $('[copy-val]') : copyEl = $('[copy-val=' + copyNum + ']')
         copyEl.is('input') ? copyVal = copyEl.val() : copyVal = copyEl.html()
         navigator.clipboard.writeText(copyVal)
+        tipVal = 'Copy successful'
+        tip()
     })
 });
 
@@ -401,17 +402,9 @@ $(function(){
 
 //----------------------------------------------------------------------------------hop
 $(function(){
-    $('hop-cont').before('<x></x>')
-    $('hop-cont').addClass('anime-fade-in')
-    $('hop-cont').css('top',$('hop > a').outerHeight(true) + 'px')
-    $('hop > a').click(function(){
-        $(this).siblings('hop-cont').toggle()
-        $(this).siblings('x').toggle()
-    })
-    $('hop x').click(function(){
-        $(this).siblings('hop-cont').hide()
-        $(this).hide()
-    })
+    $('hop-cont').css('top',$('hop > a').outerHeight(true) + 'px').addClass('anime-fade-in').before('<x></x>')
+    $('hop > a').click(function(){$(this).siblings('hop-cont,x').toggle()})
+    $('hop-cont,hop x').click(function(){$(this).hide().siblings('hop-cont,x').hide()})
 });
 
 //----------------------------------------------------------------------------------chat
@@ -547,27 +540,22 @@ $(function(){
 });
 
 //----------------------------------------------------------------------------------lang
+function langRead(targetObj,data){
+    let langVal = targetObj.split('-'),
+        dataStr = 'data'
+    for(i = 0;i < langVal.length - 1;i++){dataStr += '.' + langVal[i] + '[0]'}
+    dataStr += '.' + langVal[langVal.length - 1]
+    return eval(dataStr)
+}
 $(function(){
     let langType = getCookie('lang') == '' ? 'en' : getCookie('lang')
     function lang(){
         if($('[lang-set]').length != 0){
             $.get(`/lang/${langType}.json`,function(data){
-                $('[lang]').each(function(){
-                    langVal = $(this).attr('lang').split('-')
-                    $(this).html(eval('data.' + langVal[0] + '[0].' + langVal[1]))
-                })
-                $('[lang-placeholder]').each(function(){
-                    langVal = $(this).attr('lang-placeholder').split('-')
-                    $(this).attr('placeholder',eval('data.' + langVal[0] + '[0].' + langVal[1]))
-                })
-                $('[lang-value]').each(function(){
-                    langVal = $(this).attr('lang-value').split('-')
-                    $(this).attr('value',eval('data.' + langVal[0] + '[0].' + langVal[1]))
-                })
-                $('[lang-content]').each(function(){
-                    langVal = $(this).attr('lang-content').split('-')
-                    $(this).attr('content',eval('data.' + langVal[0] + '[0].' + langVal[1]))
-                })
+                $('[lang]').each(function(){$(this).html(langRead($(this).attr('lang'),data))})
+                $('[lang-placeholder]').each(function(){$(this).attr('placeholder',langRead($(this).attr('lang-placeholder'),data))})
+                $('[lang-value]').each(function(){$(this).attr('value',langRead($(this).attr('lang-value'),data))})
+                $('[lang-content]').each(function(){$(this).attr('content',langRead($(this).attr('lang-content'),data))})
             })
         }
     }
@@ -599,7 +587,7 @@ $(function(){
 $(function(){
     $('horn').each(function(){
         let hornParent = $(this).parent()
-        if(hornParent.css('position') !=='absolute' || hornParent.css('position') !=='fixed') hornParent.css('position','relative')
+        if(hornParent.css('position') !='absolute' && hornParent.css('position') !='fixed') hornParent.css('position','relative')
     })
 });
 

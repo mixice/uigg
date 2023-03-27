@@ -1,3 +1,5 @@
+@import url('//ui.gg/lib/font/font.css');
+
 /* basic */
 body,
 load {}
@@ -19,20 +21,11 @@ load {}
 .subject {}
 .clause {}
 
-/* pop */
-pop {}
-pop-main {}
-pop-title {}
-pop-title h3 {}
-pop-title a {}
-pop-cont {}
-pop-solve {}
-
 /* btn */
 .btn {}
 
 /* head */
-.head {}
+.head {position: relative;z-index: 3;}
 .head-cont {}
 .logo {}
 
@@ -52,6 +45,11 @@ menu-list {}
 .title em {}
 .title span {}
 
+/* foot */
+.foot {}
+.foot-cont {}
+.foot-copy {}
+
 /* form */
 .form {}
 .form li {}
@@ -68,10 +66,14 @@ page a {}
 .notice {}
 .notice i {}
 
-/* foot */
-.foot {}
-.foot-cont {}
-.foot-copy {}
+/* pop */
+pop {}
+pop-main {}
+pop-title {}
+pop-title h3 {}
+pop-title a {}
+pop-cont {}
+pop-solve {}
 
 /* tab */
 tab {}

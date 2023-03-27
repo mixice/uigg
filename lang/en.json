@@ -2,7 +2,11 @@
     "lang":[
         {
             "one": "don't give up on anyone",
-            "two": "miracles happen every day"
+            "two": [
+                {
+                    "three": "don't give up on anyone"
+                }
+            ]
         }
     ]
 }

@@ -19,7 +19,7 @@
 </head>
 
 <body>
-
+<load></load>
 <style>
     .cont iframe {width: 100%;border: 1px var(--eee) solid;margin: 5px 0;}
     .cont xmp {color: var(--tomato);white-space: pre-wrap;word-break: break-all;cursor: pointer;background: var(--f7);padding: 0 20px 20px;margin: 5px 0;}
@@ -66,7 +66,6 @@
                 <fold-title><i class="ico ico-graphic"></i><h5>preset function</h5><u></u></fold-title>
                 <fold-cont>
                     <a class="smooth" href="#alone">alone</a>
-                    <a class="smooth" href="#anew">anew</a>
                     <a class="smooth" href="#anime">anime</a>
                     <a class="smooth" href="#button">button</a>
                     <a class="smooth" href="#clue">clue</a>
@@ -101,6 +100,7 @@
                     <a class="smooth" href="#tip">tip</a>
                     <a class="smooth" href="#title">title</a>
                     <a class="smooth" href="#toggle">toggle</a>
+                    <a class="smooth" href="#top">top</a>
                 </fold-cont>
             </fold-group>
             <fold-group>
@@ -203,12 +203,14 @@ class="mobile"
             <p>Add the class to the DOM</p>
 <xmp>
 class="block"
+class="cover"
+class="contain"
+class="center"
 class="clear"
 class="hide"
 class="show"
 class="hide-important"
 class="show-important"
-class="center"
 class="single"
 class="only-web"
 class="only-mob"
@@ -305,21 +307,6 @@ $(function(){
             <iframe src="alone.html" height="250"></iframe>
             <a class="btn shadow" href="alone.html" target="_blank">view</a>
         </div>
-        <div class="cont" id="anew">
-            <h3>anew</h3>
-            <h5>code</h5>
-            <p>Add the class to the DOM</p>
-<xmp>
-class="anew"
-</xmp>
-            <p>If you need a separate button, add the class to the DOM</p>
-<xmp>
-class="anew btn"
-</xmp>
-            <h5>effect display</h5>
-            <iframe src="anew.html"></iframe>
-            <a class="btn shadow" href="anew.html" target="_blank">view</a>
-        </div>
         <div class="cont" id="anime">
             <h3>anime</h3>
             <h5>code</h5>
@@ -402,7 +389,7 @@ class="btn co-red"
 </xmp>
             <p>Button ico</p>
 <xmp>
-<a class="btn"><i class="ico ico-search"></i>button</a>
+<a class="btn"><i class="ico ico-search"></i><span>button</span></a>
 </xmp>
             <p>Button flex group</p>
 <xmp>
@@ -666,7 +653,7 @@ class="font-tahoma"
             <cite class="co-red">Password error</cite>
         </li>
         <li><span>scaler</span>
-            <scaler><input value="1"></scaler>
+            <scaler><input step="1" min="0" max="100" value="1"></scaler>
             <cite>Lorem ipsum dolor sit amet</cite>
         </li>
         <li><span>radio</span>
@@ -915,6 +902,7 @@ notifyAlign = 'bottom'
         </div>
         <div class="cont" id="pop">
             <h3>pop</h3>
+            <p>You can quickly bind buttons and pop using the same class name that contains <span>*-pop</span></p>
             <h5>pop center code</h5>
             <p>Add the code to the DOM</p>
 <xmp>
@@ -1015,7 +1003,7 @@ edit
         <div class="cont" id="scaler">
             <h3>scaler</h3>
             <h5>code</h5>
-            <p>Add the code to the DOM</p>
+            <p>Add the code to the DOM, you can add the <span>step</span> or <span>min</span> or <span>max</span> attribute to the <span>input</span></p>
 <xmp>
 <scaler>
     <input value="1">
@@ -1200,6 +1188,21 @@ tip()
             <h5>effect display</h5>
             <iframe src="toggle.html"></iframe>
             <a class="btn shadow" href="toggle.html" target="_blank">view</a>
+        </div>
+        <div class="cont" id="top">
+            <h3>top</h3>
+            <h5>code</h5>
+            <p>Add the class to the DOM</p>
+<xmp>
+class="top"
+</xmp>
+            <p>If you need a separate button, add the class to the DOM</p>
+<xmp>
+class="top btn"
+</xmp>
+            <h5>effect display</h5>
+            <iframe src="top.html"></iframe>
+            <a class="btn shadow" href="top.html" target="_blank">view</a>
         </div>
         <h2><i class="ico ico-phone-ios"></i>Mobile terminal</h2>
         <div class="cont" id="name">
@@ -1793,11 +1796,14 @@ calss="editor-all"
                         <tr><td><xmp>value</xmp></td><td>Sets the current value of the component</td></tr>
                         <tr><td><xmp>max</xmp></td><td>Set the maximum value of the component</td></tr>
                         <tr><td><xmp>min</xmp></td><td>Set the minimum value of the component</td></tr>
+                        <tr><td><xmp>step</xmp></td><td>Set the step value of the component</td></tr>
                         <tr><td><xmp>pause</xmp></td><td>Set media pause</td></tr>
                         <tr><td><xmp>play</xmp></td><td>Set media play</td></tr>
                         <tr><td><xmp>column</xmp></td><td>Flex vertical arrangement</td></tr>
                         <tr><td><xmp>disabled</xmp></td><td>Set component disable</td></tr>
                         <tr><td><xmp>selected</xmp></td><td>Disable selection</td></tr>
+                        <tr><td><xmp>cover</xmp></td><td>Object cover fills container</td></tr>
+                        <tr><td><xmp>contain</xmp></td><td>Object contain fills container</td></tr>
                         <tr><td><xmp>center</xmp></td><td>Set object centered content</td></tr>
                         <tr><td><xmp>left</xmp></td><td>Set object left alignment</td></tr>
                         <tr><td><xmp>right</xmp></td><td>Set object right alignment</td></tr>
