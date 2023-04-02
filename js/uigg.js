@@ -29,8 +29,8 @@ $(function(){
 })(document, window);
 
 //----------------------------------------------------------------------------------load
-onload = () => {$('load').hide()}
-setTimeout(() => {$('load').hide()},6000);
+onload = () => $('load').hide()
+setTimeout(() => $('load').hide(),6000);
 
 //----------------------------------------------------------------------------------browser
 let userAgent = JSON.stringify(navigator.userAgent)
@@ -114,7 +114,7 @@ $(function(){
     $('[uigg="bg"]:not(img)').each(function(){if($(this).css('background-image') == 'none'){$(this).css('background-image','url(//ui.gg/lib/images/bg?=' + Math.round(Math.random() * 100) + ')')}})
     $('[uigg="img"]:not(img)').each(function(){if($(this).css('background-image') == 'none'){$(this).css('background-image','url(//ui.gg/lib/images/img?=' + Math.round(Math.random() * 100) + ')')}})
     $('[uigg="product"]:not(img)').each(function(){if($(this).css('background-image') == 'none'){$(this).css('background-image','url(//ui.gg/lib/images/product?=' + Math.round(Math.random() * 100) + ')')}})
-    $('[uigg="avatar"]:not(img),.avatar').each(function(){if($(this).css('background-image') == 'none'){$(this).css('background-image','url(//ui.gg/lib/images/avatar?=' + Math.round(Math.random() * 100) + ')')}})
+    $('[uigg="avatar"]:not(img)').each(function(){if($(this).css('background-image') == 'none'){$(this).css('background-image','url(//ui.gg/lib/images/avatar?=' + Math.round(Math.random() * 100) + ')')}})
     $('[uigg="color"]').each(function(){$(this).css('background-color','rgb(' + parseInt(Math.random() * 255) + ',' + parseInt(Math.random() * 255) + ',' + parseInt(Math.random() * 255) + ')')})
 
     let sentence = [
@@ -281,7 +281,7 @@ function tip(){
         tipThis = '.' + addClass
     $('body').append('<tip class="' + addClass + ' center anime-zoom-in">' + tipVal + '</tip>')
     $(tipThis).css('margin', (- $(tipThis).height()/2-11) + 'px 0 0 ' + (- $(tipThis).width()/2-20 + 'px'))
-    setTimeout(() => {$(tipThis).remove()},3000)
+    setTimeout(() => $(tipThis).remove(),3000)
 };
 
 //----------------------------------------------------------------------------------drop
@@ -370,12 +370,12 @@ function notify(){
 }
 function notifyRemre(notifyThis){
     notifyThis.addClass('anime-bounce-out-right')
-    setTimeout(() => {notifyThis.remove()},500)
+    setTimeout(() => notifyThis.remove(),500)
 }
 function notifyAuto(notifyTime){
     notify()
     let notifyThis = $('.' + addClass)
-    setTimeout(() => {notifyRemre(notifyThis)},notifyTime)
+    setTimeout(() => notifyRemre(notifyThis),notifyTime)
 }
 $(document).on('click','notify x',function(){
     let notifyThis = $(this).parent()
@@ -402,7 +402,7 @@ $(function(){
 
 //----------------------------------------------------------------------------------hop
 $(function(){
-    $('hop-cont').css('top',$('hop > a').outerHeight(true) + 'px').addClass('anime-fade-in').before('<x></x>')
+    $('hop-cont').addClass('anime-fade-in').before('<x></x>')
     $('hop > a').click(function(){$(this).siblings('hop-cont,x').toggle()})
     $('hop-cont,hop x').click(function(){$(this).hide().siblings('hop-cont,x').hide()})
 });
