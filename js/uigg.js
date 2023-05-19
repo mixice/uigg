@@ -7,7 +7,7 @@
  */
 
 //----------------------------------------------------------------------------------preset
-console.log('%c  POWERED BY UIGG  ','background:#6c62f9;color:white;border-radius:10px','http://ui.gg')
+console.log('%c  POWERED BY UIGG  ','background:slateblue;color:white;border-radius:1em','http://ui.gg')
 $(function(){
     $('[hide]').hide()
     $('[show]').show()
@@ -44,12 +44,9 @@ $(function(){
         $(this).attr('pause') == '' ? $(this).removeAttr('pause').find('#music')[0].play() : $(this).attr('pause','').find('#music')[0].pause()
     })
     document.addEventListener('DOMContentLoaded',function(){
-        function audioAutoPlay(){
-            let audio = document.getElementById('music')
-            audio.play()
-            document.addEventListener('WeixinJSBridgeReady',function(){audio.play()},false)
-        }
-        audioAutoPlay()
+        let audio = $('music')
+        audio.play()
+        document.addEventListener('WeixinJSBridgeReady',function(){audio.play()},false)
     })
 });
 //----------------------------------------------------------------------------------fullscreen
@@ -105,17 +102,15 @@ function lug(){
 };
 
 //----------------------------------------------------------------------------------random
+function randNum(){return Math.round(Math.random() * 100)}
+function randCol(){return parseInt(Math.random() * 255)}
 $(function(){
-    $('img[uigg="bg"]').each(function(){if(!$(this).attr('src')) $(this).attr('src','//ui.gg/lib/images/bg?=' + Math.round(Math.random() * 100))})
-    $('img[uigg="img"]').each(function(){if(!$(this).attr('src')) $(this).attr('src','//ui.gg/lib/images/img?=' + Math.round(Math.random() * 100))})
-    $('img[uigg="product"]').each(function(){if(!$(this).attr('src')) $(this).attr('src','//ui.gg/lib/images/product?=' + Math.round(Math.random() * 100))})
-    $('img[uigg="avatar"]').each(function(){if(!$(this).attr('src')) $(this).attr('src','//ui.gg/lib/images/avatar?=' + Math.round(Math.random() * 100))})
-
-    $('[uigg="bg"]:not(img)').each(function(){if($(this).css('background-image') == 'none'){$(this).css('background-image','url(//ui.gg/lib/images/bg?=' + Math.round(Math.random() * 100) + ')')}})
-    $('[uigg="img"]:not(img)').each(function(){if($(this).css('background-image') == 'none'){$(this).css('background-image','url(//ui.gg/lib/images/img?=' + Math.round(Math.random() * 100) + ')')}})
-    $('[uigg="product"]:not(img)').each(function(){if($(this).css('background-image') == 'none'){$(this).css('background-image','url(//ui.gg/lib/images/product?=' + Math.round(Math.random() * 100) + ')')}})
-    $('[uigg="avatar"]:not(img)').each(function(){if($(this).css('background-image') == 'none'){$(this).css('background-image','url(//ui.gg/lib/images/avatar?=' + Math.round(Math.random() * 100) + ')')}})
-    $('[uigg="color"]').each(function(){$(this).css('background-color','rgb(' + parseInt(Math.random() * 255) + ',' + parseInt(Math.random() * 255) + ',' + parseInt(Math.random() * 255) + ')')})
+    $('[uigg="bg"],[uigg="img"],[uigg="product"],[uigg="avatar"]').each(function(){
+        let url = `//ui.gg/lib/images/${$(this).attr('uigg')}?=${randNum()}`
+        if($(this).css('background-image') == 'none' && !$(this).is('img')) $(this).css('background-image',`url(${url})`)
+        if(!$(this).attr('src') && $(this).is('img')) $(this).attr('src',url)
+    })
+    $('[uigg="color"]').each(function(){$(this).css('background-color',`rgb(${randCol()},${randCol()},${randCol()})`)})
 
     let sentence = [
         'Lorem ipsum dolor sit amet, consectetur adipisicing elit ',
@@ -216,6 +211,7 @@ $(function(){
             else{$('menu-group').hide();menuGroup.show()}
         })
     }
+    $('.menu-cont a').click(function(){$('.menu-cont').hide()})
 });
 
 //----------------------------------------------------------------------------------toggle
@@ -226,9 +222,8 @@ $(function(){
         $(this).addClass('active')
     })
     $('o.checkbox-all').click(function(){
-        $(this).hasClass('active')
-        ? $(this).parent().parent().parent().parent().find('o.checkbox,o.checkbox-done').addClass('active')
-        : $(this).parent().parent().parent().parent().find('o.checkbox,o.checkbox-done').removeClass('active')
+        let checkboxAll = $(this).parent().parent().parent().parent().find('o.checkbox,o.checkbox-done')
+        $(this).hasClass('active') ? checkboxAll.addClass('active') : checkboxAll.removeClass('active')
     })
     $('o.password').click(function(){
         let inputType = $(this).siblings('input').attr('type')
@@ -266,7 +261,7 @@ $(function(){
                 imgUrl = window.URL.createObjectURL(this.files[0])
             if(!fileFormat.match(/.png|.jpg|.jpeg|.webp|.gif/)){alert('File format must be: png/jpg/jpeg/webp/gif')}
             else{
-                $(this).parent().attr('style','background-image:url(' + imgUrl + ')')
+                $(this).parent().attr('style',`background-image:url(${imgUrl})`)
                 $(this).parent().css('color','transparent')
             }
         })
@@ -279,7 +274,7 @@ let tipVal
 function tip(){
     let addClass = 't' + Math.round(Math.random() * 999999),
         tipThis = '.' + addClass
-    $('body').append('<tip class="' + addClass + ' center anime-zoom-in">' + tipVal + '</tip>')
+    $('body').append('<tip class="' + addClass + ` center anime-zoom-in">${tipVal}</tip>`)
     $(tipThis).css('margin', (- $(tipThis).height()/2-11) + 'px 0 0 ' + (- $(tipThis).width()/2-20 + 'px'))
     setTimeout(() => $(tipThis).remove(),3000)
 };
@@ -296,8 +291,7 @@ $(function(){
     $('drop-list li').click(function(){
         if($(this).children('drop-list').length){}else{
             dropFirst = $(this).html()
-            $(this).parents('drop').find('drop-cont').html(dropFirst)
-            $(this).parents('drop').removeClass('active')
+            $(this).parents('drop').removeClass('active').find('drop-cont').html(dropFirst)
         }
     })
     $('drop x').click(function(){$(this).parents('drop').removeClass('active')})
@@ -320,10 +314,8 @@ $(function(){
     $('rate').html('<i></i><i></i><i></i><i></i><i></i>')
     $('rate').each(function(){$(this).find('i').addClass('ico ico-star').filter(':lt(' + $(this).attr('value') + ')').addClass('active')})
     $('rate[edit] i').click(function(){
-        $(this).parent().attr('value',$(this).index() + 1)
-        $(this).siblings().removeClass('active')
+        $(this).addClass('active').siblings().removeClass('active').parent().attr('value',$(this).index() + 1)
         $(this).prevAll().addClass('active')
-        $(this).addClass('active')
     })
 });
 
@@ -366,7 +358,7 @@ function notify(){
     if($('notify').length == 0) $('body').append('<notify><audio src="//ui.gg/lib/media/notify.mp3"></audio></notify>')
     if(notifyAlign == 'bottom'){$('notify').addClass('bottom')}
     addClass = 'n' + Math.round(Math.random() * 999999)
-    $('notify').append('<li class="' + addClass + ' anime-bounce-in-right"><x class="ico ico-close"></x>' + notifyVal + '</li>').find('audio')[0].play()
+    $('notify').append(`<li class="${addClass} anime-bounce-in-right"><x class="ico ico-close"></x>${notifyVal}</li>`).find('audio')[0].play()
 }
 function notifyRemre(notifyThis){
     notifyThis.addClass('anime-bounce-out-right')
@@ -387,7 +379,7 @@ let copyNum,copyEl,copyVal
 $(function(){
     $('[copy-btn]').click(function(){
         copyNum = $(this).attr('copy-btn')
-        copyNum == '' ? copyEl = $('[copy-val]') : copyEl = $('[copy-val=' + copyNum + ']')
+        copyNum == '' ? copyEl = $('[copy-val]') : copyEl = $(`[copy-val="${copyNum}"]`)
         copyEl.is('input') ? copyVal = copyEl.val() : copyVal = copyEl.html()
         navigator.clipboard.writeText(copyVal)
         tipVal = 'Copy successful'
@@ -415,7 +407,6 @@ $(function(){
     $('chat-tool .ico-emot-smile').click(function(){$(this).next().toggle()})
     $('chat [uigg="emot"] s').click(function(){
         $(this).parent().parent().hide()
-        console.log(1)
         $('chat-control aside').append($(this))
     })
     $('chat-title x.ico-close').click(function(){$(this).parent().parent().hide()})
@@ -439,10 +430,10 @@ $(function(){
             fileFormat = fileValue.substring(fileValue.lastIndexOf('.')).toLowerCase(),
             fileName = fileValue.substring(fileValue.lastIndexOf('\\') + 1),
             fileUrl = window.URL.createObjectURL(this.files[0])
-        if(fileFormat.match(/.png|.jpg|.jpeg|.webp|.gif/)){$('chat-control aside').append('<img src="' + fileUrl + '">');return}
-        if(fileFormat.match(/.mp4|.webm/)){$('chat-control aside').append('<video src="' + fileUrl + '" controls></video>');return}
-        if(fileFormat.match(/.mp3|.ogg|.wav|.midi/)){$('chat-control aside').append('<audio src="' + fileUrl + '" controls></audio>');return}
-        else{$('chat-control aside').append('<a download href="' + fileUrl + '"><i class="ico ico-file"></i>' + fileName + '</a>')}
+        if(fileFormat.match(/.png|.jpg|.jpeg|.webp|.gif/)){$('chat-control aside').append(`<img src="${fileUrl}">`);return}
+        if(fileFormat.match(/.mp4|.webm/)){$('chat-control aside').append(`<video src="${fileUrl}" controls></video>`);return}
+        if(fileFormat.match(/.mp3|.ogg|.wav|.midi/)){$('chat-control aside').append(`<audio src="${fileUrl}" controls></audio>`);return}
+        else{$('chat-control aside').append(`<a download href="${fileUrl}"><i class="ico ico-file"></i>${fileName}</a>`)}
     })
 });
 
@@ -465,7 +456,7 @@ $(function(){
 $(function(){
     let pageVal = $('page').attr('value'),
         pageMax = $('page').attr('max')
-    $('page').append('<a class="ico ico-alone-side-left"></a><a class="ico ico-alone-left"></a><ul></ul><a class="ico ico-alone-right"></a><a class="ico ico-alone-side-right"></a><span>' + pageVal + '/' + pageMax + '</span><input type="text"><button class="ico ico-arrow-enter"></button>')
+    $('page').append(`<a class="ico ico-alone-side-left"></a><a class="ico ico-alone-left"></a><ul></ul><a class="ico ico-alone-right"></a><a class="ico ico-alone-side-right"></a><span>${pageVal}/${pageMax}</span><input type="text"><button class="ico ico-arrow-enter"></button>`)
     let arr = new Array()
     for(let i = 1;i <= pageMax;i++){arr[i] = i;$('page ul').append('<a>' + i + '</a>')}
     function page(){
@@ -589,6 +580,11 @@ $(function(){
         let hornParent = $(this).parent()
         if(hornParent.css('position') !='absolute' && hornParent.css('position') !='fixed') hornParent.css('position','relative')
     })
+});
+
+//----------------------------------------------------------------------------------form
+$(function(){
+    $('textarea.auto').on('input',function(){$(this).css('height',(this.scrollHeight) + 'px')})
 });
 
 //----------------------------------------------------------------------------------
