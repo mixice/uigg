@@ -463,8 +463,9 @@ tip > * {padding: 5px;}
 .btn-flex {display: flex;justify-content: center;align-items: center;}
 .btn-flex .btn,
 .btn-flex button {flex: 1;}
-.btn-empty {background-color: transparent !important;border: 1px solid;color: var(--color);}
+.btn-empty {background: none !important;border: 1px solid;color: var(--color);}
 .btn-empty .ico {color: var(--color);}
+.btn-submit {padding: 0 50px;}
 .btn[disabled] {filter: grayscale(100%);}
 .btn[disabled]:hover {transform: translateY(0);cursor: no-drop;}
 
@@ -474,6 +475,7 @@ tip > * {padding: 5px;}
     .btn .ico {margin: .05rem;}
     .btn .ico:first-child {margin-left: -.5rem;}
     .btn .ico:last-child {margin-right: -.5rem;}
+    .btn-submit {padding: 0;}
 }
 
 /* nav */
@@ -1020,7 +1022,7 @@ chat .avatar {width: 50px;height: 50px;}
 chat pop img {max-height: 100%;}
 chat aside {word-break: break-all;}
 chat aside * {white-space: normal;}
-chat aside img {max-width: 200px;border-radius: 5px;cursor: pointer;min-width: 50px;min-height: 50px;}
+chat aside img {max-width: 200px;cursor: pointer;min-width: 50px;min-height: 50px;}
 chat aside video {max-width: 300px;}
 chat a[download] {background-color: var(--orange);display: inline-block;border-radius: 5px;padding-right: 20px;}
 chat a[download] .ico-file {width: 50px;height: 50px;background-color: transparent;}
@@ -1066,7 +1068,7 @@ chat-tip {position: absolute;bottom: 50px;left: 0;background-color: white;border
 chat-control {height: 150px;position: relative;overflow: hidden;}
 chat-control aside {height: 100%;padding: 0 70px 0 10px;overflow: auto;-webkit-user-modify: read-write;}
 chat-control aside * {-webkit-user-modify: read-only;}
-chat-control .ico-paperplane {margin: 10px;background-color: var(--color);color: white;border-radius: 100%;position: absolute;right: 0;bottom: 0;}
+chat-control .ico-arrow-enter {margin: 10px;background-color: var(--color);color: white;border-radius: 100%;position: absolute;right: 0;bottom: 0;}
 
 @media(max-width:640px){
     chat {display: block;}
@@ -1074,7 +1076,7 @@ chat-control .ico-paperplane {margin: 10px;background-color: var(--color);color:
     chat s {width: .6rem;height: .6rem;}
     chat .avatar {width: .6rem;height: .6rem;}
 
-    chat aside img {max-width: 3rem;border-radius: .05rem;min-width: .7rem;min-height: .7rem;}
+    chat aside img {max-width: 3rem;min-width: .7rem;min-height: .7rem;}
     chat aside video {max-width: 3rem;}
     chat a[download] {border-radius: .05rem;padding-right: .2rem;}
     chat a[download] .ico-file {width: .7rem;height: .7rem;}
@@ -1098,7 +1100,7 @@ chat-control .ico-paperplane {margin: 10px;background-color: var(--color);color:
 
     chat-control {height: 2rem;}
     chat-control aside {padding: 0 .9rem 0 .1rem;}
-    chat-control .ico-paperplane {margin: .1rem;}
+    chat-control .ico-arrow-enter {margin: .1rem;}
 }
 
 /* fold */
@@ -1211,7 +1213,7 @@ reminder > * {padding: 10px;}
 
 /* horn */
 horn {position: absolute;top: 0;right: 0;border-radius: 0 0 0 100px;background-color: var(--color);color: white;padding: 10px 10px 10px 20px;}
-horn.ico {padding: 5px 5px 10px 10px;cursor: pointer;}
+horn.ico {padding: 5px 5px 10px 10px;cursor: pointer;color: white;}
 horn[left] {border-radius: 0 0 100px 0;right: auto;left: 0;padding: 10px 20px 10px 10px;}
 horn[left].ico {padding: 5px 10px 10px 5px;}
 
@@ -1231,7 +1233,7 @@ article ul li {list-style: disc;line-height: 200%;}
 
 @media(max-width:640px){
     article > * {margin: .1rem 0;}
-    article ul {padding-left: .2rem;}
+    article ul {padding-left: .3rem;}
 }
 
 

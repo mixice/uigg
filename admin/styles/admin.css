@@ -41,14 +41,14 @@ body {background: var(--flash);}
 .subject {width: 100%;height: 100%;flex: 1;animation-delay: .3s;overflow: hidden;display: flex;position: relative;}
 .clause {width: 100%;height: 100%;flex: 1;overflow: auto;padding: 20px;}
 .contant {background: white;box-shadow: var(--shadow);margin: 0 0 20px;border-radius: 5px;}
-.item {padding: 10px;}
+.item {padding: 20px;}
 
 @media(max-width:640px){
     .head {height: .8rem;}
     .subject {display: block;}
     .clause {padding: .1rem;}
     .contant {margin: 0 0 .1rem;border-radius: .1rem;}
-    .item {padding: .1rem;}
+    .item {padding: .2rem;}
 }
 
 /* head */
@@ -64,7 +64,7 @@ body {background: var(--flash);}
 .head-info a:hover {transform: rotate(360deg);}
 
 .mailbox {background: var(--flash);line-height: 40px;padding: 0 10px;border-radius: 100px;display: flex;}
-.mailbox i {line-height: 40px;margin: 0 10px;}
+.mailbox i.ico {line-height: 40px;margin: 0 10px;}
 .mailbox span {min-width: 20px;height: 20px;line-height: 20px;background: var(--red);color: white;padding: 0 5px;border-radius: 100px;display: inline-block;margin: 10px;text-align: center;}
 .mailbox:hover {background: var(--basic);color: white;}
 .mailbox:hover i {color: white;}
@@ -142,7 +142,7 @@ drop-list a:hover {background-color: var(--basic);}
 }
 
 /* page */
-page {padding:10px;}
+page {padding:10px 0;}
 page .ico,
 page * {height: 40px;line-height: 40px;}
 page a,
@@ -152,7 +152,7 @@ page a:hover,
 page a.active {background-color: var(--basic);box-shadow: 0 3px 5px var(--bright);}
 
 @media(max-width:640px){
-    page {padding:.1rem;}
+    page {padding: .1rem 0;}
     page a,
     page .ico,
     page button {width: .6rem;height: .6rem;line-height: .6rem;font-size: .22rem;}
@@ -164,14 +164,14 @@ page a.active {background-color: var(--basic);box-shadow: 0 3px 5px var(--bright
 }
 
 /* notice */
-.notice, .notice i, .notice marquee {height: 40px;}
+.notice, .notice i, .notice marquee {height: 30px;}
 .notice {display: flex;}
-.notice i, .notice marquee {line-height: 40px;}
+.notice i, .notice marquee {line-height: 30px;}
 .notice i {width: 40px;display: block;}
 
 @media(max-width:640px){
-    .notice, .notice i, .notice marquee {height: .5rem;}
-    .notice i, .notice marquee {line-height: .5rem;}
+    .notice, .notice i, .notice marquee {height: .4rem;}
+    .notice i, .notice marquee {line-height: .4rem;}
     .notice i {width: .5rem;}
 }
 
@@ -206,7 +206,7 @@ page a.active {background-color: var(--basic);box-shadow: 0 3px 5px var(--bright
 }
 
 /* table */
-.table {padding:10px;}
+.table {}
 .table table td,
 .table table th {background: none;}
 .table table thead tr,
@@ -222,8 +222,7 @@ page a.active {background-color: var(--basic);box-shadow: 0 3px 5px var(--bright
 .table table tfoot tr:first-child th {border-top-color: var(--basic);}
 
 @media(max-width:640px){
-    .table {padding:.1rem;overflow: auto;}
-    .table table {min-width: 200vw;}
+    .table table {min-width: 200vw;overflow: auto;}
     .table table td input {height: .4rem;}
     .table table td .btn {padding: 0 .2rem;height: .4rem;line-height: .38rem;font-size: .16rem;}
     .table table td label {padding: 0 .05rem;}
@@ -235,6 +234,8 @@ input, .form .input, .form select, .form textarea {background-color: transparent
 input:not([readonly]):focus,
 textarea:not([readonly]):focus {box-shadow: var(--shadow);}
 o {color: var(--basic);}
+input[type="file"]::-webkit-file-upload-button,
+input[type="color"]::-webkit-color-swatch {border-radius: 100px;}
 
 .form {padding: 10px;overflow: hidden;}
 .form li {margin: 0;}
@@ -243,6 +244,7 @@ o {color: var(--basic);}
 .form li .code {font-size: 14px;}
 .form .btn.ico,
 .form .btn .ico {color: white;}
+.form .btn.code {border-radius: 100px;}
 .upload-group,
 .upload-add {background-color: var(--flash);color: var(--light);}
 
@@ -300,7 +302,7 @@ tab-list li.active a {border-color: var(--basic);color: var(--basic);}
 /* list */
 .list li {padding: 10px;border-bottom-color: var(--light);}
 .list li:hover {background-color: var(--flash);}
-.list li em {width: 140px;height: 140px;background-size: cover;margin: 0 20px 0 0;border-radius: 100%;display: block;}
+.list li em {width: 140px;height: 140px;background-size: cover;margin: 0 20px 0 0;border-radius: 100%;display: block;transition-duration: .3s;}
 .list li em:hover {border-radius: 0;}
 .list-cont {width: 100%;flex: 1;}
 .list-cont h6 {height: 30px;line-height: 30px;overflow: hidden;}
@@ -328,14 +330,9 @@ tab-list li.active a {border-color: var(--basic);color: var(--basic);}
 /* pop */
 pop-title {border-bottom-color: var(--light);}
 pop-cont {padding: 20px 0;}
-.pop-tip {text-align: center;padding: 50px 0;}
-.pop-tip i {font-size: 60px;margin: 10px;}
-.pop-tip p {text-align: center;}
 
 @media(max-width:640px){
     pop-cont {padding: .2rem 0;}
-    .pop-tip {padding: .2rem 0;}
-    .pop-tip i {font-size: .8rem;margin: .1rem;}
 }
 
 /* login */
