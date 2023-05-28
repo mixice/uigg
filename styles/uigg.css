@@ -1,5 +1,5 @@
 /*
- * uigg 2.5 (build 20230225)
+ * uigg 2.6 (build 20230601)
  * Project: https://ui.gg
  * Author: https://www.mixice.com
  * Github: https://github.com/mixice/uigg
