@@ -14,23 +14,25 @@
 <body center>
 
 <style>
-    countdown * {font-size: 40px;padding: 0 30px;}
+    a {margin: 10px;}
 </style>
 
 <!----------------------------------------------------------------------------------------->
 
-<countdown>
-    <d>00</d>
-    <h>00</h>
-    <m>00</m>
-    <s>00</s>
-</countdown>
+<a class="btn alert">alert</a>
+<a class="btn confirm">confirm</a>
 
 <!----------------------------------------------------------------------------------------->
 
 <script>
-    countDate = '2030/01/01 00:00:00'
-    countdown()
+    $('.alert').click(function(){
+        alert('Just a simple confirmation')
+    })
+
+    $('.confirm').click(function(){
+        confirm('You need to select the result','console.log(1)')
+    })
+
 </script>
 
 </body>

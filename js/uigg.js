@@ -270,12 +270,11 @@ $(function(){
 });
 
 //----------------------------------------------------------------------------------tip
-let tipVal
-function tip(){
+function tip(str){
     let addClass = 't' + Math.round(Math.random() * 999999),
         tipThis = '.' + addClass
-    $('body').append('<tip class="' + addClass + ` center anime-zoom-in">${tipVal}</tip>`)
-    $(tipThis).css('margin', (- $(tipThis).height()/2-11) + 'px 0 0 ' + (- $(tipThis).width()/2-20 + 'px'))
+    $('body').append(`<tip class="${addClass} center anime-zoom-in">${str}</tip>`)
+    $(tipThis).css('margin', (- $(tipThis).height()/2-5) + 'px 0 0 ' + (- $(tipThis).width()/2-10 + 'px'))
     setTimeout(() => $(tipThis).remove(),3000)
 };
 
@@ -353,21 +352,18 @@ function countdown(){
 };
 
 //----------------------------------------------------------------------------------notify
-let notifyVal,notifyAlign,addClass
-function notify(){
+function notify(str,align,time){
     if($('notify').length == 0) $('body').append('<notify><audio src="//ui.gg/lib/media/notify.mp3"></audio></notify>')
-    if(notifyAlign == 'bottom'){$('notify').addClass('bottom')}
-    addClass = 'n' + Math.round(Math.random() * 999999)
-    $('notify').append(`<li class="${addClass} anime-bounce-in-right"><x class="ico ico-close"></x>${notifyVal}</li>`).find('audio')[0].play()
+    let addClass = 'n' + Math.round(Math.random() * 999999)
+    $('notify').append(`<li class="${addClass} anime-bounce-in-right"><x class="ico ico-close"></x>${str}</li>`).find('audio')[0].play()
+    if(align == 'bottom'){$('notify').addClass('bottom')}
+    if(time != undefined){
+        let notifyThis = $('.' + addClass)
+        setTimeout(() => notifyRemre(notifyThis),time)}
 }
 function notifyRemre(notifyThis){
     notifyThis.addClass('anime-bounce-out-right')
     setTimeout(() => notifyThis.remove(),500)
-}
-function notifyAuto(notifyTime){
-    notify()
-    let notifyThis = $('.' + addClass)
-    setTimeout(() => notifyRemre(notifyThis),notifyTime)
 }
 $(document).on('click','notify x',function(){
     let notifyThis = $(this).parent()
@@ -375,15 +371,13 @@ $(document).on('click','notify x',function(){
 });
 
 //----------------------------------------------------------------------------------copy
-let copyNum,copyEl,copyVal
 $(function(){
     $('[copy-btn]').click(function(){
-        copyNum = $(this).attr('copy-btn')
-        copyNum == '' ? copyEl = $('[copy-val]') : copyEl = $(`[copy-val="${copyNum}"]`)
-        copyEl.is('input') ? copyVal = copyEl.val() : copyVal = copyEl.html()
+        let copyNum = $(this).attr('copy-btn'),
+            copyEl = copyNum == '' ? $('[copy-val]') : $(`[copy-val="${copyNum}"]`),
+            copyVal = copyEl.is('input') ? copyEl.val() : copyEl.html()
         navigator.clipboard.writeText(copyVal)
-        tipVal = 'Copy successful'
-        tip()
+        tip('Copy successful')
     })
 });
 
@@ -502,7 +496,6 @@ function setCookie(objName, objValue, objHours){
     }
     document.cookie = str
 };
-
 //output cookie
 function getCookie(objName){
     let arrStr = document.cookie.split('; ')
@@ -586,6 +579,16 @@ $(function(){
 $(function(){
     $('textarea.auto').on('input',function(){$(this).css('height',(this.scrollHeight) + 'px')})
 });
+
+//----------------------------------------------------------------------------------alert
+function alert(str){
+    $('body').append(`<alert class="anime-fade-in"><alert-main class="anime-fade-in-down"><alert-cont>${str}</alert-cont><alert-solve><a class="btn">confirm</a></alert-solve></alert-main></alert>`)
+}
+function confirm(str,action){
+    alert(str)
+    $('alert-solve').html(`<a class="btn">cancel</a><a class="btn alert-confirm" onclick="${action}">confirm</a>`)
+}
+$(document).on('click','alert-solve .btn',function(){$('alert').remove()})
 
 //----------------------------------------------------------------------------------
 $(function(){

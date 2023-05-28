@@ -6,11 +6,8 @@ $(function(){
     })
     $('xmp').click(function(){
         navigator.clipboard.writeText($(this).html())
-        tipVal = 'Copy successful'
-        tip()
+        tip('Copy successful')
     })
-
-
 });
 
 
