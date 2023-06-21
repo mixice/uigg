@@ -70,7 +70,6 @@ u {flex: 1;}
 }
 
 /* anime */
-.anime {}
 .anime-pulse,.anime-beat,.anime-rotate,
 .anime-fade-in,.anime-fade-in-down,.anime-fade-in-left,.anime-fade-in-right,.anime-fade-in-up,
 .anime-fade-out,.anime-fade-out-down,.anime-fade-out-left,.anime-fade-out-right,.anime-fade-out-up,
@@ -214,7 +213,7 @@ u {flex: 1;}
 .corner {position: relative;}
 .corner::after {content: '';width: 0;height: 0;border: 0 transparent solid;position: absolute;margin: auto;}
 .shadow {position: relative;}
-.shadow::after {width: calc(100% - 20px);height: 10px;border-radius: 100px;position: absolute;left: 0;right: 0;bottom: 0;margin: auto;opacity: .7;background-color: var(--color);box-shadow: 0 5px 10px var(--color);content: '';}
+.shadow::after {width: calc(100% - 20px);height: 10px;position: absolute;left: 0;right: 0;bottom: -5px;margin: auto;background-color: var(--color);content: '';filter: blur(8px);}
 .adrift {filter: drop-shadow(0 10px 10px var(--color));}
 .avatar {border-radius: 100%;display: block;overflow: hidden;}
 .avatar img {object-fit: cover;width: 100%;height: 100%;}
@@ -224,7 +223,7 @@ u {flex: 1;}
 img[uigg="color"] {content-visibility: hidden;}
 
 @media(max-width:640px){
-	.shadow::after {width: calc(100% - .2rem);height: .1rem;}
+	.shadow::after {width: calc(100% - .2rem);height: .1rem;bottom: -.05rem;filter: blur(.1rem);}
     .adrift {filter: drop-shadow(0 .1rem .1rem var(--color));}
     [uigg="emot"] s {width: .6rem;height: .6rem;}
 }
@@ -383,7 +382,32 @@ a[title="到百度地图查看此区域"],
     .ico {font-size: .36rem;}
 }
 
-/* typeface */
+/* load */
+load {width: 100vw;height: 100vh;position: fixed;top: 0;left: 0;z-index: 999;background-color: white;}
+load::after {width: 60px;height: 60px;border-radius: 100%;border: 3px var(--999) solid;content: '';position: absolute;left: 0;top: 0;right: 0;bottom: 0;margin: auto;animation: anime-zoom-in 1s infinite alternate;filter: opacity(.3);}
+
+@media(max-width:640px){
+    load::after {width: .7rem;height: .7rem;}
+}
+
+/* browser */
+msie {width: 100vw;height: 100vh;display: flex;justify-content: center;align-items: center;position: fixed;top: 0;left: 0;font-size: 50px;font-weight: lighter;text-transform: uppercase;color: whitesmoke;}
+
+@media(max-width:640px){
+    msie {font-size: .3rem;}
+}
+
+/* top */
+.top {opacity: 0;z-index: 1;}
+.top.btn {position: fixed;right: 0;bottom: 0;margin: 30px;width: 50px;font-size: 24px;font-weight: normal;padding: 0;}
+.top.btn:hover {transform: translateY(-5px);}
+
+@media(max-width:640px){
+    .top.btn {width: .7rem;height: .7rem;margin: .2rem;font-size: .32rem;}
+    .top.btn:hover {transform: translateY(0);}
+}
+
+/* font */
 @font-face {font-family: uigg;src: local('PingFang SC'),local('Microsoft Yahei');}
 @font-face {font-family: yahei;src: local('Microsoft Yahei');}
 @font-face {font-family: jhenghei;src: local('Microsoft JhengHei');}
@@ -871,31 +895,6 @@ name-search input::-webkit-input-placeholder {color: var(--000-2);}
     name-logo h1 {font-size: .32rem;padding-left: .1rem;}
     name-search {margin: .1rem 0;border-radius: .3rem;}
     name-search input {font-size: .24rem;height: .6rem;padding: 0 .8rem 0 0;}
-}
-
-/* load */
-load {width: 100vw;height: 100vh;position: fixed;top: 0;left: 0;z-index: 999;background-color: white;}
-load::after {width: 50px;height: 50px;border-radius: 100%;background-color: var(--999);content: '';position: absolute;left: 0;top: 0;right: 0;bottom: 0;margin: auto;animation: anime-zoom-in 1s infinite alternate;filter: opacity(.3);}
-
-@media(max-width:640px){
-    load::after {width: .7rem;height: .7rem;}
-}
-
-/* browser */
-msie {width: 100vw;height: 100vh;display: flex;justify-content: center;align-items: center;position: fixed;top: 0;left: 0;font-size: 50px;font-weight: lighter;text-transform: uppercase;color: whitesmoke;}
-
-@media(max-width:640px){
-    msie {font-size: .3rem;}
-}
-
-/* top */
-.top {opacity: 0;z-index: 1;}
-.top.btn {position: fixed;right: 0;bottom: 0;margin: 30px;width: 50px;font-size: 24px;font-weight: normal;padding: 0;}
-.top.btn:hover {transform: translateY(-5px);}
-
-@media(max-width:640px){
-    .top.btn {width: .7rem;height: .7rem;margin: .2rem;font-size: .32rem;}
-    .top.btn:hover {transform: translateY(0);}
 }
 
 /* scaler */

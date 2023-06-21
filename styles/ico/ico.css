@@ -21,6 +21,50 @@
   margin: auto;
 }
 
+.ico-capcut:before {
+  content: "\ecdb";
+}
+
+.ico-pdd:before {
+  content: "\ecdc";
+}
+
+.ico-fliggy:before {
+  content: "\ecdd";
+}
+
+.ico-eleme:before {
+  content: "\ecde";
+}
+
+.ico-xianyu:before {
+  content: "\ecdf";
+}
+
+.ico-yuxian:before {
+  content: "\ece0";
+}
+
+.ico-pinterest:before {
+  content: "\ece1";
+}
+
+.ico-whatapp:before {
+  content: "\ece2";
+}
+
+.ico-taopiaopiao:before {
+  content: "\ece3";
+}
+
+.ico-wechat-mp:before {
+  content: "\ece4";
+}
+
+.ico-davinci:before {
+  content: "\ece5";
+}
+
 .ico-arrow-undo:before {
   content: "\ecda";
 }
