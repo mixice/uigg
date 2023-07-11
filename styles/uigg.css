@@ -499,8 +499,8 @@ tip > * {padding: 5px;}
 	.btn {height: .8rem;line-height: .8rem;padding: 0 .2rem;}
 	.btn:hover {transform: translateY(0);}
     .btn .ico {margin: .05rem;}
-    .btn .ico:first-child {margin-left: -.5rem;}
-    .btn .ico:last-child {margin-right: -.5rem;}
+    .btn .ico:first-child {margin-left: -.05rem;}
+    .btn .ico:last-child {margin-right: -.05rem;}
     .btn-submit {padding: 0;}
 }
 
@@ -685,7 +685,7 @@ select {padding: 0 50px 0 10px;}
 .form li {display: flex;align-items: center;width: 100%;}
 .form li.resolve {padding-left: 110px;}
 .form li.resolve .btn:not(:last-child) {margin-right: 10px;}
-.form li .code {width: 140px;height: 50px;border-radius: 4px;overflow: hidden;display: flex;align-items: center;justify-content: center;}
+.form li .code {width: 140px;height: 50px;border-radius: 4px;overflow: hidden;display: flex;align-items: center;justify-content: center;padding: 0;}
 .form li .code img {width: 100%;height: 100%;}
 .form li > span:first-child {width: 100px;text-transform: capitalize;white-space: nowrap;text-overflow: ellipsis;overflow: hidden;}
 .form .btn span {margin: 0;}
@@ -785,7 +785,7 @@ page button {background-color: var(--f7);width: 50px;user-select: none;}
 page ul {margin: 0;overflow: inherit;}
 page ul a {display: none;}
 page span {padding: 0 10px;}
-page input {border-width: 1px;width: 80px;}
+page input {border-width: 1px;width: 80px;padding: 0;}
 page a:hover,
 page a.active,
 page button:hover {background-color: var(--color);color: white;}
@@ -899,7 +899,7 @@ name-search input::-webkit-input-placeholder {color: var(--000-2);}
 
 /* scaler */
 scaler {display: flex;}
-scaler a.btn {width: 50px;}
+scaler a.btn {width: 50px;padding: 0;}
 scaler input {flex: 1;min-width: 0;text-align: center;margin: 0 5px;}
 
 @media(max-width:640px){
@@ -918,7 +918,7 @@ countdown {}
 countdown s {text-decoration: none;}
 
 /* music */
-music {animation: muzak 10s infinite linear;border-radius: 100%;z-index: 999;width: 50px;height: 50px;position: fixed;top: 0;background-color: var(--color);color: white;display: none;}
+music {animation: muzak 10s infinite linear;border-radius: 100%;z-index: 999;width: 50px;height: 50px;position: fixed;top: 0;background-color: var(--color);color: white;}
 music.ico {line-height: 50px;margin: 30px;}
 music[pause] {animation: none;}
 music:after {content: '\e98c';}
@@ -1001,7 +1001,6 @@ hop-cont a:first-child {border-radius: 5px 5px 0 0;}
 hop-cont a:last-child {border-radius: 0 0 5px 5px;border: 0;}
 hop-cont a:hover {background-color: var(--color);color: white;}
 hop[right] hop-cont {right: 0;}
-hop[bottom] hop-cont {bottom: 50px;}
 
 @media(max-width:640px){
     hop a {height: .7rem;line-height: .7rem;min-width: .7rem;}
@@ -1009,7 +1008,6 @@ hop[bottom] hop-cont {bottom: 50px;}
     hop-cont a {padding: 0 .2rem;}
     hop-cont a:first-child {border-radius: .1rem .1rem 0 0;}
     hop-cont a:last-child {border-radius: 0 0 .1rem .1rem;}
-    hop[bottom] hop-cont {bottom: .7rem;}
 }
 
 /* chat */
@@ -1107,7 +1105,7 @@ chat-control .ico-arrow-enter {margin: 10px;background-color: var(--color);color
 /* fold */
 fold {}
 fold-title {border-bottom-width: 1px;display: flex;align-items: center;padding: 10px;}
-fold-title *:not(.ico) {flex: 1;min-width: 0;}
+
 fold-title h5 {line-height: 30px;}
 fold-title .ico {width: 40px;margin: inherit;}
 fold-cont {display: none;padding: 10px;}
@@ -1238,8 +1236,8 @@ article ul li {list-style: disc;line-height: 200%;}
 }
 
 /* alert */
-alert {position: fixed;width: 100%;height: 100%;background-color: var(--000-2);}
-alert-main {width: 500px;background-color: white;border-radius: 10px;margin: 100px auto;padding: 10px;}
+alert {position: fixed;width: 100%;height: 100%;top:0;left: 0;z-index: 3;background-color: var(--000-2);}
+alert-main {max-width: 500px;width: 90%;background-color: white;border-radius: 10px;margin: 100px auto;padding: 10px;}
 alert-cont {padding: 20px;text-align: center;}
 alert-solve {display: flex;align-items: center;justify-content: center;}
 alert-solve .btn {margin: 10px;}

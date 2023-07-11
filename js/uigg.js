@@ -391,6 +391,10 @@ $(function(){
     $('hop-cont').addClass('anime-fade-in').before('<x></x>')
     $('hop > a').click(function(){$(this).siblings('hop-cont,x').toggle()})
     $('hop-cont,hop x').click(function(){$(this).hide().siblings('hop-cont,x').hide()})
+    let hopHeight = $('hop > a').height()
+    $('hop[bottom] hop-cont').css('bottom',hopHeight)
+    $('hop[center] hop-cont').css('top',hopHeight)
+    $('hop[center][bottom] hop-cont').css('bottom',hopHeight).css('top','auto')
 });
 
 //----------------------------------------------------------------------------------chat
@@ -433,7 +437,7 @@ $(function(){
 
 //----------------------------------------------------------------------------------fold
 $(function(){
-    $('fold-title u').after('<s class="ico ico-alone-bottom"></s>').remove()
+    $('fold-title u').parent().append('<s class="ico ico-alone-bottom"></s>')
     $('fold-cont').addClass('anime-fade-in')
     if($('fold').attr('show') == ''){
         $('fold-group').addClass('active')
