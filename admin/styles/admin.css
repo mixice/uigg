@@ -181,7 +181,7 @@ page a.active {background-color: var(--basic);box-shadow: 0 3px 5px var(--bright
 .statistics li:last-child {border: 0;}
 .statistics li span {padding: 0 0 10px;display: block;text-transform: capitalize;}
 .statistics li h3 {color: var(--basic);}
-.statistics li em {font-weight: normal;font-size: 12px;vertical-align: top;text-transform: uppercase;color: var(--bright);padding: 0 0 0 5px;}
+.statistics li em {font-weight: normal;font-size: 12px;vertical-align: top;text-transform: uppercase;padding: 0 0 0 5px;opacity: .5;}
 .statistics li a {margin: 10px auto 0;float: none;width: 60%;}
 
 @media(max-width:640px){

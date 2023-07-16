@@ -360,6 +360,7 @@ canvas {user-select: none;}
 a[title="到百度地图查看此区域"],
 .BMap_cpyCtrl,
 .anchorBL {display: none;}
+.BMap_Marker {transform: scale(2);}
 
 @media(max-width:640px){
     img {width: 100%;}
@@ -1242,7 +1243,11 @@ alert-cont {padding: 20px;text-align: center;}
 alert-solve {display: flex;align-items: center;justify-content: center;}
 alert-solve .btn {margin: 10px;}
 
-
+@media(max-width:640px){
+    alert-main {border-radius: .1rem;margin: 1rem auto;padding: .1rem;}
+    alert-cont {padding: .2rem;}
+    alert-solve .btn {margin: .1rem;}
+}
 
 
 
