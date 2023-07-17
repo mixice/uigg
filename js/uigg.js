@@ -594,6 +594,12 @@ function confirm(str,action){
 }
 $(document).on('click','alert-solve .btn',function(){$('alert').remove()})
 
+//----------------------------------------------------------------------------------notice
+$(function(){
+    $('notice').html(`<i class="ico ico-volume"></i><marquee onMouseOut="this.start()" onMouseOver="this.stop()">${$('notice').html()}</marquee><a class="ico ico-more-horizontal"></a>`)
+    $('notice a.ico').attr('href',$('notice').attr('href'))
+});
+
 //----------------------------------------------------------------------------------
 $(function(){
 

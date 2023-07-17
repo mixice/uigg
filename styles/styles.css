@@ -63,7 +63,8 @@ page a {}
 
 /* notice */
 .notice {}
-.notice i {}
+.notice marquee {}
+.notice .ico {}
 
 /* pop */
 pop {}

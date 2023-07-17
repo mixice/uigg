@@ -32,7 +32,7 @@ pop,pop-main,pop-title,pop-cont,pop-solve,pop-choice,pop-sider,
 alert,alert-main,alert-cont,alert-solve,
 hop,hop-cont,
 fold,fold-group,fold-title,fold-cont,
-countdown,tip,page,music,space,msie,rate,scaler,notify,empty,step,crumb,reminder,horn {margin: 0;padding: 0;border: 0;outline: 0;background: transparent center no-repeat;background-size: contain;box-sizing: border-box;font-family: uigg;border-color: var(--eee);border-style: solid;-webkit-tap-highlight-color: transparent;}
+countdown,tip,page,music,space,msie,rate,scaler,notify,empty,step,crumb,reminder,horn,notice {margin: 0;padding: 0;border: 0;outline: 0;background: transparent center no-repeat;background-size: contain;box-sizing: border-box;font-family: uigg;border-color: var(--eee);border-style: solid;-webkit-tap-highlight-color: transparent;}
 article,aside,details,figcaption,figure,footer,header,hgroup,main,nav,section,summary,
 menu,menu-cont,menu-group,menu-list,
 name,name-logo,name-search,
@@ -43,7 +43,7 @@ pop,pop-main,pop-title,pop-cont,pop-solve,pop-choice,pop-sider,
 alert,alert-main,alert-cont,alert-solve,
 hop,hop-cont,
 fold,fold-group,fold-title,fold-cont,
-countdown,tip,page,music,space,msie,rate,scaler,notify,empty,step,crumb,reminder,horn {display: block;}
+countdown,tip,page,music,space,msie,rate,scaler,notify,empty,step,crumb,reminder,horn,notice {display: block;}
 .transition,.btn,a,button {transition-duration: .3s;}
 html,body {height: 100%;}
 html,body,.avatar,.upload-group,.swiper-slide,.parallax-bg {background-size: cover;}
@@ -1241,17 +1241,22 @@ alert {position: fixed;width: 100%;height: 100%;top:0;left: 0;z-index: 3;backgro
 alert-main {max-width: 500px;width: 90%;background-color: white;border-radius: 10px;margin: 100px auto;padding: 10px;}
 alert-cont {padding: 20px;text-align: center;}
 alert-solve {display: flex;align-items: center;justify-content: center;}
-alert-solve .btn {margin: 10px;}
+alert-solve .btn {margin: 10px;min-width: 100px;}
 
 @media(max-width:640px){
     alert-main {border-radius: .1rem;margin: 1rem auto;padding: .1rem;}
     alert-cont {padding: .2rem;}
-    alert-solve .btn {margin: .1rem;}
+    alert-solve .btn {margin: .1rem;min-width: 1rem;}
 }
 
+/* notice */
+notice {display: flex;align-items: center;}
+notice marquee {flex: 1;min-width: 0;}
+notice .ico {margin: 0 10px;}
 
-
-
+@media(max-width:640px){
+    notice .ico {margin: 0 .1rem;}
+}
 
 
 

@@ -163,18 +163,6 @@ page a.active {background-color: var(--basic);box-shadow: 0 3px 5px var(--bright
 
 }
 
-/* notice */
-.notice, .notice i, .notice marquee {height: 30px;}
-.notice {display: flex;}
-.notice i, .notice marquee {line-height: 30px;}
-.notice i {width: 40px;display: block;}
-
-@media(max-width:640px){
-    .notice, .notice i, .notice marquee {height: .4rem;}
-    .notice i, .notice marquee {line-height: .4rem;}
-    .notice i {width: .5rem;}
-}
-
 /* statistics */
 .statistics {display: flex;padding: 10px;}
 .statistics li {width: 100%;text-align: center;border-right: 1px var(--light) solid;}
