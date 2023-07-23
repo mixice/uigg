@@ -24,9 +24,13 @@
 
 <!----------------------------------------------------------------------------------------->
 
-<a class="btn" onclick="$(this).next().show()">pop</a>
+<a pop="a" class="btn">pop</a>
+<a pop="b" class="btn">choice</a>
+<a pop="c" class="btn">sider</a>
 
-<pop>
+<!----------------------------------------------------------------------------------------->
+
+<pop pop="a">
     <pop-main>
         <pop-title><h3>title</h3><a class="close"></a></pop-title>
         <pop-cont>article</pop-cont>
@@ -41,9 +45,7 @@
 
 <!----------------------------------------------------------------------------------------->
 
-<a class="btn" onclick="$(this).next().show()">choice</a>
-
-<pop>
+<pop pop="b">
     <pop-choice>
         <pop-title><h3>title</h3><a class="close"></a></pop-title>
         <pop-cont>article</pop-cont>
@@ -58,9 +60,7 @@
 
 <!----------------------------------------------------------------------------------------->
 
-<a class="btn" onclick="$(this).next().show()">sider</a>
-
-<pop right>
+<pop pop="c" right>
     <pop-sider>
         <pop-title><h3>title</h3><a class="close"></a></pop-title>
         <pop-cont>article</pop-cont>

@@ -194,9 +194,7 @@ $(function(){
     $('pop').each(function(){
         $(this).attr('right') == '' ? $(this).find('pop-sider').addClass('anime-fade-in-right') : $(this).find('pop-sider').addClass('anime-fade-in-left')
     })
-    $('[class$="-pop"]').click(function(){
-        if($(this).prop('tagName') != 'POP') $('pop.'+ $.grep($(this).attr('class').split(' '),function(item){return item.indexOf("-pop") !== -1}).join(' ')).show()
-    })
+    $('a[pop]').click(function(){$(`pop[pop="${$(this).attr('pop')}"]`).show()})
 });
 
 //----------------------------------------------------------------------------------menu

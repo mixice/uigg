@@ -126,7 +126,7 @@ drop-list a:hover {background-color: var(--basic);}
 .title {height: 50px;display: flex;align-items: center;}
 .title u {flex: 1;}
 .title .ico {margin: inherit;padding: 0 10px;}
-.title cite {font-weight: normal;color: var(--light);padding: 0 20px;}
+.title cite {font-weight: normal;color: var(--ccc);padding: 0 20px;}
 .title .return {border-right: 1px var(--light) solid;margin-right: 20px;}
 .title a {margin-left: 5px;}
 
