@@ -583,12 +583,12 @@ $(function(){
 });
 
 //----------------------------------------------------------------------------------alert
-function alert(str){
-    $('body').append(`<alert class="anime-fade-in"><alert-main class="anime-fade-in-down"><alert-cont>${str}</alert-cont><alert-solve><a class="btn">confirm</a></alert-solve></alert-main></alert>`)
+function alert(str,action){
+    $('body').append(`<alert class="anime-fade-in"><alert-main class="anime-fade-in-down"><alert-cont>${str}</alert-cont><alert-solve><a class="btn" onclick="${action}">confirm</a></alert-solve></alert-main></alert>`)
 }
 function confirm(str,action){
     alert(str)
-    $('alert-solve').html(`<a class="btn">cancel</a><a class="btn alert-confirm" onclick="${action}">confirm</a>`)
+    $('alert-solve').html(`<a class="btn">cancel</a><a class="btn" onclick="${action}">confirm</a>`)
 }
 $(document).on('click','alert-solve .btn',function(){$('alert').remove()})
 

@@ -821,13 +821,14 @@ tab-group.active {display: block;}
 
 /* table */
 .table {}
-.table table {width: 100%;border-collapse: separate;border-spacing:0;background-color: white;}
+.table table {width: 100%;border-collapse: separate;border-spacing:0;}
 .table table th,
-.table table td {vertical-align: middle;text-align: center;height: 50px;padding: 0 10px;}
-.table table th {text-transform: capitalize;}
+.table table td {vertical-align: middle;text-align: center;height: 50px;padding: 0 10px;background-color: white;}
+.table table th {text-transform: capitalize;position: sticky;left: 0;box-shadow: 0 0 5px var(--000-1);}
 .table table thead th,
 .table table thead td {font-weight: bold;text-transform: capitalize;border-bottom: 2px var(--color) solid;}
-.table table tbody tr:nth-child(2n) {background-color: var(--f7);}
+.table table tbody tr:nth-child(2n) th,
+.table table tbody tr:nth-child(2n) td {background-color: var(--f7);}
 .table table tbody tr:hover {background-color: var(--eee);}
 .table table tfoot tr:first-child th,
 .table table tfoot tr:first-child td {border-top: 1px var(--color) solid;}
@@ -837,6 +838,7 @@ tab-group.active {display: block;}
     .table table {max-width: 15rem;}
     .table table th,
     .table table td {height: .7rem;padding: 0 .1rem;}
+    .table table th {box-shadow: 0 0 .1rem var(--000-1);}
     .table table tbody tr:hover {background-color: transparent;}
 }
 
@@ -978,7 +980,7 @@ notify li x.ico {position: absolute;top: 0;right: 0;margin:  3px;}
 }
 
 /* empty */
-empty {height: 100%;display: flex;align-items: center;justify-content: center;padding: 10px;}
+empty {display: flex;align-items: center;justify-content: center;padding: 10px;}
 empty.default {font-size: 30px;color: var(--000-1);text-transform: capitalize;text-transform: uppercase;}
 empty.default:after {content: 'empty';}
 empty * {margin: 10px;text-transform: none;}
@@ -1182,6 +1184,7 @@ reminder > * {padding: 10px;}
 .tox-simple + .tox-tinymce .tox-statusbar {display: none;}
 .tox-selectimage input[type="file"] {font-size: 14px;}
 .tox-selectimage input[type="file"]::-webkit-file-upload-button {height: 32px;}
+.tox-editor-dock-fadeout {opacity: 1 !important;visibility: visible !important;}
 
 .tox-dialog {padding: 8px 0 !important;border-radius: 5px !important;}
 .tox-dialog__header {padding-right: 5px !important;}
