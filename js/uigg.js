@@ -1,5 +1,5 @@
 /*
- * uigg 2.6 (build 20230601)
+ * uigg 2.6 (build 20230901)
  * Project: https://ui.gg
  * Author: https://www.mixice.com
  * Github: https://github.com/mixice/uigg
@@ -7,25 +7,22 @@
  */
 
 //----------------------------------------------------------------------------------preset
-console.log('%c  POWERED BY UIGG  ','background:slateblue;color:white;border-radius:1em','http://ui.gg')
+console.log('%c PERFORMS BY UIGG ','background-image: linear-gradient(90deg,slateblue,deeppink);color:white','http://ui.gg')
 $(function(){
     $('[hide]').hide()
     $('[show]').show()
 });
 
 //----------------------------------------------------------------------------------rem
-(function(doc, win){
+(function(doc, win) {
     let docElement = doc.documentElement,
-        resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
-        recalc = function(){
-            let viewWidth = docElement.clientWidth
-            if(viewWidth > 640) viewWidth = 640
-            if(viewWidth < 320) viewWidth = 320
-            docElement.style.fontSize = 100 * (viewWidth / 640) + 'px'
-        }
+        resizeEvt = 'orientationchange' in win ? 'orientationchange' : 'resize'
+    function recalc(){
+        let viewWidth = Math.max(320, Math.min(640, docElement.clientWidth))
+        docElement.style.fontSize = 100 * (viewWidth / 640) + 'px'
+    }
     recalc()
-    if(!doc.addEventListener) return
-    win.addEventListener(resizeEvt, recalc, false)
+    if (doc.addEventListener){win.addEventListener(resizeEvt, recalc, false)}
 })(document, window);
 
 //----------------------------------------------------------------------------------load
@@ -91,9 +88,9 @@ $(function(){
 })
 function lug(){
     $('.lug-thumbs a').click(function(){$(this).addClass('active').siblings().removeClass('active')})
-    var swiperLug = new Swiper('.lug-top',{
+    new Swiper('.lug-top',{
         on: {
-            touchEnd: function(swiper,event){
+            touchEnd: function(){
                 let swiperIndex = $('.lug-top .swiper-slide-active').index()
                 $('.lug-thumbs a').eq(swiperIndex).addClass('active').siblings().removeClass('active')
             },
@@ -134,28 +131,17 @@ $(function(){
 });
 
 //----------------------------------------------------------------------------------disable
-//disable right click menu
 function disable(){
-    document.oncontextmenu = function(event){
-        if(window.event) event = window.event
-        try {let the = Event.srcElement
-            if(!((the.tagName == 'INPUT' && the.type.toLowerCase() == 'text') || the.tagName == 'TEXTAREA')){return false}
-            return true
-        }catch (e){return false}
-    }
-    //disable Ctrl+U
-    let arr = [123, 17, 18]
-    document.oncontextmenu = new Function('event.returnValue=false'),
-        window.onkeydown = function(e){
-            let keyCode = e.keyCode || e.which || e.charCode,
-                ctrlKey = e.ctrlKey || e.metaKey
-            if(ctrlKey && keyCode == 85) e.preventDefault()
-            if(ctrlKey && keyCode == 83) e.preventDefault()
-            if(arr.indexOf(keyCode) > -1) e.preventDefault()
+    document.oncontextmenu = function (event){
+        event = event
+        try{let the = event.target
+            if (!((the.tagName === 'INPUT' && the.type.toLowerCase() === 'text') || the.tagName === 'TEXTAREA')) event.preventDefault()
         }
-    //disable F12
-    document.onkeydown = function (event){if(KeyboardEvent.keyCode == 123){return false}}
-    window.onhelp = function(){return false}
+        catch(e){event.preventDefault()}
+    }
+    window.addEventListener('keydown', function (e){if(e.ctrlKey && (e.key === 'u' || e.key === 's')) e.preventDefault()})
+    window.addEventListener('keydown', function (event) {if(event.key === 'F12') event.preventDefault()})
+    window.onhelp = function (){return false}
 };
 
 //----------------------------------------------------------------------------------smooth
@@ -297,13 +283,11 @@ $(function(){
 //----------------------------------------------------------------------------------alone
 let alone
 $(function(){
-    $(alone).each(function(){
-        let txt = $(this).html(),
-            aloneEl = txt.match(/./g),
-            element = ''
-        for(let i = 0;i < aloneEl.length;i++){element += '<z>' + aloneEl[i] + '</z>'}
-        $(this).html(element)
-    })
+    let txt = $(alone).text(),
+        characters = txt.split(''),
+        wrappedText = ''
+    $.each(characters, function(index, character){wrappedText += `<z>${(character === ' ' ? '&nbsp;' : character)}</z>`})
+    $(alone).html(wrappedText)
 });
 
 //----------------------------------------------------------------------------------rate
@@ -340,12 +324,12 @@ function countdown(){
         h = Math.floor(leftTime/1000/60/60%24)
         m = Math.floor(leftTime/1000/60%60)
         s = Math.floor(leftTime/1000%60)
+        function digit(num,n){return num.toString().padStart(n, '0')}
+        $('countdown d').html(d)
+        $('countdown h').html(digit(h,2))
+        $('countdown m').html(digit(m,2))
+        $('countdown s').html(digit(s,2))
     }
-    function digit(num,n){return (Array(n).join(0) + num).slice(-n)}
-    $('countdown d').html(d)
-    $('countdown h').html(digit(h,2))
-    $('countdown m').html(digit(m,2))
-    $('countdown s').html(digit(s,2))
     setTimeout(countdown,1000)
 };
 
@@ -373,9 +357,10 @@ $(function(){
     $('[copy-btn]').click(function(){
         let copyNum = $(this).attr('copy-btn'),
             copyEl = copyNum == '' ? $('[copy-val]') : $(`[copy-val="${copyNum}"]`),
-            copyVal = copyEl.is('input') ? copyEl.val() : copyEl.html()
+            copyVal = copyEl.is('input') ? copyEl.val() : copyEl.text()
         navigator.clipboard.writeText(copyVal)
-        tip('Copy successful')
+        .then(function (){tip('Copy successful')})
+        .catch(function (error){console.error('Copy failed:', error)})
     })
 });
 
@@ -449,10 +434,11 @@ $(function(){
 });
 
 //----------------------------------------------------------------------------------page
+let pageNum
 $(function(){
     let pageVal = $('page').attr('value'),
         pageMax = $('page').attr('max')
-    $('page').append(`<a class="ico ico-alone-side-left"></a><a class="ico ico-alone-left"></a><ul></ul><a class="ico ico-alone-right"></a><a class="ico ico-alone-side-right"></a><span>${pageVal}/${pageMax}</span><input type="text"><button class="ico ico-arrow-enter"></button>`)
+    $('page').append(`<a class="ico ico-alone-side-left"></a><a class="ico ico-alone-left"></a><ul></ul><a class="ico ico-alone-right"></a><a class="ico ico-alone-side-right"></a><span>${pageVal}/${pageMax}</span><input type="text"><a class="ico ico-arrow-enter"></a>`)
     let arr = new Array()
     for(let i = 1;i <= pageMax;i++){arr[i] = i;$('page ul').append('<a>' + i + '</a>')}
     function page(){
@@ -465,45 +451,64 @@ $(function(){
         })
     }
     page()
-    $('page .ico-alone-side-right').click(function(){$('page').attr('value',pageMax);page()})
-    $('page .ico-alone-side-left').click(function(){$('page').attr('value','1');page()})
-    $('page .ico-alone-left').click(function(){
-        if(pageVal == 1){return false}
-        else{$('page').attr('value',pageVal - 1);page()}
-    })
-    $('page .ico-alone-right').click(function(){
-        if(pageVal == pageMax){return false}
-        else{$('page').attr('value',+ pageVal + 1);page()}
-    })
-    $('page ul a').click(function(){$('page').attr('value',$(this).text());page()})
-    $('page .ico-arrow-enter').click(function(){
-        let inputVal = $('page input').val()
-        if(inputVal > parseInt(pageMax)) inputVal = pageMax
-        if(inputVal < 1 || isNaN(inputVal)) inputVal = 1
-        $('page').attr('value',inputVal)
-        page()
-        $('page input').val('')
+    $('page a').click(function(){
+        if(!$(this).hasClass('ico')){
+            $('page').attr('value',$(this).text())
+            page()
+            pageNum = $(this).text()
+        }
+        if($(this).hasClass('ico-alone-side-left')){
+            $('page').attr('value','1')
+            page()
+            pageNum = 1
+        }
+        if($(this).hasClass('ico-alone-side-right')){
+            pageNum = pageMax
+            $('page').attr('value',pageMax)
+            page()
+        }
+        if($(this).hasClass('ico-alone-left')){
+            if(pageVal == 1){return false}
+            else{$('page').attr('value',pageVal - 1);page()}
+            pageNum = $('page a.active').text()
+        }
+        if($(this).hasClass('ico-alone-right')){
+            if(pageVal == pageMax){return false}
+            else{$('page').attr('value',+ pageVal + 1);page()}
+            pageNum = $('page a.active').text()
+        }
+        if($(this).hasClass('ico-arrow-enter')){
+            let inputVal = $('page input').val()
+            pageNum = inputVal
+            if(inputVal > parseInt(pageMax)) inputVal = pageNum = pageMax
+            if(inputVal < 1 || isNaN(inputVal)) inputVal = pageNum = 1
+            $('page').attr('value',inputVal)
+            page()
+            $('page input').val('')
+        }
     })
 });
 
 //----------------------------------------------------------------------------------cookie
 //input cookie
-function setCookie(objName, objValue, objHours){
-    let str = objName + '=' + encodeURI(objValue)
-    if(objHours > 0){
-        let date = new Date(),
-            ms = objHours * 3600 * 1000
-        date.setTime(date.getTime() + ms)
-        str += ';expires=' + date.toGMTString()
+function setCookie(cookieName, cookieValue, hours){
+    const encodedValue = encodeURI(cookieValue);
+    let cookieString = `${cookieName}=${encodedValue}`
+    if(hours > 0){
+        const expirationDate = new Date();
+        expirationDate.setTime(expirationDate.getTime() + hours * 3600 * 1000)
+        cookieString += `;expires=${expirationDate.toGMTString()}`
     }
-    document.cookie = str
-};
+    document.cookie = cookieString
+}
 //output cookie
-function getCookie(objName){
-    let arrStr = document.cookie.split('; ')
-    for(let i = 0;i < arrStr.length;i++){
-        let temp = arrStr[i].split('=')
-        if(temp[0] == objName) return decodeURI(temp[1])
+function getCookie(cookieName){
+    const cookies = document.cookie.split('; ')
+    for(let i = 0; i < cookies.length; i++){
+        const cookie = cookies[i].split('=')
+        if(cookie[0] === cookieName){
+            return decodeURI(cookie[1])
+        }
     }
     return ''
 };
@@ -536,14 +541,13 @@ function langRead(targetObj,data){
 $(function(){
     let langType = getCookie('lang') == '' ? 'en' : getCookie('lang')
     function lang(){
-        if($('[lang-set]').length != 0){
-            $.get(`/lang/${langType}.json`,function(data){
-                $('[lang]').each(function(){$(this).html(langRead($(this).attr('lang'),data))})
-                $('[lang-placeholder]').each(function(){$(this).attr('placeholder',langRead($(this).attr('lang-placeholder'),data))})
-                $('[lang-value]').each(function(){$(this).attr('value',langRead($(this).attr('lang-value'),data))})
-                $('[lang-content]').each(function(){$(this).attr('content',langRead($(this).attr('lang-content'),data))})
-            })
-        }
+        if ($('[lang-set]').length === 0) return
+        $.get(`/lang/${langType}.json`,function(data){
+            $('[lang]').each(function(){$(this).html(langRead($(this).attr('lang'),data))})
+            $('[lang-placeholder]').each(function(){$(this).attr('placeholder',langRead($(this).attr('lang-placeholder'),data))})
+            $('[lang-value]').each(function(){$(this).attr('value',langRead($(this).attr('lang-value'),data))})
+            $('[lang-content]').each(function(){$(this).attr('content',langRead($(this).attr('lang-content'),data))})
+        })
     }
     lang()
     $('[lang-set]').click(function(){
@@ -556,14 +560,16 @@ $(function(){
 //----------------------------------------------------------------------------------clue
 $(function(){
     $('*[title]').hover(function(){
-        if($(this).attr('clue') == undefined){
-            $(this).attr('clue',$(this).attr('title')).append('<clue class="corner anime-fade-in">' + $(this).attr('clue') + '</clue>').removeAttr('title')
-            let clue = $(this).find('clue'),
-                clueWidth = clue.width(),
-                selfWidth = $(this).width()
+        const $element = $(this)
+        if($element.attr('clue') === undefined){
+            const titleText = $element.attr('title')
+            $element.attr('clue', titleText).append(`<clue class="corner anime-fade-in">${titleText}</clue>`).removeAttr('title')
+            const $clue = $element.find('clue'),
+                clueWidth = $clue.width(),
+                selfWidth = $element.width()
             if(clueWidth > selfWidth){
-                let clueLeft = - (clueWidth - selfWidth) / 2 - 10
-                clue.css('left',clueLeft)
+                const clueLeft = -(clueWidth - selfWidth) / 2 - 10
+                $clue.css('left', clueLeft)
             }
         }
     })

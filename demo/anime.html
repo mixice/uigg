@@ -21,6 +21,7 @@
     .condition {position: fixed;top: 0;right: 0;padding: 20px;display: flex;;}
     .condition a {display: block;text-align: center;text-transform: capitalize;padding: 10px;border-width: 1px;margin: 5px;}
     .condition a.active {background-color: var(--eee);}
+    fold-cont a {text-transform: none;}
 </style>
 
 <!----------------------------------------------------------------------------------------->
@@ -32,10 +33,16 @@
             <fold-group>
                 <fold-title><i class="ico ico-command"></i><h5>basic</h5><u></u></fold-title>
                 <fold-cont>
-                    <a class="pulse">anime-pulse</a>
-                    <a class="beat">anime-beat</a>
                     <a class="spasm">anime-spasm</a>
                     <a class="rotate">anime-rotate</a>
+                </fold-cont>
+            </fold-group>
+            <fold-group>
+                <fold-title><i class="ico ico-squareflower-empty"></i><h5>beat</h5><u></u></fold-title>
+                <fold-cont>
+                    <a class="beat-x">anime-beat-x</a>
+                    <a class="beat-y">anime-beat-y</a>
+                    <a class="beat-z">anime-beat-z</a>
                 </fold-cont>
             </fold-group>
             <fold-group>
@@ -122,10 +129,11 @@
         $('.contant h3').toggleClass('alternate')
     })
 
-    $('.pulse').click(function(){$('h3').attr('class','anime-pulse')})
-    $('.beat').click(function(){$('h3').attr('class','anime-beat')})
     $('.spasm').click(function(){$('h3').attr('class','anime-spasm')})
     $('.rotate').click(function(){$('h3').attr('class','anime-rotate')})
+    $('.beat-x').click(function(){$('h3').attr('class','anime-beat-x')})
+    $('.beat-y').click(function(){$('h3').attr('class','anime-beat-y')})
+    $('.beat-z').click(function(){$('h3').attr('class','anime-beat-z')})
     $('.fade-in').click(function(){$('h3').attr('class','anime-fade-in')})
     $('.fade-in-down').click(function(){$('h3').attr('class','anime-fade-in-down')})
     $('.fade-in-left').click(function(){$('h3').attr('class','anime-fade-in-left')})

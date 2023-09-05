@@ -330,10 +330,12 @@ $(function(){
             <h5>code</h5>
             <p>Add the class to the DOM</p>
 <xmp>
-class="anime-pulse"
-class="anime-beat"
 class="anime-spasm"
 class="anime-rotate"
+
+class="anime-beat-x"
+class="anime-beat-y"
+class="anime-beat-z"
 
 class="anime-fade-in"
 class="anime-fade-in-down"
@@ -749,7 +751,7 @@ class="font-tahoma"
             </div>
         </li>
         <li class="resolve"><o class="checkbox"></o><span>I've read and agreed</span><a>"User agreement"</a></li>
-        <li class="resolve"><button class="btn">cancel</button><button class="btn">submit</button></li>
+        <li class="resolve"><button class="btn btn-submit">cancel</button><button class="btn btn-submit">submit</button></li>
     </form>
 </section>
 </xmp>
@@ -1390,6 +1392,7 @@ class="touch-all"
                 el: '.swiper-pagination',
                 clickable: true,
                 dynamicBullets: true,
+                type: "progressbar",
             },
             navigation: {
                 nextEl: '.swiper-button-next',

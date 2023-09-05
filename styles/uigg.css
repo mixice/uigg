@@ -1,5 +1,5 @@
 /*
- * uigg 2.6 (build 20230601)
+ * uigg 2.6 (build 20230901)
  * Project: https://ui.gg
  * Author: https://www.mixice.com
  * Github: https://github.com/mixice/uigg
@@ -70,7 +70,8 @@ u {flex: 1;}
 }
 
 /* anime */
-.anime-pulse,.anime-beat,.anime-rotate,
+.anime-rotate,
+.anime-beat-x,.anime-beat-y,.anime-beat-z,
 .anime-fade-in,.anime-fade-in-down,.anime-fade-in-left,.anime-fade-in-right,.anime-fade-in-up,
 .anime-fade-out,.anime-fade-out-down,.anime-fade-out-left,.anime-fade-out-right,.anime-fade-out-up,
 .anime-bounce-in,.anime-bounce-in-down,.anime-bounce-in-left,.anime-bounce-in-right,.anime-bounce-in-up,
@@ -82,10 +83,11 @@ u {flex: 1;}
 .anime-shrink-in,.anime-shrink-out,.anime-shrink-in-enlarge,.anime-shrink-out-enlarge {animation-duration: 2s;animation-fill-mode: both;}
 .anime-flip-in-x,.anime-flip-in-y,.anime-flip-out-x,.anime-flip-out-y {backface-visibility: visible;}
 
-.anime-pulse {animation-name: anime-pulse;}
-.anime-beat {animation-name: anime-beat;}
 .anime-spasm {animation-name: anime-spasm;}
 .anime-rotate {animation-name: anime-rotate;animation-timing-function: linear;}
+.anime-beat-x {animation-name: anime-beat-x;}
+.anime-beat-y {animation-name: anime-beat-y;}
+.anime-beat-z {animation-name: anime-beat-z;}
 .anime-fade-in {animation-name: anime-fade-in;}
 .anime-fade-in-down {animation-name: anime-fade-in-down;}
 .anime-fade-in-left {animation-name: anime-fade-in-left;}
@@ -123,10 +125,11 @@ u {flex: 1;}
 .alternate {animation-direction: alternate;}
 .reverse {animation-direction: reverse;}
 
-@keyframes anime-pulse {0% {transform: scale(1);}50% {transform: scale(1.05);}100% {transform: scale(1);}}
-@keyframes anime-beat {0% {transform: translateY(0);}50% {transform: translateY(-50%);}100% {transform: translateY(0);}}
 @keyframes anime-spasm {0% {transform: translate(0,0);}10% {transform: translate(5px,0);}20% {transform: translate(0,0);}30% {transform: translate(-5px,0);}40% {transform: translate(0,5px);}50% {transform: translate(0,0);}60% {transform: translate(0,-5px);}70% {transform: translate(0,0);}80% {transform: translate(5px,5px);}90% {transform: translate(0,0);}100% {transform: translate(-5px,-5px);}}
 @keyframes anime-rotate {0% {transform: rotate(0);}100% {transform: rotate(360deg);}}
+@keyframes anime-beat-x {0% {transform: translateX(0);}50% {transform: translateX(20px);}100% {transform: translateX(0);}}
+@keyframes anime-beat-y {0% {transform: translateY(0);}50% {transform: translateY(20px);}100% {transform: translateY(0);}}
+@keyframes anime-beat-z {0% {transform: scale(1);}50% {transform: scale(1.05);}100% {transform: scale(1);}}
 @keyframes anime-fade-in {0% {opacity: 0;}100% {opacity: 1;}}
 @keyframes anime-fade-in-down {0% {opacity: 0;transform: translateY(-100%);}100% {opacity: 1;transform: translateY(0);}}
 @keyframes anime-fade-in-left {0% {opacity: 0;transform: translateX(-100%);}100% {opacity: 1;transform: translateX(0);}}
@@ -375,7 +378,7 @@ a[title="到百度地图查看此区域"],
 .touch-all {}
 
 /* ico */
-.ico {display: inline-block;vertical-align: middle;}
+.ico {}
 .ico-load,
 .ico-ringdot {animation: anime-rotate 5s infinite linear;}
 
@@ -482,8 +485,8 @@ tip > * {padding: 5px;}
 }
 
 /* btn */
-.btn {text-align: center;height: 50px;line-height: 50px;position: relative;background-color: var(--color);color: white;border-radius: 2px;text-transform: capitalize;display: flex;align-items: center;justify-content: center;padding: 0 20px;user-select: none;}
-.btn .ico {margin: 5px;}
+.btn {text-align: center;height: 50px;line-height: 50px;position: relative;background-color: var(--color);color: white;border-radius: 2px;text-transform: capitalize;display: inline-flex;align-items: center;justify-content: center;padding: 0 20px;user-select: none;}
+.btn .ico {margin: 5px;font-size: inherit;}
 .btn .ico:first-child {margin-left: -5px;}
 .btn .ico:last-child {margin-right: -5px;}
 .btn:hover {transform: translateY(5px);}
@@ -502,7 +505,7 @@ tip > * {padding: 5px;}
     .btn .ico {margin: .05rem;}
     .btn .ico:first-child {margin-left: -.05rem;}
     .btn .ico:last-child {margin-right: -.05rem;}
-    .btn-submit {padding: 0;}
+    .btn-submit {padding: 0 .5rem;}
 }
 
 /* nav */
@@ -824,7 +827,7 @@ tab-group.active {display: block;}
 .table table {width: 100%;border-collapse: separate;border-spacing:0;}
 .table table th,
 .table table td {vertical-align: middle;text-align: center;height: 50px;padding: 0 10px;background-color: white;}
-.table table th {text-transform: capitalize;position: sticky;left: 0;box-shadow: 0 0 5px var(--000-1);}
+.table table th {text-transform: capitalize;position: sticky;left: 0;border-right: 1px var(--eee) solid;z-index: 1;}
 .table table thead th,
 .table table thead td {font-weight: bold;text-transform: capitalize;border-bottom: 2px var(--color) solid;}
 .table table tbody tr:nth-child(2n) th,
@@ -838,7 +841,6 @@ tab-group.active {display: block;}
     .table table {max-width: 15rem;}
     .table table th,
     .table table td {height: .7rem;padding: 0 .1rem;}
-    .table table th {box-shadow: 0 0 .1rem var(--000-1);}
     .table table tbody tr:hover {background-color: transparent;}
 }
 
@@ -921,7 +923,7 @@ countdown {}
 countdown s {text-decoration: none;}
 
 /* music */
-music {animation: muzak 10s infinite linear;border-radius: 100%;z-index: 999;width: 50px;height: 50px;position: fixed;top: 0;background-color: var(--color);color: white;}
+music {animation: muzak 10s infinite linear;border-radius: 100%;z-index: 999;width: 50px;height: 50px;position: fixed;top: 0;background-color: var(--000-7);color: white;}
 music.ico {line-height: 50px;margin: 30px;}
 music[pause] {animation: none;}
 music:after {content: '\e98c';}
@@ -983,7 +985,7 @@ notify li x.ico {position: absolute;top: 0;right: 0;margin:  3px;}
 empty {display: flex;align-items: center;justify-content: center;padding: 10px;}
 empty.default {font-size: 30px;color: var(--000-1);text-transform: capitalize;text-transform: uppercase;}
 empty.default:after {content: 'empty';}
-empty * {margin: 10px;text-transform: none;}
+empty * {margin: 10px;text-transform: capitalize;}
 empty .ico {display: block;font-size: 72px;margin: inherit;}
 empty div {text-align: center;}
 
@@ -1158,14 +1160,14 @@ crumb li a:hover {color: var(--color);}
 }
 
 /* clue */
-clue {position: absolute;top: calc(100% + 15px);left: 0;right: 0;margin: auto;background-color: var(--000-8);border-radius: 5px;display: none;text-align: center;width: fit-content;min-width: 70px;padding: 10px;max-width: 300px;word-break: break-all;font-size: 14px;font-weight: normal;color: white;line-height: 150%;}
+clue {position: absolute;top: calc(100% + 15px);left: 0;right: 0;margin: auto;background-color: var(--000-8);border-radius: 5px;display: none;text-align: center;width: fit-content;min-width: 70px;max-width: 300px;padding: 5px;word-break: break-all;font-size: 14px;font-weight: normal;color: white;line-height: 150%;}
 clue.corner {position: absolute;}
 clue.corner::after {border-width: 0 10px 10px 10px;border-bottom-color: var(--000-8);top: -10px;left: 0;right: 0;}
 *[clue] {position: relative;cursor: pointer;}
 *[clue]:hover clue {display: block;}
 
 @media(max-width:640px){
-    clue {top: calc(100% + .15rem);border-radius: .1rem;min-width: 1rem;max-width: 3rem;font-size: .2rem;}
+    clue {top: calc(100% + .15rem);border-radius: .1rem;min-width: 1rem;max-width: 3rem;font-size: .18rem;padding: .1rem;}
     clue.corner::after {border-width: 0 .1rem .1rem .1rem;top: -.09rem;}
 }
 
