@@ -358,9 +358,7 @@ $(function(){
         let copyNum = $(this).attr('copy-btn'),
             copyEl = copyNum == '' ? $('[copy-val]') : $(`[copy-val="${copyNum}"]`),
             copyVal = copyEl.is('input') ? copyEl.val() : copyEl.text()
-        navigator.clipboard.writeText(copyVal)
-        .then(function (){tip('Copy successful')})
-        .catch(function (error){console.error('Copy failed:', error)})
+        navigator.clipboard.writeText(copyVal).then(function(){tip('Copy successful')})
     })
 });
 
