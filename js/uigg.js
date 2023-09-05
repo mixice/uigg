@@ -283,11 +283,13 @@ $(function(){
 //----------------------------------------------------------------------------------alone
 let alone
 $(function(){
-    let txt = $(alone).text(),
-        characters = txt.split(''),
-        wrappedText = ''
-    $.each(characters, function(index, character){wrappedText += `<z>${(character === ' ' ? '&nbsp;' : character)}</z>`})
-    $(alone).html(wrappedText)
+    $(alone).each(function(){
+        let txt = $(this).text(),
+            aloneEl = txt.split(''),
+            element = ''
+        for(let i = 0;i < aloneEl.length;i++){element += `<z>${(aloneEl[i] === ' ' ? '&nbsp;' : aloneEl[i])}</z>`}
+        $(this).html(element)
+    })
 });
 
 //----------------------------------------------------------------------------------rate
