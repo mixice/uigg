@@ -60,9 +60,9 @@ page {}
 page a {}
 
 /* notice */
-.notice {}
-.notice marquee {}
-.notice .ico {}
+notice {}
+notice marquee {}
+notice .ico {}
 
 /* pop */
 pop {}

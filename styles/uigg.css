@@ -64,7 +64,7 @@ u {flex: 1;}
 ::-webkit-scrollbar-thumb {background-color: var(--000-1);}
 
 @media(max-width:640px){
-	html,body,input,select,textarea,button {font-size: .2rem;}
+	html,body,input,select,textarea,button {font-size: .18rem;}
 	::-webkit-scrollbar {width: .03rem;}
     body::-webkit-scrollbar {width: 0;}
 }
@@ -168,7 +168,6 @@ u {flex: 1;}
 .mobile {width: 100%;margin: auto;position: relative;}
 .main {max-width: 1300px;padding: 0 10px;}
 .mobile {max-width: 640px;min-height: 100%;}
-.mobile img {width: 100%;}
 .block {width: 100%;overflow: hidden;position: relative;}
 [cover],.cover {object-fit: cover;background-size: cover;width: 100%;height: 100%;}
 [contain],.contain {object-fit: contain;background-size: contain;width: 100%;height: 100%;}
@@ -443,7 +442,7 @@ h6 {font-size: 14px;}
 	h3 {font-size: .26rem;}
 	h4 {font-size: .24rem;}
 	h5 {font-size: .22rem;}
-	h6 {font-size: .2rem;}
+	h6 {font-size: .18rem;}
 }
 
 /* pop */
@@ -755,7 +754,7 @@ select {padding: 0 50px 0 10px;}
     .form li.resolve {border: 0;}
     .form li.resolve .btn {width: 100%;}
     .form li.resolve .btn:not(:last-child) {margin-right: .1rem;}
-    .form li .code {width: 1.6rem;height: .7rem;font-size: .2rem;}
+    .form li .code {width: 1.6rem;height: .7rem;font-size: .18rem;}
     .form li span {padding: 0 .05rem;}
     .form li > span:first-child {width: 1.5rem;}
     .form .btn,
@@ -889,17 +888,21 @@ name-logo h1 {text-transform: uppercase;font-size: 30px;padding-left: 10px;}
 name-search {position: relative;margin: 10px 0;background-color: var(--000-1);border-radius: 30px;}
 name-search input {text-align: inherit;font-size: 24px;color: inherit;padding: 0 80px 0 0;}
 name-search input::-webkit-input-placeholder {color: var(--000-2);}
+name hop {height: 100%;}
+name hop > .ico {height: 100%;line-height: 80px;}
+name hop-cont {margin: .1rem;}
 
 @media(max-width:640px){
     name {height: .8rem;}
     name h2,
-    name h3 {font-size: .3rem;}
+    name h3 {font-size: .26rem;}
     name h3 {margin: .2rem 0;padding: 0 .25rem;}
     name .ico {font-size: .42rem;width: .8rem;}
     name-logo {padding: .15rem;}
     name-logo h1 {font-size: .32rem;padding-left: .1rem;}
     name-search {margin: .1rem 0;border-radius: .3rem;}
     name-search input {font-size: .24rem;height: .6rem;padding: 0 .8rem 0 0;}
+    name hop > .ico {line-height: .8rem;}
 }
 
 /* scaler */
@@ -941,10 +944,10 @@ music[pause]:after {content: '\e990';}
 /* drop */
 drop {width: 100%;height: 50px;line-height: 50px;position: relative;background-color: var(--f7);}
 drop x {position: fixed;width: 100vw;height: 100vh;top: 0;left: 0;}
-drop i.ico {position: absolute;top: 0;right: 0;line-height: 50px;width: 50px;}
+drop > i.ico {position: absolute;top: 0;right: 0;line-height: 50px;width: 50px;}
 drop > i.ico {transform: rotate(90deg);}
 drop-cont {width: 100%;height: 100%;overflow: hidden;position: relative;}
-drop-list {display: none;position: absolute;top: 50px;left: 0;background-color: white;width: 100%;box-shadow: 0 3px 6px var(--000-1);max-height: 50vh;}
+drop-list {display: none;position: absolute;top: 50px;left: 0;background-color: white;width: 100%;box-shadow: 0 3px 6px var(--000-1);max-height: 50vh;overflow: auto;}
 drop ul {overflow: visible;}
 drop li {position: relative;}
 drop li:not(:last-child) {border-bottom-width: 1px;}

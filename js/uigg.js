@@ -22,7 +22,7 @@ $(function(){
         docElement.style.fontSize = 100 * (viewWidth / 640) + 'px'
     }
     recalc()
-    if (doc.addEventListener){win.addEventListener(resizeEvt, recalc, false)}
+    if(doc.addEventListener){win.addEventListener(resizeEvt, recalc, false)}
 })(document, window);
 
 //----------------------------------------------------------------------------------load
@@ -135,7 +135,7 @@ function disable(){
     document.oncontextmenu = function (event){
         event = event
         try{let the = event.target
-            if (!((the.tagName === 'INPUT' && the.type.toLowerCase() === 'text') || the.tagName === 'TEXTAREA')) event.preventDefault()
+            if(!((the.tagName === 'INPUT' && the.type.toLowerCase() === 'text') || the.tagName === 'TEXTAREA')) event.preventDefault()
         }
         catch(e){event.preventDefault()}
     }
@@ -538,10 +538,11 @@ function langRead(targetObj,data){
     dataStr += '.' + langVal[langVal.length - 1]
     return eval(dataStr)
 }
+let langSwitch = 0
 $(function(){
     let langType = getCookie('lang') == '' ? 'en' : getCookie('lang')
     function lang(){
-        if ($('[lang-set]').length === 0) return
+        if(langSwitch === 0){if($('[lang-set]').length === 0) return}
         $.get(`/lang/${langType}.json`,function(data){
             $('[lang]').each(function(){$(this).html(langRead($(this).attr('lang'),data))})
             $('[lang-placeholder]').each(function(){$(this).attr('placeholder',langRead($(this).attr('lang-placeholder'),data))})
