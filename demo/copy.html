@@ -17,6 +17,9 @@
     section,input {text-align: center;}
     input,div {font-size: 18px;font-weight: bold;text-transform: capitalize;}
     div {line-height: 50px;}
+    .copy-select::after {content: 'copy select off';}
+    .copy-select.active {background-color: var(--red);}
+    .copy-select.active::after {content: 'copy select on';}
 </style>
 
 <!----------------------------------------------------------------------------------------->
@@ -29,6 +32,10 @@
     <li>
         <input copy-val="copy2" value="input">
         <a class="btn" copy-btn="copy2">copy</a>
+    </li>
+    <li>
+        <div>Lorem ipsum dolor sit amet, consectetur adipisicing elit</div>
+        <a class="btn copy-select"></a>
     </li>
 </section>
 

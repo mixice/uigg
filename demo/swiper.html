@@ -200,7 +200,7 @@
                         spaceBetween: 10,
                         slidesPerView: 4,
                         loop: true,
-                        watchSlidesVisibility: true,
+                        freeMode: true,
                         watchSlidesProgress: true,
                     })
                     var galleryTop = new Swiper('.gallery-top', {
@@ -210,7 +210,7 @@
                             nextEl: '.swiper-button-next',
                             prevEl: '.swiper-button-prev',
                         },
-                        thumbs: {swiper: galleryThumbs,},
+                        thumbs: {swiper: galleryThumbs},
                     })
                 </script>
             </section>

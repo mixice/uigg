@@ -71,7 +71,7 @@ u {flex: 1;}
 
 /* anime */
 .anime-rotate,
-.anime-beat-x,.anime-beat-y,.anime-beat-z,
+.anime-beat-x,.anime-beat-y,.anime-beat-z,.anime-beat-r,
 .anime-fade-in,.anime-fade-in-down,.anime-fade-in-left,.anime-fade-in-right,.anime-fade-in-up,
 .anime-fade-out,.anime-fade-out-down,.anime-fade-out-left,.anime-fade-out-right,.anime-fade-out-up,
 .anime-bounce-in,.anime-bounce-in-down,.anime-bounce-in-left,.anime-bounce-in-right,.anime-bounce-in-up,
@@ -88,6 +88,7 @@ u {flex: 1;}
 .anime-beat-x {animation-name: anime-beat-x;}
 .anime-beat-y {animation-name: anime-beat-y;}
 .anime-beat-z {animation-name: anime-beat-z;}
+.anime-beat-r {animation-name: anime-beat-r;animation-timing-function: linear;}
 .anime-fade-in {animation-name: anime-fade-in;}
 .anime-fade-in-down {animation-name: anime-fade-in-down;}
 .anime-fade-in-left {animation-name: anime-fade-in-left;}
@@ -130,6 +131,7 @@ u {flex: 1;}
 @keyframes anime-beat-x {0% {transform: translateX(0);}50% {transform: translateX(20px);}100% {transform: translateX(0);}}
 @keyframes anime-beat-y {0% {transform: translateY(0);}50% {transform: translateY(20px);}100% {transform: translateY(0);}}
 @keyframes anime-beat-z {0% {transform: scale(1);}50% {transform: scale(1.05);}100% {transform: scale(1);}}
+@keyframes anime-beat-r {0% {transform: rotate(0);}25% {transform: rotate(3deg);}75% {transform: rotate(-3deg);}100% {transform: rotate(0);}}
 @keyframes anime-fade-in {0% {opacity: 0;}100% {opacity: 1;}}
 @keyframes anime-fade-in-down {0% {opacity: 0;transform: translateY(-100%);}100% {opacity: 1;transform: translateY(0);}}
 @keyframes anime-fade-in-left {0% {opacity: 0;transform: translateX(-100%);}100% {opacity: 1;transform: translateX(0);}}
@@ -499,7 +501,7 @@ tip > * {padding: 5px;}
 .btn[disabled]:hover {transform: translateY(0);cursor: no-drop;}
 
 @media(max-width:640px){
-	.btn {height: .8rem;line-height: .8rem;padding: 0 .2rem;}
+	.btn {height: .8rem;line-height: .8rem;padding: 0 .2rem;border-radius: .1rem;}
 	.btn:hover {transform: translateY(0);}
     .btn .ico {margin: .05rem;}
     .btn .ico:first-child {margin-left: -.05rem;}
@@ -850,7 +852,7 @@ tab-group.active {display: block;}
 .swiper-button-next {right: 0;}
 .swiper-button-prev {left: 0;}
 .swiper-button-prev:after,
-.swiper-button-next:after {font-family: 'ico';content: '';}
+.swiper-button-next:after {font-family: 'ico';content: '' !important;}
 .swiper-pagination .swiper-pagination-bullet-active {background-color: var(--color);}
 .swiper-anime {display: none;animation-delay: .3s;}
 .swiper-animate .swiper-slide-active .swiper-anime {display: block;}

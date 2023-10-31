@@ -100,6 +100,8 @@ drop-list a:hover {background-color: var(--basic);}
 .sider fold-cont {background: var(--deep);display: none;padding: 0;}
 .sider fold-cont a {padding-left: 50px;}
 .sider a:hover {background: var(--bright);}
+.sider fold-group fold-title a:active {background: white;color: var(--333);}
+.sider fold-group fold-title a:active .ico {color: var(--333);}
 .sider fold-group.active fold-title a {background: var(--flash);}
 .sider fold-group.active fold-title a,
 .sider fold-group.active fold-title .ico {color: var(--333);}
@@ -197,6 +199,8 @@ page a.active {background-color: var(--basic);box-shadow: 0 3px 5px var(--bright
 .table {}
 .table table thead tr,
 .table table tfoot tr {background: var(--flash);}
+.table table td,
+.table table th {max-width: 200px;}
 .table table thead td,
 .table table thead th {border-bottom: 1px var(--basic) solid;}
 .table table tbody tr:nth-child(2n),

@@ -109,20 +109,29 @@ $(function(){
     })
     $('[uigg="color"]').each(function(){$(this).css('background-color',`rgb(${randCol()},${randCol()},${randCol()})`)})
 
-    let sentence = [
-        'Lorem ipsum dolor sit amet, consectetur adipisicing elit ',
-        'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua ',
-        'Ut enim ad minim veniam, quis nostrud exercitation ',
-        'Ullamco laboris nisi ut aliquip ex ea commodo consequat ',
-        'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore ',
-        'Ugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident ',
-        'Sunt in culpa qui officia deserunt mollit anim id est laborum ',
-        'Sed ut perspiciatis unde omnis iste natus error sit ',
-        'voluptatem accusantium doloremque laudantium, totam rem aperiam ',
-        'eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae '
-    ]
-    if(!$('[uigg="txt"]').attr('lang') && !$('[uigg="txt"]').html()) $('[uigg="txt"]').append(sentence)
-    $('[uigg="title"]').each(function(){if(!$(this).attr('lang') && !$(this).html()) $(this).append(sentence[Math.round(Math.random() * (sentence.length - 1))])})
+    const alphabet = 'abcdefghijklmnopqrstuvwxyz'
+    function generateRandomWord(length){
+        let randomWord = ''
+        for (let i = 0; i < length; i++){
+            const randomIndex = Math.floor(Math.random() * alphabet.length)
+            randomWord += alphabet[randomIndex]
+        }
+        return randomWord
+    }
+    function generateRandomSentence(){
+        const numWords = 10,sentenceWords = []
+        for (let i = 0; i < numWords; i++){
+            const wordLength = Math.floor(Math.random() * 8) + 3
+            sentenceWords.push(generateRandomWord(wordLength))
+        }
+        return sentenceWords.join(' ')
+    }
+    const randomSentences = []
+    for(let i = 0; i < 10; i++){randomSentences.push(generateRandomSentence())}
+
+
+    if(!$('[uigg="txt"]').attr('lang') && !$('[uigg="txt"]').html()) $('[uigg="txt"]').append(randomSentences)
+    $('[uigg="title"]').each(function(){if(!$(this).attr('lang') && !$(this).html()) $(this).append(randomSentences[Math.round(Math.random() * (randomSentences.length - 1))])})
 
     let arr = new Array()
     for(let i = 1;i <= 100;i++){arr[i] = i
@@ -355,6 +364,11 @@ $(document).on('click','notify x',function(){
 });
 
 //----------------------------------------------------------------------------------copy
+let copySelect = false
+function copySelectedText(){
+    const selectedText = window.getSelection().toString().trim()
+    if(selectedText){navigator.clipboard.writeText(selectedText).then(function(){tip('Copy successful')})}
+}
 $(function(){
     $('[copy-btn]').click(function(){
         let copyNum = $(this).attr('copy-btn'),
@@ -362,7 +376,13 @@ $(function(){
             copyVal = copyEl.is('input') ? copyEl.val() : copyEl.text()
         navigator.clipboard.writeText(copyVal).then(function(){tip('Copy successful')})
     })
-});
+    $('.copy-select').click(function(){
+        $(this).toggleClass('active')
+        copySelect = !copySelect
+        if(copySelect){document.addEventListener('mouseup', copySelectedText)}
+        else{document.removeEventListener('mouseup', copySelectedText)}
+    })
+})
 
 //----------------------------------------------------------------------------------empty
 $(function(){
@@ -561,16 +581,16 @@ $(function(){
 //----------------------------------------------------------------------------------clue
 $(function(){
     $('*[title]').hover(function(){
-        const $element = $(this)
-        if($element.attr('clue') === undefined){
-            const titleText = $element.attr('title')
-            $element.attr('clue', titleText).append(`<clue class="corner anime-fade-in">${titleText}</clue>`).removeAttr('title')
-            const $clue = $element.find('clue'),
-                clueWidth = $clue.width(),
-                selfWidth = $element.width()
+        const element = $(this)
+        if(element.attr('clue') === undefined){
+            const titleText = element.attr('title')
+            element.attr('clue', titleText).append(`<clue class="corner anime-fade-in">${titleText}</clue>`).removeAttr('title')
+            const clue = element.find('clue'),
+                clueWidth = clue.width(),
+                selfWidth = element.width()
             if(clueWidth > selfWidth){
                 const clueLeft = -(clueWidth - selfWidth) / 2 - 10
-                $clue.css('left', clueLeft)
+                clue.css('left', clueLeft)
             }
         }
     })
@@ -603,6 +623,26 @@ $(document).on('click','alert-solve .btn',function(){$('alert').remove()})
 $(function(){
     $('notice').html(`<i class="ico ico-volume"></i><marquee onMouseOut="this.start()" onMouseOver="this.stop()">${$('notice').html()}</marquee><a class="ico ico-more-horizontal"></a>`)
     $('notice a.ico').attr('href',$('notice').attr('href'))
+});
+
+//----------------------------------------------------------------------------------record
+$(function(){
+    $('.record').on("click",async function(){
+        let stream = await navigator.mediaDevices.getDisplayMedia({video: true}),
+            mime = MediaRecorder.isTypeSupported("video/webm; codecs=vp9") ?"video/webm; codecs=vp9" :"video/webm",
+            mediaRecorder = new MediaRecorder(stream, {mimeType: mime}),
+            chunks = []
+        mediaRecorder.addEventListener('dataavailable', function(e){chunks.push(e.data)})
+        mediaRecorder.addEventListener('stop', function(){
+            let blob = new Blob(chunks, {type: chunks[0].type}),
+                url = URL.createObjectURL(blob),
+                a = document.createElement('a')
+            a.href = url
+            a.download = 'video.webm'
+            a.click()
+        })
+        mediaRecorder.start()
+    })
 });
 
 //----------------------------------------------------------------------------------

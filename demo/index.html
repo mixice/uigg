@@ -93,6 +93,7 @@
                     <a class="smooth" href="#pop">pop</a>
                     <a class="smooth" href="#random">random</a>
                     <a class="smooth" href="#rate">rate</a>
+                    <a class="smooth" href="#record">record</a>
                     <a class="smooth" href="#reminder">reminder</a>
                     <a class="smooth" href="#scaler">scaler</a>
                     <a class="smooth" href="#smooth">smooth</a>
@@ -461,6 +462,10 @@ copy-btn
 <xmp>
 copy-val="copy1"
 copy-btn="copy1"
+</xmp>
+            <p>If you need select copy, Add the class to the button</p>
+<xmp>
+class="copy-select"
 </xmp>
             <h5>effect display</h5>
             <iframe src="copy.html" height="300"></iframe>
@@ -1020,6 +1025,17 @@ edit
             <iframe src="rate.html"></iframe>
             <a class="btn shadow" href="rate.html" target="_blank">view</a>
         </div>
+        <div class="cont" id="record">
+            <h3>record</h3>
+            <h5>code</h5>
+            <p>Add the class to the DOM</p>
+<xmp>
+class="record"
+</xmp>
+            <h5>effect display</h5>
+            <iframe src="record.html"></iframe>
+            <a class="btn shadow" href="record.html" target="_blank">view</a>
+        </div>
         <div class="cont" id="reminder">
             <h3>reminder</h3>
             <h5>code</h5>
@@ -1508,10 +1524,10 @@ class="touch-all"
             spaceBetween: 10,
             slidesPerView: 4,
             loop: true,
-            watchSlidesVisibility: true,
+            freeMode: true,
             watchSlidesProgress: true,
         })
-        var galleryTop = new Swiper('.gallery-top',{
+        var galleryTop = new Swiper('.gallery-top', {
             spaceBetween: 10,
             loop:true,
             navigation: {
