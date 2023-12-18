@@ -439,7 +439,7 @@ title=""
             <h5>code</h5>
             <p>Save cookies, add the javascript to the DOM</p>
 <xmp>
-setCookie('name', 'value', 'time')
+setCookie('name','value','time')
 </xmp>
             <p>Get cookies, add the javascript to the DOM</p>
 <xmp>
@@ -1007,7 +1007,7 @@ uigg="txt"
 uigg="emot"
 </xmp>
             <h5>effect display</h5>
-            <iframe src="random.html" height="450"></iframe>
+            <iframe src="random.html" height="550"></iframe>
             <a class="btn shadow" href="random.html" target="_blank">view</a>
         </div>
         <div class="cont" id="rate">
@@ -1020,6 +1020,12 @@ uigg="emot"
             <p>If you need edit it, add the <span>edit</span> attribute to the <span>rate</span></p>
 <xmp>
 edit
+</xmp>
+            <p>If you need other styles, you can add <span>heart</span> and <span>thumb</span> and <span>circular</span> to change the appearance of the <span>rate</span></p>
+<xmp>
+heart
+thumb
+circular
 </xmp>
             <h5>effect display</h5>
             <iframe src="rate.html"></iframe>
@@ -1408,7 +1414,6 @@ class="touch-all"
                 el: '.swiper-pagination',
                 clickable: true,
                 dynamicBullets: true,
-                type: "progressbar",
             },
             navigation: {
                 nextEl: '.swiper-button-next',

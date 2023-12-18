@@ -304,7 +304,7 @@ $(function(){
 //----------------------------------------------------------------------------------rate
 $(function(){
     $('rate').html('<i></i><i></i><i></i><i></i><i></i>')
-    $('rate').each(function(){$(this).find('i').addClass('ico ico-star').filter(':lt(' + $(this).attr('value') + ')').addClass('active')})
+    $('rate').each(function(){$(this).find('i').addClass('ico').filter(':lt(' + $(this).attr('value') + ')').addClass('active')})
     $('rate[edit] i').click(function(){
         $(this).addClass('active').siblings().removeClass('active').parent().attr('value',$(this).index() + 1)
         $(this).prevAll().addClass('active')
@@ -382,7 +382,7 @@ $(function(){
         if(copySelect){document.addEventListener('mouseup', copySelectedText)}
         else{document.removeEventListener('mouseup', copySelectedText)}
     })
-})
+});
 
 //----------------------------------------------------------------------------------empty
 $(function(){
@@ -506,6 +506,7 @@ $(function(){
             page()
             $('page input').val('')
         }
+        console.log(pageNum)
     })
 });
 
@@ -627,7 +628,7 @@ $(function(){
 
 //----------------------------------------------------------------------------------record
 $(function(){
-    $('.record').on("click",async function(){
+    $('.record').click(async function(){
         let stream = await navigator.mediaDevices.getDisplayMedia({video: true}),
             mime = MediaRecorder.isTypeSupported("video/webm; codecs=vp9") ?"video/webm; codecs=vp9" :"video/webm",
             mediaRecorder = new MediaRecorder(stream, {mimeType: mime}),

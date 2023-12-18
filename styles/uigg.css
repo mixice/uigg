@@ -828,7 +828,7 @@ tab-group.active {display: block;}
 .table table {width: 100%;border-collapse: separate;border-spacing:0;}
 .table table th,
 .table table td {vertical-align: middle;text-align: center;height: 50px;padding: 0 10px;background-color: white;}
-.table table th {text-transform: capitalize;position: sticky;left: 0;border-right: 1px var(--eee) solid;z-index: 1;}
+.table table th {text-transform: capitalize;position: sticky;left: 0;border-right: 1px var(--000-1) solid;z-index: 1;}
 .table table thead th,
 .table table thead td {font-weight: bold;text-transform: capitalize;border-bottom: 2px var(--color) solid;}
 .table table tbody tr:nth-child(2n) th,
@@ -892,7 +892,6 @@ name-search input {text-align: inherit;font-size: 24px;color: inherit;padding: 0
 name-search input::-webkit-input-placeholder {color: var(--000-2);}
 name hop {height: 100%;}
 name hop > .ico {height: 100%;line-height: 80px;}
-name hop-cont {margin: .1rem;}
 
 @media(max-width:640px){
     name {height: .8rem;}
@@ -946,10 +945,10 @@ music[pause]:after {content: '\e990';}
 /* drop */
 drop {width: 100%;height: 50px;line-height: 50px;position: relative;background-color: var(--f7);}
 drop x {position: fixed;width: 100vw;height: 100vh;top: 0;left: 0;}
-drop > i.ico {position: absolute;top: 0;right: 0;line-height: 50px;width: 50px;}
+drop i.ico {position: absolute;top: 0;right: 0;line-height: 50px;width: 50px;}
 drop > i.ico {transform: rotate(90deg);}
 drop-cont {width: 100%;height: 100%;overflow: hidden;position: relative;}
-drop-list {display: none;position: absolute;top: 50px;left: 0;background-color: white;width: 100%;box-shadow: 0 3px 6px var(--000-1);max-height: 50vh;overflow: auto;}
+drop-list {display: none;position: absolute;top: 50px;left: 0;background-color: white;width: 100%;box-shadow: 0 3px 6px var(--000-1);max-height: 50vh;}
 drop ul {overflow: visible;}
 drop li {position: relative;}
 drop li:not(:last-child) {border-bottom-width: 1px;}
@@ -971,8 +970,16 @@ drop.active > i {transform: rotate(-90deg);}
 
 /* rate */
 rate {}
-rate i {color: var(--orange);cursor: pointer;}
+rate i {color: var(--orange);cursor: pointer;transition-duration: .3s;}
+rate i:hover {transform: scale(1.2);}
+rate i::before {content:'\ea62';}
 rate i.active::before {content:'\ea65';}
+rate[heart] i::before {content:'\e917';}
+rate[heart] i.active::before {content:'\e90b';}
+rate[thumb] i::before {content:'\eb2d';}
+rate[thumb] i.active::before {content:'\eb85';}
+rate[circular] i::before {content:'\ea31';}
+rate[circular] i.active::before {content:'\ec52';}
 
 /* notify */
 notify {position: fixed;top: 0;right: 0;margin: 0 10px;z-index: 999;}
@@ -995,10 +1002,10 @@ empty .ico {display: block;font-size: 72px;margin: inherit;}
 empty div {text-align: center;}
 
 @media(max-width:640px){
-    empty {font-size: .36rem;padding: .2rem;}
+    empty {padding: .2rem;}
+    empty.default {font-size: .36rem;}
     empty * {margin: .1rem;}
     empty .ico {font-size: .8rem;}
-
 }
 
 /* hop */
