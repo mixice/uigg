@@ -13,7 +13,7 @@ body {background: var(--flash);}
     --flash:#f9f9fd;
     --light:#ebeaf5;
     --bright:#a49fff;
-    --basic:#6c62f9;
+    --basic: var(--color);
     --deep:#4a41c4;
     --shadow: 0 5px 5px rgb(108, 98, 249,.05);
 }
@@ -108,7 +108,7 @@ drop-list a:hover {background-color: var(--basic);}
 .sider-search {position: relative;margin: 10px;overflow: hidden;}
 .sider-search input {height: 40px;padding: 0 40px 0 20px;border-radius: 100px;background: var(--deep);color: white;border: 0;}
 .sider-search button {width: 40px;height: 40px;position: absolute;top: 0;right: 0;}
-.sider-toggle {width: 40px;margin: 0 20px;padding: 0;}
+.sider-toggle {width: 40px;height: 40px;margin: 0 20px;padding: 0;}
 
 @media(max-width:640px){
     .sider {width: 100%;height: 100%;position: absolute;left: 0;top: 0;display: none;z-index: 3;}
@@ -120,12 +120,12 @@ drop-list a:hover {background-color: var(--basic);}
     .sider-search {margin: .15rem;}
     .sider-search input {height: .7rem;padding: 0 .7rem 0 .3rem;}
     .sider-search button {width: .7rem;height: .7rem;}
-    .sider-toggle {width: .5rem;margin: 0 .1rem;}
+    .sider-toggle {width: .5rem;height: .5rem;margin: 0 .1rem;}
     .sider-toggle i {font-size: .32rem;}
 }
 
 /* title */
-.title {height: 50px;display: flex;align-items: center;}
+.title {height: 60px;display: flex;align-items: center;}
 .title u {flex: 1;}
 .title .ico {margin: inherit;padding: 0 10px;}
 .title cite {font-weight: normal;color: var(--ccc);padding: 0 20px;}
@@ -135,7 +135,7 @@ drop-list a:hover {background-color: var(--basic);}
 .contant .title {border-bottom: 1px var(--light) solid;padding: 0 20px;}
 
 @media(max-width:640px){
-    .title {height: .7rem;}
+    .title {height: .9rem;}
     .title .ico {padding: 0 .1rem;}
     .title cite {padding: 0 .2rem;}
     .title .return {margin-right: .2rem;}
@@ -144,22 +144,17 @@ drop-list a:hover {background-color: var(--basic);}
 }
 
 /* page */
-page {padding:10px 0;}
-page .ico,
-page * {height: 40px;line-height: 40px;}
+page {padding:20px 0;}
 page a,
-page button {background-color: var(--flash);width: 40px;}
+page button {background-color: var(--flash);}
 page button:hover,
 page a:hover,
 page a.active {background-color: var(--basic);box-shadow: 0 3px 5px var(--bright);}
 
 @media(max-width:640px){
-    page {padding: .1rem 0;}
-    page a,
-    page .ico,
-    page button {width: .6rem;height: .6rem;line-height: .6rem;font-size: .22rem;}
+    page {padding: .2rem 0;}
     page .ico {font-size: .3rem;}
-    page input {height: .6rem;border: 1px var(--light) solid;}
+    page input {border: 1px var(--light) solid;}
     page a:hover,
     page a.active {box-shadow: 0 .05rem .05rem var(--bright);}
 
@@ -242,18 +237,6 @@ input[type="color"]::-webkit-color-swatch {border-radius: 100px;}
 .control li input,
 .control li .input,
 .control li .select {width: 100%;flex: 1;}
-.control span,
-.control input,
-.control .input,
-.control .input i,
-.control .select,
-.control .select::after,
-.control select {height: 40px;}
-.control li,
-.control span,
-.control .select::after,
-.control .input i {line-height: 40px;}
-.control .input i {width: 40px;}
 .control li span {width: auto !important;}
 
 @media(max-width:640px){
@@ -266,17 +249,6 @@ input[type="color"]::-webkit-color-swatch {border-radius: 100px;}
 
     .control {padding:.1rem .1rem 0;}
     .control li {width: 100%;}
-    .control span,
-    .control input,
-    .control .input,
-    .control .input i,
-    .control .select,
-    .control .select::after,
-    .control select {height: .6rem;}
-    .control span,
-    .control .select::after,
-    .control .input i {line-height: .6rem;}
-    .control .input i {width: .5rem;}
     .control li span {width: 1.4rem !important;}
 }
 
@@ -319,19 +291,12 @@ tab-list li.active a {border-color: var(--basic);color: var(--basic);}
 
 /* pop */
 pop-title {border-bottom-color: var(--light);}
-pop-cont {padding: 20px 0;}
-
-@media(max-width:640px){
-    pop-cont {padding: .2rem 0;}
-}
 
 /* login */
 .login {width: 100%;height: 100%;background: repeating-radial-gradient(circle at 50% 50%, transparent 0, var(--000-1) 3px 3px, transparent 5px 10px) var(--basic);}
 .login-main {background-color: white;padding: 30px;animation-duration: .5s;position: relative;border-radius: 10px;}
-.login-main cite {position: absolute;right: 0;top: -50px;font-size: 70px;text-transform: uppercase;color: var(--fff-2);line-height: 100%;}
 .login-title {padding: 10px 0 20px;overflow: hidden;}
 .login-title h1 {margin: auto;transform: scale(1.3);}
-.login-cont {display: flex;align-items: center;}
 .login-form {width: 500px;}
 .login-form li {position: relative;display: flex;}
 .login-form li:last-child {border-bottom: 0;}
@@ -344,14 +309,10 @@ pop-cont {padding: 20px 0;}
 .login-other a {padding: 5px;display: block;float: left;border-radius: 5px;}
 .login-other a:hover {background-color: var(--light);}
 .login-tip {line-height: 40px;color: white;text-align: center;clear: both;display: none;margin: 5px;border-radius: 3px;}
-.login-status {width: 360px;}
-.login-status a:hover {color: var(--basic);}
 
 @media(max-width:640px){
-    .login-main {padding: .1rem;border-radius: .1rem;width: 95%;}
-    .login-main cite {top: -.5rem;font-size: .7rem;}
+    .login-main {padding: .2rem .1rem;border-radius: .1rem;width: 95%;}
     .login-title {padding: .1rem 0;}
-    .login-cont {display: block;}
     .login-form {width: 100%;}
     .login-form li i {width: .7rem;line-height: .7rem;}
     .login-form li input {padding: 0 .1rem 0 .7rem;}
@@ -359,7 +320,6 @@ pop-cont {padding: 20px 0;}
     .login-info {padding: 0 .15rem;}
     .login-other a {padding: .1rem;border-radius: .1rem;}
     .login-tip {line-height: .5rem;margin: 0;}
-    .login-status {width: 100%;border-top-width: 1px;margin-top: .2rem;}
 }
 
 /* reminder */

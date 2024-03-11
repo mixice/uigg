@@ -21,6 +21,74 @@
   margin: auto;
 }
 
+.ico-dji:before {
+  content: "\ecf2";
+}
+
+.ico-aftereffects:before {
+  content: "\ecf4";
+}
+
+.ico-twitter:before {
+  content: "\ece9";
+}
+
+.ico-premiere:before {
+  content: "\ecea";
+}
+
+.ico-ray:before {
+  content: "\eceb";
+}
+
+.ico-zorro:before {
+  content: "\ecec";
+}
+
+.ico-trace:before {
+  content: "\eced";
+}
+
+.ico-enroll:before {
+  content: "\ecee";
+}
+
+.ico-penetrate:before {
+  content: "\ecef";
+}
+
+.ico-photoshop:before {
+  content: "\ecf0";
+}
+
+.ico-illustrator:before {
+  content: "\ecf1";
+}
+
+.ico-divinatory:before {
+  content: "\eb3e";
+}
+
+.ico-stacking1:before {
+  content: "\ecdf";
+}
+
+.ico-leaderboard:before {
+  content: "\ece0";
+}
+
+.ico-user-set:before {
+  content: "\ece6";
+}
+
+.ico-vv:before {
+  content: "\ece7";
+}
+
+.ico-safety-user:before {
+  content: "\ece8";
+}
+
 .ico-capcut:before {
   content: "\ecdb";
 }
@@ -35,14 +103,6 @@
 
 .ico-eleme:before {
   content: "\ecde";
-}
-
-.ico-xianyu:before {
-  content: "\ecdf";
-}
-
-.ico-yuxian:before {
-  content: "\ece0";
 }
 
 .ico-pinterest:before {
@@ -2139,10 +2199,6 @@
 
 .ico-media-play:before {
   content: "\e95f";
-}
-
-.ico-stacking:before {
-  content: "\ea5f";
 }
 
 .ico-volume-close:before {
@@ -6035,10 +6091,6 @@
 
 .ico-square-code:before {
   content: "\ea3e";
-}
-
-.ico-twitter:before {
-  content: "\eb3e";
 }
 
 .ico-angle-side-right:before {

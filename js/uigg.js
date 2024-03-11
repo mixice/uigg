@@ -108,7 +108,6 @@ $(function(){
         if(!$(this).attr('src') && $(this).is('img')) $(this).attr('src',url)
     })
     $('[uigg="color"]').each(function(){$(this).css('background-color',`rgb(${randCol()},${randCol()},${randCol()})`)})
-
     const alphabet = 'abcdefghijklmnopqrstuvwxyz'
     function generateRandomWord(length){
         let randomWord = ''
@@ -128,11 +127,8 @@ $(function(){
     }
     const randomSentences = []
     for(let i = 0; i < 10; i++){randomSentences.push(generateRandomSentence())}
-
-
     if(!$('[uigg="txt"]').attr('lang') && !$('[uigg="txt"]').html()) $('[uigg="txt"]').append(randomSentences)
     $('[uigg="title"]').each(function(){if(!$(this).attr('lang') && !$(this).html()) $(this).append(randomSentences[Math.round(Math.random() * (randomSentences.length - 1))])})
-
     let arr = new Array()
     for(let i = 1;i <= 100;i++){arr[i] = i
         $('[uigg="emot"]').append('<s style="background-image: url(//ui.gg/lib/emot/' + i + '.svg)"></s>')
@@ -589,6 +585,8 @@ $(function(){
             const clue = element.find('clue'),
                 clueWidth = clue.width(),
                 selfWidth = element.width()
+                console.log(selfWidth)
+                console.log(clueWidth)
             if(clueWidth > selfWidth){
                 const clueLeft = -(clueWidth - selfWidth) / 2 - 10
                 clue.css('left', clueLeft)
