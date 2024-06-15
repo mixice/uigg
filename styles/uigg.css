@@ -654,7 +654,7 @@ input[type="datetime-local"]::before,
 input[type="time"]::before,
 input[type="week"]::before,
 input[type="month"]::before,
-.select::after {position: absolute;right: 10px;font-family: ico !important;font-size: 24px;line-height: 50px;}
+.select::after {position: absolute;right: 10px;font-family: ico !important;font-size: 24px;}
 input[type="date"]::before {content: '\e7b2';}
 input[type="datetime-local"]::before {content: '\e7bc';}
 input[type="time"]::before {content: '\eb32';}
@@ -727,7 +727,7 @@ select {padding: 0 50px 0 10px;}
     input[type="time"]::before,
     input[type="week"]::before,
     input[type="month"]::before,
-    .select::after {right: .1rem;font-size: .32rem;line-height: .7rem;}
+    .select::after {right: .1rem;font-size: .32rem;}
 
     .select,
     select,
@@ -1186,11 +1186,11 @@ clue.corner::after {border-width: 0 10px 10px 10px;border-bottom-color: var(--00
 
 /* reminder */
 reminder {padding: 10px;border-width: 1px;background-color: var(--f7);margin: 20px 0;border-radius: 5px;}
-reminder > * {padding: 10px;}
+reminder > * {padding: 5px;}
 
 @media(max-width:640px){
     reminder {padding: .1rem;margin: .2rem 0;border-radius: .05rem;}
-    reminder > * {padding: .1rem;}
+    reminder > * {padding: .05rem;}
 }
 
 /* tinymce */

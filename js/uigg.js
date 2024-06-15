@@ -201,7 +201,8 @@ $(function(){
         })
     }
     $('.menu-cont a').click(function(){$('.menu-cont').hide()})
-});
+})
+if($(window).width() <= 640) $('menu-cont a').click(function(){$('menu-cont').hide()});
 
 //----------------------------------------------------------------------------------toggle
 $(function(){
@@ -502,7 +503,6 @@ $(function(){
             page()
             $('page input').val('')
         }
-        console.log(pageNum)
     })
 });
 
