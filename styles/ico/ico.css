@@ -21,6 +21,86 @@
   margin: auto;
 }
 
+.ico-circular-7:before {
+  content: "\ecfd";
+}
+
+.ico-circular-2:before {
+  content: "\ecfe";
+}
+
+.ico-circular-5:before {
+  content: "\ecff";
+}
+
+.ico-circular-3:before {
+  content: "\ed00";
+}
+
+.ico-cfcard:before {
+  content: "\ed01";
+}
+
+.ico-alpha:before {
+  content: "\ed02";
+}
+
+.ico-circular-0:before {
+  content: "\ed03";
+}
+
+.ico-circular-1:before {
+  content: "\ed04";
+}
+
+.ico-tf:before {
+  content: "\ecf6";
+}
+
+.ico-toggle-off:before {
+  content: "\ecf7";
+}
+
+.ico-stabilizer:before {
+  content: "\ecf8";
+}
+
+.ico-tfcard:before {
+  content: "\ecf9";
+}
+
+.ico-sdcard:before {
+  content: "\ecfa";
+}
+
+.ico-circular-8:before {
+  content: "\ecfb";
+}
+
+.ico-somatosensory:before {
+  content: "\ecfc";
+}
+
+.ico-circular-6:before {
+  content: "\ea5f";
+}
+
+.ico-user-edit:before {
+  content: "\eb34";
+}
+
+.ico-toggle-on:before {
+  content: "\eb35";
+}
+
+.ico-circular-4:before {
+  content: "\ecf3";
+}
+
+.ico-circular-9:before {
+  content: "\ecf5";
+}
+
 .ico-dji:before {
   content: "\ecf2";
 }
@@ -5909,10 +5989,6 @@
   content: "\e934";
 }
 
-.ico-toggle-off:before {
-  content: "\eb34";
-}
-
 .ico-angle-left:before {
   content: "\e735";
 }
@@ -5923,10 +5999,6 @@
 
 .ico-kuaishou:before {
   content: "\e935";
-}
-
-.ico-toggle-on:before {
-  content: "\eb35";
 }
 
 .ico-angle-loop-reversal:before {
