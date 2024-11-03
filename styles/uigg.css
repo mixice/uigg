@@ -515,13 +515,14 @@ nav li {width: 100%;padding: 8px;position: relative;z-index: 1;}
 nav li a {display: block;padding: 8px 0;position: relative;border-radius: 5px;}
 nav li .ico {display: block;margin: 0 auto 5px;font-size: 32px;}
 nav li span {display: block;text-align: center;line-height: 100%;text-transform: capitalize;}
+space {height: 150px;}
 
 @media(max-width:640px){
-    space {height: 1.4rem;}
     nav li {padding: .08rem;}
     nav li a {padding: .08rem 0;}
     nav li .ico {margin: 0 auto .02rem;font-size: .32rem;}
     nav li span {font-size: .18rem;}
+    space {height: 1.4rem;}
 }
 
 /* menu */
@@ -601,9 +602,26 @@ o.semaphore:after {content: '\e9fe';}
 o.semaphore.active:after {content: '\ea01';}
 o.suitcase:after {content: '\eb07';}
 o.suitcase.active:after {content: '\eb01';}
-o.toggle:after {content: '\eb34';}
+o.light:after {content: '\e938';}
+o.light.active:after {content: '\e93a';}
+o.devicerotate:after {content: '\e733';}
+o.devicerotate.active:after {content: '\e731';}
+o.thumbtack:after {content: '\eb2f';}
+o.thumbtack.active:after {content: '\e7cb';}
+o.bell:after {content: '\e786';}
+o.bell.active:after {content: '\e788';}
+o.place:after {content: '\e9b1';}
+o.place.active:after {content: '\e9b2';}
+o.link:after {content: '\e8d8';}
+o.link.active:after {content: '\eb87';}
+o.blur:after {content: '\ec25';}
+o.blur.active:after {content: '\ec1a';}
+o.thumb-up:after {content: '\eb2d';}
+o.thumb-up.active:after {content: '\eb85';}
+o.thumb-down:after {content: '\eb28';}
+o.thumb-down.active:after {content: '\eb8a';}
+o.toggle:after {content: '\ecf7';}
 o.toggle.active:after {content: '\eb35';}
-o.toggle {font-size: 36px;}
 
 @media(max-width:640px){
     o {font-size: .36rem;margin: 0;}
@@ -702,6 +720,12 @@ select {padding: 0 50px 0 10px;}
 .form .max {width: 80%;}
 .form scaler input {margin: 0 10px;}
 
+.filter {overflow: hidden;margin-bottom: 20px;}
+.filter li {float: left;width: 25%;}
+.filter li span:first-child {width: auto;}
+.filter li input,
+.filter li .select {flex: 1;}
+
 .upload {float: left;flex: 1;min-width: 0;}
 .upload[read] .upload-group {color: transparent;}
 .upload-group,
@@ -773,6 +797,10 @@ select {padding: 0 50px 0 10px;}
     .form scaler .btn {width: .7rem;}
     .form scaler input {margin: 0;}
 
+    .filter {margin-bottom: .2rem;}
+    .filter li {float: none;width: 100%;}
+    .filter li span:first-child {width: 1rem;}
+
     .upload-group,
     .upload-add {width: 1.1rem;height: 1.1rem;margin: 0 .05rem .05rem 0;line-height: 1.1rem;font-size: .42rem;}
     .upload x {width: .5rem;height: .5rem;padding: 0 0 .1rem .1rem;}
@@ -795,9 +823,6 @@ page input {border-width: 1px;width: 80px;padding: 0;}
 page a:hover,
 page a.active,
 page button:hover {background-color: var(--color);color: white;}
-page[min] span,
-page[min] input,
-page[min] button {display: none;}
 
 @media(max-width:640px){
     page .ico,
@@ -946,7 +971,7 @@ music[pause]:after {content: '\e990';}
 /* drop */
 drop {width: 100%;height: 50px;line-height: 50px;position: relative;background-color: var(--f7);}
 drop x {position: fixed;width: 100vw;height: 100vh;top: 0;left: 0;}
-drop i.ico {position: absolute;top: 0;right: 0;line-height: 50px;width: 50px;}
+drop i.ico {position: absolute;top: 0;right: 0;line-height: 50px;width: 50px;color: var(--color);}
 drop > i.ico {transform: rotate(90deg);}
 drop-cont {width: 100%;height: 100%;overflow: hidden;position: relative;}
 drop-list {display: none;position: absolute;top: 50px;left: 0;background-color: white;width: 100%;box-shadow: 0 3px 6px var(--000-1);}
@@ -1011,7 +1036,7 @@ empty div {text-align: center;}
 
 /* hop */
 hop {position: relative;}
-hop x {width: 100vw;height: 100vh;position: fixed;top: 0;left: 0;display: none;}
+hop x {width: 100%;height: 100vh;position: fixed;top: 0;left: 0;display: none;}
 hop a {height: 50px;line-height: 50px;display: block;text-align: center;user-select: none;}
 hop-cont {position: absolute;box-shadow: 0 3px 6px var(--000-1);border-radius: 5px;display: none;}
 hop-cont a {background-color: white;border-bottom-width: 1px;text-transform: capitalize;white-space: nowrap;padding: 0 20px;}

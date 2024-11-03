@@ -52,7 +52,7 @@
 <section class="subject">
     <section class="sider">
         <x class="ico ico-menu"></x>
-        <a href="/"><em><img src="../images/ico.svg"></em></a>
+        <a class="logo" href="/"><em><img src="../images/ico.svg"></em><span>uigg</span></a>
         <fold show>
             <fold-group>
                 <fold-title><i class="ico ico-uigg"></i><h5>using UIGG</h5><u></u></fold-title>
@@ -84,7 +84,6 @@
                     <a class="smooth" href="#hop">hop</a>
                     <a class="smooth" href="#horn">horn</a>
                     <a class="smooth" href="#language">language</a>
-                    <a class="smooth" href="#load">load</a>
                     <a class="smooth" href="#menu">menu</a>
                     <a class="smooth" href="#mix">mix</a>
                     <a class="smooth" href="#notice">notice</a>
@@ -93,7 +92,7 @@
                     <a class="smooth" href="#pop">pop</a>
                     <a class="smooth" href="#random">random</a>
                     <a class="smooth" href="#rate">rate</a>
-                    <a class="smooth" href="#record">record</a>
+                    <a class="smooth" href="#recording">recording</a>
                     <a class="smooth" href="#reminder">reminder</a>
                     <a class="smooth" href="#scaler">scaler</a>
                     <a class="smooth" href="#smooth">smooth</a>
@@ -260,6 +259,11 @@ class="fixed-bottom-left"
 class="fixed-bottom-right"
 class="fixed-bottom-center"
 </xmp>
+            <h5>load</h5>
+            <p>If you need to wait for the page to be displayed after loading, add the code to the DOM</p>
+<xmp>
+<load></load>
+</xmp>
             <h5>corner</h5>
             <p>Add the class to the DOM</p>
 <xmp>
@@ -297,13 +301,13 @@ class="return"
         <div class="cont" id="alert">
             <h3>alert</h3>
             <h5>code</h5>
-            <p>Run <span>alert()</span>, you can also set <span>actions</span> as a follow-up action, it is an optional project</p>
+            <p>Add the javascript to the DOM</p>
 <xmp>
-alert('alert','actions')
+alert('alert')
 </xmp>
             <p>If you need confirm, run <span>confirm()</span></p>
 <xmp>
-confirm('confirm','actions')
+confirm('confirm')
 </xmp>
             <h5>effect display</h5>
             <iframe src="alert.html" height="300"></iframe>
@@ -665,7 +669,19 @@ class="font-tahoma"
         </div>
         <div class="cont" id="form">
             <h3>form</h3>
-            <h5>code</h5>
+            <h5>filter</h5>
+            <p>Add the code to the DOM</p>
+<xmp>
+<section class="form filter">
+    <form>
+        <li><span>name</span><input type="text"></li>
+        <li><span>time</span><input type="date"></li>
+        <li><span>select</span><div class="select"><select><option selected disabled>select</option><option>select</option></select></div></li>
+        <li><a class="btn">search</a></li>
+    </form>
+</section>
+</xmp>
+            <h5>form</h5>
             <p>Add the code to the DOM</p>
 <xmp>
 <section class="form">
@@ -830,14 +846,6 @@ lang-content="lang-name"
             <iframe src="language.html" height="400"></iframe>
             <a class="btn shadow" href="language.html" target="_blank">view</a>
         </div>
-        <div class="cont" id="load">
-            <h3>load</h3>
-            <h5>code</h5>
-            <p>If you need to wait for the page to be displayed after loading, add the code to the DOM</p>
-<xmp>
-<load></load>
-</xmp>
-        </div>
         <div class="cont" id="menu">
             <h3>menu</h3>
             <h5>code</h5>
@@ -899,7 +907,7 @@ class="mono-click"
             <h5>code</h5>
             <p>Add the code to the DOM</p>
 <xmp>
-<notice href=""></notice>
+<notice href="/"><a href=""></a></notice>
 </xmp>
             <h5>effect display</h5>
             <iframe src="notice.html" height="200"></iframe>
@@ -929,9 +937,21 @@ notify('notify','bottom','5000')
         <div class="cont" id="page">
             <h3>page</h3>
             <h5>code</h5>
-            <p>Add the code to the DOM, if you just want a simple, add the <span>min</span> attribute</p>
+            <p>Add the code to the DOM</p>
 <xmp>
-<page value="3" max="9"></page>
+<page>
+    <a class="ico ico-alone-side-left"></a>
+    <a class="ico ico-alone-left"></a>
+    <a href="">1</a>
+    <a href="">2</a>
+    <a class="active" href="">3</a>
+    <a href="">4</a>
+    <a href="">5</a>
+    <a class="ico ico-alone-right"></a><a class="ico ico-alone-side-right"></a>
+    <span>1/10</span>
+    <input type="text">
+    <a class="ico ico-arrow-enter"></a>
+</page>
 </xmp>
             <h5>effect display</h5>
             <iframe src="page.html"></iframe>
@@ -1032,16 +1052,16 @@ circular
             <iframe src="rate.html"></iframe>
             <a class="btn shadow" href="rate.html" target="_blank">view</a>
         </div>
-        <div class="cont" id="record">
-            <h3>record</h3>
+        <div class="cont" id="recording">
+            <h3>recording</h3>
             <h5>code</h5>
             <p>Add the class to the DOM</p>
 <xmp>
-class="record"
+class="recording"
 </xmp>
             <h5>effect display</h5>
-            <iframe src="record.html"></iframe>
-            <a class="btn shadow" href="record.html" target="_blank">view</a>
+            <iframe src="recording.html"></iframe>
+            <a class="btn shadow" href="recording.html" target="_blank">view</a>
         </div>
         <div class="cont" id="reminder">
             <h3>reminder</h3>
@@ -1218,6 +1238,7 @@ tip('tip')
             <p>Add the code to the DOM</p>
 <xmp>
 <o class="radio"></o>
+<o class="radio"></o>
 <o class="radio-done"></o>
 <o class="checkbox"></o>
 <o class="checkbox-done"></o>
@@ -1236,6 +1257,13 @@ tip('tip')
 <o class="aim"></o>
 <o class="semaphore"></o>
 <o class="suitcase"></o>
+<o class="light"></o>
+<o class="devicerotate"></o>
+<o class="thumbtack"></o>
+<o class="bell"></o>
+<o class="place"></o>
+<o class="link"></o>
+<o class="blur"></o>
 <o class="toggle"></o>
 </xmp>
             <h5>effect display</h5>
@@ -1363,7 +1391,7 @@ class="touch-all"
             <h5>admin general template</h5>
             <p>We provide a common function management interface</p>
             <a class="btn shadow" href="../admin/login.html" target="_blank">login</a>
-            <a class="btn shadow" href="../admin/admin.html" target="_blank">admin</a>
+            <a class="btn shadow" href="../admin/index.html" target="_blank">admin</a>
         </div>
         <div class="cont" id="chat">
             <h3>chat (Preview)</h3>
@@ -1375,9 +1403,9 @@ class="touch-all"
         <div class="cont" id="swiper">
             <h3>swiper</h3>
             <p>You can go to swiper to see more parameters. UIGG only provides a few common models</p>
+            <a class="btn shadow" href="//swiperjs.com/swiper-api" target="_blank">Swiper API</a>
             <h5>about loop</h5>
             <p>Amount of slides in loop mode should be at least 2x of <span>slidesPerView</span> value</p>
-            <a class="btn shadow" href="//swiperjs.com/swiper-api" target="_blank">Swiper API</a>
             <h5>code</h5>
             <p>Add the style and javascript to the <span>head</span></p>
 <xmp>

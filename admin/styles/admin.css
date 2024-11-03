@@ -100,6 +100,7 @@ drop-list a:hover {background-color: var(--basic);}
 .sider fold-cont {background: var(--deep);display: none;padding: 0;}
 .sider fold-cont a {padding-left: 50px;}
 .sider a:hover {background: var(--bright);}
+.sider fold-group a {transition-duration: 0s;}
 .sider fold-group fold-title a:active {background: white;color: var(--333);}
 .sider fold-group fold-title a:active .ico {color: var(--333);}
 .sider fold-group.active fold-title a {background: var(--flash);}
@@ -164,13 +165,16 @@ page a.active {background-color: var(--basic);box-shadow: 0 3px 5px var(--bright
 .statistics {display: flex;padding: 10px;}
 .statistics li {width: 100%;text-align: center;border-right: 1px var(--light) solid;}
 .statistics li:last-child {border: 0;}
+.statistics li i {font-size: 36px;margin-bottom: 10px;}
 .statistics li span {padding: 0 0 10px;display: block;text-transform: capitalize;}
 .statistics li h3 {color: var(--basic);}
 .statistics li em {font-weight: normal;font-size: 12px;vertical-align: top;text-transform: uppercase;padding: 0 0 0 5px;opacity: .5;}
 .statistics li a {margin: 10px auto 0;float: none;}
 
 @media(max-width:640px){
-    .statistics {padding: .1rem;}
+    .statistics {padding: .1rem;display: grid;grid-template-columns: 1fr 1fr;grid-gap: .4rem;}
+    .statistics li {border: 0;}
+    .statistics li i {font-size: .5rem;margin-bottom: .1rem;}
     .statistics li span {padding: 0 0 .1rem;}
     .statistics li em {font-size: .16rem;padding: 0 0 0 .05rem;}
     .statistics li a {margin: .1rem auto 0;}
@@ -230,14 +234,9 @@ input[type="color"]::-webkit-color-swatch {border-radius: 100px;}
 .form .btn.ico,
 .form .btn .ico {color: white;}
 .form .btn.code {border-radius: 100px;}
+
 .upload-group,
 .upload-add {background-color: var(--flash);color: var(--light);}
-
-.control li {float: left;width: 20%;display: flex;}
-.control li input,
-.control li .input,
-.control li .select {width: 100%;flex: 1;}
-.control li span {width: auto !important;}
 
 @media(max-width:640px){
     input, select, textarea {border: 0;}
@@ -246,10 +245,6 @@ input[type="color"]::-webkit-color-swatch {border-radius: 100px;}
     .form li {border-bottom-color: var(--light);}
     .form li input[readonly] {background: none;}
     .form li .code {font-size: .18rem;}
-
-    .control {padding:.1rem .1rem 0;}
-    .control li {width: 100%;}
-    .control li span {width: 1.4rem !important;}
 }
 
 /* tab */
@@ -308,7 +303,7 @@ pop-title {border-bottom-color: var(--light);}
 .login-other {overflow: hidden;}
 .login-other a {padding: 5px;display: block;float: left;border-radius: 5px;}
 .login-other a:hover {background-color: var(--light);}
-.login-tip {line-height: 40px;color: white;text-align: center;clear: both;display: none;margin: 5px;border-radius: 3px;}
+.login-tip {line-height: 40px;color: white;text-align: center;clear: both;margin: 5px;border-radius: 3px;}
 
 @media(max-width:640px){
     .login-main {padding: .2rem .1rem;border-radius: .1rem;width: 95%;}

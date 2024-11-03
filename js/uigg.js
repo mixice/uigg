@@ -206,7 +206,7 @@ if($(window).width() <= 640) $('menu-cont a').click(function(){$('menu-cont').hi
 
 //----------------------------------------------------------------------------------toggle
 $(function(){
-    $('o.checkbox,o.checkbox-done,o.checkbox-cancel,o.favorite,o.star,o.visibility,o.password,o.mic,o.volume,o.muzak,o.phonecard,o.telecamera,o.camera,o.aim,o.semaphore,o.suitcase,o.toggle').click(function(){$(this).toggleClass('active')})
+    $('o.checkbox,o.checkbox-done,o.checkbox-cancel,o.favorite,o.star,o.visibility,o.password,o.mic,o.volume,o.muzak,o.phonecard,o.telecamera,o.camera,o.aim,o.semaphore,o.suitcase,o.light,o.thumb-up,o.thumb-down,o.devicerotate,o.thumbtack,o.bell,o.place,o.link,o.blur,o.toggle').click(function(){$(this).toggleClass('active')})
     $(document).on('click','o.radio,o.radio-done',function(){
         $(this).parent().parent().parent().find('o.radio,o.radio-done').removeClass('active')
         $(this).addClass('active')
@@ -270,20 +270,23 @@ function tip(str){
 
 //----------------------------------------------------------------------------------drop
 $(function(){
-    $('drop-list').before('<i class="ico ico-alone-right"></i>')
-    $('drop').append('<drop-cont></drop-cont>')
-    let dropFirst = $(this).find('drop-list li').html()
-    $(this).find('drop-cont').html(dropFirst)
-    $('drop-cont').click(function(){$(this).parent().toggleClass('active')})
-    $('drop-list').addClass('anime-fade-in')
-    $('drop-list ul').before('<x></x>')
-    $('drop-list li').click(function(){
-        if($(this).children('drop-list').length){}else{
-            dropFirst = $(this).html()
-            $(this).parents('drop').removeClass('active').find('drop-cont').html(dropFirst)
-        }
+    $('drop').each(function(){
+        const $drop = $(this)
+        $drop.find('drop-list').before('<i class="ico ico-alone-right"></i>')
+        $drop.append('<drop-cont></drop-cont>')
+        let dropFirst = $drop.find('drop-list li').first().html()
+        $drop.find('drop-cont').html(dropFirst)
+        $drop.find('drop-cont').click(function(){$drop.toggleClass('active')})
+        $drop.find('drop-list').addClass('anime-fade-in')
+        $drop.find('drop-list ul').before('<x></x>')
+        $drop.find('drop-list li').click(function(){
+            if($(this).children('drop-list').length == 0){
+                dropFirst = $(this).html()
+                $drop.removeClass('active').find('drop-cont').html(dropFirst)
+            }
+        })
+        $drop.find('drop x').click(function(){$drop.removeClass('active')})
     })
-    $('drop x').click(function(){$(this).parents('drop').removeClass('active')})
 });
 
 //----------------------------------------------------------------------------------alone
@@ -450,62 +453,6 @@ $(function(){
     }
 });
 
-//----------------------------------------------------------------------------------page
-let pageNum
-$(function(){
-    let pageVal = $('page').attr('value'),
-        pageMax = $('page').attr('max')
-    $('page').append(`<a class="ico ico-alone-side-left"></a><a class="ico ico-alone-left"></a><ul></ul><a class="ico ico-alone-right"></a><a class="ico ico-alone-side-right"></a><span>${pageVal}/${pageMax}</span><input type="text"><a class="ico ico-arrow-enter"></a>`)
-    let arr = new Array()
-    for(let i = 1;i <= pageMax;i++){arr[i] = i;$('page ul').append('<a>' + i + '</a>')}
-    function page(){
-        pageVal = $('page').attr('value')
-        pageMax = $('page').attr('max')
-        $('page ul a').removeClass('active').hide()
-        $('page').each(function(){
-            pageVal == 1 ? $(this).find('ul a:first').addClass('active').show().next().show().next().show() : $(this).find('ul a').eq(pageVal - 1).addClass('active').show().prev().show().prev().show().end().next().show().next().show().next().show()
-            $(this).find('span').html(pageVal + '/' + pageMax)
-        })
-    }
-    page()
-    $('page a').click(function(){
-        if(!$(this).hasClass('ico')){
-            $('page').attr('value',$(this).text())
-            page()
-            pageNum = $(this).text()
-        }
-        if($(this).hasClass('ico-alone-side-left')){
-            $('page').attr('value','1')
-            page()
-            pageNum = 1
-        }
-        if($(this).hasClass('ico-alone-side-right')){
-            pageNum = pageMax
-            $('page').attr('value',pageMax)
-            page()
-        }
-        if($(this).hasClass('ico-alone-left')){
-            if(pageVal == 1){return false}
-            else{$('page').attr('value',pageVal - 1);page()}
-            pageNum = $('page a.active').text()
-        }
-        if($(this).hasClass('ico-alone-right')){
-            if(pageVal == pageMax){return false}
-            else{$('page').attr('value',+ pageVal + 1);page()}
-            pageNum = $('page a.active').text()
-        }
-        if($(this).hasClass('ico-arrow-enter')){
-            let inputVal = $('page input').val()
-            pageNum = inputVal
-            if(inputVal > parseInt(pageMax)) inputVal = pageNum = pageMax
-            if(inputVal < 1 || isNaN(inputVal)) inputVal = pageNum = 1
-            $('page').attr('value',inputVal)
-            page()
-            $('page input').val('')
-        }
-    })
-});
-
 //----------------------------------------------------------------------------------cookie
 //input cookie
 function setCookie(cookieName, cookieValue, hours){
@@ -560,7 +507,7 @@ $(function(){
     let langType = getCookie('lang') == '' ? 'en' : getCookie('lang')
     function lang(){
         if(langSwitch === 0){if($('[lang-set]').length === 0) return}
-        $.get(`/lang/${langType}.json`,function(data){
+        $.get(`../lang/${langType}.json`,function(data){
             $('[lang]').each(function(){$(this).html(langRead($(this).attr('lang'),data))})
             $('[lang-placeholder]').each(function(){$(this).attr('placeholder',langRead($(this).attr('lang-placeholder'),data))})
             $('[lang-value]').each(function(){$(this).attr('value',langRead($(this).attr('lang-value'),data))})
@@ -609,24 +556,30 @@ $(function(){
 });
 
 //----------------------------------------------------------------------------------alert
-function alert(str,action){
-    $('body').append(`<alert class="anime-fade-in"><alert-main class="anime-fade-in-down"><alert-cont>${str}</alert-cont><alert-solve><a class="btn" onclick="${action}">confirm</a></alert-solve></alert-main></alert>`)
+function alert(message){
+    $('body').append('<alert class="anime-fade-in"><alert-main class="anime-fade-in-down"><alert-cont></alert-cont><alert-solve><a class="btn">confirm</a></alert-solve></alert-main></alert>')
+    $('alert-cont').text(message)
 }
-function confirm(str,action){
-    alert(str)
-    $('alert-solve').html(`<a class="btn">cancel</a><a class="btn" onclick="${action}">confirm</a>`)
+function confirm(message){
+    return new Promise(function(resolve, reject){
+        $('body').append('<alert class="anime-fade-in"><alert-main class="anime-fade-in-down"><alert-cont></alert-cont><alert-solve><a class="btn" id="alert-cancel">cancel</a><a class="btn" id="alert-confirm">confirm</a></alert-solve></alert-main></alert>')
+        $('alert-cont').text(message)
+        $('#alert-confirm').off('click').on('click', function(){resolve(true)})
+        $('#alert-cancel').off('click').on('click', function(){resolve(false)})
+    })
 }
-$(document).on('click','alert-solve .btn',function(){$('alert').remove()})
+$(document).on('click','alert-solve .btn',function(){$('alert').remove()});
 
 //----------------------------------------------------------------------------------notice
 $(function(){
-    $('notice').html(`<i class="ico ico-volume"></i><marquee onMouseOut="this.start()" onMouseOver="this.stop()">${$('notice').html()}</marquee><a class="ico ico-more-horizontal"></a>`)
-    $('notice a.ico').attr('href',$('notice').attr('href'))
+    let notice = $('notice')
+    notice.html(`<i class="ico ico-volume"></i><marquee onMouseOut="this.start()" onMouseOver="this.stop()">${notice.html()}</marquee>`)
+    if(notice.attr('href')) notice.append(`<a href="${notice.attr('href')}" class="ico ico-more-horizontal"></a>`)
 });
 
 //----------------------------------------------------------------------------------record
 $(function(){
-    $('.record').click(async function(){
+    $('.recording').click(async function(){
         let stream = await navigator.mediaDevices.getDisplayMedia({video: true}),
             mime = MediaRecorder.isTypeSupported("video/webm; codecs=vp9") ?"video/webm; codecs=vp9" :"video/webm",
             mediaRecorder = new MediaRecorder(stream, {mimeType: mime}),
