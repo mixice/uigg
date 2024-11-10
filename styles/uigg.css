@@ -984,7 +984,7 @@ drop a {padding: 0 20px;display: block;user-select: none;}
 drop li:hover > a {color: white;background-color: var(--color);}
 drop li:hover > drop-list {display: block;}
 drop li:hover > i {color: white;}
-drop.active > drop-list {display: block;}
+drop.active > drop-list {display: block;z-index: 1;}
 drop.active > i {transform: rotate(-90deg);}
 
 @media(max-width:640px){

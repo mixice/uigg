@@ -556,19 +556,32 @@ $(function(){
 });
 
 //----------------------------------------------------------------------------------alert
+let langConfirm, langCancel,
+    language = navigator.language || navigator.userLanguage,
+    languageCode = language.split('-')[0]
+if(languageCode === 'zh'){langConfirm = '确认';langCancel = '取消'}else{langConfirm = 'confirm';langCancel = 'cancel'}
+
 function alert(message){
-    $('body').append('<alert class="anime-fade-in"><alert-main class="anime-fade-in-down"><alert-cont></alert-cont><alert-solve><a class="btn">confirm</a></alert-solve></alert-main></alert>')
+    $('body').append(`<alert class="anime-fade-in"><alert-main class="anime-fade-in-down"><alert-cont></alert-cont><alert-solve><a class="btn">${langConfirm}</a></alert-solve></alert-main></alert>`)
     $('alert-cont').text(message)
+    $(document).on('keydown', function(event){if(event.key === 'Enter' || event.key === 'Escape') $('alert-solve a').click()})
 }
 function confirm(message){
     return new Promise(function(resolve, reject){
-        $('body').append('<alert class="anime-fade-in"><alert-main class="anime-fade-in-down"><alert-cont></alert-cont><alert-solve><a class="btn" id="alert-cancel">cancel</a><a class="btn" id="alert-confirm">confirm</a></alert-solve></alert-main></alert>')
+        $('body').append(`<alert class="anime-fade-in"><alert-main class="anime-fade-in-down"><alert-cont></alert-cont><alert-solve><a class="btn" id="alert-cancel">${langCancel}</a><a class="btn" id="alert-confirm">${langConfirm}</a></alert-solve></alert-main></alert>`)
         $('alert-cont').text(message)
+        $(document).on('keydown', function(event){
+            if(event.key === 'Enter') $('#alert-confirm').click()
+            if(event.key === 'Escape') $('#alert-cancel').click()
+        })
         $('#alert-confirm').off('click').on('click', function(){resolve(true)})
         $('#alert-cancel').off('click').on('click', function(){resolve(false)})
     })
 }
-$(document).on('click','alert-solve .btn',function(){$('alert').remove()});
+$(document).on('click','alert-solve a',function(){
+    $('alert').remove()
+    $(document).off('keydown')
+});
 
 //----------------------------------------------------------------------------------notice
 $(function(){
