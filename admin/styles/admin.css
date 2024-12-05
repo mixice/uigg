@@ -15,7 +15,7 @@ body {background: var(--flash);}
     --bright:#a49fff;
     --basic: var(--color);
     --deep:#4a41c4;
-    --shadow: 0 5px 5px rgb(108, 98, 249,.05);
+    --shadow: 0 5px 5px rgba(108, 98, 249,.05);
 }
 
 @media(max-width:640px){
@@ -303,7 +303,7 @@ pop-title {border-bottom-color: var(--light);}
 .login-other {overflow: hidden;}
 .login-other a {padding: 5px;display: block;float: left;border-radius: 5px;}
 .login-other a:hover {background-color: var(--light);}
-.login-tip {line-height: 40px;color: white;text-align: center;clear: both;margin: 5px;border-radius: 3px;}
+.login-tip {line-height: 40px;color: white;text-align: center;clear: both;margin: 5px;border-radius: 3px;background-color: var(--red);}
 
 @media(max-width:640px){
     .login-main {padding: .2rem .1rem;border-radius: .1rem;width: 95%;}

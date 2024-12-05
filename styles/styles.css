@@ -99,11 +99,10 @@ tab-group {}
 
 /* step */
 step {}
-step aside {}
-step aside cite {}
-step aside i {}
 step ul {}
 step ul li {}
+step ul li i {}
+step ul li span {}
 step.column {}
 
 /* crumb */

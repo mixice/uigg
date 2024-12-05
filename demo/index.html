@@ -764,10 +764,10 @@ class="font-tahoma"
             <cite>Lorem ipsum dolor sit amet</cite>
         </li>
         <li><span>message</span>
-            <textarea class="big"></textarea>
+            <textarea class="max"></textarea>
         </li>
         <li><span>images</span>
-            <div class="upload max">
+            <div class="upload">
                 <div class="ico upload-group"><input type="file"><horn class="ico"></horn></div>
                 <div class="ico upload-add"></div>
             </div>
@@ -1104,11 +1104,9 @@ class="recording"
             <p>Add the code to the DOM</p>
 <xmp>
 <step>
-    <ul>
-        <li>step 1</li>
-        <li>step 2</li>
-        <li>step 3</li>
-    </ul>
+    <li class="active">step 1</li>
+    <li>step 2</li>
+    <li>step 3</li>
 </step>
 </xmp>
             <p>If you need flex vertical arrangement, add the <span>column</span> attribute to the <span>step</span></p>
@@ -1340,8 +1338,12 @@ class="top btn"
     <li><a href=""><i class="ico ico-user"></i><span>user</span></a></li>
 </nav>
 </xmp>
+            <p>If you need the uigg style, add the <span>uigg</span> attribute to the <span>nav</span> and specify the background color <span>uigg="#ccc"</span></p>
+<xmp>
+uigg="#ccc"
+</xmp>
             <h5>effect display</h5>
-            <iframe src="nav.html"></iframe>
+            <iframe src="nav.html" height="300"></iframe>
             <a class="btn shadow" href="nav.html" target="_blank">view</a>
         </div>
         <div class="cont" id="music">
@@ -1814,6 +1816,7 @@ class="editor-all"
                         <tr><td class="bg-yellow"></td><td>var(--yellow)</td><td>co-yellow</td><td>bg-yellow</td></tr>
                         <tr><td class="bg-orange"></td><td>var(--orange)</td><td>co-orange</td><td>bg-orange</td></tr>
                         <tr><td class="bg-tomato"></td><td>var(--tomato)</td><td>co-tomato</td><td>bg-tomato</td></tr>
+                        <tr><td class="bg-wheel"></td><td></td><td></td><td>bg-wheel</td></tr>
                     </tbody>
                     <thead>
                         <tr>

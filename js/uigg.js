@@ -107,7 +107,10 @@ $(function(){
         if($(this).css('background-image') == 'none' && !$(this).is('img')) $(this).css('background-image',`url(${url})`)
         if(!$(this).attr('src') && $(this).is('img')) $(this).attr('src',url)
     })
-    $('[uigg="color"]').each(function(){$(this).css('background-color',`rgb(${randCol()},${randCol()},${randCol()})`)})
+    $('[uigg="color"]').each(function(){
+        $(this).css('background-color',`rgb(${randCol()},${randCol()},${randCol()})`)
+        if($(this).is('img')) $(this).css({'width': '100%','height': '100%'})
+    })
     const alphabet = 'abcdefghijklmnopqrstuvwxyz'
     function generateRandomWord(length){
         let randomWord = ''
@@ -320,7 +323,13 @@ $(function(){
 
 //----------------------------------------------------------------------------------nav
 $(function(){
-    $('nav').addClass('anime-fade-in-up').before('<space></space>')
+    $('nav').addClass('anime-fade-in-up').before('<space></space>').html(function(_, html) {return $('<ul>').html(html).prop('outerHTML')})
+    let fillColor = $('nav[uigg]').attr('uigg')
+    if (fillColor === undefined || fillColor === '') fillColor = '#fff'
+    $('nav[uigg]').prepend(`<svg viewBox="0 0 640 80"><path d="M437.5,0c-59.55,0-53.55,69.83-117.5,69.83S262.05,0,202.5,0H10C4.48,0,0,4.48,0,10v70h640V10c0-5.52-4.48-10-10-10h-192.5Z" fill="${fillColor}"/></svg>`)
+    let num = $('nav[uigg] li').length
+    if(num == 3) $('nav[uigg] li').eq(1).addClass('midel')
+    if(num == 5) $('nav[uigg] li').eq(2).addClass('midel')
 });
 
 //----------------------------------------------------------------------------------countdown
@@ -479,12 +488,10 @@ function getCookie(cookieName){
 
 //----------------------------------------------------------------------------------step
 $(function(){
-    let stepLength = $('step ul li').length
-    $('step').prepend('<aside><cite></cite></aside>')
-    for(let i = 0;i < stepLength;i++){$('aside').append('<i></i>')}
+    $('step').html(function(_, html) {return $('<ul>').html(html).prop('outerHTML')})
     $('step li').each(function(){
-        let index = $(this).index()
-        $('aside i').eq(index).append(index + 1)
+        $(this).html(function(_, html) {return $('<span>').html(html).prop('outerHTML')})
+        $(this).prepend(`<i>${$(this).index() + 1}</i>`)
     })
 });
 
