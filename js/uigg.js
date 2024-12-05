@@ -324,8 +324,7 @@ $(function(){
 //----------------------------------------------------------------------------------nav
 $(function(){
     $('nav').addClass('anime-fade-in-up').before('<space></space>').html(function(_, html) {return $('<ul>').html(html).prop('outerHTML')})
-    let fillColor = $('nav[uigg]').attr('uigg')
-    if (fillColor === undefined || fillColor === '') fillColor = '#fff'
+    let fillColor = $('nav[uigg]').attr('uigg') || '#fff'
     $('nav[uigg]').prepend(`<svg viewBox="0 0 640 80"><path d="M437.5,0c-59.55,0-53.55,69.83-117.5,69.83S262.05,0,202.5,0H10C4.48,0,0,4.48,0,10v70h640V10c0-5.52-4.48-10-10-10h-192.5Z" fill="${fillColor}"/></svg>`)
     let num = $('nav[uigg] li').length
     if(num == 3) $('nav[uigg] li').eq(1).addClass('midel')

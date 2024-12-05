@@ -10,40 +10,24 @@
 @import url('ico/ico.css');
 
 /* basic */
-html,body,div,span,object,iframe,frame,
-h1,h2,h3,h4,h5,h6,blockquote,pre,
-abbr,address,cite,code,tt,hr,
-del,dfn,em,img,ins,kbd,samp,
-big,small,strong,sub,sup,var,
-b,i,a,s,u,x,o,z,d,h,m,y,q,p,
-dl,dt,dd,ol,ul,li,
-fieldset,form,label,legend,
-table,caption,tbody,tfoot,thead,tr,th,td,
-article,aside,canvas,details,figcaption,figure,
-footer,header,hgroup,nav,section,summary,
-button,input,select,textarea,optgroup,
-time,mark,audio,video,marquee,
-menu,menu-cont,menu-group,menu-list,
-name,name-logo,name-search,
-tab,tab-list,tab-cont,tab-group,
-drop,drop-cont,drop-list,
-chat,chat-title,chat-sider,chat-cont,chat-list,chat-message,chat-tool,chat-control,chat-tip,
-pop,pop-main,pop-title,pop-cont,pop-solve,pop-choice,pop-sider,
-alert,alert-main,alert-cont,alert-solve,
-hop,hop-cont,
-fold,fold-group,fold-title,fold-cont,
-countdown,tip,page,music,space,msie,rate,scaler,notify,empty,step,crumb,reminder,horn,notice {margin: 0;padding: 0;border: 0;outline: 0;background: transparent center no-repeat;background-size: contain;box-sizing: border-box;font-family: uigg;border-color: var(--eee);border-style: solid;-webkit-tap-highlight-color: transparent;}
-article,aside,details,figcaption,figure,footer,header,hgroup,main,nav,section,summary,
-menu,menu-cont,menu-group,menu-list,
-name,name-logo,name-search,
-tab,tab-list,tab-cont,tab-group,
-drop,drop-cont,drop-list,
-chat,chat-title,chat-sider,chat-cont,chat-list,chat-message,chat-tool,chat-control,chat-tip,
-pop,pop-main,pop-title,pop-cont,pop-solve,pop-choice,pop-sider,
-alert,alert-main,alert-cont,alert-solve,
-hop,hop-cont,
-fold,fold-group,fold-title,fold-cont,
-countdown,tip,page,music,space,msie,rate,scaler,notify,empty,step,crumb,reminder,horn,notice {display: block;}
+html, body, div, span, object, iframe, frame, h1, h2, h3, h4, h5, h6, blockquote, pre,
+abbr, address, cite, code, tt, hr, del, dfn, em, img, ins, kbd, samp,
+big, small, strong, sub, sup, var, b, i, a, s, u, x, o, z, d, h, m, y, q, p,
+dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, figcaption, figure, footer, header, hgroup, nav, section, summary,
+button, input, select, textarea, optgroup, time, mark, audio, video, marquee,
+menu, menu-cont, menu-group, menu-list, name, name-logo, name-search,
+tab, tab-list, tab-cont, tab-group, drop, drop-cont, drop-list,
+chat, chat-title, chat-sider, chat-cont, chat-list, chat-message, chat-tool, chat-control, chat-tip,
+pop, pop-main, pop-title, pop-cont, pop-solve, pop-choice, pop-sider,
+alert, alert-main, alert-cont, alert-solve, hop, hop-cont, fold, fold-group, fold-title, fold-cont,
+countdown, tip, page, music, space, msie, rate, scaler, notify, empty, step, crumb, reminder, horn, notice {margin: 0;padding: 0;border: 0;outline: 0;background: transparent center no-repeat;background-size: contain;box-sizing: border-box;font-family: uigg;border-color: var(--eee);border-style: solid;-webkit-tap-highlight-color: transparent;}
+article, aside, details, figcaption, figure, footer, header, hgroup, main, nav, section, summary,
+menu, menu-cont, menu-group, menu-list, name, name-logo, name-search, tab, tab-list, tab-cont, tab-group,
+drop, drop-cont, drop-list, chat, chat-title, chat-sider, chat-cont, chat-list, chat-message, chat-tool, chat-control, chat-tip,
+pop, pop-main, pop-title, pop-cont, pop-solve, pop-choice, pop-sider, alert, alert-main, alert-cont, alert-solve,
+hop, hop-cont, fold, fold-group, fold-title, fold-cont, countdown, tip, page, music, space, msie, rate, scaler, notify, empty,
+step, crumb, reminder, horn, notice {display: block;}
 .transition,.btn,a,button {transition-duration: .3s;}
 html,body {height: 100%;}
 html,body,.avatar,.upload-group,.swiper-slide,.parallax-bg {background-size: cover;}
@@ -52,7 +36,7 @@ html {-webkit-font-smoothing: antialiased;}
 body,a {color: var(--333);}
 a,a:hover,b,i,em,cite {text-decoration: none;font-style: normal;}
 a,x,o,s,button,.btn,.smooth,.return,.mono-click,drop,fold-title {cursor: pointer;}
-p {margin: 0;line-height: 180%;text-align: justify;}
+p {margin: 0;line-height: 1.8;text-align: justify;}
 ul,li {list-style: none;}
 ul {overflow: hidden;}
 hr {border-top-width: 1px;}
@@ -68,102 +52,6 @@ u {flex: 1;}
 	::-webkit-scrollbar {width: .03rem;}
     body::-webkit-scrollbar {width: 0;}
 }
-
-/* anime */
-.anime-rotate,
-.anime-beat-x,.anime-beat-y,.anime-beat-z,.anime-beat-r,
-.anime-fade-in,.anime-fade-in-down,.anime-fade-in-left,.anime-fade-in-right,.anime-fade-in-up,
-.anime-fade-out,.anime-fade-out-down,.anime-fade-out-left,.anime-fade-out-right,.anime-fade-out-up,
-.anime-bounce-in,.anime-bounce-in-down,.anime-bounce-in-left,.anime-bounce-in-right,.anime-bounce-in-up,
-.anime-bounce-out,.anime-bounce-out-down,.anime-bounce-out-left,.anime-bounce-out-right,.anime-bounce-out-up,
-.anime-flip-in-x,.anime-flip-in-y,.anime-flip-out-x,.anime-flip-out-y,
-.anime-zoom-in,.anime-zoom-out,.anime-zoom-in-enlarge,.anime-zoom-out-enlarge {animation-duration: .6s;animation-fill-mode: both;}
-.anime-spasm {animation-duration: .3s;}
-.anime-bounce-in,.anime-bounce-in-down,.anime-bounce-in-left,.anime-bounce-in-right,.anime-bounce-in-up {animation-timing-function: cubic-bezier(.215, .61, .355, 1);animation-duration: 1s;}
-.anime-shrink-in,.anime-shrink-out,.anime-shrink-in-enlarge,.anime-shrink-out-enlarge {animation-duration: 2s;animation-fill-mode: both;}
-.anime-flip-in-x,.anime-flip-in-y,.anime-flip-out-x,.anime-flip-out-y {backface-visibility: visible;}
-
-.anime-spasm {animation-name: anime-spasm;}
-.anime-rotate {animation-name: anime-rotate;animation-timing-function: linear;}
-.anime-beat-x {animation-name: anime-beat-x;}
-.anime-beat-y {animation-name: anime-beat-y;}
-.anime-beat-z {animation-name: anime-beat-z;}
-.anime-beat-r {animation-name: anime-beat-r;animation-timing-function: linear;}
-.anime-fade-in {animation-name: anime-fade-in;}
-.anime-fade-in-down {animation-name: anime-fade-in-down;}
-.anime-fade-in-left {animation-name: anime-fade-in-left;}
-.anime-fade-in-right {animation-name: anime-fade-in-right;}
-.anime-fade-in-up {animation-name: anime-fade-in-up;}
-.anime-fade-out {animation-name: anime-fade-out;}
-.anime-fade-out-down {animation-name: anime-fade-out-down;}
-.anime-fade-out-left {animation-name: anime-fade-out-left;}
-.anime-fade-out-right {animation-name: anime-fade-out-right;}
-.anime-fade-out-up {animation-name: anime-fade-out-up;}
-.anime-bounce-in {animation-name: anime-bounce-in;}
-.anime-bounce-in-down {animation-name: anime-bounce-in-down;}
-.anime-bounce-in-left {animation-name: anime-bounce-in-left;}
-.anime-bounce-in-right {animation-name: anime-bounce-in-right;}
-.anime-bounce-in-up {animation-name: anime-bounce-in-up;}
-.anime-bounce-out {animation-name: anime-bounce-out;}
-.anime-bounce-out-down {animation-name: anime-bounce-out-down;}
-.anime-bounce-out-left {animation-name: anime-bounce-out-left;}
-.anime-bounce-out-right {animation-name: anime-bounce-out-right;}
-.anime-bounce-out-up {animation-name: anime-bounce-out-up;}
-.anime-flip-in-x {animation-name: anime-flip-in-x;}
-.anime-flip-in-y {animation-name: anime-flip-in-y;}
-.anime-flip-out-x {animation-name: anime-flip-out-x;}
-.anime-flip-out-y {animation-name: anime-flip-out-y;}
-.anime-zoom-in {animation-name: anime-zoom-in;}
-.anime-zoom-out {animation-name: anime-zoom-out;}
-.anime-zoom-in-enlarge {animation-name: anime-zoom-in-enlarge;}
-.anime-zoom-out-enlarge {animation-name: anime-zoom-out-enlarge;}
-.anime-shrink-in {animation-name: anime-shrink-in;}
-.anime-shrink-out {animation-name: anime-shrink-out;}
-.anime-shrink-in-enlarge {animation-name: anime-shrink-in-enlarge;}
-.anime-shrink-out-enlarge {animation-name: anime-shrink-out-enlarge;}
-
-.infinite {animation-iteration-count: infinite;}
-.alternate {animation-direction: alternate;}
-.reverse {animation-direction: reverse;}
-
-@keyframes anime-spasm {0% {transform: translate(0,0);}10% {transform: translate(5px,0);}20% {transform: translate(0,0);}30% {transform: translate(-5px,0);}40% {transform: translate(0,5px);}50% {transform: translate(0,0);}60% {transform: translate(0,-5px);}70% {transform: translate(0,0);}80% {transform: translate(5px,5px);}90% {transform: translate(0,0);}100% {transform: translate(-5px,-5px);}}
-@keyframes anime-rotate {0% {transform: rotate(0);}100% {transform: rotate(360deg);}}
-@keyframes anime-beat-x {0% {transform: translateX(0);}50% {transform: translateX(20px);}100% {transform: translateX(0);}}
-@keyframes anime-beat-y {0% {transform: translateY(0);}50% {transform: translateY(20px);}100% {transform: translateY(0);}}
-@keyframes anime-beat-z {0% {transform: scale(1);}50% {transform: scale(1.05);}100% {transform: scale(1);}}
-@keyframes anime-beat-r {0% {transform: rotate(0);}25% {transform: rotate(3deg);}75% {transform: rotate(-3deg);}100% {transform: rotate(0);}}
-@keyframes anime-fade-in {0% {opacity: 0;}100% {opacity: 1;}}
-@keyframes anime-fade-in-down {0% {opacity: 0;transform: translateY(-100%);}100% {opacity: 1;transform: translateY(0);}}
-@keyframes anime-fade-in-left {0% {opacity: 0;transform: translateX(-100%);}100% {opacity: 1;transform: translateX(0);}}
-@keyframes anime-fade-in-right {0% {opacity: 0;transform: translateX(100%);}100% {opacity: 1;transform: translateX(0);}}
-@keyframes anime-fade-in-up {0% {opacity: 0;transform: translateY(100%);}100% {opacity: 1;transform: translateY(0);}}
-@keyframes anime-fade-out {0% {opacity: 1;}100% {opacity: 0;}}
-@keyframes anime-fade-out-down {0% {opacity: 1;}100% {opacity: 0;transform: translateY(100%);}}
-@keyframes anime-fade-out-left {0% {opacity: 1;}100% {opacity: 0;transform: translateX(-100%);}}
-@keyframes anime-fade-out-right {0% {opacity: 1;}100% {opacity: 0;transform: translateX(100%);}}
-@keyframes anime-fade-out-up {0% {opacity: 1;}100% {opacity: 0;transform: translateY(-100%);}}
-@keyframes anime-bounce-in {0% {opacity: 0;transform: scale(.3);}20% {transform: scale(1.1);}40% {transform: scale(.9);}60% {opacity: 1;transform: scale(1.03);}80% {transform: scale(.97);}100% {opacity: 1;transform: scale(1);}}
-@keyframes anime-bounce-in-down {0% {opacity: 0;transform: translateY(-1000px);}60% {opacity: 1;transform: translateY(25px);}75% {transform: translateY(-10px);}90% {transform: translateY(5px);}100% {transform: translate(0);}}
-@keyframes anime-bounce-in-left {0% {opacity: 0;transform: translateX(-1000px);}60% {opacity: 1;transform: translateX(25px);}75% {transform: translateX(-10px);}90% {transform: translateX(5px);}100% {transform: translate(0);}}
-@keyframes anime-bounce-in-right {0% {opacity: 0;transform: translateX(3000px);}60% {opacity: 1;transform: translateX(-25px);}75% {transform: translateX(10px);}90% {transform: translateX(-5px);}100% {transform: translate(0);}}
-@keyframes anime-bounce-in-up {0% {opacity: 0;transform: translateY(3000px);}60% {opacity: 1;transform: translateY(-20px);}75% {transform: translateY(10px);}90% {transform: translateY(-5px);}100% {transform: translate(0);}}
-@keyframes anime-bounce-out {20% {transform: scale(.9);}50% {opacity: 1;transform: scale(1.1);}100% {opacity: 0;transform: scale(.3);}}
-@keyframes anime-bounce-out-down {20% {transform: translateY(10px);}50% {opacity: 1;transform: translateY(-20px);}100% {opacity: 0;transform: translateY(1000px);}}
-@keyframes anime-bounce-out-left {20% {opacity: 1;transform: translateX(20px);}100% {opacity: 0;transform: translateX(-1000px);}}
-@keyframes anime-bounce-out-right {20% {opacity: 1;transform: translateX(-20px);}100% {opacity: 0;transform: translateX(1000px);}}
-@keyframes anime-bounce-out-up {20% {transform: translateY(-10px);}50% {opacity: 1;transform: translateY(20px);}100% {opacity: 0;transform: translateY(-1000px);}}
-@keyframes anime-flip-in-x {0% {transform: perspective(400px) rotate3d(1, 0, 0, 90deg);opacity: 0;}100% {transform: perspective(400px);opacity: 1;}}
-@keyframes anime-flip-in-y {0% {transform: perspective(400px) rotate3d(0, 1, 0, 90deg);opacity: 0;}100% {transform: perspective(400px);opacity: 1;}}
-@keyframes anime-flip-out-x {0% {transform: perspective(400px);opacity: 1;}100% {transform: perspective(400px) rotate3d(1, 0, 0, 90deg);opacity: 0;}}
-@keyframes anime-flip-out-y {0% {transform: perspective(400px);opacity: 1;}100% {transform: perspective(400px) rotate3d(0, 1, 0, 90deg);opacity: 0;}}
-@keyframes anime-zoom-in {0% {opacity: 0;transform: scale(0.3);}100% {opacity: 1;}}
-@keyframes anime-zoom-out {0% {opacity: 1;}100% {opacity: 0;transform: scale(0.3);}}
-@keyframes anime-zoom-in-enlarge {0% {opacity: 0;transform: scale(3);}100% {opacity: 1;}}
-@keyframes anime-zoom-out-enlarge {0% {opacity: 1;}100% {opacity: 0;transform: scale(3);}}
-@keyframes anime-shrink-in {0% {opacity: 0;filter: blur(20px);}100% {opacity: 1;filter: blur(0);}}
-@keyframes anime-shrink-out {0% {opacity: 1;filter: blur(0);}100% {opacity: 0;filter: blur(20px);}}
-@keyframes anime-shrink-in-enlarge {0% {opacity: 0;transform: scale(5);filter: blur(10px);}100% {opacity: 1;transform: scale(1);filter: blur(0);}}
-@keyframes anime-shrink-out-enlarge {0% {opacity: 1;transform: scale(1);filter: blur(0);}100% {opacity: 0;transform: scale(5);filter: blur(10px);}}
 
 /* frame */
 .main,
@@ -196,16 +84,12 @@ u {flex: 1;}
 .fullscreen:after {content: '\e9f7';}
 .fullscreen.active:after {content: '\e9f8';}
 .transparent {opacity: 0;}
-.absolute,.absolute-center,.absolute-left,.absolute-right,.absolute-top,.absolute-bottom,.absolute-top-left,.absolute-top-right,.absolute-bottom-left,.absolute-bottom-right,.absolute-top-center,.absolute-bottom-center,.absolute-left-center,.absolute-right-center {position: absolute;margin: auto;}
-.fixed,.fixed-center,.fixed-left,.fixed-right,.fixed-top,.fixed-bottom,.fixed-top-left,.fixed-top-right,.fixed-bottom-left,.fixed-bottom-right,.fixed-top-center,.fixed-bottom-center,.fixed-left-center,.fixed-right-center {position: fixed;margin: auto;}
-.absolute-center,.absolute-left,.absolute-top-left,.absolute-bottom-left,.absolute-top-center,.absolute-bottom-center,.absolute-left-center,
-.fixed-center,.fixed-left-center,.fixed-left,.fixed-top-left,.fixed-bottom-left,.fixed-top-center,.fixed-bottom-center {left: 0;}
-.absolute-right,.absolute-top-right,.absolute-bottom-right,.absolute-top-center,.absolute-bottom-center,.absolute-right-center,
-.fixed-center,.absolute-center,.fixed-right,.fixed-top-right,.fixed-bottom-right,.fixed-top-center,.fixed-bottom-center,.fixed-right-center {right: 0;}
-.absolute-center,.absolute-top,.absolute-top-left,.absolute-top-right,.absolute-top-center,.absolute-left-center,.absolute-right-center,
-.fixed-center,.fixed-top,.fixed-top-left,.fixed-top-right,.fixed-top-center,.fixed-left-center,.fixed-right-center {top: 0;}
-.absolute-center,.absolute-bottom,.absolute-bottom-left,.absolute-bottom-right,.absolute-bottom-center,.absolute-left-center,.absolute-right-center,
-.fixed-center,.fixed-bottom,.fixed-bottom-left,.fixed-bottom-right,.fixed-bottom-center,.fixed-left-center,.fixed-right-center {bottom: 0;}
+.absolute,.absolute-1,.absolute-2,.absolute-3,.absolute-4,.absolute-5,.absolute-6,.absolute-7,.absolute-8,.absolute-9 {position: absolute;margin: auto;}
+.fixed,.fixed-1,.fixed-2,.fixed-3,.fixed-4,.fixed-5,.fixed-6,.fixed-7,.fixed-8,.fixed-9 {position: fixed;margin: auto;}
+.absolute-1,.absolute-2,.absolute-4,.absolute-5,.absolute-7,.absolute-8,.fixed-1,.fixed-2,.fixed-4,.fixed-5,.fixed-7,.fixed-8 {left: 0;}
+.absolute-2,.absolute-3,.absolute-5,.absolute-6,.absolute-8,.absolute-9,.fixed-2,.fixed-3,.fixed-5,.fixed-6,.fixed-8,.fixed-9 {right: 0;}
+.absolute-1,.absolute-2,.absolute-3,.absolute-4,.absolute-5,.absolute-6,.fixed-1,.fixed-2,.fixed-3,.fixed-4,.fixed-5,.fixed-6 {top: 0;}
+.absolute-4,.absolute-5,.absolute-6,.absolute-7,.absolute-8,.absolute-9,.fixed-4,.fixed-5,.fixed-6,.fixed-7,.fixed-8,.fixed-9 {bottom: 0;}
 
 @media(max-width:640px){
 	.main {padding: 0 .1rem;}
@@ -355,6 +239,102 @@ img[uigg="color"] {content-visibility: hidden;}
 @media(max-width:640px){
     .mix-abrazine {backdrop-filter: blur(.1rem);}
 }
+
+/* anime */
+.anime-rotate,
+.anime-beat-x,.anime-beat-y,.anime-beat-z,.anime-beat-r,
+.anime-fade-in,.anime-fade-in-down,.anime-fade-in-left,.anime-fade-in-right,.anime-fade-in-up,
+.anime-fade-out,.anime-fade-out-down,.anime-fade-out-left,.anime-fade-out-right,.anime-fade-out-up,
+.anime-bounce-in,.anime-bounce-in-down,.anime-bounce-in-left,.anime-bounce-in-right,.anime-bounce-in-up,
+.anime-bounce-out,.anime-bounce-out-down,.anime-bounce-out-left,.anime-bounce-out-right,.anime-bounce-out-up,
+.anime-flip-in-x,.anime-flip-in-y,.anime-flip-out-x,.anime-flip-out-y,
+.anime-zoom-in,.anime-zoom-out,.anime-zoom-in-enlarge,.anime-zoom-out-enlarge {animation-duration: .6s;animation-fill-mode: both;}
+.anime-spasm {animation-duration: .3s;}
+.anime-bounce-in,.anime-bounce-in-down,.anime-bounce-in-left,.anime-bounce-in-right,.anime-bounce-in-up {animation-timing-function: cubic-bezier(.215, .61, .355, 1);animation-duration: 1s;}
+.anime-shrink-in,.anime-shrink-out,.anime-shrink-in-enlarge,.anime-shrink-out-enlarge {animation-duration: 2s;animation-fill-mode: both;}
+.anime-flip-in-x,.anime-flip-in-y,.anime-flip-out-x,.anime-flip-out-y {backface-visibility: visible;}
+
+.anime-spasm {animation-name: anime-spasm;}
+.anime-rotate {animation-name: anime-rotate;animation-timing-function: linear;}
+.anime-beat-x {animation-name: anime-beat-x;}
+.anime-beat-y {animation-name: anime-beat-y;}
+.anime-beat-z {animation-name: anime-beat-z;}
+.anime-beat-r {animation-name: anime-beat-r;animation-timing-function: linear;}
+.anime-fade-in {animation-name: anime-fade-in;}
+.anime-fade-in-down {animation-name: anime-fade-in-down;}
+.anime-fade-in-left {animation-name: anime-fade-in-left;}
+.anime-fade-in-right {animation-name: anime-fade-in-right;}
+.anime-fade-in-up {animation-name: anime-fade-in-up;}
+.anime-fade-out {animation-name: anime-fade-out;}
+.anime-fade-out-down {animation-name: anime-fade-out-down;}
+.anime-fade-out-left {animation-name: anime-fade-out-left;}
+.anime-fade-out-right {animation-name: anime-fade-out-right;}
+.anime-fade-out-up {animation-name: anime-fade-out-up;}
+.anime-bounce-in {animation-name: anime-bounce-in;}
+.anime-bounce-in-down {animation-name: anime-bounce-in-down;}
+.anime-bounce-in-left {animation-name: anime-bounce-in-left;}
+.anime-bounce-in-right {animation-name: anime-bounce-in-right;}
+.anime-bounce-in-up {animation-name: anime-bounce-in-up;}
+.anime-bounce-out {animation-name: anime-bounce-out;}
+.anime-bounce-out-down {animation-name: anime-bounce-out-down;}
+.anime-bounce-out-left {animation-name: anime-bounce-out-left;}
+.anime-bounce-out-right {animation-name: anime-bounce-out-right;}
+.anime-bounce-out-up {animation-name: anime-bounce-out-up;}
+.anime-flip-in-x {animation-name: anime-flip-in-x;}
+.anime-flip-in-y {animation-name: anime-flip-in-y;}
+.anime-flip-out-x {animation-name: anime-flip-out-x;}
+.anime-flip-out-y {animation-name: anime-flip-out-y;}
+.anime-zoom-in {animation-name: anime-zoom-in;}
+.anime-zoom-out {animation-name: anime-zoom-out;}
+.anime-zoom-in-enlarge {animation-name: anime-zoom-in-enlarge;}
+.anime-zoom-out-enlarge {animation-name: anime-zoom-out-enlarge;}
+.anime-shrink-in {animation-name: anime-shrink-in;}
+.anime-shrink-out {animation-name: anime-shrink-out;}
+.anime-shrink-in-enlarge {animation-name: anime-shrink-in-enlarge;}
+.anime-shrink-out-enlarge {animation-name: anime-shrink-out-enlarge;}
+
+.infinite {animation-iteration-count: infinite;}
+.alternate {animation-direction: alternate;}
+.reverse {animation-direction: reverse;}
+
+@keyframes anime-spasm {0% {transform: translate(0,0);}10% {transform: translate(5px,0);}20% {transform: translate(0,0);}30% {transform: translate(-5px,0);}40% {transform: translate(0,5px);}50% {transform: translate(0,0);}60% {transform: translate(0,-5px);}70% {transform: translate(0,0);}80% {transform: translate(5px,5px);}90% {transform: translate(0,0);}100% {transform: translate(-5px,-5px);}}
+@keyframes anime-rotate {0% {transform: rotate(0);}100% {transform: rotate(360deg);}}
+@keyframes anime-beat-x {0% {transform: translateX(0);}50% {transform: translateX(20px);}100% {transform: translateX(0);}}
+@keyframes anime-beat-y {0% {transform: translateY(0);}50% {transform: translateY(20px);}100% {transform: translateY(0);}}
+@keyframes anime-beat-z {0% {transform: scale(1);}50% {transform: scale(1.05);}100% {transform: scale(1);}}
+@keyframes anime-beat-r {0% {transform: rotate(0);}25% {transform: rotate(3deg);}75% {transform: rotate(-3deg);}100% {transform: rotate(0);}}
+@keyframes anime-fade-in {0% {opacity: 0;}100% {opacity: 1;}}
+@keyframes anime-fade-in-down {0% {opacity: 0;transform: translateY(-100%);}100% {opacity: 1;transform: translateY(0);}}
+@keyframes anime-fade-in-left {0% {opacity: 0;transform: translateX(-100%);}100% {opacity: 1;transform: translateX(0);}}
+@keyframes anime-fade-in-right {0% {opacity: 0;transform: translateX(100%);}100% {opacity: 1;transform: translateX(0);}}
+@keyframes anime-fade-in-up {0% {opacity: 0;transform: translateY(100%);}100% {opacity: 1;transform: translateY(0);}}
+@keyframes anime-fade-out {0% {opacity: 1;}100% {opacity: 0;}}
+@keyframes anime-fade-out-down {0% {opacity: 1;}100% {opacity: 0;transform: translateY(100%);}}
+@keyframes anime-fade-out-left {0% {opacity: 1;}100% {opacity: 0;transform: translateX(-100%);}}
+@keyframes anime-fade-out-right {0% {opacity: 1;}100% {opacity: 0;transform: translateX(100%);}}
+@keyframes anime-fade-out-up {0% {opacity: 1;}100% {opacity: 0;transform: translateY(-100%);}}
+@keyframes anime-bounce-in {0% {opacity: 0;transform: scale(.3);}20% {transform: scale(1.1);}40% {transform: scale(.9);}60% {opacity: 1;transform: scale(1.03);}80% {transform: scale(.97);}100% {opacity: 1;transform: scale(1);}}
+@keyframes anime-bounce-in-down {0% {opacity: 0;transform: translateY(-1000px);}60% {opacity: 1;transform: translateY(25px);}75% {transform: translateY(-10px);}90% {transform: translateY(5px);}100% {transform: translate(0);}}
+@keyframes anime-bounce-in-left {0% {opacity: 0;transform: translateX(-1000px);}60% {opacity: 1;transform: translateX(25px);}75% {transform: translateX(-10px);}90% {transform: translateX(5px);}100% {transform: translate(0);}}
+@keyframes anime-bounce-in-right {0% {opacity: 0;transform: translateX(3000px);}60% {opacity: 1;transform: translateX(-25px);}75% {transform: translateX(10px);}90% {transform: translateX(-5px);}100% {transform: translate(0);}}
+@keyframes anime-bounce-in-up {0% {opacity: 0;transform: translateY(3000px);}60% {opacity: 1;transform: translateY(-20px);}75% {transform: translateY(10px);}90% {transform: translateY(-5px);}100% {transform: translate(0);}}
+@keyframes anime-bounce-out {20% {transform: scale(.9);}50% {opacity: 1;transform: scale(1.1);}100% {opacity: 0;transform: scale(.3);}}
+@keyframes anime-bounce-out-down {20% {transform: translateY(10px);}50% {opacity: 1;transform: translateY(-20px);}100% {opacity: 0;transform: translateY(1000px);}}
+@keyframes anime-bounce-out-left {20% {opacity: 1;transform: translateX(20px);}100% {opacity: 0;transform: translateX(-1000px);}}
+@keyframes anime-bounce-out-right {20% {opacity: 1;transform: translateX(-20px);}100% {opacity: 0;transform: translateX(1000px);}}
+@keyframes anime-bounce-out-up {20% {transform: translateY(-10px);}50% {opacity: 1;transform: translateY(20px);}100% {opacity: 0;transform: translateY(-1000px);}}
+@keyframes anime-flip-in-x {0% {transform: perspective(400px) rotate3d(1, 0, 0, 90deg);opacity: 0;}100% {transform: perspective(400px);opacity: 1;}}
+@keyframes anime-flip-in-y {0% {transform: perspective(400px) rotate3d(0, 1, 0, 90deg);opacity: 0;}100% {transform: perspective(400px);opacity: 1;}}
+@keyframes anime-flip-out-x {0% {transform: perspective(400px);opacity: 1;}100% {transform: perspective(400px) rotate3d(1, 0, 0, 90deg);opacity: 0;}}
+@keyframes anime-flip-out-y {0% {transform: perspective(400px);opacity: 1;}100% {transform: perspective(400px) rotate3d(0, 1, 0, 90deg);opacity: 0;}}
+@keyframes anime-zoom-in {0% {opacity: 0;transform: scale(0.3);}100% {opacity: 1;}}
+@keyframes anime-zoom-out {0% {opacity: 1;}100% {opacity: 0;transform: scale(0.3);}}
+@keyframes anime-zoom-in-enlarge {0% {opacity: 0;transform: scale(3);}100% {opacity: 1;}}
+@keyframes anime-zoom-out-enlarge {0% {opacity: 1;}100% {opacity: 0;transform: scale(3);}}
+@keyframes anime-shrink-in {0% {opacity: 0;filter: blur(20px);}100% {opacity: 1;filter: blur(0);}}
+@keyframes anime-shrink-out {0% {opacity: 1;filter: blur(0);}100% {opacity: 0;filter: blur(20px);}}
+@keyframes anime-shrink-in-enlarge {0% {opacity: 0;transform: scale(5);filter: blur(10px);}100% {opacity: 1;transform: scale(1);filter: blur(0);}}
+@keyframes anime-shrink-out-enlarge {0% {opacity: 1;transform: scale(1);filter: blur(0);}100% {opacity: 0;transform: scale(5);filter: blur(10px);}}
 
 /* media */
 img {max-width: 100%;height: auto;vertical-align: middle;}
@@ -697,7 +677,7 @@ select,
 input {width: 100%;height: 50px;position: relative;}
 .input i,
 .input o {line-height: 50px;position: absolute;top: 0;right: 10px;}
-textarea {width: 100%;padding: 10px;line-height: 160%;min-height: 120px;resize: none;}
+textarea {width: 100%;padding: 10px;line-height: 1.6;min-height: 120px;resize: none;}
 input {padding: 0 10px;}
 .select::after {content: '\e70a';pointer-events: none;}
 .input input,
@@ -1213,7 +1193,7 @@ crumb li a:hover {color: var(--color);}
 }
 
 /* clue */
-clue {position: absolute;z-index: 1;top: calc(100% + 10px);left: 0;right: 0;margin: auto;background-color: var(--000-8);border-radius: 5px;display: none;text-align: center;width: fit-content;min-width: 70px;max-width: 300px;padding: 5px 10px;word-break: break-all;font-size: 14px;font-weight: normal;text-transform: inherit;color: white;line-height: 150%;}
+clue {position: absolute;z-index: 1;top: calc(100% + 10px);left: 0;right: 0;margin: auto;background-color: var(--000-8);border-radius: 5px;display: none;text-align: center;width: fit-content;min-width: 70px;max-width: 300px;padding: 5px 10px;word-break: break-all;font-size: 14px;font-weight: normal;text-transform: inherit;color: white;line-height: 1.5;}
 clue.corner {position: absolute;}
 clue.corner::after {border-width: 0 10px 10px 10px;border-bottom-color: var(--000-8);top: -10px;left: 0;right: 0;}
 *[clue] {position: relative;cursor: pointer;}
@@ -1287,7 +1267,7 @@ article {}
 article > * {margin: 10px 0;}
 article .btn {display: inline-block;}
 article ul {padding-left: 20px;}
-article ul li {list-style: disc;line-height: 200%;}
+article ul li {list-style: disc;line-height: 2;}
 
 @media(max-width:640px){
     article > * {margin: .1rem 0;}
@@ -1315,6 +1295,15 @@ notice .ico {margin: auto 10px auto 0;}
 @media(max-width:640px){
     notice .ico {margin: auto .1rem auto 0;}
 }
+
+
+
+
+
+
+
+
+
 
 
 
