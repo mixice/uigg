@@ -206,6 +206,10 @@ page a.active {background-color: var(--basic);box-shadow: 0 3px 5px var(--bright
 .table table tbody tr:hover {background-color: var(--flash);}
 .table table td input {height: 30px;width: auto;border:1px var(--light) solid;text-align: center;}
 .table table td .btn {width: auto;display: inline-block;padding: 0 20px;height: 30px;line-height: 28px;float: none;font-size: 14px;}
+.table table td button.ico,
+.table table td a.ico {padding: 5px;}
+.table table td button.ico:hover,
+.table table td a.ico:hover {background-color: var(--light);}
 .table table td label {padding: 0 5px;}
 .table table tfoot tr:first-child td,
 .table table tfoot tr:first-child th {border-top-color: var(--basic);}
@@ -214,6 +218,8 @@ page a.active {background-color: var(--basic);box-shadow: 0 3px 5px var(--bright
     .table table {min-width: 200vw;overflow: auto;}
     .table table td input {height: .4rem;}
     .table table td .btn {padding: 0 .2rem;height: .4rem;line-height: .38rem;font-size: .16rem;}
+    .table table td button.ico,
+    .table table td a.ico {padding: .1rem;}
     .table table td label {padding: 0 .05rem;}
 }
 
@@ -303,7 +309,6 @@ pop-title {border-bottom-color: var(--light);}
 .login-other {overflow: hidden;}
 .login-other a {padding: 5px;display: block;float: left;border-radius: 5px;}
 .login-other a:hover {background-color: var(--light);}
-.login-tip {line-height: 40px;color: white;text-align: center;clear: both;margin: 5px;border-radius: 3px;background-color: var(--red);}
 
 @media(max-width:640px){
     .login-main {padding: .2rem .1rem;border-radius: .1rem;width: 95%;}
@@ -314,7 +319,6 @@ pop-title {border-bottom-color: var(--light);}
     .login-form li .btn {margin: .2rem 0 0;font-size: .24rem;}
     .login-info {padding: 0 .15rem;}
     .login-other a {padding: .1rem;border-radius: .1rem;}
-    .login-tip {line-height: .5rem;margin: 0;}
 }
 
 /* reminder */

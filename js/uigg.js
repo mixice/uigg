@@ -288,7 +288,7 @@ $(function(){
                 $drop.removeClass('active').find('drop-cont').html(dropFirst)
             }
         })
-        $drop.find('drop x').click(function(){$drop.removeClass('active')})
+        $drop.find('x').click(function(){$drop.removeClass('active')})
     })
 });
 
@@ -570,7 +570,7 @@ if(languageCode === 'zh'){langConfirm = '确认';langCancel = '取消'}else{lang
 function alert(message){
     $('body').append(`<alert class="anime-fade-in"><alert-main class="anime-fade-in-down"><alert-cont></alert-cont><alert-solve><a class="btn">${langConfirm}</a></alert-solve></alert-main></alert>`)
     $('alert-cont').text(message)
-    $(document).on('keydown', function(event){if(event.key === 'Enter' || event.key === 'Escape') $('alert-solve a').click()})
+    $(document).on('keydown', function(event){if(event.key === 'Enter' || event.key === 'Escape' || event.key === ' ') $('alert-solve a').click()})
 }
 function confirm(message){
     return new Promise(function(resolve, reject){
@@ -616,10 +616,10 @@ $(function(){
     })
 });
 
-//----------------------------------------------------------------------------------
-$(function(){
 
-});
+
+
+
 
 
 

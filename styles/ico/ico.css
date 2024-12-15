@@ -21,6 +21,38 @@
   margin: auto;
 }
 
+.ico-camera-action:before {
+  content: "\ed09";
+}
+
+.ico-cinema:before {
+  content: "\e7c2";
+}
+
+.ico-cinema-disable:before {
+  content: "\eb20";
+}
+
+.ico-camera-roll:before {
+  content: "\eb23";
+}
+
+.ico-focus:before {
+  content: "\ed05";
+}
+
+.ico-decoration-circular:before {
+  content: "\ed06";
+}
+
+.ico-lens:before {
+  content: "\ed07";
+}
+
+.ico-auction:before {
+  content: "\ed08";
+}
+
 .ico-circular-7:before {
   content: "\ecfd";
 }
@@ -149,7 +181,7 @@
   content: "\eb3e";
 }
 
-.ico-stacking:before {
+.ico-stacking1:before {
   content: "\ecdf";
 }
 
@@ -3961,10 +3993,6 @@
   content: "\eac1";
 }
 
-.ico-cameraroll:before {
-  content: "\e7c2";
-}
-
 .ico-folder-empty:before {
   content: "\e8c2";
 }
@@ -5621,10 +5649,6 @@
   content: "\ea20";
 }
 
-.ico-telecamera:before {
-  content: "\eb20";
-}
-
 .ico-cloudy:before {
   content: "\e821";
 }
@@ -5675,10 +5699,6 @@
 
 .ico-smoke:before {
   content: "\ea23";
-}
-
-.ico-telecamera-disable:before {
-  content: "\eb23";
 }
 
 .ico-angle-compromise:before {

@@ -712,7 +712,7 @@ select {padding: 0 50px 0 10px;}
 .form scaler input {margin: 0 10px;}
 
 .filter {overflow: hidden;margin-bottom: 20px;}
-.filter li {float: left;width: 25%;}
+.filter li {float: left;width: 20%;}
 .filter li span:first-child {width: auto;}
 .filter li input,
 .filter li .select {flex: 1;}
@@ -727,6 +727,8 @@ select {padding: 0 50px 0 10px;}
 .upload-group:after {content: '\e75b';}
 .upload horn:after {content: '\e826';}
 .upload-add:after {content: '\e6f3';}
+
+.bloomer {padding: 10px;;color: white;text-align: center;margin: 5px;border-radius: 3px;background-color: var(--red);display: none;}
 
 @media(max-width:640px){
     ::-webkit-progress-bar {height: .05rem;}
@@ -796,6 +798,8 @@ select {padding: 0 50px 0 10px;}
     .upload-group,
     .upload-add {width: 1.1rem;height: 1.1rem;margin: 0 .05rem .05rem 0;line-height: 1.1rem;font-size: .42rem;}
     .upload x {width: .5rem;height: .5rem;padding: 0 0 .1rem .1rem;}
+
+    .bloomer {padding: .1rem;margin: 0;border-radius: .05rem;}
 }
 
 /* page */
