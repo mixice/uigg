@@ -21,6 +21,7 @@
 
 <a class="btn alert">alert</a>
 <a class="btn confirm">confirm</a>
+<a class="btn prompt">prompt</a>
 
 <!----------------------------------------------------------------------------------------->
 
@@ -28,14 +29,23 @@
     $('.alert').click(function(){
         alert('Just a simple confirmation')
     })
-
     $('.confirm').click(function(){
-        confirm("Are you sure you want to proceed")
+        confirm('Are you sure you want to proceed')
         .then(function(result){
             if(result){
-                console.log("confirm")
+                console.log('confirm')
             }else{
-                console.log("cancel")
+                console.log('cancel')
+            }
+        })
+    })
+    $('.prompt').click(function() {
+        prompt('Please enter your name')
+        .then(function(result){
+            if(result !== null){
+                console.log(result)
+            }else{
+                console.log('cancel')
             }
         })
     })

@@ -1,5 +1,5 @@
 /*
- * uigg 2.6 (build 20230901)
+ * uigg 2.7 (build 20250101)
  * Project: https://ui.gg
  * Author: https://www.mixice.com
  * Github: https://github.com/mixice/uigg
@@ -8,13 +8,10 @@
 
 //----------------------------------------------------------------------------------preset
 console.log('%c PERFORMS BY UIGG ','background-image: linear-gradient(90deg,slateblue,deeppink);color:white','http://ui.gg')
-$(function(){
-    $('[hide]').hide()
-    $('[show]').show()
-});
+const language = navigator.language || navigator.userLanguage;
 
 //----------------------------------------------------------------------------------rem
-(function(doc, win) {
+(function(doc, win){
     let docElement = doc.documentElement,
         resizeEvt = 'orientationchange' in win ? 'orientationchange' : 'resize'
     function recalc(){
@@ -133,8 +130,8 @@ $(function(){
     if(!$('[uigg="txt"]').attr('lang') && !$('[uigg="txt"]').html()) $('[uigg="txt"]').append(randomSentences)
     $('[uigg="title"]').each(function(){if(!$(this).attr('lang') && !$(this).html()) $(this).append(randomSentences[Math.round(Math.random() * (randomSentences.length - 1))])})
     let arr = new Array()
-    for(let i = 1;i <= 100;i++){arr[i] = i
-        $('[uigg="emot"]').append('<s style="background-image: url(//ui.gg/lib/emot/' + i + '.svg)"></s>')
+    for(let i = 1;i <= 100; i++){arr[i] = i
+        $('[uigg="emot"]').append(`<s style="background-image: url(//ui.gg/lib/emot/${i}.svg)"></s>`)
     }
 });
 
@@ -148,7 +145,7 @@ function disable(){
         catch(e){event.preventDefault()}
     }
     window.addEventListener('keydown', function (e){if(e.ctrlKey && (e.key === 'u' || e.key === 's')) e.preventDefault()})
-    window.addEventListener('keydown', function (event) {if(event.key === 'F12') event.preventDefault()})
+    window.addEventListener('keydown', function (event){if(event.key === 'F12') event.preventDefault()})
     window.onhelp = function (){return false}
 };
 
@@ -174,7 +171,7 @@ $(function(){
     $('tab-group').addClass('anime-fade-in')
     $('tab-list li').click(function(){
         $(this).addClass('active').siblings().removeClass('active')
-        $(this).parent().next().children().eq($(this).index()).addClass('active').siblings().removeClass('active')
+        $(this).closest('tab').find('tab-cont').children().eq($(this).index()).addClass('active').siblings().removeClass('active')
     })
 });
 
@@ -183,7 +180,7 @@ $(function(){
     $('pop').addClass('anime-fade-in').append('<x></x>')
     $('pop-main').addClass('anime-zoom-in').wrap('<div class="full center"></div>')
     $('pop-choice').addClass('anime-fade-in-up')
-    $('pop-title .close').addClass('ico')
+    $('pop-title .close').addClass('ico').before('<u></u>');
     $('pop .close, pop > x').click(function(){$(this).parents('pop').hide()})
     $('pop').each(function(){
         $(this).attr('right') == '' ? $(this).find('pop-sider').addClass('anime-fade-in-right') : $(this).find('pop-sider').addClass('anime-fade-in-left')
@@ -209,18 +206,19 @@ if($(window).width() <= 640) $('menu-cont a').click(function(){$('menu-cont').hi
 
 //----------------------------------------------------------------------------------toggle
 $(function(){
-    $('o.checkbox,o.checkbox-done,o.checkbox-cancel,o.favorite,o.star,o.visibility,o.password,o.mic,o.volume,o.muzak,o.phonecard,o.telecamera,o.camera,o.aim,o.semaphore,o.suitcase,o.light,o.thumb-up,o.thumb-down,o.devicerotate,o.thumbtack,o.bell,o.place,o.link,o.blur,o.toggle').click(function(){$(this).toggleClass('active')})
-    $(document).on('click','o.radio,o.radio-done',function(){
-        $(this).parent().parent().parent().find('o.radio,o.radio-done').removeClass('active')
+    const toggleSelectors = ['o.checkbox', 'o.checkbox-done', 'o.checkbox-cancel', 'o.favorite', 'o.star', 'o.visibility', 'o.password', 'o.mic', 'o.volume', 'o.muzak', 'o.phonecard', 'o.telecamera', 'o.camera', 'o.aim', 'o.semaphore', 'o.suitcase', 'o.light', 'o.thumb-up', 'o.thumb-down', 'o.devicerotate', 'o.thumbtack', 'o.bell', 'o.place', 'o.link', 'o.blur', 'o.toggle']
+    $(toggleSelectors.join(',')).click(function(){$(this).toggleClass('active')})
+    $(document).on('click', 'o.radio,o.radio-done', function(){
+        $(this).closest('.parent').find('o.radio,o.radio-done').removeClass('active')
         $(this).addClass('active')
     })
     $('o.checkbox-all').click(function(){
-        let checkboxAll = $(this).parent().parent().parent().parent().find('o.checkbox,o.checkbox-done')
-        $(this).hasClass('active') ? checkboxAll.addClass('active') : checkboxAll.removeClass('active')
+        const checkboxAll = $(this).closest('.parent').find('o.checkbox,o.checkbox-done')
+        checkboxAll.toggleClass('active', $(this).hasClass('active'))
     })
     $('o.password').click(function(){
-        let inputType = $(this).siblings('input').attr('type')
-        inputType == 'password' ? $(this).siblings('input').attr('type','text') : $(this).siblings('input').attr('type','password')
+        const input = $(this).siblings('input')
+        input.attr('type', input.attr('type') === 'password' ? 'text' : 'password')
     })
 });
 
@@ -240,10 +238,21 @@ $(function(){
     })
 });
 
+//----------------------------------------------------------------------------------form
+$(function(){
+    $('textarea.auto').on('input',function(){$(this).css('height',(this.scrollHeight) + 'px')})
+    $('progress').each(function(){
+        $(this).css('color',$(this).attr('color'))
+        $(this).css('--progress-color', $(this).css('color'))
+    })
+});
+
 //----------------------------------------------------------------------------------upload
+let uploadAlert
+if(language === 'zh-CN'){uploadAlert = '文件格式必须是'}else{uploadAlert = 'File format must be'}
 $(function(){
     $('.upload-add').click(function(){
-        $(this).before('<div class="ico upload-group"><input type="file"><horn class="ico"></horn></div>')
+        $(this).before('<div class="ico upload-group"><input type="file" accept=".jpg,.jpeg,.png,.webp,.gif"><horn class="ico"></horn></div>')
         uploadImg()
     })
     $(document).on('click','.upload-group horn',function(){$(this).parent().remove()})
@@ -252,7 +261,7 @@ $(function(){
             let imgValue = $(this).val(),
                 fileFormat = imgValue.substring(imgValue.lastIndexOf('.')).toLowerCase(),
                 imgUrl = window.URL.createObjectURL(this.files[0])
-            if(!fileFormat.match(/.png|.jpg|.jpeg|.webp|.gif/)){alert('File format must be: png/jpg/jpeg/webp/gif')}
+            if(!fileFormat.match(/.png|.jpg|.jpeg|.webp|.gif/)){alert(uploadAlert + ': png/jpg/jpeg/webp/gif')}
             else{
                 $(this).parent().attr('style',`background-image:url(${imgUrl})`)
                 $(this).parent().css('color','transparent')
@@ -275,19 +284,8 @@ function tip(str){
 $(function(){
     $('drop').each(function(){
         const $drop = $(this)
-        $drop.find('drop-list').before('<i class="ico ico-alone-right"></i>')
-        $drop.append('<drop-cont></drop-cont>')
-        let dropFirst = $drop.find('drop-list li').first().html()
-        $drop.find('drop-cont').html(dropFirst)
-        $drop.find('drop-cont').click(function(){$drop.toggleClass('active')})
-        $drop.find('drop-list').addClass('anime-fade-in')
-        $drop.find('drop-list ul').before('<x></x>')
-        $drop.find('drop-list li').click(function(){
-            if($(this).children('drop-list').length == 0){
-                dropFirst = $(this).html()
-                $drop.removeClass('active').find('drop-cont').html(dropFirst)
-            }
-        })
+        $drop.find('drop-list').before('<i class="ico ico-alone-right"></i>').end().append('<drop-cont></drop-cont>').find('drop-cont').html($drop.find('drop-list li').first().html()).click(function(){$drop.toggleClass('active')})
+        $drop.find('drop-list').addClass('anime-fade-in').find('ul').before('<x></x>').end().find('li').click(function(){if(!$(this).children('drop-list').length) $drop.removeClass('active').find('drop-cont').html($(this).html())})
         $drop.find('x').click(function(){$drop.removeClass('active')})
     })
 });
@@ -307,7 +305,7 @@ $(function(){
 //----------------------------------------------------------------------------------rate
 $(function(){
     $('rate').html('<i></i><i></i><i></i><i></i><i></i>')
-    $('rate').each(function(){$(this).find('i').addClass('ico').filter(':lt(' + $(this).attr('value') + ')').addClass('active')})
+    $('rate').each(function(){$(this).find('i').addClass('ico').filter(`:lt(${$(this).attr('value')})`).addClass('active')})
     $('rate[edit] i').click(function(){
         $(this).addClass('active').siblings().removeClass('active').parent().attr('value',$(this).index() + 1)
         $(this).prevAll().addClass('active')
@@ -323,7 +321,7 @@ $(function(){
 
 //----------------------------------------------------------------------------------nav
 $(function(){
-    $('nav').addClass('anime-fade-in-up').before('<space></space>').html(function(_, html) {return $('<ul>').html(html).prop('outerHTML')})
+    $('nav').addClass('anime-fade-in-up').before('<space></space>').html(function(_, html){return $('<ul>').html(html).prop('outerHTML')})
     let fillColor = $('nav[uigg]').attr('uigg') || '#fff'
     $('nav[uigg]').prepend(`<svg viewBox="0 0 640 80"><path d="M437.5,0c-59.55,0-53.55,69.83-117.5,69.83S262.05,0,202.5,0H10C4.48,0,0,4.48,0,10v70h640V10c0-5.52-4.48-10-10-10h-192.5Z" fill="${fillColor}"/></svg>`)
     let num = $('nav[uigg] li').length
@@ -372,24 +370,23 @@ $(document).on('click','notify x',function(){
 });
 
 //----------------------------------------------------------------------------------copy
+let copyRight, copyErr
+if(language === 'zh-CN'){copyRight = '复制成功';copyErr = '复制失败'}else{copyRight = 'Copy successful';copyErr = 'Could not copy text'}
 let copySelect = false
-function copySelectedText(){
-    const selectedText = window.getSelection().toString().trim()
-    if(selectedText){navigator.clipboard.writeText(selectedText).then(function(){tip('Copy successful')})}
+function copySelectedText(event){
+    if($(event.target).closest('[copy-select]').length > 0){
+        const selectedText = window.getSelection().toString().trim()
+        if(selectedText) navigator.clipboard.writeText(selectedText).then(() => tip(copyRight),err => tip(copyErr + err))
+    }
 }
 $(function(){
     $('[copy-btn]').click(function(){
-        let copyNum = $(this).attr('copy-btn'),
-            copyEl = copyNum == '' ? $('[copy-val]') : $(`[copy-val="${copyNum}"]`),
-            copyVal = copyEl.is('input') ? copyEl.val() : copyEl.text()
-        navigator.clipboard.writeText(copyVal).then(function(){tip('Copy successful')})
+        const copyNum = $(this).attr('copy-btn')
+        const copyEl = copyNum ? $(`[copy-val="${copyNum}"]`) : $('[copy-val]')
+        const copyVal = copyEl.is('input') ? copyEl.val() : copyEl.text()
+        navigator.clipboard.writeText(copyVal).then(() => tip(copyRight),err => tip(copyErr + err))
     })
-    $('.copy-select').click(function(){
-        $(this).toggleClass('active')
-        copySelect = !copySelect
-        if(copySelect){document.addEventListener('mouseup', copySelectedText)}
-        else{document.removeEventListener('mouseup', copySelectedText)}
-    })
+    if($('[copy-select]').length > 0) document.addEventListener('mouseup', copySelectedText)
 });
 
 //----------------------------------------------------------------------------------empty
@@ -419,7 +416,7 @@ $(function(){
         $('chat-control aside').append($(this))
     })
     $('chat-title x.ico-close').click(function(){$(this).parent().parent().hide()})
-    $(document).on('click','chat aside img',function(){$('chat').append('<pop class="anime-fade-in center"><img src="' + $(this).attr('src') + '"></pop>')})
+    $(document).on('click','chat aside img',function(){$('chat').append(`<pop class="anime-fade-in center"><img src="${$(this).attr('src')}"></pop>`)})
     $(document).on('click','chat pop',function(){$(this).remove()})
     $('chat-list li').click(function(){
         $('chat-cont').css('display','flex')
@@ -429,7 +426,7 @@ $(function(){
         let messageVal = $('chat-control aside').html(),
             date = new Date()
         if(messageVal == ''){}else{
-            $('chat-message').append('<li class="mine"><em class="avatar" style="background-image: "></em><cite>' + date.toLocaleTimeString() + '</cite><aside>' + messageVal + '</aside></li>')
+            $('chat-message').append(`<li class="mine"><em class="avatar" style="background-image: "></em><cite>${date.toLocaleTimeString()}</cite><aside>${messageVal}</aside></li>`)
             $('chat-control aside').html('')
             chatNew()
         }
@@ -464,10 +461,10 @@ $(function(){
 //----------------------------------------------------------------------------------cookie
 //input cookie
 function setCookie(cookieName, cookieValue, hours){
-    const encodedValue = encodeURI(cookieValue);
+    const encodedValue = encodeURI(cookieValue)
     let cookieString = `${cookieName}=${encodedValue}`
     if(hours > 0){
-        const expirationDate = new Date();
+        const expirationDate = new Date()
         expirationDate.setTime(expirationDate.getTime() + hours * 3600 * 1000)
         cookieString += `;expires=${expirationDate.toGMTString()}`
     }
@@ -487,9 +484,9 @@ function getCookie(cookieName){
 
 //----------------------------------------------------------------------------------step
 $(function(){
-    $('step').html(function(_, html) {return $('<ul>').html(html).prop('outerHTML')})
+    $('step').html(function(_, html){return $('<ul>').html(html).prop('outerHTML')})
     $('step li').each(function(){
-        $(this).html(function(_, html) {return $('<span>').html(html).prop('outerHTML')})
+        $(this).html(function(_, html){return $('<span>').html(html).prop('outerHTML')})
         $(this).prepend(`<i>${$(this).index() + 1}</i>`)
     })
 });
@@ -556,32 +553,33 @@ $(function(){
     })
 });
 
-//----------------------------------------------------------------------------------form
-$(function(){
-    $('textarea.auto').on('input',function(){$(this).css('height',(this.scrollHeight) + 'px')})
-});
-
 //----------------------------------------------------------------------------------alert
-let langConfirm, langCancel,
-    language = navigator.language || navigator.userLanguage,
-    languageCode = language.split('-')[0]
-if(languageCode === 'zh'){langConfirm = '确认';langCancel = '取消'}else{langConfirm = 'confirm';langCancel = 'cancel'}
-
+let langConfirm, langCancel
+if(language === 'zh-CN'){langConfirm = '确认';langCancel = '取消'}else{langConfirm = 'confirm';langCancel = 'cancel'}
 function alert(message){
-    $('body').append(`<alert class="anime-fade-in"><alert-main class="anime-fade-in-down"><alert-cont></alert-cont><alert-solve><a class="btn">${langConfirm}</a></alert-solve></alert-main></alert>`)
-    $('alert-cont').text(message)
+    $('body').append(`<alert class="anime-fade-in"><alert-main class="anime-fade-in-down"><alert-cont>${message}</alert-cont><alert-solve><a class="btn">${langConfirm}</a></alert-solve></alert-main></alert>`)
     $(document).on('keydown', function(event){if(event.key === 'Enter' || event.key === 'Escape' || event.key === ' ') $('alert-solve a').click()})
 }
 function confirm(message){
     return new Promise(function(resolve, reject){
-        $('body').append(`<alert class="anime-fade-in"><alert-main class="anime-fade-in-down"><alert-cont></alert-cont><alert-solve><a class="btn" id="alert-cancel">${langCancel}</a><a class="btn" id="alert-confirm">${langConfirm}</a></alert-solve></alert-main></alert>`)
-        $('alert-cont').text(message)
+        $('body').append(`<alert class="anime-fade-in"><alert-main class="anime-fade-in-down"><alert-cont>${message}</alert-cont><alert-solve><a class="btn" id="alert-cancel">${langCancel}</a><a class="btn" id="alert-confirm">${langConfirm}</a></alert-solve></alert-main></alert>`)
         $(document).on('keydown', function(event){
             if(event.key === 'Enter') $('#alert-confirm').click()
             if(event.key === 'Escape') $('#alert-cancel').click()
         })
         $('#alert-confirm').off('click').on('click', function(){resolve(true)})
         $('#alert-cancel').off('click').on('click', function(){resolve(false)})
+    })
+}
+function prompt(message, defaultValue = ''){
+    return new Promise(function(resolve, reject){
+        $('body').append(`<alert class="anime-fade-in"><alert-main class="anime-fade-in-down"><alert-cont>${message}</alert-cont><input type="text" id="alert-input" value="${defaultValue}"><alert-solve><a class="btn" id="alert-cancel">${langCancel}</a><a class="btn" id="alert-confirm">${langConfirm}</a></alert-solve></alert-main></alert>`)
+        $(document).on('keydown', function(event){
+            if(event.key === 'Enter') $('#alert-confirm').click()
+            if(event.key === 'Escape') $('#alert-cancel').click()
+        })
+        $('#alert-confirm').off('click').on('click', function(){resolve($('#alert-input').val())})
+        $('#alert-cancel').off('click').on('click', function(){resolve(null)})
     })
 }
 $(document).on('click','alert-solve a',function(){
@@ -596,27 +594,24 @@ $(function(){
     if(notice.attr('href')) notice.append(`<a href="${notice.attr('href')}" class="ico ico-more-horizontal"></a>`)
 });
 
-//----------------------------------------------------------------------------------record
+//----------------------------------------------------------------------------------recording
 $(function(){
     $('.recording').click(async function(){
-        let stream = await navigator.mediaDevices.getDisplayMedia({video: true}),
-            mime = MediaRecorder.isTypeSupported("video/webm; codecs=vp9") ?"video/webm; codecs=vp9" :"video/webm",
-            mediaRecorder = new MediaRecorder(stream, {mimeType: mime}),
+        let stream = await navigator.mediaDevices.getDisplayMedia({ video: true }),
+            mime = MediaRecorder.isTypeSupported("video/webm; codecs=vp9") ? "video/webm; codecs=vp9" : "video/webm",
+            mediaRecorder = new MediaRecorder(stream, { mimeType: mime }),
             chunks = []
         mediaRecorder.addEventListener('dataavailable', function(e){chunks.push(e.data)})
         mediaRecorder.addEventListener('stop', function(){
-            let blob = new Blob(chunks, {type: chunks[0].type}),
+            let blob = new Blob(chunks, { type: chunks[0].type }),
                 url = URL.createObjectURL(blob),
-                a = document.createElement('a')
-            a.href = url
-            a.download = 'video.webm'
-            a.click()
+                $a = $('<a>').attr({href: url, download: 'video.webm'}).appendTo('body')
+            $a[0].click()
+            $a.remove()
         })
         mediaRecorder.start()
     })
 });
-
-
 
 
 

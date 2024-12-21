@@ -5,8 +5,8 @@ $(function(){
         $(this).addClass('active')
     })
     $('xmp').click(function(){
-        navigator.clipboard.writeText($(this).html())
-        tip('Copy successful')
+        navigator.clipboard.writeText($(this).text().trim())
+        .then(() => tip(copyRight),err => tip(copyErr + err))
     })
 });
 

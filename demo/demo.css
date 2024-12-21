@@ -7,7 +7,7 @@
 
 .logo {display: flex;align-items: center;justify-content: center;padding: 20px 0;}
 .logo em {width: 20%;margin-right: 10px;}
-.logo span {font-family: 'montserrat' !important;text-transform: uppercase;font-size: 30px;font-weight: bold;}
+.logo span {font-family: 'montserrat' !important;text-transform: uppercase;font-size: 34px;}
 
 fold {height: 100%;flex: 1;overflow: auto;}
 fold::-webkit-scrollbar {width: 5px;}
@@ -22,8 +22,6 @@ fold-cont a.active {background-color: var(--eee);}
 
 .absolute-logic {width: 300px;display: grid;grid-template-columns: repeat(3,1fr);grid-gap: 10px;}
 .absolute-logic a {height: 100px;background-color: var(--f7);display: flex;align-items: center;justify-content: center;font-size: 40px;color: var(--ddd);}
-
-
 
 
 

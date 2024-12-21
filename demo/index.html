@@ -181,6 +181,11 @@ import 'uigg'
 <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/uigg/uigg.min.css">
 <script src="//cdn.jsdelivr.net/npm/uigg"></script>
 </xmp>
+            <h5>unpkg</h5>
+            <p>You can use unpkg</p>
+<xmp>
+https://unpkg.com/uigg
+</xmp>
         </div>
         <div class="cont" id="responsive">
             <h3>responsive rule</h3>
@@ -313,8 +318,12 @@ alert('alert')
 <xmp>
 confirm('confirm')
 </xmp>
+            <p>If you need prompt, run <span>prompt()</span></p>
+<xmp>
+prompt('prompt')
+</xmp>
             <h5>effect display</h5>
-            <iframe src="alert.html" height="300"></iframe>
+            <iframe src="alert.html" height="400"></iframe>
             <a class="btn shadow" href="alert.html" target="_blank">view</a>
         </div>
         <div class="cont" id="alone">
@@ -472,9 +481,9 @@ copy-btn
 copy-val="copy1"
 copy-btn="copy1"
 </xmp>
-            <p>If you need select copy, Add the class to the button</p>
+            <p>If you need select copy, add the attribute to the DOM</p>
 <xmp>
-class="copy-select"
+copy-select
 </xmp>
             <h5>effect display</h5>
             <iframe src="copy.html" height="300"></iframe>
@@ -691,11 +700,11 @@ class="font-tahoma"
 <section class="form">
     <form>
         <li><span>account</span>
-            <input class="med" type="text" required>
+            <input class="wide-20" type="text" required>
             <cite>Lorem ipsum dolor sit amet</cite>
         </li>
         <li><span>password</span>
-            <div class="input sml"><input type="password" required><o class="password"></o></div>
+            <div class="input wide-20"><input type="password" required><o class="password"></o></div>
             <cite class="co-red">Password error</cite>
         </li>
         <li><span>scaler</span>
@@ -703,15 +712,19 @@ class="font-tahoma"
             <cite>Lorem ipsum dolor sit amet</cite>
         </li>
         <li><span>radio</span>
-            <o class="radio"></o><span>radio</span>
-            <o class="radio"></o><span>radio</span>
-            <o class="radio"></o><span>radio</span>
+            <div class="parent">
+                <o class="radio"></o><span>radio</span>
+                <o class="radio"></o><span>radio</span>
+                <o class="radio"></o><span>radio</span>
+            </div>
             <cite>Lorem ipsum dolor sit amet</cite>
         </li>
         <li><span>checkbox</span>
-            <o class="checkbox"></o><span>checkbox</span>
-            <o class="checkbox"></o><span>checkbox</span>
-            <o class="checkbox checkbox-all"></o><span>checkbox all</span>
+            <div class="parent">
+                <o class="checkbox"></o><span>checkbox</span>
+                <o class="checkbox"></o><span>checkbox</span>
+                <o class="checkbox checkbox-all"></o><span>checkbox all</span>
+            </div>
             <cite>Lorem ipsum dolor sit amet</cite>
         </li>
         <li><span>toggle</span>
@@ -719,14 +732,14 @@ class="font-tahoma"
             <cite>Lorem ipsum dolor sit amet</cite>
         </li>
         <li><span>progress</span>
-            <progress class="med" max="100" value="50"></progress>
+            <progress class="wide-20" max="100" value="50"></progress>
         </li>
         <li><span>range</span>
-            <input class="sml" type="range" min="0" max="100" step="0" value="50">
+            <input class="wide-20" type="range" min="0" max="100" step="0" value="50">
             <cite>Lorem ipsum dolor sit amet</cite>
         </li>
         <li><span>file</span>
-            <input class="med" type="file">
+            <input class="wide-30" type="file">
             <cite>Lorem ipsum dolor sit amet</cite>
         </li>
         <li><span>color</span>
@@ -734,47 +747,51 @@ class="font-tahoma"
             <cite>Lorem ipsum dolor sit amet</cite>
         </li>
         <li><span>date</span>
-            <input class="sml" type="date">
+            <input class="wide-20" type="date">
             <cite>Lorem ipsum dolor sit amet</cite>
         </li>
         <li><span>datetime</span>
-            <input class="sml" type="datetime-local">
+            <input class="wide-20" type="datetime-local">
             <cite>Lorem ipsum dolor sit amet</cite>
         </li>
         <li><span>month</span>
-            <input class="sml" type="month">
+            <input class="wide-20" type="month">
             <cite>Lorem ipsum dolor sit amet</cite>
         </li>
         <li><span>week</span>
-            <input class="sml" type="week">
+            <input class="wide-20" type="week">
             <cite>Lorem ipsum dolor sit amet</cite>
         </li>
         <li><span>time</span>
-            <input class="min" type="time">
+            <input class="wide-20" type="time">
             <cite>Lorem ipsum dolor sit amet</cite>
         </li>
         <li><span>select</span>
-            <div class="select sml"><select><option selected disabled>select</option><option>select</option></select></div>
+            <div class="select wide-20"><select><option selected disabled>select</option><option>select</option></select></div>
             <cite>Lorem ipsum dolor sit amet</cite>
         </li>
         <li><span>robot</span>
-            <input class="min" type="text">
-            <a class="code"><img uigg="color"></a>
+            <input class="wide-10" type="text">
+            <a class="code" uigg="color"><img uigg="color"></a>
             <cite>Lorem ipsum dolor sit amet</cite>
         </li>
         <li><span>code</span>
-            <input class="min" type="text">
+            <input class="wide-10" type="text">
             <a class="btn code">get code</a>
             <cite>Lorem ipsum dolor sit amet</cite>
         </li>
         <li><span>message</span>
-            <textarea class="max"></textarea>
+            <textarea class="wide"></textarea>
+        </li>
+        <li><span>editor</span>
+            <div class="editor-simple"></div>
         </li>
         <li><span>images</span>
             <div class="upload">
-                <div class="ico upload-group"><input type="file"><horn class="ico"></horn></div>
+                <div class="ico upload-group"><input type="file" accept=".jpg,.jpeg,.png,.webp,.gif"><horn class="ico"></horn></div>
                 <div class="ico upload-add"></div>
             </div>
+            <cite>Lorem ipsum dolor sit amet</cite>
         </li>
         <li class="resolve"><o class="checkbox"></o><span>I've read and agreed</span><a>"User agreement"</a></li>
         <li class="resolve"><button class="btn btn-submit">cancel</button><button class="btn btn-submit">submit</button></li>
@@ -1268,6 +1285,10 @@ tip('tip')
 <o class="blur"></o>
 <o class="toggle"></o>
 </xmp>
+            <p>If you need effective association, add the class to the DOM</p>
+<xmp>
+class="parent"
+</xmp>
             <h5>effect display</h5>
             <iframe src="toggle.html"></iframe>
             <a class="btn shadow" href="toggle.html" target="_blank">view</a>
@@ -1756,7 +1777,7 @@ class="editor-simple"
 class="editor-upload"
 class="editor-all"
 </xmp>
-            <h5>uigg upload</h5>
+            <h5>PHP upload</h5>
             <p>If you need upload image, you must download <a href="//ui.gg/lib/editor/upload.zip">upload.zip</a> to to your website directory and configure php</p>
             <a class="btn shadow" href="//ui.gg/lib/editor/upload.zip" target="_blank">download</a>
             <h5>effect display</h5>
@@ -1877,6 +1898,7 @@ class="editor-all"
             <h5>UIGG iconfont</h5>
             <p>UIGG iconfont is a library free licensed font families and api for conveniently using the fonts via iconfont, img, unicode, symbol and css. We also provide delightful, beautifully crafted icons for common actions and items. Download them for use in your digital products for Android, iOS, and web</p>
             <a class="btn shadow" href="/ico.php" target="_blank">view</a>
+            <a class="btn shadow" href="/lib/ico/ico.zip" target="_blank">download</a>
         </div>
         <div class="cont" id="attribute">
             <h3>attribute</h3>
@@ -1915,6 +1937,7 @@ class="editor-all"
                         <tr><td><xmp>lang-placeholder</xmp></td><td>Placeholder translation</td></tr>
                         <tr><td><xmp>lang-value</xmp></td><td>Value translation</td></tr>
                         <tr><td><xmp>lang-content</xmp></td><td>Content translation</td></tr>
+                        <tr><td><xmp>color</xmp></td><td>Define element color</td></tr>
                     </tbody>
                 </table>
             </div>
@@ -1971,7 +1994,6 @@ class="editor-all"
 //ui.gg/lib/ico/ico.js
 //ui.gg/lib/ico/ico.json
 //ui.gg/lib/ico/ico.woff2
-//ui.gg/lib/ico/ico.zip
 </xmp>
             <p>CDN</p>
 <xmp>

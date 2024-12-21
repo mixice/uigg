@@ -63,7 +63,7 @@ body {background: var(--flash);}
 .head-info a {width: 30px;height: 40px;line-height: 40px;display: block;}
 .head-info a:hover {transform: rotate(360deg);}
 
-.mailbox {background: var(--flash);line-height: 40px;padding: 0 10px;border-radius: 100px;display: flex;}
+.mailbox {background: var(--flash);line-height: 40px;padding: 0 4px;border-radius: 100px;display: flex;text-transform: capitalize;}
 .mailbox i.ico {line-height: 40px;margin: 0 10px;}
 .mailbox span {min-width: 20px;height: 20px;line-height: 20px;background: var(--red);color: white;padding: 0 5px;border-radius: 100px;display: inline-block;margin: 10px;text-align: center;}
 .mailbox:hover {background: var(--basic);color: white;}
@@ -271,9 +271,9 @@ tab-list li.active a {border-color: var(--basic);color: var(--basic);}
 .list-cont h6 {height: 30px;line-height: 30px;overflow: hidden;}
 .list-cont h6 a:hover {color: var(--basic);}
 .list-cont p {height: 75px;line-height: 25px;overflow: hidden;}
-.list-info {padding: 10px 0;}
+.list-info {padding: 10px 0;color: var(--ccc);}
 .list-info span {padding: 0 10px 0 0;}
-.list-info i {margin: 0 10px 0 0;font-size: 22px;color: var(--333);}
+.list-info i {margin: 0 10px 0 0;font-size: 22px;color: var(--ccc);}
 .list-control {margin: 0 0 0 20px;display: flex;}
 .list-control a {margin: 5px;line-height: 40px;}
 
