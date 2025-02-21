@@ -12,15 +12,14 @@ const language = navigator.language || navigator.userLanguage;
 
 //----------------------------------------------------------------------------------rem
 (function(doc, win){
-    let docElement = doc.documentElement,
-        resizeEvt = 'orientationchange' in win ? 'orientationchange' : 'resize'
+    let docElement = doc.documentElement
     function recalc(){
         let viewWidth = Math.max(320, Math.min(640, docElement.clientWidth))
         docElement.style.fontSize = 100 * (viewWidth / 640) + 'px'
     }
     recalc()
-    if(doc.addEventListener){win.addEventListener(resizeEvt, recalc, false)}
-})(document, window);
+    win.ResizeObserver ? new ResizeObserver(recalc).observe(docElement) : win.addEventListener('resize', recalc, false)
+})(document, window)
 
 //----------------------------------------------------------------------------------load
 onload = () => $('load').hide()
@@ -77,6 +76,23 @@ $.fn.bindmove = function(newdirect,newfn){
         else if( Y < -30  && newdirect=='touchup'){eval(newfn);return}
     })
 };
+
+//----------------------------------------------------------------------------------name
+$(function(){
+    $('name').addClass('anime-fade-in-down')
+    $('name-search input').before('<i class="ico ico-search"></i>')
+    $('name h2,name-logo').after('<u></u>')
+});
+
+//----------------------------------------------------------------------------------nav
+$(function(){
+    $('nav').addClass('anime-fade-in-up').before('<space></space>').html(function(_, html){return $('<ul>').html(html).prop('outerHTML')})
+    let fillColor = $('nav[uigg]').attr('uigg') || '#fff'
+    $('nav[uigg]').prepend(`<svg viewBox="0 0 640 80"><path d="M437.5,0c-59.55,0-53.55,69.83-117.5,69.83S262.05,0,202.5,0H10C4.48,0,0,4.48,0,10v70h640V10c0-5.52-4.48-10-10-10h-192.5Z" fill="${fillColor}"/></svg>`)
+    let num = $('nav[uigg] li').length
+    if(num == 3) $('nav[uigg] li').eq(1).addClass('midel')
+    if(num == 5) $('nav[uigg] li').eq(2).addClass('midel')
+});
 
 //----------------------------------------------------------------------------------swiper
 $(function(){
@@ -310,23 +326,6 @@ $(function(){
         $(this).addClass('active').siblings().removeClass('active').parent().attr('value',$(this).index() + 1)
         $(this).prevAll().addClass('active')
     })
-});
-
-//----------------------------------------------------------------------------------name
-$(function(){
-    $('name').addClass('anime-fade-in-down')
-    $('name-search input').before('<i class="ico ico-search"></i>')
-    $('name h2,name-logo').after('<u></u>')
-});
-
-//----------------------------------------------------------------------------------nav
-$(function(){
-    $('nav').addClass('anime-fade-in-up').before('<space></space>').html(function(_, html){return $('<ul>').html(html).prop('outerHTML')})
-    let fillColor = $('nav[uigg]').attr('uigg') || '#fff'
-    $('nav[uigg]').prepend(`<svg viewBox="0 0 640 80"><path d="M437.5,0c-59.55,0-53.55,69.83-117.5,69.83S262.05,0,202.5,0H10C4.48,0,0,4.48,0,10v70h640V10c0-5.52-4.48-10-10-10h-192.5Z" fill="${fillColor}"/></svg>`)
-    let num = $('nav[uigg] li').length
-    if(num == 3) $('nav[uigg] li').eq(1).addClass('midel')
-    if(num == 5) $('nav[uigg] li').eq(2).addClass('midel')
 });
 
 //----------------------------------------------------------------------------------countdown

@@ -510,7 +510,7 @@ nav[uigg] {background-color: transparent;}
 nav[uigg] svg {position: absolute;left: 0;right: 0;margin: auto;width: 100%;height: 100%;}
 nav[uigg] li.midel span {display: none;}
 nav[uigg] li.midel .ico {width: 90px;height: 90px;border-radius: 100%;background-color: var(--color);display: flex;align-items: center;color: white;margin-top: -50px;box-shadow: 0 5px 10px var(--color);font-size: 36px;}
-space {height: 150px;}
+space {height: 150px;display: none;}
 
 @media(max-width:640px){
     nav li {padding: .08rem;}
@@ -518,7 +518,7 @@ space {height: 150px;}
     nav li .ico {margin: 0 auto .02rem;font-size: .32rem;}
     nav li span {font-size: .18rem;}
     nav[uigg] li.midel .ico {width: .9rem;height: .9rem;margin-top: -.5rem;box-shadow: 0 .05rem .1rem var(--color);font-size: .36rem;}
-    space {height: 1.4rem;}
+    space {height: 1.4rem;display: block;}
 }
 
 /* menu */
@@ -693,6 +693,11 @@ select {padding: 0 50px 0 10px;}
 
 .form li > *,
 .form li > .parent > * {margin:5px;float: left;}
+.form .select,
+.form select,
+.form .input,
+.form input,
+.form textarea {min-width: 0;}
 .form select,
 .form input,
 .form textarea {background-color: var(--f7);}
@@ -779,7 +784,7 @@ select {padding: 0 50px 0 10px;}
     .form li.resolve .btn {width: 100%;}
     .form li.resolve .btn:not(:last-child) {margin-right: .1rem;}
     .form li.resolve .btn-submit {margin: .2rem 0;}
-    .form li .code {width: 1.6rem;height: .7rem;font-size: .18rem;}
+    .form li .code {width: 1.6rem;height: .7rem;font-size: .18rem;margin-left: .2rem;}
     .form li span {padding: 0 .05rem;}
     .form li > span:first-child {width: 1.5rem;}
     .form .btn,
