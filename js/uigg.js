@@ -86,7 +86,7 @@ $(function(){
 
 //----------------------------------------------------------------------------------nav
 $(function(){
-    $('nav').addClass('anime-fade-in-up').before('<space></space>').html(function(_, html){return $('<ul>').html(html).prop('outerHTML')})
+    $('nav').addClass('anime-fade-in-up').before('<space></space>')
     let fillColor = $('nav[uigg]').attr('uigg') || '#fff'
     $('nav[uigg]').prepend(`<svg viewBox="0 0 640 80"><path d="M437.5,0c-59.55,0-53.55,69.83-117.5,69.83S262.05,0,202.5,0H10C4.48,0,0,4.48,0,10v70h640V10c0-5.52-4.48-10-10-10h-192.5Z" fill="${fillColor}"/></svg>`)
     let num = $('nav[uigg] li').length
@@ -102,7 +102,7 @@ $(function(){
 function lug(){
     $('.lug-thumbs a').click(function(){$(this).addClass('active').siblings().removeClass('active')})
     new Swiper('.lug-top',{
-        on: {
+        on:{
             touchEnd: function(){
                 let swiperIndex = $('.lug-top .swiper-slide-active').index()
                 $('.lug-thumbs a').eq(swiperIndex).addClass('active').siblings().removeClass('active')
@@ -596,13 +596,13 @@ $(function(){
 //----------------------------------------------------------------------------------recording
 $(function(){
     $('.recording').click(async function(){
-        let stream = await navigator.mediaDevices.getDisplayMedia({ video: true }),
+        let stream = await navigator.mediaDevices.getDisplayMedia({video: true}),
             mime = MediaRecorder.isTypeSupported("video/webm; codecs=vp9") ? "video/webm; codecs=vp9" : "video/webm",
-            mediaRecorder = new MediaRecorder(stream, { mimeType: mime }),
+            mediaRecorder = new MediaRecorder(stream,{mimeType: mime}),
             chunks = []
         mediaRecorder.addEventListener('dataavailable', function(e){chunks.push(e.data)})
         mediaRecorder.addEventListener('stop', function(){
-            let blob = new Blob(chunks, { type: chunks[0].type }),
+            let blob = new Blob(chunks,{type: chunks[0].type}),
                 url = URL.createObjectURL(blob),
                 $a = $('<a>').attr({href: url, download: 'video.webm'}).appendTo('body')
             $a[0].click()

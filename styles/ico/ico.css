@@ -21,6 +21,150 @@
   margin: auto;
 }
 
+.ico-bnb:before {
+  content: "\ed27";
+}
+
+.ico-face-sad:before {
+  content: "\ed28";
+}
+
+.ico-bridge:before {
+  content: "\ed29";
+}
+
+.ico-billfold:before {
+  content: "\ed2a";
+}
+
+.ico-avax:before {
+  content: "\ed2b";
+}
+
+.ico-android-component:before {
+  content: "\ed2c";
+}
+
+.ico-advertisement-disable:before {
+  content: "\ed2d";
+}
+
+.ico-face-devil:before {
+  content: "\ed20";
+}
+
+.ico-face-amazed:before {
+  content: "\ed21";
+}
+
+.ico-face-tongue:before {
+  content: "\ed22";
+}
+
+.ico-face-cool:before {
+  content: "\ed23";
+}
+
+.ico-face-anger:before {
+  content: "\ed24";
+}
+
+.ico-face-depressed:before {
+  content: "\ed25";
+}
+
+.ico-face-playful:before {
+  content: "\ed26";
+}
+
+.ico-language:before {
+  content: "\ed19";
+}
+
+.ico-face-simper:before {
+  content: "\ed1a";
+}
+
+.ico-face-wink:before {
+  content: "\ed1b";
+}
+
+.ico-face-smile:before {
+  content: "\ed1c";
+}
+
+.ico-pyramid:before {
+  content: "\ed1d";
+}
+
+.ico-face-stupid:before {
+  content: "\ed1e";
+}
+
+.ico-lighthouse:before {
+  content: "\ed1f";
+}
+
+.ico-square-arrow-up:before {
+  content: "\ed11";
+}
+
+.ico-notice:before {
+  content: "\ed12";
+}
+
+.ico-square-arrow-left:before {
+  content: "\ed13";
+}
+
+.ico-puzzle:before {
+  content: "\ed14";
+}
+
+.ico-reverse:before {
+  content: "\ed15";
+}
+
+.ico-square-arrow-down:before {
+  content: "\ed16";
+}
+
+.ico-greatwall:before {
+  content: "\ed17";
+}
+
+.ico-square-arrow-right:before {
+  content: "\ed18";
+}
+
+.ico-yuanbao:before {
+  content: "\ed0a";
+}
+
+.ico-subtitle:before {
+  content: "\ed0b";
+}
+
+.ico-translate:before {
+  content: "\ed0c";
+}
+
+.ico-xrp:before {
+  content: "\ed0d";
+}
+
+.ico-terminal:before {
+  content: "\ed0e";
+}
+
+.ico-tent:before {
+  content: "\ed0f";
+}
+
+.ico-foldfan:before {
+  content: "\ed10";
+}
+
 .ico-camera-action:before {
   content: "\ed09";
 }

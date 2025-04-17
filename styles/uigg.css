@@ -41,7 +41,7 @@ ul,li {list-style: none;}
 ul {overflow: hidden;}
 hr {border-top-width: 1px;}
 z {display: inline-block;}
-u {flex: 1;}
+u {flex: 1;min-width: 0;}
 
 ::selection {background-color: var(--333);color: var(--ccc);text-shadow: none;}
 ::-webkit-scrollbar {background-color: transparent;width: 10px;}
@@ -500,8 +500,7 @@ tip > * {padding: 5px;}
 }
 
 /* nav */
-nav {width: 100%;position: fixed;left: 0;bottom: 0;right: 0;margin: auto;z-index: 3;background-color: white;filter: drop-shadow(0 0 6px var(--000-1));max-width: 640px;}
-nav ul {display: flex;overflow: inherit;}
+nav {width: 100%;position: fixed;left: 0;bottom: 0;right: 0;margin: auto;z-index: 3;background-color: white;filter: drop-shadow(0 0 6px var(--000-1));max-width: 640px;display: flex;overflow: inherit;}
 nav li {width: 100%;padding: 8px;position: relative;z-index: 1;}
 nav li a {display: block;padding: 8px 0;position: relative;border-radius: 5px;}
 nav li .ico {display: block;margin: 0 auto 5px;font-size: 32px;}
@@ -901,7 +900,7 @@ name,
 name h2,
 name-logo,
 name-search {display: flex;align-items: center;justify-content: center;}
-name {height: 80px;position: relative;z-index: 1;box-shadow: 0 0 6px var(--000-1);background-color: white;}
+name {height: 80px;position: relative;z-index: 1;box-shadow: 0 0 6px var(--000-1);background-color: white;z-index: 2;}
 name h2,
 name h3,
 name-logo,
@@ -1013,12 +1012,12 @@ rate[circular] i.active::before {content:'\ec52';}
 notify {position: fixed;top: 0;right: 0;margin: 0 10px;z-index: 999;}
 notify.bottom {top: auto;bottom: 0;}
 notify li {width: 300px;padding: 30px 20px 20px;border-radius: 5px;background-color: white;box-shadow: 0 3px 6px var(--000-1);position: relative;margin: 10px 0;transition: .3s;}
-notify li x.ico {position: absolute;top: 0;right: 0;margin:  3px;}
+notify li x.ico {position: absolute;top: 0;right: 0;margin:  5px;}
 
 @media(max-width:640px){
     notify {margin: 0 .1rem;}
-    notify li {width: 4rem;padding: .4rem .15rem .15rem;border-radius: .05rem;margin: .1rem 0;}
-    notify li x.ico {margin: .04rem;}
+    notify li {width: 4rem;padding: .4rem .15rem .15rem;border-radius: .08rem;margin: .1rem 0;}
+    notify li x.ico {margin: .05rem;}
 }
 
 /* empty */
