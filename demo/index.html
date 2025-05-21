@@ -199,6 +199,11 @@ class="main"
 <xmp>
 class="mobile"
 </xmp>
+            <h5>mobile mode</h5>
+            <p>If you need to force the mobile mode, add the javascript to the DOM</p>
+<xmp>
+mobile(true)
+</xmp>
             <h5>unit conversion</h5>
             <p>UIGG uses <span>rem</span> as the response unit, and the calculation rule is <span>100px = 1rem</span></p>
 
@@ -1392,21 +1397,13 @@ pause
             <h3>touch</h3>
             <p>Warning: Touch is only available on the mobile terminal</p>
             <h5>code</h5>
-            <p>Add the code to the DOM</p>
+            <p>Add the javascript to the DOM</p>
 <xmp>
-class="touch-left"
-class="touch-right"
-class="touch-up"
-class="touch-down"
-class="touch-all"
-
-<script>
-    $('.touch-up').bindmove('touchup','event')
-    $('.touch-down').bindmove('touchdown','event')
-    $('.touch-left').bindmove('touchleft','event')
-    $('.touch-right').bindmove('touchright','event')
-    $('.touch-all').bindmove('touchall','event')
-</script>
+$('').bindmove('touchup',function(){})
+$('').bindmove('touchdown',function(){})
+$('').bindmove('touchleft',function(){})
+$('').bindmove('touchright',function(){})
+$('').bindmove('touchall',function(){})
 </xmp>
             <h5>effect display</h5>
             <iframe src="touch.html" height="400"></iframe>

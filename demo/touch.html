@@ -23,25 +23,40 @@
 
 <!--
 priority: all>left>right>down>up
-Up and down can be used at the same time
-Left and right can be used at the same time
-This function can only be used in jQuery environment
 -->
 
 <section>
-    <div class="touch-left touch-right"><i class="ico ico-angle-left"></i><i class="ico ico-angle-right"></i></div>
-    <div class="touch-up touch-down"><i class="ico ico-angle-top"></i><i class="ico ico-angle-bottom"></i></div>
+    <div class="touch">
+        <i class="ico ico-angle-left"></i>
+        <i class="ico ico-angle-right"></i>
+        <i class="ico ico-angle-top"></i>
+        <i class="ico ico-angle-bottom"></i>
+    </div>
     <div class="touch-all"><i class="ico ico-angle-enlarge"></i></div>
 </section>
 
 <!----------------------------------------------------------------------------------------->
 
 <script>
-    $('.touch-up').bindmove('touchup','$("i").hide();$(".ico-angle-top").show()')
-    $('.touch-down').bindmove('touchdown','$("i").hide();$(".ico-angle-bottom").show()')
-    $('.touch-left').bindmove('touchleft','$("i").hide();$(".ico-angle-left").show()')
-    $('.touch-right').bindmove('touchright','$("i").hide();$(".ico-angle-right").show()')
-    $('.touch-all').bindmove('touchall','$(".ico-angle-enlarge").show()')
+    $('.touch').bindmove('touchup',function(){
+        $("i").hide()
+        $(".ico-angle-top").show()
+    })
+    $('.touch').bindmove('touchdown',function(){
+        $("i").hide()
+        $(".ico-angle-bottom").show()
+    })
+    $('.touch').bindmove('touchleft',function(){
+        $("i").hide()
+        $(".ico-angle-left").show()
+    })
+    $('.touch').bindmove('touchright',function(){
+        $("i").hide()
+        $(".ico-angle-right").show()
+    })
+    $('.touch-all').bindmove('touchall',function(){
+        $(".ico-angle-enlarge").show()
+    })
 </script>
 
 </body>
