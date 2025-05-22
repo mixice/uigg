@@ -183,9 +183,9 @@ $(function(){
 $(function(){
     $('pop').addClass('anime-fade-in').append('<x></x>')
     .each(function(){$(this).find('pop-sider').addClass($(this).attr('right') === '' ? 'anime-fade-in-right' : 'anime-fade-in-left')})
+    .each(function(){$(this).find('pop-choice').addClass($(this).attr('top') === '' ? 'anime-fade-in-down' : 'anime-fade-in-up')})
     .on('click', '.close, > x', function(){$(this).parents('pop').hide()})
     $('pop-main').addClass('anime-zoom-in').wrap('<div class="full center"></div>')
-    $('pop-choice').addClass('anime-fade-in-up')
     $('pop-title .close').addClass('ico').before('<u></u>')
     $('a[pop]').click(function(){$(`pop[pop="${$(this).attr('pop')}"]`).show()})
 });
