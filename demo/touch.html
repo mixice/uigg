@@ -38,23 +38,23 @@ priority: all>left>right>down>up
 <!----------------------------------------------------------------------------------------->
 
 <script>
-    $('.touch').bindmove('touchup',function(){
+    $('.touch').touch('up',function(){
         $("i").hide()
         $(".ico-angle-top").show()
     })
-    $('.touch').bindmove('touchdown',function(){
+    $('.touch').touch('down',function(){
         $("i").hide()
         $(".ico-angle-bottom").show()
     })
-    $('.touch').bindmove('touchleft',function(){
+    $('.touch').touch('left',function(){
         $("i").hide()
         $(".ico-angle-left").show()
     })
-    $('.touch').bindmove('touchright',function(){
+    $('.touch').touch('right',function(){
         $("i").hide()
         $(".ico-angle-right").show()
     })
-    $('.touch-all').bindmove('touchall',function(){
+    $('.touch-all').touch('all',function(){
         $(".ico-angle-enlarge").show()
     })
 </script>

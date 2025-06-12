@@ -57,22 +57,32 @@ $(function(){
 })
 
 //----------------------------------------------------------------------------------touch
-$.fn.bindmove = function(direction, callback){
-    let startX, startY
-    $(this).on('touchstart', function(e){
-        if(e.cancelable && !e.defaultPrevented) e.preventDefault()
-        const touch = e.originalEvent.changedTouches[0]
-        startX = touch.pageX
-        startY = touch.pageY
-    })
-    $(this).on('touchend', function(e){
-        if(e.cancelable && !e.defaultPrevented) e.preventDefault()
-        const touch = e.originalEvent.changedTouches[0]
-        const deltaX = touch.pageX - startX
-        const deltaY = touch.pageY - startY
-        if(Math.abs(deltaX) < 30 && Math.abs(deltaY) < 30) return
-        if((direction === 'touchall') || (deltaX > 30 && direction === 'touchright') || (deltaX < -30 && direction === 'touchleft') || (deltaY > 30 && direction === 'touchdown') || (deltaY < -30 && direction === 'touchup')) callback()
-    })
+$.fn.touch = function(direction, callback, options = {}){
+    const config = {
+        threshold: 100,
+        preventDefault: true,
+        ...options
+    }
+    let startPos = null
+    const isTouchDevice = 'ontouchstart' in window
+    const eventType = isTouchDevice ? {start: 'touchstart',end: 'touchend'} : {start: 'mousedown',end: 'mouseup'}
+    function handleStart(e){
+        if(config.preventDefault && e.cancelable) e.preventDefault()
+        const point = isTouchDevice ? e.touches[0] : e
+        startPos = { x: point.pageX, y: point.pageY }
+    }
+    function handleEnd(e){
+        if(!startPos) return
+        if(config.preventDefault && e.cancelable) e.preventDefault()
+        const point = isTouchDevice ? (e.changedTouches ? e.changedTouches[0] : e.touches[0]) : e
+        const deltaX = point.pageX - startPos.x
+        const deltaY = point.pageY - startPos.y
+        startPos = null
+        if (Math.abs(deltaX) < config.threshold && Math.abs(deltaY) < config.threshold) return
+        const isDirectionMatch = direction === 'all' || (direction === 'left' && deltaX < -config.threshold) || (direction === 'right' && deltaX > config.threshold) || (direction === 'up' && deltaY < -config.threshold) || (direction === 'down' && deltaY > config.threshold)
+        if (isDirectionMatch) callback()
+    }
+    return this.on(eventType.start, handleStart).on(eventType.end, handleEnd)
 };
 
 //----------------------------------------------------------------------------------name

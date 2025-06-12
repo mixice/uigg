@@ -103,6 +103,7 @@
                     <a class="smooth" href="#title">title</a>
                     <a class="smooth" href="#toggle">toggle</a>
                     <a class="smooth" href="#top">top</a>
+                    <a class="smooth" href="#touch">touch</a>
                 </fold-cont>
             </fold-group>
             <fold-group>
@@ -111,7 +112,6 @@
                     <a class="smooth" href="#name">name</a>
                     <a class="smooth" href="#nav">nav</a>
                     <a class="smooth" href="#music">music</a>
-                    <a class="smooth" href="#touch">touch</a>
                 </fold-cont>
             </fold-group>
             <fold-group>
@@ -1313,6 +1313,21 @@ class="top btn"
             <iframe src="top.html"></iframe>
             <a class="btn shadow" href="top.html" target="_blank">view</a>
         </div>
+        <div class="cont" id="touch">
+            <h3>touch</h3>
+            <h5>code</h5>
+            <p>Add the javascript to the DOM</p>
+<xmp>
+$('').touch('up',function(){})
+$('').touch('down',function(){})
+$('').touch('left',function(){})
+$('').touch('right',function(){})
+$('').touch('all',function(){})
+</xmp>
+            <h5>effect display</h5>
+            <iframe src="touch.html" height="400"></iframe>
+            <a class="btn shadow" href="touch.html" target="_blank">view</a>
+        </div>
         <h2><i class="ico ico-phone-ios"></i>Mobile terminal</h2>
         <div class="cont" id="name">
             <h3>name</h3>
@@ -1392,22 +1407,6 @@ pause
             <h5>effect display</h5>
             <iframe src="music.html" height="150"></iframe>
             <a class="btn shadow" href="music.html" target="_blank">view</a>
-        </div>
-        <div class="cont" id="touch">
-            <h3>touch</h3>
-            <p>Warning: Touch is only available on the mobile terminal</p>
-            <h5>code</h5>
-            <p>Add the javascript to the DOM</p>
-<xmp>
-$('').bindmove('touchup',function(){})
-$('').bindmove('touchdown',function(){})
-$('').bindmove('touchleft',function(){})
-$('').bindmove('touchright',function(){})
-$('').bindmove('touchall',function(){})
-</xmp>
-            <h5>effect display</h5>
-            <iframe src="touch.html" height="400"></iframe>
-            <a class="btn shadow" href="touch.html" target="_blank">view</a>
         </div>
         <h2><i class="ico ico-usb"></i>Internal components</h2>
         <div class="cont" id="admin">
