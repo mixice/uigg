@@ -219,7 +219,7 @@ if(isMobileView()) $('menu-cont a').click(function(){$('menu-cont').hide()})
 
 //----------------------------------------------------------------------------------toggle
 $(function(){
-    const toggleSelectors = ['o.checkbox', 'o.checkbox-done', 'o.checkbox-cancel', 'o.favorite', 'o.star', 'o.visibility', 'o.password', 'o.mic', 'o.volume', 'o.muzak', 'o.phonecard', 'o.telecamera', 'o.camera', 'o.aim', 'o.semaphore', 'o.suitcase', 'o.light', 'o.thumb-up', 'o.thumb-down', 'o.devicerotate', 'o.thumbtack', 'o.bell', 'o.place', 'o.link', 'o.blur', 'o.toggle']
+    const toggleSelectors = ['o.checkbox', 'o.checkbox-done', 'o.checkbox-cancel', 'o.favorite', 'o.star', 'o.visibility', 'o.password', 'o.mic', 'o.volume', 'o.muzak', 'o.phonecard', 'o.cinema', 'o.camera', 'o.aim', 'o.semaphore', 'o.suitcase', 'o.light', 'o.thumb-up', 'o.thumb-down', 'o.devicerotate', 'o.thumbtack', 'o.bell', 'o.place', 'o.link', 'o.blur', 'o.toggle']
     $(toggleSelectors.join(',')).click(function(){$(this).toggleClass('active')})
     $(document).on('click', 'o.radio,o.radio-done', function(){
         $(this).closest('.parent').find('o.radio,o.radio-done').removeClass('active')
@@ -515,19 +515,10 @@ $(function(){
 
 //----------------------------------------------------------------------------------clue
 $(function(){
-    $('[title]').hover(function(){
-        const element = $(this)
-        if(element.attr('clue') === undefined){
-            const titleText = element.attr('title')
-            element.attr('clue', titleText).append(`<clue class="corner anime-fade-in">${titleText}</clue>`).removeAttr('title')
-            const clue = element.find('clue'),
-                clueWidth = clue.width(),
-                selfWidth = element.width()
-            if(clueWidth > selfWidth){
-                const clueLeft = -(clueWidth - selfWidth) / 2 - 10
-                clue.css('left', clueLeft)
-            }
-        }
+    $('[clue]').each(function(){
+        const $element = $(this)
+        const titleValue = $element.attr('title')
+        if(titleValue && titleValue.trim() !== '') $element.attr('clue', titleValue).removeAttr('title')
     })
 });
 

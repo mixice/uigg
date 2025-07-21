@@ -581,8 +581,8 @@ o.muzak:after {content: '\e98c';}
 o.muzak.active:after {content: '\e990';}
 o.phonecard:after {content: '\e9ab';}
 o.phonecard.active:after {content: '\e9a8';}
-o.telecamera:after {content: '\eb20';}
-o.telecamera.active:after {content: '\eb23';}
+o.cinema:after {content: '\e7c2';}
+o.cinema.active:after {content: '\eb20';}
 o.camera:after {content: '\e7be';}
 o.camera.active:after {content: '\e7c0';}
 o.aim:after {content: '\e70f';}
@@ -1056,7 +1056,7 @@ chat s {width: 50px;height: 50px;display: inline-block;background-size: 90%;vert
 chat chat-title .ico:hover,
 chat chat-tool .ico:hover {background: var(--eee);}
 chat .avatar {width: 50px;height: 50px;}
-chat pop img {max-height: 100%;}
+chat pop img {max-height: 90%;max-width: 90%;}
 chat aside {word-break: break-all;}
 chat aside * {white-space: normal;}
 chat aside img {max-width: 200px;cursor: pointer;min-width: 50px;min-height: 50px;}
@@ -1095,7 +1095,7 @@ chat-message li aside {background-color: var(--f7);border-radius: 0 10px 10px 10
 chat-message li.mine {}
 chat-message li.mine .avatar {left: auto;right: 0;}
 chat-message li.mine cite {text-align: right;}
-chat-message li.mine aside {background-color: aliceblue;border-radius: 10px 0 10px 10px;float: right;}
+chat-message li.mine aside {border-radius: 10px 0 10px 10px;float: right;}
 
 chat-tool {height: 50px;position: relative;}
 chat-tool > a {float: left;position: relative;}
@@ -1193,15 +1193,14 @@ crumb li a:hover {color: var(--color);}
 }
 
 /* clue */
-clue {position: absolute;z-index: 1;top: calc(100% + 10px);left: 0;right: 0;margin: auto;background-color: var(--000-8);border-radius: 5px;display: none;text-align: center;width: fit-content;min-width: 70px;max-width: 300px;padding: 5px 10px;word-break: break-all;font-size: 14px;font-weight: normal;text-transform: inherit;color: white;line-height: 1.5;}
-clue.corner {position: absolute;}
-clue.corner::after {border-width: 0 10px 10px 10px;border-bottom-color: var(--000-8);top: -10px;left: 0;right: 0;}
-*[clue] {position: relative;cursor: pointer;}
-*[clue]:hover clue {display: block;}
+[clue] {position: relative;cursor: help;}
+[clue]:hover::after{content: attr(clue);position: absolute;bottom: 100%;left: 50%;transform: translateX(-50%);background-color: var(--color);color: white;padding: 5px 10px;border-radius: 5px;z-index: 3;font-size: 14px;font-weight: normal;max-width: min(300px, calc(100vw - 20px));width: max-content;}
+[clue][bottom]:hover::after {bottom: auto;top: 100%;}
+[clue][right]:hover::after {bottom: auto;top: 50%;left: 100%;transform: translate(0,-50%);}
+[clue][left]:hover::after {bottom: auto;top: 50%;left: auto;right: 100%;transform: translate(0,-50%);}
 
 @media(max-width:640px){
-    clue {top: calc(100% + .15rem);border-radius: .1rem;min-width: 1rem;max-width: 3rem;font-size: .18rem;}
-    clue.corner::after {border-width: 0 .1rem .1rem .1rem;top: -.09rem;}
+    [clue]:hover::after{padding: .05rem .1rem;border-radius: .05rem;font-size: .16rem;max-width: min(3rem, calc(100vw - .2rem));}
 }
 
 /* reminder */
@@ -1280,15 +1279,16 @@ article ul li {list-style: disc;line-height: 2;}
 /* alert */
 alert {position: fixed;width: 100%;height: 100%;top:0;left: 0;z-index: 3;background-color: var(--000-2);}
 alert-main {max-width: 500px;width: 90%;background-color: white;border-radius: 10px;margin: 100px auto;padding: 20px;}
-alert-main input {border: 1px var(--eee) solid;text-align: center;margin: 10px 0;}
-alert-cont {padding: 20px;text-align: center;}
+alert-main input {border: 1px var(--eee) solid;text-align: center;margin-bottom: 20px;}
+alert-cont {padding: 30px 20px;text-align: center;}
 alert-solve {display: flex;align-items: center;justify-content: center;}
 alert-solve .btn {margin: 10px;min-width: 100px;}
 
 @media(max-width:640px){
-    alert-main {border-radius: .1rem;margin: 1rem auto;padding: .1rem;}
-    alert-cont {padding: .2rem;}
-    alert-solve .btn {margin: .1rem;min-width: 1rem;}
+    alert-main {border-radius: .1rem;margin: 1rem auto;padding: .2rem;}
+    alert-main input {margin-bottom: .2rem;}
+    alert-cont {padding: .3rem .2rem;}
+    alert-solve .btn {margin: .1rem;min-width: 1.2rem;font-size: .18rem;height: .6rem;}
 }
 
 /* notice */
