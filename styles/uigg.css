@@ -876,6 +876,7 @@ tab-group.active {display: block;}
 .swiper-pagination .swiper-pagination-bullet-active {background-color: var(--color);}
 .swiper-anime {display: none;animation-delay: .3s;}
 .swiper-animate .swiper-slide-active .swiper-anime {display: block;}
+.swiper-pagination-vertical.swiper-pagination-bullets, .swiper-vertical > .swiper-pagination-bullets {transform: translate3d(0, 0, 0);}
 
 .parallax-bg {position: absolute;left: 0;top: 0;width: 130%;height: 100%;}
 .lug-thumbs a {display: inline-block;}
@@ -1232,6 +1233,7 @@ reminder > * {padding: 5px;}
 .tox .tox-tbtn:active,
 .tox .tox-tbtn:focus,
 .tox .tox-collection--list .tox-collection__item--active {background: var(--eee) !important;}
+.tox .tox-collection--list .tox-collection__item--active:not(.tox-collection__item--state-disabled) {color: inherit !important;}
 .tox .tox-tbtn--enabled, .tox .tox-tbtn--enabled:hover {background: var(--ddd) !important;}
 .tox .tox-split-button:hover {box-shadow: 0 0 0 !important;}
 .tox .tox-split-button:focus {background: var(--ddd) !important;}
