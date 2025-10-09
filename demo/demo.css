@@ -23,7 +23,7 @@ fold-cont a.active {background-color: var(--eee);}
 .absolute-logic {width: 300px;display: grid;grid-template-columns: repeat(3,1fr);grid-gap: 10px;}
 .absolute-logic a {height: 100px;background-color: var(--f7);display: flex;align-items: center;justify-content: center;font-size: 40px;color: var(--ddd);}
 
-
+.wide-logic a {display: block;background-color: var(--f7);padding: 10px;margin: 10px 0;}
 
 
 @media(max-width:640px){
@@ -44,6 +44,8 @@ fold-cont a.active {background-color: var(--eee);}
 
     .absolute-logic {width: 3rem;grid-gap: .1rem;}
     .absolute-logic a {height: 1rem;font-size: .4rem;}
+
+    .wide-logic a {padding: .1rem;margin: .1rem 0;}
 }
 
 

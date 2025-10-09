@@ -36,6 +36,34 @@ setTimeout(() => $('load').hide(), 6000);
 //----------------------------------------------------------------------------------browser
 /MSIE|Trident/.test(navigator.userAgent) && $(function(){language === 'zh-CN' ? $('body').html('<msie>请使用其他浏览器</msie>') : $('body').html('<msie>please use another browser</msie>')});
 
+//----------------------------------------------------------------------------------lang
+function langRead(targetObj,data){
+    let langVal = targetObj.split('-'),
+        dataStr = 'data'
+    for(i = 0;i < langVal.length - 1;i++){dataStr += '.' + langVal[i] + '[0]'}
+    dataStr += '.' + langVal[langVal.length - 1]
+    return eval(dataStr)
+}
+let langSwitch = 0
+$(function(){
+    let langType = getCookie('lang') == '' ? 'en' : getCookie('lang')
+    function lang(){
+        if(langSwitch === 0){if($('[lang]').length === 0) return}
+        $.get(`../lang/${langType}.json`,function(data){
+            $('[lang]').each(function(){$(this).html(langRead($(this).attr('lang'),data))})
+            $('[lang-placeholder]').each(function(){$(this).attr('placeholder',langRead($(this).attr('lang-placeholder'),data))})
+            $('[lang-value]').each(function(){$(this).attr('value',langRead($(this).attr('lang-value'),data))})
+            $('[lang-content]').each(function(){$(this).attr('content',langRead($(this).attr('lang-content'),data))})
+        })
+    }
+    lang()
+    $('[lang-set]').click(function(){
+        langType = $(this).attr('lang-set')
+        setCookie('lang', langType, '72')
+        lang()
+    })
+});
+
 //----------------------------------------------------------------------------------music
 $(function(){
     const m=$('music').addClass('ico').find('audio').attr({id:'music',autoplay:'',loop:''}).end()
@@ -483,34 +511,6 @@ $(function(){
 //----------------------------------------------------------------------------------crumb
 $(function(){
     $('crumb li').first().prepend('<i class="ico ico-home"></i>').end().not(':first').prepend('<i class="ico ico-alone-right"></i>')
-});
-
-//----------------------------------------------------------------------------------lang
-function langRead(targetObj,data){
-    let langVal = targetObj.split('-'),
-        dataStr = 'data'
-    for(i = 0;i < langVal.length - 1;i++){dataStr += '.' + langVal[i] + '[0]'}
-    dataStr += '.' + langVal[langVal.length - 1]
-    return eval(dataStr)
-}
-let langSwitch = 0
-$(function(){
-    let langType = getCookie('lang') == '' ? 'en' : getCookie('lang')
-    function lang(){
-        if(langSwitch === 0){if($('[lang]').length === 0) return}
-        $.get(`../lang/${langType}.json`,function(data){
-            $('[lang]').each(function(){$(this).html(langRead($(this).attr('lang'),data))})
-            $('[lang-placeholder]').each(function(){$(this).attr('placeholder',langRead($(this).attr('lang-placeholder'),data))})
-            $('[lang-value]').each(function(){$(this).attr('value',langRead($(this).attr('lang-value'),data))})
-            $('[lang-content]').each(function(){$(this).attr('content',langRead($(this).attr('lang-content'),data))})
-        })
-    }
-    lang()
-    $('[lang-set]').click(function(){
-        langType = $(this).attr('lang-set')
-        setCookie('lang', langType, '72')
-        lang()
-    })
 });
 
 //----------------------------------------------------------------------------------clue
