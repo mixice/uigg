@@ -21,6 +21,10 @@
   margin: auto;
 }
 
+.ico-whatsapp:before {
+  content: "\ece2";
+}
+
 .ico-bnb:before {
   content: "\ed27";
 }
@@ -325,7 +329,7 @@
   content: "\eb3e";
 }
 
-.ico-stacking:before {
+.ico-stacking1:before {
   content: "\ecdf";
 }
 
@@ -363,10 +367,6 @@
 
 .ico-pinterest:before {
   content: "\ece1";
-}
-
-.ico-whatapp:before {
-  content: "\ece2";
 }
 
 .ico-taopiaopiao:before {
