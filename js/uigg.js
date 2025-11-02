@@ -75,6 +75,14 @@ $(function(){
     typeof WeixinJSBridge!=='undefined'?WeixinJSBridge.invoke('getNetworkType',{},()=>{$('#music')[0].play().catch(e=>console.log('WeChat play failed:',e))}):document.addEventListener('WeixinJSBridgeReady',()=>{$('#music')[0].play().catch(e=>console.log('WeChat play failed:',e))},!1)
 });
 
+//----------------------------------------------------------------------------------audio
+$(document).on('click', '[class*="audio-"]', function(){
+    var audioName = $(this).attr('class').match(/audio-(\w+)/)[1],
+        audioId = 'audio-' + audioName
+    if(!$('#' + audioId).length){$('body').append('<audio id="' + audioId + '" src="//ui.gg/lib/media/' + audioName + '.mp3"></audio>')}
+    $('#' + audioId)[0].play()
+});
+
 //----------------------------------------------------------------------------------fullscreen
 $(function(){
     $('.fullscreen').addClass('ico').on('click',function(){
@@ -242,8 +250,8 @@ $(function(){
         })
     }
     $('.menu-cont a').click(function(){$('.menu-cont').hide()})
-});
-if(isMobileView()) $('menu-cont a').click(function(){$('menu-cont').hide()})
+})
+if(isMobileView()) $('menu-cont a').click(function(){$('menu-cont').hide()});
 
 //----------------------------------------------------------------------------------toggle
 $(function(){

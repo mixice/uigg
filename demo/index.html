@@ -22,12 +22,13 @@
 <!-- <load></load> -->
 <style>
     .cont iframe {width: 100%;border: 1px var(--eee) solid;margin: 5px 0;}
-    .cont xmp {color: var(--tomato);white-space: pre-wrap;word-break: break-all;cursor: pointer;background: var(--f7);padding: 0 20px 20px;margin: 5px 0;}
+    .cont xmp {color: var(--tomato);white-space: pre-wrap;word-break: break-all;cursor: pointer;background-color: var(--f7);padding: 0 20px 20px;margin: 5px 0;}
     .cont h3 {padding: 20px 0;margin-bottom: 10px;border-bottom-width: 1px;}
     .cont h5 {padding: 10px 0;}
     .cont p {padding: 10px 0;}
     .cont p a,
     .cont p span {color: var(--sapphire);background-color: var(--f7);padding: 5px 10px;border-radius: 2px;margin: 0 5px;}
+    .cont p span.warning {background-color: var(--red);color: white;}
     .cont p a:hover {background-color: var(--sapphire);color: white;}
     .cont .btn {width: 200px;margin: 10px 0;font-weight: bold;}
     .cont table th,
@@ -68,6 +69,7 @@
                     <a class="smooth" href="#alert">alert</a>
                     <a class="smooth" href="#alone">alone</a>
                     <a class="smooth" href="#anime">anime</a>
+                    <a class="smooth" href="#audio">audio</a>
                     <a class="smooth" href="#button">button</a>
                     <a class="smooth" href="#clue">clue</a>
                     <a class="smooth" href="#cookie">cookie</a>
@@ -436,6 +438,31 @@ class="reverse"
             <iframe src="anime.html" height="400"></iframe>
             <a class="btn shadow" href="anime.html" target="_blank">view</a>
         </div>
+        <div class="cont" id="audio">
+            <h3>audio</h3>
+            <h5>code</h5>
+            <p>Add the class to the DOM</p>
+<xmp>
+class="audio-error"
+class="audio-right"
+class="audio-trigger"
+class="audio-brilliant"
+class="audio-notify"
+class="audio-button"
+class="audio-aeolian"
+class="audio-bounce"
+class="audio-boxing"
+class="audio-ding"
+class="audio-drip"
+class="audio-drum"
+class="audio-dulcimer"
+class="audio-wave"
+class="audio-audio"
+</xmp>
+            <h5>effect display</h5>
+            <iframe src="audio.html" height="400"></iframe>
+            <a class="btn shadow" href="audio.html" target="_blank">view</a>
+        </div>
         <div class="cont" id="button">
             <h3>button</h3>
             <h5>code</h5>
@@ -503,7 +530,7 @@ getCookie('name')
         </div>
         <div class="cont" id="copy">
             <h3>copy</h3>
-            <p>Warning: This function can work normally only after obtaining user clipboard authorization or under the <span>https</span> security domain</p>
+            <p><span class="warning">Warning :</span> This function can work normally only after obtaining user clipboard authorization or under the <span>https</span> security domain</p>
             <h5>code</h5>
             <p>Add the attribute to the DOM</p>
 <xmp>
@@ -1063,7 +1090,7 @@ notify('notify','bottom','5000')
         </div>
         <div class="cont" id="random">
             <h3>random</h3>
-            <p>Warning: When the defined element is missing the default value, the remote value will be obtained automatically</p>
+            <p><span class="warning">Warning :</span> When the defined element is missing the default value, the remote value will be obtained automatically</p>
             <h5>code</h5>
             <p>Add the attribute to the DOM, When the element is <span>img</span> will be given <span>src</span> and <span></span> ,Other elements will be given <span>background-image</span></p>
 <xmp>
@@ -1457,7 +1484,7 @@ pause
             <p>You can go to swiper to see more parameters. UIGG only provides a few common models</p>
             <a class="btn shadow" href="//swiperjs.com/swiper-api" target="_blank">Swiper API</a>
             <h5>about loop</h5>
-            <p>Amount of slides in loop mode should be at least 2x of <span>slidesPerView</span> value</p>
+            <p><span class="warning">Warning :</span> Amount of slides in loop mode should be at least 2x of <span>slidesPerView</span> value</p>
             <h5>code</h5>
             <p>Add the style and javascript to the <span>head</span></p>
 <xmp>
