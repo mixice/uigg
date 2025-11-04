@@ -18,7 +18,7 @@ fold-cont a.active {background-color: var(--eee);}
 
 .contant {flex: 1;min-width: 0;height: 100%;overflow: auto;padding: 30px;}
 .contant h2 {padding: 20px 0;font-size: 40px;font-weight: normal;display: flex;align-items: center;}
-.contant h2 i {font-size: 40px;float: left;margin: 0 10px 0 0;}
+.contant h2 i {font-size: 48px;float: left;margin: 0 10px 0 0;}
 
 .absolute-logic {width: 300px;display: grid;grid-template-columns: repeat(3,1fr);grid-gap: 10px;}
 .absolute-logic a {height: 100px;background-color: var(--f7);display: flex;align-items: center;justify-content: center;font-size: 40px;color: var(--ddd);}
@@ -40,7 +40,7 @@ fold-cont a.active {background-color: var(--eee);}
 
     .contant {padding: .2rem;}
     .contant h2 {padding: .2rem 0;font-size: .5rem;}
-    .contant h2 i {font-size: .5rem;margin: 0 .1rem 0 0;}
+    .contant h2 i {font-size: .48rem;margin: 0 .1rem 0 0;}
 
     .absolute-logic {width: 3rem;grid-gap: .1rem;}
     .absolute-logic a {height: 1rem;font-size: .4rem;}
