@@ -17,7 +17,7 @@ dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tf
 article, aside, canvas, details, figcaption, figure, footer, header, hgroup, nav, section, summary,
 button, input, select, textarea, optgroup, time, mark, audio, video, marquee,
 menu, menu-cont, menu-group, menu-list, name, name-logo, name-search,
-tab, tab-list, tab-cont, tab-group, drop, drop-cont, drop-list,
+tab, tab-list, tab-cont, tab-group, drop, drop-cont, drop-list, choice, choice-list,
 chat, chat-title, chat-sider, chat-cont, chat-list, chat-message, chat-tool, chat-control, chat-tip,
 pop, pop-main, pop-title, pop-cont, pop-solve, pop-choice, pop-sider,
 alert, alert-main, alert-cont, alert-solve, hop, hop-cont, fold, fold-group, fold-title, fold-cont,
@@ -663,26 +663,37 @@ input[type="datetime-local"]::before,
 input[type="time"]::before,
 input[type="week"]::before,
 input[type="month"]::before,
-.select::after {position: absolute;right: 10px;font-family: ico !important;font-size: 24px;}
+choice::after,
+.select::after,
+.input i,
+.input o {position: absolute;right: 13px;top: 0;font-family: ico !important;font-size: 24px;line-height: 50px;}
 input[type="date"]::before {content: '\e7b2';}
 input[type="datetime-local"]::before {content: '\e7bc';}
 input[type="time"]::before {content: '\eb32';}
 input[type="week"]::before {content: '\e7b7';}
 input[type="month"]::before {content: '\e7bb';}
-input::before,
-.select::after {color: var(--color);}
+input::before {color: var(--color);}
+choice::after,
+.select::after {content: '\e70a';pointer-events: none;color: var(--color);}
 
+choice,
 .select,
 select,
 .input,
 input {width: 100%;height: 50px;position: relative;}
-.input i,
-.input o {line-height: 50px;position: absolute;top: 0;right: 10px;}
 textarea {width: 100%;padding: 10px;line-height: 1.6;min-height: 120px;resize: none;}
 input {padding: 0 10px;}
-.select::after {content: '\e70a';pointer-events: none;}
 .input input,
 select {padding: 0 50px 0 10px;}
+
+choice {position: relative;cursor: pointer;}
+choice x {position: fixed;width: 100vw;height: 100vh;left: 0;top: 0;display: none;}
+choice a {padding: 0 10px;width: 100%;height: 50px;display: flex;align-items: center;text-transform: capitalize;}
+choice-list {position: absolute;left: 0;top: 100%;background-color: white;box-shadow: 0 3px 6px var(--000-1);width: 100%;z-index: 1;display: none;}
+choice-list a:not(:last-child) {border-bottom: 1px var(--eee) solid;}
+choice-list a:hover {background-color: var(--color);color: white;}
+choice.active x,
+choice.active choice-list {display: block;}
 
 .form li > *,
 .form li > .parent > * {margin:5px;float: left;}
@@ -691,13 +702,13 @@ select {padding: 0 50px 0 10px;}
 .form .input,
 .form input,
 .form textarea {min-width: 0;}
+.form choice,
 .form select,
 .form input,
 .form textarea {background-color: var(--f7);}
 .form .input o,
 .form li .input input,
 .form li .select select {margin: 0;}
-.form {overflow: hidden;}
 .form span,
 .form cite,
 .form li,
@@ -712,9 +723,10 @@ select {padding: 0 50px 0 10px;}
 .form .btn span {margin: 0;}
 .form scaler input {margin: 0 10px;}
 
-.filter {overflow: hidden;margin-bottom: 20px;}
-.filter li {float: left;width: 20%;}
+.filter {margin-bottom: 20px;}
+.filter form {display: grid;grid-template-columns: repeat(5,1fr);}
 .filter li span:first-child {width: auto;}
+.filter li choice,
 .filter li input,
 .filter li .select {flex: 1;}
 
@@ -745,21 +757,28 @@ select {padding: 0 50px 0 10px;}
     input[type="time"]::before,
     input[type="week"]::before,
     input[type="month"]::before,
-    .select::after {right: .1rem;font-size: .32rem;}
+    choice::after,
+    .select::after,
+    .input i,
+    .input o {right: .15rem;font-size: .36rem;line-height: .7rem;}
 
+    choice,
     .select,
     select,
     .input,
     input {height: .7rem;}
-    .input i,
-    .input o {line-height: .7rem;}
     textarea {padding: .1rem;min-height: 2rem;}
     input {padding: 0 .1rem;}
     .input input,
     select {padding: 0 .7rem 0 .1rem;}
 
+    choice a {padding: 0 .1rem;height: .7rem;}
+    choice-list {box-shadow: 0 .03rem .06rem var(--000-1);}
+
     .form li > *,
     .form li > .parent > * {margin: 0;}
+    .form progress,
+    .form choice,
     .form .select,
     .form select,
     .form .input,
@@ -788,7 +807,7 @@ select {padding: 0 50px 0 10px;}
     .form scaler input {margin: 0;}
 
     .filter {margin-bottom: .2rem;}
-    .filter li {float: none;width: 100%;}
+    .filter form {display: grid;grid-template-columns: repeat(1,1fr);}
     .filter li span:first-child {width: 1rem;}
 
     .upload-group,

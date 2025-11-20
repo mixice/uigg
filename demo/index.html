@@ -831,6 +831,16 @@ class="font-tahoma"
             <div class="select wide-20"><select><option selected disabled>select</option><option>select</option></select></div>
             <cite>Lorem ipsum dolor sit amet</cite>
         </li>
+        <li><span>choice</span>
+            <choice class="wide-20">
+                <a>choice 1</a>
+                <choice-list>
+                    <a>choice 1</a>
+                    <a>choice 2</a>
+                </choice-list>
+            </choice>
+            <cite>Lorem ipsum dolor sit amet</cite>
+        </li>
         <li><span>robot</span>
             <input class="wide-10" type="text">
             <a class="code" uigg="color"><img uigg="color"></a>
@@ -1511,7 +1521,6 @@ pause
     <script>
         var swiper = new Swiper('.swiper-banner',{
             spaceBetween: 10,
-            centeredSlides: true,
             loop: true,
             keyboard: {enabled: true},
             autoplay: {

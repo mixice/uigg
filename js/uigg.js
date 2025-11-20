@@ -294,6 +294,9 @@ $(function(){
         $(this).css('color',$(this).attr('color'))
         $(this).css('--progress-color', $(this).css('color'))
     })
+    $('choice').append('<x></x>')
+    $('choice').click(function(){$(this).toggleClass('active')})
+    $('choice-list a').click(function(){$(this).parent().siblings('a').html($(this).html())})
 });
 
 //----------------------------------------------------------------------------------upload

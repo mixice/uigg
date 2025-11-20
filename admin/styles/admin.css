@@ -224,15 +224,15 @@ page a.active {background-color: var(--basic);box-shadow: 0 3px 5px var(--bright
 }
 
 /* form */
-input, select, textarea {border: 1px var(--light) solid;}
-input, .form .input, .form select, .form textarea {background-color: transparent;}
+input, select, textarea, .form choice {border: 1px var(--light) solid;}
+input, .form .input, .form select, .form textarea, .form choice {background-color: transparent;}
 input:not([readonly]):focus,
 textarea:not([readonly]):focus {box-shadow: var(--shadow);}
 o {color: var(--basic);}
 input[type="file"]::-webkit-file-upload-button,
 input[type="color"]::-webkit-color-swatch {border-radius: 100px;}
 
-.form {padding: 10px;overflow: hidden;}
+.form {padding: 10px;}
 .form li {margin: 0;}
 .form li input {background: none;}
 .form li input[readonly] {background: var(--flash);}
@@ -245,7 +245,7 @@ input[type="color"]::-webkit-color-swatch {border-radius: 100px;}
 .upload-add {background-color: var(--flash);color: var(--light);}
 
 @media(max-width:640px){
-    input, select, textarea {border: 0;}
+    input, select, textarea, .form choice {border: 0;}
     input:not([readonly]):focus,
     textarea:not([readonly]):focus {box-shadow: 0 0 0;}
     .form li {border-bottom-color: var(--light);}

@@ -166,10 +166,21 @@
                 </div>
                 <div class="item">
                     <div class="form filter">
-                        <li><span>input</span><input type="text"></li>
-                        <li><span>time</span><input type="date"></li>
-                        <li><span>select</span><div class="select"><select><option selected disabled>select</option><option>select</option></select></div></li>
-                        <li><a href="" class="btn">serach</a></li>
+                        <form>
+                            <li><span>input</span><input type="text"></li>
+                            <li><span>time</span><input type="date"></li>
+                            <li><span>select</span><div class="select"><select><option selected disabled>select</option><option>select</option></select></div></li>
+                            <li><span>choice</span>
+                                <choice>
+                                    <a>choice 1</a>
+                                    <choice-list>
+                                        <a>choice 1</a>
+                                        <a>choice 2</a>
+                                    </choice-list>
+                                </choice>
+                            </li>
+                            <li><a href="" class="btn">serach</a></li>
+                        </form>
                     </div>
                     <div class="table">
                         <table>
@@ -313,6 +324,16 @@
                             </li>
                             <li><span>select</span>
                                 <div class="select wide-20"><select><option selected disabled>select</option><option>select</option></select></div>
+                                <cite>Lorem ipsum dolor sit amet</cite>
+                            </li>
+                            <li><span>choice</span>
+                                <choice class="wide-20">
+                                    <a>choice 1</a>
+                                    <choice-list>
+                                        <a>choice 1</a>
+                                        <a>choice 2</a>
+                                    </choice-list>
+                                </choice>
                                 <cite>Lorem ipsum dolor sit amet</cite>
                             </li>
                             <li><span>robot</span>
