@@ -105,7 +105,7 @@ $.fn.touch = function(direction, callback, options = {}){
     function handleStart(e){
         if(config.preventDefault && e.cancelable) e.preventDefault()
         const point = isTouchDevice ? e.touches[0] : e
-        startPos = { x: point.pageX, y: point.pageY }
+        startPos = {x: point.pageX, y: point.pageY}
     }
     function handleEnd(e){
         if(!startPos) return

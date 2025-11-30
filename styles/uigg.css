@@ -891,6 +891,8 @@ tab-group.active {display: block;}
 .swiper-button-prev {left: 0;}
 .swiper-button-prev:after,
 .swiper-button-next:after {font-family: 'ico';content: '' !important;}
+.swiper-button-next svg,
+.swiper-button-prev svg {display: none;}
 .swiper-pagination {bottom: 20px !important;}
 .swiper-pagination .swiper-pagination-bullet-active {background-color: var(--color);}
 .swiper-anime {display: none;animation-delay: .3s;}
