@@ -197,7 +197,7 @@ page a.active {background-color: var(--basic);box-shadow: 0 3px 5px var(--bright
 /* table */
 .table {}
 .table table thead tr,
-.table table tfoot tr {background: var(--flash);}
+.table table tfoot tr {background-color: var(--flash);}
 .table table td,
 .table table th {max-width: 200px;}
 .table table thead td,
@@ -226,7 +226,7 @@ page a.active {background-color: var(--basic);box-shadow: 0 3px 5px var(--bright
 /* form */
 input, select, textarea, .form choice {border: 1px var(--light) solid;}
 input, .form .input, .form select, .form textarea, .form choice {background-color: transparent;}
-input:not([readonly]):focus,
+input:not([readonly]):not([type="range"]):focus,
 textarea:not([readonly]):focus {box-shadow: var(--shadow);}
 o {color: var(--basic);}
 input[type="file"]::-webkit-file-upload-button,

@@ -9,3 +9,11 @@ $(function(){
     //if(pageName == ''){pageName = ''}
     $('.sider a[href="'+pageName+'.php"]').parents('fold-group').addClass('active')
 })
+
+
+
+
+
+
+
+

@@ -30,8 +30,14 @@ function mobile(e){
 //mobile(false)
 
 //----------------------------------------------------------------------------------load
-window.onload = () => $('load').hide()
-setTimeout(() => $('load').hide(), 6000);
+//window.onload = () => $('load').hide()
+$(function(){
+    $('load').hide()
+    setTimeout(() => $('load').hide(), 6000)
+});
+
+//----------------------------------------------------------------------------------img
+$(function(){$('[lazy]').attr('loading"','lazy')});
 
 //----------------------------------------------------------------------------------browser
 /MSIE|Trident/.test(navigator.userAgent) && $(function(){language === 'zh-CN' ? $('body').html('<msie>请使用其他浏览器</msie>') : $('body').html('<msie>please use another browser</msie>')});

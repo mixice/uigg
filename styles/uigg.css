@@ -1216,13 +1216,13 @@ crumb li a:hover {color: var(--color);}
 
 /* clue */
 [clue] {position: relative;cursor: help;}
-[clue]:hover::after{content: attr(clue);position: absolute;bottom: 100%;left: 50%;transform: translateX(-50%);background-color: var(--color);color: white;padding: 5px 10px;border-radius: 5px;z-index: 3;font-size: 14px;font-weight: normal;max-width: min(300px, calc(100vw - 20px));width: max-content;}
+[clue]:hover::after{content: attr(clue);position: absolute;bottom: 100%;left: 50%;transform: translateX(-50%);background-color: var(--color);color: white;padding: 10px 15px;border-radius: 5px;z-index: 3;font-size: 14px;font-weight: normal;max-width: min(300px, calc(100vw - 20px));width: max-content;}
 [clue][bottom]:hover::after {bottom: auto;top: 100%;}
 [clue][right]:hover::after {bottom: auto;top: 50%;left: 100%;transform: translate(0,-50%);}
 [clue][left]:hover::after {bottom: auto;top: 50%;left: auto;right: 100%;transform: translate(0,-50%);}
 
 @media(max-width:640px){
-    [clue]:hover::after{padding: .05rem .1rem;border-radius: .05rem;font-size: .16rem;max-width: min(3rem, calc(100vw - .2rem));}
+    [clue]:hover::after{padding: .1rem .15rem;border-radius: .05rem;font-size: .16rem;max-width: min(3rem, calc(100vw - .2rem));}
 }
 
 /* reminder */
