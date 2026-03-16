@@ -37,18 +37,17 @@ $(function(){
 });
 
 //----------------------------------------------------------------------------------img
-$(function(){$('[lazy]').attr('loading"','lazy')});
+$(function(){$('[lazy]').attr('loading','lazy')});
 
 //----------------------------------------------------------------------------------browser
 /MSIE|Trident/.test(navigator.userAgent) && $(function(){language === 'zh-CN' ? $('body').html('<msie>请使用其他浏览器</msie>') : $('body').html('<msie>please use another browser</msie>')});
 
 //----------------------------------------------------------------------------------lang
-function langRead(targetObj,data){
-    let langVal = targetObj.split('-'),
-        dataStr = 'data'
-    for(i = 0;i < langVal.length - 1;i++){dataStr += '.' + langVal[i] + '[0]'}
-    dataStr += '.' + langVal[langVal.length - 1]
-    return eval(dataStr)
+function langRead(targetObj, data){
+    let langVal = targetObj.split('-')
+    let result = data
+    for(let i = 0; i < langVal.length - 1; i++){result = result?.[langVal[i]]?.[0]}
+    return result?.[langVal[langVal.length - 1]] ?? ''
 }
 let langSwitch = 0
 $(function(){
@@ -185,24 +184,18 @@ $(function(){
 
 //----------------------------------------------------------------------------------disable
 function disable(){
-    document.oncontextmenu = e => {
-        try{const {tagName, type} = e.target
-            if(!(tagName === 'INPUT' && type?.toLowerCase() === 'text') && tagName !== 'TEXTAREA') e.preventDefault()
-        }catch{e.preventDefault()}
-    }
-    window.addEventListener('keydown', e => {if((e.ctrlKey && ['u','s'].includes(e.key)) || e.key === 'F12') e.preventDefault()})
+    document.addEventListener('contextmenu', e => e.preventDefault())
+    document.addEventListener('selectstart', e => e.preventDefault())
+    document.addEventListener('dragstart', e => e.preventDefault(), true)
+    document.addEventListener('copy', e => e.preventDefault(), true)
+    document.addEventListener('cut', e => e.preventDefault(), true)
     window.onhelp = () => false
-    document.onselectstart = e => {
-        const {tagName, type} = e.target
-        if(!(tagName === 'INPUT' && type?.toLowerCase() === 'text') && tagName !== 'TEXTAREA'){
-            e.preventDefault()
-            return false
-        }
-    }
-    const noSelectStyle = document.createElement('style')
-    noSelectStyle.textContent = `* {user-select: none;-webkit-user-select: none;-moz-user-select: none;}
-        input[type="text"], textarea {user-select: text !important;-webkit-user-select: text !important;-moz-user-select: text !important;}`
-    document.head.appendChild(noSelectStyle)
+    window.addEventListener('keydown', e => {
+        if((e.ctrlKey && ['u','s','i','j'].includes(e.key.toLowerCase())) || e.key === 'F12' || (e.ctrlKey && e.shiftKey && ['i','j'].includes(e.key.toLowerCase()))) {e.preventDefault()}
+    })
+    const style = document.createElement('style')
+    style.textContent = `*{user-select:none!important;-webkit-user-select:none!important;cursor:default!important;}`
+    document.head.appendChild(style)
 };
 
 //----------------------------------------------------------------------------------smooth
@@ -329,10 +322,10 @@ $(function(){
 });
 
 //----------------------------------------------------------------------------------tip
-function tip(str){
+function tip(str, type){
     let addClass = 't' + Math.round(Math.random() * 999999),
         tipThis = '.' + addClass
-    $('body').append(`<tip class="${addClass} center anime-zoom-in">${str}</tip>`)
+        $('body').append(`<tip class="${addClass} center anime-zoom-in${type ? ' ' + type : ''}">${str}</tip>`)
     $(tipThis).css('margin', (- $(tipThis).height()/2-5) + 'px 0 0 ' + (- $(tipThis).width()/2-10 + 'px'))
     setTimeout(() => $(tipThis).remove(),3000)
 };
@@ -376,17 +369,16 @@ function countdown(){
         endDate = new Date(countDate),
         leftTime = endDate.getTime() - date.getTime(),
         d,h,m,s
-    if(leftTime >= 0){
-        d = Math.floor(leftTime/1000/60/60/24)
-        h = Math.floor(leftTime/1000/60/60%24)
-        m = Math.floor(leftTime/1000/60%60)
-        s = Math.floor(leftTime/1000%60)
-        function digit(num,n){return num.toString().padStart(n, '0')}
-        $('countdown d').html(d)
-        $('countdown h').html(digit(h,2))
-        $('countdown m').html(digit(m,2))
-        $('countdown s').html(digit(s,2))
-    }
+    if(leftTime < 0) return
+    d = Math.floor(leftTime/1000/60/60/24)
+    h = Math.floor(leftTime/1000/60/60%24)
+    m = Math.floor(leftTime/1000/60%60)
+    s = Math.floor(leftTime/1000%60)
+    function digit(num,n){return num.toString().padStart(n, '0')}
+    $('countdown d').html(d)
+    $('countdown h').html(digit(h,2))
+    $('countdown m').html(digit(m,2))
+    $('countdown s').html(digit(s,2))
     setTimeout(countdown,1000)
 };
 
@@ -394,19 +386,22 @@ function countdown(){
 function notify(str,align,time){
     if($('notify').length == 0) $('body').append('<notify><audio src="//ui.gg/lib/media/notify.mp3"></audio></notify>')
     let addClass = 'n' + Math.round(Math.random() * 999999)
-    $('notify').append(`<li class="${addClass} anime-bounce-in-right"><x class="ico ico-close"></x>${str}</li>`).find('audio')[0].play()
-    if(align == 'bottom') $('notify').addClass('bottom')
+    align == 'bottom' ? $('notify').addClass('bottom') : $('notify').removeClass('bottom')
+    $('notify').append(`<li class="${addClass} anime-bounce-in-right"><x class="ico ico-close"></x>${str}</li>`)
+    const notifyAudio = $('notify').find('audio')[0]
+    notifyAudio.currentTime = 0
+    notifyAudio.play()
     if(time != undefined){
         let notifyThis = $('.' + addClass)
-        setTimeout(() => notifyRemre(notifyThis),time)}
+        setTimeout(() => notifyRemove(notifyThis),time)}
 }
-function notifyRemre(notifyThis){
+function notifyRemove(notifyThis){
     notifyThis.addClass('anime-bounce-out-right')
     setTimeout(() => notifyThis.remove(),500)
 }
 $(document).on('click','notify x',function(){
     let notifyThis = $(this).parent()
-    notifyRemre(notifyThis)
+    notifyRemove(notifyThis)
 });
 
 //----------------------------------------------------------------------------------copy
@@ -429,8 +424,9 @@ $(function(){
 });
 
 //----------------------------------------------------------------------------------empty
+const emptyText = language === 'zh-CN' ? '暂无内容' : 'empty'
 $(function(){
-    $('empty').each(function(){if($(this).is(':empty')) $(this).addClass('default')})
+    $('empty').each(function(){if($(this).is(':empty')) $(this).addClass('default').attr('data-empty', emptyText)})
 });
 
 //----------------------------------------------------------------------------------hop

@@ -601,16 +601,35 @@ disable()
             <p>Add the code to the DOM</p>
 <xmp>
 <drop>
+    <a>请选择</a>
+    <drop-list>
+        <a>drop 1</a>
+        <a>drop 2</a>
+        <a>drop 3</a>
+    </drop-list>
+</drop>
+</xmp>
+            <p>If you need a multi-level submenu, use <span>li</span> inside <span>drop-list</span>, you can have unlimited sets of dolls</p>
+<xmp>
+<drop>
+    <li><a>drop 1</a></li>
     <drop-list>
         <ul>
             <li><a>drop 1</a></li>
-            <li><a>drop 2</a></li>
+            <li><a>drop 2</a>
+                <drop-list>
+                    <ul>
+                        <li><a>drop 4</a></li>
+                        <li><a>drop 5</a></li>
+                        <li><a>drop 6</a></li>
+                    </ul>
+                </drop-list>
+            </li>
             <li><a>drop 3</a></li>
         </ul>
     </drop-list>
 </drop>
 </xmp>
-            <p>If you need to add a submenu, just add <span>drop-list</span> to <span>li</span>, you can have unlimited sets of dolls</p>
             <h5>effect display</h5>
             <iframe src="drop.html" height="350"></iframe>
             <a class="btn shadow" href="drop.html" target="_blank">view</a>
@@ -837,13 +856,13 @@ class="font-tahoma"
             <cite>Lorem ipsum dolor sit amet</cite>
         </li>
         <li><span>choice</span>
-            <choice class="wide-20">
+            <drop class="wide-20">
                 <a>choice 1</a>
-                <choice-list>
+                <drop-list>
                     <a>choice 1</a>
                     <a>choice 2</a>
-                </choice-list>
-            </choice>
+                </drop-list>
+            </drop>
             <cite>Lorem ipsum dolor sit amet</cite>
         </li>
         <li><span>robot</span>
@@ -1041,10 +1060,11 @@ notify('notify','bottom','5000')
     <a class="ico ico-alone-left"></a>
     <a href="">1</a>
     <a href="">2</a>
-    <a class="active" href="">3</a>
+    <a class="active">3</a>
     <a href="">4</a>
     <a href="">5</a>
-    <a class="ico ico-alone-right"></a><a class="ico ico-alone-side-right"></a>
+    <a class="ico ico-alone-right"></a>
+    <a class="ico ico-alone-side-right"></a>
     <span>1/10</span>
     <input type="text">
     <a class="ico ico-arrow-enter"></a>
@@ -1289,9 +1309,13 @@ column
         <div class="cont" id="tip">
             <h3>tip</h3>
             <h5>code</h5>
-            <p>Run tip()</p>
+            <p>Add the javascript to the DOM</p>
 <xmp>
 tip('tip')
+tip('tip', 'ok')       // green
+tip('tip', 'error')    // red
+tip('tip', 'warning')  // orange
+tip('tip', 'info')     // color
 </xmp>
             <h5>effect display</h5>
             <iframe src="tip.html" height="200"></iframe>
@@ -1347,7 +1371,7 @@ tip('tip')
 <o class="volume"></o>
 <o class="muzak"></o>
 <o class="phonecard"></o>
-<o class="telecamera"></o>
+<o class="cinema"></o>
 <o class="camera"></o>
 <o class="aim"></o>
 <o class="semaphore"></o>
@@ -1463,7 +1487,7 @@ uigg="#ccc"
             <a class="btn shadow" href="nav.html" target="_blank">view</a>
         </div>
         <div class="cont" id="music">
-            <h3>muzak</h3>
+            <h3>music</h3>
             <h5>code</h5>
             <p>Add the code to the DOM</p>
 <xmp>
@@ -1844,7 +1868,7 @@ class="editor-upload"
 class="editor-all"
 </xmp>
             <h5>PHP upload</h5>
-            <p>If you need upload image, you must download <a href="//ui.gg/lib/editor/upload.zip">upload.zip</a> to to your website directory and configure php</p>
+            <p>If you need upload image, you must download <a href="//ui.gg/lib/editor/upload.zip">upload.zip</a> to your website directory and configure php</p>
             <a class="btn shadow" href="//ui.gg/lib/editor/upload.zip" target="_blank">download</a>
             <h5>effect display</h5>
             <iframe src="editor.html" height="500"></iframe>
@@ -2022,7 +2046,7 @@ class="editor-all"
                     </thead>
                     <tbody>
                         <tr><td><xmp><u></u></xmp></td><td>Second tag, inheriting the underline of HTML, At the same time, it can serve as a support for an flex box</td></tr>
-                        <tr><td><xmp><s></s></xmp></td><td>Third tag, inheriting the underline of HTML, seconds in time component</td></tr>
+                        <tr><td><xmp><s></s></xmp></td><td>Third tag, inheriting the strikethrough of HTML, seconds in time component</td></tr>
                         <tr><td><xmp><i></i></xmp></td><td>Icon definition</td></tr>
                         <tr><td><xmp><x></x></xmp></td><td>Close button and close layer</td></tr>
                         <tr><td><xmp><z></z></xmp></td><td>Lonely element</td></tr>
