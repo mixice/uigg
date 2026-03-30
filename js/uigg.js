@@ -1,5 +1,5 @@
 /*
- * uigg 2.8 (build 20250501)
+ * uigg 2.9 (build 20260401)
  * Project: https://ui.gg
  * Author: https://www.mixice.com
  * Github: https://github.com/mixice/uigg
@@ -545,50 +545,57 @@ $(function(){
 
 //----------------------------------------------------------------------------------alert
 const [langConfirm, langCancel] = language === 'zh-CN' ? ['确认', '取消'] : ['confirm', 'cancel']
+function createAlert(message, extra = ''){
+    const $alert = $(`<alert class="anime-fade-in"><alert-main class="anime-fade-in-down"><alert-cont></alert-cont>${extra}<alert-solve></alert-solve></alert-main></alert>`).appendTo('body')
+    $alert.find('alert-cont').text(message)
+    return $alert
+}
+function btn(label, id = ''){return `<a class="btn"${id ? ` id="${id}"` : ''}>${label}</a>`}
 function alert(message){
-    const $alert = $(`<alert class="anime-fade-in"><alert-main class="anime-fade-in-down"><alert-cont>${message}</alert-cont><alert-solve><a class="btn">${langConfirm}</a></alert-solve></alert-main></alert>`).appendTo('body')
-    const handleClose = () => $alert.remove()
-    $alert.find('alert-solve a').click(handleClose)
-    $(document).on('keydown.alertClose', (e) => {if(['Enter', 'Escape', ' '].includes(e.key))handleClose()})
+    const $alert = createAlert(message)
+    $alert.find('alert-solve').append(btn(langConfirm))
+    const close = () => {
+        $alert.remove()
+        $(document).off('keydown.alert')
+    }
+    $alert.find('a').on('click', close)
+    $(document).on('keydown.alert', ({ key }) => {if (['Enter', 'Escape', ' '].includes(key)) close()})
 }
 function confirm(message){
     return new Promise((resolve) => {
-        const $alert = $(`<alert class="anime-fade-in"><alert-main class="anime-fade-in-down"><alert-cont>${message}</alert-cont><alert-solve><a class="btn" id="alert-cancel">${langCancel}</a><a class="btn" id="alert-confirm">${langConfirm}</a></alert-solve></alert-main></alert>`).appendTo('body')
-        const cleanup = () => {
+        const $alert = createAlert(message)
+        $alert.find('alert-solve').append(btn(langCancel, 'alert-cancel') + btn(langConfirm, 'alert-confirm'))
+        const done = (result) => {
             $alert.remove()
-            $(document).off('keydown.confirmEvent')
+            $(document).off('keydown.confirm')
+            resolve(result)
         }
-        const handleConfirm = () => {
-            cleanup()
-            resolve(true)
-        }
-        const handleCancel = () => {
-            cleanup()
-            resolve(false)
-        }
-        $('#alert-confirm').on('click', handleConfirm)
-        $('#alert-cancel').on('click', handleCancel)
-        $(document).on('keydown.confirmEvent', (e) => {
-            if(e.key === 'Enter') handleConfirm()
-            if(e.key === 'Escape') handleCancel()
+        $alert.find('#alert-confirm').on('click', () => done(true))
+        $alert.find('#alert-cancel').on('click',  () => done(false))
+        $(document).on('keydown.confirm', ({ key }) => {
+            if (key === 'Enter')  done(true)
+            if (key === 'Escape') done(false)
         })
     })
 }
 function prompt(message, defaultValue = ''){
-    return new Promise(function(resolve, reject){
-        $('body').append(`<alert class="anime-fade-in"><alert-main class="anime-fade-in-down"><alert-cont>${message}</alert-cont><input type="text" id="alert-input" value="${defaultValue}"><alert-solve><a class="btn" id="alert-cancel">${langCancel}</a><a class="btn" id="alert-confirm">${langConfirm}</a></alert-solve></alert-main></alert>`)
-        $(document).on('keydown', function(event){
-            if(event.key === 'Enter') $('#alert-confirm').click()
-            if(event.key === 'Escape') $('#alert-cancel').click()
+    return new Promise((resolve) => {
+        const $alert = createAlert(message, `<input type="text" id="alert-input">`)
+        $alert.find('#alert-input').val(defaultValue)
+        $alert.find('alert-solve').append(btn(langCancel, 'alert-cancel') + btn(langConfirm, 'alert-confirm'))
+        const done = (result) => {
+            $alert.remove()
+            $(document).off('keydown.prompt')
+            resolve(result)
+        }
+        $alert.find('#alert-confirm').on('click', () => done($alert.find('#alert-input').val()))
+        $alert.find('#alert-cancel').on('click',  () => done(null))
+        $(document).on('keydown.prompt', ({ key }) => {
+            if (key === 'Enter')  done($alert.find('#alert-input').val())
+            if (key === 'Escape') done(null)
         })
-        $('#alert-confirm').off('click').on('click', function(){resolve($('#alert-input').val())})
-        $('#alert-cancel').off('click').on('click', function(){resolve(null)})
     })
 }
-$(document).on('click','alert-solve a',function(){
-    $('alert').remove()
-    $(document).off('keydown')
-});
 
 //----------------------------------------------------------------------------------notice
 $(function(){

@@ -111,6 +111,7 @@
     <div class="condition">
         <a class="infinite">infinite</a>
         <a class="alternate">alternate</a>
+        <a class="reverse">reverse</a>
     </div>
 </section>
 
@@ -128,6 +129,14 @@
     $('.condition a.alternate').click(function(){
         $(this).toggleClass('active')
         $('.contant h3').toggleClass('alternate')
+        $('.condition a.reverse').removeClass('active')
+        $('.contant h3').removeClass('reverse')
+    })
+    $('.condition a.reverse').click(function(){
+        $(this).toggleClass('active')
+        $('.contant h3').toggleClass('reverse')
+        $('.condition a.alternate').removeClass('active')
+        $('.contant h3').removeClass('alternate')
     })
 
     $('.spasm').click(function(){$('h3').attr('class','anime-spasm')})
