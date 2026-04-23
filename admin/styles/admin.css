@@ -96,7 +96,7 @@ drop-list a:hover {background-color: var(--basic);}
 .sider a {display: block;height: 50px;line-height: 50px;color: white;text-transform: capitalize;}
 .sider a i {color: white;margin: 0 5px;}
 .sider fold-title {padding: 0;border: 0;display: block;}
-.sider fold-title a horn {background: var(--red);position: static;display: inline-block;padding: 10px;border-radius: 100px;line-height: 0;margin: 0 5px;}
+.sider fold-title a n {background: var(--red);position: static;display: inline-block;padding: 10px;border-radius: 100px;line-height: 0;margin: 0 5px;}
 .sider fold-cont {background: var(--deep);display: none;padding: 0;}
 .sider fold-cont a {padding-left: 50px;}
 .sider a:hover {background: var(--bright);}
@@ -116,7 +116,7 @@ drop-list a:hover {background-color: var(--basic);}
     .sider h6 {padding: .1rem .2rem;}
     .sider a {height: .7rem;line-height: .7rem;}
     .sider a i {margin: 0 .1rem;}
-    .sider fold-title a horn {padding: .1rem;margin: 0 .1rem;}
+    .sider fold-title a n {padding: .1rem;margin: 0 .1rem;}
     .sider fold-cont a {padding-left: .7rem;}
     .sider-search {margin: .15rem;}
     .sider-search input {height: .7rem;padding: 0 .7rem 0 .3rem;}

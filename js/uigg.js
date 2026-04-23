@@ -302,10 +302,10 @@ $(function(){
 const uploadAlert = language === 'zh-CN' ? '文件格式必须是' : 'File format must be'
 $(function(){
     $('.upload-add').click(function(){
-        $(this).before('<div class="ico upload-group"><input type="file" accept=".jpg,.jpeg,.png,.webp,.gif"><horn class="ico"></horn></div>')
+        $(this).before('<div class="ico upload-group"><input type="file" accept=".jpg,.jpeg,.png,.webp,.gif"><n class="ico"></n></div>')
         uploadImg()
     })
-    $(document).on('click','.upload-group horn',function(){$(this).parent().remove()})
+    $(document).on('click','.upload-group n',function(){$(this).parent().remove()})
     function uploadImg(){
         $('.upload-group input').on('change',function(){
             let imgValue = $(this).val(),
@@ -537,9 +537,9 @@ $(function(){
 
 //----------------------------------------------------------------------------------horn
 $(function(){
-    $('horn').each(function(){
-        let hornParent = $(this).parent()
-        if(hornParent.css('position') !='absolute' && hornParent.css('position') !='fixed') hornParent.css('position','relative')
+    $('n').each(function(){
+        let nParent = $(this).parent()
+        if(nParent.css('position') !='absolute' && nParent.css('position') !='fixed') nParent.css('position','relative')
     })
 });
 

@@ -21,13 +21,13 @@ tab, tab-list, tab-cont, tab-group, drop, drop-cont, drop-list, choice, choice-l
 chat, chat-title, chat-sider, chat-cont, chat-list, chat-message, chat-tool, chat-control, chat-tip,
 pop, pop-main, pop-title, pop-cont, pop-solve, pop-choice, pop-sider,
 alert, alert-main, alert-cont, alert-solve, hop, hop-cont, fold, fold-group, fold-title, fold-cont,
-countdown, tip, page, music, space, msie, rate, scaler, notify, empty, step, crumb, reminder, horn, notice {margin: 0;padding: 0;border: 0;outline: 0;background: transparent center no-repeat;background-size: contain;box-sizing: border-box;font-family: uigg;border-color: var(--eee);border-style: solid;-webkit-tap-highlight-color: transparent;}
+countdown, tip, page, music, space, msie, rate, scaler, notify, empty, step, crumb, reminder, n, notice {margin: 0;padding: 0;border: 0;outline: 0;background: transparent center no-repeat;background-size: contain;box-sizing: border-box;font-family: uigg;border-color: var(--eee);border-style: solid;-webkit-tap-highlight-color: transparent;}
 article, aside, details, figcaption, figure, footer, header, hgroup, main, nav, section, summary,
 menu, menu-cont, menu-group, menu-list, name, name-logo, name-search, tab, tab-list, tab-cont, tab-group,
 drop, drop-cont, drop-list, chat, chat-title, chat-sider, chat-cont, chat-list, chat-message, chat-tool, chat-control, chat-tip,
 pop, pop-main, pop-title, pop-cont, pop-solve, pop-choice, pop-sider, alert, alert-main, alert-cont, alert-solve,
 hop, hop-cont, fold, fold-group, fold-title, fold-cont, countdown, tip, page, music, space, msie, rate, scaler, notify, empty,
-step, crumb, reminder, horn, notice {display: block;}
+step, crumb, reminder, n, notice {display: block;}
 .transition,.btn,a,button {transition-duration: .3s;}
 html,body {height: 100%;}
 html,body,.avatar,.upload-group,.swiper-slide,.parallax-bg {background-size: cover;}
@@ -744,9 +744,9 @@ choice.active choice-list {display: block;}
 .upload-add {width: 100px;height: 100px;float: left;margin: 0 5px 5px 0;background-color: var(--f7);line-height: 100px;font-size: 26px;color: var(--000-2);}
 .upload-group {position: relative;}
 .upload-group input[type="file"] {width: 100%;height: 100%;position: absolute;top: 0;left: 0;opacity: 0;}
-.upload-group horn {background-color: var(--red);}
+.upload-group n {background-color: var(--red);}
 .upload-group:after {content: '\e75b';}
-.upload horn:after {content: '\e826';}
+.upload n:after {content: '\e826';}
 .upload-add:after {content: '\e6f3';}
 
 .bloomer {padding: 10px;color: white;text-align: center;margin: 5px;border-radius: 3px;background-color: var(--red);display: none;}
@@ -1283,16 +1283,16 @@ reminder > * {padding: 5px;}
 
 
 /* horn */
-horn {position: absolute;top: 0;right: 0;border-radius: 0 0 0 100px;background-color: var(--color);color: white;padding: 10px 10px 10px 20px;}
-horn.ico {padding: 5px 5px 10px 10px;cursor: pointer;color: white;}
-horn[left] {border-radius: 0 0 100px 0;right: auto;left: 0;padding: 10px 20px 10px 10px;}
-horn[left].ico {padding: 5px 10px 10px 5px;}
+n {position: absolute;top: 0;right: 0;border-radius: 0 0 0 100px;background-color: var(--color);color: white;padding: 10px 10px 10px 20px;}
+n.ico {padding: 5px 5px 10px 10px;cursor: pointer;color: white;}
+n[left] {border-radius: 0 0 100px 0;right: auto;left: 0;padding: 10px 20px 10px 10px;}
+n[left].ico {padding: 5px 10px 10px 5px;}
 
 @media(max-width:640px){
-    horn {padding: .1rem .1rem .1rem .2rem;border-radius: 0 0 0 1rem;}
-    horn.ico {padding: .05rem .05rem .1rem .1rem;}
-    horn[left] {border-radius: 0 0 1rem 0;right: auto;left: 0;padding: .1rem .2rem .1rem .1rem;}
-    horn[left].ico {padding: .05rem .1rem .1rem .05rem;}
+    n {padding: .1rem .1rem .1rem .2rem;border-radius: 0 0 0 1rem;}
+    n.ico {padding: .05rem .05rem .1rem .1rem;}
+    n[left] {border-radius: 0 0 1rem 0;right: auto;left: 0;padding: .1rem .2rem .1rem .1rem;}
+    n[left].ico {padding: .05rem .1rem .1rem .05rem;}
 }
 
 /* article */
