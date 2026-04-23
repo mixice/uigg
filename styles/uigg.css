@@ -1246,16 +1246,17 @@ reminder > * {padding: 5px;}
 .tox-tinymce {border-width: 1px !important;border-radius: 0 !important;flex: 1;min-width: 0;}
 .tox:not(.tox-tinymce-inline) .tox-editor-header {box-shadow: none !important;border-bottom: 1px var(--eee) solid !important;}
 .tox-simple + .tox-tinymce .tox-statusbar {display: none;}
-.tox-selectimage input[type="file"] {font-size: 14px;}
-.tox-selectimage input[type="file"]::-webkit-file-upload-button {height: 32px;}
 .tox-editor-dock-fadeout {opacity: 1 !important;visibility: visible !important;}
 
-.tox-dialog {padding: 8px 0 !important;border-radius: 5px !important;}
+.tox-selectimage input[type="file"] {font-size: 14px;}
+.tox-selectimage input[type="file"]::-webkit-file-upload-button {height: 32px;}
+
+.tox-dialog {padding: 8px 5px !important;border-radius: 5px !important;box-shadow: 0 0 10px var(--000-1) !important;}
 .tox-dialog__header {padding-right: 5px !important;}
-.tox-dialog__title {font-weight: bold !important;}
+.tox-dialog__title {font-weight: bold !important;font-size: 16px !important;}
 .tox-dialog__body-nav-item {padding: 5px !important;border: 0 !important;border-radius: 3px;}
 .tox-dialog__body-nav-item:focus,
-.tox-dialog__body-nav-item--active {color: white!important;background-color: var(--color) !important;}
+.tox-dialog__body-nav-item--active {color: white !important;background-color: var(--color) !important;}
 .tox-dialog__footer-end .tox-button {background-color: var(--color) !important;border: 0 !important;}
 
 .tox .tox-tbtn:hover,
@@ -1263,24 +1264,30 @@ reminder > * {padding: 5px;}
 .tox .tox-tbtn:focus,
 .tox .tox-collection--list .tox-collection__item--active {background: var(--eee) !important;}
 .tox .tox-collection--list .tox-collection__item--active:not(.tox-collection__item--state-disabled) {color: inherit !important;}
-.tox .tox-tbtn--enabled, .tox .tox-tbtn--enabled:hover {background: var(--ddd) !important;}
-.tox .tox-split-button:hover {box-shadow: 0 0 0 !important;}
+.tox .tox-tbtn--enabled,
+.tox .tox-tbtn--enabled:hover,
 .tox .tox-split-button:focus {background: var(--ddd) !important;}
-.tox .tox-button {border-radius: 3px !important;}
+
+.tox .tox-button {border-radius: 3px !important;font-weight: normal !important;}
 .tox .tox-button--secondary,
 .tox .tox-button--icon {background-color: transparent !important;border-width: 1px !important;}
+
 .tox .tox-edit-area::before {border: 0 !important;}
+.tox .tox-tbtn:focus::after,
+.tox .tox-button::before,
+.tox .tox-split-button:hover {box-shadow: none !important;}
+
+.tox .tox-tooltip__body {font-weight: normal !important;border-radius: 3px !important;background-color: var(--333) !important;color: var(--ccc) !important;padding-bottom: 5px !important;}
 
 .tox-listbox--select,
 .tox-textarea,
-.tox-textfield {border-radius: 0 !important;}
+.tox-textfield {border-radius: 0 !important;border: 1px var(--eee) solid !important;}
 .tox-listbox--select:focus,
 .tox-textarea:focus,
-.tox-textfield:focus {border: 1px var(--eee) solid !important;box-shadow: 0 0 0 !important;}
+.tox-textfield:focus {border: 1px var(--eee) solid !important;box-shadow: none !important;}
+.tox-textarea-wrap:focus-within {border: 0 !important;box-shadow: none !important;border-radius: 0 !important;}
 .tox-collection__item,
 .tox-listbox__select-label {font-size: 14px !important;}
-
-
 
 /* horn */
 n {position: absolute;top: 0;right: 0;border-radius: 0 0 0 100px;background-color: var(--color);color: white;padding: 10px 10px 10px 20px;}

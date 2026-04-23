@@ -21,6 +21,62 @@
   margin: auto;
 }
 
+.ico-craft:before {
+  content: "\ed3a";
+}
+
+.ico-minimax:before {
+  content: "\ed3b";
+}
+
+.ico-openai:before {
+  content: "\ed31";
+}
+
+.ico-suffix-arw:before {
+  content: "\ed32";
+}
+
+.ico-jimeng:before {
+  content: "\ed33";
+}
+
+.ico-qianwen:before {
+  content: "\ed34";
+}
+
+.ico-kimi:before {
+  content: "\ed35";
+}
+
+.ico-hunyuan:before {
+  content: "\ed36";
+}
+
+.ico-deepseek:before {
+  content: "\ed37";
+}
+
+.ico-gemini:before {
+  content: "\ed38";
+}
+
+.ico-doubao:before {
+  content: "\ed39";
+}
+
+.ico-zhipu:before {
+  content: "\ed2e";
+}
+
+.ico-openclaw:before {
+  content: "\ed2f";
+}
+
+.ico-suffix-raw:before {
+  content: "\ed30";
+}
+
 .ico-whatsapp:before {
   content: "\ece2";
 }
@@ -329,7 +385,7 @@
   content: "\eb3e";
 }
 
-.ico-stacking:before {
+.ico-stacking1:before {
   content: "\ecdf";
 }
 
