@@ -28,6 +28,21 @@ fold-cont a dd {display: inline-block;padding-left: 10px;}
 
 .wide-logic a {display: block;background-color: var(--f7);padding: 10px;margin: 10px 0;}
 
+.cont iframe {width: 100%;border: 1px var(--eee) solid;margin: 5px 0;}
+.cont xmp {color: var(--tomato);white-space: pre-wrap;word-break: break-all;cursor: pointer;background-color: var(--f7);padding: 0 20px 20px;margin: 5px 0;}
+.cont h3 {padding: 20px 0;margin-bottom: 10px;border-bottom-width: 1px;}
+.cont h5 {padding: 10px 0;}
+.cont p {padding: 10px 0;}
+.cont p a,
+.cont p span {color: var(--sapphire);background-color: var(--f7);padding: 5px 10px;border-radius: 2px;margin: 0 5px;}
+.cont p span.warning {background-color: var(--red);color: white;}
+.cont p a:hover {background-color: var(--sapphire);color: white;}
+.cont .btn {width: 200px;margin: 10px 0;font-weight: bold;}
+.cont table th,
+.cont table td {padding: 0;}
+.cont table xmp {padding: 0;line-height: 50px;}
+
+
 
 @media(max-width:640px){
     .sider {width: 60%;z-index: 3;transform: translateX(-100%);position: fixed;}
@@ -49,6 +64,16 @@ fold-cont a dd {display: inline-block;padding-left: 10px;}
     .absolute-logic a {height: 1rem;font-size: .4rem;}
 
     .wide-logic a {padding: .1rem;margin: .1rem 0;}
+
+    .cont iframe {margin: .1rem 0;}
+    .cont xmp {padding: 0 .2rem .25rem;margin: .1rem 0;border-radius: .1rem;}
+    .cont h3 {padding: .1rem 0;}
+    .cont h5,
+    .cont p {padding: .1rem 0;}
+    .cont p a,
+    .cont p span {padding: .05rem .1rem;margin: 0 .05rem;}
+    .cont .btn {width:2.5rem;border-radius: .05rem;margin: .1rem 0;}
+    .cont table xmp {line-height: .7rem;}
 }
 
 

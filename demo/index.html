@@ -20,33 +20,6 @@
 
 <body>
 <!-- <load></load> -->
-<style>
-    .cont iframe {width: 100%;border: 1px var(--eee) solid;margin: 5px 0;}
-    .cont xmp {color: var(--tomato);white-space: pre-wrap;word-break: break-all;cursor: pointer;background-color: var(--f7);padding: 0 20px 20px;margin: 5px 0;}
-    .cont h3 {padding: 20px 0;margin-bottom: 10px;border-bottom-width: 1px;}
-    .cont h5 {padding: 10px 0;}
-    .cont p {padding: 10px 0;}
-    .cont p a,
-    .cont p span {color: var(--sapphire);background-color: var(--f7);padding: 5px 10px;border-radius: 2px;margin: 0 5px;}
-    .cont p span.warning {background-color: var(--red);color: white;}
-    .cont p a:hover {background-color: var(--sapphire);color: white;}
-    .cont .btn {width: 200px;margin: 10px 0;font-weight: bold;}
-    .cont table th,
-    .cont table td {padding: 0;}
-    .cont table xmp {padding: 0;line-height: 50px;}
-
-    @media(max-width:640px){
-        .cont iframe {margin: .1rem 0;}
-        .cont xmp {padding: 0 .2rem .25rem;margin: .1rem 0;border-radius: .1rem;}
-        .cont h3 {padding: .1rem 0;}
-        .cont h5,
-        .cont p {padding: .1rem 0;}
-        .cont p a,
-        .cont p span {padding: .05rem .1rem;margin: 0 .05rem;}
-        .cont .btn {width:2.5rem;border-radius: .05rem;margin: .1rem 0;}
-        .cont table xmp {line-height: .7rem;}
-    }
-</style>
 
 <!----------------------------------------------------------------------------------------->
 
@@ -358,7 +331,7 @@ confirm('confirm')
 prompt('prompt')
 </xmp>
             <h5>effect display</h5>
-            <iframe src="alert.html" height="400"></iframe>
+            <iframe src="alert.html" height="400" loading="lazy"></iframe>
             <a class="btn shadow" href="alert.html" target="_blank">view</a>
         </div>
         <div class="cont" id="alone">
@@ -375,7 +348,7 @@ $(function(){
 })
 </xmp>
             <h5>effect display</h5>
-            <iframe src="alone.html" height="250"></iframe>
+            <iframe src="alone.html" height="250" loading="lazy"></iframe>
             <a class="btn shadow" href="alone.html" target="_blank">view</a>
         </div>
         <div class="cont" id="anime">
@@ -435,7 +408,7 @@ class="alternate"
 class="reverse"
 </xmp>
             <h5>effect display</h5>
-            <iframe src="anime.html" height="400"></iframe>
+            <iframe src="anime.html" height="400" loading="lazy"></iframe>
             <a class="btn shadow" href="anime.html" target="_blank">view</a>
         </div>
         <div class="cont" id="audio">
@@ -460,7 +433,7 @@ class="audio-wave"
 class="audio-audio"
 </xmp>
             <h5>effect display</h5>
-            <iframe src="audio.html" height="400"></iframe>
+            <iframe src="audio.html" height="400" loading="lazy"></iframe>
             <a class="btn shadow" href="audio.html" target="_blank">view</a>
         </div>
         <div class="cont" id="button">
@@ -498,7 +471,7 @@ class="btn co-red"
 </div>
 </xmp>
             <h5>effect display</h5>
-            <iframe src="button.html" height="550"></iframe>
+            <iframe src="button.html" height="550" loading="lazy"></iframe>
             <a class="btn shadow" href="button.html" target="_blank">view</a>
         </div>
         <div class="cont" id="clue">
@@ -510,7 +483,7 @@ clue=""
 </xmp>
             <p>You can add left or right or bottom to change the position of the clue<dd>你可以添加 left 或 right 或 bottom 来改变 clue 的位置</dd></p>
             <h5>effect display</h5>
-            <iframe src="clue.html" height="300"></iframe>
+            <iframe src="clue.html" height="300" loading="lazy"></iframe>
             <a class="btn shadow" href="clue.html" target="_blank">view</a>
         </div>
         <div class="cont" id="cookie">
@@ -525,7 +498,7 @@ setCookie('name','value','time')
 getCookie('name')
 </xmp>
             <h5>effect display</h5>
-            <iframe src="cookie.html" height="300"></iframe>
+            <iframe src="cookie.html" height="300" loading="lazy"></iframe>
             <a class="btn shadow" href="cookie.html" target="_blank">view</a>
         </div>
         <div class="cont" id="copy">
@@ -547,7 +520,7 @@ copy-btn="copy1"
 copy-select
 </xmp>
             <h5>effect display</h5>
-            <iframe src="copy.html" height="300"></iframe>
+            <iframe src="copy.html" height="300" loading="lazy"></iframe>
             <a class="btn shadow" href="copy.html" target="_blank">view</a>
         </div>
         <div class="cont" id="countdown">
@@ -568,7 +541,7 @@ countDate = '0000/00/00 00:00:00'
 countdown()
 </xmp>
             <h5>effect display</h5>
-            <iframe src="countdown.html"></iframe>
+            <iframe src="countdown.html" loading="lazy"></iframe>
             <a class="btn shadow" href="countdown.html" target="_blank">view</a>
         </div>
         <div class="cont" id="crumb">
@@ -583,7 +556,7 @@ countdown()
 </crumb>
 </xmp>
             <h5>effect display</h5>
-            <iframe src="crumb.html"></iframe>
+            <iframe src="crumb.html" loading="lazy"></iframe>
             <a class="btn shadow" href="crumb.html" target="_blank">view</a>
         </div>
         <div class="cont" id="disable">
@@ -612,7 +585,7 @@ disable()
 </xmp>
             <p>If you need to add a submenu, just add drop-list to li, you can have unlimited sets of dolls<dd>如果需要添加子菜单，只需要在 li 上添加 drop-list，你可以拥有无限套娃</dd></p>
             <h5>effect display</h5>
-            <iframe src="drop.html" height="350"></iframe>
+            <iframe src="drop.html" height="350" loading="lazy"></iframe>
             <a class="btn shadow" href="drop.html" target="_blank">view</a>
         </div>
         <div class="cont" id="empty">
@@ -631,7 +604,7 @@ disable()
 <empty><div><i class="ico ico-emot-smile"></i><h3>text</h3></div></empty>
 </xmp>
             <h5>effect display</h5>
-            <iframe src="empty.html" height="500"></iframe>
+            <iframe src="empty.html" height="500" loading="lazy"></iframe>
             <a class="btn shadow" href="empty.html" target="_blank">view</a>
         </div>
         <div class="cont" id="fold">
@@ -651,7 +624,7 @@ disable()
 show
 </xmp>
             <h5>effect display</h5>
-            <iframe src="fold.html" height="300"></iframe>
+            <iframe src="fold.html" height="300" loading="lazy"></iframe>
             <a class="btn shadow" href="fold.html" target="_blank">view</a>
         </div>
         <div class="cont" id="font">
@@ -738,7 +711,7 @@ class="font-arial"
 class="font-tahoma"
 </xmp>
             <h5>effect display</h5>
-            <iframe src="font.html" height="630"></iframe>
+            <iframe src="font.html" height="630" loading="lazy"></iframe>
             <a class="btn shadow" href="font.html" target="_blank">view</a>
         </div>
         <div class="cont" id="form">
@@ -875,7 +848,7 @@ class="font-tahoma"
 </section>
 </xmp>
             <h5>effect display</h5>
-            <iframe src="form.html" height="900"></iframe>
+            <iframe src="form.html" height="900" loading="lazy"></iframe>
             <a class="btn shadow" href="form.html" target="_blank">view</a>
         </div>
         <div class="cont" id="fullscreen">
@@ -886,7 +859,7 @@ class="font-tahoma"
 class="fullscreen"
 </xmp>
             <h5>effect display</h5>
-            <iframe src="fullscreen.html"></iframe>
+            <iframe src="fullscreen.html" loading="lazy"></iframe>
             <a class="btn shadow" href="fullscreen.html" target="_blank">view</a>
         </div>
         <div class="cont" id="hop">
@@ -904,7 +877,7 @@ class="fullscreen"
 </hop>
 </xmp>
             <h5>effect display</h5>
-            <iframe src="hop.html" height="350"></iframe>
+            <iframe src="hop.html" height="350" loading="lazy"></iframe>
             <a class="btn shadow" href="hop.html" target="_blank">view</a>
         </div>
         <div class="cont" id="horn">
@@ -915,7 +888,7 @@ class="fullscreen"
 <n></n>
 </xmp>
             <h5>effect display</h5>
-            <iframe src="horn.html" height="300"></iframe>
+            <iframe src="horn.html" height="300" loading="lazy"></iframe>
             <a class="btn shadow" href="horn.html" target="_blank">view</a>
         </div>
         <div class="cont" id="language">
@@ -940,7 +913,7 @@ lang-value="lang-name"
 lang-content="lang-name"
 </xmp>
             <h5>effect display</h5>
-            <iframe src="language.html" height="400"></iframe>
+            <iframe src="language.html" height="400" loading="lazy"></iframe>
             <a class="btn shadow" href="language.html" target="_blank">view</a>
         </div>
         <div class="cont" id="menu">
@@ -978,7 +951,7 @@ lang-content="lang-name"
 </menu>
 </xmp>
             <h5>effect display</h5>
-            <iframe src="menu.html" height="450"></iframe>
+            <iframe src="menu.html" height="450" loading="lazy"></iframe>
             <a class="btn shadow" href="menu.html" target="_blank">view</a>
         </div>
         <div class="cont" id="mix">
@@ -996,7 +969,7 @@ class="mono"
 class="mono-click"
 </xmp>
             <h5>effect display</h5>
-            <iframe src="mix.html" height="900"></iframe>
+            <iframe src="mix.html" height="900" loading="lazy"></iframe>
             <a class="btn shadow" href="mix.html" target="_blank">view</a>
         </div>
         <div class="cont" id="notice">
@@ -1007,7 +980,7 @@ class="mono-click"
 <notice href="/"><a href=""></a></notice>
 </xmp>
             <h5>effect display</h5>
-            <iframe src="notice.html" height="200"></iframe>
+            <iframe src="notice.html" height="200" loading="lazy"></iframe>
             <a class="btn shadow" href="notice.html" target="_blank">view</a>
         </div>
 
@@ -1028,7 +1001,7 @@ notify('notify','bottom')
 notify('notify','bottom','5000')
 </xmp>
             <h5>effect display</h5>
-            <iframe src="notify.html" height="300"></iframe>
+            <iframe src="notify.html" height="300" loading="lazy"></iframe>
             <a class="btn shadow" href="notify.html" target="_blank">view</a>
         </div>
         <div class="cont" id="page">
@@ -1052,7 +1025,7 @@ notify('notify','bottom','5000')
 </page>
 </xmp>
             <h5>effect display</h5>
-            <iframe src="page.html"></iframe>
+            <iframe src="page.html" loading="lazy"></iframe>
             <a class="btn shadow" href="page.html" target="_blank">view</a>
         </div>
         <div class="cont" id="pop">
@@ -1101,7 +1074,7 @@ notify('notify','bottom','5000')
 </pop>
 </xmp>
             <h5>effect display</h5>
-            <iframe src="pop.html" height="300"></iframe>
+            <iframe src="pop.html" height="300" loading="lazy"></iframe>
             <a class="btn shadow" href="pop.html" target="_blank">view</a>
         </div>
         <div class="cont" id="random">
@@ -1126,7 +1099,7 @@ uigg="txt"
 uigg="emot"
 </xmp>
             <h5>effect display</h5>
-            <iframe src="random.html" height="550"></iframe>
+            <iframe src="random.html" height="550" loading="lazy"></iframe>
             <a class="btn shadow" href="random.html" target="_blank">view</a>
         </div>
         <div class="cont" id="rate">
@@ -1147,7 +1120,7 @@ thumb
 circular
 </xmp>
             <h5>effect display</h5>
-            <iframe src="rate.html"></iframe>
+            <iframe src="rate.html" loading="lazy"></iframe>
             <a class="btn shadow" href="rate.html" target="_blank">view</a>
         </div>
         <div class="cont" id="recording">
@@ -1158,7 +1131,7 @@ circular
 class="recording"
 </xmp>
             <h5>effect display</h5>
-            <iframe src="recording.html"></iframe>
+            <iframe src="recording.html" loading="lazy"></iframe>
             <a class="btn shadow" href="recording.html" target="_blank">view</a>
         </div>
         <div class="cont" id="reminder">
@@ -1169,7 +1142,7 @@ class="recording"
 <reminder></reminder>
 </xmp>
             <h5>effect display</h5>
-            <iframe src="reminder.html" height="300"></iframe>
+            <iframe src="reminder.html" height="300" loading="lazy"></iframe>
             <a class="btn shadow" href="reminder.html" target="_blank">view</a>
         </div>
         <div class="cont" id="scaler">
@@ -1182,7 +1155,7 @@ class="recording"
 </scaler>
 </xmp>
             <h5>effect display</h5>
-            <iframe src="scaler.html"></iframe>
+            <iframe src="scaler.html" loading="lazy"></iframe>
             <a class="btn shadow" href="scaler.html" target="_blank">view</a>
         </div>
         <div class="cont" id="smooth">
@@ -1193,7 +1166,7 @@ class="recording"
 <a class="smooth" href="#id"></a>
 </xmp>
             <h5>effect display</h5>
-            <iframe src="smooth.html" height="300"></iframe>
+            <iframe src="smooth.html" height="300" loading="lazy"></iframe>
             <a class="btn shadow" href="smooth.html" target="_blank">view</a>
         </div>
         <div class="cont" id="step">
@@ -1212,7 +1185,7 @@ class="recording"
 column
 </xmp>
             <h5>effect display</h5>
-            <iframe src="step.html" height="300"></iframe>
+            <iframe src="step.html" height="300" loading="lazy"></iframe>
             <a class="btn shadow" href="step.html" target="_blank">view</a>
         </div>
         <div class="cont" id="tab">
@@ -1234,7 +1207,7 @@ column
 </tab>
 </xmp>
             <h5>effect display</h5>
-            <iframe src="tab.html" height="300"></iframe>
+            <iframe src="tab.html" height="300" loading="lazy"></iframe>
             <a class="btn shadow" href="tab.html" target="_blank">view</a>
         </div>
         <div class="cont" id="table">
@@ -1284,7 +1257,7 @@ column
 </section>
 </xmp>
             <h5>effect display</h5>
-            <iframe src="table.html" height="310"></iframe>
+            <iframe src="table.html" height="310" loading="lazy"></iframe>
             <a class="btn shadow" href="table.html" target="_blank">view</a>
         </div>
         <div class="cont" id="tip">
@@ -1299,7 +1272,7 @@ tip('tip', 'warning')  // orange
 tip('tip', 'info')     // color
 </xmp>
             <h5>effect display</h5>
-            <iframe src="tip.html" height="200"></iframe>
+            <iframe src="tip.html" height="200" loading="lazy"></iframe>
             <a class="btn shadow" href="tip.html" target="_blank">view</a>
         </div>
         <div class="cont" id="title">
@@ -1329,7 +1302,7 @@ tip('tip', 'info')     // color
 </section>
 </xmp>
             <h5>effect display</h5>
-            <iframe src="title.html" height="350"></iframe>
+            <iframe src="title.html" height="350" loading="lazy"></iframe>
             <a class="btn shadow" href="title.html" target="_blank">view</a>
         </div>
         <div class="cont" id="toggle">
@@ -1371,7 +1344,7 @@ tip('tip', 'info')     // color
 class="parent"
 </xmp>
             <h5>effect display</h5>
-            <iframe src="toggle.html"></iframe>
+            <iframe src="toggle.html" loading="lazy"></iframe>
             <a class="btn shadow" href="toggle.html" target="_blank">view</a>
         </div>
         <div class="cont" id="top">
@@ -1386,7 +1359,7 @@ class="top"
 class="top btn"
 </xmp>
             <h5>effect display</h5>
-            <iframe src="top.html"></iframe>
+            <iframe src="top.html" loading="lazy"></iframe>
             <a class="btn shadow" href="top.html" target="_blank">view</a>
         </div>
         <div class="cont" id="touch">
@@ -1401,7 +1374,7 @@ $('').touch('right',function(){})
 $('').touch('all',function(){})
 </xmp>
             <h5>effect display</h5>
-            <iframe src="touch.html" height="400"></iframe>
+            <iframe src="touch.html" height="400" loading="lazy"></iframe>
             <a class="btn shadow" href="touch.html" target="_blank">view</a>
         </div>
         <h2><i class="ico ico-phone-ios"></i>Mobile terminal</h2>
@@ -1444,7 +1417,7 @@ $('').touch('all',function(){})
 </name>
 </xmp>
             <h5>effect display</h5>
-            <iframe src="name.html" height="400"></iframe>
+            <iframe src="name.html" height="400" loading="lazy"></iframe>
             <a class="btn shadow" href="name.html" target="_blank">view</a>
         </div>
         <div class="cont" id="nav">
@@ -1464,7 +1437,7 @@ $('').touch('all',function(){})
 uigg="#ccc"
 </xmp>
             <h5>effect display</h5>
-            <iframe src="nav.html" height="300"></iframe>
+            <iframe src="nav.html" height="300" loading="lazy"></iframe>
             <a class="btn shadow" href="nav.html" target="_blank">view</a>
         </div>
         <div class="cont" id="music">
@@ -1481,7 +1454,7 @@ uigg="#ccc"
 pause
 </xmp>
             <h5>effect display</h5>
-            <iframe src="music.html" height="150"></iframe>
+            <iframe src="music.html" height="150" loading="lazy"></iframe>
             <a class="btn shadow" href="music.html" target="_blank">view</a>
         </div>
         <h2><i class="ico ico-usb"></i>Internal components</h2>
@@ -1825,7 +1798,7 @@ pause
 </section>
 </xmp>
             <h5>effect display</h5>
-            <iframe src="swiper.html" height="600"></iframe>
+            <iframe src="swiper.html" height="600" loading="lazy"></iframe>
             <a class="btn shadow" href="swiper.html" target="_blank">view</a>
         </div>
         <div class="cont" id="editor">
@@ -1852,7 +1825,7 @@ class="editor-all"
             <p>If you need upload image, you must download <a href="//ui.gg/lib/editor/upload.zip">upload.zip</a> to your website directory and configure php<dd>如果需要上传图片，你必须下载 upload.zip 到你的网站目录，并配置 php</dd></p>
             <a class="btn shadow" href="//ui.gg/lib/editor/upload.zip" target="_blank">download</a>
             <h5>effect display</h5>
-            <iframe src="editor.html" height="500"></iframe>
+            <iframe src="editor.html" height="500" loading="lazy"></iframe>
             <a class="btn shadow" href="editor.html" target="_blank">view</a>
         </div>
         <h2><i class="ico ico-app"></i>General library</h2>
