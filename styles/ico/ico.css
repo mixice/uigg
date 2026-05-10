@@ -21,6 +21,10 @@
   margin: auto;
 }
 
+.ico-m:before {
+  content: "\ed3c";
+}
+
 .ico-craft:before {
   content: "\ed3a";
 }
