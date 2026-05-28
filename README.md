@@ -5,10 +5,6 @@
 
 UIGG is a lightweight, responsive front-end UI framework designed for rapid prototyping. It provides a rich set of CSS components, custom HTML elements, a built-in icon library, and jQuery-based JavaScript utilities — all out of the box.
 
-UIGG 是一个轻量级的响应式前端 UI 框架，专为快速原型设计而打造。它提供了丰富的 CSS 组件、自定义 HTML 元素、内置图标库以及基于 jQuery 的 JavaScript 工具集，开箱即用。
-
-**Current version:** 2.9 (build 20260401)
-
 **Official website:** [ui.gg](https://ui.gg/) · **Icon Library:** [uigg ico](https://ui.gg/ico.php) · **Author:** [mixice.com](http://mixice.com/)
 
 ---
