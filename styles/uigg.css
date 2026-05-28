@@ -478,7 +478,7 @@ tip.info { background-color: var(--color); color: white;}
 
 /* btn */
 .btn {position: relative;background-color: var(--color);color: white;border-radius: 3px;text-transform: capitalize;display: inline-flex;align-items: center;justify-content: center;text-align: center;padding: 0 20px;height: 50px;line-height: 50px;user-select: none;}
-.btn .ico {margin: 5px;font-size: 20px;}
+.btn .ico {margin: 5px;}
 .btn .ico:first-child {margin-left: -5px;}
 .btn .ico:last-child {margin-right: -5px;}
 .btn:hover {transform: translateY(5px);}

@@ -21,6 +21,10 @@
   margin: auto;
 }
 
+.ico-vv:before {
+  content: "\ece7";
+}
+
 .ico-m:before {
   content: "\ed3c";
 }
@@ -399,10 +403,6 @@
 
 .ico-user-set:before {
   content: "\ece6";
-}
-
-.ico-vv:before {
-  content: "\ece7";
 }
 
 .ico-safety-user:before {
