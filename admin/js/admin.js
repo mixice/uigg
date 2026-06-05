@@ -1,19 +1,13 @@
-//----------------------------------------------------------------------------------function
-$(function(){
-    //----------------------------------------------------------------------------------sider
-    $('.sider-toggle').click(function(){$('.sider').toggle()})
-
-    let localUrl = window.location.href,
-        pageAllName = localUrl.substring(localUrl.lastIndexOf('/') + 1),
-        pageName = pageAllName.substring(0,pageAllName.indexOf('.'))
-    //if(pageName == ''){pageName = ''}
-    $('.sider a[href="'+pageName+'.php"]').parents('fold-group').addClass('active')
+document.addEventListener('DOMContentLoaded', () => {
+	document.querySelectorAll('.sider-toggle').forEach(el => {
+		el.addEventListener('click', () => {
+			const sider = document.querySelector('.sider')
+			sider.style.display = sider.offsetParent ? 'none' : ''
+		})
+	})
+	const pageName = location.pathname.split('/').pop().split('.')[0]
+	document.querySelectorAll(`.sider a[href="${pageName}.php"]`).forEach(el => {
+		const group = el.closest('fold-group')
+		if (group) group.classList.add('active')
+	})
 })
-
-
-
-
-
-
-
-

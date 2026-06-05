@@ -14,9 +14,8 @@
 <link rel="stylesheet" href="../styles/uigg.css">
 <link rel="stylesheet" href="styles/admin.css">
 
-<script src="../js/jquery.min.js"></script>
+<script type="module" src="../js/uigg.js"></script>
 <script src="//ui.gg/lib/editor/editor.js"></script>
-<script src="../js/uigg.js"></script>
 <script src="js/admin.js"></script>
 </head>
 
@@ -150,7 +149,7 @@
                             <li uigg="title"></li>
                             <li uigg="title"></li>
                         </ul>
-                        <a class="btn btn-submit" onclick="$('pop').show()">pop</a>
+                        <a pop="pop" class="btn btn-submit">pop</a>
                     </div>
                     <reminder>
                         <h5 uigg="title"></h5>
@@ -427,22 +426,6 @@
                             </div>
                         </li>
                         <li class="center">
-                            <em uigg="img"></em>
-                            <div class="list-cont">
-                                <h6><a href=""><h5 uigg="title"></h5></a></h6>
-                                <p uigg="txt"></p>
-                                <div class="list-info">
-                                    <span><i class="ico ico-time"></i>2020-02-14</span>
-                                    <span><i class="ico ico-visibility"></i>242</span>
-                                </div>
-                            </div>
-                            <div class="list-control">
-                                <a href="" class="btn btn-med btn-empty">edit</a>
-                                <a href=""><i class="ico ico-visibility"></i></a>
-                                <a href=""><i class="ico ico-delete co-red"></i></a>
-                            </div>
-                        </li>
-                        <li class="center">
                             <div class="list-cont">
                                 <h6><a href=""><h5 uigg="title"></h5></a></h6>
                                 <p uigg="txt"></p>
@@ -514,7 +497,7 @@
         </section>
     </section>
 </section>
-<pop>
+<pop pop="pop">
     <pop-main>
         <pop-title><h3>title</h3><a class="close"></a></pop-title>
         <pop-cont>

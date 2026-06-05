@@ -239,6 +239,7 @@ input[type="color"]::-webkit-color-swatch {border-radius: 100px;}
 .form li .code {font-size: 14px;}
 .form .btn.ico,
 .form .btn .ico {color: white;}
+.form scaler a.btn.ico {color: var(--color);}
 .form .btn.code {border-radius: 100px;}
 
 .upload-group,
