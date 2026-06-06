@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const chatMsg = document.querySelector('chat-message')
     const chatControlAside = document.querySelector('chat-control aside')
     const chatCont = document.querySelector('chat-cont')
-    const chatNew = () => chatMsg && Uigg.scrollAnim(chatMsg, chatMsg.scrollTop, chatMsg.scrollHeight, 300)
+    const chatNew = () => {if(chatMsg) chatMsg.scrollTop = chatMsg.scrollHeight}
     chatNew()
     const emotBtn = document.querySelector('chat-tool .ico-emot-smile')
     emotBtn?.addEventListener('click', () => {

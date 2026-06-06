@@ -721,55 +721,46 @@ function initAudio(){
         }
     })
 }
-let _scrollAnimId = 0
-function scrollAnim(scrollEl, from, to, duration){
-    duration = typeof duration === 'number' ? duration : 500
-    if(from === to) return
-    const id = ++_scrollAnimId
-    const t0 = performance.now()
-    const isWindow = scrollEl === document.scrollingElement || scrollEl === document.body
-    function go(t){
-        if(id !== _scrollAnimId) return
-        const p = Math.min((t - t0) / duration, 1)
-        const val = from + (to - from) * p
-        if(isWindow){window.scrollTo(0, val)}
-        else {scrollEl.scrollTop = val}
-        if(p < 1) requestAnimationFrame(go)
-    }
-    requestAnimationFrame(go)
-}
-function scrollToEl(el, duration){
-    const scrollEl = findScrollParent(el)
-    const from = scrollEl.scrollTop
-    el.scrollIntoView()
-    const to = scrollEl.scrollTop
-    scrollAnim(scrollEl, from, to, duration)
-}
-function scrollToTop(duration){
-    const from = window.pageYOffset || document.scrollingElement.scrollTop || document.body.scrollTop
-    scrollAnim(document.scrollingElement || document.body, from, 0, duration)
-}
-function findScrollParent(el){
-    while(el && el !== document.body){
-        const d = getComputedStyle(el).overflowY
-        if(d === 'auto' || d === 'scroll') return el
-        el = el.parentElement
-    }
-    return document.scrollingElement || document.body
+function scrollAnim(box, from, to){
+    let start
+    requestAnimationFrame(function step(t) {
+      start ??= t
+      let p = Math.min((t - start) / 500, 1)
+      box.scrollTop = from + (to - from) * (p < .5 ? 2*p*p : -1+(4-2*p)*p)
+      p < 1 && requestAnimationFrame(step)
+    })
 }
 function initSmooth(){
-    document.querySelectorAll('.smooth').forEach(a => a.addEventListener('click', function(e){
+    document.querySelectorAll('.smooth').forEach(a =>
+      a.onclick = e => {
         e.preventDefault()
-        const el = document.querySelector(this.getAttribute('href'))
-        if(el) scrollToEl(el)
-    }))
+        let el = document.querySelector(a.getAttribute('href')),
+            box = el, start, s, d
+        while ((box = box.parentElement) && box !== document.body && box.scrollHeight <= box.clientHeight);
+        box = box && box !== document.body ? box : document.scrollingElement
+        s = box.scrollTop
+        d = box === document.scrollingElement
+          ? el.getBoundingClientRect().top
+          : el.getBoundingClientRect().top - box.getBoundingClientRect().top
+        scrollAnim(box, s, s + d)
+      }
+    )
+}
+function initTop(){
+    const bound = new Set()
+    document.querySelectorAll('.top.btn').forEach(el => el.classList.add('ico', 'ico-alone-top'))
+    document.querySelectorAll('.top').forEach(btn => {
+        btn.onclick = e => {
+            e.preventDefault()
+            scrollAnim(document.scrollingElement, scrollY, 0)
+        }
+        const doc = btn.ownerDocument, win = doc.defaultView
+        if(bound.has(doc)) return
+        bound.add(doc)
+        win.addEventListener('scroll', () => {doc.querySelectorAll('.top').forEach(t => {t.style.opacity = win.scrollY > win.innerHeight ? '1' : '0'})}, {passive: true})
+    })
 }
 function initReturn(){document.querySelectorAll('.return').forEach(a => a.addEventListener('click', () => history.back(-1)))}
-function initTop(){
-    document.querySelectorAll('.top.btn').forEach(el => el.classList.add('ico', 'ico-alone-top'))
-    document.querySelectorAll('.top').forEach(btn => btn.addEventListener('click', scrollToTop))
-    window.addEventListener('scroll', () => {document.querySelectorAll('.top').forEach(t => {t.style.opacity = window.scrollY > window.innerHeight ? '1' : '0'})})
-}
 function initPopLinks(){
     document.querySelectorAll('a[pop]').forEach(a => a.addEventListener('click', function(){
         const popId = this.getAttribute('pop')
@@ -953,12 +944,12 @@ const Uigg = {
         lug()
         this.inited = true
     },
-    tip, alert: alertFn, confirm: confirmFn, prompt: promptFn, notify, notifyRemove, countdown(date){countdownFn(date)}, disable, lug, mobile, touch, alone, setCookie, getCookie, isMobileView, scrollAnim,
+    tip, alert: alertFn, confirm: confirmFn, prompt: promptFn, notify, notifyRemove, countdown(date){countdownFn(date)}, disable, lug, mobile, touch, alone, setCookie, getCookie, isMobileView,
 }
 
 // Auto-init on DOM ready
-if(document.readyState !== 'loading') Uigg.init()
-else document.addEventListener('DOMContentLoaded', () => Uigg.init())
+if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', () => Uigg.init())
+else setTimeout(() => Uigg.init(), 0)
 
 // Attach to window for <script> tag usage
 if(typeof window !== 'undefined'){
