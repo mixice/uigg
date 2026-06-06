@@ -3,7 +3,7 @@
 [![](https://data.jsdelivr.com/v1/package/npm/uigg/badge)](https://www.jsdelivr.com/package/npm/uigg)
 [![license](https://img.shields.io/github/license/mixice/uigg)](LICENSE)
 
-UIGG is a lightweight, responsive front-end UI framework designed for rapid prototyping. It provides a rich set of CSS components, custom HTML elements, a built-in icon library, and jQuery-based JavaScript utilities — all out of the box.
+UIGG is a lightweight, responsive front-end UI framework designed for rapid prototyping. It provides a rich set of CSS components, custom HTML elements, a built-in icon library, and native JavaScript utilities — all out of the box.
 
 **Official website:** [ui.gg](https://ui.gg/) · **Icon Library:** [uigg ico](https://ui.gg/ico.php) · **Author:** [mixice.com](http://mixice.com/)
 
@@ -28,6 +28,8 @@ UIGG is a lightweight, responsive front-end UI framework designed for rapid prot
 ## Features
 
 - **Lightweight & fast** — minimal footprint with maximum utility
+- **No dependencies** — pure vanilla JavaScript, zero external runtime requirements
+- **ES Module native** — supports `import` / `export`, loaded via `type="module"`
 - **Responsive by default** — rem-based responsive layout with automatic mobile adaptation
 - **Custom semantic elements** — uses intuitive custom HTML tags (`<pop>`, `<tab>`, `<fold>`, `<nav>`, `<menu>`, `<chat>`, etc.)
 - **Rich component library** — 40+ built-in UI components covering forms, navigation, modals, animations, and more
@@ -37,7 +39,7 @@ UIGG is a lightweight, responsive front-end UI framework designed for rapid prot
 - **Color presets** — a complete CSS custom property color system with grays, accent colors, and transparency levels
 - **Mobile terminal components** — dedicated mobile UI patterns (page name header, bottom navigation, music player)
 - **Admin template** — includes a ready-to-use admin panel with login page
-- **jQuery-powered** — built on jQuery for DOM manipulation and event handling
+- **Uigg global API** — unified `Uigg` object exposing all utilities (`Uigg.tip()`, `Uigg.alert()`, `Uigg.touch()`, etc.)
 
 ---
 
@@ -53,15 +55,20 @@ Import in your project:
 
 ```js
 import 'uigg/uigg.css'   // styles
-import 'uigg'             // javascript
+import 'uigg'             // javascript (ES module)
+```
+
+Or import specific exports:
+
+```js
+import { Uigg, Pop, Tab, Menu } from 'uigg'
 ```
 
 ### Install via CDN
 
 ```html
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uigg/uigg.min.css">
-<script src="https://cdn.jsdelivr.net/npm/jquery"></script>
-<script src="https://cdn.jsdelivr.net/npm/uigg"></script>
+<script type="module" src="https://cdn.jsdelivr.net/npm/uigg"></script>
 ```
 
 ### Install via unpkg
@@ -93,8 +100,7 @@ Design templates are also available: [Adobe XD](https://ui.gg/xd.zip) · [Figma]
     <title>My UIGG Project</title>
     <link rel="stylesheet" href="styles/uigg.css">
     <link rel="stylesheet" href="styles/styles.css">
-    <script src="js/jquery.min.js"></script>
-    <script src="js/uigg.js"></script>
+    <script type="module" src="js/uigg.js"></script>
 </head>
 <body>
     <load></load>
@@ -113,11 +119,11 @@ Design templates are also available: [Adobe XD](https://ui.gg/xd.zip) · [Figma]
 uigg/
 ├── index.html              # Entry HTML template
 ├── js/
-│   ├── jquery.min.js       # jQuery library
-│   └── uigg.js             # UIGG core JavaScript (v2.9)
+│   └── uigg.js             # UIGG core JavaScript (v3.0, ES module)
 ├── styles/
 │   ├── uigg.css            # UIGG core stylesheet
 │   ├── styles.css           # Project custom styles
+│   ├── admin.css            # Admin panel styles
 │   └── ico/
 │       ├── ico.css          # Icon font stylesheet
 │       └── ico.woff2        # Icon font file
@@ -126,14 +132,16 @@ uigg/
 │   └── zh.json              # Chinese language file
 ├── images/
 │   └── ico.svg              # Favicon / logo
-├── demo/                    # Component demo pages (50+ examples)
-├── docs/                    # Documentation page
-└── admin/                   # Admin panel template
-    ├── login.html           # Admin login page
-    ├── index.html           # Admin dashboard
-    ├── admin.html           # Admin content page
-    ├── js/admin.js          # Admin JavaScript
-    └── styles/admin.css     # Admin styles
+├── admin/                   # Admin panel template
+│   ├── login.html           # Admin login page
+│   ├── index.html           # Admin dashboard
+│   ├── admin.html           # Admin content page
+│   ├── js/admin.js          # Admin JavaScript
+│   └── styles/admin.css     # Admin styles
+└── chat/                    # Chat interface template
+    ├── index.html           # Chat page
+    ├── js/chat.js           # Chat JavaScript
+    └── styles/chat.css      # Chat styles
 ```
 
 ---
@@ -167,7 +175,7 @@ Layout utilities include `.flex`, `.flex-auto`, `.flex-column`, `.center`, `.cle
 
 ## Components
 
-UIGG provides 40+ built-in components. Each component uses semantic custom HTML elements and is automatically initialized by `uigg.js`.
+UIGG provides 40+ built-in components. Each component uses semantic custom HTML elements and is automatically initialized on page load.
 
 ### Core Components
 
@@ -251,6 +259,23 @@ UIGG provides 40+ built-in components. Each component uses semantic custom HTML 
 | `confirm(message)` | Custom confirm dialog (returns Promise) |
 | `prompt(message, default)` | Custom prompt dialog (returns Promise) |
 
+### Uigg Global API
+
+All utilities are accessible via the `Uigg` object (also attached to `window.Uigg`):
+
+```js
+Uigg.tip('Hello!')
+Uigg.alert('Notice')
+Uigg.confirm('Are you sure?').then(result => console.log(result))
+Uigg.prompt('Enter name:').then(value => console.log(value))
+Uigg.notify('New message', 'top', 5000)
+Uigg.countdown('2026-12-31')
+Uigg.mobile(true)
+Uigg.touch(document.body, 'left', () => console.log('swiped left'))
+Uigg.alone(document.querySelectorAll('h1'))
+Uigg.isMobileView()
+```
+
 ---
 
 ## Color System
@@ -327,7 +352,6 @@ UIGG integrates with several external libraries via CDN:
 |---------|-------------|--------------|
 | UIGG CSS | `//ui.gg/lib/uigg.css` | `//cdn.jsdelivr.net/npm/uigg/uigg.min.css` |
 | UIGG JS | `//ui.gg/lib/uigg.js` | `//cdn.jsdelivr.net/npm/uigg` |
-| jQuery | `//ui.gg/lib/jquery.min.js` | `//cdn.jsdelivr.net/npm/jquery` |
 | Swiper | `//ui.gg/lib/swiper-bundle.min.css/js` | `//cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css/js` |
 | Editor | `//ui.gg/lib/editor/editor.js` | `//cdn.jsdelivr.net/npm/uigg/editor/editor.min.js` |
 | Web Fonts | `//ui.gg/lib/font/font.css` | `//cdn.jsdelivr.net/npm/uigg/font/font.min.css` |
