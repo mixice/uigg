@@ -586,6 +586,7 @@ function pageRender(el){
     const total = parseInt(el.getAttribute('total')) || 0
     const p = parseInt(el.getAttribute('page')) || 1
     const limit = parseInt(el.getAttribute('limit')) || 10
+    const param = el.getAttribute('param')
     const pages = Math.max(1, Math.ceil(total / limit))
     if(pages <= 1){el.innerHTML = ''; return}
     let start = Math.max(1, p - 2)
@@ -609,10 +610,16 @@ function pageRender(el){
         const curPages = Math.max(1, Math.ceil(curTotal / limit))
         if(pg < 1 || pg > curPages) return
         el.setAttribute('page', pg)
-        el.dispatchEvent(new CustomEvent('pagechange', {
-            detail: {page: pg, limit, total: curTotal, pages: curPages},
-            bubbles: true
-        }))
+        if(param){
+            const url = new URL(window.location)
+            url.searchParams.set(param, pg)
+            window.location.href = url.toString()
+        } else {
+            el.dispatchEvent(new CustomEvent('pagechange', {
+                detail: {page: pg, limit, total: curTotal, pages: curPages},
+                bubbles: true
+            }))
+        }
         pageRender(el)
     }
     if(!el._pageBound){
