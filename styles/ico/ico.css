@@ -21,6 +21,10 @@
   margin: auto;
 }
 
+.ico-stacking:before {
+  content: "\ecdf";
+}
+
 .ico-vv:before {
   content: "\ece7";
 }
@@ -391,10 +395,6 @@
 
 .ico-divinatory:before {
   content: "\eb3e";
-}
-
-.ico-stacking1:before {
-  content: "\ecdf";
 }
 
 .ico-leaderboard:before {

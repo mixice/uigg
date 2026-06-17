@@ -1,11 +1,12 @@
-document.addEventListener('DOMContentLoaded', () => {
-    document.querySelectorAll('chat-cont,chat-tip').forEach(el => el.classList.add('anime-fade-in'))
-    const chatMsg = document.querySelector('chat-message')
-    const chatControlAside = document.querySelector('chat-control aside')
-    const chatCont = document.querySelector('chat-cont')
+ready(() => {
+    const { $, $$ } = Uigg
+    $$('chat-cont,chat-tip').forEach(el => el.classList.add('anime-fade-in'))
+    const chatMsg = $('chat-message')
+    const chatControlAside = $('chat-control aside')
+    const chatCont = $('chat-cont')
     const chatNew = () => {if(chatMsg) chatMsg.scrollTop = chatMsg.scrollHeight}
     chatNew()
-    const emotBtn = document.querySelector('chat-tool .ico-emot-smile')
+    const emotBtn = $('chat-tool .ico-emot-smile')
     emotBtn?.addEventListener('click', () => {
         const next = emotBtn.nextElementSibling
         next && (next.style.display = next.style.display === 'block' ? 'none' : 'block')
@@ -20,7 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
         sel.addRange(range)
         el.focus()
     }
-    document.querySelectorAll('chat [uigg="emot"] s').forEach(s => {
+    $$('chat [uigg="emot"] s').forEach(s => {
         s.addEventListener('click', () => {
             const tip = s.closest('chat-tip')
             tip && (tip.style.display = 'none')
@@ -28,7 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
             focusEnd(chatControlAside)
         })
     })
-    const closeBtn = document.querySelector('chat-title x.ico-close')
+    const closeBtn = $('chat-title x.ico-close')
     closeBtn?.addEventListener('click', () => {
         chatCont && (chatCont.style.display = 'none')
     })
@@ -38,11 +39,11 @@ document.addEventListener('DOMContentLoaded', () => {
             const pop = document.createElement('pop')
             pop.className = 'anime-fade-in center'
             pop.innerHTML = `<img src="${imgSrc}">`
-            document.querySelector('chat')?.appendChild(pop)
+            $('chat')?.appendChild(pop)
         }
         if(e.target.closest('chat pop')){e.target.closest('chat pop').remove()}
     })
-    document.querySelectorAll('chat-list li').forEach(li => {
+    $$('chat-list li').forEach(li => {
         li.addEventListener('click', () => {
             chatCont && (chatCont.style.display = 'flex')
             chatNew()
@@ -59,13 +60,13 @@ document.addEventListener('DOMContentLoaded', () => {
         chatControlAside.innerHTML = ''
         chatNew()
     }
-    const sendBtn = document.querySelector('chat-control a')
+    const sendBtn = $('chat-control a')
     sendBtn?.addEventListener('click', doSend)
     chatControlAside?.addEventListener('keydown', e => {
         if(e.key === 'Enter' && !e.ctrlKey){e.preventDefault(); doSend()}
         if(e.key === 'Enter' && e.ctrlKey){e.preventDefault(); document.execCommand('insertLineBreak')}
     })
-    const fileInput = document.querySelector('chat-tool .ico-folder-empty input')
+    const fileInput = $('chat-tool .ico-folder-empty input')
     fileInput?.addEventListener('change', () => {
         const fileValue = fileInput.value
         const fileFormat = fileValue.substring(fileValue.lastIndexOf('.')).toLowerCase()

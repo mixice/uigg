@@ -7,6 +7,8 @@
  */
 
 console.log('%c BRACKET BY UIGG ','background-image: linear-gradient(90deg,slateblue,deeppink);color:white','http://ui.gg')
+const $ = (sel, ctx = document) => ctx.querySelector(sel)
+const $$ = (sel, ctx = document) => [...ctx.querySelectorAll(sel)]
 const language = navigator.language || navigator.userLanguage;
 
 // Cookie helpers
@@ -42,7 +44,7 @@ function mobile(force){
         const style = document.createElement('style')
         style.id = 'mobile'
         let css = ''
-        document.querySelectorAll('style, link[rel="stylesheet"]').forEach(el => {
+        $$('style, link[rel="stylesheet"]').forEach(el => {
             try {
                 if(!el.sheet) return
                 [...(el.sheet.cssRules || [])].forEach(r => {if(r instanceof CSSMediaRule && r.conditionText?.includes('max-width: 640px')){css += [...(r.cssRules || [])].map(c => c.cssText).join('')}})
@@ -97,7 +99,7 @@ function tip(str, type, time){
     tipEl.className = `${cls} center anime-zoom-in${type ? ' ' + type : ''}`
     tipEl.innerHTML = str
     document.body.appendChild(tipEl)
-    const t = document.querySelector(`.${cls}`)
+    const t = $(`.${cls}`)
     if(t){t.style.margin = `-${Math.round(t.offsetHeight/2)}px 0 0 -${Math.round(t.offsetWidth/2)}px`}
     if(time > 0) setTimeout(() => tipEl.remove(), time)
 }
@@ -108,7 +110,7 @@ function notifyRemove(notifyThis){
     setTimeout(() => notifyThis.remove(),500)
 }
 function notify(str, align, time){
-    let notifyEl = document.querySelector('notify')
+    let notifyEl = $('notify')
     if(!notifyEl){
         notifyEl = document.createElement('notify')
         notifyEl.innerHTML = '<audio src="//ui.gg/lib/media/notify.mp3"></audio>'
@@ -149,10 +151,10 @@ function countdownFn(date){
     const m = Math.floor(leftTime/1000/60%60)
     const s = Math.floor(leftTime/1000%60)
     const digit = (num,n) => num.toString().padStart(n, '0')
-    document.querySelectorAll('countdown d').forEach(el => el.textContent = d)
-    document.querySelectorAll('countdown h').forEach(el => el.textContent = digit(h,2))
-    document.querySelectorAll('countdown m').forEach(el => el.textContent = digit(m,2))
-    document.querySelectorAll('countdown s').forEach(el => el.textContent = digit(s,2))
+    $$('countdown d').forEach(el => el.textContent = d)
+    $$('countdown h').forEach(el => el.textContent = digit(h,2))
+    $$('countdown m').forEach(el => el.textContent = digit(m,2))
+    $$('countdown s').forEach(el => el.textContent = digit(s,2))
     setTimeout(countdownFn, 1000)
 }
 
@@ -207,12 +209,12 @@ function disable(){
 
 // Lug
 function lug(){
-    document.querySelectorAll('.lug-thumbs a').forEach(a => a.addEventListener('click', function(){
+    $$('.lug-thumbs a').forEach(a => a.addEventListener('click', function(){
         this.classList.add('active')
         this.parentElement?.querySelectorAll(':scope > a').forEach(s => s !== this && s.classList.remove('active'))
     }))
     if(typeof Swiper === 'undefined') return
-    const thumbs = document.querySelectorAll('.lug-thumbs a')
+    const thumbs = $$('.lug-thumbs a')
     new Swiper('.lug-top',{
         on:{
             touchEnd: function(){
@@ -316,7 +318,7 @@ class Pop extends HTMLElement {
         if(choice){choice.classList.add(this.hasAttribute('top') ? 'anime-fade-in-down' : 'anime-fade-in-up')}
         this.addEventListener('click', (e) => {
             const t = e.target
-            if(t.matches?.('.close, x')){this.style.display = 'none'}
+            if(t.closest?.('.close, x')){this.style.display = 'none'}
         })
         const main = this.querySelector('pop-main')
         if(main){
@@ -667,7 +669,7 @@ function initCustomElements(){
     map.forEach(([tag, Cls]) => {
         if(customElements.get(tag)) return
         try{customElements.define(tag, Cls); return}catch(e){}
-        document.querySelectorAll(tag).forEach(el => {
+        $$(tag).forEach(el => {
             Object.setPrototypeOf(el, Cls.prototype)
             el.connectedCallback()
         })
@@ -675,31 +677,31 @@ function initCustomElements(){
 }
 
 // ============ Init Functions ============
-function initPage(){document.querySelectorAll('page').forEach(el => pageRender(el))}
-function initLazy(){document.querySelectorAll('[lazy]').forEach(el => el.setAttribute('loading', 'lazy'))}
+function initPage(){$$('page').forEach(el => pageRender(el))}
+function initLazy(){$$('[lazy]').forEach(el => el.setAttribute('loading', 'lazy'))}
 let langSwitch = 0
 function initLang(){
     let langType = getCookie('lang') === '' ? 'en' : getCookie('lang')
     function lang(){
-        if(document.querySelectorAll('[lang]').length === 0) return
+        if($$('[lang]').length === 0) return
         fetch(`../lang/${langType}.json`).then(async r => {
             if(!r.ok) return
             const data = await r.json()
-            document.querySelectorAll('[lang]').forEach(el => el.innerHTML = langRead(el.getAttribute('lang'), data))
-            document.querySelectorAll('[lang-placeholder]').forEach(el => el.placeholder = langRead(el.getAttribute('lang-placeholder'), data))
-            document.querySelectorAll('[lang-value]').forEach(el => el.setAttribute('value', langRead(el.getAttribute('lang-value'), data)))
-            document.querySelectorAll('[lang-content]').forEach(el => el.setAttribute('content', langRead(el.getAttribute('lang-content'), data)))
+            $$('[lang]').forEach(el => el.innerHTML = langRead(el.getAttribute('lang'), data))
+            $$('[lang-placeholder]').forEach(el => el.placeholder = langRead(el.getAttribute('lang-placeholder'), data))
+            $$('[lang-value]').forEach(el => el.setAttribute('value', langRead(el.getAttribute('lang-value'), data)))
+            $$('[lang-content]').forEach(el => el.setAttribute('content', langRead(el.getAttribute('lang-content'), data)))
         }).catch(() => {})
     }
     lang()
-    document.querySelectorAll('[lang-set]').forEach(el => el.addEventListener('click', function(){
+    $$('[lang-set]').forEach(el => el.addEventListener('click', function(){
         langType = this.getAttribute('lang-set')
         setCookie('lang', langType, '72')
         lang()
     }))
 }
 function initFullscreen(){
-    document.querySelectorAll('.fullscreen').forEach(el => {
+    $$('.fullscreen').forEach(el => {
         el.classList.add('ico')
         el.addEventListener('click', function(){
             if(!document.fullscreenElement){
@@ -707,7 +709,7 @@ function initFullscreen(){
             }else{document.exitFullscreen?.() || document.webkitExitFullscreen?.() || document.mozCancelFullScreen?.()}
         })
     })
-    document.addEventListener('fullscreenchange', () => {document.querySelectorAll('.fullscreen').forEach(el => el.classList.toggle('active', !!document.fullscreenElement))})
+    document.addEventListener('fullscreenchange', () => {$$('.fullscreen').forEach(el => el.classList.toggle('active', !!document.fullscreenElement))})
 }
 function initAudio(){
     document.addEventListener('click', (e) => {
@@ -738,10 +740,10 @@ function scrollAnim(box, from, to){
     })
 }
 function initSmooth(){
-    document.querySelectorAll('.smooth').forEach(a =>
+    $$('.smooth').forEach(a =>
       a.onclick = e => {
         e.preventDefault()
-        let el = document.querySelector(a.getAttribute('href')),
+        let el = $(a.getAttribute('href')),
             box = el, start, s, d
         while ((box = box.parentElement) && box !== document.body && box.scrollHeight <= box.clientHeight);
         box = box && box !== document.body ? box : document.scrollingElement
@@ -755,8 +757,8 @@ function initSmooth(){
 }
 function initTop(){
     const bound = new Set()
-    document.querySelectorAll('.top.btn').forEach(el => el.classList.add('ico', 'ico-alone-top'))
-    document.querySelectorAll('.top').forEach(btn => {
+    $$('.top.btn').forEach(el => el.classList.add('ico', 'ico-alone-top'))
+    $$('.top').forEach(btn => {
         btn.onclick = e => {
             e.preventDefault()
             scrollAnim(document.scrollingElement, scrollY, 0)
@@ -767,17 +769,17 @@ function initTop(){
         win.addEventListener('scroll', () => {doc.querySelectorAll('.top').forEach(t => {t.style.opacity = win.scrollY > win.innerHeight ? '1' : '0'})}, {passive: true})
     })
 }
-function initReturn(){document.querySelectorAll('.return').forEach(a => a.addEventListener('click', () => history.back(-1)))}
+function initReturn(){$$('.return').forEach(a => a.addEventListener('click', () => history.back(-1)))}
 function initPopLinks(){
-    document.querySelectorAll('a[pop]').forEach(a => a.addEventListener('click', function(){
+    $$('a[pop]').forEach(a => a.addEventListener('click', function(){
         const popId = this.getAttribute('pop')
-        const pop = document.querySelector(`pop[pop="${popId}"]`)
+        const pop = $(`pop[pop="${popId}"]`)
         if(pop) pop.style.display = 'block'
     }))
 }
 function initToggle(){
     const toggleSelectors = ['o.checkbox', 'o.checkbox-done', 'o.checkbox-cancel', 'o.favorite', 'o.star', 'o.visibility', 'o.password', 'o.mic', 'o.volume', 'o.muzak', 'o.phonecard', 'o.cinema', 'o.camera', 'o.aim', 'o.semaphore', 'o.suitcase', 'o.light', 'o.thumb-up', 'o.thumb-down', 'o.devicerotate', 'o.thumbtack', 'o.bell', 'o.place', 'o.link', 'o.blur', 'o.toggle']
-    document.querySelectorAll(toggleSelectors.join(',')).forEach(el => el.addEventListener('click', function(){
+    $$(toggleSelectors.join(',')).forEach(el => el.addEventListener('click', function(){
         this.classList.toggle('active')
     }))
     document.addEventListener('click', (e) => {
@@ -787,19 +789,19 @@ function initToggle(){
             e.target.classList.add('active')
         }
     })
-    document.querySelectorAll('o.checkbox-all').forEach(el => el.addEventListener('click', function(){
+    $$('o.checkbox-all').forEach(el => el.addEventListener('click', function(){
         const parent = this.closest('.parent')
         const checkboxes = [...(parent?.querySelectorAll('o.checkbox, o.checkbox-done') || [])]
         const isActive = this.classList.contains('active')
         checkboxes.forEach(c => c.classList.toggle('active', isActive))
     }))
-    document.querySelectorAll('o.password').forEach(el => el.addEventListener('click', function(){
+    $$('o.password').forEach(el => el.addEventListener('click', function(){
         const parent = this.parentElement
         const input = parent?.querySelector('input')
         if(input) input.type = input.type === 'password' ? 'text' : 'password'
     }))
 }
-function initAutoTextarea(){document.querySelectorAll('textarea.auto').forEach(ta => ta.addEventListener('input', () => {ta.style.height = ta.scrollHeight + 'px' }))}
+function initAutoTextarea(){$$('textarea.auto').forEach(ta => ta.addEventListener('input', () => {ta.style.height = ta.scrollHeight + 'px' }))}
 function initUpload(){
     function bindUploadGroup(group){
         const input = group.querySelector('input')
@@ -814,8 +816,8 @@ function initUpload(){
             }
         })
     }
-    document.querySelectorAll('.upload-group').forEach(bindUploadGroup)
-    document.querySelectorAll('.upload-add').forEach(btn => btn.addEventListener('click', function(){
+    $$('.upload-group').forEach(bindUploadGroup)
+    $$('.upload-add').forEach(btn => btn.addEventListener('click', function(){
         const group = document.createElement('div')
         group.className = 'ico upload-group'
         group.innerHTML = `<input type="file" accept=".jpg,.jpeg,.png,.webp,.gif"><n class="ico"></n>`
@@ -825,37 +827,37 @@ function initUpload(){
     document.addEventListener('click', (e) => {if(e.target.matches?.('.upload-group n')){e.target.parentElement?.remove()}})
 }
 function initRandom(){
-    document.querySelectorAll('[uigg="bg"], [uigg="img"], [uigg="product"], [uigg="avatar"]').forEach(el => {
+    $$('[uigg="bg"], [uigg="img"], [uigg="product"], [uigg="avatar"]').forEach(el => {
         const url = `//ui.gg/lib/images/${el.getAttribute('uigg')}?=${randNum()}`
         const bg = window.getComputedStyle(el).backgroundImage
         if(bg === 'none' && el.tagName !== 'IMG'){el.style.backgroundImage = `url(${url})`}
         else if(!el.getAttribute('src') && el.tagName === 'IMG'){el.setAttribute('src', url)}
     })
-    document.querySelectorAll('[uigg="color"]').forEach(el => {
+    $$('[uigg="color"]').forEach(el => {
         el.style.backgroundColor = `rgb(${randCol()}, ${randCol()}, ${randCol()})`
         if(el.tagName === 'IMG') el.style.cssText += ';width:100%;height:100%'
     })
-    document.querySelectorAll('[uigg="txt"]').forEach(el => {if(!el.getAttribute('lang') && !el.innerHTML){el.innerHTML += randomSentences}})
-    document.querySelectorAll('[uigg="title"]').forEach(el => {if(!el.getAttribute('lang') && !el.innerHTML){el.innerHTML += randomSentences[Math.floor(Math.random() * randomSentences.length)]}})
-    const emot = document.querySelector('[uigg="emot"]')
+    $$('[uigg="txt"]').forEach(el => {if(!el.getAttribute('lang') && !el.innerHTML){el.innerHTML += randomSentences}})
+    $$('[uigg="title"]').forEach(el => {if(!el.getAttribute('lang') && !el.innerHTML){el.innerHTML += randomSentences[Math.floor(Math.random() * randomSentences.length)]}})
+    const emot = $('[uigg="emot"]')
     if(emot){emot.innerHTML = Array.from({length: 100}, (_, i) => `<s style="background-image: url(//ui.gg/lib/emot/${i+1}.svg)"></s>`).join('')}
 }
 function initClue(){
-    document.querySelectorAll('[clue]').forEach(el => {
+    $$('[clue]').forEach(el => {
         let clue = el.getAttribute('clue')
         if(!clue || clue === 'null') clue = el.getAttribute('title') || ''
         if(clue){el.setAttribute('clue', clue); el.removeAttribute('title')}
     })
 }
 function initCopy(){
-    document.querySelectorAll('[copy-btn]').forEach(btn => btn.addEventListener('click', function(){
+    $$('[copy-btn]').forEach(btn => btn.addEventListener('click', function(){
         const copyNum = this.getAttribute('copy-btn')
-        const copyEl = copyNum ? document.querySelector(`[copy-val="${copyNum}"]`) : document.querySelector('[copy-val]')
+        const copyEl = copyNum ? $(`[copy-val="${copyNum}"]`) : $('[copy-val]')
         if(!copyEl) return
         const copyVal = copyEl.tagName === 'INPUT' ? copyEl.value : copyEl.textContent
         navigator.clipboard.writeText(copyVal).then(() => tip(copyRight),err => tip(copyErr + err))
     }))
-    if(document.querySelector('[copy-select]')){document.addEventListener('mouseup', copySelectedText)}
+    if($('[copy-select]')){document.addEventListener('mouseup', copySelectedText)}
 }
 function initNotifyClose(){
     document.addEventListener('click', (e) => {
@@ -866,11 +868,11 @@ function initNotifyClose(){
     })
 }
 function initSwiperBtns(){
-    document.querySelectorAll('.swiper-button-next').forEach(el => el.classList.add('ico', 'ico-alone-right'))
-    document.querySelectorAll('.swiper-button-prev').forEach(el => el.classList.add('ico', 'ico-alone-left'))
+    $$('.swiper-button-next').forEach(el => el.classList.add('ico', 'ico-alone-right'))
+    $$('.swiper-button-prev').forEach(el => el.classList.add('ico', 'ico-alone-left'))
 }
 function initRecording(){
-    document.querySelectorAll('.recording').forEach(btn => btn.addEventListener('click', async function(){
+    $$('.recording').forEach(btn => btn.addEventListener('click', async function(){
         try{
             const stream = await navigator.mediaDevices.getDisplayMedia({video: true})
             const mime = MediaRecorder.isTypeSupported("video/webm; codecs=vp9") ? "video/webm; codecs=vp9" : "video/webm"
@@ -893,7 +895,7 @@ function initRecording(){
 }
 function alone(elements){
     if(!elements) return
-    if(typeof elements === 'string') elements = document.querySelectorAll(elements)
+    if(typeof elements === 'string') elements = $$(elements)
     if(!elements.forEach) elements = [elements]
     elements.forEach(function(el){
         let txt = el.textContent || ''
@@ -904,7 +906,7 @@ function alone(elements){
     })
 }
 function touch(selector, direction, callback, threshold){
-    const element = typeof selector === 'string' ? document.querySelector(selector) : selector
+    const element = typeof selector === 'string' ? $(selector) : selector
     if(!element || !callback) return
     if(!threshold) threshold = 100
     let startPos = null
@@ -939,6 +941,8 @@ function touch(selector, direction, callback, threshold){
 }
 
 // ============ Uigg Manager ============
+const ready = (fn) => document.readyState === 'loading' ? document.addEventListener('DOMContentLoaded', fn) : fn()
+
 const Uigg = {
     inited: false,
     init(ctx){
@@ -951,17 +955,18 @@ const Uigg = {
         lug()
         this.inited = true
     },
-    tip, alert: alertFn, confirm: confirmFn, prompt: promptFn, notify, notifyRemove, countdown(date){countdownFn(date)}, disable, lug, mobile, touch, alone, setCookie, getCookie, isMobileView,
+    tip, alert: alertFn, confirm: confirmFn, prompt: promptFn, notify, notifyRemove, countdown(date){countdownFn(date)}, disable, lug, mobile, touch, alone, setCookie, getCookie, isMobileView, $, $$, ready,
 }
 
 // Auto-init on DOM ready
-if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', () => Uigg.init())
-else setTimeout(() => Uigg.init(), 0)
+ready(() => Uigg.init())
 
 // Attach to window for <script> tag usage
 if(typeof window !== 'undefined'){
     window.Uigg = Uigg
-    for(const [k,v] of [['tip',tip],['notify',notify],['lug',lug],['touch',touch],['alone',alone],['disable',disable],['mobile',mobile],['setCookie',setCookie],['getCookie',getCookie],['countdown',countdownFn]]) window[k] = v
+    for(const [k,v] of [['tip',tip],['notify',notify],['lug',lug],['touch',touch],['alone',alone],['disable',disable],['mobile',mobile],['setCookie',setCookie],['getCookie',getCookie],['countdown',countdownFn],['ready',ready]]) window[k] = v
+    // Note: $ and $$ intentionally NOT exposed on window to avoid jQuery / library conflicts.
+    // External scripts should use Uigg.$() and Uigg.$$() instead.
 }
 
 // ES module exports (works with import when type="module")
