@@ -654,7 +654,7 @@ progress {height: 4px;--progress-color: var(--color);color: var(--color);}
 input[type="range"],
 input[type="file"],
 input[type="color"] {padding: 0;background: none !important;border: 0;}
-input[type="range"]::-webkit-slider-runnable-track {height: 4px;background-color: var(--color);}
+input[type="range"]::-webkit-slider-runnable-track {height: 4px;background: linear-gradient(to right,var(--color) 0%,var(--color) var(--value, 0%),var(--f7) var(--value, 0%),var(--f7) 100%);}
 input[type="range"]::-webkit-slider-thumb {width: 24px;height: 24px;background-color: var(--color);border-radius: 100%;margin-top: -10px;box-shadow: 0 3px 6px var(--color);}
 input[type="file"]::-webkit-file-upload-button {background-color: var(--color);border: 0;cursor: pointer;height: 50px;color: white;border-radius: 3px;text-transform: capitalize;padding: 0 20px;}
 input[type="color"] {width: 50px;

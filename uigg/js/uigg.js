@@ -499,8 +499,12 @@ class Hop extends HTMLElement {
             x.style.display = hopCont.style.display
         }
         hopA.addEventListener('click', toggle)
+        hopCont.addEventListener('click', () => {
+            hopCont.style.display = 'none'
+            x.style.display = 'none'
+        })
         this.addEventListener('click', (e) => {
-            if(e.target === hopCont || e.target === x){
+            if(e.target === x){
                 hopCont.style.display = 'none'
                 x.style.display = 'none'
             }
@@ -893,6 +897,18 @@ function initRecording(){
         }catch(error){console.error('Recording failed:', error)}
     }))
 }
+function initRange(){
+    $$('input[type="range"]').forEach(el => {
+        const update = () => {
+            const min = parseFloat(el.min) || 0
+            const max = parseFloat(el.max) || 100
+            const pct = ((parseFloat(el.value) - min) / (max - min)) * 100
+            el.style.setProperty('--value', pct + '%')
+        }
+        el.addEventListener('input', update)
+        update()
+    })
+}
 function alone(elements){
     if(!elements) return
     if(typeof elements === 'string') elements = $$(elements)
@@ -951,7 +967,7 @@ const Uigg = {
         initPage(); initLazy(); initLang(); initFullscreen(); initAudio();
         initSmooth(); initReturn(); initTop(); initPopLinks(); initToggle();
         initAutoTextarea(); initUpload(); initRandom(); initClue();
-        initCopy(); initNotifyClose(); initSwiperBtns(); initRecording();
+        initCopy(); initNotifyClose(); initSwiperBtns(); initRecording(); initRange();
         lug()
         this.inited = true
     },
@@ -964,12 +980,12 @@ ready(() => Uigg.init())
 // Attach to window for <script> tag usage
 if(typeof window !== 'undefined'){
     window.Uigg = Uigg
-    for(const [k,v] of [['tip',tip],['notify',notify],['lug',lug],['touch',touch],['alone',alone],['disable',disable],['mobile',mobile],['setCookie',setCookie],['getCookie',getCookie],['countdown',countdownFn],['ready',ready]]) window[k] = v
+    for(const [k,v] of [['tip',tip],['notify',notify],['lug',lug],['touch',touch],['alone',alone],['disable',disable],['mobile',mobile],['setCookie',setCookie],['getCookie',getCookie],['countdown',countdownFn],['ready',ready],['initLang',initLang]]) window[k] = v
     // Note: $ and $$ intentionally NOT exposed on window to avoid jQuery / library conflicts.
     // External scripts should use Uigg.$() and Uigg.$$() instead.
 }
 
 // ES module exports (works with import when type="module")
 export {Uigg, Load, Music, Name, Nav, Tab, Pop, Menu, Scaler, Choice, Progress, Drop, Rate, Empty, Hop, Fold, Step, Crumb, Horn, Notice}
-export {initCustomElements, initPage, initLazy, initLang, initFullscreen, initAudio, initSmooth, initReturn, initTop, initPopLinks, initToggle, initAutoTextarea, initUpload, initRandom, initClue, initCopy, initNotifyClose, initSwiperBtns, initRecording}
+export {initCustomElements, initPage, initLazy, initLang, initFullscreen, initAudio, initSmooth, initReturn, initTop, initPopLinks, initToggle, initAutoTextarea, initUpload, initRandom, initClue, initCopy, initNotifyClose, initSwiperBtns, initRecording, initRange}
 export default Uigg
