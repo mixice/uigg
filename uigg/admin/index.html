@@ -164,23 +164,21 @@
                     <a href="" class="btn">submit</a>
                 </div>
                 <div class="item">
-                    <div class="form filter">
-                        <form>
-                            <li><span>input</span><input type="text"></li>
-                            <li><span>time</span><input type="date"></li>
-                            <li><span>select</span><div class="select"><select><option selected disabled>select</option><option>select</option></select></div></li>
-                            <li><span>choice</span>
-                                <choice>
-                                    <a>choice 1</a>
-                                    <choice-list>
-                                        <a>choice 1</a>
-                                        <a>choice 2</a>
-                                    </choice-list>
-                                </choice>
-                            </li>
-                            <li><a href="" class="btn">serach</a></li>
-                        </form>
-                    </div>
+                    <form class="form filter" auto>
+                        <li><label>name</label><input type="text" name="name"></li>
+                        <li><label>time</label><input type="date" name="time"></li>
+                        <li><label>select</label><div class="select"><select name="select"><option selected disabled>select</option><option>select</option></select></div></li>
+                        <li><label>choice</label>
+                            <choice name="choice">
+                                <a>choice</a>
+                                <choice-list>
+                                    <a>choice</a>
+                                    <a>choice</a>
+                                </choice-list>
+                            </choice>
+                        </li>
+                        <li><a class="btn" submit>search</a></li>
+                    </form>
                     <div class="table">
                         <table>
                             <thead>
@@ -253,116 +251,117 @@
                     <a href="" class="btn">submit</a>
                 </div>
                 <div class="item">
-                    <section class="form">
-                        <form>
-                            <li><span>account</span>
-                                <input class="wide-20" type="text" required>
-                                <cite>Lorem ipsum dolor sit amet</cite>
-                            </li>
-                            <li><span>password</span>
-                                <div class="input wide-20"><input type="password" required><o class="password"></o></div>
-                                <cite class="co-red">Password error</cite>
-                            </li>
-                            <li><span>scaler</span>
-                                <scaler><input step="1" min="0" max="100" value="1"></scaler>
-                                <cite>Lorem ipsum dolor sit amet</cite>
-                            </li>
-                            <li><span>radio</span>
-                                <div class="parent">
-                                    <o class="radio"></o><span>radio</span>
-                                    <o class="radio"></o><span>radio</span>
-                                    <o class="radio"></o><span>radio</span>
-                                </div>
-                                <cite>Lorem ipsum dolor sit amet</cite>
-                            </li>
-                            <li><span>checkbox</span>
-                                <div class="parent">
-                                    <o class="checkbox"></o><span>checkbox</span>
-                                    <o class="checkbox"></o><span>checkbox</span>
-                                    <o class="checkbox checkbox-all"></o><span>checkbox all</span>
-                                </div>
-                                <cite>Lorem ipsum dolor sit amet</cite>
-                            </li>
-                            <li><span>toggle</span>
-                                <o class="toggle"></o>
-                                <cite>Lorem ipsum dolor sit amet</cite>
-                            </li>
-                            <li><span>progress</span>
-                                <progress class="wide-20" max="100" value="50"></progress>
-                            </li>
-                            <li><span>range</span>
-                                <input class="wide-20" type="range" min="0" max="100" step="0" value="50">
-                                <cite>Lorem ipsum dolor sit amet</cite>
-                            </li>
-                            <li><span>file</span>
-                                <input class="wide-30" type="file">
-                                <cite>Lorem ipsum dolor sit amet</cite>
-                            </li>
-                            <li><span>color</span>
-                                <input type="color">
-                                <cite>Lorem ipsum dolor sit amet</cite>
-                            </li>
-                            <li><span>date</span>
-                                <input class="wide-20" type="date">
-                                <cite>Lorem ipsum dolor sit amet</cite>
-                            </li>
-                            <li><span>datetime</span>
-                                <input class="wide-20" type="datetime-local">
-                                <cite>Lorem ipsum dolor sit amet</cite>
-                            </li>
-                            <li><span>month</span>
-                                <input class="wide-20" type="month">
-                                <cite>Lorem ipsum dolor sit amet</cite>
-                            </li>
-                            <li><span>week</span>
-                                <input class="wide-20" type="week">
-                                <cite>Lorem ipsum dolor sit amet</cite>
-                            </li>
-                            <li><span>time</span>
-                                <input class="wide-20" type="time">
-                                <cite>Lorem ipsum dolor sit amet</cite>
-                            </li>
-                            <li><span>select</span>
-                                <div class="select wide-20"><select><option selected disabled>select</option><option>select</option></select></div>
-                                <cite>Lorem ipsum dolor sit amet</cite>
-                            </li>
-                            <li><span>choice</span>
-                                <choice class="wide-20">
-                                    <a>choice 1</a>
-                                    <choice-list>
-                                        <a>choice 1</a>
-                                        <a>choice 2</a>
-                                    </choice-list>
-                                </choice>
-                                <cite>Lorem ipsum dolor sit amet</cite>
-                            </li>
-                            <li><span>robot</span>
-                                <input class="wide-10" type="text">
-                                <a class="code" uigg="color"><img uigg="color"></a>
-                                <cite>Lorem ipsum dolor sit amet</cite>
-                            </li>
-                            <li><span>code</span>
-                                <input class="wide-10" type="text">
-                                <a class="btn code">get code</a>
-                                <cite>Lorem ipsum dolor sit amet</cite>
-                            </li>
-                            <li><span>message</span>
-                                <textarea class="wide"></textarea>
-                            </li>
-                            <li><span>editor</span>
-                                <div class="editor-simple"></div>
-                            </li>
-                            <li><span>images</span>
-                                <div class="upload">
-                                    <div class="ico upload-group"><input type="file" accept=".jpg,.jpeg,.png,.webp,.gif"><n class="ico"></n></div>
-                                    <div class="ico upload-add"></div>
-                                </div>
-                                <cite>Lorem ipsum dolor sit amet</cite>
-                            </li>
-                            <li class="resolve"><o class="checkbox"></o><span>I've read and agreed</span><a>"User agreement"</a></li>
-                            <li class="resolve"><button class="btn btn-submit">cancel</button><button class="btn btn-submit">submit</button></li>
-                        </form>
-                    </section>
+                    <form class="form" auto>
+                        <li><label>account</label>
+                            <input class="wide-20" type="text" name="account" required>
+                            <hint>Lorem ipsum dolor sit amet</hint>
+                        </li>
+                        <li><label>password</label>
+                            <div class="input wide-20"><input type="password" name="password" required><o class="password"></o></div>
+                            <hint>Password error</hint>
+                        </li>
+                        <li><label>scaler</label>
+                            <scaler><input step="1" min="0" max="100" value="1" name="scaler"></scaler>
+                            <hint>Lorem ipsum dolor sit amet</hint>
+                        </li>
+                        <li><label>radio</label>
+                            <div class="parent" name="radio">
+                                <o class="radio" data="radio1"></o><span>radio</span>
+                                <o class="radio" data="radio2"></o><span>radio</span>
+                                <o class="radio" data="radio3"></o><span>radio</span>
+                            </div>
+                            <hint>Lorem ipsum dolor sit amet</hint>
+                        </li>
+                        <li><label>checkbox</label>
+                            <div class="parent" name="checkbox">
+                                <o class="checkbox" data="checkbox1"></o><span>checkbox</span>
+                                <o class="checkbox" data="checkbox2"></o><span>checkbox</span>
+                                <o class="checkbox checkbox-all" data="checkboxall"></o><span>checkbox all</span>
+                            </div>
+                            <hint>Lorem ipsum dolor sit amet</hint>
+                        </li>
+                        <li><label>toggle</label>
+                            <o class="toggle" name="toggle"></o>
+                            <hint>Lorem ipsum dolor sit amet</hint>
+                        </li>
+                        <li><label>progress</label>
+                            <progress class="wide-20" max="100" value="50"></progress>
+                        </li>
+                        <li><label>range</label>
+                            <input class="wide-20" type="range" min="0" max="100" step="0" value="50" name="range">
+                            <hint>Lorem ipsum dolor sit amet</hint>
+                        </li>
+                        <li><label>file</label>
+                            <input class="wide-30" type="file" name="file">
+                            <hint>Lorem ipsum dolor sit amet</hint>
+                        </li>
+                        <li><label>color</label>
+                            <input type="color" name="color">
+                            <hint>Lorem ipsum dolor sit amet</hint>
+                        </li>
+                        <li><label>date</label>
+                            <input class="wide-20" type="date" name="date">
+                            <hint>Lorem ipsum dolor sit amet</hint>
+                        </li>
+                        <li><label>datetime</label>
+                            <input class="wide-20" type="datetime-local" name="datetime">
+                            <hint>Lorem ipsum dolor sit amet</hint>
+                        </li>
+                        <li><label>month</label>
+                            <input class="wide-20" type="month" name="month">
+                            <hint>Lorem ipsum dolor sit amet</hint>
+                        </li>
+                        <li><label>week</label>
+                            <input class="wide-20" type="week" name="week">
+                            <hint>Lorem ipsum dolor sit amet</hint>
+                        </li>
+                        <li><label>time</label>
+                            <input class="wide-20" type="time" name="time">
+                            <hint>Lorem ipsum dolor sit amet</hint>
+                        </li>
+                        <li><label>select</label>
+                            <div class="select wide-20"><select name="select"><option selected disabled>select</option><option>select</option></select></div>
+                            <hint>Lorem ipsum dolor sit amet</hint>
+                        </li>
+                        <li><label>choice</label>
+                            <choice class="wide-20" name="choice">
+                                <a>choice</a>
+                                <choice-list>
+                                    <a>choice</a>
+                                    <a>choice</a>
+                                </choice-list>
+                            </choice>
+                            <hint>Lorem ipsum dolor sit amet</hint>
+                        </li>
+                        <li><label>robot</label>
+                            <input class="wide-10" type="text" name="robot">
+                            <a class="code" uigg="color"><img uigg="color"></a>
+                            <hint>Lorem ipsum dolor sit amet</hint>
+                        </li>
+                        <li><label>code</label>
+                            <input class="wide-10" type="text" name="code">
+                            <a class="btn code">get code</a>
+                            <hint>Lorem ipsum dolor sit amet</hint>
+                        </li>
+                        <li><label>message</label>
+                            <textarea class="wide" name="message"></textarea>
+                        </li>
+                        <li><label>editor</label>
+                            <div class="editor-simple"></div>
+                        </li>
+                        <li><label>images</label>
+                            <div class="upload" name="images">
+                                <div class="ico upload-group"><input type="file" accept=".jpg,.jpeg,.png,.webp,.gif"><n class="ico"></n></div>
+                                <div class="ico upload-add"></div>
+                            </div>
+                            <hint>Lorem ipsum dolor sit amet</hint>
+                        </li>
+                        <li class="resolve"><o class="checkbox" name="agreement"></o><span>I've read and agreed</span><a>"User agreement"</a></li>
+                        <li class="resolve">
+                            <a class="btn btn-submit" reset>reset</a>
+                            <a class="btn btn-submit" submit>submit</a>
+                        </li>
+                    </form>
                 </div>
             </div>
             <div class="contant">

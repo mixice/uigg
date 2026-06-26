@@ -9,7 +9,7 @@
 console.log('%c BRACKET BY UIGG ','background-image: linear-gradient(90deg,slateblue,deeppink);color:white','http://ui.gg')
 const $ = (sel, ctx = document) => ctx.querySelector(sel)
 const $$ = (sel, ctx = document) => [...ctx.querySelectorAll(sel)]
-const language = navigator.language || navigator.userLanguage;
+const language = navigator.language || navigator.userLanguage
 
 // Cookie helpers
 const setCookie = (name, value, hours = 0) => {
@@ -69,8 +69,8 @@ const randomSentences = Array.from({length: 10}, generateRandomSentence)
 function langRead(targetObj, data){
     let langVal = targetObj.split('-')
     let result = data
-    for(let i = 0; i < langVal.length - 1; i++){result = result?.[langVal[i]]?.[0]}
-    return result?.[langVal[langVal.length - 1]] ?? ''
+    for(let i = 0; i < langVal.length; i++){result = result?.[langVal[i]]}
+    return result ?? ''
 }
 
 // isMobileView
@@ -158,10 +158,13 @@ function countdownFn(date){
     setTimeout(countdownFn, 1000)
 }
 
+// Lang helper for JS values — reads from cached lang data, falls back to fallback (defaults to key)
+const _t = (key, fallback) => _langData ? (langRead(key, _langData) || fallback) : fallback
+
 // Alert / Confirm / Prompt
 function alertFn(message){
     const alertEl = createAlertDOM(message)
-    alertEl.querySelector('alert-solve').innerHTML = btnHTML(langConfirm)
+    alertEl.querySelector('alert-solve').innerHTML = btnHTML(_t('basic-confirm', langConfirm))
     document.body.appendChild(alertEl)
     const close = () => {alertEl.remove(); document.removeEventListener('keydown', keyHandler)}
     alertEl.querySelector('a').addEventListener('click', close)
@@ -171,7 +174,7 @@ function alertFn(message){
 function confirmFn(message){
     return new Promise((resolve) => {
         const alertEl = createAlertDOM(message)
-        alertEl.querySelector('alert-solve').innerHTML = btnHTML(langCancel, 'alert-cancel') + btnHTML(langConfirm, 'alert-confirm')
+        alertEl.querySelector('alert-solve').innerHTML = btnHTML(_t('basic-cancel', langCancel), 'alert-cancel') + btnHTML(_t('basic-confirm', langConfirm), 'alert-confirm')
         document.body.appendChild(alertEl)
         const done = (result) => {alertEl.remove(); document.removeEventListener('keydown', keyHandler); resolve(result)}
         alertEl.querySelector('#alert-confirm').addEventListener('click', () => done(true))
@@ -183,7 +186,7 @@ function confirmFn(message){
 function promptFn(message, defaultValue = ''){
     return new Promise((resolve) => {
         const alertEl = createAlertDOM(message, `<input type="text" id="alert-input" value="${defaultValue}">`)
-        alertEl.querySelector('alert-solve').innerHTML = btnHTML(langCancel, 'alert-cancel') + btnHTML(langConfirm, 'alert-confirm')
+        alertEl.querySelector('alert-solve').innerHTML = btnHTML(_t('basic-cancel', langCancel), 'alert-cancel') + btnHTML(_t('basic-confirm', langConfirm), 'alert-confirm')
         document.body.appendChild(alertEl)
         const done = (result) => {alertEl.remove(); document.removeEventListener('keydown', keyHandler); resolve(result)}
         alertEl.querySelector('#alert-confirm').addEventListener('click', () => done(alertEl.querySelector('#alert-input').value))
@@ -379,9 +382,9 @@ class Scaler extends HTMLElement {
         const input = this.querySelector('input')
         if(!input) return
         const reduce = document.createElement('a')
-        reduce.className = 'btn btn-empty ico ico-reduce'
+        reduce.className = 'btn ico ico-reduce'
         const add = document.createElement('a')
-        add.className = 'btn btn-empty ico ico-add'
+        add.className = 'btn ico ico-add'
         input.parentElement?.insertBefore(reduce, input)
         input.parentElement?.insertBefore(add, input.nextSibling)
         input.addEventListener('input', () => {if(!Number(input.value)) input.value = ''})
@@ -540,26 +543,6 @@ class Fold extends HTMLElement {
     }
 }
 
-// Step
-class Step extends HTMLElement {
-    connectedCallback(){
-        const liArr = [...this.children]
-        this.innerHTML = ''
-        const ul = document.createElement('ul')
-        liArr.forEach(li => ul.appendChild(li))
-        this.appendChild(ul)
-        this.querySelectorAll('li').forEach((li, idx) => {
-            const span = document.createElement('span')
-            span.innerHTML = li.innerHTML
-            li.innerHTML = ''
-            li.appendChild(span)
-            const i = document.createElement('i')
-            i.textContent = idx + 1
-            li.prepend(i)
-        })
-    }
-}
-
 // Crumb
 class Crumb extends HTMLElement {
     connectedCallback(){
@@ -570,11 +553,6 @@ class Crumb extends HTMLElement {
             li.prepend(i)
         })
     }
-}
-
-// Horn
-class Horn extends HTMLElement {
-    connectedCallback(){}
 }
 
 // Notice
@@ -668,7 +646,7 @@ function initCustomElements(){
         ['tab', Tab], ['pop', Pop], ['menu', Menu], ['scaler', Scaler],
         ['choice', Choice], ['progress', Progress], ['drop', Drop],
         ['rate', Rate], ['empty', Empty], ['hop', Hop], ['fold', Fold],
-        ['step', Step], ['crumb', Crumb], ['n', Horn], ['notice', Notice]
+        ['crumb', Crumb], ['notice', Notice]
     ]
     map.forEach(([tag, Cls]) => {
         if(customElements.get(tag)) return
@@ -682,15 +660,15 @@ function initCustomElements(){
 
 // ============ Init Functions ============
 function initPage(){$$('page').forEach(el => pageRender(el))}
-function initLazy(){$$('[lazy]').forEach(el => el.setAttribute('loading', 'lazy'))}
-let langSwitch = 0
+let _langData = null
 function initLang(){
     let langType = getCookie('lang') === '' ? 'en' : getCookie('lang')
     function lang(){
         if($$('[lang]').length === 0) return
         fetch(`../lang/${langType}.json`).then(async r => {
             if(!r.ok) return
-            const data = await r.json()
+            _langData = await r.json()
+            const data = _langData
             $$('[lang]').forEach(el => el.innerHTML = langRead(el.getAttribute('lang'), data))
             $$('[lang-placeholder]').forEach(el => el.placeholder = langRead(el.getAttribute('lang-placeholder'), data))
             $$('[lang-value]').forEach(el => el.setAttribute('value', langRead(el.getAttribute('lang-value'), data)))
@@ -736,7 +714,7 @@ function initAudio(){
 }
 function scrollAnim(box, from, to){
     let start
-    requestAnimationFrame(function step(t) {
+    requestAnimationFrame(function step(t){
       start ??= t
       let p = Math.min((t - start) / 500, 1)
       box.scrollTop = from + (to - from) * (p < .5 ? 2*p*p : -1+(4-2*p)*p)
@@ -925,20 +903,16 @@ function touch(selector, direction, callback, threshold){
     const element = typeof selector === 'string' ? $(selector) : selector
     if(!element || !callback) return
     if(!threshold) threshold = 100
+    const prevTouchAction = element.style.touchAction
+    element.style.touchAction = 'none'
     let startPos = null
-    const isTouchDevice = 'ontouchstart' in window
-    const eType = isTouchDevice ? {start: 'touchstart', end: 'touchend'} : {start: 'mousedown', end: 'mouseup'}
-    function getPoint(e){return isTouchDevice ? (e.changedTouches || e.touches)[0] : e}
     function handleStart(e){
-        if(e.cancelable) e.preventDefault()
-        const p = getPoint(e)
-        startPos = {x: p.pageX, y: p.pageY}
+        startPos = {x: e.pageX, y: e.pageY}
     }
     function handleEnd(e){
         if(!startPos) return
-        const p = getPoint(e)
-        const dx = p.pageX - startPos.x
-        const dy = p.pageY - startPos.y
+        const dx = e.pageX - startPos.x
+        const dy = e.pageY - startPos.y
         startPos = null
         if(Math.abs(dx) < threshold && Math.abs(dy) < threshold) return
         const match = direction === 'all'
@@ -951,9 +925,181 @@ function touch(selector, direction, callback, threshold){
             else callback.call(element)
         }
     }
-    element.addEventListener(eType.start, handleStart)
-    element.addEventListener(eType.end, handleEnd)
-    return {off: () => {element.removeEventListener(eType.start, handleStart); element.removeEventListener(eType.end, handleEnd)}}
+    element.addEventListener('pointerdown', handleStart)
+    element.addEventListener('pointerup', handleEnd)
+    return {off: () => {element.removeEventListener('pointerdown', handleStart); element.removeEventListener('pointerup', handleEnd); element.style.touchAction = prevTouchAction}}
+}
+
+// ============ Form API ============
+function formGetVal(el){
+    if(el.tagName==='INPUT'){
+        if(el.type==='file')return el.files[0]||null
+        if(el.type==='checkbox')return el.checked?(el.value||'on'):''
+        if(el.type==='radio')return el.checked?(el.value||'on'):null
+        if(el.type==='number'||el.type==='range')return el.value===''?'':Number(el.value)
+        return el.value
+    }
+    if(el.tagName==='TEXTAREA')return el.value
+    if(el.tagName==='SELECT')return el.value
+    return null
+}
+function formSetVal(el,val){
+    if(el.tagName==='INPUT'||el.tagName==='TEXTAREA'){el.value=val;return}
+    if(el.tagName==='SELECT'){el.value=val;return}
+    if(el.tagName==='CHOICE'){
+        el.querySelectorAll('choice-list a').forEach(a=>{if(a.textContent.trim()===String(val))el.querySelector(':scope>a').innerHTML=a.innerHTML})
+        return
+    }
+    if(el.matches('.parent')){
+        el.querySelectorAll(':scope>o.radio,:scope>o.radio-done').forEach(o=>o.classList.toggle('active',o.getAttribute('data')===val))
+        if(Array.isArray(val))el.querySelectorAll(':scope>o.checkbox,:scope>o.checkbox-done').forEach(o=>o.classList.toggle('active',val.includes(o.getAttribute('data'))))
+        return
+    }
+    if(el.matches('o.toggle')){el.classList.toggle('active',!!val);return}
+    if(el.matches('o.checkbox,o.checkbox-done')){el.classList.toggle('active',!!val);return}
+    if(el.matches('scaler')){const inp=el.querySelector('input');if(inp)inp.value=val;return}
+}
+function formCollect(form){
+    const data={}, groups={}
+    form.querySelectorAll('input[name],textarea[name],select[name]').forEach(el=>{
+        const name=el.name;if(!name)return
+        const val=formGetVal(el)
+        if(el.type==='radio'){if(val!==null)data[name]=val;return}
+        if(el.type==='checkbox'){if(!groups[name])groups[name]=[];if(val)groups[name].push(val);return}
+        data[name]=val
+    })
+    Object.entries(groups).forEach(([k,v])=>data[k]=v)
+    form.querySelectorAll('choice[name]').forEach(el=>{
+        const a=el.querySelector(':scope>a')
+        data[el.getAttribute('name')]=a?a.textContent.trim():''
+    })
+    form.querySelectorAll('o.toggle[name]').forEach(el=>{
+        data[el.getAttribute('name')]=el.classList.contains('active')
+    })
+    form.querySelectorAll('.parent[name]').forEach(parent=>{
+        const name=parent.getAttribute('name'), items=parent.querySelectorAll(':scope>o[data]')
+        if(!items.length)return
+        if(items[0].matches('o.radio,o.radio-done')){
+            const active=parent.querySelector(':scope>o.radio.active,:scope>o.radio-done.active')
+            if(active)data[name]=active.getAttribute('data')||active.nextElementSibling?.textContent?.trim()||''
+            else data[name]=''
+        }else{
+            data[name]=[...parent.querySelectorAll(':scope>o.checkbox.active,:scope>o.checkbox-done.active')].map(el=>el.getAttribute('data')||el.nextElementSibling?.textContent?.trim()||'')
+        }
+    })
+    form.querySelectorAll('o.checkbox[name]:not(.parent o),o.checkbox-done[name]:not(.parent o)').forEach(el=>{
+        data[el.getAttribute('name')]=el.classList.contains('active')
+    })
+    form.querySelectorAll('.upload[name]').forEach(el=>{
+        data[el.getAttribute('name')]=[...el.querySelectorAll('.upload-group input[type="file"]')].map(inp=>inp.files[0]).filter(f=>f)
+    })
+    form.querySelectorAll('[name]').forEach(el=>{const n=el.getAttribute('name');if(!(n in data)&&typeof el._uiggValue==='function')data[n]=el._uiggValue()})
+    return data
+}
+function formSet(form,data){
+    Object.entries(data).forEach(([name,val])=>{
+        const el=form.querySelector(`[name="${name}"]`)
+        if(!el)return
+        formSetVal(el,val)
+    })
+}
+function formReset(form){
+    form.querySelectorAll('input[name],textarea[name]').forEach(el=>{el.value=el.defaultValue||(el.type==='color'?'#000000':(el.type==='range'?String((parseFloat(el.min||0)+parseFloat(el.max||100))/2):''))})
+    form.querySelectorAll('select[name]').forEach(el=>{el.selectedIndex=0})
+    form.querySelectorAll('choice[name]').forEach(el=>{
+        const first=el.querySelector('choice-list a')
+        if(first){const topA=el.querySelector(':scope>a');topA.innerHTML=first.innerHTML}
+    })
+    form.querySelectorAll('o.toggle.active,o.checkbox.active,o.checkbox-done.active,o.radio.active,o.radio-done.active').forEach(el=>el.classList.remove('active'))
+    form.querySelectorAll('scaler').forEach(el=>{
+        const inp=el.querySelector('input[name]');if(inp)inp.value=inp.getAttribute('min')||'0'
+    })
+    form.querySelectorAll('.upload-group').forEach((g,i)=>{if(i===0){g.style.backgroundImage='';g.style.color='';g.querySelector('input').value=''}else g.remove()})
+    form.querySelectorAll('li.error').forEach(el=>el.classList.remove('error'))
+}
+function formValidate(form){
+    form.querySelectorAll('li.error').forEach(el=>el.classList.remove('error'))
+    let allValid=true
+    if(!form.checkValidity()){
+        allValid=false
+        form.querySelectorAll(':invalid').forEach(el=>{
+            const li=el.closest('li')
+            if(li)li.classList.add('error')
+        })
+    }
+    form.querySelectorAll('.parent[required]').forEach(parent=>{
+        const hasActive=parent.querySelector(':scope>o.radio.active,:scope>o.radio-done.active,:scope>o.checkbox.active,:scope>o.checkbox-done.active')
+        if(!hasActive){allValid=false;const li=parent.closest('li');if(li)li.classList.add('error')}
+    })
+    return allValid
+}
+function formLoading(btn,loading){
+    if(loading){
+        btn._txt=btn._txt||btn.textContent
+        btn.textContent=btn.getAttribute('data-loading')||'Loading...'
+        btn.disabled=true
+        btn.style.pointerEvents='none';btn.style.opacity='.6'
+    }else{
+        if(btn._txt)btn.textContent=btn._txt
+        btn.disabled=false
+        btn.style.pointerEvents='';btn.style.opacity=''
+    }
+}
+function formController(form){
+    if(form._uiggForm)return form._uiggForm
+    const getBtns=()=>form.querySelectorAll('.btn-submit,button[type="submit"]')
+    const ctrl={
+        getData:()=>formCollect(form),
+        setData:d=>formSet(form,d),
+        reset:()=>formReset(form),
+        validate:()=>formValidate(form),
+        async submit(fn){
+            if(!formValidate(form)){const first=form.querySelector('li.error input,li.error select,li.error textarea');if(first)first.focus();return false}
+            const btns=getBtns()
+            btns.forEach(b=>formLoading(b,true))
+            try{
+                const data=formCollect(form)
+                const result=await fn(data)
+                btns.forEach(b=>{formLoading(b,false);const ok=b.getAttribute('data-done')||'Done';const old=b._txt;b.textContent=ok;setTimeout(()=>{b.textContent=old;b._txt=old},1500)})
+                return result
+            }catch(e){
+                btns.forEach(b=>formLoading(b,false))
+                throw e
+            }
+        },
+        toFormData:()=>{
+            const fd=new FormData(), data=formCollect(form)
+            for(const [k,v] of Object.entries(data)){
+                if(v instanceof File){fd.append(k,v)}
+                else if(Array.isArray(v)&&v[0]instanceof File){v.forEach(f=>fd.append(k+'[]',f))}
+                else if(v!=null){fd.append(k,v)}
+            }
+            return fd
+        }
+    }
+    return form._uiggForm=Object.assign(form,ctrl)
+}
+function initForm(){
+    $$('form[auto]').forEach(f=>Uigg.form(f))
+    document.addEventListener('click',e=>{
+        const el=e.target.nodeType===3?e.target.parentElement:e.target
+        const btn=el?.closest('[submit],[reset]')
+        if(!btn)return
+        const form=btn.closest('form[auto]')
+        if(!form)return
+        e.preventDefault()
+        if(btn.hasAttribute('submit')&&form.onSubmit){
+            formController(form).submit(form.onSubmit).catch(err=>console.warn('form submit error:',err))
+        }else if(btn.hasAttribute('reset')){
+            formController(form).reset()
+        }
+    })
+    document.addEventListener('focusout',e=>{
+        const el=e.target
+        if(!el.matches('input,textarea')||!el.value)return
+        const li=el.closest('li');if(!li)return
+        el.validity.valid?li.classList.remove('error'):li.classList.add('error')
+    })
 }
 
 // ============ Uigg Manager ============
@@ -964,14 +1110,17 @@ const Uigg = {
     init(ctx){
         if(this.inited) return
         initCustomElements();
-        initPage(); initLazy(); initLang(); initFullscreen(); initAudio();
+        initPage(); initLang(); initFullscreen(); initAudio();
         initSmooth(); initReturn(); initTop(); initPopLinks(); initToggle();
         initAutoTextarea(); initUpload(); initRandom(); initClue();
         initCopy(); initNotifyClose(); initSwiperBtns(); initRecording(); initRange();
+        initForm();
         lug()
         this.inited = true
     },
     tip, alert: alertFn, confirm: confirmFn, prompt: promptFn, notify, notifyRemove, countdown(date){countdownFn(date)}, disable, lug, mobile, touch, alone, setCookie, getCookie, isMobileView, $, $$, ready,
+    form: formController,
+    lang: (key) => _langData ? (langRead(key, _langData) || key) : key,
 }
 
 // Auto-init on DOM ready
@@ -980,12 +1129,15 @@ ready(() => Uigg.init())
 // Attach to window for <script> tag usage
 if(typeof window !== 'undefined'){
     window.Uigg = Uigg
-    for(const [k,v] of [['tip',tip],['notify',notify],['lug',lug],['touch',touch],['alone',alone],['disable',disable],['mobile',mobile],['setCookie',setCookie],['getCookie',getCookie],['countdown',countdownFn],['ready',ready],['initLang',initLang]]) window[k] = v
-    // Note: $ and $$ intentionally NOT exposed on window to avoid jQuery / library conflicts.
+    for(const [k,v] of [['tip',tip],['notify',notify],['lug',lug],['touch',touch],['alone',alone],['lang',Uigg.lang],['disable',disable],['mobile',mobile],['setCookie',setCookie],['getCookie',getCookie],['countdown',countdownFn],['ready',ready],['initLang',initLang]]) window[k] = v
     // External scripts should use Uigg.$() and Uigg.$$() instead.
 }
 
 // ES module exports (works with import when type="module")
-export {Uigg, Load, Music, Name, Nav, Tab, Pop, Menu, Scaler, Choice, Progress, Drop, Rate, Empty, Hop, Fold, Step, Crumb, Horn, Notice}
-export {initCustomElements, initPage, initLazy, initLang, initFullscreen, initAudio, initSmooth, initReturn, initTop, initPopLinks, initToggle, initAutoTextarea, initUpload, initRandom, initClue, initCopy, initNotifyClose, initSwiperBtns, initRecording, initRange}
+export {Uigg, Load, Music, Name, Nav, Tab, Pop, Menu, Scaler, Choice, Progress, Drop, Rate, Empty, Hop, Fold, Crumb, Notice}
+export {initCustomElements, initPage, initLang, initFullscreen, initAudio, initSmooth, initReturn, initTop, initPopLinks, initToggle, initAutoTextarea, initUpload, initRandom, initClue, initCopy, initNotifyClose, initSwiperBtns, initRecording, initRange, initForm}
 export default Uigg
+
+
+
+
