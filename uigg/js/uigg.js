@@ -877,15 +877,15 @@ function initRecording(){
 }
 function initRange(){
     $$('input[type="range"]').forEach(el => {
-        const update = () => {
-            const min = parseFloat(el.min) || 0
-            const max = parseFloat(el.max) || 100
-            const pct = ((parseFloat(el.value) - min) / (max - min)) * 100
-            el.style.setProperty('--value', pct + '%')
-        }
-        el.addEventListener('input', update)
-        update()
+        el.addEventListener('input', () => rangeUpdate(el))
+        rangeUpdate(el)
     })
+}
+function rangeUpdate(el){
+    const min=parseFloat(el.min)||0
+    const max=parseFloat(el.max)||100
+    const pct=((parseFloat(el.value)-min)/(max-min))*100
+    el.style.setProperty('--value',pct+'%')
 }
 function alone(elements){
     if(!elements) return
@@ -944,7 +944,11 @@ function formGetVal(el){
     return null
 }
 function formSetVal(el,val){
-    if(el.tagName==='INPUT'||el.tagName==='TEXTAREA'){el.value=val;return}
+    if(el.tagName==='INPUT'||el.tagName==='TEXTAREA'){
+        el.value=val
+        if(el.type==='range')rangeUpdate(el)
+        return
+    }
     if(el.tagName==='SELECT'){el.value=val;return}
     if(el.tagName==='CHOICE'){
         el.querySelectorAll('choice-list a').forEach(a=>{if(a.textContent.trim()===String(val))el.querySelector(':scope>a').innerHTML=a.innerHTML})
@@ -1004,7 +1008,10 @@ function formSet(form,data){
     })
 }
 function formReset(form){
-    form.querySelectorAll('input[name],textarea[name]').forEach(el=>{el.value=el.defaultValue||(el.type==='color'?'#000000':(el.type==='range'?String((parseFloat(el.min||0)+parseFloat(el.max||100))/2):''))})
+    form.querySelectorAll('input[name],textarea[name]').forEach(el=>{
+        el.value=el.defaultValue||(el.type==='color'?'#000000':(el.type==='range'?String((parseFloat(el.min||0)+parseFloat(el.max||100))/2):''))
+        if(el.type==='range')rangeUpdate(el)
+    })
     form.querySelectorAll('select[name]').forEach(el=>{el.selectedIndex=0})
     form.querySelectorAll('choice[name]').forEach(el=>{
         const first=el.querySelector('choice-list a')
@@ -1034,16 +1041,7 @@ function formValidate(form){
     return allValid
 }
 function formLoading(btn,loading){
-    if(loading){
-        btn._txt=btn._txt||btn.textContent
-        btn.textContent=btn.getAttribute('data-loading')||'Loading...'
-        btn.disabled=true
-        btn.style.pointerEvents='none';btn.style.opacity='.6'
-    }else{
-        if(btn._txt)btn.textContent=btn._txt
-        btn.disabled=false
-        btn.style.pointerEvents='';btn.style.opacity=''
-    }
+    btn.disabled=loading
 }
 function formController(form){
     if(form._uiggForm)return form._uiggForm
@@ -1060,7 +1058,7 @@ function formController(form){
             try{
                 const data=formCollect(form)
                 const result=await fn(data)
-                btns.forEach(b=>{formLoading(b,false);const ok=b.getAttribute('data-done')||'Done';const old=b._txt;b.textContent=ok;setTimeout(()=>{b.textContent=old;b._txt=old},1500)})
+                btns.forEach(b=>formLoading(b,false))
                 return result
             }catch(e){
                 btns.forEach(b=>formLoading(b,false))
@@ -1129,7 +1127,7 @@ ready(() => Uigg.init())
 // Attach to window for <script> tag usage
 if(typeof window !== 'undefined'){
     window.Uigg = Uigg
-    for(const [k,v] of [['tip',tip],['notify',notify],['lug',lug],['touch',touch],['alone',alone],['lang',Uigg.lang],['disable',disable],['mobile',mobile],['setCookie',setCookie],['getCookie',getCookie],['countdown',countdownFn],['ready',ready],['initLang',initLang]]) window[k] = v
+    for(const [k,v] of [['tip',tip],['notify',notify],['lug',lug],['touch',touch],['alone',alone],['lang',Uigg.lang],['form',formController],['disable',disable],['mobile',mobile],['setCookie',setCookie],['getCookie',getCookie],['countdown',countdownFn],['ready',ready],['initLang',initLang]]) window[k] = v
     // External scripts should use Uigg.$() and Uigg.$$() instead.
 }
 

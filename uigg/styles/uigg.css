@@ -28,7 +28,7 @@ drop, drop-cont, drop-list, choice, choice-list, chat, chat-title, chat-sider, c
 pop, pop-main, pop-title, pop-cont, pop-solve, pop-choice, pop-sider, alert, alert-main, alert-cont, alert-solve,
 hop, hop-cont, fold, fold-group, fold-title, fold-cont, countdown, tip, page, music, space, rate, scaler, notify, empty,
 step, crumb, reminder, n, notice) {display: block;}
-.transition,.btn {transition-duration: .3s;transition-property: transform;}
+.transition,.btn,a {transition-duration: .3s;}
 html,body {height: 100%;}
 :where(html, body, .avatar, .upload-group, .swiper-slide, .parallax-bg) {background-size: cover;}
 :where(html, body, input, select, textarea, button) {font-size: 14px;}
