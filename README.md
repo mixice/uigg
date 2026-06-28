@@ -182,7 +182,7 @@ UIGG provides 40+ built-in components. Each component uses semantic custom HTML 
 | Component | Tag / Class | Description |
 |-----------|-------------|-------------|
 | **Button** | `.btn` | Buttons with variants: empty, colored, disabled, icon, flex group |
-| **Form** | `.form` | Complete form system: inputs, selects, textareas, file upload, progress, range, date/time, color picker |
+| **Form** | `.form` | Complete form system: inputs, selects, textareas, file upload, progress, range, date/time, color picker. Toggle/checkbox collected as boolean, unified `getData()` / `setData()` pipe |
 | **Table** | `.table` | Styled tables with thead/tbody/tfoot |
 | **Tab** | `<tab>` | Tab switching with `<tab-list>` and `<tab-cont>` |
 | **Pop** | `<pop>` | Modal dialogs: center (`<pop-main>`), sider (`<pop-sider>`), choice (`<pop-choice>`) |
@@ -195,7 +195,7 @@ UIGG provides 40+ built-in components. Each component uses semantic custom HTML 
 
 | Component | Tag / Class | Description |
 |-----------|-------------|-------------|
-| **Toggle** | `<o>` | 25+ toggle types: checkbox, radio, favorite, star, visibility, password, mic, volume, toggle, etc. |
+| **Toggle** | `<o>` | 26+ toggle types: checkbox, radio, favorite, star, visibility, password, mic, volume, toggle, etc. `el.getData()` / `el.setData(v)` read/write boolean values anywhere |
 | **Rate** | `<rate>` | Star rating (editable), with heart/thumb/circular variants |
 | **Scaler** | `<scaler>` | Numeric stepper with +/- buttons, configurable step/min/max |
 | **Hop** | `<hop>` | Popover link containers |
@@ -243,7 +243,7 @@ UIGG provides 40+ built-in components. Each component uses semantic custom HTML 
 |-----------|-------------|
 | **Chat** | Full chat interface with message list, emoticons, file upload, and real-time messaging |
 | **Admin** | Admin panel template with login, dashboard, and sidebar navigation |
-| **Swiper** | Carousel/slider integration (banner, list, vertical, gallery, animate, lug, hash, scrollbar, coverflow, parallax) |
+| **Swiper** | Carousel/slider integration (banner, list, vertical, gallery, animate, hash, scrollbar, coverflow, parallax) |
 | **Editor** | Rich text editor integration (based on TinyMCE) |
 
 ### Utility Functions
