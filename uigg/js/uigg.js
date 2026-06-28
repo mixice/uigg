@@ -210,24 +210,6 @@ function disable(){
     document.head.appendChild(style)
 }
 
-// Lug
-function lug(){
-    $$('.lug-thumbs a').forEach(a => a.addEventListener('click', function(){
-        this.classList.add('active')
-        this.parentElement?.querySelectorAll(':scope > a').forEach(s => s !== this && s.classList.remove('active'))
-    }))
-    if(typeof Swiper === 'undefined') return
-    const thumbs = $$('.lug-thumbs a')
-    new Swiper('.lug-top',{
-        on:{
-            touchEnd: function(){
-                const idx = this.loop ? this.realIndex : this.activeIndex
-                thumbs.forEach((a,i) => a.classList.toggle('active', i === idx))
-            },
-        },
-    })
-}
-
 // ============ Custom Elements ============
 // Load
 class Load extends HTMLElement {
@@ -761,9 +743,11 @@ function initPopLinks(){
 }
 function initToggle(){
     const toggleSelectors = ['o.checkbox', 'o.checkbox-done', 'o.checkbox-cancel', 'o.favorite', 'o.star', 'o.visibility', 'o.password', 'o.mic', 'o.volume', 'o.muzak', 'o.phonecard', 'o.cinema', 'o.camera', 'o.aim', 'o.semaphore', 'o.suitcase', 'o.light', 'o.thumb-up', 'o.thumb-down', 'o.devicerotate', 'o.thumbtack', 'o.bell', 'o.place', 'o.link', 'o.blur', 'o.toggle']
-    $$(toggleSelectors.join(',')).forEach(el => el.addEventListener('click', function(){
-        this.classList.toggle('active')
-    }))
+    $$(toggleSelectors.join(',')).forEach(el => {
+        el.getData = () => el.classList.contains('active')
+        el.setData = v => { el.classList.toggle('active', !!v); return el }
+        el.addEventListener('click', function(){ this.classList.toggle('active') }, true)
+    })
     document.addEventListener('click', (e) => {
         if(e.target.matches?.('o.radio, o.radio-done')){
             const parent = e.target.closest('.parent')
@@ -959,8 +943,7 @@ function formSetVal(el,val){
         if(Array.isArray(val))el.querySelectorAll(':scope>o.checkbox,:scope>o.checkbox-done').forEach(o=>o.classList.toggle('active',val.includes(o.getAttribute('data'))))
         return
     }
-    if(el.matches('o.toggle')){el.classList.toggle('active',!!val);return}
-    if(el.matches('o.checkbox,o.checkbox-done')){el.classList.toggle('active',!!val);return}
+    if(el.getData){el.setData(val);return}
     if(el.matches('scaler')){const inp=el.querySelector('input');if(inp)inp.value=val;return}
 }
 function formCollect(form){
@@ -977,9 +960,6 @@ function formCollect(form){
         const a=el.querySelector(':scope>a')
         data[el.getAttribute('name')]=a?a.textContent.trim():''
     })
-    form.querySelectorAll('o.toggle[name]').forEach(el=>{
-        data[el.getAttribute('name')]=el.classList.contains('active')
-    })
     form.querySelectorAll('.parent[name]').forEach(parent=>{
         const name=parent.getAttribute('name'), items=parent.querySelectorAll(':scope>o[data]')
         if(!items.length)return
@@ -991,13 +971,10 @@ function formCollect(form){
             data[name]=[...parent.querySelectorAll(':scope>o.checkbox.active,:scope>o.checkbox-done.active')].map(el=>el.getAttribute('data')||el.nextElementSibling?.textContent?.trim()||'')
         }
     })
-    form.querySelectorAll('o.checkbox[name]:not(.parent o),o.checkbox-done[name]:not(.parent o)').forEach(el=>{
-        data[el.getAttribute('name')]=el.classList.contains('active')
-    })
     form.querySelectorAll('.upload[name]').forEach(el=>{
         data[el.getAttribute('name')]=[...el.querySelectorAll('.upload-group input[type="file"]')].map(inp=>inp.files[0]).filter(f=>f)
     })
-    form.querySelectorAll('[name]').forEach(el=>{const n=el.getAttribute('name');if(!(n in data)&&typeof el._uiggValue==='function')data[n]=el._uiggValue()})
+    form.querySelectorAll('[name]').forEach(el=>{const n=el.getAttribute('name');if(n in data)return;if(typeof el.getData==='function')data[n]=el.getData();else if(typeof el._uiggValue==='function')data[n]=el._uiggValue()})
     return data
 }
 function formSet(form,data){
@@ -1112,11 +1089,10 @@ const Uigg = {
         initSmooth(); initReturn(); initTop(); initPopLinks(); initToggle();
         initAutoTextarea(); initUpload(); initRandom(); initClue();
         initCopy(); initNotifyClose(); initSwiperBtns(); initRecording(); initRange();
-        initForm();
-        lug()
+        initForm()
         this.inited = true
     },
-    tip, alert: alertFn, confirm: confirmFn, prompt: promptFn, notify, notifyRemove, countdown(date){countdownFn(date)}, disable, lug, mobile, touch, alone, setCookie, getCookie, isMobileView, $, $$, ready,
+    tip, alert: alertFn, confirm: confirmFn, prompt: promptFn, notify, notifyRemove, countdown(date){countdownFn(date)}, disable, mobile, touch, alone, setCookie, getCookie, isMobileView, $, $$, ready,
     form: formController,
     lang: (key) => _langData ? (langRead(key, _langData) || key) : key,
 }
@@ -1127,7 +1103,7 @@ ready(() => Uigg.init())
 // Attach to window for <script> tag usage
 if(typeof window !== 'undefined'){
     window.Uigg = Uigg
-    for(const [k,v] of [['tip',tip],['notify',notify],['lug',lug],['touch',touch],['alone',alone],['lang',Uigg.lang],['form',formController],['disable',disable],['mobile',mobile],['setCookie',setCookie],['getCookie',getCookie],['countdown',countdownFn],['ready',ready],['initLang',initLang]]) window[k] = v
+    for(const [k,v] of [['tip',tip],['notify',notify],['touch',touch],['alone',alone],['lang',Uigg.lang],['form',formController],['disable',disable],['mobile',mobile],['setCookie',setCookie],['getCookie',getCookie],['countdown',countdownFn],['ready',ready],['initLang',initLang]]) window[k] = v
     // External scripts should use Uigg.$() and Uigg.$$() instead.
 }
 
