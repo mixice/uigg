@@ -230,37 +230,35 @@ page {padding:20px 0;
 
 /* table */
 .table {
-	table {
-		thead tr,
-		tfoot tr {background-color: var(--flash);}
+	thead tr,
+	tfoot tr {background-color: var(--flash);}
+	td,
+	th {max-width: 200px;}
+	thead {
 		td,
-		th {max-width: 200px;}
-		thead {
-			td,
-			th {border-bottom: 1px var(--color) solid;}
+		th {border-bottom: 1px var(--color) solid;}
+	}
+	tbody tr {
+		&:nth-child(2n),
+		&:hover {background-color: var(--flash);}
+	}
+	td {
+		input {height: 30px;width: auto;border:1px var(--light) solid;text-align: center;}
+		.btn {width: auto;display: inline-block;padding: 0 20px;height: 30px;line-height: 28px;float: none;font-size: 14px;}
+		button.ico,
+		a.ico {padding: 5px;
+			&:hover {background-color: var(--light);}
 		}
-		tbody tr {
-			&:nth-child(2n),
-			&:hover {background-color: var(--flash);}
-		}
-		td {
-			input {height: 30px;width: auto;border:1px var(--light) solid;text-align: center;}
-			.btn {width: auto;display: inline-block;padding: 0 20px;height: 30px;line-height: 28px;float: none;font-size: 14px;}
-			button.ico,
-			a.ico {padding: 5px;
-				&:hover {background-color: var(--light);}
-			}
-			label {padding: 0 5px;}
-		}
-		tfoot tr:first-child {
-			td,
-			th {border-top-color: var(--color);}
-		}
+		label {padding: 0 5px;}
+	}
+	tfoot tr:first-child {
+		td,
+		th {border-top-color: var(--color);}
 	}
 }
 
 @media(max-width:640px){
-	.table table {min-width: 200vw;overflow: auto;
+	.table {min-width: 200vw;overflow: auto;
 		td {
 			input {height: .4rem;}
 			.btn {padding: 0 .2rem;height: .4rem;line-height: .38rem;font-size: .16rem;}

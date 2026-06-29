@@ -406,15 +406,29 @@ class Choice extends HTMLElement {
 
 // Progress
 class Progress extends HTMLElement {
-    static observedAttributes = ['color']
+    static observedAttributes = ['color', 'value', 'max']
     connectedCallback(){
+        this._progress()
+    }
+    attributeChangedCallback(){this._progress()}
+    getData(){return parseFloat(this.getAttribute('value')) || 0}
+    setData(v){this.setAttribute('value', Math.max(0, Math.min(parseFloat(this.getAttribute('max')) || 100, parseFloat(v) || 0)));this._progress()}
+    _progress(){
         const color = this.getAttribute('color')
         if(color){
             this.style.color = color
             this.style.setProperty('--progress-color', color)
         }
+        if(this.hasAttribute('circle')){
+            const max = parseFloat(this.getAttribute('max')) || 100
+            const val = parseFloat(this.getAttribute('value')) || 0
+            this.style.setProperty('--progress-value', Math.max(0, Math.min(100, val / max * 100)) + '%')
+            if(!this._progressObserve){
+                this._progressObserve = new MutationObserver(() => this.connectedCallback())
+                this._progressObserve.observe(this, {attributes: true, attributeFilter: ['value', 'max', 'color']})
+            }
+        }
     }
-    attributeChangedCallback(){this.connectedCallback()}
 }
 
 // Drop
@@ -451,19 +465,20 @@ class Drop extends HTMLElement {
 
 // Rate
 class Rate extends HTMLElement {
-    static observedAttributes = ['value', 'edit']
+    static observedAttributes = ['value']
     connectedCallback(){
-        this.innerHTML = '<i class="ico"></i><i class="ico"></i><i class="ico"></i><i class="ico"></i><i class="ico"></i>'
-        const val = parseInt(this.getAttribute('value')) || 0
-        this.querySelectorAll('i').forEach((i,idx) => {if(idx < val) i.classList.add('active')})
-        if(this.hasAttribute('edit')){
-            this.querySelectorAll('i').forEach(i => i.addEventListener('click', function(){
-                const idx = [...this.parentElement.children].indexOf(this)
-                this.parentElement.querySelectorAll('i').forEach((s,j) => s.classList.toggle('active', j <= idx))
-                this.parentElement.setAttribute('value', idx + 1)
-            }))
+        if(!this.children.length)this.innerHTML = '<i class="ico"></i>'.repeat(5)
+        this.onclick = e => {
+            if(!this.hasAttribute('edit'))return
+            const idx = [...this.children].indexOf(e.target.closest?.('i'))
+            if(idx > -1)this.setData(idx + 1)
         }
+        this._rate()
     }
+    attributeChangedCallback(){this._rate()}
+    getData(){return parseInt(this.getAttribute('value')) || 0}
+    setData(v){this.setAttribute('value', Math.max(0, Math.min(this.children.length || 5, parseInt(v) || 0)))}
+    _rate(){const v = this.getData();this.querySelectorAll('i').forEach((i,idx) => i.classList.toggle('active', idx < v))}
 }
 
 // Empty
@@ -567,6 +582,7 @@ const parseSwiperView = raw => {
     points.sort((a,b)=>a[0]-b[0])
     return {base: points[0]?.[1] ?? 1, points}
 }
+const swiperIgnore = 'a,button,input,textarea,select,option,label,summary,nav,tab,pop,menu,choice,drop,rate,page,scaler,music,hop,fold,o,[contenteditable],[tabindex],[ignore]'
 class Swiper extends HTMLElement {
     connectedCallback(){
         const w = this._w = this.querySelector('swiper-wrapper')
@@ -583,7 +599,7 @@ class Swiper extends HTMLElement {
             for(const [bp, view] of points) if(ww >= bp) cur = view
             return Math.max(1, cur)
         }
-        let v = getView(), idx = 0, drag = false, sX = 0, dX = 0, moved = false, wheelBusy = false, n = 1
+        let v = getView(), idx = 0, drag = false, down = false, sX = 0, dX = 0, moved = false, wheelBusy = false, n = 1
         let slides = s
         if(loop){
             n = Math.max(base, ...(points.map(([,view]) => view)), 1)
@@ -665,27 +681,31 @@ class Swiper extends HTMLElement {
             })
         }
         const endDrag = () => {
+            down = false
             if(!drag) return
             drag = false
             const m = d === 'X' ? this.offsetWidth : this.offsetHeight
             const swiped = moved && Math.abs(dX) > m / v / 5
-            if(swiped) this._clickBlockUntil = Date.now() + 80
+            if(moved) this._clickBlockUntil = Date.now() + 120
             swiped ? (dX > 0 ? this.prev() : this.next()) || go(idx) : go(idx)
         }
         this.addEventListener('pointerdown', e => {
+            down = true
             sX = d === 'X' ? e.clientX : e.clientY
             dX = 0
             moved = false
             this._clickBlockUntil = 0
+            const ignored = e.target.closest?.(swiperIgnore)
+            if(ignored && this.contains(ignored)) return
             drag = true
             w.style.transition = 'none'
             w.style.transform = `translate${d}(${-idx * 100 / v}%)`
             e.preventDefault()
         })
         this.addEventListener('pointermove', e => {
-            if(!drag) return
             dX = (d === 'X' ? e.clientX : e.clientY) - sX
             moved = moved || Math.abs(dX) > 3
+            if(!drag){if(down && moved) this._clickBlockUntil = Date.now() + 120; return}
             const m = d === 'X' ? this.offsetWidth : this.offsetHeight
             const min = -maxIdx() * 100 / v
             let p = -idx * 100 / v + dX / m * 100
@@ -696,6 +716,16 @@ class Swiper extends HTMLElement {
         })
         document.addEventListener('pointerup', endDrag)
         this.addEventListener('pointerleave', endDrag)
+        this.addEventListener('click', e => {
+            if(Date.now() < (this._clickBlockUntil || 0)){e.preventDefault(); e.stopImmediatePropagation(); return}
+            if(e.target.closest?.('a')) return
+            const sl = e.target.closest?.('swiper-slide[href]')
+            if(!sl || !this.contains(sl)) return
+            const href = sl.getAttribute('href')
+            if(!href) return
+            const target = sl.getAttribute('target')
+            target ? window.open(href, target) : location.href = href
+        }, true)
         this.addEventListener('wheel', e => {
             e.preventDefault()
             if(wheelBusy) return

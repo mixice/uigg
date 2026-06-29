@@ -12,7 +12,7 @@
 /* basic */
 :where(html, body, div, span, object, iframe, frame, h1, h2, h3, h4, h5, h6, blockquote, pre,
 abbr, address, cite, code, tt, hr, del, dfn, em, img, ins, kbd, samp,
-big, small, strong, sub, sup, var, b, i, a, s, u, x, o, z, d, h, m, y, q, p, hint,
+big, small, strong, sub, sup, var, b, a, s, u, x, o, z, d, h, m, y, q, p, i, hint,
 dl, dt, dd, ol, ul, li, fieldset, form, label, legend, caption, tbody, tfoot, thead, tr, th, td,
 article, aside, canvas, details, figcaption, figure, footer, header, hgroup, nav, section, summary,
 button, input, select, textarea, optgroup, time, mark, audio, video, marquee,
@@ -586,7 +586,7 @@ menu {text-transform: capitalize;
 
 /* toggle */
 .parent {}
-o {font-family: ico !important;font-size: 24px;font-style: normal;font-weight: normal;text-decoration: none;text-align: center;vertical-align: middle;justify-content: center;margin: auto;line-height: 1;text-transform: none;display: inline-block;direction: ltr;letter-spacing: normal;word-wrap: normal;white-space: nowrap;color: var(--color);
+o {font-family: ico !important;font-size: 24px;font-style: normal;font-weight: normal;text-decoration: none;text-align: center;vertical-align: middle;justify-content: center;margin: auto 0;line-height: 1;text-transform: none;display: inline-block;direction: ltr;letter-spacing: normal;word-wrap: normal;white-space: nowrap;color: var(--color);
     &.radio:after {content: '\e9ce';} &.radio.active:after {content: '\e9c6';}
     &.radio-done:after {content: '\e9ce';} &.radio-done.active:after {content: '\e9c5';}
     &.checkbox:after {content: '\e7da';} &.checkbox.active:after {content: '\e7dc';}
@@ -645,6 +645,10 @@ progress,
 progress {height: 4px;--progress-color: var(--color);color: var(--color);}
 ::-webkit-progress-bar {background-color: var(--f7);height: 4px;}
 ::-webkit-progress-value {background-color: var(--progress-color);}
+progress[circle] {--progress-value: 0%;--progress-size: 100px;--progress-width: 5px;width: var(--progress-size);height: var(--progress-size);border-radius: 100%;background: conic-gradient(var(--progress-color) var(--progress-value),var(--f7) 0);mask: radial-gradient(farthest-side,transparent calc(100% - var(--progress-width) - 1px),#000 calc(100% - var(--progress-width)));
+    &::-webkit-progress-bar,
+    &::-webkit-progress-value {background: transparent;}
+}
 
 input[type="range"],
 input[type="file"],
@@ -778,6 +782,7 @@ choice {cursor: pointer;
 @media(max-width:640px){
     ::-webkit-progress-bar {height: .05rem;}
     progress {height: .05rem;}
+    progress[circle] {width: var(--progress-size);height: var(--progress-size);}
 
     input[type="range"]::-webkit-slider-runnable-track {height: .05rem;}
     input[type="range"]::-webkit-slider-thumb {width: .35rem;height: .35rem;margin-top: -.15rem;}
@@ -917,44 +922,39 @@ tab {
 table {width: 100%;border-collapse: collapse;
     th, td {border: 1px solid var(--ccc);padding: 10px;}
 }
-.table {overflow: hidden;
-    table {width: 100%;border-spacing:0;
+.table {overflow: hidden;width: 100%;border-spacing:0;
+    th,
+    td {vertical-align: middle;text-align: center;height: 50px;padding: 0 10px;background-color: white;border: 0;}
+    th {text-transform: capitalize;position: sticky;left: 0;border-right: 1px var(--000-1) solid;z-index: 1;}
+    thead {
         th,
-        td {vertical-align: middle;text-align: center;height: 50px;padding: 0 10px;background-color: white;border: 0;}
-        th {text-transform: capitalize;position: sticky;left: 0;border-right: 1px var(--000-1) solid;z-index: 1;}
-        thead {
-            th,
-            td {font-weight: bold;text-transform: capitalize;border-bottom: 2px var(--color) solid;}
+        td {font-weight: bold;text-transform: capitalize;border-bottom: 2px var(--color) solid;}
+    }
+    tbody {
+        tr {
+            &:nth-child(2n) th,
+            &:nth-child(2n) td {background-color: var(--f7);}
+            &:hover {background-color: var(--eee);}
         }
-        tbody {
-            tr {
-                &:nth-child(2n) th,
-                &:nth-child(2n) td {background-color: var(--f7);}
-                &:hover {background-color: var(--eee);}
-            }
-        }
-        tfoot tr:first-child {
-            th,
-            td {border-top: 1px var(--color) solid;}
-        }
+    }
+    tfoot tr:first-child {
+        th,
+        td {border-top: 1px var(--color) solid;}
     }
 }
 
 @media(max-width:640px){
-    .table {overflow: auto;
-        table {max-width: 15rem;
-            th,
-            td {height: .7rem;padding: 0 .1rem;}
-        }
+    .table {overflow: auto;max-width: 15rem;
+        th,
+        td {height: .7rem;padding: .1rem;}
+        tbody tr:hover {background-color: transparent;}
     }
-    .table tbody tr:hover {background-color: transparent;}
-    th, td {padding: .1rem;}
 }
 
 /* swiper */
 swiper {display: block;overflow: hidden;position: relative;touch-action: pan-y;height: 100%;max-height: 100vh;
     swiper-wrapper {display: flex;height: 100%;
-        swiper-slide {flex-shrink: 0;width: calc(100%/var(--swiper-view,1));height: 100%;background-size: cover;}
+        swiper-slide {flex-shrink: 0;width: calc(100%/var(--swiper-view,1));height: 100%;background-size: cover;position: relative;}
     }
     swiper-arrow {pointer-events:none;}
     swiper-prev,
@@ -1135,7 +1135,7 @@ rate {
         &::before {content:'\eb2d';}
         &.active::before {content:'\eb85';}
     }
-    &[circular] i {
+    &[circle] i {
         &::before {content:'\ea31';}
         &.active::before {content:'\ec52';}
     }
