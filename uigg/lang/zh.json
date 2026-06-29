@@ -2,6 +2,9 @@
     "basic":{
         "confirm": "确认",
         "cancel": "取消",
+        "copyright": "复制成功",
+        "copyerr": "复制失败",
+        "uploadalert": "文件格式必须是",
         "_uigg_comment": "以上为系统必要禁止删除"
     }
 }

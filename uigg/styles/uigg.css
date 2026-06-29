@@ -1,5 +1,5 @@
 /*
- * uigg 3.0 (build 20260604)
+ * uigg 3.1 (build 20260629)
  * Project: https://ui.gg
  * Author: https://www.mixice.com
  * Github: https://github.com/mixice/uigg
@@ -20,17 +20,19 @@ menu, menu-cont, menu-group, menu-list, name, name-logo, name-search,
 tab, tab-list, tab-cont, tab-group, drop, drop-cont, drop-list, choice, choice-list,
 chat, chat-title, chat-sider, chat-cont, chat-list, chat-message, chat-tool, chat-control, chat-tip,
 pop, pop-main, pop-title, pop-cont, pop-solve, pop-choice, pop-sider,
+swiper, swiper-wrapper, swiper-slide, swiper-arrow, swiper-prev, swiper-next, swiper-dot,
 alert, alert-main, alert-cont, alert-solve, hop, hop-cont, fold, fold-group, fold-title, fold-cont,
 countdown, tip, page, music, space, rate, scaler, notify, empty, step, crumb, reminder, n, notice) {margin: 0;padding: 0;border: 0;outline: 0;background: transparent center no-repeat;background-size: contain;box-sizing: border-box;font-family: uigg;border-color: var(--eee);border-style: solid;-webkit-tap-highlight-color: transparent;}
 :where(article, aside, details, figcaption, figure, footer, header, hgroup, main, nav, section, summary,
 menu, menu-cont, menu-group, menu-list, name, name-logo, name-search, tab, tab-list, tab-cont, tab-group,
 drop, drop-cont, drop-list, choice, choice-list, chat, chat-title, chat-sider, chat-cont, chat-list, chat-message, chat-tool, chat-control, chat-tip,
 pop, pop-main, pop-title, pop-cont, pop-solve, pop-choice, pop-sider, alert, alert-main, alert-cont, alert-solve,
+swiper, swiper-wrapper, swiper-slide, swiper-arrow, swiper-prev, swiper-next, swiper-dot,
 hop, hop-cont, fold, fold-group, fold-title, fold-cont, countdown, tip, page, music, space, rate, scaler, notify, empty,
 step, crumb, reminder, n, notice) {display: block;}
 .transition,.btn,a {transition-duration: .3s;}
 html,body {height: 100%;}
-:where(html, body, .avatar, .upload-group, .swiper-slide, .parallax-bg) {background-size: cover;}
+:where(html, body, .avatar, .upload-group, swiper-slide) {background-size: cover;}
 :where(html, body, input, select, textarea, button) {font-size: 14px;}
 :where(html) {-webkit-font-smoothing: antialiased;}
 :where(body, a) {color: var(--333);}
@@ -258,7 +260,7 @@ img[uigg="color"] {content-visibility: hidden;}
 .anime-bounce-out,.anime-bounce-out-down,.anime-bounce-out-left,.anime-bounce-out-right,.anime-bounce-out-up,
 .anime-flip-in-x,.anime-flip-in-y,.anime-flip-out-x,.anime-flip-out-y,
 .anime-zoom-in,.anime-zoom-out,.anime-zoom-in-enlarge,.anime-zoom-out-enlarge {animation-duration: .6s;animation-fill-mode: both;}
-.anime-spasm {animation-duration: .3s; animation-name: anime-spasm;}
+.anime-spasm {animation-duration: .3s;animation-name: anime-spasm;}
 .anime-bounce-in,.anime-bounce-in-down,.anime-bounce-in-left,.anime-bounce-in-right,.anime-bounce-in-up {animation-timing-function: cubic-bezier(.215, .61, .355, 1);animation-duration: 1s;}
 .anime-shrink-in,.anime-shrink-out,.anime-shrink-in-enlarge,.anime-shrink-out-enlarge {animation-duration: 2s;animation-fill-mode: both;}
 .anime-flip-in-x,.anime-flip-in-y,.anime-flip-out-x,.anime-flip-out-y {backface-visibility: visible;}
@@ -463,13 +465,13 @@ pop {position: fixed;background-color: var(--000-8);z-index: 3;display: none;
 }
 
 /* tip */
-tip {position: fixed;top: 50%;left: 50%;z-index: 999;padding: 5px 10px;line-height: 24px;border-radius: 5px;box-shadow: 0 3px 6px var(--000-1);background-color: var(--color); color: white;
+tip {position: fixed;top: 50%;left: 50%;z-index: 999;padding: 5px 10px;line-height: 24px;border-radius: 5px;box-shadow: 0 3px 6px var(--000-1);background-color: var(--color);color: white;
     > * {padding: 3px;}
-    &.green {background-color: var(--green); color: white;}
-    &.red { background-color: var(--red); color: white;}
-    &.orange {background-color: var(--orange); color: white;}
+    &.green {background-color: var(--green);color: white;}
+    &.red { background-color: var(--red);color: white;}
+    &.orange {background-color: var(--orange);color: white;}
     &.white {background-color: white;color: var(--333);}
-    &.black {background-color: var(--000); color: white;}
+    &.black {background-color: var(--000);color: white;}
 }
 
 @media(max-width:640px){
@@ -950,31 +952,52 @@ table {width: 100%;border-collapse: collapse;
 }
 
 /* swiper */
-.swiper {width: 100%;height: 100%;
-    .swiper-slide {width: 100%;height: 100%;}
-    .swiper-button-next,
-    .swiper-button-prev {width: 50px;height: 50px;font-size: 40px;line-height: 50px;color: var(--color);margin-top: -25px;display: flex;
-        &:after {font-family: 'ico';content: '' !important;}
-        svg {display: none;}
+swiper {display: block;overflow: hidden;position: relative;touch-action: pan-y;height: 100%;max-height: 100vh;
+    swiper-wrapper {display: flex;height: 100%;
+        swiper-slide {flex-shrink: 0;width: calc(100%/var(--swiper-view,1));height: 100%;background-size: cover;}
     }
-    .swiper-button-next {right: 0;}
-    .swiper-button-prev {left: 0;}
-    .swiper-pagination {bottom: 20px !important;
-        .swiper-pagination-bullet-active {background-color: var(--color);}
+    swiper-arrow {pointer-events:none;}
+    swiper-prev,
+    swiper-next {position: absolute;top: 50%;font-size: 48px;color: var(--color);transform: translateY(-50%);cursor: pointer;pointer-events: auto;}
+    swiper-prev {left: 20px;}
+    swiper-next {right: 20px;}
+    swiper-dot {position: absolute;bottom: 20px;left: 50%;transform: translateX(-50%);display: flex;gap: 10px;
+        i {width: 10px;height: 10px;border-radius: 100%;background: var(--color);cursor: pointer;opacity: .3;
+            &.active {opacity: 1;}
+        }
     }
-    .swiper-pagination-vertical.swiper-pagination-bullets, .swiper-vertical > .swiper-pagination-bullets {transform: translate3d(0, 0, 0);}
-    .parallax-bg {position: absolute;left: 0;top: 0;width: 130%;height: 100%;}
-    .gallery-top {margin-bottom: 10px;}
-}
-.swiper-animate{
-    .swiper-anime {display: none;animation-delay: .3s;}
-    .swiper-slide-active .swiper-anime {display: block;}
+    &[vertical] {touch-action: pan-x;
+        swiper-wrapper {flex-direction: column;height: 100%;min-height: 0;
+            swiper-slide {width: 100%;height: calc(100%/var(--swiper-view,1));}
+        }
+        swiper-prev,
+        swiper-next {left: 50%;right: auto;transform: translateX(-50%);}
+        swiper-prev {top: 20px;}
+        swiper-next {bottom: 20px;top: auto;}
+        swiper-dot {top: 50%;transform: translateY(-50%);flex-direction: column;right: 20px;left: auto;bottom: auto;}
+    }
+    &[thumb] {
+        swiper-slide {opacity: .8;transition-duration: .3s;cursor: pointer;
+            &.active {opacity: 1;}
+        }
+    }
 }
 
 @media(max-width:640px){
-    .swiper-button-next,.swiper-button-prev {width: .5rem;height: .5rem;font-size: .4rem;line-height: .5rem;margin-top: -.25rem;}
-    .swiper-pagination {bottom: .2rem !important;}
-    .gallery-top {margin-bottom: .1rem;}
+    swiper {
+        swiper-prev,
+        swiper-next {font-size: .48rem;}
+        swiper-prev {left: .2rem;}
+        swiper-next {right: .2rem;}
+        swiper-dot {bottom: .2rem;gap: .1rem;
+            i {width: .1rem;height: .1rem;}
+        }
+        &[vertical] {
+            swiper-prev {top: .2rem;}
+            swiper-next {bottom: .2rem;}
+            swiper-dot {right: .2rem;}
+        }
+    }
 }
 
 /* name */
@@ -984,7 +1007,7 @@ name-logo,
 name-search {display: flex;align-items: center;justify-content: center;}
 name {height: 80px;position: relative;z-index: 1;box-shadow: 0 0 6px var(--000-1);background-color: white;z-index: 2;
     h2,
-    h3 {flex: 1;min-width: 0;text-align: center; white-space: nowrap;overflow: hidden;text-overflow: ellipsis;font-size: 26px;}
+    h3 {flex: 1;min-width: 0;text-align: center;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;font-size: 26px;}
     h2 {position: absolute;left: 0;top: 0;width: 100%;height: 100%;}
     h3 {text-align: left;border-left: 1px var(--eee) solid;padding: 0 20px;}
     .ico {font-size: 36px;width: 80px;position: relative;z-index: 1;}
@@ -993,7 +1016,7 @@ name {height: 80px;position: relative;z-index: 1;box-shadow: 0 0 6px var(--000-1
     }
     name-logo,
     name-search {flex: 1;min-width: 0;text-align: center;}
-    name-logo {position: absolute;left: 0;top: 0;width: 100%;height: 100%; padding: 15px;
+    name-logo {position: absolute;left: 0;top: 0;width: 100%;height: 100%;padding: 15px;
         img {height: 100%;width: auto;}
         h1 {text-transform: uppercase;font-size: 30px;padding-left: 10px;}
     }

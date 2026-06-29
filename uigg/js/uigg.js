@@ -1,5 +1,5 @@
 /*
- * uigg 3.0 (build 20260604)
+ * uigg 3.1 (build 20260629)
  * Project: https://ui.gg
  * Author: https://www.mixice.com
  * Github: https://github.com/mixice/uigg
@@ -78,7 +78,7 @@ function isMobileView(){return document.documentElement.clientWidth <= 640 || do
 
 // Locale constants
 const [langConfirm, langCancel] = language === 'zh-CN' ? ['确认', '取消'] : ['confirm', 'cancel']
-const [copyRight, copyErr] = language === 'zh-CN' ? ['复制成功', '复制失败'] : ['Copy successful', 'Could not copy text']
+const [copyRight, copyErr] = language === 'zh-CN' ? ['复制成功', '复制失败'] : ['Copy successful', 'Copy failed']
 const uploadAlert = language === 'zh-CN' ? '文件格式必须是' : 'File format must be'
 
 // Alert DOM helper
@@ -125,18 +125,18 @@ function notify(str, align, time){
     notifyEl.appendChild(li)
     const notifyAudio = notifyEl.querySelector('audio')
     notifyAudio.currentTime = 0
-    notifyAudio.play()
+    notifyAudio.play().catch(() => {})
     if(time !== undefined){setTimeout(() => notifyRemove(li), time)}
 }
 
 // Copy
-function copySelectedText(event){
+function copySelectedText(){
     const selection = window.getSelection()
     if(!selection.rangeCount || selection.isCollapsed) return
     const node = selection.anchorNode.nodeType === 1 ? selection.anchorNode : selection.anchorNode.parentElement
     if(node?.closest('[copy-select]')){
         const selectedText = selection.toString().trim()
-        if(selectedText) navigator.clipboard.writeText(selectedText).then(() => tip(copyRight),err => tip(copyErr + err))
+        if(selectedText) navigator.clipboard.writeText(selectedText).then(() => tip(_t('basic-copyright', copyRight)),err => tip(_t('basic-copyerr', copyErr) + err))
     }
 }
 
@@ -185,9 +185,10 @@ function confirmFn(message){
 }
 function promptFn(message, defaultValue = ''){
     return new Promise((resolve) => {
-        const alertEl = createAlertDOM(message, `<input type="text" id="alert-input" value="${defaultValue}">`)
+        const alertEl = createAlertDOM(message, '<input type="text" id="alert-input">')
         alertEl.querySelector('alert-solve').innerHTML = btnHTML(_t('basic-cancel', langCancel), 'alert-cancel') + btnHTML(_t('basic-confirm', langConfirm), 'alert-confirm')
         document.body.appendChild(alertEl)
+        alertEl.querySelector('#alert-input').value = defaultValue
         const done = (result) => {alertEl.remove(); document.removeEventListener('keydown', keyHandler); resolve(result)}
         alertEl.querySelector('#alert-confirm').addEventListener('click', () => done(alertEl.querySelector('#alert-input').value))
         alertEl.querySelector('#alert-cancel').addEventListener('click', () => done(null))
@@ -389,8 +390,17 @@ class Choice extends HTMLElement {
     connectedCallback(){
         const x = document.createElement('x')
         this.appendChild(x)
+        const top = () => this.querySelector(':scope>a')
+        this.getData = () => top()?.textContent.trim() || ''
+        this.setData = v => {
+            const a = top()
+            if(!a) return
+            this.querySelectorAll('choice-list a').forEach(i => {
+                if(i.textContent.trim() === String(v)) a.innerHTML = i.innerHTML
+            })
+        }
         this.addEventListener('click', () => this.classList.toggle('active'))
-        this.querySelectorAll('choice-list a').forEach(a => a.addEventListener('click', function(){this.parentElement?.parentElement?.querySelectorAll(':scope > a').forEach(s => {if(s !== this) s.innerHTML = this.innerHTML})}))
+        this.querySelectorAll('choice-list a').forEach(a => a.addEventListener('click', function(){const t=top();if(t)t.innerHTML=this.innerHTML}))
     }
 }
 
@@ -547,6 +557,206 @@ class Notice extends HTMLElement {
     }
 }
 
+// ============ Swiper ============
+const parseSwiperView = raw => {
+    raw = `${raw ?? ''}`.trim()
+    if(!raw) return {base: 1, points: []}
+    if(!/[,:;]/.test(raw)) return {base: Math.max(1, parseInt(raw) || 1), points: []}
+    const points = []
+    raw.split(/[;,]/).forEach(part => { const [bp, view] = part.trim().split(/[:=]/); const min = parseInt(bp), val = parseInt(view); if(min > 0 && val > 0) points.push([min, val]) })
+    points.sort((a,b)=>a[0]-b[0])
+    return {base: points[0]?.[1] ?? 1, points}
+}
+class Swiper extends HTMLElement {
+    connectedCallback(){
+        const w = this._w = this.querySelector('swiper-wrapper')
+        if(!w) return
+        const s = [...w.children], len = s.length
+        if(!len) return
+        const d = this.hasAttribute('vertical') ? 'Y' : 'X'
+        const loop = this.hasAttribute('loop') && len > 1
+        const isThumb = this.hasAttribute('thumb')
+        const {base, points} = parseSwiperView(this.getAttribute('view'))
+        const getView = () => {
+            const ww = document.documentElement.clientWidth || window.innerWidth || 0
+            let cur = base
+            for(const [bp, view] of points) if(ww >= bp) cur = view
+            return Math.max(1, cur)
+        }
+        let v = getView(), idx = 0, drag = false, sX = 0, dX = 0, moved = false, wheelBusy = false, n = 1
+        let slides = s
+        if(loop){
+            n = Math.max(base, ...(points.map(([,view]) => view)), 1)
+            for(let i = 0; i < n; i++) w.appendChild(s[i % len].cloneNode(true))
+            for(let i = n - 1; i >= 0; i--) w.insertBefore(s[((len - n + i) % len + len) % len].cloneNode(true), w.firstChild)
+            slides = [...w.children]
+            idx = n
+        }
+        if(this.hasAttribute('vertical') && this.offsetHeight < 10) this.style.height = '100vh'
+        this.style.setProperty('--swiper-view', v)
+        const realOf = i => loop ? ((i - n) % len + len) % len : i
+        this._realOf = realOf
+        const maxIdx = () => loop ? slides.length - v : Math.max(0, len - v)
+        const clamp = i => Math.max(0, Math.min(maxIdx(), i))
+        const dot = this.querySelector('swiper-dot')
+        const upDot = i => dot && [...dot.children].forEach((d, j) => d.classList.toggle('active', j === i))
+        const renderDot = () => dot && (dot.innerHTML = '<i></i>'.repeat(loop ? len : Math.max(1, len - v + 1)))
+        const setThumb = i => {
+            if(!isThumb) return
+            i = Math.max(0, Math.min(loop ? slides.length - 1 : len - 1, i))
+            const real = realOf(i)
+            this._activeDisplayIndex = i
+            this._realIndex = real
+            upDot(real)
+            slides.forEach((sl, j) => sl.classList.toggle('active', j === i))
+            return real
+        }
+        const go = (i, anim = true, emit = true) => {
+            if(!loop) i = clamp(i)
+            idx = i
+            this._realIndex = realOf(i)
+            w.style.transition = anim ? 'transform .3s' : 'none'
+            w.style.transform = `translate${d}(${-i * 100 / v}%)`
+            upDot(this._realIndex)
+            slides.forEach((sl, j) => sl.classList.toggle('view', j >= i && j < i + v))
+            if(emit) this.dispatchEvent(new CustomEvent('slide', {detail: {idx: this._realIndex}}))
+        }
+        const syncView = () => {
+            const nv = getView()
+            if(nv === v) return
+            v = nv
+            this.style.setProperty('--swiper-view', v)
+            renderDot()
+            go(loop ? idx : clamp(idx), false, false)
+            if(isThumb && this._activeDisplayIndex >= 0) setThumb(this._activeDisplayIndex)
+        }
+        const fixLoop = () => {
+            if(!loop) return false
+            if(idx >= n + len){ go(idx - len, false, false); return true }
+            if(idx < n){ go(idx + len, false, false); return true }
+            return false
+        }
+        this.slideTo = (i, anim = true, emit = true) => {
+            i = loop ? ((i % len) + len) % len : i
+            const display = loop ? i + n : i
+            let start = idx
+            if(display < start) start = display
+            else if(display >= start + v) start = display - v + 1
+            if(!loop) start = clamp(start)
+            go(start, anim, emit)
+            setThumb(display)
+        }
+        this.next = () => {
+            if(loop){ if(fixLoop()) w.offsetWidth; go(idx + 1); return true }
+            if(idx >= maxIdx()) return false
+            go(idx + 1); return true
+        }
+        this.prev = () => {
+            if(loop){ if(fixLoop()) w.offsetWidth; go(idx - 1); return true }
+            if(idx <= 0) return false
+            go(idx - 1); return true
+        }
+        w.addEventListener('transitionend', e => { if(e.target === w) fixLoop() })
+        if(dot){
+            renderDot()
+            dot.addEventListener('click', e => {
+                const i = [...dot.children].indexOf(e.target)
+                if(i >= 0) this.slideTo(i)
+            })
+        }
+        const endDrag = () => {
+            if(!drag) return
+            drag = false
+            const m = d === 'X' ? this.offsetWidth : this.offsetHeight
+            const swiped = moved && Math.abs(dX) > m / v / 5
+            if(swiped) this._clickBlockUntil = Date.now() + 80
+            swiped ? (dX > 0 ? this.prev() : this.next()) || go(idx) : go(idx)
+        }
+        this.addEventListener('pointerdown', e => {
+            sX = d === 'X' ? e.clientX : e.clientY
+            dX = 0
+            moved = false
+            this._clickBlockUntil = 0
+            drag = true
+            w.style.transition = 'none'
+            w.style.transform = `translate${d}(${-idx * 100 / v}%)`
+            e.preventDefault()
+        })
+        this.addEventListener('pointermove', e => {
+            if(!drag) return
+            dX = (d === 'X' ? e.clientX : e.clientY) - sX
+            moved = moved || Math.abs(dX) > 3
+            const m = d === 'X' ? this.offsetWidth : this.offsetHeight
+            const min = -maxIdx() * 100 / v
+            let p = -idx * 100 / v + dX / m * 100
+            if(loop) p = Math.max(min, Math.min(0, p))
+            else if(p > 0) p *= .35
+            else if(p < min) p = min + (p - min) * .35
+            w.style.transform = `translate${d}(${p}%)`
+        })
+        document.addEventListener('pointerup', endDrag)
+        this.addEventListener('pointerleave', endDrag)
+        this.addEventListener('wheel', e => {
+            e.preventDefault()
+            if(wheelBusy) return
+            wheelBusy = true
+            e.deltaY > 0 ? this.next() : this.prev()
+            setTimeout(() => wheelBusy = false, 350)
+        }, {passive: false})
+        const arr = this.querySelector('swiper-arrow')
+        if(arr) arr.innerHTML = '<swiper-prev></swiper-prev><swiper-next></swiper-next>'
+        const pv = this.querySelector('swiper-prev'), nx = this.querySelector('swiper-next')
+        if(pv){ pv.classList.add('ico', this.hasAttribute('vertical') ? 'ico-alone-top' : 'ico-alone-left'); pv.addEventListener('click', () => this.prev()) }
+        if(nx){ nx.classList.add('ico', this.hasAttribute('vertical') ? 'ico-alone-bottom' : 'ico-alone-right'); nx.addEventListener('click', () => this.next()) }
+        const ap = parseFloat(this.getAttribute('autoplay')) * 1000
+        if(ap){
+            const auto = () => this.next() || go(0, false)
+            let tid = setInterval(auto, ap)
+            this.addEventListener('pointerenter', () => clearInterval(tid))
+            this.addEventListener('pointerleave', () => { clearInterval(tid); tid = setInterval(auto, ap) })
+        }
+        if(points.length && !this._viewResizeBound){
+            this._viewResizeBound = 1
+            window.addEventListener('resize', syncView)
+            window.addEventListener('orientationchange', syncView)
+        }
+        const role = this.hasAttribute('gallery') ? 'gallery' : this.hasAttribute('thumb') ? 'thumb' : ''
+        if(role){
+            const key = (this.getAttribute(role) ?? '').trim()
+            setTimeout(() => {
+                const attr = role === 'gallery' ? 'thumb' : 'gallery'
+                const other = $$(`swiper[${attr}]`).find(el => el !== this && !el._thumbLinked && (el.getAttribute(attr) ?? '').trim() === key)
+                if(!other) return
+                const gallery = role === 'gallery' ? this : other
+                const thumb = role === 'gallery' ? other : this
+                if(gallery._thumbLinked || thumb._thumbLinked) return
+                if(typeof gallery.slideTo !== 'function' || typeof thumb.slideTo !== 'function') return
+                gallery._thumbLinked = thumb._thumbLinked = true
+                gallery.addEventListener('slide', e => thumb.slideTo(e.detail.idx))
+                thumb.addEventListener('click', e => {
+                    if(Date.now() < (thumb._clickBlockUntil || 0)) return
+                    const sl = e.target.closest?.('swiper-slide')
+                    if(!sl) return
+                    const i = [...thumb._w.children].indexOf(sl)
+                    if(i < 0) return
+                    gallery.slideTo(thumb._realOf?.(i) ?? i)
+                })
+                thumb.slideTo(gallery._realIndex ?? 0)
+            }, 0)
+        }
+        if(s.some(sl => sl.hasAttribute('hash'))){
+            const sync = () => {
+                const h = location.hash.slice(1)
+                const i = s.findIndex(sl => sl.getAttribute('hash') === h)
+                if(i >= 0) this.slideTo(i)
+            }
+            window.addEventListener('hashchange', sync)
+            sync()
+        }
+        go(idx, false)
+    }
+}
+
 //  Page
 function pageRender(el){
     const total = parseInt(el.getAttribute('total')) || 0
@@ -628,7 +838,7 @@ function initCustomElements(){
         ['tab', Tab], ['pop', Pop], ['menu', Menu], ['scaler', Scaler],
         ['choice', Choice], ['progress', Progress], ['drop', Drop],
         ['rate', Rate], ['empty', Empty], ['hop', Hop], ['fold', Fold],
-        ['crumb', Crumb], ['notice', Notice]
+        ['crumb', Crumb], ['notice', Notice], ['swiper', Swiper]
     ]
     map.forEach(([tag, Cls]) => {
         if(customElements.get(tag)) return
@@ -690,7 +900,7 @@ function initAudio(){
                 audio.src = `//ui.gg/lib/media/${audioName}.mp3`
                 document.body.appendChild(audio)
             }
-            audio.play()
+            audio.play().catch(() => {})
         }
     })
 }
@@ -707,8 +917,11 @@ function initSmooth(){
     $$('.smooth').forEach(a =>
       a.onclick = e => {
         e.preventDefault()
-        let el = $(a.getAttribute('href')),
+        const href = a.getAttribute('href')
+        if(!href || href[0] !== '#') return
+        let el = $(href),
             box = el, start, s, d
+        if(!el) return
         while ((box = box.parentElement) && box !== document.body && box.scrollHeight <= box.clientHeight);
         box = box && box !== document.body ? box : document.scrollingElement
         s = box.scrollTop
@@ -748,6 +961,26 @@ function initToggle(){
         el.setData = v => { el.classList.toggle('active', !!v); return el }
         el.addEventListener('click', function(){ this.classList.toggle('active') }, true)
     })
+    $$('.parent[name]').forEach(el => {
+        const rs = () => el.querySelectorAll(':scope>o.radio,:scope>o.radio-done')
+        const cs = () => el.querySelectorAll(':scope>o.checkbox,:scope>o.checkbox-done')
+        const vOf = o => o.getAttribute('data') || o.nextElementSibling?.textContent?.trim() || ''
+        el.getData = () => {
+            const r = rs()
+            if(r.length){
+                const a = el.querySelector(':scope>o.radio.active,:scope>o.radio-done.active')
+                return a ? vOf(a) : ''
+            }
+            return [...cs()].filter(o => o.classList.contains('active')).map(vOf)
+        }
+        el.setData = v => {
+            const vs = Array.isArray(v) ? v.map(String) : v == null ? [] : [String(v)]
+            const first = vs[0] || ''
+            rs().forEach(o => o.classList.toggle('active', vOf(o) === first))
+            const set = new Set(vs)
+            cs().forEach(o => o.classList.toggle('active', set.has(vOf(o))))
+        }
+    })
     document.addEventListener('click', (e) => {
         if(e.target.matches?.('o.radio, o.radio-done')){
             const parent = e.target.closest('.parent')
@@ -772,11 +1005,13 @@ function initUpload(){
     function bindUploadGroup(group){
         const input = group.querySelector('input')
         input.addEventListener('change', function(){
+            const file = this.files[0]
+            if(!file) return
             const imgValue = this.value
             const fileFormat = imgValue.substring(imgValue.lastIndexOf('.')).toLowerCase()
-            const imgUrl = window.URL.createObjectURL(this.files[0])
-            if(!fileFormat.match(/\.png|\.jpg|\.jpeg|\.webp|\.gif/)){alertFn(uploadAlert + ': png/jpg/jpeg/webp/gif')}
+            if(!fileFormat.match(/\.png|\.jpg|\.jpeg|\.webp|\.gif/)){alertFn(_t('basic-uploadalert', uploadAlert) + ': png/jpg/jpeg/webp/gif')}
             else{
+                const imgUrl = window.URL.createObjectURL(file)
                 group.style.backgroundImage = `url(${imgUrl})`
                 group.style.color = 'transparent'
             }
@@ -821,7 +1056,7 @@ function initCopy(){
         const copyEl = copyNum ? $(`[copy-val="${copyNum}"]`) : $('[copy-val]')
         if(!copyEl) return
         const copyVal = copyEl.tagName === 'INPUT' ? copyEl.value : copyEl.textContent
-        navigator.clipboard.writeText(copyVal).then(() => tip(copyRight),err => tip(copyErr + err))
+        navigator.clipboard.writeText(copyVal).then(() => tip(_t('basic-copyright', copyRight)),err => tip(_t('basic-copyerr', copyErr) + err))
     }))
     if($('[copy-select]')){document.addEventListener('mouseup', copySelectedText)}
 }
@@ -832,10 +1067,6 @@ function initNotifyClose(){
             if(li) notifyRemove(li)
         }
     })
-}
-function initSwiperBtns(){
-    $$('.swiper-button-next').forEach(el => el.classList.add('ico', 'ico-alone-right'))
-    $$('.swiper-button-prev').forEach(el => el.classList.add('ico', 'ico-alone-left'))
 }
 function initRecording(){
     $$('.recording').forEach(btn => btn.addEventListener('click', async function(){
@@ -915,7 +1146,7 @@ function touch(selector, direction, callback, threshold){
 }
 
 // ============ Form API ============
-function formGetVal(el){
+function gVal(el){
     if(el.tagName==='INPUT'){
         if(el.type==='file')return el.files[0]||null
         if(el.type==='checkbox')return el.checked?(el.value||'on'):''
@@ -927,65 +1158,51 @@ function formGetVal(el){
     if(el.tagName==='SELECT')return el.value
     return null
 }
-function formSetVal(el,val){
-    if(el.tagName==='INPUT'||el.tagName==='TEXTAREA'){
+function sVal(el,val){
+    if(el.tagName==='INPUT'){
+        if(el.type==='file'){if(val==null||val==='')el.value='';return}
+        if(el.type==='radio'){el.checked=Array.isArray(val)?val.map(String).includes(String(el.value||'on')):String(el.value||'on')===String(val);return}
+        if(el.type==='checkbox'){el.checked=Array.isArray(val)?val.map(String).includes(String(el.value||'on')):typeof val==='boolean'?val:val==null?false:String(el.value||'on')===String(val);return}
         el.value=val
         if(el.type==='range')rangeUpdate(el)
         return
     }
+    if(el.tagName==='TEXTAREA'){el.value=val;return}
     if(el.tagName==='SELECT'){el.value=val;return}
-    if(el.tagName==='CHOICE'){
-        el.querySelectorAll('choice-list a').forEach(a=>{if(a.textContent.trim()===String(val))el.querySelector(':scope>a').innerHTML=a.innerHTML})
-        return
-    }
-    if(el.matches('.parent')){
-        el.querySelectorAll(':scope>o.radio,:scope>o.radio-done').forEach(o=>o.classList.toggle('active',o.getAttribute('data')===val))
-        if(Array.isArray(val))el.querySelectorAll(':scope>o.checkbox,:scope>o.checkbox-done').forEach(o=>o.classList.toggle('active',val.includes(o.getAttribute('data'))))
-        return
-    }
-    if(el.getData){el.setData(val);return}
-    if(el.matches('scaler')){const inp=el.querySelector('input');if(inp)inp.value=val;return}
+    if(typeof el.setData==='function'){el.setData(val);return}
 }
 function formCollect(form){
     const data={}, groups={}
     form.querySelectorAll('input[name],textarea[name],select[name]').forEach(el=>{
         const name=el.name;if(!name)return
-        const val=formGetVal(el)
+        const val=gVal(el)
         if(el.type==='radio'){if(val!==null)data[name]=val;return}
-        if(el.type==='checkbox'){if(!groups[name])groups[name]=[];if(val)groups[name].push(val);return}
+        if(el.type==='checkbox'){(groups[name]||(groups[name]=[])).push(val);return}
         data[name]=val
     })
-    Object.entries(groups).forEach(([k,v])=>data[k]=v)
-    form.querySelectorAll('choice[name]').forEach(el=>{
-        const a=el.querySelector(':scope>a')
-        data[el.getAttribute('name')]=a?a.textContent.trim():''
-    })
-    form.querySelectorAll('.parent[name]').forEach(parent=>{
-        const name=parent.getAttribute('name'), items=parent.querySelectorAll(':scope>o[data]')
-        if(!items.length)return
-        if(items[0].matches('o.radio,o.radio-done')){
-            const active=parent.querySelector(':scope>o.radio.active,:scope>o.radio-done.active')
-            if(active)data[name]=active.getAttribute('data')||active.nextElementSibling?.textContent?.trim()||''
-            else data[name]=''
-        }else{
-            data[name]=[...parent.querySelectorAll(':scope>o.checkbox.active,:scope>o.checkbox-done.active')].map(el=>el.getAttribute('data')||el.nextElementSibling?.textContent?.trim()||'')
-        }
-    })
+    Object.entries(groups).forEach(([k,v])=>data[k]=v.filter(Boolean))
     form.querySelectorAll('.upload[name]').forEach(el=>{
         data[el.getAttribute('name')]=[...el.querySelectorAll('.upload-group input[type="file"]')].map(inp=>inp.files[0]).filter(f=>f)
     })
-    form.querySelectorAll('[name]').forEach(el=>{const n=el.getAttribute('name');if(n in data)return;if(typeof el.getData==='function')data[n]=el.getData();else if(typeof el._uiggValue==='function')data[n]=el._uiggValue()})
+    form.querySelectorAll('[name]').forEach(el=>{
+        const n=el.getAttribute('name')
+        if(n in data)return
+        if(typeof el.getData==='function')data[n]=el.getData()
+        else if(typeof el._uiggValue==='function')data[n]=el._uiggValue()
+    })
     return data
 }
 function formSet(form,data){
     Object.entries(data).forEach(([name,val])=>{
-        const el=form.querySelector(`[name="${name}"]`)
-        if(!el)return
-        formSetVal(el,val)
+        const els=form.querySelectorAll(`[name="${name}"]`)
+        if(!els.length)return
+        els.forEach(el => sVal(el,val))
     })
 }
 function formReset(form){
     form.querySelectorAll('input[name],textarea[name]').forEach(el=>{
+        if(el.type==='checkbox'||el.type==='radio'){el.checked=el.defaultChecked;return}
+        if(el.type==='file'){el.value='';return}
         el.value=el.defaultValue||(el.type==='color'?'#000000':(el.type==='range'?String((parseFloat(el.min||0)+parseFloat(el.max||100))/2):''))
         if(el.type==='range')rangeUpdate(el)
     })
@@ -1017,9 +1234,6 @@ function formValidate(form){
     })
     return allValid
 }
-function formLoading(btn,loading){
-    btn.disabled=loading
-}
 function formController(form){
     if(form._uiggForm)return form._uiggForm
     const getBtns=()=>form.querySelectorAll('.btn-submit,button[type="submit"]')
@@ -1031,15 +1245,11 @@ function formController(form){
         async submit(fn){
             if(!formValidate(form)){const first=form.querySelector('li.error input,li.error select,li.error textarea');if(first)first.focus();return false}
             const btns=getBtns()
-            btns.forEach(b=>formLoading(b,true))
+            btns.forEach(b=>b.disabled=true)
             try{
-                const data=formCollect(form)
-                const result=await fn(data)
-                btns.forEach(b=>formLoading(b,false))
-                return result
-            }catch(e){
-                btns.forEach(b=>formLoading(b,false))
-                throw e
+                return await fn(formCollect(form))
+            }finally{
+                btns.forEach(b=>b.disabled=false)
             }
         },
         toFormData:()=>{
@@ -1088,7 +1298,7 @@ const Uigg = {
         initPage(); initLang(); initFullscreen(); initAudio();
         initSmooth(); initReturn(); initTop(); initPopLinks(); initToggle();
         initAutoTextarea(); initUpload(); initRandom(); initClue();
-        initCopy(); initNotifyClose(); initSwiperBtns(); initRecording(); initRange();
+        initCopy(); initNotifyClose(); initRecording(); initRange();
         initForm()
         this.inited = true
     },
@@ -1108,10 +1318,6 @@ if(typeof window !== 'undefined'){
 }
 
 // ES module exports (works with import when type="module")
-export {Uigg, Load, Music, Name, Nav, Tab, Pop, Menu, Scaler, Choice, Progress, Drop, Rate, Empty, Hop, Fold, Crumb, Notice}
-export {initCustomElements, initPage, initLang, initFullscreen, initAudio, initSmooth, initReturn, initTop, initPopLinks, initToggle, initAutoTextarea, initUpload, initRandom, initClue, initCopy, initNotifyClose, initSwiperBtns, initRecording, initRange, initForm}
+export {Uigg, Load, Music, Name, Nav, Tab, Pop, Menu, Scaler, Choice, Progress, Drop, Rate, Empty, Hop, Fold, Crumb, Notice, Swiper}
+export {initCustomElements, initPage, initLang, initFullscreen, initAudio, initSmooth, initReturn, initTop, initPopLinks, initToggle, initAutoTextarea, initUpload, initRandom, initClue, initCopy, initNotifyClose, initRecording, initRange, initForm}
 export default Uigg
-
-
-
-
