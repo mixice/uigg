@@ -680,10 +680,10 @@ input::before {color: var(--color);}
 :where(choice, select,
 input:not([type="range"],[type="file"],[type="color"]),
 textarea) {border: 1px var(--eee) solid;width: 100%;height: 50px;}
-input:focus,
+input:not([readonly]):focus,
 choice.active,
 select:focus,
-textarea:focus {border-color: var(--color);}
+textarea:not([readonly]):focus {border-color: var(--color);}
 choice,
 .select,
 input,
