@@ -165,19 +165,34 @@
                 </div>
                 <div class="item">
                     <form class="form filter" auto>
-                        <li><label>name</label><input type="text" name="name"></li>
-                        <li><label>time</label><input type="date" name="time"></li>
-                        <li><label>select</label><div class="select"><select name="select"><option selected disabled>select</option><option>select</option></select></div></li>
-                        <li><label>choice</label>
-                            <choice name="choice">
-                                <a>choice</a>
-                                <choice-list>
+                        <item><alia>keyword</alia>
+                            <cont><input type="text" name="keyword"></cont>
+                        </item>
+                        <item><alia>time</alia>
+                            <cont><input type="date" name="time"></cont>
+                        </item>
+                        <item><alia>select</alia>
+                            <cont>
+                                <div class="select">
+                                    <select name="select">
+                                        <option selected disabled>select</option>
+                                        <option>select</option>
+                                    </select>
+                                </div>
+                            </cont>
+                        </item>
+                        <item><alia>choice</alia>
+                            <cont>
+                                <choice name="choice">
                                     <a>choice</a>
-                                    <a>choice</a>
-                                </choice-list>
-                            </choice>
-                        </li>
-                        <li><a class="btn" submit>search</a></li>
+                                    <choice-list>
+                                        <a>choice</a>
+                                        <a>choice</a>
+                                    </choice-list>
+                                </choice>
+                            </cont>
+                        </item>
+                        <item><cont><a class="btn" submit>search</a></cont></item>
                     </form>
                     <table class="table">
                         <thead>
@@ -254,115 +269,130 @@
                 </div>
                 <div class="item">
                     <form class="form" auto>
-                        <li><label>account</label>
-                            <input class="wide-20" type="text" name="account" required>
+                        <item><alia>account</alia>
+                            <cont><input class="wide-20" type="text" name="account" required></cont>
                             <hint>Lorem ipsum dolor sit amet</hint>
-                        </li>
-                        <li><label>password</label>
-                            <div class="input wide-20"><input type="password" name="password" required><o class="password"></o></div>
+                        </item>
+                        <item><alia>password</alia>
+                            <cont><div class="input wide-20"><input type="password" name="password" required><o class="password"></o></div></cont>
                             <hint>Password error</hint>
-                        </li>
-                        <li><label>scaler</label>
-                            <scaler><input step="1" min="0" max="100" value="1" name="scaler"></scaler>
+                        </item>
+                        <item><alia>scaler</alia>
+                            <cont><scaler><input step="1" min="0" max="100" value="1" name="scaler"></scaler></cont>
                             <hint>Lorem ipsum dolor sit amet</hint>
-                        </li>
-                        <li><label>radio</label>
-                            <div class="parent" name="radio">
-                                <o class="radio" data="radio1"></o><span>radio</span>
-                                <o class="radio" data="radio2"></o><span>radio</span>
-                                <o class="radio" data="radio3"></o><span>radio</span>
-                            </div>
+                        </item>
+                        <item><alia>radio</alia>
+                            <cont>
+                                <div class="parent" name="radio">
+                                    <o class="radio" data="radio1"></o><span>radio</span>
+                                    <o class="radio" data="radio2"></o><span>radio</span>
+                                    <o class="radio" data="radio3"></o><span>radio</span>
+                                </div>
+                            </cont>
                             <hint>Lorem ipsum dolor sit amet</hint>
-                        </li>
-                        <li><label>checkbox</label>
-                            <div class="parent" name="checkbox">
-                                <o class="checkbox" data="checkbox1"></o><span>checkbox</span>
-                                <o class="checkbox" data="checkbox2"></o><span>checkbox</span>
-                                <o class="checkbox checkbox-all" data="checkboxall"></o><span>checkbox all</span>
-                            </div>
+                        </item>
+                        <item><alia>checkbox</alia>
+                            <cont>
+                                <div class="parent" name="checkbox">
+                                    <o class="checkbox" data="checkbox1"></o><span>checkbox</span>
+                                    <o class="checkbox" data="checkbox2"></o><span>checkbox</span>
+                                    <o class="checkbox checkbox-all" data="checkboxall"></o><span>checkbox all</span>
+                                </div>
+                            </cont>
+                        </item>
+                        <item><alia>toggle</alia>
+                            <cont><o class="toggle" name="toggle"></o></cont>
                             <hint>Lorem ipsum dolor sit amet</hint>
-                        </li>
-                        <li><label>toggle</label>
-                            <o class="toggle" name="toggle"></o>
+                        </item>
+                        <item><alia>progress</alia>
+                            <cont><progress class="wide-20" max="100" value="50"></progress></cont>
+                        </item>
+                        <item><alia>range</alia>
+                            <cont><input class="wide-20" type="range" min="0" max="100" step="0" value="50" name="range"></cont>
                             <hint>Lorem ipsum dolor sit amet</hint>
-                        </li>
-                        <li><label>progress</label>
-                            <progress class="wide-20" max="100" value="50"></progress>
-                        </li>
-                        <li><label>range</label>
-                            <input class="wide-20" type="range" min="0" max="100" step="0" value="50" name="range">
+                        </item>
+                        <item><alia>file</alia>
+                            <cont><input class="wide-30" type="file" name="file"></cont>
                             <hint>Lorem ipsum dolor sit amet</hint>
-                        </li>
-                        <li><label>file</label>
-                            <input class="wide-30" type="file" name="file">
+                        </item>
+                        <item><alia>color</alia>
+                            <cont><input type="color" name="color"></cont>
                             <hint>Lorem ipsum dolor sit amet</hint>
-                        </li>
-                        <li><label>color</label>
-                            <input type="color" name="color">
+                        </item>
+                        <item><alia>date</alia>
+                            <cont><input class="wide-20" type="date" name="date"></cont>
                             <hint>Lorem ipsum dolor sit amet</hint>
-                        </li>
-                        <li><label>date</label>
-                            <input class="wide-20" type="date" name="date">
+                        </item>
+                        <item><alia>datetime</alia>
+                            <cont><input class="wide-20" type="datetime-local" name="datetime"></cont>
                             <hint>Lorem ipsum dolor sit amet</hint>
-                        </li>
-                        <li><label>datetime</label>
-                            <input class="wide-20" type="datetime-local" name="datetime">
+                        </item>
+                        <item><alia>month</alia>
+                            <cont><input class="wide-20" type="month" name="month"></cont>
                             <hint>Lorem ipsum dolor sit amet</hint>
-                        </li>
-                        <li><label>month</label>
-                            <input class="wide-20" type="month" name="month">
+                        </item>
+                        <item><alia>week</alia>
+                            <cont><input class="wide-20" type="week" name="week"></cont>
                             <hint>Lorem ipsum dolor sit amet</hint>
-                        </li>
-                        <li><label>week</label>
-                            <input class="wide-20" type="week" name="week">
+                        </item>
+                        <item><alia>time</alia>
+                            <cont><input class="wide-20" type="time" name="time"></cont>
                             <hint>Lorem ipsum dolor sit amet</hint>
-                        </li>
-                        <li><label>time</label>
-                            <input class="wide-20" type="time" name="time">
+                        </item>
+                        <item><alia>select</alia>
+                            <cont><div class="select wide-20"><select name="select"><option selected disabled>select</option><option>select</option></select></div></cont>
                             <hint>Lorem ipsum dolor sit amet</hint>
-                        </li>
-                        <li><label>select</label>
-                            <div class="select wide-20"><select name="select"><option selected disabled>select</option><option>select</option></select></div>
-                            <hint>Lorem ipsum dolor sit amet</hint>
-                        </li>
-                        <li><label>choice</label>
-                            <choice class="wide-20" name="choice">
-                                <a>choice</a>
-                                <choice-list>
+                        </item>
+                        <item><alia>choice</alia>
+                            <cont>
+                                <choice class="wide-20" name="choice">
                                     <a>choice</a>
-                                    <a>choice</a>
-                                </choice-list>
-                            </choice>
+                                    <choice-list>
+                                        <a>choice</a>
+                                        <a>choice</a>
+                                    </choice-list>
+                                </choice>
+                            </cont>
                             <hint>Lorem ipsum dolor sit amet</hint>
-                        </li>
-                        <li><label>robot</label>
-                            <input class="wide-10" type="text" name="robot">
-                            <a class="code" uigg="color"><img uigg="color"></a>
+                        </item>
+                        <item><alia>robot</alia>
+                            <cont>
+                                <input class="wide-10" type="text" name="robot">
+                                <a class="code" uigg="color"><img uigg="color"></a>
+                            </cont>
                             <hint>Lorem ipsum dolor sit amet</hint>
-                        </li>
-                        <li><label>code</label>
-                            <input class="wide-10" type="text" name="code">
-                            <a class="btn code">get code</a>
+                        </item>
+                        <item><alia>code</alia>
+                            <cont>
+                                <input class="wide-10" type="text" name="code">
+                                <a class="btn code">get code</a>
+                            </cont>
                             <hint>Lorem ipsum dolor sit amet</hint>
-                        </li>
-                        <li><label>message</label>
-                            <textarea class="wide" name="message"></textarea>
-                        </li>
-                        <li><label>editor</label>
-                            <div class="editor-simple"></div>
-                        </li>
-                        <li><label>images</label>
-                            <div class="upload" name="images">
-                                <div class="ico upload-group"><input type="file" accept=".jpg,.jpeg,.png,.webp,.gif"><n class="ico"></n></div>
-                                <div class="ico upload-add"></div>
-                            </div>
+                        </item>
+                        <item><alia>message</alia>
+                            <cont><textarea class="wide" name="message"></textarea></cont>
+                        </item>
+                        <item><alia>editor</alia>
+                            <cont><div class="editor-simple" name="editor"></div></cont>
+                        </item>
+                        <item><alia>images</alia>
+                            <cont><images multiple name="images"></images></cont>
                             <hint>Lorem ipsum dolor sit amet</hint>
-                        </li>
-                        <li class="resolve"><o class="checkbox" name="agreement"></o><span>I've read and agreed</span><a>"User agreement"</a></li>
-                        <li class="resolve">
-                            <a class="btn btn-submit" reset>reset</a>
-                            <a class="btn btn-submit" submit>submit</a>
-                        </li>
+                        </item>
+                        <item><alia></alia>
+                            <cont>
+                                <o class="checkbox" name="agreement"></o><span>I've read and agreed</span><a>"User agreement"</a>
+                            </cont>
+                        </item>
+                        <item><alia></alia><div class="bloomer" show>Lorem ipsum dolor sit amet</div></item>
+                        <item><alia></alia>
+                            <cont>
+                                <a class="btn" id="get">get</a>
+                                <a class="btn" id="set">set</a>
+                                <a class="btn" reset>reset</a>
+                                <a class="btn" submit>submit</a>
+                            </cont>
+                        </item>
                     </form>
                 </div>
             </div>

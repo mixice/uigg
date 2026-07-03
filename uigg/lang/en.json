@@ -1,10 +1,8 @@
 {
-    "basic":{
+    "uigg":{
         "confirm": "confirm",
         "cancel": "cancel",
         "copyright": "Copy successful",
-        "copyerr": "Copy failed",
-        "uploadalert": "File format must be",
-        "_uigg_comment": "The above are uigg essentials and must not be deleted"
+        "copyerr": "Copy failed"
     }
 }

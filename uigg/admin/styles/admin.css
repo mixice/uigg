@@ -331,11 +331,13 @@ pop-title {border-bottom-color: var(--light);}
 	h1 {margin: auto;transform: scale(1.3);}
 }
 .login-form {width: 500px;
-	li {position: relative;display: flex;
-		&:last-child {border-bottom: 0;}
+	item {padding: 5px 0;
 		i {width: 50px;position: absolute;line-height: 50px;}
-		input {padding: 0 10px 0 50px;flex: 1;}
-		.btn {width: 100%;margin: 20px 5px 10px;font-weight: bold;}
+		cont {position: relative;display: flex;align-items: center;width: 100%;
+			input {padding: 0 10px 0 50px;flex: 1;}
+			.btn {width: 100%;margin: 15px 0;font-weight: bold;}
+			.bloomer {width: 100%;}
+		}
 	}
 }
 .login-info {padding: 0 15px;overflow: hidden;

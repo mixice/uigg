@@ -79,7 +79,6 @@ function isMobileView(){return document.documentElement.clientWidth <= 640 || do
 // Locale constants
 const [langConfirm, langCancel] = language === 'zh-CN' ? ['确认', '取消'] : ['confirm', 'cancel']
 const [copyRight, copyErr] = language === 'zh-CN' ? ['复制成功', '复制失败'] : ['Copy successful', 'Copy failed']
-const uploadAlert = language === 'zh-CN' ? '文件格式必须是' : 'File format must be'
 
 // Alert DOM helper
 function createAlertDOM(message, extra = ''){
@@ -136,7 +135,7 @@ function copySelectedText(){
     const node = selection.anchorNode.nodeType === 1 ? selection.anchorNode : selection.anchorNode.parentElement
     if(node?.closest('[copy-select]')){
         const selectedText = selection.toString().trim()
-        if(selectedText) navigator.clipboard.writeText(selectedText).then(() => tip(_t('basic-copyright', copyRight)),err => tip(_t('basic-copyerr', copyErr) + err))
+        if(selectedText) navigator.clipboard.writeText(selectedText).then(() => tip(_t('uigg-copyright', copyRight)),err => tip(_t('uigg-copyerr', copyErr) + err))
     }
 }
 
@@ -162,38 +161,37 @@ function countdownFn(date){
 const _t = (key, fallback) => _langData ? (langRead(key, _langData) || fallback) : fallback
 
 // Alert / Confirm / Prompt
-function alertFn(message){
-    const alertEl = createAlertDOM(message)
-    alertEl.querySelector('alert-solve').innerHTML = btnHTML(_t('basic-confirm', langConfirm))
+function alertBox(message, extra = '', buttons = [], onKey){
+    const alertEl = createAlertDOM(message, extra)
+    alertEl.querySelector('alert-solve').innerHTML = buttons.map(b => btnHTML(b.text, b.id)).join('')
+    const done = result => {alertEl.remove(); document.removeEventListener('keydown', keyHandler); return result}
+    function keyHandler({key}){onKey?.(key, done, alertEl)}
     document.body.appendChild(alertEl)
-    const close = () => {alertEl.remove(); document.removeEventListener('keydown', keyHandler)}
-    alertEl.querySelector('a').addEventListener('click', close)
-    function keyHandler({key}){if(['Enter', 'Escape', ' '].includes(key)) close()}
+    buttons.forEach(b => alertEl.querySelector(b.id ? `#${b.id}` : 'a')?.addEventListener('click', () => b.fn(done, alertEl)))
     document.addEventListener('keydown', keyHandler)
+    return alertEl
+}
+function alertFn(message){
+    alertBox(message, '', [{text: _t('uigg-confirm', langConfirm), fn: done => done()}], (key, done) => {if(['Enter', 'Escape', ' '].includes(key)) done()})
 }
 function confirmFn(message){
     return new Promise((resolve) => {
-        const alertEl = createAlertDOM(message)
-        alertEl.querySelector('alert-solve').innerHTML = btnHTML(_t('basic-cancel', langCancel), 'alert-cancel') + btnHTML(_t('basic-confirm', langConfirm), 'alert-confirm')
-        document.body.appendChild(alertEl)
-        const done = (result) => {alertEl.remove(); document.removeEventListener('keydown', keyHandler); resolve(result)}
-        alertEl.querySelector('#alert-confirm').addEventListener('click', () => done(true))
-        alertEl.querySelector('#alert-cancel').addEventListener('click', () => done(false))
-        function keyHandler({key}){if(key === 'Enter') done(true); if(key === 'Escape') done(false)}
-        document.addEventListener('keydown', keyHandler)
+        const finish = (done, result) => resolve(done(result))
+        alertBox(message, '', [
+            {id: 'alert-cancel', text: _t('uigg-cancel', langCancel), fn: done => finish(done, false)},
+            {id: 'alert-confirm', text: _t('uigg-confirm', langConfirm), fn: done => finish(done, true)}
+        ], (key, done) => {if(key === 'Enter') finish(done, true); if(key === 'Escape') finish(done, false)})
     })
 }
 function promptFn(message, defaultValue = ''){
     return new Promise((resolve) => {
-        const alertEl = createAlertDOM(message, '<input type="text" id="alert-input">')
-        alertEl.querySelector('alert-solve').innerHTML = btnHTML(_t('basic-cancel', langCancel), 'alert-cancel') + btnHTML(_t('basic-confirm', langConfirm), 'alert-confirm')
-        document.body.appendChild(alertEl)
+        const inputVal = el => el.querySelector('#alert-input').value
+        const finish = (done, el, result) => resolve(done(result))
+        const alertEl = alertBox(message, '<input type="text" id="alert-input">', [
+            {id: 'alert-cancel', text: _t('uigg-cancel', langCancel), fn: (done, el) => finish(done, el, null)},
+            {id: 'alert-confirm', text: _t('uigg-confirm', langConfirm), fn: (done, el) => finish(done, el, inputVal(el))}
+        ], (key, done, el) => {if(key === 'Enter') finish(done, el, inputVal(el)); if(key === 'Escape') finish(done, el, null)})
         alertEl.querySelector('#alert-input').value = defaultValue
-        const done = (result) => {alertEl.remove(); document.removeEventListener('keydown', keyHandler); resolve(result)}
-        alertEl.querySelector('#alert-confirm').addEventListener('click', () => done(alertEl.querySelector('#alert-input').value))
-        alertEl.querySelector('#alert-cancel').addEventListener('click', () => done(null))
-        function keyHandler({key}){if(key === 'Enter') done(alertEl.querySelector('#alert-input').value); if(key === 'Escape') done(null)}
-        document.addEventListener('keydown', keyHandler)
     })
 }
 
@@ -582,7 +580,6 @@ const parseSwiperView = raw => {
     points.sort((a,b)=>a[0]-b[0])
     return {base: points[0]?.[1] ?? 1, points}
 }
-const swiperIgnore = 'a,button,input,textarea,select,option,label,summary,nav,tab,pop,menu,choice,drop,rate,page,scaler,music,hop,fold,o,[contenteditable],[tabindex],[ignore]'
 class Swiper extends HTMLElement {
     connectedCallback(){
         const w = this._w = this.querySelector('swiper-wrapper')
@@ -590,10 +587,13 @@ class Swiper extends HTMLElement {
         const s = [...w.children], len = s.length
         if(!len) return
         const d = this.hasAttribute('vertical') ? 'Y' : 'X'
+        const fade = this.hasAttribute('fade')
         const loop = this.hasAttribute('loop') && len > 1
+        const useTranslateLoop = loop && !fade
         const isThumb = this.hasAttribute('thumb')
         const {base, points} = parseSwiperView(this.getAttribute('view'))
         const getView = () => {
+            if(fade) return 1
             const ww = document.documentElement.clientWidth || window.innerWidth || 0
             let cur = base
             for(const [bp, view] of points) if(ww >= bp) cur = view
@@ -601,7 +601,7 @@ class Swiper extends HTMLElement {
         }
         let v = getView(), idx = 0, drag = false, down = false, sX = 0, dX = 0, moved = false, wheelBusy = false, n = 1
         let slides = s
-        if(loop){
+        if(useTranslateLoop){
             n = Math.max(base, ...(points.map(([,view]) => view)), 1)
             for(let i = 0; i < n; i++) w.appendChild(s[i % len].cloneNode(true))
             for(let i = n - 1; i >= 0; i--) w.insertBefore(s[((len - n + i) % len + len) % len].cloneNode(true), w.firstChild)
@@ -610,16 +610,17 @@ class Swiper extends HTMLElement {
         }
         if(this.hasAttribute('vertical') && this.offsetHeight < 10) this.style.height = '100vh'
         this.style.setProperty('--swiper-view', v)
-        const realOf = i => loop ? ((i - n) % len + len) % len : i
+        const wrapIndex = i => ((i % len) + len) % len
+        const realOf = i => fade ? wrapIndex(i) : useTranslateLoop ? wrapIndex(i - n) : i
         this._realOf = realOf
-        const maxIdx = () => loop ? slides.length - v : Math.max(0, len - v)
+        const maxIdx = () => fade ? len - 1 : useTranslateLoop ? slides.length - v : Math.max(0, len - v)
         const clamp = i => Math.max(0, Math.min(maxIdx(), i))
         const dot = this.querySelector('swiper-dot')
         const upDot = i => dot && [...dot.children].forEach((d, j) => d.classList.toggle('active', j === i))
         const renderDot = () => dot && (dot.innerHTML = '<i></i>'.repeat(loop ? len : Math.max(1, len - v + 1)))
         const setThumb = i => {
             if(!isThumb) return
-            i = Math.max(0, Math.min(loop ? slides.length - 1 : len - 1, i))
+            i = Math.max(0, Math.min(fade || !useTranslateLoop ? len - 1 : slides.length - 1, i))
             const real = realOf(i)
             this._activeDisplayIndex = i
             this._realIndex = real
@@ -628,13 +629,19 @@ class Swiper extends HTMLElement {
             return real
         }
         const go = (i, anim = true, emit = true) => {
-            if(!loop) i = clamp(i)
-            idx = i
-            this._realIndex = realOf(i)
-            w.style.transition = anim ? 'transform .3s' : 'none'
-            w.style.transform = `translate${d}(${-i * 100 / v}%)`
+            if(fade){
+                i = loop ? wrapIndex(i) : clamp(i)
+                idx = i; this._realIndex = i
+                slides.forEach((sl, j) => sl.classList.toggle('view', j === i))
+            }else{
+                if(!useTranslateLoop) i = clamp(i)
+                idx = i
+                this._realIndex = realOf(i)
+                w.style.transition = anim ? 'transform .3s' : 'none'
+                w.style.transform = `translate${d}(${-i * 100 / v}%)`
+                slides.forEach((sl, j) => sl.classList.toggle('view', j >= i && j < i + v))
+            }
             upDot(this._realIndex)
-            slides.forEach((sl, j) => sl.classList.toggle('view', j >= i && j < i + v))
             if(emit) this.dispatchEvent(new CustomEvent('slide', {detail: {idx: this._realIndex}}))
         }
         const syncView = () => {
@@ -647,32 +654,39 @@ class Swiper extends HTMLElement {
             if(isThumb && this._activeDisplayIndex >= 0) setThumb(this._activeDisplayIndex)
         }
         const fixLoop = () => {
-            if(!loop) return false
+            if(!useTranslateLoop) return false
             if(idx >= n + len){ go(idx - len, false, false); return true }
             if(idx < n){ go(idx + len, false, false); return true }
             return false
         }
         this.slideTo = (i, anim = true, emit = true) => {
-            i = loop ? ((i % len) + len) % len : i
-            const display = loop ? i + n : i
+            if(fade){
+                go(i, anim, emit)
+                setThumb(idx)
+                return
+            }
+            i = useTranslateLoop ? wrapIndex(i) : i
+            const display = useTranslateLoop ? i + n : i
             let start = idx
             if(display < start) start = display
             else if(display >= start + v) start = display - v + 1
-            if(!loop) start = clamp(start)
+            if(!useTranslateLoop) start = clamp(start)
             go(start, anim, emit)
             setThumb(display)
         }
         this.next = () => {
-            if(loop){ if(fixLoop()) w.offsetWidth; go(idx + 1); return true }
+            if(fade){ if(!loop && idx >= maxIdx()) return false; go(idx + 1); return true }
+            if(useTranslateLoop){ if(fixLoop()) w.offsetWidth; go(idx + 1); return true }
             if(idx >= maxIdx()) return false
             go(idx + 1); return true
         }
         this.prev = () => {
-            if(loop){ if(fixLoop()) w.offsetWidth; go(idx - 1); return true }
+            if(fade){ if(!loop && idx <= 0) return false; go(idx - 1); return true }
+            if(useTranslateLoop){ if(fixLoop()) w.offsetWidth; go(idx - 1); return true }
             if(idx <= 0) return false
             go(idx - 1); return true
         }
-        w.addEventListener('transitionend', e => { if(e.target === w) fixLoop() })
+        w.addEventListener('transitionend', e => { if(!fade && e.target === w) fixLoop() })
         if(dot){
             renderDot()
             dot.addEventListener('click', e => {
@@ -684,28 +698,33 @@ class Swiper extends HTMLElement {
             down = false
             if(!drag) return
             drag = false
+            if(fade){
+                const nextIdx = dX > 0 ? idx - 1 : idx + 1
+                const m = d === 'X' ? this.offsetWidth : this.offsetHeight
+                go(moved && Math.abs(dX) > m / 5 ? nextIdx : idx)
+                return
+            }
             const m = d === 'X' ? this.offsetWidth : this.offsetHeight
             const swiped = moved && Math.abs(dX) > m / v / 5
             if(moved) this._clickBlockUntil = Date.now() + 120
             swiped ? (dX > 0 ? this.prev() : this.next()) || go(idx) : go(idx)
         }
         this.addEventListener('pointerdown', e => {
+            if(e.target.closest?.('[ignore]')) return
             down = true
             sX = d === 'X' ? e.clientX : e.clientY
             dX = 0
             moved = false
             this._clickBlockUntil = 0
-            const ignored = e.target.closest?.(swiperIgnore)
-            if(ignored && this.contains(ignored)) return
             drag = true
-            w.style.transition = 'none'
-            w.style.transform = `translate${d}(${-idx * 100 / v}%)`
+            if(!fade) w.style.transition = 'none', w.style.transform = `translate${d}(${-idx * 100 / v}%)`
             e.preventDefault()
         })
         this.addEventListener('pointermove', e => {
             dX = (d === 'X' ? e.clientX : e.clientY) - sX
             moved = moved || Math.abs(dX) > 3
             if(!drag){if(down && moved) this._clickBlockUntil = Date.now() + 120; return}
+            if(fade) return
             const m = d === 'X' ? this.offsetWidth : this.offsetHeight
             const min = -maxIdx() * 100 / v
             let p = -idx * 100 / v + dX / m * 100
@@ -790,15 +809,17 @@ class Swiper extends HTMLElement {
 //  Page
 function pageRender(el){
     const total = parseInt(el.getAttribute('total')) || 0
-    const p = parseInt(el.getAttribute('page')) || 1
     const limit = parseInt(el.getAttribute('limit')) || 10
     const param = el.getAttribute('param')
+    const attrPage = parseInt(el.getAttribute('page')) || 1
+    const urlPage = param ? parseInt(new URLSearchParams(window.location.search).get(param)) : NaN
     const pages = Math.max(1, Math.ceil(total / limit))
+    const p = Math.min(pages, Math.max(1, Number.isNaN(urlPage) ? attrPage : urlPage))
+    el.setAttribute('page', p)
     if(pages <= 1){el.innerHTML = ''; return}
     let start = Math.max(1, p - 2)
     let end = Math.min(pages, start + 4)
     if(end - start < 4) start = Math.max(1, end - 4)
-
     let html = ''
     html += `<a class="ico ico-alone-side-left" data-action="first" ${p<=1?'disabled':''}></a>`
     html += `<a class="ico ico-alone-left" data-action="prev" ${p<=1?'disabled':''}></a>`
@@ -985,11 +1006,10 @@ function initPopLinks(){
     }))
 }
 function initToggle(){
-    const toggleSelectors = ['o.checkbox', 'o.checkbox-done', 'o.checkbox-cancel', 'o.favorite', 'o.star', 'o.visibility', 'o.password', 'o.mic', 'o.volume', 'o.muzak', 'o.phonecard', 'o.cinema', 'o.camera', 'o.aim', 'o.semaphore', 'o.suitcase', 'o.light', 'o.thumb-up', 'o.thumb-down', 'o.devicerotate', 'o.thumbtack', 'o.bell', 'o.place', 'o.link', 'o.blur', 'o.toggle']
-    $$(toggleSelectors.join(',')).forEach(el => {
+    const toggleSelector = ['o.checkbox', 'o.checkbox-done', 'o.checkbox-cancel', 'o.favorite', 'o.star', 'o.visibility', 'o.password', 'o.mic', 'o.volume', 'o.muzak', 'o.phonecard', 'o.cinema', 'o.camera', 'o.aim', 'o.semaphore', 'o.suitcase', 'o.light', 'o.thumb-up', 'o.thumb-down', 'o.devicerotate', 'o.thumbtack', 'o.bell', 'o.place', 'o.link', 'o.blur', 'o.toggle'].join(',')
+    $$(toggleSelector).forEach(el => {
         el.getData = () => el.classList.contains('active')
         el.setData = v => { el.classList.toggle('active', !!v); return el }
-        el.addEventListener('click', function(){ this.classList.toggle('active') }, true)
     })
     $$('.parent[name]').forEach(el => {
         const rs = () => el.querySelectorAll(':scope>o.radio,:scope>o.radio-done')
@@ -1011,52 +1031,135 @@ function initToggle(){
             cs().forEach(o => o.classList.toggle('active', set.has(vOf(o))))
         }
     })
-    document.addEventListener('click', (e) => {
-        if(e.target.matches?.('o.radio, o.radio-done')){
-            const parent = e.target.closest('.parent')
-            parent?.querySelectorAll('o.radio, o.radio-done').forEach(r => r.classList.remove('active'))
-            e.target.classList.add('active')
+    if(initToggle._bound) return
+    document.addEventListener('click', e => {
+        const target = e.target.closest?.(toggleSelector)
+        target?.classList.toggle('active')
+        if(target?.matches('o.checkbox-all')){
+            const parent = target.closest('.parent')
+            const checkboxes = [...(parent?.querySelectorAll('o.checkbox, o.checkbox-done') || [])]
+            const isActive = target.classList.contains('active')
+            checkboxes.forEach(c => c.classList.toggle('active', isActive))
         }
+        if(target?.matches('o.password')){
+            const input = target.parentElement?.querySelector('input')
+            if(input) input.type = input.type === 'password' ? 'text' : 'password'
+        }
+    }, true)
+    document.addEventListener('click', e => {
+        const radio = e.target.closest?.('o.radio, o.radio-done')
+        if(!radio) return
+        const parent = radio.closest('.parent')
+        parent?.querySelectorAll('o.radio, o.radio-done').forEach(r => r.classList.remove('active'))
+        radio.classList.add('active')
     })
-    $$('o.checkbox-all').forEach(el => el.addEventListener('click', function(){
-        const parent = this.closest('.parent')
-        const checkboxes = [...(parent?.querySelectorAll('o.checkbox, o.checkbox-done') || [])]
-        const isActive = this.classList.contains('active')
-        checkboxes.forEach(c => c.classList.toggle('active', isActive))
-    }))
-    $$('o.password').forEach(el => el.addEventListener('click', function(){
-        const parent = this.parentElement
-        const input = parent?.querySelector('input')
-        if(input) input.type = input.type === 'password' ? 'text' : 'password'
-    }))
+    initToggle._bound = true
 }
 function initAutoTextarea(){$$('textarea.auto').forEach(ta => ta.addEventListener('input', () => {ta.style.height = ta.scrollHeight + 'px' }))}
-function initUpload(){
-    function bindUploadGroup(group){
-        const input = group.querySelector('input')
-        input.addEventListener('change', function(){
-            const file = this.files[0]
-            if(!file) return
-            const imgValue = this.value
-            const fileFormat = imgValue.substring(imgValue.lastIndexOf('.')).toLowerCase()
-            if(!fileFormat.match(/\.png|\.jpg|\.jpeg|\.webp|\.gif/)){alertFn(_t('basic-uploadalert', uploadAlert) + ': png/jpg/jpeg/webp/gif')}
-            else{
-                const imgUrl = window.URL.createObjectURL(file)
-                group.style.backgroundImage = `url(${imgUrl})`
-                group.style.color = 'transparent'
-            }
-        })
+function Images(im){
+    if(im._uiggImagesInit) return im
+    im._uiggImagesInit = true
+    const multi = im.hasAttribute('multiple')
+    const accept = (im.getAttribute('accept') || '.jpg,.jpeg,.png,.webp,.gif')
+        .split(',')
+        .map(v => v.trim())
+        .filter(Boolean)
+        .map(v => v.includes('/') || v.startsWith('.') ? v : `.${v}`)
+        .join(',')
+    const inp = Object.assign(document.createElement('input'), {
+        type: 'file', multiple: multi,
+        accept,
+        style: 'display:none'
+    })
+    im.appendChild(inp)
+    im._files = []
+    im._defaultHTML = [...im.querySelectorAll('li')].map(li => li.cloneNode(true))
+    let replacing = null
+    let btn = im.querySelector('add')
+    if(!btn){ btn = document.createElement('add'); im.appendChild(btn) }
+    const syncAdd = () => { if(!multi) btn.style.display = im.querySelector('li') ? 'none' : '' }
+    const revoke = li => { if(li?._url) URL.revokeObjectURL(li._url) }
+    const removeItem = li => {
+        if(!li) return
+        if(li._file){
+            const idx = im._files.indexOf(li._file)
+            if(idx !== -1) im._files.splice(idx, 1)
+        }
+        revoke(li)
+        li.remove()
     }
-    $$('.upload-group').forEach(bindUploadGroup)
-    $$('.upload-add').forEach(btn => btn.addEventListener('click', function(){
-        const group = document.createElement('div')
-        group.className = 'ico upload-group'
-        group.innerHTML = `<input type="file" accept=".jpg,.jpeg,.png,.webp,.gif"><n class="ico"></n>`
-        this.parentElement?.insertBefore(group, this)
-        bindUploadGroup(group)
-    }))
-    document.addEventListener('click', (e) => {if(e.target.matches?.('.upload-group n')){e.target.parentElement?.remove()}})
+    const clear = () => [...im.querySelectorAll('li')].forEach(removeItem)
+    const normalize = v => {
+        const arr = Array.isArray(v) ? v : (v == null || v === '' ? [] : [v])
+        return multi ? arr.filter(Boolean) : arr.filter(Boolean).slice(0, 1)
+    }
+    const createItem = item => {
+        const isBlob = typeof Blob !== 'undefined' && item instanceof Blob
+        const src = isBlob ? URL.createObjectURL(item) : String(item || '')
+        if(!src) return null
+        const li = document.createElement('li')
+        const img = Object.assign(document.createElement('img'), { src })
+        img.setAttribute('cover', '')
+        if(isBlob){
+            li._file = item
+            li._url = src
+            im._files.push(item)
+        }
+        li.append(img, document.createElement('n'))
+        return li
+    }
+    const addItem = item => {
+        const li = createItem(item)
+        if(li) btn.before(li)
+        return li
+    }
+    const open = li => { replacing = li || null; inp.click() }
+    btn.addEventListener('click', () => open())
+    inp.addEventListener('change', () => {
+        const files = [...inp.files]
+        if(replacing){
+            const li = files[0] && createItem(files[0])
+            if(li){ replacing.before(li); removeItem(replacing) }
+        }else{
+            if(!multi) clear()
+            files.forEach(addItem)
+        }
+        replacing = null
+        syncAdd()
+        inp.value = ''
+    })
+    im.addEventListener('click', e => {
+        if(e.target.matches('li img')){
+            open(e.target.closest('li'))
+            return
+        }
+        if(!e.target.matches('n')) return
+        removeItem(e.target.closest('li'))
+        syncAdd()
+    })
+    im.getData = () => {
+        const data = [...im.querySelectorAll('li')].map(li => {
+            const img = li.querySelector('img')
+            return li._file || img?.getAttribute('src') || img?.src
+        }).filter(Boolean)
+        return multi ? data : data[0] || null
+    }
+    im.setData = v => {
+        clear()
+        im._files = []
+        normalize(v).forEach(addItem)
+        syncAdd()
+    }
+    im.reset = () => {
+        clear()
+        im._files = []
+        im._defaultHTML.forEach(li => btn.before(li.cloneNode(true)))
+        syncAdd()
+    }
+    syncAdd()
+    return im
 }
+function initImages(){$$('images').forEach(Images)}
 function initRandom(){
     $$('[uigg="bg"], [uigg="img"], [uigg="product"], [uigg="avatar"]').forEach(el => {
         const url = `//ui.gg/lib/images/${el.getAttribute('uigg')}?=${randNum()}`
@@ -1086,7 +1189,7 @@ function initCopy(){
         const copyEl = copyNum ? $(`[copy-val="${copyNum}"]`) : $('[copy-val]')
         if(!copyEl) return
         const copyVal = copyEl.tagName === 'INPUT' ? copyEl.value : copyEl.textContent
-        navigator.clipboard.writeText(copyVal).then(() => tip(_t('basic-copyright', copyRight)),err => tip(_t('basic-copyerr', copyErr) + err))
+        navigator.clipboard.writeText(copyVal).then(() => tip(_t('uigg-copyright', copyRight)),err => tip(_t('uigg-copyerr', copyErr) + err))
     }))
     if($('[copy-select]')){document.addEventListener('mouseup', copySelectedText)}
 }
@@ -1098,27 +1201,48 @@ function initNotifyClose(){
         }
     })
 }
-function initRecording(){
-    $$('.recording').forEach(btn => btn.addEventListener('click', async function(){
-        try{
-            const stream = await navigator.mediaDevices.getDisplayMedia({video: true})
-            const mime = MediaRecorder.isTypeSupported("video/webm; codecs=vp9") ? "video/webm; codecs=vp9" : "video/webm"
-            const mediaRecorder = new MediaRecorder(stream, {mimeType: mime})
-            const chunks = []
-            mediaRecorder.ondataavailable = (e) => chunks.push(e.data)
-            mediaRecorder.onstop = () => {
-                const blob = new Blob(chunks, {type: chunks[0].type})
-                const url = URL.createObjectURL(blob)
-                const a = document.createElement('a')
-                a.href = url
-                a.download = `recording-${new Date().toISOString().slice(0,10)}.webm`
-                document.body.appendChild(a)
-                a.click()
-                setTimeout(() => {a.remove(); URL.revokeObjectURL(url)}, 100)
+function initDrag(){
+    $$('[drag]').forEach(ct => {
+        if(ct._uiggDragInit) return
+        ct._uiggDragInit = true
+        let el = null, ph = null, sx = 0, sy = 0, ox = 0, oy = 0, moved = false
+        const hdl = ct.getAttribute('drag')
+        ct.addEventListener('pointerdown', e => {
+            if(e.target.closest?.('[ignore]')) return
+            const li = e.target.closest('li')
+            if(!li || !ct.contains(li)) return
+            if(hdl && !e.target.closest(hdl)) return
+            el = li; sx = e.clientX; sy = e.clientY; moved = false
+            e.preventDefault()
+        })
+        ct.addEventListener('pointermove', e => {
+            if(!el) return
+            if(!moved && Math.abs(e.clientX - sx) < 5 && Math.abs(e.clientY - sy) < 5) return
+            moved = true
+            if(!ph){
+                ph = document.createElement('li')
+                ph.classList.add('drag-hole')
+                el.after(ph)
+                el.classList.add('drag-float')
+                const r = el.getBoundingClientRect()
+                ox = e.clientX - r.left; oy = e.clientY - r.top
+                el.style.width = r.width + 'px'
             }
-            mediaRecorder.start()
-        }catch(error){console.error('Recording failed:', error)}
-    }))
+            el.style.position = 'fixed'; el.style.zIndex = '9999'; el.style.pointerEvents = 'none'
+            el.style.left = (e.clientX - ox) + 'px'; el.style.top = (e.clientY - oy) + 'px'
+            const after = [...ct.children].filter(li => !li.matches('.drag-float, .drag-hole')).find(li => e.clientY < li.getBoundingClientRect().top + li.offsetHeight / 2)
+            after ? after.before(ph) : ct.appendChild(ph)
+        })
+        const end = () => {
+            if(!el) return
+            if(ph){ ph.replaceWith(el) }
+            el.style.cssText = ''
+            el.classList.remove('drag-float')
+            if(moved) ct.dispatchEvent(new CustomEvent('sort', {bubbles: true}))
+            el = ph = null
+        }
+        document.addEventListener('pointerup', end)
+    })
 }
 function initRange(){
     $$('input[type="range"]').forEach(el => {
@@ -1201,24 +1325,66 @@ function sVal(el,val){
     if(el.tagName==='SELECT'){el.value=val;return}
     if(typeof el.setData==='function'){el.setData(val);return}
 }
+function formEditor(el){
+    const tm=typeof globalThis!=='undefined'?globalThis.tinymce:null
+    if(!tm)return null
+    if(el.id&&typeof tm.get==='function'){
+        const ed=tm.get(el.id)
+        if(ed)return ed
+    }
+    const editors=tm.editors||tm.EditorManager?.editors||[]
+    const list=Array.isArray(editors)?editors:Object.values(editors)
+    return list.find(ed=>{
+        const target=typeof ed?.getElement==='function'?ed.getElement():ed?.targetElm
+        return target===el||(el.id&&ed?.id===el.id)
+    })||null
+}
+function formEditorVal(el){
+    const ed=formEditor(el)
+    return ed&&typeof ed.getContent==='function'?ed.getContent():undefined
+}
+function formControlVal(el){
+    if(typeof el.getData==='function'){
+        const val=el.getData()
+        if(val!==undefined)return val
+    }
+    if(typeof el._uiggValue==='function'){
+        const val=el._uiggValue()
+        if(val!==undefined)return val
+    }
+    return formEditorVal(el)
+}
+function formIgnoreField(el){
+    if(el.closest?.('.tox,.tox-tinymce,.tox-tinymce-aux'))return true
+    const name=el.getAttribute('name')||''
+    if(!/^mce_\d+$/.test(name))return false
+    const tm=typeof globalThis!=='undefined'?globalThis.tinymce:null
+    const ed=tm&&typeof tm.get==='function'?tm.get(name):null
+    if(!ed)return false
+    return el.tagName==='TEXTAREA'||el.type==='hidden'||el.hidden||el.getAttribute('aria-hidden')==='true'||el.style?.display==='none'
+}
 function formCollect(form){
     const data={}, groups={}
     form.querySelectorAll('input[name],textarea[name],select[name]').forEach(el=>{
         const name=el.name;if(!name)return
+        if(formIgnoreField(el))return
+        const customVal=formControlVal(el)
+        if(customVal!==undefined){data[name]=customVal;return}
         const val=gVal(el)
         if(el.type==='radio'){if(val!==null)data[name]=val;return}
         if(el.type==='checkbox'){(groups[name]||(groups[name]=[])).push(val);return}
         data[name]=val
     })
     Object.entries(groups).forEach(([k,v])=>data[k]=v.filter(Boolean))
-    form.querySelectorAll('.upload[name]').forEach(el=>{
-        data[el.getAttribute('name')]=[...el.querySelectorAll('.upload-group input[type="file"]')].map(inp=>inp.files[0]).filter(f=>f)
+    form.querySelectorAll('images[name]').forEach(el=>{
+        data[el.getAttribute('name')]=el.getData()
     })
     form.querySelectorAll('[name]').forEach(el=>{
         const n=el.getAttribute('name')
+        if(formIgnoreField(el))return
         if(n in data)return
-        if(typeof el.getData==='function')data[n]=el.getData()
-        else if(typeof el._uiggValue==='function')data[n]=el._uiggValue()
+        const customVal=formControlVal(el)
+        if(customVal!==undefined)data[n]=customVal
     })
     return data
 }
@@ -1245,22 +1411,22 @@ function formReset(form){
     form.querySelectorAll('scaler').forEach(el=>{
         const inp=el.querySelector('input[name]');if(inp)inp.value=inp.getAttribute('min')||'0'
     })
-    form.querySelectorAll('.upload-group').forEach((g,i)=>{if(i===0){g.style.backgroundImage='';g.style.color='';g.querySelector('input').value=''}else g.remove()})
-    form.querySelectorAll('li.error').forEach(el=>el.classList.remove('error'))
+    form.querySelectorAll('images[name]').forEach(el=>{if(typeof el.reset==='function')el.reset()})
+    form.querySelectorAll('item.error').forEach(el=>el.classList.remove('error'))
 }
 function formValidate(form){
-    form.querySelectorAll('li.error').forEach(el=>el.classList.remove('error'))
+    form.querySelectorAll('item.error').forEach(el=>el.classList.remove('error'))
     let allValid=true
     if(!form.checkValidity()){
         allValid=false
         form.querySelectorAll(':invalid').forEach(el=>{
-            const li=el.closest('li')
-            if(li)li.classList.add('error')
+            const item=el.closest('item')
+            if(item)item.classList.add('error')
         })
     }
     form.querySelectorAll('.parent[required]').forEach(parent=>{
         const hasActive=parent.querySelector(':scope>o.radio.active,:scope>o.radio-done.active,:scope>o.checkbox.active,:scope>o.checkbox-done.active')
-        if(!hasActive){allValid=false;const li=parent.closest('li');if(li)li.classList.add('error')}
+        if(!hasActive){allValid=false;const item=parent.closest('item');if(item)item.classList.add('error')}
     })
     return allValid
 }
@@ -1273,7 +1439,7 @@ function formController(form){
         reset:()=>formReset(form),
         validate:()=>formValidate(form),
         async submit(fn){
-            if(!formValidate(form)){const first=form.querySelector('li.error input,li.error select,li.error textarea');if(first)first.focus();return false}
+            if(!formValidate(form)){const first=form.querySelector('item.error input,item.error select,item.error textarea');if(first)first.focus();return false}
             const btns=getBtns()
             btns.forEach(b=>b.disabled=true)
             try{
@@ -1284,9 +1450,13 @@ function formController(form){
         },
         toFormData:()=>{
             const fd=new FormData(), data=formCollect(form)
+            const isFile=v=>typeof Blob!=='undefined'&&v instanceof Blob
             for(const [k,v] of Object.entries(data)){
-                if(v instanceof File){fd.append(k,v)}
-                else if(Array.isArray(v)&&v[0]instanceof File){v.forEach(f=>fd.append(k+'[]',f))}
+                if(Array.isArray(v)){
+                    const key=/\[\]$/.test(k)?k:`${k}[]`
+                    v.forEach(i=>{if(i!=null)fd.append(key,i)})
+                }
+                else if(isFile(v)){fd.append(k,v)}
                 else if(v!=null){fd.append(k,v)}
             }
             return fd
@@ -1312,8 +1482,8 @@ function initForm(){
     document.addEventListener('focusout',e=>{
         const el=e.target
         if(!el.matches('input,textarea')||!el.value)return
-        const li=el.closest('li');if(!li)return
-        el.validity.valid?li.classList.remove('error'):li.classList.add('error')
+        const item=el.closest('item');if(!item)return
+        el.validity.valid?item.classList.remove('error'):item.classList.add('error')
     })
 }
 
@@ -1327,13 +1497,12 @@ const Uigg = {
         initCustomElements();
         initPage(); initLang(); initFullscreen(); initAudio();
         initSmooth(); initReturn(); initTop(); initPopLinks(); initToggle();
-        initAutoTextarea(); initUpload(); initRandom(); initClue();
-        initCopy(); initNotifyClose(); initRecording(); initRange();
+        initAutoTextarea(); initImages(); initRandom(); initClue();
+        initCopy(); initNotifyClose(); initRange(); initDrag();
         initForm()
         this.inited = true
     },
-    tip, alert: alertFn, confirm: confirmFn, prompt: promptFn, notify, notifyRemove, countdown(date){countdownFn(date)}, disable, mobile, touch, alone, setCookie, getCookie, isMobileView, $, $$, ready,
-    form: formController,
+    tip, alert: alertFn, confirm: confirmFn, prompt: promptFn, notify, notifyRemove, countdown(date){countdownFn(date)}, disable, mobile, touch, alone, setCookie, getCookie, isMobileView, $, $$, ready, form: formController, images: initImages, Images,
     lang: (key) => _langData ? (langRead(key, _langData) || key) : key,
 }
 
@@ -1343,11 +1512,11 @@ ready(() => Uigg.init())
 // Attach to window for <script> tag usage
 if(typeof window !== 'undefined'){
     window.Uigg = Uigg
-    for(const [k,v] of [['tip',tip],['notify',notify],['touch',touch],['alone',alone],['lang',Uigg.lang],['form',formController],['disable',disable],['mobile',mobile],['setCookie',setCookie],['getCookie',getCookie],['countdown',countdownFn],['ready',ready],['initLang',initLang]]) window[k] = v
+    for(const [k,v] of [['tip',tip],['notify',notify],['touch',touch],['alone',alone],['lang',Uigg.lang],['form',formController],['images',initImages],['Images',Images],['disable',disable],['mobile',mobile],['setCookie',setCookie],['getCookie',getCookie],['countdown',countdownFn],['ready',ready],['initLang',initLang]]) window[k] = v
     // External scripts should use Uigg.$() and Uigg.$$() instead.
 }
 
 // ES module exports (works with import when type="module")
 export {Uigg, Load, Music, Name, Nav, Tab, Pop, Menu, Scaler, Choice, Progress, Drop, Rate, Empty, Hop, Fold, Crumb, Notice, Swiper}
-export {initCustomElements, initPage, initLang, initFullscreen, initAudio, initSmooth, initReturn, initTop, initPopLinks, initToggle, initAutoTextarea, initUpload, initRandom, initClue, initCopy, initNotifyClose, initRecording, initRange, initForm}
+export {Images, initCustomElements, initPage, initLang, initFullscreen, initAudio, initSmooth, initReturn, initTop, initPopLinks, initToggle, initAutoTextarea, initImages, initRandom, initClue, initCopy, initNotifyClose, initRange, initDrag, initForm}
 export default Uigg
