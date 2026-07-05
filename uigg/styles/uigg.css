@@ -22,13 +22,15 @@ chat, chat-title, chat-sider, chat-cont, chat-list, chat-message, chat-tool, cha
 pop, pop-main, pop-title, pop-cont, pop-solve, pop-choice, pop-sider,
 swiper, swiper-wrapper, swiper-slide, swiper-arrow, swiper-prev, swiper-next, swiper-dot,
 alert, alert-main, alert-cont, alert-solve, hop, hop-cont, fold, fold-group, fold-title, fold-cont,
-countdown, tip, page, music, space, rate, scaler, notify, empty, step, crumb, reminder, n, notice) {margin: 0;padding: 0;border: 0;outline: 0;background: transparent center no-repeat;background-size: contain;box-sizing: border-box;font-family: uigg;border-color: var(--eee);border-style: solid;-webkit-tap-highlight-color: transparent;border-radius: 0;}
+countdown, tip, page, music, space, rate, scaler, notify, load, empty, error, done,
+step, crumb, reminder, n, notice) {margin: 0;padding: 0;border: 0;outline: 0;background: transparent center no-repeat;background-size: contain;box-sizing: border-box;font-family: uigg;border-color: var(--eee);border-style: solid;-webkit-tap-highlight-color: transparent;border-radius: 0;}
 :where(article, aside, details, figcaption, figure, footer, header, hgroup, main, nav, section, summary,
 menu, menu-cont, menu-group, menu-list, name, name-logo, name-search, tab, tab-list, tab-cont, tab-group,
 drop, drop-cont, drop-list, choice, choice-list, chat, chat-title, chat-sider, chat-cont, chat-list, chat-message, chat-tool, chat-control, chat-tip,
 pop, pop-main, pop-title, pop-cont, pop-solve, pop-choice, pop-sider, alert, alert-main, alert-cont, alert-solve,
 swiper, swiper-wrapper, swiper-slide, swiper-arrow, swiper-prev, swiper-next, swiper-dot,
 hop, hop-cont, fold, fold-group, fold-title, fold-cont, countdown, tip, page, music, space, rate, scaler, notify, empty,
+error, done,
 step, crumb, reminder, n, notice, item, cont, alia, hint, images, add) {display: block;}
 .transition,.btn,a {transition-duration: .3s;}
 html,body {height: 100%;}
@@ -74,6 +76,7 @@ html,body {height: 100%;}
 .hide {display: none;}
 .show {display: block;}
 [hide] {display: none !important;}
+[hidden] {display: none !important;}
 [show] {display: block !important;}
 .single {white-space: nowrap;text-overflow: ellipsis;overflow: hidden;flex: 1;min-width: 0;}
 .float-left {float: left !important;}
@@ -367,14 +370,7 @@ a[title="到百度地图查看此区域"],
     .ico {font-size: .3rem;}
 }
 
-/* load */
-load {width: 100vw;height: 100vh;position: fixed;top: 0;left: 0;z-index: 999;background-color: white;
-    &::after {width: 60px;height: 60px;border-radius: 100%;border: 3px var(--999) solid;content: '';position: absolute;left: 0;top: 0;right: 0;bottom: 0;margin: auto;animation: anime-zoom-in 1s infinite alternate;filter: opacity(.3);}
-}
 
-@media(max-width:640px){
-    load::after {width: .7rem;height: .7rem;}
-}
 
 /* top */
 .top {opacity: 0;z-index: 1;
@@ -694,7 +690,6 @@ input {padding: 0 10px;}
 input::before {color: var(--color);}
 textarea {padding: 10px;line-height: 1.6;min-height: 120px;resize: none;}
 
-.bloomer {padding: 10px;color: white;text-align: center;border-radius: 3px;background-color: var(--red);display: none;}
 
 choice {cursor: pointer;
     x {position: fixed;width: 100vw;height: 100vh;left: 0;top: 0;display: none;}
@@ -786,8 +781,6 @@ images {flex: 1;min-width: 0;max-width: max-content;flex-wrap: wrap;overflow: hi
     select {padding: 0 .7rem 0 .1rem;}
     input {padding: 0 .1rem;}
     textarea {padding: .1rem;min-height: 1.2rem;}
-
-    .bloomer {padding: .1rem;border-radius: .05rem;}
 
     choice {
         a {padding: 0 .1rem;height: .7rem;}
@@ -1135,21 +1128,27 @@ notify {position: fixed;top: 0;right: 0;margin: 0 10px;z-index: 999;
     }
 }
 
-/* empty */
-empty {display: flex;align-items: center;justify-content: center;padding: 10px;
-    &.default {font-size: 30px;color: var(--000-1);text-transform: uppercase;
-        &:after {content: attr(data-empty);}
-    }
-    * {margin: 10px;text-transform: capitalize;}
-    .ico {display: block;font-size: 72px;margin: inherit;}
-    div {text-align: center;}
+/* state */
+load,
+empty,
+error,
+done {min-height: 100px;height: 100%;display: flex;align-items: center;justify-content: center;padding: 20px;text-align: center;text-transform: uppercase;font-size: 20px;}
+load::after {width: 36px;height: 36px;border-radius: 100%;border: 2px var(--999) solid;content: '';display: block;margin: auto;animation: anime-zoom-in 1s infinite alternate;filter: opacity(.3);}
+body > load {position: fixed;top: 0;left: 0;z-index: 999;background-color: white;padding: 0;
+    &::after {width: 60px;height: 60px;border-width: 3px;}
 }
+empty  {color: var(--000-1);}
+error {color: var(--red);}
+done {color: var(--green);}
 
 @media(max-width:640px){
-    empty {padding: .2rem;
-        &.default {font-size: .36rem;}
-        * {margin: .1rem;}
-        .ico {font-size: .8rem;}
+    load,
+    empty,
+    error,
+    done {min-height: 1rem;padding: .2rem;font-size: .24rem;}
+    load::after {width: .4rem;height: .4rem;}
+    body > load {
+        &::after {width: .6rem;height: .6rem;}
     }
 }
 

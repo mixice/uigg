@@ -336,7 +336,6 @@ pop-title {border-bottom-color: var(--light);}
 		cont {position: relative;display: flex;align-items: center;width: 100%;
 			input {padding: 0 10px 0 50px;flex: 1;}
 			.btn {width: 100%;margin: 15px 0;font-weight: bold;}
-			.bloomer {width: 100%;}
 		}
 	}
 }

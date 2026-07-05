@@ -76,6 +76,16 @@ function langRead(targetObj, data){
 // isMobileView
 function isMobileView(){return document.documentElement.clientWidth <= 640 || document.documentElement.classList.contains('force-mobile')}
 
+const normalizeRoot = root => root === undefined ? document : (typeof root === 'string' ? $(root) : root)
+function scoped(root, selector){
+    if(root == null) return []
+    root = normalizeRoot(root)
+    if(!root) return []
+    const els = root.querySelectorAll ? [...root.querySelectorAll(selector)] : []
+    if(root.nodeType === 1 && root.matches?.(selector)) els.unshift(root)
+    return els
+}
+
 // Locale constants
 const [langConfirm, langCancel] = language === 'zh-CN' ? ['确认', '取消'] : ['confirm', 'cancel']
 const [copyRight, copyErr] = language === 'zh-CN' ? ['复制成功', '复制失败'] : ['Copy successful', 'Copy failed']
@@ -211,8 +221,12 @@ function disable(){
 
 // ============ Custom Elements ============
 // Load
+function isStateLoad(el){
+    return el.parentElement && el.parentElement !== document.body
+}
 class Load extends HTMLElement {
     connectedCallback(){
+        if(isStateLoad(this)) return
         this.hide()
         setTimeout(() => this.hide(), 6000)
     }
@@ -483,7 +497,7 @@ class Rate extends HTMLElement {
 class Empty extends HTMLElement {
     connectedCallback(){
         if(!this.innerHTML.trim()){
-            const emptyText = language === 'zh-CN' ? '暂无内容' : 'empty'
+            const emptyText = language === 'zh-CN' ? '\u6682\u65e0\u5185\u5bb9' : 'empty'
             this.setAttribute('data-empty', emptyText)
             this.classList.add('default')
         }
@@ -882,27 +896,45 @@ function pageRender(el){
     if(input) input.addEventListener('keydown', (e) => {if(e.key === 'Enter'){e.stopPropagation(); const val = parseInt(e.target.value); if(val) el._pageGo(val)}})
 }
 
-// ============ Fallback Init for non-hyphenated element names ============
-function initCustomElements(){
-    const map = [
-        ['load', Load], ['music', Music], ['name', Name], ['nav', Nav],
-        ['tab', Tab], ['pop', Pop], ['menu', Menu], ['scaler', Scaler],
-        ['choice', Choice], ['progress', Progress], ['drop', Drop],
-        ['rate', Rate], ['empty', Empty], ['hop', Hop], ['fold', Fold],
-        ['crumb', Crumb], ['notice', Notice], ['swiper', Swiper]
-    ]
-    map.forEach(([tag, Cls]) => {
-        if(customElements.get(tag)) return
-        try{customElements.define(tag, Cls); return}catch(e){}
-        $$(tag).forEach(el => {
-            Object.setPrototypeOf(el, Cls.prototype)
-            el.connectedCallback()
-        })
-    })
+// ============ Semantic Element Lifecycle ============
+const semanticElements = [
+    ['load', Load], ['music', Music], ['name', Name], ['nav', Nav],
+    ['tab', Tab], ['pop', Pop], ['menu', Menu], ['scaler', Scaler],
+    ['choice', Choice], ['progress', Progress], ['drop', Drop],
+    ['rate', Rate], ['empty', Empty], ['hop', Hop], ['fold', Fold],
+    ['crumb', Crumb], ['notice', Notice], ['swiper', Swiper]
+]
+function mountElement(el, Cls, tag){
+    if(el._uiggElement === tag) return el
+    if(el._uiggElement) unmountElement(el)
+    if(!el._uiggOriginalPrototype) el._uiggOriginalPrototype = Object.getPrototypeOf(el)
+    Object.setPrototypeOf(el, Cls.prototype)
+    el._uiggElement = tag
+    el.connectedCallback?.()
+    return el
+}
+function unmountElement(el){
+    if(!el._uiggElement) return el
+    el.disconnectedCallback?.()
+    if(el._uiggOriginalPrototype) Object.setPrototypeOf(el, el._uiggOriginalPrototype)
+    delete el._uiggElement
+    return el
+}
+function initCustomElements(root = document){
+    root = normalizeRoot(root)
+    if(!root) return null
+    semanticElements.forEach(([tag, Cls]) => scoped(root, tag).forEach(el => mountElement(el, Cls, tag)))
+    return root
+}
+function unmountCustomElements(root = document){
+    root = normalizeRoot(root)
+    if(!root) return null
+    semanticElements.forEach(([tag]) => scoped(root, tag).forEach(unmountElement))
+    return root
 }
 
 // ============ Init Functions ============
-function initPage(){$$('page').forEach(el => pageRender(el))}
+function initPage(root = document){scoped(root, 'page').forEach(el => pageRender(el))}
 let _langData = null
 function initLang(){
     let langType = getCookie('lang') === '' ? 'en' : getCookie('lang')
@@ -925,8 +957,10 @@ function initLang(){
         lang()
     }))
 }
-function initFullscreen(){
-    $$('.fullscreen').forEach(el => {
+function initFullscreen(root = document){
+    scoped(root, '.fullscreen').forEach(el => {
+        if(el._uiggFullscreenInit) return
+        el._uiggFullscreenInit = true
         el.classList.add('ico')
         el.addEventListener('click', function(){
             if(!document.fullscreenElement){
@@ -934,7 +968,9 @@ function initFullscreen(){
             }else{document.exitFullscreen?.() || document.webkitExitFullscreen?.() || document.mozCancelFullScreen?.()}
         })
     })
+    if(initFullscreen._bound) return
     document.addEventListener('fullscreenchange', () => {$$('.fullscreen').forEach(el => el.classList.toggle('active', !!document.fullscreenElement))})
+    initFullscreen._bound = true
 }
 function initAudio(){
     document.addEventListener('click', (e) => {
@@ -964,8 +1000,8 @@ function scrollAnim(box, from, to){
       p < 1 && requestAnimationFrame(step)
     })
 }
-function initSmooth(){
-    $$('.smooth').forEach(a =>
+function initSmooth(root = document){
+    scoped(root, '.smooth').forEach(a =>
       a.onclick = e => {
         e.preventDefault()
         const href = a.getAttribute('href')
@@ -983,10 +1019,10 @@ function initSmooth(){
       }
     )
 }
-function initTop(){
-    const bound = new Set()
-    $$('.top.btn').forEach(el => el.classList.add('ico', 'ico-alone-top'))
-    $$('.top').forEach(btn => {
+function initTop(root = document){
+    const bound = initTop._bound || (initTop._bound = new WeakSet())
+    scoped(root, '.top.btn').forEach(el => el.classList.add('ico', 'ico-alone-top'))
+    scoped(root, '.top').forEach(btn => {
         btn.onclick = e => {
             e.preventDefault()
             scrollAnim(document.scrollingElement, scrollY, 0)
@@ -997,21 +1033,33 @@ function initTop(){
         win.addEventListener('scroll', () => {doc.querySelectorAll('.top').forEach(t => {t.style.opacity = win.scrollY > win.innerHeight ? '1' : '0'})}, {passive: true})
     })
 }
-function initReturn(){$$('.return').forEach(a => a.addEventListener('click', () => history.back(-1)))}
-function initPopLinks(){
-    $$('a[pop]').forEach(a => a.addEventListener('click', function(){
+function initReturn(root = document){scoped(root, '.return').forEach(a => {if(a._uiggReturnInit) return; a._uiggReturnInit = true; a.addEventListener('click', () => history.back(-1))})}
+function initPopLinks(root = document){
+    scoped(root, 'a[pop]').forEach(a => {
+        if(a._uiggPopLinkInit) return
+        a._uiggPopLinkInit = true
+        a.addEventListener('click', function(){
         const popId = this.getAttribute('pop')
         const pop = $(`pop[pop="${popId}"]`)
         if(pop) pop.style.display = 'block'
-    }))
+        })
+    })
+    if(initPopLinks._escBound) return
+    document.addEventListener('keydown', e => {
+        if(e.key !== 'Escape') return
+        const pops = $$('pop').filter(pop => getComputedStyle(pop).display !== 'none')
+        const pop = pops.at(-1)
+        if(pop) pop.style.display = 'none'
+    })
+    initPopLinks._escBound = true
 }
-function initToggle(){
+function initToggle(root = document){
     const toggleSelector = ['o.checkbox', 'o.checkbox-done', 'o.checkbox-cancel', 'o.favorite', 'o.star', 'o.visibility', 'o.password', 'o.mic', 'o.volume', 'o.muzak', 'o.phonecard', 'o.cinema', 'o.camera', 'o.aim', 'o.semaphore', 'o.suitcase', 'o.light', 'o.thumb-up', 'o.thumb-down', 'o.devicerotate', 'o.thumbtack', 'o.bell', 'o.place', 'o.link', 'o.blur', 'o.toggle'].join(',')
-    $$(toggleSelector).forEach(el => {
+    scoped(root, toggleSelector).forEach(el => {
         el.getData = () => el.classList.contains('active')
         el.setData = v => { el.classList.toggle('active', !!v); return el }
     })
-    $$('.parent[name]').forEach(el => {
+    scoped(root, '.parent[name]').forEach(el => {
         const rs = () => el.querySelectorAll(':scope>o.radio,:scope>o.radio-done')
         const cs = () => el.querySelectorAll(':scope>o.checkbox,:scope>o.checkbox-done')
         const vOf = o => o.getAttribute('data') || o.nextElementSibling?.textContent?.trim() || ''
@@ -1055,7 +1103,13 @@ function initToggle(){
     })
     initToggle._bound = true
 }
-function initAutoTextarea(){$$('textarea.auto').forEach(ta => ta.addEventListener('input', () => {ta.style.height = ta.scrollHeight + 'px' }))}
+function initAutoTextarea(root = document){
+    scoped(root, 'textarea.auto').forEach(ta => {
+        if(ta._uiggAutoTextareaInit) return
+        ta._uiggAutoTextareaInit = true
+        ta.addEventListener('input', () => {ta.style.height = ta.scrollHeight + 'px' })
+    })
+}
 function Images(im){
     if(im._uiggImagesInit) return im
     im._uiggImagesInit = true
@@ -1159,39 +1213,46 @@ function Images(im){
     syncAdd()
     return im
 }
-function initImages(){$$('images').forEach(Images)}
-function initRandom(){
-    $$('[uigg="bg"], [uigg="img"], [uigg="product"], [uigg="avatar"]').forEach(el => {
+function initImages(root = document){scoped(root, 'images').forEach(Images)}
+function initRandom(root = document){
+    scoped(root, '[uigg="bg"], [uigg="img"], [uigg="product"], [uigg="avatar"]').forEach(el => {
         const url = `//ui.gg/lib/images/${el.getAttribute('uigg')}?=${randNum()}`
         const bg = window.getComputedStyle(el).backgroundImage
         if(bg === 'none' && el.tagName !== 'IMG'){el.style.backgroundImage = `url(${url})`}
         else if(!el.getAttribute('src') && el.tagName === 'IMG'){el.setAttribute('src', url)}
     })
-    $$('[uigg="color"]').forEach(el => {
+    scoped(root, '[uigg="color"]').forEach(el => {
         el.style.backgroundColor = `rgb(${randCol()}, ${randCol()}, ${randCol()})`
         if(el.tagName === 'IMG') el.style.cssText += ';width:100%;height:100%'
     })
-    $$('[uigg="txt"]').forEach(el => {if(!el.getAttribute('lang') && !el.innerHTML){el.innerHTML += randomSentences}})
-    $$('[uigg="title"]').forEach(el => {if(!el.getAttribute('lang') && !el.innerHTML){el.innerHTML += randomSentences[Math.floor(Math.random() * randomSentences.length)]}})
-    const emot = $('[uigg="emot"]')
+    scoped(root, '[uigg="txt"]').forEach(el => {if(!el.getAttribute('lang') && !el.innerHTML){el.innerHTML += randomSentences}})
+    scoped(root, '[uigg="title"]').forEach(el => {if(!el.getAttribute('lang') && !el.innerHTML){el.innerHTML += randomSentences[Math.floor(Math.random() * randomSentences.length)]}})
+    const emot = scoped(root, '[uigg="emot"]')[0]
     if(emot){emot.innerHTML = Array.from({length: 100}, (_, i) => `<s style="background-image: url(//ui.gg/lib/emot/${i+1}.svg)"></s>`).join('')}
 }
-function initClue(){
-    $$('[clue]').forEach(el => {
+function initClue(root = document){
+    scoped(root, '[clue]').forEach(el => {
         let clue = el.getAttribute('clue')
         if(!clue || clue === 'null') clue = el.getAttribute('title') || ''
         if(clue){el.setAttribute('clue', clue); el.removeAttribute('title')}
     })
 }
-function initCopy(){
-    $$('[copy-btn]').forEach(btn => btn.addEventListener('click', function(){
+function initCopy(root = document){
+    scoped(root, '[copy-btn]').forEach(btn => {
+        if(btn._uiggCopyInit) return
+        btn._uiggCopyInit = true
+        btn.addEventListener('click', function(){
         const copyNum = this.getAttribute('copy-btn')
         const copyEl = copyNum ? $(`[copy-val="${copyNum}"]`) : $('[copy-val]')
         if(!copyEl) return
         const copyVal = copyEl.tagName === 'INPUT' ? copyEl.value : copyEl.textContent
         navigator.clipboard.writeText(copyVal).then(() => tip(_t('uigg-copyright', copyRight)),err => tip(_t('uigg-copyerr', copyErr) + err))
-    }))
-    if($('[copy-select]')){document.addEventListener('mouseup', copySelectedText)}
+        })
+    })
+    if(!initCopy._selectBound && scoped(root, '[copy-select]').length){
+        document.addEventListener('mouseup', copySelectedText)
+        initCopy._selectBound = true
+    }
 }
 function initNotifyClose(){
     document.addEventListener('click', (e) => {
@@ -1201,8 +1262,8 @@ function initNotifyClose(){
         }
     })
 }
-function initDrag(){
-    $$('[drag]').forEach(ct => {
+function initDrag(root = document){
+    scoped(root, '[drag]').forEach(ct => {
         if(ct._uiggDragInit) return
         ct._uiggDragInit = true
         let el = null, ph = null, sx = 0, sy = 0, ox = 0, oy = 0, moved = false
@@ -1227,6 +1288,8 @@ function initDrag(){
                 const r = el.getBoundingClientRect()
                 ox = e.clientX - r.left; oy = e.clientY - r.top
                 el.style.width = r.width + 'px'
+                ph.style.width = r.width + 'px'
+                ph.style.height = r.height + 'px'
             }
             el.style.position = 'fixed'; el.style.zIndex = '9999'; el.style.pointerEvents = 'none'
             el.style.left = (e.clientX - ox) + 'px'; el.style.top = (e.clientY - oy) + 'px'
@@ -1244,8 +1307,10 @@ function initDrag(){
         document.addEventListener('pointerup', end)
     })
 }
-function initRange(){
-    $$('input[type="range"]').forEach(el => {
+function initRange(root = document){
+    scoped(root, 'input[type="range"]').forEach(el => {
+        if(el._uiggRangeInit) return
+        el._uiggRangeInit = true
         el.addEventListener('input', () => rangeUpdate(el))
         rangeUpdate(el)
     })
@@ -1298,6 +1363,52 @@ function touch(selector, direction, callback, threshold){
     element.addEventListener('pointerup', handleEnd)
     return {off: () => {element.removeEventListener('pointerdown', handleStart); element.removeEventListener('pointerup', handleEnd); element.style.touchAction = prevTouchAction}}
 }
+
+// ============ State API ============
+const stateMap = {load: 'load', loading: 'load', empty: 'empty', error: 'error', done: 'done'}
+const stateTags = ['load', 'empty', 'error', 'done']
+const stateTag = status => stateTags.includes(status) ? status : 'done'
+const stateItems = box => [...box.querySelectorAll(':scope > load, :scope > empty, :scope > error, :scope > done')]
+function stateContent(item, html){
+    if(!item) return
+    if(html === undefined){
+        if(item.tagName !== 'LOAD' && !item.textContent.trim()){
+            const defaults = {EMPTY: 'empty', ERROR: 'error', DONE: 'done'}
+            item.textContent = defaults[item.tagName] || ''
+        }
+        return
+    }
+    item.classList.remove('default')
+    if(typeof Node !== 'undefined' && html instanceof Node){
+        item.replaceChildren(html)
+        return
+    }
+    if(Array.isArray(html) && typeof Node !== 'undefined' && html.every(el => el instanceof Node)){
+        item.replaceChildren(...html)
+        return
+    }
+    if(html && typeof html === 'object'){
+        if(html.html !== undefined){item.innerHTML = html.html; return}
+        if(html.text !== undefined){item.textContent = html.text; return}
+    }
+    item.innerHTML = html
+}
+function state(target, status = 'done', html){
+    const box = normalizeRoot(target)
+    if(!box) return null
+    status = stateMap[status] || status
+    const tag = stateTag(status)
+    let item = box.querySelector?.(`:scope > ${tag}`)
+    if(!item){
+        item = document.createElement(tag)
+        box.appendChild(item)
+    }
+    stateContent(item, html)
+    stateItems(box).forEach(el => el.hidden = el !== item)
+    initCustomElements(box)
+    return box
+}
+function initState(root = document){}
 
 // ============ Form API ============
 function gVal(el){
@@ -1464,8 +1575,10 @@ function formController(form){
     }
     return form._uiggForm=Object.assign(form,ctrl)
 }
-function initForm(){
-    $$('form[auto]').forEach(f=>Uigg.form(f))
+function initForm(root = document){
+    scoped(root, 'form[auto]').forEach(f=>Uigg.form(f))
+    if(initForm._bound) return
+    initForm._bound = true
     document.addEventListener('click',e=>{
         const el=e.target.nodeType===3?e.target.parentElement:e.target
         const btn=el?.closest('[submit],[reset]')
@@ -1492,17 +1605,26 @@ const ready = (fn) => document.readyState === 'loading' ? document.addEventListe
 
 const Uigg = {
     inited: false,
-    init(ctx){
-        if(this.inited) return
-        initCustomElements();
-        initPage(); initLang(); initFullscreen(); initAudio();
-        initSmooth(); initReturn(); initTop(); initPopLinks(); initToggle();
-        initAutoTextarea(); initImages(); initRandom(); initClue();
-        initCopy(); initNotifyClose(); initRange(); initDrag();
-        initForm()
-        this.inited = true
+    mount(root = document){
+        root = normalizeRoot(root)
+        if(!root) return null
+        initCustomElements(root)
+        initState(root)
+        initPage(root); initFullscreen(root); initSmooth(root);
+        initReturn(root); initTop(root); initPopLinks(root); initToggle(root);
+        initAutoTextarea(root); initImages(root); initRandom(root); initClue(root);
+        initCopy(root); initRange(root); initDrag(root); initForm(root)
+        return root
     },
-    tip, alert: alertFn, confirm: confirmFn, prompt: promptFn, notify, notifyRemove, countdown(date){countdownFn(date)}, disable, mobile, touch, alone, setCookie, getCookie, isMobileView, $, $$, ready, form: formController, images: initImages, Images,
+    init(root = document){
+        const mounted = this.mount(root)
+        if(!this.inited){
+            initLang(); initAudio(); initNotifyClose()
+            this.inited = true
+        }
+        return mounted
+    },
+    tip, alert: alertFn, confirm: confirmFn, prompt: promptFn, notify, notifyRemove, countdown(date){countdownFn(date)}, disable, mobile, touch, alone, state, setCookie, getCookie, isMobileView, $, $$, ready, form: formController, images: initImages, Images,
     lang: (key) => _langData ? (langRead(key, _langData) || key) : key,
 }
 
@@ -1512,11 +1634,11 @@ ready(() => Uigg.init())
 // Attach to window for <script> tag usage
 if(typeof window !== 'undefined'){
     window.Uigg = Uigg
-    for(const [k,v] of [['tip',tip],['notify',notify],['touch',touch],['alone',alone],['lang',Uigg.lang],['form',formController],['images',initImages],['Images',Images],['disable',disable],['mobile',mobile],['setCookie',setCookie],['getCookie',getCookie],['countdown',countdownFn],['ready',ready],['initLang',initLang]]) window[k] = v
+    for(const [k,v] of [['mount', root => Uigg.mount(root)],['state',state],['tip',tip],['notify',notify],['touch',touch],['alone',alone],['lang',Uigg.lang],['form',formController],['images',initImages],['Images',Images],['disable',disable],['mobile',mobile],['setCookie',setCookie],['getCookie',getCookie],['countdown',countdownFn],['ready',ready],['initLang',initLang]]) window[k] = v
     // External scripts should use Uigg.$() and Uigg.$$() instead.
 }
 
 // ES module exports (works with import when type="module")
 export {Uigg, Load, Music, Name, Nav, Tab, Pop, Menu, Scaler, Choice, Progress, Drop, Rate, Empty, Hop, Fold, Crumb, Notice, Swiper}
-export {Images, initCustomElements, initPage, initLang, initFullscreen, initAudio, initSmooth, initReturn, initTop, initPopLinks, initToggle, initAutoTextarea, initImages, initRandom, initClue, initCopy, initNotifyClose, initRange, initDrag, initForm}
+export {Images, state, initCustomElements, initPage, initLang, initFullscreen, initAudio, initSmooth, initReturn, initTop, initPopLinks, initToggle, initAutoTextarea, initImages, initRandom, initClue, initCopy, initNotifyClose, initRange, initDrag, initForm}
 export default Uigg
