@@ -1,6 +1,6 @@
 /* basic */
 body,
-load {}
+body > load {}
 
 /* color */
 :root {

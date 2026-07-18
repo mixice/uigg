@@ -1134,7 +1134,7 @@ empty,
 error,
 done {min-height: 100px;height: 100%;display: flex;align-items: center;justify-content: center;padding: 20px;text-align: center;text-transform: uppercase;font-size: 20px;}
 load::after {width: 36px;height: 36px;border-radius: 100%;border: 2px var(--999) solid;content: '';display: block;margin: auto;animation: anime-zoom-in 1s infinite alternate;filter: opacity(.3);}
-body > load {position: fixed;top: 0;left: 0;z-index: 999;background-color: white;padding: 0;
+body > load {position: fixed;top: 0;left: 0;width: 100vw;height: 100vh;z-index: 999;background-color: white;padding: 0;
     &::after {width: 60px;height: 60px;border-width: 3px;}
 }
 empty  {color: var(--000-1);}

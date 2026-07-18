@@ -493,17 +493,6 @@ class Rate extends HTMLElement {
     _rate(){const v = this.getData();this.querySelectorAll('i').forEach((i,idx) => i.classList.toggle('active', idx < v))}
 }
 
-// Empty
-class Empty extends HTMLElement {
-    connectedCallback(){
-        if(!this.innerHTML.trim()){
-            const emptyText = language === 'zh-CN' ? '\u6682\u65e0\u5185\u5bb9' : 'empty'
-            this.setAttribute('data-empty', emptyText)
-            this.classList.add('default')
-        }
-    }
-}
-
 // Hop
 class Hop extends HTMLElement {
     connectedCallback(){
@@ -901,7 +890,7 @@ const semanticElements = [
     ['load', Load], ['music', Music], ['name', Name], ['nav', Nav],
     ['tab', Tab], ['pop', Pop], ['menu', Menu], ['scaler', Scaler],
     ['choice', Choice], ['progress', Progress], ['drop', Drop],
-    ['rate', Rate], ['empty', Empty], ['hop', Hop], ['fold', Fold],
+    ['rate', Rate], ['hop', Hop], ['fold', Fold],
     ['crumb', Crumb], ['notice', Notice], ['swiper', Swiper]
 ]
 function mountElement(el, Cls, tag){
@@ -944,7 +933,7 @@ function initLang(){
             if(!r.ok) return
             _langData = await r.json()
             const data = _langData
-            $$('[lang]').forEach(el => el.innerHTML = langRead(el.getAttribute('lang'), data))
+            $$('[lang]:not(html)').forEach(el => el.innerHTML = langRead(el.getAttribute('lang'), data))
             $$('[lang-placeholder]').forEach(el => el.placeholder = langRead(el.getAttribute('lang-placeholder'), data))
             $$('[lang-value]').forEach(el => el.setAttribute('value', langRead(el.getAttribute('lang-value'), data)))
             $$('[lang-content]').forEach(el => el.setAttribute('content', langRead(el.getAttribute('lang-content'), data)))
@@ -1408,7 +1397,12 @@ function state(target, status = 'done', html){
     initCustomElements(box)
     return box
 }
-function initState(root = document){}
+function initState(root = document){
+    root = normalizeRoot(root)
+    if(!root) return null
+    scoped(root, 'empty, error, done').forEach(item => stateContent(item))
+    return root
+}
 
 // ============ Form API ============
 function gVal(el){
@@ -1639,6 +1633,6 @@ if(typeof window !== 'undefined'){
 }
 
 // ES module exports (works with import when type="module")
-export {Uigg, Load, Music, Name, Nav, Tab, Pop, Menu, Scaler, Choice, Progress, Drop, Rate, Empty, Hop, Fold, Crumb, Notice, Swiper}
+export {Uigg, Load, Music, Name, Nav, Tab, Pop, Menu, Scaler, Choice, Progress, Drop, Rate, Hop, Fold, Crumb, Notice, Swiper}
 export {Images, state, initCustomElements, initPage, initLang, initFullscreen, initAudio, initSmooth, initReturn, initTop, initPopLinks, initToggle, initAutoTextarea, initImages, initRandom, initClue, initCopy, initNotifyClose, initRange, initDrag, initForm}
 export default Uigg
