@@ -1,10 +1,7 @@
 # UIGG
 
 [![](https://data.jsdelivr.com/v1/package/npm/uigg/badge)](https://www.jsdelivr.com/package/npm/uigg)
-[![license](https://img.shields.io/github/license/mixice/uigg)](LICENSE)
-![npm downloads](https://img.shields.io/npm/dt/uigg)
 ![npm downloads](https://img.shields.io/npm/dm/uigg)
-![npm downloads](https://img.shields.io/npm/dy/uigg)
 
 UIGG is a lightweight, responsive front-end UI framework designed for rapid prototyping. It provides a rich set of CSS components, custom HTML elements, a built-in icon library, and native JavaScript utilities — all out of the box.
 
