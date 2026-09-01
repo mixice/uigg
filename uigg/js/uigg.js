@@ -1618,7 +1618,7 @@ const Uigg = {
         }
         return mounted
     },
-    tip, alert: alertFn, confirm: confirmFn, prompt: promptFn, notify, notifyRemove, countdown(date){countdownFn(date)}, disable, mobile, touch, alone, state, setCookie, getCookie, isMobileView, $, $$, ready, form: formController, images: initImages, Images,
+    tip, alert: alertFn, confirm: confirmFn, prompt: promptFn, notify, notifyRemove, countdown(date){countdownFn(date)}, disable, mobile, touch, alone, state, setCookie, getCookie, isMobileView, $, $$, ready, initCopy, form: formController, images: initImages, Images,
     lang: (key) => _langData ? (langRead(key, _langData) || key) : key,
 }
 
