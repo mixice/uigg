@@ -49,11 +49,14 @@ menu-list {}
 
 /* form */
 .form {}
-.form li {}
-.form li input {}
-.form li select {}
-.form li .code {}
-.form li button {}
+.form item {}
+.form item alia {}
+.form item cont {}
+.form item cont input {}
+.form item cont select {}
+.form item cont .code {}
+.form item cont button {}
+.form item hint {}
 
 /* page */
 page {}
@@ -99,10 +102,8 @@ tab-group {}
 
 /* step */
 step {}
-step ul {}
-step ul li {}
-step ul li i {}
-step ul li span {}
+step li {}
+step li i {}
 step.column {}
 
 /* crumb */

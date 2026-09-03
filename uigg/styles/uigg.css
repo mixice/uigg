@@ -945,10 +945,10 @@ swiper {display: block;overflow: hidden;position: relative;touch-action: pan-y;h
 
 @media(max-width:640px){
     swiper {
-        swiper-prev,
-        swiper-next {font-size: .48rem;}
-        swiper-prev {left: .2rem;}
-        swiper-next {right: .2rem;}
+        swiper-prev.ico,
+        swiper-next.ico {font-size: .48rem;}
+        swiper-prev {left: .1rem;}
+        swiper-next {right: .1rem;}
         swiper-dot {bottom: .2rem;gap: .1rem;
             i {width: .1rem;height: .1rem;}
         }
