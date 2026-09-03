@@ -9,6 +9,14 @@
 console.log('%c BRACKET BY UIGG ','background-image: linear-gradient(90deg,slateblue,deeppink);color:white','http://ui.gg')
 const $ = (sel, ctx = document) => ctx.querySelector(sel)
 const $$ = (sel, ctx = document) => [...ctx.querySelectorAll(sel)]
+// createElement shorthand: _('li') / _('i', 'ico ico-x') / _('div', {id:'a'}, child1, child2)
+const _ = (tag, props, ...children) => {
+    const el = document.createElement(tag)
+    if(typeof props === 'string') tag === 'style' || tag === 'script' ? el.textContent = props : el.className = props
+    else if(props) Object.assign(el, props)
+    children.flat().forEach(c => c != null && el.append(c))
+    return el
+}
 const language = navigator.language || navigator.userLanguage
 
 // Cookie helpers
@@ -1210,10 +1218,8 @@ function initRandom(root = document){
         if(bg === 'none' && el.tagName !== 'IMG'){el.style.backgroundImage = `url(${url})`}
         else if(!el.getAttribute('src') && el.tagName === 'IMG'){el.setAttribute('src', url)}
     })
-    scoped(root, '[uigg="color"]').forEach(el => {
-        el.style.backgroundColor = `rgb(${randCol()}, ${randCol()}, ${randCol()})`
-        if(el.tagName === 'IMG') el.style.cssText += ';width:100%;height:100%'
-    })
+    scoped(root, '[uigg="color"]').forEach(el => {el.style.backgroundColor = `rgb(${randCol()}, ${randCol()}, ${randCol()})`})
+    scoped(root, '[uigg="pattern"]').forEach(el => {el.style.backgroundImage = `url(//ui.gg/lib/images/pattern?=${randNum()})`})
     scoped(root, '[uigg="txt"]').forEach(el => {if(!el.getAttribute('lang') && !el.innerHTML){el.innerHTML += randomSentences}})
     scoped(root, '[uigg="title"]').forEach(el => {if(!el.getAttribute('lang') && !el.innerHTML){el.innerHTML += randomSentences[Math.floor(Math.random() * randomSentences.length)]}})
     const emot = scoped(root, '[uigg="emot"]')[0]
@@ -1618,7 +1624,7 @@ const Uigg = {
         }
         return mounted
     },
-    tip, alert: alertFn, confirm: confirmFn, prompt: promptFn, notify, notifyRemove, countdown(date){countdownFn(date)}, disable, mobile, touch, alone, state, setCookie, getCookie, isMobileView, $, $$, ready, initCopy, form: formController, images: initImages, Images,
+    tip, alert: alertFn, confirm: confirmFn, prompt: promptFn, notify, notifyRemove, countdown(date){countdownFn(date)}, disable, mobile, touch, alone, state, setCookie, getCookie, isMobileView, $, $$, _, ready, initCopy, form: formController, images: initImages, Images,
     lang: (key) => _langData ? (langRead(key, _langData) || key) : key,
 }
 
@@ -1629,7 +1635,7 @@ ready(() => Uigg.init())
 if(typeof window !== 'undefined'){
     window.Uigg = Uigg
     for(const [k,v] of [['mount', root => Uigg.mount(root)],['state',state],['tip',tip],['notify',notify],['touch',touch],['alone',alone],['lang',Uigg.lang],['form',formController],['images',initImages],['Images',Images],['disable',disable],['mobile',mobile],['setCookie',setCookie],['getCookie',getCookie],['countdown',countdownFn],['ready',ready],['initLang',initLang]]) window[k] = v
-    // External scripts should use Uigg.$() and Uigg.$$() instead.
+    // External scripts should use Uigg.$(), Uigg.$$() and Uigg._() instead.
 }
 
 // ES module exports (works with import when type="module")
