@@ -913,12 +913,6 @@ function initCustomElements(root = document){
     semanticElements.forEach(([tag, Cls]) => scoped(root, tag).forEach(el => mountElement(el, Cls, tag)))
     return root
 }
-function unmountCustomElements(root = document){
-    root = normalizeRoot(root)
-    if(!root) return null
-    semanticElements.forEach(([tag]) => scoped(root, tag).forEach(unmountElement))
-    return root
-}
 
 // ============ Init Functions ============
 function initPage(root = document){scoped(root, 'page').forEach(el => pageRender(el))}
