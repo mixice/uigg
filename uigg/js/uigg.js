@@ -9,7 +9,6 @@
 console.log('%c BRACKET BY UIGG ','background-image: linear-gradient(90deg,slateblue,deeppink);color:white','http://ui.gg')
 const $ = (sel, ctx = document) => ctx.querySelector(sel)
 const $$ = (sel, ctx = document) => [...ctx.querySelectorAll(sel)]
-// createElement shorthand: _('li') / _('i', 'ico ico-x') / _('div', {id:'a'}, child1, child2)
 const _ = (tag, props, ...children) => {
     const el = document.createElement(tag)
     if(typeof props === 'string') tag === 'style' || tag === 'script' ? el.textContent = props : el.className = props
@@ -49,7 +48,7 @@ const getCookie = name => {
 // Mobile CSS extraction — force mobile styles on desktop
 function mobile(force){
     if(force){
-        const style = document.createElement('style')
+        const style = _('style')
         style.id = 'mobile'
         let css = ''
         $$('style, link[rel="stylesheet"]').forEach(el => {
@@ -100,8 +99,7 @@ const [copyRight, copyErr] = language === 'zh-CN' ? ['复制成功', '复制失�
 
 // Alert DOM helper
 function createAlertDOM(message, extra = ''){
-    const alert = document.createElement('alert')
-    alert.className = 'anime-fade-in'
+    const alert = _('alert', 'anime-fade-in')
     alert.innerHTML = `<alert-main class="anime-fade-in-down"><alert-cont>${message}</alert-cont>${extra}<alert-solve></alert-solve></alert-main>`
     return alert
 }
@@ -112,8 +110,7 @@ function tip(str, type, time){
     if(!isNaN(type)){time = +type; type = undefined}
     time ??= 3000
     const cls = 't' + Math.round(Math.random() * 999999)
-    const tipEl = document.createElement('tip')
-    tipEl.className = `${cls} center anime-zoom-in${type ? ' ' + type : ''}`
+    const tipEl = _('tip', `${cls} center anime-zoom-in${type ? ' ' + type : ''}`)
     tipEl.innerHTML = str
     document.body.appendChild(tipEl)
     const t = $(`.${cls}`)
@@ -129,15 +126,14 @@ function notifyRemove(notifyThis){
 function notify(str, align, time){
     let notifyEl = $('notify')
     if(!notifyEl){
-        notifyEl = document.createElement('notify')
+        notifyEl = _('notify')
         notifyEl.innerHTML = '<audio src="//ui.gg/lib/media/notify.mp3"></audio>'
         document.body.appendChild(notifyEl)
     }
     const cls = 'n' + Math.round(Math.random() * 999999)
     if(align === 'bottom') notifyEl.classList.add('bottom')
     else notifyEl.classList.remove('bottom')
-    const li = document.createElement('li')
-    li.className = `${cls} anime-bounce-in-right`
+    const li = _('li', `${cls} anime-bounce-in-right`)
     li.innerHTML = `<x class="ico ico-close"></x>${str}`
     notifyEl.appendChild(li)
     const notifyAudio = notifyEl.querySelector('audio')
@@ -222,7 +218,7 @@ function disable(){
     document.addEventListener('cut', e => e.preventDefault(), true)
     window.onhelp = () => false
     window.addEventListener('keydown', e => {if((e.ctrlKey && ['u','s','i','j'].includes(e.key.toLowerCase())) || e.key === 'F12' || (e.ctrlKey && e.shiftKey && ['i','j'].includes(e.key.toLowerCase()))) {e.preventDefault()}})
-    const style = document.createElement('style')
+    const style = _('style')
     style.textContent = `*{user-select:none!important;-webkit-user-select:none!important;cursor:default!important;}`
     document.head.appendChild(style)
 }
@@ -267,12 +263,11 @@ class Name extends HTMLElement {
         this.classList.add('anime-fade-in-down')
         const searchInput = this.querySelector('name-search input')
         if(searchInput){
-            const icon = document.createElement('i')
-            icon.className = 'ico ico-search'
+        const icon = _('i', 'ico ico-search')
             searchInput.parentElement?.insertBefore(icon, searchInput)
         }
         this.querySelectorAll('h2, name-logo').forEach(el => {
-            const u = document.createElement('u')
+            const u = _('u')
             el.parentElement?.insertBefore(u, el.nextSibling)
         })
     }
@@ -282,11 +277,11 @@ class Name extends HTMLElement {
 class Nav extends HTMLElement {
     connectedCallback(){
         this.classList.add('anime-fade-in-up')
-        const space = document.createElement('space')
+        const space = _('space')
         this.parentElement?.insertBefore(space, this)
         if(this.hasAttribute('uigg')){
             const fillColor = this.getAttribute('uigg') || '#fff'
-            const svg = document.createElement('div')
+            const svg = _('div')
             svg.innerHTML = `<svg viewBox="0 0 640 80"><path d="M437.5,0c-59.55,0-53.55,69.83-117.5,69.83S262.05,0,202.5,0H10C4.48,0,0,4.48,0,10v70h640V10c0-5.52-4.48-10-10-10h-192.5Z" fill="${fillColor}"/></svg>`
             this.prepend(svg.firstElementChild)
             const lis = this.querySelectorAll('li')
@@ -316,7 +311,7 @@ class Tab extends HTMLElement {
 class Pop extends HTMLElement {
     connectedCallback(){
         this.classList.add('anime-fade-in')
-        const x = document.createElement('x')
+        const x = _('x')
         this.appendChild(x)
         const sider = this.querySelector('pop-sider')
         if(sider){sider.classList.add(this.hasAttribute('right') ? 'anime-fade-in-right' : 'anime-fade-in-left')}
@@ -329,15 +324,14 @@ class Pop extends HTMLElement {
         const main = this.querySelector('pop-main')
         if(main){
             main.classList.add('anime-zoom-in')
-            const wrapper = document.createElement('div')
-            wrapper.className = 'full center'
+            const wrapper = _('div', 'full center')
             main.parentElement?.replaceChild(wrapper, main)
             wrapper.appendChild(main)
         }
         const closeBtn = this.querySelector('pop-title .close')
         if(closeBtn){
             closeBtn.classList.add('ico')
-            const u = document.createElement('u')
+            const u = _('u')
             closeBtn.parentElement?.insertBefore(u, closeBtn)
         }
     }
@@ -346,8 +340,7 @@ class Pop extends HTMLElement {
 // Menu
 class Menu extends HTMLElement {
     connectedCallback(){
-        const xBtn = document.createElement('x')
-        xBtn.className = 'ico'
+        const xBtn = _('x', 'ico')
         this.appendChild(xBtn)
         const menuCont = this.querySelector('menu-cont')
         if(isMobileView() && menuCont) menuCont.style.display = 'none'
@@ -384,10 +377,8 @@ class Scaler extends HTMLElement {
     connectedCallback(){
         const input = this.querySelector('input')
         if(!input) return
-        const reduce = document.createElement('a')
-        reduce.className = 'btn ico ico-reduce'
-        const add = document.createElement('a')
-        add.className = 'btn ico ico-add'
+        const reduce = _('a', 'btn ico ico-reduce')
+        const add = _('a', 'btn ico ico-add')
         input.parentElement?.insertBefore(reduce, input)
         input.parentElement?.insertBefore(add, input.nextSibling)
         input.addEventListener('input', () => {if(!Number(input.value)) input.value = ''})
@@ -408,7 +399,7 @@ class Scaler extends HTMLElement {
 // Choice
 class Choice extends HTMLElement {
     connectedCallback(){
-        const x = document.createElement('x')
+        const x = _('x')
         this.appendChild(x)
         const top = () => this.querySelector(':scope>a')
         this.getData = () => top()?.textContent.trim() || ''
@@ -456,8 +447,8 @@ class Drop extends HTMLElement {
     connectedCallback(){
         const dropList = this.querySelector('drop-list')
         if(!dropList) return
-        dropList.parentElement?.insertBefore(Object.assign(document.createElement('i'),{className:'ico ico-alone-right'}), dropList)
-        const dropCont = document.createElement('drop-cont')
+        dropList.parentElement?.insertBefore(_('i','ico ico-alone-right'), dropList)
+        const dropCont = _('drop-cont')
         const firstLi = dropList.querySelector('li')
         if(firstLi) dropCont.innerHTML = firstLi.innerHTML
         this.appendChild(dropCont)
@@ -465,14 +456,14 @@ class Drop extends HTMLElement {
         dropList.classList.add('anime-fade-in')
         const ul = dropList.querySelector('ul')
         if(ul){
-            const x = document.createElement('x')
+            const x = _('x')
             ul.parentElement?.insertBefore(x, ul)
             x.addEventListener('click', () => this.classList.remove('active'))
         }
         dropList.querySelectorAll('li').forEach(li => {
             const subDrop = li.querySelector('drop-list')
             if(subDrop){
-                li.insertBefore(Object.assign(document.createElement('i'),{className:'ico ico-alone-right'}), subDrop)
+                li.insertBefore(_('i','ico ico-alone-right'), subDrop)
                 return
             }
             li.addEventListener('click', function(){
@@ -509,7 +500,7 @@ class Hop extends HTMLElement {
         if(!hopA || !hopCont) return
         hopCont.classList.add('anime-fade-in')
         hopCont.style.display = 'none'
-        const x = document.createElement('x')
+        const x = _('x')
         x.style.display = 'none'
         hopCont.parentElement?.insertBefore(x, hopCont)
         const hopHeight = hopA.offsetHeight
@@ -541,7 +532,7 @@ class Fold extends HTMLElement {
     static observedAttributes = ['show']
     connectedCallback(){
         const foldTitles = this.querySelectorAll('fold-title')
-        foldTitles.forEach(u => u.querySelector('u')?.parentElement?.appendChild(Object.assign(document.createElement('s'), {className: 'ico ico-alone-bottom'})))
+        foldTitles.forEach(u => u.querySelector('u')?.parentElement?.appendChild(_('s', 'ico ico-alone-bottom')))
         this.querySelectorAll('fold-cont').forEach(c => c.classList.add('anime-fade-in'))
         if(this.getAttribute('show') === ''){
             this.querySelectorAll('fold-group').forEach(g => g.classList.add('active'))
@@ -564,8 +555,7 @@ class Crumb extends HTMLElement {
     connectedCallback(){
         const lis = this.querySelectorAll('li')
         lis.forEach((li, idx) => {
-            const i = document.createElement('i')
-            i.className = idx === 0 ? 'ico ico-home' : 'ico ico-alone-right'
+            const i = _('i', idx === 0 ? 'ico ico-home' : 'ico ico-alone-right')
             li.prepend(i)
         })
     }
@@ -979,7 +969,7 @@ function initAudio(){
             const audioId = 'audio-' + audioName
             let audio = document.getElementById(audioId)
             if(!audio){
-                audio = document.createElement('audio')
+                audio = _('audio')
                 audio.id = audioId
                 audio.src = `//ui.gg/lib/media/${audioName}.mp3`
                 document.body.appendChild(audio)
@@ -1117,7 +1107,7 @@ function Images(im){
         .filter(Boolean)
         .map(v => v.includes('/') || v.startsWith('.') ? v : `.${v}`)
         .join(',')
-    const inp = Object.assign(document.createElement('input'), {
+    const inp = _('input', {
         type: 'file', multiple: multi,
         accept,
         style: 'display:none'
@@ -1127,7 +1117,7 @@ function Images(im){
     im._defaultHTML = [...im.querySelectorAll('li')].map(li => li.cloneNode(true))
     let replacing = null
     let btn = im.querySelector('add')
-    if(!btn){ btn = document.createElement('add'); im.appendChild(btn) }
+    if(!btn){ btn = _('add'); im.appendChild(btn) }
     const syncAdd = () => { if(!multi) btn.style.display = im.querySelector('li') ? 'none' : '' }
     const revoke = li => { if(li?._url) URL.revokeObjectURL(li._url) }
     const removeItem = li => {
@@ -1148,15 +1138,15 @@ function Images(im){
         const isBlob = typeof Blob !== 'undefined' && item instanceof Blob
         const src = isBlob ? URL.createObjectURL(item) : String(item || '')
         if(!src) return null
-        const li = document.createElement('li')
-        const img = Object.assign(document.createElement('img'), { src })
+        const li = _('li')
+        const img = _('img', { src })
         img.setAttribute('cover', '')
         if(isBlob){
             li._file = item
             li._url = src
             im._files.push(item)
         }
-        li.append(img, document.createElement('n'))
+        li.append(img, _('n'))
         return li
     }
     const addItem = item => {
@@ -1223,7 +1213,7 @@ function initRandom(root = document){
     scoped(root, '[uigg="txt"]').forEach(el => {if(!el.getAttribute('lang') && !el.innerHTML){el.innerHTML += randomSentences}})
     scoped(root, '[uigg="title"]').forEach(el => {if(!el.getAttribute('lang') && !el.innerHTML){el.innerHTML += randomSentences[Math.floor(Math.random() * randomSentences.length)]}})
     const emot = scoped(root, '[uigg="emot"]')[0]
-    if(emot){emot.innerHTML = Array.from({length: 100}, (_, i) => `<s style="background-image: url(//ui.gg/lib/emot/${i+1}.svg)"></s>`).join('')}
+    if(emot){emot.innerHTML = Array.from({length: 100}, (_, i) => `<img src="//ui.gg/lib/emot/${i+1}.svg" class="emot" />`).join('')}
 }
 function initClue(root = document){
     scoped(root, '[clue]').forEach(el => {
@@ -1276,8 +1266,7 @@ function initDrag(root = document){
             if(!moved && Math.abs(e.clientX - sx) < 5 && Math.abs(e.clientY - sy) < 5) return
             moved = true
             if(!ph){
-                ph = document.createElement('li')
-                ph.classList.add('drag-hole')
+                ph = _('li', 'drag-hole')
                 el.after(ph)
                 el.classList.add('drag-float')
                 const r = el.getBoundingClientRect()
@@ -1395,7 +1384,7 @@ function state(target, status = 'done', html){
     const tag = stateTag(status)
     let item = box.querySelector?.(`:scope > ${tag}`)
     if(!item){
-        item = document.createElement(tag)
+        item = _(tag)
         box.appendChild(item)
     }
     stateContent(item, html)

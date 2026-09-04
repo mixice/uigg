@@ -1,5 +1,5 @@
 ready(() => {
-    const { $, $$ } = Uigg
+    const { $, $$, _ } = Uigg
     $$('chat-cont,chat-tip').forEach(el => el.classList.add('anime-fade-in'))
     const chatMsg = $('chat-message')
     const chatControlAside = $('chat-control aside')
@@ -21,22 +21,102 @@ ready(() => {
         sel.addRange(range)
         el.focus()
     }
-    $$('chat [uigg="emot"] s').forEach(s => {
+    let savedRange = null
+    const saveCaret = () => {
+        const sel = window.getSelection()
+        if(sel && sel.rangeCount > 0){
+            const r = sel.getRangeAt(0)
+            if(chatControlAside && chatControlAside.contains(r.commonAncestorContainer)) savedRange = r.cloneRange()
+        }
+    }
+    chatControlAside?.addEventListener('keyup', saveCaret)
+    chatControlAside?.addEventListener('mouseup', saveCaret)
+    chatControlAside?.addEventListener('input', saveCaret)
+    $$('chat [uigg="emot"] img').forEach(s => {
         s.addEventListener('click', () => {
             const tip = s.closest('chat-tip')
             tip && (tip.style.display = 'none')
-            chatControlAside && chatControlAside.appendChild(s)
-            focusEnd(chatControlAside)
+            if(!chatControlAside) return
+            const clone = s.cloneNode(true)
+            if(savedRange && chatControlAside.contains(savedRange.commonAncestorContainer)){
+                savedRange.collapse(true)
+                savedRange.insertNode(clone)
+                savedRange.setStartAfter(clone)
+                savedRange.collapse(true)
+                const sel = window.getSelection()
+                sel.removeAllRanges()
+                sel.addRange(savedRange)
+                savedRange = savedRange.cloneRange()
+            } else {
+                chatControlAside.appendChild(clone)
+                focusEnd(chatControlAside)
+            }
+            chatControlAside.focus()
         })
+    })
+    let draggedEmot = null
+    chatControlAside?.addEventListener('dragstart', e => {
+        const img = e.target.closest?.('img')
+        if(img && chatControlAside.contains(img)){
+            draggedEmot = img
+            e.dataTransfer.effectAllowed = 'move'
+            e.dataTransfer.setData('text/plain', '')
+        }
+    })
+    chatControlAside?.addEventListener('dragover', e => {
+        if(draggedEmot){
+            e.preventDefault()
+            e.dataTransfer.dropEffect = 'move'
+        }
+    })
+    chatControlAside?.addEventListener('drop', e => {
+        if(!draggedEmot) return
+        e.preventDefault()
+        const dropped = draggedEmot
+        draggedEmot = null
+        let range = null
+        if(document.caretRangeFromPoint){
+            range = document.caretRangeFromPoint(e.clientX, e.clientY)
+        } else if(document.caretPositionFromPoint){
+            const p = document.caretPositionFromPoint(e.clientX, e.clientY)
+            if(p){ range = document.createRange(); range.setStart(p.offsetNode, p.offset); range.collapse(true) }
+        }
+        if(range){
+            range.insertNode(dropped)
+            range.setStartAfter(dropped)
+            range.collapse(true)
+            const sel = window.getSelection()
+            sel.removeAllRanges()
+            sel.addRange(range)
+            savedRange = range.cloneRange()
+        } else {
+            chatControlAside.appendChild(dropped)
+        }
+        chatControlAside.focus()
+    })
+    chatControlAside?.addEventListener('dragend', () => { draggedEmot = null })
+    chatControlAside?.addEventListener('click', e => {
+        const img = e.target.closest?.('img')
+        if(!img) return
+        const sel = window.getSelection()
+        if(!sel || !sel.rangeCount || sel.getRangeAt(0).collapsed) return
+        const rect = img.getBoundingClientRect()
+        const after = (e.clientX - rect.left) > rect.width / 2
+        const range = document.createRange()
+        after ? range.setStartAfter(img) : range.setStartBefore(img)
+        range.collapse(true)
+        sel.removeAllRanges()
+        sel.addRange(range)
+        savedRange = range.cloneRange()
     })
     const closeBtn = $('chat-title x.ico-close')
     closeBtn?.addEventListener('click', () => {
         chatCont && (chatCont.style.display = 'none')
     })
     document.addEventListener('click', e => {
-        if(e.target.matches?.('chat aside img')){
+        if(e.target.matches?.('chat aside img:not(.emot)')){
             const imgSrc = e.target.getAttribute('src')
-            const pop = document.createElement('pop')
+            const pop = _('pop')
             pop.className = 'anime-fade-in center'
             pop.innerHTML = `<img src="${imgSrc}">`
             $('chat')?.appendChild(pop)
@@ -53,7 +133,7 @@ ready(() => {
         const messageVal = chatControlAside?.innerHTML || ''
         if(messageVal === '') return
         const time = new Date().toLocaleTimeString()
-        const msgLi = document.createElement('li')
+        const msgLi = _('li')
         msgLi.className = 'mine'
         msgLi.innerHTML = `<em class="avatar" style="background-image: "></em><cite>${time}</cite><aside>${messageVal}</aside>`
         chatMsg?.appendChild(msgLi)

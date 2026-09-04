@@ -125,14 +125,14 @@ img[uigg] {object-fit: cover;}
 img[uigg="color"],
 img[uigg="pattern"] {content-visibility: hidden;width: 100%;height: 100%;}
 img[uigg="pattern"] {background-size: 100px auto;background-repeat: repeat;}
-[uigg="emot"] s {width: 50px;height: 50px;display: inline-block;background-size: 90%;vertical-align: middle;
-    &:hover {background-color: var(--eee);}
+.emot {width: 50px !important;height: 50px !important;padding: 4px !important;display: inline-block !important;vertical-align: middle !important;cursor: pointer;
+    &:hover {background-color: var(--f7);}
 }
 
 @media(max-width:640px){
     .shadow::after {width: calc(100% - .2rem);height: .1rem;bottom: -.05rem;filter: blur(.1rem);}
     .adrift {filter: drop-shadow(0 .1rem .1rem var(--color));}
-    [uigg="emot"] s {width: .6rem;height: .6rem;}
+    .emot {width: .6rem !important;height: .6rem !important;padding: .05rem !important;}
 }
 
 /* color */
