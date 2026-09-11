@@ -248,6 +248,7 @@ img[uigg="pattern"] {background-size: 100px auto;background-repeat: repeat;}
 .mix-abrazine {backdrop-filter: blur(10px);}
 .mix-multiply {mix-blend-mode: multiply;}
 .mix-screen {mix-blend-mode: screen;}
+.mix-luminosity {mix-blend-mode: luminosity;}
 
 @media(max-width:640px){
     .mix-abrazine {backdrop-filter: blur(.1rem);}
@@ -383,8 +384,10 @@ a[title="到百度地图查看此区域"],
 }
 
 @media(max-width:640px){
-    .top.btn {width: .7rem;height: .7rem;margin: .2rem;font-size: .32rem;
-        &:hover {transform: translateY(0);}
+    .top {
+        &.btn {width: .7rem;height: .7rem;margin: .2rem;font-size: .32rem;
+            &:hover {transform: translateY(0);}
+        }
     }
 }
 
@@ -451,12 +454,14 @@ pop {position: fixed;background-color: var(--000-8);z-index: 3;display: none;
 }
 
 @media(max-width:640px){
-    pop-title {
-        h3 {line-height: .7rem;padding: 0 .2rem;font-size: .24rem;}
-        .ico {line-height: .7rem;width: .7rem;height: .7rem;}
+    pop {
+        pop-title {
+            h3 {line-height: .7rem;padding: 0 .2rem;font-size: .24rem;}
+            .ico {line-height: .7rem;width: .7rem;height: .7rem;}
+        }
+        pop-cont {padding: .2rem;}
+        pop-sider {width: 5rem;}
     }
-    pop-cont {padding: .2rem;}
-    pop-sider {width: 5rem;}
 }
 
 /* tip */
@@ -524,10 +529,12 @@ nav {width: 100%;position: fixed;left: 0;bottom: 0;right: 0;margin: auto;z-index
 space {height: 150px;display: none;}
 
 @media(max-width:640px){
-    nav li {padding: .08rem;
-        a {padding: .08rem 0;}
-        .ico {margin: 0 auto .02rem;font-size: .32rem;}
-        span {font-size: .18rem;}
+    nav {
+        li {padding: .08rem;
+            a {padding: .08rem 0;}
+            .ico {margin: 0 auto .02rem;font-size: .32rem;}
+            span {font-size: .18rem;}
+        }
     }
     nav[uigg] li.midel .ico {width: .9rem;height: .9rem;margin-top: -.5rem;box-shadow: 0 .05rem .1rem var(--color);font-size: .36rem;}
     space {height: 1.4rem;display: block;}
@@ -1008,12 +1015,12 @@ name {height: 80px;position: relative;z-index: 1;box-shadow: 0 0 6px var(--000-1
         h3 {margin: .2rem 0;padding: 0 .25rem;}
         .ico {font-size: .42rem;width: .8rem;}
         hop > .ico {line-height: .8rem;}
-    }
-    name-logo {padding: .15rem;
-        h1 {font-size: .32rem;padding-left: .1rem;}
-    }
-    name-search {margin: .1rem 0;border-radius: .3rem;
-        input {font-size: .24rem;height: .6rem;padding: 0 .8rem 0 0;}
+        name-logo {padding: .15rem;
+            h1 {font-size: .32rem;padding-left: .1rem;}
+        }
+        name-search {margin: .1rem 0;border-radius: .3rem;
+            input {font-size: .24rem;height: .6rem;padding: 0 .8rem 0 0;}
+        }
     }
 }
 
@@ -1170,11 +1177,13 @@ hop {position: relative;
 }
 
 @media(max-width:640px){
-    hop a {height: .7rem;line-height: .7rem;min-width: .7rem;}
-    hop-cont {border-radius: .05rem;
-        a {padding: 0 .2rem;
-            &:first-child {border-radius: .1rem .1rem 0 0;}
-            &:last-child {border-radius: 0 0 .1rem .1rem;}
+    hop {
+        a {height: .7rem;line-height: .7rem;min-width: .7rem;}
+        hop-cont {border-radius: .05rem;
+            a {padding: 0 .2rem;
+                &:first-child {border-radius: .1rem .1rem 0 0;}
+                &:last-child {border-radius: 0 0 .1rem .1rem;}
+            }
         }
     }
 }
@@ -1193,11 +1202,13 @@ fold {
 }
 
 @media(max-width:640px){
-    fold-title {padding: .1rem;
-        h5 {line-height: .35rem;}
-        .ico {width: .5rem;}
+    fold {
+        fold-title {padding: .1rem;
+            h5 {line-height: .35rem;}
+            .ico {width: .5rem;}
+        }
+        fold-cont {padding: .1rem;}
     }
-    fold-cont {padding: .1rem;}
 }
 
 /* step */
@@ -1241,8 +1252,12 @@ crumb {display: flex;align-items: center;width: 100%;white-space: nowrap;overflo
 }
 
 @media(max-width:640px){
-    crumb li i.ico {font-size: .3rem;}
-    crumb li a {padding: 0 .05rem;}
+    crumb {
+        li {
+            i.ico {font-size: .3rem;}
+            a {padding: 0 .05rem;}
+        }
+    }
 }
 
 /* clue */
@@ -1298,6 +1313,7 @@ reminder {padding: 10px;border-width: 1px;background-color: var(--f7);margin: 20
     .tox-button {border-radius: 3px !important;font-weight: normal !important;}
     .tox-button--secondary,
     .tox-button--icon {background-color: transparent !important;border-width: 1px !important;}
+    .tox-button--secondary {color: white !important;}
     .tox-edit-area::before {border: 0 !important;}
     .tox-tbtn:focus::after,
     .tox-button::before,
@@ -1361,10 +1377,12 @@ alert {position: fixed;width: 100%;height: 100%;top:0;left: 0;z-index: 3;backgro
 }
 
 @media(max-width:640px){
-    alert-main {border-radius: .1rem;margin: 1rem auto;padding: .2rem;
-        input {margin-bottom: .2rem;}
-        alert-cont {padding: .3rem .2rem;}
-        alert-solve .btn {margin: .1rem;min-width: 1.2rem;font-size: .18rem;height: .6rem;}
+    alert {
+        alert-main {border-radius: .2rem;margin: 1rem auto;padding: .2rem;
+            input {margin-bottom: .2rem;}
+            alert-cont {padding: .3rem .2rem;}
+            alert-solve .btn {margin: .1rem;min-width: 1.2rem;font-size: .18rem;height: .6rem;}
+        }
     }
 }
 

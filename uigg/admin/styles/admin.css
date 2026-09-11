@@ -326,7 +326,7 @@ pop-title {border-bottom-color: var(--light);}
 
 /* login */
 .login {width: 100%;height: 100%;background: repeating-radial-gradient(circle at 50% 50%, transparent 0, var(--000-1) 3px 3px, transparent 5px 10px) var(--color);}
-.login-main {background-color: white;padding: 30px;animation-duration: .5s;position: relative;border-radius: 10px;}
+.login-main {background-color: white;padding: 30px;animation-duration: .5s;position: relative;border-radius: 20px;}
 .login-title {padding: 10px 0 20px;overflow: hidden;
 	h1 {margin: auto;transform: scale(1.3);}
 }
@@ -339,7 +339,7 @@ pop-title {border-bottom-color: var(--light);}
 		}
 	}
 }
-.login-info {padding: 0 15px;overflow: hidden;
+.login-info {overflow: hidden;
 	a:hover {color: var(--color);}
 }
 .login-other {overflow: hidden;
@@ -349,7 +349,7 @@ pop-title {border-bottom-color: var(--light);}
 }
 
 @media(max-width:640px){
-	.login-main {padding: .2rem .1rem;border-radius: .1rem;width: 95%;}
+	.login-main {padding: .3rem;border-radius: .2rem;width: 90%;}
 	.login-title {padding: .1rem 0;}
 	.login-form {width: 100%;
 		li {
@@ -358,7 +358,6 @@ pop-title {border-bottom-color: var(--light);}
 			.btn {margin: .2rem 0 0;font-size: .24rem;}
 		}
 	}
-	.login-info {padding: 0 .15rem;}
 	.login-other {
 		a {padding: .1rem;border-radius: .1rem;}
 	}

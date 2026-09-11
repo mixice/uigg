@@ -3,7 +3,7 @@ ready(() => {
 	$$('.sider-toggle').forEach(el => {
 		el.addEventListener('click', () => {
 			const sider = $('.sider')
-			sider.style.display = sider.offsetParent ? 'none' : ''
+			sider.style.display = sider.offsetParent ? 'none' : 'block'
 		})
 	})
 	const pageName = location.pathname.split('/').pop().split('.')[0]
