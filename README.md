@@ -109,37 +109,6 @@ Design templates are also available: [Adobe XD](https://ui.gg/xd.zip) · [Figma]
 </body>
 </html>
 ```
-
----
-
-## Project Structure
-
-```
-uigg/
-├── index.html              # Entry HTML template
-├── lib/
-│   ├── uigg.js             # UIGG core JavaScript (v3.1, ES module)
-│   ├── uigg.css            # UIGG core stylesheet
-│   ├── ico/
-│   │   ├── ico.css         # Icon font stylesheet
-│   │   ├── ico.js          # Icon browser JS
-│   │   ├── ico.json        # Icon metadata
-│   │   ├── ico.woff2       # Icon font file
-│   │   └── *.svg           # Individual icon SVGs
-│   ├── editor/             # TinyMCE rich text editor
-│   ├── font/               # Web fonts
-│   ├── images/             # Placeholder images
-│   └── media/              # Audio effect files
-├── lang/
-│   ├── en.json             # English language file
-│   └── zh.json             # Chinese language file
-├── styles/
-│   └── styles.css          # Project custom styles
-├── images/
-│   └── ico.svg             # Favicon / logo
-└── document/               # Documentation HTML pages
-```
-
 ---
 
 ## Responsive Design
