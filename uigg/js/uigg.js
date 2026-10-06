@@ -66,8 +66,8 @@ function mobile(force){
 }
 
 // Utility
-const randNum = () => Math.round(Math.random() * 100)
 const randCol = () => Math.floor(Math.random() * 256)
+const randIdx = () => Math.floor(Math.random() * 100)
 const generateRandomWord = (length = Math.floor(Math.random() * 8) + 3) => Array.from({length}, () => 'abcdefghijklmnopqrstuvwxyz'[Math.floor(Math.random() * 26)]).join('')
 const generateRandomSentence = (wordCount = 10) => Array.from({length: wordCount}, () => generateRandomWord()).join(' ')
 const randomSentences = Array.from({length: 10}, generateRandomSentence)
@@ -1197,13 +1197,13 @@ function Images(im){
 function initImages(root = document){scoped(root, 'images').forEach(Images)}
 function initRandom(root = document){
     scoped(root, '[uigg="bg"], [uigg="img"], [uigg="product"], [uigg="avatar"]').forEach(el => {
-        const url = `//ui.gg/lib/images/${el.getAttribute('uigg')}?=${randNum()}`
+        const url = `//ui.gg/lib/images/${el.getAttribute('uigg')}/${randIdx()}.jpg`
         const bg = window.getComputedStyle(el).backgroundImage
         if(bg === 'none' && el.tagName !== 'IMG'){el.style.backgroundImage = `url(${url})`}
         else if(!el.getAttribute('src') && el.tagName === 'IMG'){el.setAttribute('src', url)}
     })
     scoped(root, '[uigg="color"]').forEach(el => {el.style.backgroundColor = `rgb(${randCol()}, ${randCol()}, ${randCol()})`})
-    scoped(root, '[uigg="pattern"]').forEach(el => {el.style.backgroundImage = `url(//ui.gg/lib/images/pattern?=${randNum()})`})
+    scoped(root, '[uigg="pattern"]').forEach(el => {el.style.backgroundImage = `url(//ui.gg/lib/images/pattern/${randIdx()}.svg)`})
     scoped(root, '[uigg="txt"]').forEach(el => {if(!el.getAttribute('lang') && !el.innerHTML){el.innerHTML += randomSentences}})
     scoped(root, '[uigg="title"]').forEach(el => {if(!el.getAttribute('lang') && !el.innerHTML){el.innerHTML += randomSentences[Math.floor(Math.random() * randomSentences.length)]}})
     const emot = scoped(root, '[uigg="emot"]')[0]
