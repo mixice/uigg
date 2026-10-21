@@ -356,11 +356,6 @@ audio:not([controls]) {display: none;height: 0;}
 video {object-fit: fill;}
 canvas {user-select: none;}
 
-a[title="到百度地图查看此区域"],
-.BMap_cpyCtrl,
-.anchorBL {display: none;}
-.BMap_Marker {transform: scale(2);}
-
 @media(max-width:640px){
     img {width: 100%;}
 }
@@ -373,8 +368,6 @@ a[title="到百度地图查看此区域"],
 @media(max-width:640px){
     .ico {font-size: .3rem;}
 }
-
-
 
 /* top */
 .top {opacity: 0;z-index: 1;
@@ -720,7 +713,7 @@ choice {cursor: pointer;
     item {display: flex;align-items: center;width: 100%;padding: 5px;min-height: 50px;
         alia {width: 120px;text-transform: capitalize;white-space: nowrap;text-overflow: ellipsis;overflow: hidden;padding-right: 10px;}
         cont {display: contents;min-width: 0;
-            & > *:not(.tox), .parent > * {margin: 0 5px;}
+            & > *:not(.tox), .parent > * {margin-left:  5px;margin-right: 5px;}
             & > *:first-child, .parent > *:first-child {margin-left: 0;}
             & > *:last-child, .parent > *:last-child {margin-right: 0;}
             .code {width: 140px;height: 50px;overflow: hidden;display: flex;align-items: center;justify-content: center;padding: 0;border-radius: 3px;
